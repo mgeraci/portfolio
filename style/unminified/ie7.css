@@ -1,0 +1,70 @@
+/******************************************************/
+/*                                                    */
+/*                Stylesheet for IE 7                 */
+/*   Michael Geraci dot Com - By Michael P. Geraci    */
+/*    www.michaelgeraci.com - copyright 2006-2009     */
+/*                                                    */
+/******************************************************/
+
+/*
+	green: bbd199
+	cream: f3f4d3
+	text: 444
+*/
+
+
+/* Bio/Resume */
+div.text{ /* text columns for index and links page */
+	width: 410px;
+	margin-right: 20px;
+}
+
+
+/* List Templates - Composition, Recordings, Web, and Photo Entry */
+#pieceContent{width: 450px;}
+
+
+/* Program Notes */
+.programNotesOpen{margin-left: 25px;}
+
+.programNotes{margin-left: 0px;}
+
+#pageRecordings .programNotes{margin-left: -13px;}
+
+
+/* Gallery Templates */
+#galleryThumbs{width: 220px;}
+
+#pageNav{margin-left: 10px;}
+
+#galleryThumbs ul{ /* thumbnail ul */
+	margin-left: 20px;
+}
+
+
+/* Graphic Design */
+#pageGraphic{
+	width: 930px;
+	position: relative;
+	right: 25px;
+}
+
+
+/* Photography */
+#pagePhotography{
+	width: 930px;
+	position: relative;
+	right: 25px;
+}
+
+/* ======== */
+/* = Logo = */
+/* ======== */
+
+input.mailform_input{width: 245px;}
+
+td.inputLabel{width: 150px;}
+
+#logoL{height: 2272px;}
+
+#logoR{height: 2272px;}

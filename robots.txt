@@ -1,0 +1,5 @@
+User-agent: *
+Disallow: /logo.php
+Disallow: /extras/
+Disallow: /dropbox/
+Disallow: /admin/

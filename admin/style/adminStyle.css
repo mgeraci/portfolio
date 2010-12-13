@@ -1,0 +1,37 @@
+/* ========= */
+/* = Admin = */
+/* ========= */
+
+table#adminPictureTable{
+  border-collapse: collapse;
+  cellpadding: 5px;
+}
+
+table#adminPictureTable td{padding: 5px;}
+
+table#adminPictureTable td.number{padding-left: 10px;}
+
+tr#adminTopRow{font-weight: bold;}
+
+td.number{width: 40px;}
+td.id, td.year, td.width, td.height, td.anImage, td.adminEdit{width: 75px;}
+td.title{width: 215px;}
+td.info{width: 300px;}
+
+#adminNumber, #adminID, #adminYear, #adminWidth, #adminHeight,
+#adminAddNumber, #adminAddID, #adminAddYear, #adminAddWidth, #adminAddHeight{width: 50px;}
+#adminTitle, #adminAddTitle{width: 190px;}
+#adminInfo{width: 275px;}
+
+#adminAddDiv{display: none;}
+
+#adminTableVar{display: none;}
+
+#picturePreview{
+  display: none;
+  position: fixed;
+  top: 5px;
+  left: 5px;
+}
+
+tr.inQueue{background: #F3F4D3;}

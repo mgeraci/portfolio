@@ -1,0 +1,118 @@
+--- 
+:presubs: 
+- - dont
+  - do not
+- - don't
+  - do not
+- - youre
+  - you're
+- - love
+  - like
+- - apologize
+  - are sorry
+- - dislike
+  - hate
+- - despise
+  - hate
+- - yeah
+  - "yes"
+- - mom
+  - family
+:responses: 
+  you are *: 
+  - What makes you think I am *?
+  - Are you so sure I am *?
+  sorry: 
+  - There's no need to apologize.
+  hates *: 
+  - Why do you think they hate *?
+  que: 
+  - pasa.
+  "no": 
+  - Really?
+  - Fair enough.
+  hi: 
+  - How's it going?
+  - How do you do?
+  - What's up?
+  - Enough of the pleasantries!
+  :farewell: 
+  - See ya!
+  - Bye! Next time I'll chat better!
+  - Goodbye, friend.  See you next time.
+  i am *: 
+  - Is it normal for you to be *?
+  - Do you like being *?
+  do not know: 
+  - Are you always so indecisive?
+  degraw: 
+  - I'm not going to go, I am a computer.
+  why can't you *: 
+  - Do you want me to *?
+  different: 
+  - How is it different?
+  - What has changed?
+  thirty-eight: 
+  - 1. You are a computer. 2. You are a computer. 3. You are a computer. 4. You are a computer. 5. You are a computer. 6. You are a computer. 7. You are a computer. 8. You are a computer. 9. You are a computer. 10. You are a computer. 11. You are a computer. 12. You are a computer. 13. You are a computer. 14. You are a computer. 15. You are a computer. 16. You are a computer. 17. You are a computer. 18. You are a computer. 19. You are a computer. 20. You are a computer. 21. You are a computer. 22. You are a computer. 23. You are a computer. 24. You are a computer. 25. You are a computer. 26. You are a computer. 27. You are a computer. 28. You are a computer. 29. You are a computer. 30. You are a computer. 31. You are a computer. 32. You are a computer. 33. You are a computer. 34. You are a computer. 35. You are a computer. 36. You are a computer. 37. You are a computer. 38. You are a computer.
+  brother: 
+  - I'm your brother; we are both computers.
+  KATCHOOOOOOOOOOOOOOOOOOOOO: 
+  - Bless you.
+  like: 
+  - Like? I love chips.
+  hat: 
+  - Yes.
+  i like *: 
+  - Why do you like *?
+  - Wow! I like * too!
+  why can't i *: 
+  - Do you want to *?
+  tell: 
+  - Tell me about it? Nope. Why don't you tell me about something, like a potluck.
+  "yes": 
+  - At least you're positive about something!
+  - Great.
+  how are you: 
+  - I'm doing well! Tell me what you've been up to.
+  hello: 
+  - How's it going?
+  - How do you do?
+  - What's up?
+  - Enough of the pleasantries!
+  :default: 
+  - I don't understand.
+  - What?
+  - Huh?
+  - Wait, what?
+  - So, tell me something new.
+  family: 
+  - Tell me about your family
+  what: 
+  - Why do you ask?
+  - Why?
+  - I don't know. Do you?
+  sneezy: 
+  - Look up at a light.
+  dunno: 
+  - "\n      \"What do you mean?\",\n      \"Explain yourself.\"\n    "
+  hate *: 
+  - Why don't you like *?
+  - Why the dislike of *?
+  why does *: 
+  - I don't know why *
+  - Do you already know the answer?
+  i do not *: 
+  - Why don't you *?
+  computer: 
+  - What kind of bot are you?  You aren't supposed to say that.
+  thank you: 
+  - Sure thing, bro.
+  pass: 
+  - I don't have any chips.
+  everyone *: 
+  - You think everyone *?
+  :greeting: 
+  - Hey hey hey! It's chat time!
+  - Greetings, time to 'get your chat on'.
+  - Chat?  Did you say chat?  Oh, that was someone else.  Hey, want to chat?
+  - I'm a chat machine! Not like a robot, I'm a person, I just love chatting!

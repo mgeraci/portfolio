@@ -1,0 +1,47 @@
+<html>
+	<head>
+		<title>Compose-A-Tron</title>
+		<script type='text/javascript' src='./js/jquery-1.3.2.min.js'></script>
+		<script type='text/javascript' src='./js/jquery-fieldselection.pack.js'></script>
+		<script type='text/javascript' src='./js/jquery.macro.js'></script>
+		<style type="text/css">
+			body{background: #444;}
+			h1{
+				font-family: arial;
+				font-size: 45px;
+				color: #fff;
+			}
+			h2{
+				color: #888;
+				font-weight: normal;
+				font-style: oblique;
+				margin-top: -20px;
+			}
+			#compose{
+				float: left;
+				padding: 5px;
+			}
+			#explanation{
+				width: 300px;
+				float: left;
+				margin-left: 30px;
+				color: #aaa;
+				font-size: 18px;
+			}
+		</style>
+	  
+	</head>
+	<body>
+		<h1>compose-a-tron</h1>
+		<h2>Almanac-Specific Reply Machine</h2>
+		<textarea id="compose" cols='80' rows='40'></textarea>
+		<div id="explanation">
+			it takes the character after a break character to trigger a replacement, so just keep on typing.
+			<br>
+			<br>it does not understand misspellings. if you make a typo in a keyword, you'd better start over.
+			<br>
+			<br>accepts: dear, pe, gener, mg, jbj
+		</div>
+		<div id="output"></div>
+	</body>
+</html>

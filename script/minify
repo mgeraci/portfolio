@@ -1,0 +1,79 @@
+#!/usr/bin/env ruby
+
+# ===============
+# = Stylesheets =
+# ===============
+
+puts 'minifying the css files'
+
+# browser specific stylesheets
+
+# navigate to the stylesheet directory and put its contents in a variable
+stylesheets = `cd style/unminified/; ls`
+
+# put the variable into an array
+styleArray = []
+styleArray = stylesheets.split(/\n/)
+
+# copy the css files from unminified to style
+require 'fileutils'
+styleArray.each do |file|
+  if /css/ =~ file
+    FileUtils.cp("style/unminified/#{file}", "style/#{file}")
+  end
+end
+
+# get rid of the .css extension and ignores the .less files
+styleArrayScrubbed = []
+styleArray.each do |file|
+  if /css/ =~ file
+    x = file.sub(/\.css/, '')
+    styleArrayScrubbed << x
+  end
+end
+
+# for each browser sheet, run the yui minifier
+styleArrayScrubbed.each do |file|
+  command = 'java -jar script/yuicompressor-2.4.2.jar -o style/' + file + '.css style/' + file + '.css'
+  `#{command}`
+end
+
+
+# ==============
+# = Javascript =
+# ==============
+
+puts 'minifying javscript files'
+
+# get the files in the unminified folder
+all_js = Dir.glob("js/unminified/*.js")
+
+# get rid of the .js extension and path
+all_js2 = []
+all_js.each do |file|
+  all_js2 << file.gsub(/\.js/, '').gsub(/js\/unminified/, '')
+end
+
+# minify all the unminified javascripts
+all_js2.each do |file|
+  `#{'script/jsmin.rb <js/unminified/' + file + '.js> js/' + file + '.min.js'}`
+end
+
+puts 'combining the javascript files'
+
+# array of files to include in the pack
+js_files = ['jquery.hotkeys-0.7.9.min', 'audio-player.min', 'javascript.min']
+
+# for each file, add the contents to a new array
+theJS = []
+js_files.each do |file|
+  f = File.read('js/' + file + '.js')
+  theJS << f
+end
+
+# for each contents, put on a line in pack.js
+File.open('js/pack.js', 'w') do |f|
+  f.puts theJS.join(' ')
+end
+
+puts 'done! enjoy your minified files!'

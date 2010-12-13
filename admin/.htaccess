@@ -1,0 +1,8 @@
+# Begin password protection #
+AuthName "Admin"
+Require valid-user
+AuthUserFile "/home/users/web/b2877/ipw.michaelg/public_html/admin/.htpasswd"
+# AuthUserFile "/Users/mgeraci/Web/mine/admin/.htpasswd"
+AuthType basic
+# End password protection #
+
