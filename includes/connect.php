@@ -1,7 +1,7 @@
 <?php
   // // // Connect to database // // //
 
-  if (preg_match('/michaelgeraci\.com/', $_SERVER['SERVER_NAME'])){
+  if (preg_match('/michaelgeraci/', $_SERVER['SERVER_NAME'])){
     // online variabls
     $username = "mgeraci";
     $password = "3dN7hNejLLUeoqVLermf";
@@ -19,6 +19,6 @@
   mysql_select_db($database, $conn);
 
   if (!$conn) {
-    echo "Could Not Connect to the Graphic Design Database";
+    echo "Could Not Connect to the michaelgeraci.com Database";
   }
 ?>
