@@ -90,7 +90,7 @@ function photoLoader(){
         $('#pictureDiv').removeClass('loading').append(this);
         $(this).fadeIn();
       }).attr('src', srcString).attr('width', width).attr('height', height).attr('alt', title);
-      });
+    });
   }
 }
 

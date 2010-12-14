@@ -1,8 +1,8 @@
 # Begin password protection #
 AuthName "Admin"
 Require valid-user
-AuthUserFile "/home/users/web/b2877/ipw.michaelg/public_html/admin/.htpasswd"
-# AuthUserFile "/Users/mgeraci/Web/mine/admin/.htpasswd"
+AuthUserFile "/home/michaelgeraci/michaelgeraci.com/admin/.htpasswd" # dreamhost
+# AuthUserFile "/home/users/web/b2877/ipw.michaelg/public_html/admin/.htpasswd" # ipower
+# AuthUserFile "/Users/mgeraci/Web/mine/admin/.htpasswd" # local
 AuthType basic
 # End password protection #
-
