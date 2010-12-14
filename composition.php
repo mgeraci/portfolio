@@ -35,7 +35,7 @@
         $title .= ' - There is No Blood in a Dying World';
         break;
     }
-
+ 
     // gets the location of the page and assigns it to $location
     // format is /page.php
     $location = $_SERVER['PHP_SELF'];
