@@ -1,0 +1,1 @@
+<?php print "PHP runs under the user: [" . system('whoami') . "]<br>"; phpinfo(); ?>
