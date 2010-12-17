@@ -3,7 +3,7 @@
   <?php
     // // H E A D // //
     $title = 'Michael P. Geraci - Bio/Resume';
- 
+
     // gets the location of the page and assigns it to $location
     // format is /page.php
     $location = $_SERVER['PHP_SELF'];
