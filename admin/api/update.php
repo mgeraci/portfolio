@@ -25,5 +25,12 @@
     $query = "UPDATE $table SET `id` = '$id', `title` = '$title', `info` = '$info', `year` = '$year', `width` = '$width', `height` = '$height' WHERE `number` = $number LIMIT 1";
   }
 
-  mysql_query($query);
+  $result = mysql_query($query);
+
+  if (!$result) {
+    echo 'Could not run query: ' . mysql_error();
+    exit;
+  } else {
+    header("Location: /admin/index.php?adminTable=$table");
+  }
 ?>
