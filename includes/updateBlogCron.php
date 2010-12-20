@@ -2,7 +2,7 @@
 
 <?php
   // connect to db
-  include('./connect.php');
+  include('/home/michaelgeraci/michaelgeraci.com/includes/connect.php');
 
   // get the number of rows with visible == zero
   $query = "SELECT count(id) as count FROM blog WHERE visible=0";
