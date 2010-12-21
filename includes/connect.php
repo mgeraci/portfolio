@@ -1,18 +1,18 @@
 <?php
   // // // Connect to database // // //
 
-  if (preg_match('/michaelgeraci/', $_SERVER['SERVER_NAME'])){
-    // online variabls
-    $username = "mgeraci";
-    $password = "3dN7hNejLLUeoqVLermf";
-    $host = "mysql.michaelgeraci.dreamhosters.com";
-    $database = "michaelgeraci_production";
-  } else if (preg_match('/localhost/', $_SERVER['SERVER_NAME'])) {
+  if (preg_match('/localhost/', $_SERVER['SERVER_NAME'])) {
     // local variables
     $username = "root";
     $password = "";
     $host = "";
     $database = "michaelgeraci.com_development";
+  } else {
+    // online variabls
+    $username = "mgeraci";
+    $password = "3dN7hNejLLUeoqVLermf";
+    $host = "mysql.michaelgeraci.com";
+    $database = "michaelgeraci_production";
   }
 
   $conn = mysql_connect($host, $username, $password);
