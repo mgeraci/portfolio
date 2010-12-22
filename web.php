@@ -127,7 +127,7 @@
             </div>            
           <?php } else if ($piece == 'petrus') { ?>
             <div id="pieceContent">
-              <a class="new-window webTitle" href="http://www.petruslaw.com">The Law Offices of Paul D. Petrus Jr., 2010</a>
+              <a class="new-window webTitle" href="http://www.petruslaw.com">The Law Office of Paul D. Petrus Jr., 2010</a>
               <br>&nbsp;
               <br>
               <a class="new-window" href="http://www.petruslaw.com"><img src="/media/web/petrus/petrus1.jpg" alt="Petrus Screenshot 1"></a>
