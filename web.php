@@ -55,6 +55,12 @@
         <div id="pieceList">
           <ul>
             <li>
+              <a href="http://reducify.com">
+                <h1>Reducify, 2010-2011</h1>
+                <br>Reducify helps you find local appliances. Product search/comparison; google maps mashup; mobile web app</span>
+              </a>
+            </li>
+            <li>
               <a <?php if ($piece == 'ahmady') echo 'class="on"'?> href="/web/ahmady">
                 <h1>AhmadyArts, 2010</h1>
                 <br>An arts organization and curator specializing in Central Asian art. Image galleries, slideshows, and blog</span>
