@@ -57,71 +57,89 @@
             <li>
               <a href="http://reducify.com">
                 <h1>Reducify, 2010-2011</h1>
-                <br>Reducify helps you find local appliances. Product search/comparison; google maps mashup; mobile web app</span>
+                <br>Reducify helps you find local appliances. Product search/comparison; google maps mashup; mobile web app
+              </a>
+            </li>
+            <li>
+              <a <?php if ($piece == 'shoelaces') echo 'class="on"'?> href="/web/shoelaces">
+                <h1>Shoelaces for Everything, 2011</h1>
+                <br>A single-serve website to put shoelaces on <span class="underline">everything</span>
               </a>
             </li>
             <li>
               <a <?php if ($piece == 'ahmady') echo 'class="on"'?> href="/web/ahmady">
                 <h1>AhmadyArts, 2010</h1>
-                <br>An arts organization and curator specializing in Central Asian art. Image galleries, slideshows, and blog</span>
+                <br>An arts organization and curator specializing in Central Asian art. Image galleries, slideshows, and blog
               </a>
             </li>
             <li>
               <a <?php if ($piece == 'petrus') echo 'class="on"'?> href="/web/petrus">
                 <h1>The Law Office of Paul D. Petrus Jr., 2010</h1>
-                <br>A New York based criminal defense lawyer.</span>
+                <br>A New York based criminal defense lawyer
               </a>
             </li>
             <li><a <?php if ($piece == 'gotham') echo 'class="on"'?> href="/web/gotham">
               <h1>Gotham Energy App, 2010</h1>
-              <br>A site that helps New Yorkers track their electricity consumption. JSON and Google charts, custom jQuery table sorting</span>
+              <br>A site that helps New Yorkers track their electricity consumption. JSON and Google charts, custom jQuery table sorting
               </a>
             </li>
             <li>
               <a <?php if ($piece == 'vegan') echo 'class="on"'?> href="/web/vegan">
                 <h1>What The Heck Do Vegans Eat?, 2010</h1>
-                <br>Custom WordPress theme and PHP plugins, jQuery popups and auto-complete</span>
+                <br>Custom WordPress theme and PHP plugins, jQuery popups and auto-complete
                </a>
             </li>
             <li>
               <a <?php if ($piece == 'almanac') echo 'class="on"'?> href="/web/almanac">
                 <h1>The Almanac, 2009</h1>
-                <br>A web app which helps you take control of your role in climate change</span>
+                <br>A web app which helps you take control of your role in climate change
               </a>
             </li>
             <li>
               <a <?php if ($piece == 'foxNSox') echo 'class="on"'?> href="/web/foxNSox">
                 <h1>FoxNSox.com, 2009</h1>
-                <br>A site for a San Francisco based computer and iPhone developer</span>
+                <br>A site for a San Francisco based computer and iPhone developer
                </a>
               </li>
             <li>
               <a <?php if ($piece == 'roadkill') echo 'class="on"'?> href="/web/roadkill">
                 <h1>Roadkill Across America, 2009</h1>
-                <br>An art project tracking roadkill across the Southern United States</span>
+                <br>An art project tracking roadkill across the Southern United States
               </a>
             </li>
             <li>
               <a <?php if ($piece == 'doctoroff') echo 'class="on"'?> href="/web/doctoroff">
                 <h1>Julia Doctoroff's Portfolio, 2008</h1>
-                <br>The work of a contemporary New York writer</span>
+                <br>The work of a contemporary New York writer
               </a>
             </li>
             <li>
               <a <?php if ($piece == 'vogl') echo 'class="on"'?> href="/web/vogl">
                 <h1>Julia Vogl's Portfolio, 2007</h1>
-                <br>The work of a New York based public artist</span>
+                <br>The work of a New York based public artist
               </a>
             </li>
             <li>
               <h1>And of course, this website, 2006-<?php echo date("Y") ?></h1>
-              <br>100% valid hand-coded php and jQuery</span>
+              <br>100% valid hand-coded php and jQuery
               </li>
           </ul>
         </div>
-          <?php if ($piece == 'ahmady') { ?>
+          <?php if ($piece == 'shoelaces') { ?>
             <div id="pieceContent">
-              <a class="new-window webTitle" href="http://www.petruslaw.com">AhmadyArts, 2010</a>
+              <a class="new-window webTitle" href="http://www.shoelacesforeverything.com">Shoelaces for Everything, 2011</a>
+              <br>Created with Michael Glass
+              <br>&nbsp;
+              <br>
+              <a class="new-window" href="http://www.shoelacesforeverything.com"><img src="/media/web/shoelaces/1.jpg" alt="Shoelaces for Everything Screenshot 1"></a>
+              <a class="new-window" href="http://www.shoelacesforeverything.com"><img src="/media/web/shoelaces/3.jpg" alt="Shoelaces for Everything Screenshot 3"></a>
+              <a class="new-window" href="http://www.shoelacesforeverything.com"><img src="/media/web/shoelaces/2.jpg" alt="Shoelaces for Everything Screenshot 2"></a>
+              <br>
+              <br><a class="new-window" href="http://www.shoelacesforeverything.com">Visit the site</a>
+            </div>
+          <?php } else if ($piece == 'ahmady') { ?>
+            <div id="pieceContent">
+              <a class="new-window webTitle" href="http://www.ahmadyarts.com">AhmadyArts, 2010</a>
               <br>&nbsp;
               <br>
               <a class="new-window" href="http://www.ahmadyarts.com"><img src="/media/web/ahmady/ahmady5.jpg" alt="AhmadyArts Screenshot 5"></a>
@@ -129,8 +147,8 @@
               <a class="new-window" href="http://www.ahmadyarts.com"><img src="/media/web/ahmady/ahmady2.jpg" alt="AhmadyArts Screenshot 2"></a>
               <a class="new-window" href="http://www.ahmadyarts.com"><img src="/media/web/ahmady/ahmady4.jpg" alt="AhmadyArts Screenshot 4"></a>
               <br>
-              <br><a class="new-window" href="http://www.gothamenergyapp.com">Visit the site</a>
-            </div>            
+              <br><a class="new-window" href="http://www.ahmadyarts.com">Visit the site</a>
+            </div>
           <?php } else if ($piece == 'petrus') { ?>
             <div id="pieceContent">
               <a class="new-window webTitle" href="http://www.petruslaw.com">The Law Office of Paul D. Petrus Jr., 2010</a>
@@ -140,7 +158,7 @@
               <a class="new-window" href="http://www.petruslaw.com"><img src="/media/web/petrus/petrus2.jpg" alt="Petrus Screenshot 2"></a>
               <a class="new-window" href="http://www.petruslaw.com"><img src="/media/web/petrus/petrus3.jpg" alt="Petrus Screenshot 3"></a>
               <br>
-              <br><a class="new-window" href="http://www.gothamenergyapp.com">Visit the site</a>
+              <br><a class="new-window" href="http://www.petruslaw.com">Visit the site</a>
             </div>
           <?php } else if ($piece == 'gotham') { ?>
           <div id="pieceContent">
