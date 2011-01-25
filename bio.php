@@ -26,7 +26,8 @@
         <br>I can be reached at <a href="mailto:mgeraci@gmail.com">&#109;&#103;&#101;&#114;&#97;&#99;&#105;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;.</a>
       </div>
       <div class="text">
-        <h1>Last Updated: 12.16.10</h1>
+        <h1>Last Updated: 1.24.11</h1>
+        <br><a href="/web/shoelaces">New Web Design: Shoelaces for Everything</a>
         <br><a href="/photography/blog">New Photos</a>
         <br>New Web Designs: <a href="/web/ahmady">AhmadyArts.com</a> &amp; <a href="/web/petrus">PetrusLaw.com</a>
         <br>New Photography Project: <a href="/photography/vegan">What the Heck do Vegans Eat?</a>
