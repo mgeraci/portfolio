@@ -36,7 +36,7 @@ img#thePicture{float:left;clear:both;}
 div.text{width:430px;color:#444444;float:left;margin-left:15px;font-size:16px;}
 .text h1{font-style:oblique;font-weight:normal;font-size:16px;margin-bottom:5px;}
 #pageComposition{margin-left:20px;}
-#pageComposition #pieceList{padding:0 40px 0 0;}
+#pageComposition #pieceList{width:346px;padding:0 40px 0 0;}
 #pageComposition #pieceContent{width:460px;}#pageComposition #pieceContent h1{line-height:23px;}
 #pageRecordings{margin-left:15px;}
 #pageRecordings #pieceList{padding-right:20px;}

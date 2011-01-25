@@ -22,6 +22,9 @@
       case 'stolen':
         $title .= ' - Stolen Thoughts';
         break;
+      case 'though':
+        $title .= ' - Though We Don\'t Know What To Do, We Know How To Do It';
+        break;
       case 'abstractToExact':
         $title .= ' - Abstract to Exact';
         break;
@@ -82,6 +85,12 @@
               <a <?php if ($piece == 'stolen') echo 'class="on"'?> href="/composition/stolen">
                 <h1>Stolen Thoughts, 2006</h1>
                 <br>For Three Steel Drums and Tape
+              </a>
+            </li>
+            <li>
+              <a <?php if ($piece == 'though') echo 'class="on"'?> href="/composition/though">
+                <h1>Though We Don't Know What To Do, We Know We Can Do It, 2006</h1>
+                <br>For Tape and Structured Improvisational Dance
               </a>
             </li>
             <li>
@@ -188,6 +197,15 @@
             <br><a class='new-window' href='http://www.oberlin.edu/wwwcomm/ats/ats_jan02/profile.html'>Click here to read a press release about Aural Capacity</a>
             <br>
             <br><a href='/media/composition/Geraci_StolenThoughts_Score.pdf'>Click Here to See the Score (PDF)</a>
+          </div>
+        <?php } elseif ($piece == 'though') { ?>
+          <div id='pieceContent'>
+            <h1>Though We Don't Know What To Do, We Know How To Do It, 2006</h1>
+            <br>For Tape and Structured Improvisational Dance, 8:57"
+            <br>&nbsp;
+            <br><iframe src="http://player.vimeo.com/video/19170814?title=0&amp;byline=0&amp;portrait=0&amp;color=bbd199" width="400" height="265" frameborder="0"></iframe>
+            <br>
+            <br>Performed with modification (no dance, story performed live) at the <a class='new-window' href='http://emu.music.ufl.edu/femf/fest15prg.html'>2006 Florida Electronic Music Festival</a>.
           </div>
         <?php } elseif ($piece == 'abstractToExact') { ?>
           <div id='pieceContent'>
