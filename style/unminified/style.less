@@ -313,19 +313,46 @@ div.text{ /* text columns for index and links page */
 /* = Compositions Page = */
 /* ===================== */
 
-#pageComposition{margin-left: 20px;}
+#pageComposition{margin-left: 5px;}
 
 #pageComposition #pieceList{
   width: 346px;
   padding: 0 40px 0 0;
 }
 
+@pieceContentPadding: 30px;
+
 #pageComposition #pieceContent{
-  width: 460px;
-  
+  width: 460px - @pieceContentPadding;
+  padding: 0 0 0 @pieceContentPadding;
+
   h1{line-height: 23px;}
 }
 
+.centered{
+  float: left;
+  clear: both;
+  width: 100%;
+  margin: 0 0 25px 0;
+  text-align: center;
+}
+
+.left{
+  float: left;
+  clear: both;
+  width: 100%;
+  margin: 0 0 15px 0;
+  text-align: left;
+
+  .programNotesOpen, .programNotes{margin-left: 0;}
+}
+
+.blockquote{
+  border: 2px solid @text + 50%;
+  border-width: 0 0 0 5px;
+  padding: 0 0 0 10px;
+  width: 460 - @pieceContentPadding - 10px;
+}
 
 /* =================== */
 /* = Recordings Page = */

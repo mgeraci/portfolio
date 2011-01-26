@@ -35,9 +35,12 @@ img#thePicture{float:left;clear:both;}
 .programNotesOpen{float:left;margin-top:20px;margin-left:52px;margin-bottom:30px;}
 div.text{width:430px;color:#444444;float:left;margin-left:15px;font-size:16px;}
 .text h1{font-style:oblique;font-weight:normal;font-size:16px;margin-bottom:5px;}
-#pageComposition{margin-left:20px;}
+#pageComposition{margin-left:5px;}
 #pageComposition #pieceList{width:346px;padding:0 40px 0 0;}
-#pageComposition #pieceContent{width:460px;}#pageComposition #pieceContent h1{line-height:23px;}
+#pageComposition #pieceContent{width:430px;padding:0 0 0 30px;}#pageComposition #pieceContent h1{line-height:23px;}
+.centered{float:left;clear:both;width:100%;margin:0 0 25px 0;text-align:center;}
+.left{float:left;clear:both;width:100%;margin:0 0 15px 0;text-align:left;}.left .programNotesOpen,.left .programNotes{margin-left:0;}
+.blockquote{border:2px solid #767676;border-width:0 0 0 5px;padding:0 0 0 10px;width:420px;}
 #pageRecordings{margin-left:15px;}
 #pageRecordings #pieceList{padding-right:20px;}
 #pageRecordings #pieceContent{font-size:11pt;font-style:normal;float:left;width:600px;margin:0 0 0 -2px;padding:0 0 30px 20px;color:#444444;border-style:solid;border-width:0 0 0 2px;border-color:#f3f4d3;}
