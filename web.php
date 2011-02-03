@@ -142,9 +142,9 @@
               <a class="new-window webTitle" href="http://www.ahmadyarts.com">AhmadyArts, 2010</a>
               <br>&nbsp;
               <br>
-              <a class="new-window" href="http://www.ahmadyarts.com"><img src="/media/web/ahmady/ahmady5.jpg" alt="AhmadyArts Screenshot 5"></a>
-              <a class="new-window" href="http://www.ahmadyarts.com"><img src="/media/web/ahmady/ahmady3.jpg" alt="AhmadyArts Screenshot 3"></a>
-              <a class="new-window" href="http://www.ahmadyarts.com"><img src="/media/web/ahmady/ahmady2.jpg" alt="AhmadyArts Screenshot 2"></a>
+              <a class="new-window" href="http://www.ahmadyarts.com"><img src="/media/web/ahmady/ahmady5.jpg" alt="AhmadyArts Screenshot 1"></a>
+              <a class="new-window" href="http://www.ahmadyarts.com"><img src="/media/web/ahmady/ahmady3.jpg" alt="AhmadyArts Screenshot 2"></a>
+              <a class="new-window" href="http://www.ahmadyarts.com"><img src="/media/web/ahmady/ahmady2.jpg" alt="AhmadyArts Screenshot 3"></a>
               <a class="new-window" href="http://www.ahmadyarts.com"><img src="/media/web/ahmady/ahmady4.jpg" alt="AhmadyArts Screenshot 4"></a>
               <br>
               <br><a class="new-window" href="http://www.ahmadyarts.com">Visit the site</a>
@@ -162,34 +162,30 @@
             </div>
           <?php } else if ($piece == 'gotham') { ?>
           <div id="pieceContent">
-            <a class="new-window webTitle" href="http://www.gothamenergyapp.com">Gotham Energy App, 2010</a>
+            <h1>Gotham Energy App, 2010</h1>
             <br>&nbsp;
             <br>
-            <a class="new-window" href="http://www.gothamenergyapp.com"><img src="/media/web/gotham/gotham1.jpg" alt="Gotham Energy App"></a>
-            <a class="new-window" href="http://www.gothamenergyapp.com"><img src="/media/web/gotham/gotham2.jpg" alt="Gotham Energy App"></a>
-            <br>
-            <br><a class="new-window" href="http://www.gothamenergyapp.com">Visit the site</a>
+            <img src="/media/web/gotham/gotham2.jpg" alt="Gotham Energy App">
+            <img src="/media/web/gotham/gotham1.jpg" alt="Gotham Energy App">
           </div>
         <?php } else if ($piece == 'vegan') { ?>
           <div id="pieceContent">
             <a class="new-window webTitle" href="http://vegan.katherineerickson.com">What The Heck Do Vegans Eat?, 2010</a>
             <br>&nbsp;
             <br>
-            <a class="new-window" href="http://vegan.katherineerickson.com"><img src="/media/web/vegan/vegan1.jpg" alt="WTHDVE"></a>
-            <a class="new-window" href="http://vegan.katherineerickson.com"><img src="/media/web/vegan/vegan2.gif" alt="WTHDVE"></a>
-            <a class="new-window" href="http://vegan.katherineerickson.com"><img src="/media/web/vegan/vegan3.jpg" alt="WTHDVE"></a>
+            <a class="new-window" href="http://vegan.katherineerickson.com"><img src="/media/web/vegan/vegan1.jpg" alt="What The Heck Do Vegans Eat?"></a>
+            <a class="new-window" href="http://vegan.katherineerickson.com"><img src="/media/web/vegan/vegan2.gif" alt="What The Heck Do Vegans Eat?"></a>
+            <a class="new-window" href="http://vegan.katherineerickson.com"><img src="/media/web/vegan/vegan3.jpg" alt="What The Heck Do Vegans Eat?"></a>
             <br>
             <br><a class="new-window" href="http://vegan.katherineerickson.com">Visit the site</a>
           </div>
         <?php } else if ($piece == 'almanac') { ?>
           <div id="pieceContent">
-            <a class="new-window webTitle" href="http://www.thealmanac.org">The Almanac, 2009</a>
+            <h1>The Almanac, 2009</h1>
             <br>&nbsp;
             <br>
-            <a class="new-window" href="http://www.thealmanac.org"><img src="/media/web/almanac/almanac1.jpg" alt="Fox N Sox"></a>
-            <a class="new-window" href="http://www.thealmanac.org"><img src="/media/web/almanac/almanac2.jpg" alt="Fox N Sox"></a>
-            <br>
-            <br><a class="new-window" href="http://www.thealmanac.org">Visit the site</a>
+            <img src="/media/web/almanac/almanac1.jpg" alt="The Almanac">
+            <img src="/media/web/almanac/almanac2.jpg" alt="The Almanac">
           </div>
         <?php } elseif ($piece == 'foxNSox') { ?>
           <div id="pieceContent">
@@ -220,8 +216,6 @@
               <br>
               <img class="new-window" src="/media/web/doctoroff/doctoroff1.jpg" alt="Julia Doctoroff">
               <img class="new-window" src="/media/web/doctoroff/doctoroff2.jpg" alt="Julia Doctoroff">
-              <br>
-              <br>juliadoctoroff.com is temporarily offline.
             </div>
         <?php } elseif ($piece == 'vogl') { ?>
           <div id="pieceContent">
