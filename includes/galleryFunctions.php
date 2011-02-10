@@ -140,7 +140,7 @@
 
   // loop through the results of the query for thumnails per page
   function displayThumbs($type, $piece, $result, $section) {
-    // section isn't used in graphic, so if it's full, prepend a slash for the directory structure
+    // section isn't used in graphic, so if it exists, prepend a slash for the directory structure
     if ($section != '') {
       $section = "/$section";
     }
