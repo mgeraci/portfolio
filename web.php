@@ -103,7 +103,9 @@
 
               echo "<br><br>";
               
-              $dirname = getenv("DOCUMENT_ROOT") . "/media/web/$piece";
+              $docroot = preg_match('/\/$/', getenv("DOCUMENT_ROOT")) ? getenv("DOCUMENT_ROOT") : getenv("DOCUMENT_ROOT") . '/';
+
+              $dirname = $docroot . "/media/web/$piece";
 
               // content
               $i = 1;
