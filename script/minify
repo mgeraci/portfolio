@@ -62,7 +62,7 @@ end
 puts 'combining the javascript files'
 
 # array of files to include in the pack
-js_files = ['jquery.hotkeys-0.7.9.min', 'audio-player.min', 'javascript.min']
+js_files = ['jquery.hotkeys-0.7.9.min', 'javascript.min']
 
 # for each file, add the contents to a new array
 theJS = []

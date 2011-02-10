@@ -8,18 +8,26 @@
       <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
       <meta name="verify-v1" content="c3G4kM74qA6ztpDl/bE6D/t9pgqANYt17h1Xjs/b0q8=">';
 
-      if ($location == '/photography.php' || $location == '/photobrowse.php') {
-        echo '<meta name="description" content="Michael P. Geraci\'s photography portfolio - a photoblog and professional projects.">';
-      } else if ($location == '/graphic.php') {
-        echo '<meta name="description" content="Michael P. Geraci\'s graphic design portfolio - silkscreen design and printing, logo design.">';
-      } else if ($location == '/recordings.php') {
-        echo '<meta name="description" content="Michael P. Geraci\'s recording portfolio - digital recording in Pro Tools.">';
-      } else if ($location == '/web.php') {
-        echo '<meta name="description" content="Michael P. Geraci\'s web design portfolio - web apps, user experience.">';
-      } else if ($location == '/composition.php') {
-        echo '<meta name="description" content="Michael P. Geraci\'s composition portfolio - electronic composition and multimedia performance.">';
-      } else {
-        echo '<meta name="description" content="Michael P. Geraci is a web designer and graphic designer working in New York, NY.">';
+      // page descriptions
+      switch ($location) {
+        case '/photography.php' || '/photobrowse.php':
+          echo '<meta name="description" content="Michael P. Geraci\'s photography portfolio - a photoblog and professional projects.">';
+          break;
+        case '/grapic.php':
+          echo '<meta name="description" content="Michael P. Geraci\'s graphic design portfolio - silkscreen design and printing, logo design.">';
+          break;
+        case '/recordings.php':
+          echo '<meta name="description" content="Michael P. Geraci\'s recording portfolio - digital recording in Pro Tools.">';
+          break;
+        case '/web.php':
+          echo '<meta name="description" content="Michael P. Geraci\'s web design portfolio - web apps, user experience.">';
+          break;
+        case '/composition.php':
+          echo '<meta name="description" content="Michael P. Geraci\'s composition portfolio - electronic composition and multimedia performance.">';
+          break;
+        default:
+          echo '<meta name="description" content="Michael P. Geraci is a web designer and graphic designer working in New York, NY.">';
+          break;
       }
 
       echo '<meta name="keywords" content="michael, geraci, michael geraci, michael p. geraci, oberlin, silkscreen, graphic design, recording, photography, web design, web, user experience, reducify">';
@@ -39,12 +47,11 @@
 
       // javascript
       if (preg_match('/michaelgeraci\.com/', $_SERVER['SERVER_NAME'] )){
-        echo '<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+        echo '<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
         <script type="text/javascript" src="/js/pack.js"></script>';
       } else {
-        echo '<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+        echo '<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
         <script type="text/javascript" src="/js/unminified/jquery.hotkeys-0.7.9.js"></script>
-        <script type="text/javascript" src="/js/unminified/audio-player.js"></script>
         <script type="text/javascript" src="/js/unminified/javascript.js"></script>';
       }
 
