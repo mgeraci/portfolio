@@ -103,7 +103,7 @@
 
               echo "<br><br>";
               
-              $dirname = getenv("DOCUMENT_ROOT") . "media/web/$piece";
+              $dirname = getenv("DOCUMENT_ROOT") . "/media/web/$piece";
 
               // content
               $i = 1;
