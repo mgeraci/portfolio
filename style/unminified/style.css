@@ -52,8 +52,7 @@ div.text{width:430px;color:#444444;float:left;margin-left:15px;font-size:16px;}
 #pageRecordings .programNotesOpen{margin-left:0px;}
 #pageRecordings .programNotes{margin-top:0px;margin-left:0px;width:580px;}
 #pageGraphic{width:900px;margin-left:10px;}
-#pagePhotography{width:900px;margin-left:10px;}
-#pagePhotography #pieceList{width:400px;}
+#pagePhotography{width:900px;margin-left:10px;}#pagePhotography #pieceList{width:400px;}#pagePhotography #pieceList li{padding:0 0 15px 0;}
 #photoblogNav{padding-bottom:10px;float:right;}#photoblogNav span{float:right;}
 #pictureDiv{float:left;clear:both;}
 #pictureDiv.loading{background:url(/images/loading.gif) no-repeat center center;}
@@ -67,7 +66,7 @@ div.text{width:430px;color:#444444;float:left;margin-left:15px;font-size:16px;}
 #pageWeb img{padding:5px 0 5px 0;border:0px;}
 a.webTitle{font-size:16px;font-weight:bold;display:inline;text-decoration:none;}
 a.webTitle:hover,a.webTitle:active{color:#444444;text-decoration:underline;text-shadow:none;}
-div.linksText{width:430px;color:#444444;float:left;margin-left:15px;font-size:16px;}
+div.linksText{width:430px;color:#444444;float:left;margin-left:15px;font-size:16px;line-height:22px;}
 .linksText h1{font-style:normal;font-weight:normal;font-size:16px;margin-bottom:5px;}
 #outer{position:absolute;left:50%;top:50%;width:500px;height:500px;margin-left:-250px;margin-top:-250px;}
 #index{padding:0;margin:0 auto;list-style:none;position:relative;width:500px;height:500px;background:url(/images/indexBackground.png) center center no-repeat;}#index li{display:block;width:120px;height:120px;position:absolute;}

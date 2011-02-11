@@ -39,7 +39,13 @@
         <!--[if IE 7]><link rel="stylesheet" type="text/css" href="/style/ie7.css"><![endif]-->
         <!--[if IE 8]><link rel="stylesheet" type="text/css" href="/style/ie8.css"><![endif]-->';
       } else {
-        echo '<link rel="stylesheet" type="text/css" href="/style/unminified/style.css">
+        echo '<!-- development less --> 
+        <link rel="stylesheet/less" href="/style/unminified/style.less" type="text/css" /> 
+        <script src="/js/less.min.js"></script> 
+        <script type="text/javascript" charset="utf-8"> 
+          less.env = "development";
+          less.watch();
+        </script>
         <!--[if lt IE 7]><link rel="stylesheet" type="text/css" href="/style/unminified/ielt7.css"><![endif]-->
         <!--[if IE 7]><link rel="stylesheet" type="text/css" href="/style/unminified/ie7.css"><![endif]-->
         <!--[if IE 8]><link rel="stylesheet" type="text/css" href="/style/unminified/ie8.css"><![endif]-->';
