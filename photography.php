@@ -90,7 +90,7 @@
               </li>
               <li>
                 <a href="/photography/ksklookbook08/13">
-                  Kill Shop Kill Lookbook, 2008
+                  <h1>Kill Shop Kill Lookbook, 2008</h1>
                   <br><span>Promotional photographs to be used in clothing brand Kill Shop Kill's summer 2008 lookbook. Shooting on site at a brand party in downtown NYC provided a challenge, and resulted in some interesting situations.</span>
                 </a>
                 <br>&nbsp;&nbsp;&nbsp;&nbsp;<a class="new-window" href="http://www.killshopkill.com/wordpress">Visit Kill Shop Kill</a>
