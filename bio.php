@@ -27,7 +27,7 @@
       </div>
       <div class="text">
         <h1>Last Updated: 2.13.11</h1>
-        <br><a href="http://life.michaelgeraci.com">New Web Design: Conway's Game of Life in jQuery/Canvas</a>
+        <br><a href="/web/life">New Web Design: Conway's Game of Life in jQuery/Canvas</a>
         <br><a href="/web/shoelaces">New Web Design: Shoelaces for Everything</a>
         <br><a href="/photography/blog">New Photos</a>
         <br>
