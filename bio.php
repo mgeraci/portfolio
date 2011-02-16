@@ -18,12 +18,10 @@
       ?>
       <div class="text">
         <h1>Bio</h1>
-        <br>Michael P. Geraci is a multimedia artist, graphic designer, and photographer whose work at once conceptualizes the physical and makes tangible the conceptual. Playing on notions of the body, its possibilities and its constraints, his work traverses and transforms physical and conceptual space through music, video, and dance.
-        <br>
-        <br>Geraci holds a Bachelors in Music from Oberlin Conservatory, and is the co-founder of <a class="new-window" href="http://www.reducify.com">Reducify</a>, a New York based startup.
+        <br>I'm Michael P. Geraci, a web designer, user experience guy, and entrepreneur based in New York, NY. I have worked with a number of New York startups, and am the co-founder of <a href="http://www.reducify.com" class="new-window">Reducify</a>, a site that helps consumers find local appliances.
         <br>
         <br><a href="/media/documents/GeraciResume.pdf">Resume (PDF)</a>
-        <br>I can be reached at <a href="mailto:mgeraci@gmail.com">&#109;&#103;&#101;&#114;&#97;&#99;&#105;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;.</a>
+        <br><a href="mailto:mgeraci@gmail.com">&#109;&#103;&#101;&#114;&#97;&#99;&#105;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;</a>
       </div>
       <div class="text">
         <h1>Last Updated: 2.13.11</h1>
