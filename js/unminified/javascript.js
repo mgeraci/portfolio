@@ -1,134 +1,171 @@
-// ===================================================
-// =
-// =               Javascript for
-// =  michaelgeraci.com - (c) Michael P. Geraci
-// =
-// ===================================================
-
-// Load these functions when the document is ready:
-$(function(){
-  stylesheets();
-  newWindow();
-  programNotes();
-  thumbnails();
-  photoLoader();
-  keys();
-});
-
-function stylesheets(){
-  if(jQuery.browser.safari){
-    $('head').append("<link type='text/css' rel='stylesheet' href='/style/safari.css'>");
-  }
-  if(jQuery.browser.chrome){
-    $('head').append("<link type='text/css' rel='stylesheet' href='/style/chrome.css'>");
-  }
-  if(jQuery.browser.opera){
-    $('head').append("<link type='text/css' rel='stylesheet' href='/style/opera.css'>");
-  }
-}
-
-// Open links with class 'new-window' in a new window
-function newWindow(){
-   $('a.new-window').click(function(){
-     window.open(this.href);
-     return false;
-   });
-}
-
-// Program Notes Handler
-function programNotes(){
-  $('.programNotesOpen').click(function(){
-    $(this).prevAll('.programNotes').slideDown('medium');
-    $(this).html('').animate({marginBottom: "0px"}, 'medium');
-  });
-  
-  $('.programNotesClose').click(function(){
-    $(this).parent().slideUp('medium');
-    $(this).parent().nextAll('.programNotesOpen').html('[+]&nbsp;Program Notes').animate({marginBottom: "30px"}, 'medium');
-  });
-}
-
-// Handle thumbnail opacity in galleries
-function thumbnails(){
-  offOp = 0.4;
-
-  // on hovering over a thumbnail, reduce its opacity
-  $('#galleryThumbs').find('img:not(img.on)').mouseover(function(){
-    $(this).animate({opacity: 1}, 200);
-  }).mouseout(function(){
-    $(this).animate({opacity: offOp}, 200);
-  });
-}
-
-// handles loading image for photos
-function photoLoader(){
-  if ($('#photoLoaderInfo').length !== 0){
-    siteSection = $('#photoLoaderSiteSection').html();
-    section = $('#photoLoaderSection').html();
-    id = $('#photoLoaderID').html();
-    width = $('#photoLoaderWidth').html();
-    height = $('#photoLoaderHeight').html();
-    title = $('#photoLoaderTitle').html();
-
-    if (siteSection == 'photography') {
-      srcString = '/media/' + siteSection + '/' + section + '/' + id + '.jpg';
-    } else {
-      srcString = '/media/' + siteSection + '/' + id + '.jpg';
+(function() {
+  var keys, newWindow, photoLoader, programNotes, stylesheets, thumbnails, web, webNext, webPreload;
+  stylesheets = function() {
+    if (jQuery.browser.safari) {
+      $('head').append("<link type='text/css' rel='stylesheet' href='/style/safari.css'>");
     }
-
-    $(function () {
-      var img = new Image();
-      $(img).load(function () {
-        //$(this).css('display', 'none'); // .hide() doesn't work in Safari when the element isn't on the DOM already
-        $(this).hide();
-        $('#pictureDiv').removeClass('loading').append(this);
-        $(this).fadeIn();
-      }).attr('src', srcString).attr('width', width).attr('height', height).attr('alt', title);
+    if (jQuery.browser.chrome) {
+      $('head').append("<link type='text/css' rel='stylesheet' href='/style/chrome.css'>");
+    }
+    if (jQuery.browser.opera) {
+      return $('head').append("<link type='text/css' rel='stylesheet' href='/style/opera.css'>");
+    }
+  };
+  newWindow = function() {
+    return $('a.new-window').live('click', function() {
+      window.open(this.href);
+      return false;
     });
-  }
-}
-
-// Map Left and Right Keys to Navigation in Photo and Graphic
-function keys(){
-  if($('a#previous').length !== 0) {
-    $(document).bind('keydown', 'left', function(){
-      location = $('a#previous').attr('href');
+  };
+  programNotes = function() {
+    $('.programNotesOpen').click(function() {
+      $(this).prevAll('.programNotes').slideDown('medium');
+      $(this).html('').animate({
+        marginBottom: "0px"
+      }, 'medium');
+      return false;
     });
-  }
-
-  if($('a#next').length !== 0) {
-    $(document).bind('keydown', 'right', function(){
-      location = $('a#next').attr('href');
+    return $('.programNotesClose').click(function() {
+      $(this).parent().slideUp('medium');
+      $(this).parent().nextAll('.programNotesOpen').html('[+]&nbsp;Program Notes').animate({
+        marginBottom: "30px"
+      }, 'medium');
+      return false;
     });
-  }
-}
-
-// ===========================
-// = Audio Player Javascript =
-// ===========================
-
-var ap_instances = new Array();
-
-function ap_stopAll(playerID) {
-	for(var i = 0;i<ap_instances.length;i++) {
-		try {
-			if(ap_instances[i] != playerID) document.getElementById("audioplayer" + ap_instances[i].toString()).SetVariable("closePlayer", 1);
-			else document.getElementById("audioplayer" + ap_instances[i].toString()).SetVariable("closePlayer", 0);
-		} catch( errorObject ) {
-			// stop any errors
-		}
-	}
-}
-
-function ap_registerPlayers() {
-	var objectID;
-	var objectTags = document.getElementsByTagName("object");
-	for(var i=0;i<objectTags.length;i++) {
-		objectID = objectTags[i].id;
-		if(objectID.indexOf("audioplayer") == 0) {
-			ap_instances[i] = objectID.substring(11, objectID.length);
-		}
-	}
-}
-
-var ap_clearID = setInterval( ap_registerPlayers, 100 );
+  };
+  thumbnails = function() {
+    var offOp;
+    offOp = 0.4;
+    return $('#galleryThumbs').find('img:not(img.on)').mouseover(function() {
+      return $(this).animate({
+        opacity: 1
+      }, 200);
+    }).mouseout(function() {
+      return $(this).animate({
+        opacity: offOp
+      }, 200);
+    });
+  };
+  photoLoader = function() {
+    var height, id, section, siteSection, srcString, title, width;
+    if ($('#photoLoaderInfo').length !== 0) {
+      siteSection = $('#photoLoaderSiteSection').html();
+      section = $('#photoLoaderSection').html();
+      id = $('#photoLoaderID').html();
+      width = $('#photoLoaderWidth').html();
+      height = $('#photoLoaderHeight').html();
+      title = $('#photoLoaderTitle').html();
+      if (siteSection === 'photography') {
+        srcString = '/media/' + siteSection + '/' + section + '/' + id + '.jpg';
+      } else {
+        srcString = '/media/' + siteSection + '/' + id + '.jpg';
+      }
+      return $(function() {
+        var img;
+        img = new Image();
+        return $(img).load(function() {
+          $(this).hide();
+          $('#pictureDiv').removeClass('loading').append(this);
+          return $(this).fadeIn();
+        }).attr('src', srcString).attr('width', width).attr('height', height).attr('alt', title);
+      });
+    }
+  };
+  keys = function() {
+    if (!($('#pageWeb').length > 0)) {
+      if ($('a#previous').length !== 0) {
+        $(document).bind('keydown', 'left', function() {
+          return window.location = $('a#previous').attr('href');
+        });
+      }
+      if ($('a#next').length !== 0) {
+        return $(document).bind('keydown', 'right', function() {
+          return window.location = $('a#next').attr('href');
+        });
+      }
+    }
+  };
+  web = function() {
+    var containerSize;
+    if ($('#pageWeb').length > 0) {
+      containerSize = 320;
+      if ($('#piece').html() !== '') {
+        webPreload("/media/web/" + ($('#piece').text()) + "/1.jpg");
+      }
+      $('#pieceList a').click(function() {
+        var url;
+        url = $(this).attr('href');
+        $('#pieceListContainer').stop().animate({
+          width: 100,
+          opacity: 0.6
+        }, 200);
+        $('#webFade').stop().animate({
+          width: 20
+        }, 200, function() {
+          return window.location = url;
+        });
+        return false;
+      });
+      $('#pieceList').hover(function() {
+        if ($('#pieceListContainer').attr('class').match(/collapsed/)) {
+          $('#pieceListContainer').stop().animate({
+            width: containerSize,
+            opacity: 1
+          }, 200);
+          $('#webFade').stop().animate({
+            width: 40
+          }, 200);
+          return $('#pieceListContainer').removeClass('collapsed');
+        }
+      }, function() {
+        if (!$('#pieceListContainer').attr('class').match(/collapsed/)) {
+          $('#pieceListContainer').stop().animate({
+            width: 100,
+            opacity: 0.6
+          }, 200);
+          $('#webFade').stop().animate({
+            width: 20
+          }, 200);
+          return $('#pieceListContainer').addClass('collapsed');
+        }
+      });
+    }
+    $('#next').live('click', function() {
+      webNext();
+      return false;
+    });
+    if ($('a#next').length !== 0) {
+      return $(document).bind('keydown', 'right', function() {
+        return webNext();
+      });
+    }
+  };
+  webNext = function() {
+    var images, next, number, url;
+    number = parseInt($('#current').text(), 10);
+    images = parseInt($('#images').text(), 10);
+    next = number + 1 > images ? 1 : number + 1;
+    url = $('#pieceContent img').attr('src').replace(/\d{1}.jpg/, "" + next + ".jpg");
+    webPreload(url);
+    return $('#current').html(next);
+  };
+  webPreload = function(url) {
+    var img;
+    $('#webImage').html('').addClass('loading');
+    img = new Image();
+    return $(img).load(function() {
+      $(this).hide();
+      $('#webImage').removeClass('loading').append(this);
+      return $(this).fadeIn();
+    }).attr('src', url).attr('width', 750);
+  };
+  $(function() {
+    stylesheets();
+    newWindow();
+    programNotes();
+    thumbnails();
+    photoLoader();
+    keys();
+    return web();
+  });
+}).call(this);

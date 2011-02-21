@@ -60,9 +60,14 @@ div.text{width:430px;color:#444444;float:left;margin-left:15px;font-size:16px;}
 #photoAll a.on{color:#444444;text-decoration:none;padding:0 1px 2px 1px;background:#f3f4d3;}
 #photoAll ul{list-style:none;margin:0px;margin-top:5px;padding:0px;}
 #photoAll img{border:0px;padding:0px;float:left;}
-#pageWeb{margin-left:15px;}
-#pageWeb #pieceList{padding-right:20px;width:310px;}
-#pageWeb #pieceContent{font-size:10pt;font-style:normal;float:left;width:500px;margin:0 0 0 -2px;padding:0 0 30px 20px;color:#444444;border-style:solid;border-width:0 0 0 2px;border-color:#f3f4d3;}
+#pageWeb{width:900px;float:left;clear:both;position:relative;}
+#pageWeb #pieceListContainer{position:relative;overflow:hidden;width:320px;padding:0 40px 0 0;}
+#pageWeb #pieceListContainer.collapsed{width:100px;}
+#pageWeb #pieceList{padding-right:20px;width:310px;whitespace:no-wrap;background:#bbd199;position:relative;top:0;left:0;margin:0 20px 0 10px;border:0;}#pageWeb #pieceList li{padding:0 0 18px 0;}
+#webFade{width:40px;height:100%;position:absolute;overflow:hidden;top:0;right:0;background:url(/images/webFade.png) 0 0 repeat-y;}
+#webFade.collapsed{width:20px;}
+#pageWeb #pieceContent{position:absolute;left:150px;width:750px;margin:0 0 0 -2px;padding:0 0 30px 20px;color:#444444;font-size:15px;font-style:normal;line-height:20px;border:0 solid #f3f4d3;}#pageWeb #pieceContent .loading{display:block;width:750px;min-height:400px;background:url(/images/loading.gif) center center no-repeat;}
+#webCountWrapper{float:left;margin:0 10px 0 0;}
 #pageWeb img{padding:5px 0 5px 0;border:0px;}
 a.webTitle{font-size:16px;font-weight:bold;display:inline;text-decoration:none;}
 a.webTitle:hover,a.webTitle:active{color:#444444;text-decoration:underline;text-shadow:none;}
