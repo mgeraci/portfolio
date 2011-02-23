@@ -100,12 +100,12 @@ web = ->
     
     # onload, preload first image
     webPreload("/media/web/#{$('#piece').text()}/1.jpg") unless $('#piece').html() == ''
-
+    
     # clicking a piece link
     $('#pieceList a').click ->
       # get the url
       url = $(this).attr('href')
-
+      
       # hide the piecelist on clicking a piece
       $('#pieceListContainer').stop().animate({width: 100, opacity: 0.6}, 200)
       $('#webFade').stop().animate({width: 20}, 200, ->
@@ -114,31 +114,37 @@ web = ->
       )
       
       return false
-
+    
+    animationTime = 200
+    
     # hide and show the piece list on hover
-    $('#pieceList').hover ->
+    $('#webToggle').click ->
       # only run if collapsed
       if $('#pieceListContainer').attr('class').match(/collapsed/)
+        # scale down the overlay
+        $('#webOverlay').animate({width: 20}, animationTime)
+        
         # expand the container
-        $('#pieceListContainer').stop().animate({width: containerSize, opacity: 1}, 200)
-
+        $('#pieceListContainer').stop().animate({width: containerSize, opacity: 1}, animationTime)
+        
         # expand the fade
-        $('#webFade').stop().animate({width: 40}, 200)
+        $('#webFade').stop().animate({width: 40}, animationTime)
         
         # remove the collapsed class
         $('#pieceListContainer').removeClass('collapsed')
-    , ->
-      # only hide on mouseout if you've clicked on something (check the url for #)
-      if !$('#pieceListContainer').attr('class').match(/collapsed/)
+      else
+        # expand the overlay
+        $('#webOverlay').animate({width: '100%'}, animationTime)
+        
         # collapse the container
-        $('#pieceListContainer').stop().animate({width: 100, opacity: 0.6}, 200)
-
+        $('#pieceListContainer').stop().animate({width: 100, opacity: 0.6}, animationTime)
+        
         # collapse the fade
-        $('#webFade').stop().animate({width: 20}, 200)
+        $('#webFade').stop().animate({width: 20}, animationTime)
         
         # add the collapsed class
         $('#pieceListContainer').addClass('collapsed')
-
+  
   # handle the 'next' button
   $('#next').live('click', ->
     webNext()

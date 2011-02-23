@@ -116,6 +116,13 @@
             </ul>
           </div>
           <div id="webFade" <?php if ($piece) {echo 'class="collapsed"';} ?>></div>
+          <a href="#" id="webToggle">
+            <div id="webOverlay">
+              <div class="outer">
+                <div class="inner">click</div>
+              </div>
+            </div>
+          </a>
         </div>
       </div>
       <div class='pieceBottomSpacer'>&nbsp;</div>
