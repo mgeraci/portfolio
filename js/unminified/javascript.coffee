@@ -125,7 +125,10 @@ web = ->
         $('#webOverlay').animate({width: 20}, animationTime)
         
         # expand the container
-        $('#pieceListContainer').stop().animate({width: containerSize, opacity: 1}, animationTime)
+        $('#pieceListContainer').stop().animate({width: containerSize}, animationTime)
+        
+        # change the opacity
+        $('#pieceListContainer ul').stop().animate({opacity: 1}, animationTime);
         
         # expand the fade
         $('#webFade').stop().animate({width: 40}, animationTime)
@@ -137,7 +140,10 @@ web = ->
         $('#webOverlay').animate({width: '100%'}, animationTime)
         
         # collapse the container
-        $('#pieceListContainer').stop().animate({width: 100, opacity: 0.6}, animationTime)
+        $('#pieceListContainer').stop().animate({width: 100}, animationTime)
+        
+        # change the opacity
+        $('#pieceListContainer ul').stop().animate({opacity: 0.3}, animationTime);
         
         # collapse the fade
         $('#webFade').stop().animate({width: 20}, animationTime)

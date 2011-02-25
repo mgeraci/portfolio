@@ -68,8 +68,9 @@ div.text{width:430px;color:#444444;float:left;margin-left:15px;font-size:16px;}
 #webFade.collapsed{width:20px;}
 #pageWeb #pieceContent{position:absolute;left:150px;width:750px;margin:0 0 0 -2px;padding:0 0 30px 20px;color:#444444;font-size:15px;font-style:normal;line-height:20px;border:0 solid #f3f4d3;}#pageWeb #pieceContent .loading{display:block;width:750px;min-height:400px;background:url(/images/loading.gif) center center no-repeat;}
 #webCountWrapper{float:left;margin:0 10px 0 0;}
-#webOverlay{display:block;background:#f00;width:100%;height:100%;position:absolute;right:0;}#webOverlay .outer{position:absolute;top:50%;left:50%;}
-#webOverlay .inner{background:#00f;height:20px;position:relative;bottom:10px;right:20px;}
+#webOverlay{display:block;background:none;width:100%;height:100%;position:absolute;right:0;}#webOverlay .outer{position:absolute;top:50%;left:50%;}
+#webOverlay .inner{height:20px;position:relative;bottom:10px;right:20px;}
+#webToggle{display:none;}
 #pageWeb img{padding:5px 0 5px 0;border:0px;}
 a.webTitle{font-size:16px;font-weight:bold;display:inline;text-decoration:none;}
 a.webTitle:hover,a.webTitle:active{color:#444444;text-decoration:underline;text-shadow:none;}

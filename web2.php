@@ -116,7 +116,7 @@
             </ul>
           </div>
           <div id="webFade" <?php if ($piece) {echo 'class="collapsed"';} ?>></div>
-          <a href="#" id="webToggle">
+          <a href="#" id="webToggle" <?php if ($piece) {echo 'style="display: block;"'; } ?>>
             <div id="webOverlay">
               <div class="outer">
                 <div class="inner">click</div>

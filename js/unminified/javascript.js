@@ -113,7 +113,9 @@
             width: 20
           }, animationTime);
           $('#pieceListContainer').stop().animate({
-            width: containerSize,
+            width: containerSize
+          }, animationTime);
+          $('#pieceListContainer ul').stop().animate({
             opacity: 1
           }, animationTime);
           $('#webFade').stop().animate({
@@ -125,8 +127,10 @@
             width: '100%'
           }, animationTime);
           $('#pieceListContainer').stop().animate({
-            width: 100,
-            opacity: 0.6
+            width: 100
+          }, animationTime);
+          $('#pieceListContainer ul').stop().animate({
+            opacity: 0.3
           }, animationTime);
           $('#webFade').stop().animate({
             width: 20
