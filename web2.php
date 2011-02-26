@@ -72,7 +72,7 @@
 
               // append the navigation if more than one image
               if ($images > 1) {
-                echo "<span id='webCountWrapper'><span id='current'>1</span>/<span id='images'>$images</span></span><a class='arrow next' href='#' id='next'>next</a><br>";
+                echo "<a class='arrow previous' href='#' id='previous'>previous</a><span id='webCountWrapper'><span id='current'>1</span>/<span id='images'>$images</span></span><a class='arrow next' href='#' id='next'>next</a><br>";
               }
 
               // append the image container
@@ -91,7 +91,7 @@
         </div>
         <div id="pieceListContainer" <?php if ($piece) {echo 'class="collapsed"';} ?>>
           <div id="pieceList">
-            <ul>
+            <ul <?php if ($piece) {echo 'style="opacity: 0.3;"';} ?>>
               <?php
                 // query to get all the pieces
                 $listQuery = "SELECT * FROM web ORDER BY sort DESC";
@@ -119,7 +119,7 @@
           <a href="#" id="webToggle" <?php if ($piece) {echo 'style="display: block;"'; } ?>>
             <div id="webOverlay">
               <div class="outer">
-                <div class="inner">click</div>
+                <div class="inner <?php echo $piece ? 'expand off' : 'contract off' ?>">click</div>
               </div>
             </div>
           </a>

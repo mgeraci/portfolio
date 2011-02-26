@@ -523,31 +523,39 @@ div.text{ /* text columns for index and links page */
   float: left;
   clear: both;
   position: relative;// for positioning the pieceContent
-}
-
-// wraps and overflows the list
-// this is what shrinks and expands
-#pageWeb #pieceListContainer{
-  position: relative;
-  overflow: hidden;
-  width: 320px;
-  padding: 0 40px 0 0;// padding-right for the fade image
-}
-
-#pageWeb #pieceListContainer.collapsed{width: 100px;}
-
-#pageWeb #pieceList{
-  padding-right: 20px;
-  width: 310px;
-  whitespace: no-wrap;
-  background: @green;
-  position: relative;
-  top: 0;
-  left: 0;
-  margin: 0 20px 0 10px;
-  border: 0;
   
-  li{padding: 0 0 18px 0;}
+  // spacing fixes for arrows
+  .previous{margin: 3px 3px 0 0;}
+  .next{
+    position: relative;
+    top: 1px;
+    right: 5px;
+  }
+  
+  // wraps and overflows the list
+  // this is what shrinks and expands
+  #pieceListContainer{
+    position: relative;
+    overflow: hidden;
+    width: 320px;
+    padding: 0 40px 0 0;// padding-right for the fade image
+  }
+  
+  #pieceListContainer.collapsed{width: 100px;}
+  
+  #pieceList{
+    padding-right: 20px;
+    width: 310px;
+    whitespace: no-wrap;
+    background: @green;
+    position: relative;
+    top: 0;
+    left: 0;
+    margin: 0 20px 0 10px;
+    border: 0;
+
+    li{padding: 0 0 18px 0;}
+  }
 }
 
 // the fade on the right of the piece list
@@ -609,11 +617,20 @@ div.text{ /* text columns for index and links page */
   }
   
   .inner{
+    width: 17px;
     height: 20px;
+    display: block;
+    overflow: hidden;
+    line-height: 500px;
     position: relative;
     bottom: 10px;
-    right: 20px;
+    right: 9px;
   }
+  
+  .expand.off{background: url(/images/webArrows.png) 0 0 no-repeat;}
+  .expand.on{background: url(/images/webArrows.png) 0 -20px no-repeat;}
+  .contract.off{background: url(/images/webArrows.png) -17px 0 no-repeat;}
+  .contract.on{background: url(/images/webArrows.png) -17px -20px no-repeat;}
 }
 
 // hide the the overlayed link on load

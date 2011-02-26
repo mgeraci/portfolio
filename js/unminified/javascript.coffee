@@ -106,9 +106,17 @@ web = ->
       # get the url
       url = $(this).attr('href')
       
+      # change the opacity of the list
+      $('#pieceListContainer ul').stop().animate({opacity: 0.3}, animationTime)
+      
+      # collapse the container
+      $('#pieceListContainer').stop().animate({width: 100}, animationTime)
+      
+      # expand the overlay
+      $('#webOverlay').animate({width: '100%'}, animationTime)
+      
       # hide the piecelist on clicking a piece
-      $('#pieceListContainer').stop().animate({width: 100, opacity: 0.6}, 200)
-      $('#webFade').stop().animate({width: 20}, 200, ->
+      $('#webFade').stop().animate({width: 20}, animationTime + 20, ->
         # go to link on end animation
         window.location = url
       )
@@ -117,33 +125,45 @@ web = ->
     
     animationTime = 200
     
+    # hovering on the web overlay changes the arrow state
+    $('#webOverlay').hover ->
+      $(this).find('.inner').removeClass('off').addClass('on');
+    , ->
+      $(this).find('.inner').removeClass('on').addClass('off');
+    
     # hide and show the piece list on hover
     $('#webToggle').click ->
-      # only run if collapsed
+      # expanding
       if $('#pieceListContainer').attr('class').match(/collapsed/)
+        # change the arrows to 'collapse'
+        $('#webOverlay').find('.inner').removeClass('expand').addClass('contract')
+
         # scale down the overlay
         $('#webOverlay').animate({width: 20}, animationTime)
         
         # expand the container
         $('#pieceListContainer').stop().animate({width: containerSize}, animationTime)
         
-        # change the opacity
-        $('#pieceListContainer ul').stop().animate({opacity: 1}, animationTime);
+        # change the opacity of the list
+        $('#pieceListContainer ul').stop().animate({opacity: 1}, animationTime)
         
         # expand the fade
         $('#webFade').stop().animate({width: 40}, animationTime)
         
         # remove the collapsed class
         $('#pieceListContainer').removeClass('collapsed')
-      else
+      else # contracting
+        # change the arrows to 'expand'
+        $('#webOverlay').find('.inner').removeClass('contract').addClass('expand')
+        
         # expand the overlay
         $('#webOverlay').animate({width: '100%'}, animationTime)
         
         # collapse the container
         $('#pieceListContainer').stop().animate({width: 100}, animationTime)
         
-        # change the opacity
-        $('#pieceListContainer ul').stop().animate({opacity: 0.3}, animationTime);
+        # change the opacity of the list
+        $('#pieceListContainer ul').stop().animate({opacity: 0.3}, animationTime)
         
         # collapse the fade
         $('#webFade').stop().animate({width: 20}, animationTime)
@@ -158,10 +178,23 @@ web = ->
     return false
   )
   
+  # handle the 'next' button
+  $('#previous').live('click', ->
+    webPrev()
+    
+    return false
+  )
+  
   # keyboard shortcut if more than 1 image
   if $('a#next').length != 0
     $(document).bind('keydown', 'right', ->
       webNext()
+    )
+
+  # keyboard shortcut if more than 1 image
+  if $('a#previous').length != 0
+    $(document).bind('keydown', 'left', ->
+      webPrev()
     )
 
 webNext = ->
@@ -180,6 +213,25 @@ webNext = ->
   # replace the image
   webPreload(url)
   
+  # set the count
+  $('#current').html(next)
+
+webPrev = ->
+  # get the image number
+  number = parseInt($('#current').text(), 10)
+
+  # how many images?
+  images = parseInt($('#images').text(), 10)
+
+  # get the next number
+  next = if number - 1 == 0 then images else number - 1
+
+  # make the next url
+  url = $('#pieceContent img').attr('src').replace(/\d{1}.jpg/, "#{next}.jpg")
+
+  # replace the image
+  webPreload(url)
+
   # set the count
   $('#current').html(next)
 

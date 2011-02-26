@@ -1,5 +1,5 @@
 (function() {
-  var keys, newWindow, photoLoader, programNotes, stylesheets, thumbnails, web, webNext, webPreload;
+  var keys, newWindow, photoLoader, programNotes, stylesheets, thumbnails, web, webNext, webPreload, webPrev;
   stylesheets = function() {
     if (jQuery.browser.safari) {
       $('head').append("<link type='text/css' rel='stylesheet' href='/style/safari.css'>");
@@ -95,20 +95,31 @@
       $('#pieceList a').click(function() {
         var url;
         url = $(this).attr('href');
+        $('#pieceListContainer ul').stop().animate({
+          opacity: 0.3
+        }, animationTime);
         $('#pieceListContainer').stop().animate({
-          width: 100,
-          opacity: 0.6
-        }, 200);
+          width: 100
+        }, animationTime);
+        $('#webOverlay').animate({
+          width: '100%'
+        }, animationTime);
         $('#webFade').stop().animate({
           width: 20
-        }, 200, function() {
+        }, animationTime + 20, function() {
           return window.location = url;
         });
         return false;
       });
       animationTime = 200;
+      $('#webOverlay').hover(function() {
+        return $(this).find('.inner').removeClass('off').addClass('on');
+      }, function() {
+        return $(this).find('.inner').removeClass('on').addClass('off');
+      });
       $('#webToggle').click(function() {
         if ($('#pieceListContainer').attr('class').match(/collapsed/)) {
+          $('#webOverlay').find('.inner').removeClass('expand').addClass('contract');
           $('#webOverlay').animate({
             width: 20
           }, animationTime);
@@ -123,6 +134,7 @@
           }, animationTime);
           return $('#pieceListContainer').removeClass('collapsed');
         } else {
+          $('#webOverlay').find('.inner').removeClass('contract').addClass('expand');
           $('#webOverlay').animate({
             width: '100%'
           }, animationTime);
@@ -143,9 +155,18 @@
       webNext();
       return false;
     });
+    $('#previous').live('click', function() {
+      webPrev();
+      return false;
+    });
     if ($('a#next').length !== 0) {
-      return $(document).bind('keydown', 'right', function() {
+      $(document).bind('keydown', 'right', function() {
         return webNext();
+      });
+    }
+    if ($('a#previous').length !== 0) {
+      return $(document).bind('keydown', 'left', function() {
+        return webPrev();
       });
     }
   };
@@ -154,6 +175,15 @@
     number = parseInt($('#current').text(), 10);
     images = parseInt($('#images').text(), 10);
     next = number + 1 > images ? 1 : number + 1;
+    url = $('#pieceContent img').attr('src').replace(/\d{1}.jpg/, "" + next + ".jpg");
+    webPreload(url);
+    return $('#current').html(next);
+  };
+  webPrev = function() {
+    var images, next, number, url;
+    number = parseInt($('#current').text(), 10);
+    images = parseInt($('#images').text(), 10);
+    next = number - 1 === 0 ? images : number - 1;
     url = $('#pieceContent img').attr('src').replace(/\d{1}.jpg/, "" + next + ".jpg");
     webPreload(url);
     return $('#current').html(next);
