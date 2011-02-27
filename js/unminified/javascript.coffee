@@ -96,10 +96,10 @@ keys = ->
 web = ->
   if $('#pageWeb').length > 0
     # size of pieceContent's left attr pluss margin-left
-    containerSize = 320
+    containerSize = 340
     
     # onload, preload first image
-    webPreload("/media/web/#{$('#piece').text()}/1.jpg") unless $('#piece').html() == ''
+    webPreload("/media/web/#{$('#piece').text()}/1.jpg", 1) unless $('#piece').html() == ''
     
     # clicking a piece link
     $('#pieceList a').click ->
@@ -107,7 +107,7 @@ web = ->
       url = $(this).attr('href')
       
       # change the opacity of the list
-      $('#pieceListContainer ul').stop().animate({opacity: 0.3}, animationTime)
+      $('#pieceListContainer ul').stop().animate({opacity: 0.1}, animationTime)
       
       # collapse the container
       $('#pieceListContainer').stop().animate({width: 100}, animationTime)
@@ -138,8 +138,8 @@ web = ->
         # change the arrows to 'collapse'
         $('#webOverlay').find('.inner').removeClass('expand').addClass('contract')
 
-        # scale down the overlay
-        $('#webOverlay').animate({width: 20}, animationTime)
+        # scale down the overlay and increase right position
+        $('#webOverlay').animate({width: 20, right: 20}, animationTime)
         
         # expand the container
         $('#pieceListContainer').stop().animate({width: containerSize}, animationTime)
@@ -153,23 +153,27 @@ web = ->
         # remove the collapsed class
         $('#pieceListContainer').removeClass('collapsed')
       else # contracting
+        # set the background of webFade
+        $('#webFade').css('background', 'background: url(/images/webFade.png) 0 0 repeat-y;')
         # change the arrows to 'expand'
         $('#webOverlay').find('.inner').removeClass('contract').addClass('expand')
         
         # expand the overlay
-        $('#webOverlay').animate({width: '100%'}, animationTime)
+        $('#webOverlay').animate({width: '100%', right: 0}, animationTime)
         
         # collapse the container
         $('#pieceListContainer').stop().animate({width: 100}, animationTime)
         
         # change the opacity of the list
-        $('#pieceListContainer ul').stop().animate({opacity: 0.3}, animationTime)
+        $('#pieceListContainer ul').stop().animate({opacity: 0.1}, animationTime)
         
         # collapse the fade
         $('#webFade').stop().animate({width: 20}, animationTime)
         
         # add the collapsed class
         $('#pieceListContainer').addClass('collapsed')
+      
+      return false
   
   # handle the 'next' button
   $('#next').live('click', ->
@@ -197,6 +201,7 @@ web = ->
       webPrev()
     )
 
+# get and load the next image
 webNext = ->
   # get the image number
   number = parseInt($('#current').text(), 10)
@@ -211,11 +216,12 @@ webNext = ->
   url = $('#pieceContent img').attr('src').replace(/\d{1}.jpg/, "#{next}.jpg")
   
   # replace the image
-  webPreload(url)
+  webPreload(url, next)
   
   # set the count
   $('#current').html(next)
 
+# get and load the previous image
 webPrev = ->
   # get the image number
   number = parseInt($('#current').text(), 10)
@@ -230,12 +236,13 @@ webPrev = ->
   url = $('#pieceContent img').attr('src').replace(/\d{1}.jpg/, "#{next}.jpg")
 
   # replace the image
-  webPreload(url)
+  webPreload(url, next)
 
   # set the count
   $('#current').html(next)
 
-webPreload = (url) ->
+# preload and show an image
+webPreload = (url, number) ->
   # remove the content and add the spinner
   $('#webImage').html('').addClass('loading')
 
@@ -243,15 +250,15 @@ webPreload = (url) ->
   $(img).load(->
     # hide the target
     $(this).hide()
-
+    
     # remove the spinner and add the image
     $('#webImage').removeClass('loading').append(this)
-
+    
     # fade in the image
     $(this).fadeIn()
-  ).attr('src', url).attr('width', 750)#.attr('height', height).attr('alt', title)
+  ).attr('src', url).attr('width', 750).attr('alt', "#{$('#name').html()} Screenshot #{number}")
 
-# Load these functions when the document is ready:
+# Load these functions when the document is ready
 $(->
   stylesheets()
   newWindow()

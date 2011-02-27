@@ -88,15 +88,15 @@
   web = function() {
     var animationTime, containerSize;
     if ($('#pageWeb').length > 0) {
-      containerSize = 320;
+      containerSize = 340;
       if ($('#piece').html() !== '') {
-        webPreload("/media/web/" + ($('#piece').text()) + "/1.jpg");
+        webPreload("/media/web/" + ($('#piece').text()) + "/1.jpg", 1);
       }
       $('#pieceList a').click(function() {
         var url;
         url = $(this).attr('href');
         $('#pieceListContainer ul').stop().animate({
-          opacity: 0.3
+          opacity: 0.1
         }, animationTime);
         $('#pieceListContainer').stop().animate({
           width: 100
@@ -121,7 +121,8 @@
         if ($('#pieceListContainer').attr('class').match(/collapsed/)) {
           $('#webOverlay').find('.inner').removeClass('expand').addClass('contract');
           $('#webOverlay').animate({
-            width: 20
+            width: 20,
+            right: 20
           }, animationTime);
           $('#pieceListContainer').stop().animate({
             width: containerSize
@@ -132,23 +133,26 @@
           $('#webFade').stop().animate({
             width: 40
           }, animationTime);
-          return $('#pieceListContainer').removeClass('collapsed');
+          $('#pieceListContainer').removeClass('collapsed');
         } else {
+          $('#webFade').css('background', 'background: url(/images/webFade.png) 0 0 repeat-y;');
           $('#webOverlay').find('.inner').removeClass('contract').addClass('expand');
           $('#webOverlay').animate({
-            width: '100%'
+            width: '100%',
+            right: 0
           }, animationTime);
           $('#pieceListContainer').stop().animate({
             width: 100
           }, animationTime);
           $('#pieceListContainer ul').stop().animate({
-            opacity: 0.3
+            opacity: 0.1
           }, animationTime);
           $('#webFade').stop().animate({
             width: 20
           }, animationTime);
-          return $('#pieceListContainer').addClass('collapsed');
+          $('#pieceListContainer').addClass('collapsed');
         }
+        return false;
       });
     }
     $('#next').live('click', function() {
@@ -176,7 +180,7 @@
     images = parseInt($('#images').text(), 10);
     next = number + 1 > images ? 1 : number + 1;
     url = $('#pieceContent img').attr('src').replace(/\d{1}.jpg/, "" + next + ".jpg");
-    webPreload(url);
+    webPreload(url, next);
     return $('#current').html(next);
   };
   webPrev = function() {
@@ -185,10 +189,10 @@
     images = parseInt($('#images').text(), 10);
     next = number - 1 === 0 ? images : number - 1;
     url = $('#pieceContent img').attr('src').replace(/\d{1}.jpg/, "" + next + ".jpg");
-    webPreload(url);
+    webPreload(url, next);
     return $('#current').html(next);
   };
-  webPreload = function(url) {
+  webPreload = function(url, number) {
     var img;
     $('#webImage').html('').addClass('loading');
     img = new Image();
@@ -196,7 +200,7 @@
       $(this).hide();
       $('#webImage').removeClass('loading').append(this);
       return $(this).fadeIn();
-    }).attr('src', url).attr('width', 750);
+    }).attr('src', url).attr('width', 750).attr('alt', "" + ($('#name').html()) + " Screenshot " + number);
   };
   $(function() {
     stylesheets();

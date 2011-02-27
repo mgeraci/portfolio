@@ -16,10 +16,10 @@
 
     while ($row = mysql_fetch_assoc($result)) {
       $name = $row['name'];
-      $description = $row['description'];
+      $tech = $row['tech'];
       $subtitle = $row['subtitle'];
       $year = $row['year'];
-      $link = $row['link'];
+      $images = $row['images'];
       $url = $row['url'];
     }
 
@@ -46,91 +46,38 @@
         $location = $_SERVER['PHP_SELF'];
         include("includes/menu.php");
       ?>
+      <span id="piece" style="display: none;"><?php echo $piece; ?></span>
+      <span id="name" style="display: none;"><?php echo $name; ?></span>
       <div id="pageWeb">
-        <div id="pieceList">
-          <ul>
-            <?php
-              // query to get all the pieces
-              $listQuery = "SELECT * FROM web ORDER BY sort DESC";
-              $listResult = mysql_query($listQuery);
-              if (!$listResult) {
-                echo 'Could not run query: ' . mysql_error();
-                exit;
-              }
-            ?>
-            <?php while ($listRow = mysql_fetch_assoc($listResult)) { ?>
-              <li>
-                <?php
-                  // add highlight class if current page
-                  $class = $listRow['shortname'] == $piece ? 'on' : '';
-                ?>
-                <?php if ($listRow['link']) { // link to an internal page ?>
-                  <a href="/web/<?php echo $listRow['shortname']; ?>" class="<?php echo $class; ?>">
-                <?php } elseif (!$listRow['link'] && $listRow['url']) { // link to an external page ?>
-                  <a href="<?php echo $listRow['url']; ?>" class="new-window">
-                <?php } ?>
-                  <h1><?php echo $listRow['name']; ?>, <?php echo $listRow['year']; ?></h1>
-                  <br><?php echo $listRow['description']; ?>
-                <?php if ($listRow['link']) { ?>
-                  </a>
-                <?php } ?>
-              </li>
-            <?php } ?>
-          </ul>
-        </div>
-        <div id="pieceContent">
+        <div id="pieceContent"><?php // content comes before list on this page to set stacking order correctly ?>
           <?php if ($piece) { ?>
             <?php
               // title
               if ($url) {
-                echo "<a class='new-window webTitle' href='$url'>";
+                echo "<a class='new-window webTitle' href='$url'>$name, $year</a>";
               } else {
-                echo "<h1>";
+                echo "<h1>$name, $year</h1>";
               }
 
-              echo "$name, $year";
-            
-              if ($url) {
-                echo "</a>";
-              } else {
-                echo "</h1>";
+              // subtitle, if it exists
+              if ($tech) {
+                echo "<br>$tech";
               }
-              
+
               // subtitle, if it exists
               if ($subtitle) {
                 echo "<br>$subtitle";
               }
 
               echo "<br><br>";
-              
-              $docroot = preg_match('/\/$/', getenv("DOCUMENT_ROOT")) ? getenv("DOCUMENT_ROOT") : getenv("DOCUMENT_ROOT") . '/';
 
-              $dirname = $docroot . "/media/web/$piece";
-
-              // content
-              $i = 1;
-              if ($handle = opendir($dirname)) {
-                // the correct way to loop over the directory
-                while (false !== ($file = readdir($handle))) {
-                  // skip . files
-                  if ($file != "." && $file != ".." && $file != '.DS_Store') {
-                    // print the image
-                    if ($url) {
-                      echo "<a class='new-window' href='$url'>";
-                    }
-                    $name = htmlspecialchars($name, ENT_QUOTES);
-                    echo "<img src='/media/web/$piece/$file' alt='$name Screenshot $i'>";
-                    if ($url) {
-                      echo "</a>";
-                    }
-                    
-                    // increment the counter
-                    $i++;
-                  }
-                }
-
-                closedir($handle);
+              // append the navigation if more than one image
+              if ($images > 1) {
+                echo "<a class='arrow previous' href='#' id='previous'>previous</a><span id='webCountWrapper'><span id='current'>1</span>/<span id='images'>$images</span></span><a class='arrow next' href='#' id='next'>next</a><br>";
               }
+
+              // append the image container
+              echo "<div id='webImage' class='loading'></div>";
 
               // visit link, if there's a url
               if ($url) {
@@ -139,9 +86,41 @@
             ?>
           <?php } ?>
         </div>
-        <br>
-        <br>
-        <br>
+        <div id="pieceListContainer" <?php if ($piece) {echo 'class="collapsed"';} ?>>
+          <div id="pieceList">
+            <ul <?php if ($piece) {echo 'style="opacity: 0.1;"';} ?>>
+              <?php
+                // query to get all the pieces
+                $listQuery = "SELECT * FROM web ORDER BY sort DESC";
+                $listResult = mysql_query($listQuery);
+                if (!$listResult) {
+                  echo 'Could not run query: ' . mysql_error();
+                  exit;
+                }
+              ?>
+              <?php while ($listRow = mysql_fetch_assoc($listResult)) { ?>
+                <li>
+                  <a href="/web/<?php echo $listRow['shortname']; ?>" class="<?php echo $class; ?>">
+                    <h1><?php echo $listRow['name']; ?>, <?php echo $listRow['year']; ?></h1>
+                    <br><?php echo $listRow['description']; ?>
+                  </a>
+                </li>
+              <?php } ?>
+              <li>
+                <h1>This Website, 2006-Present</h1>
+                <br>100% valid hand-coded PHP and jQuery
+              </li>
+            </ul>
+          </div>
+          <div id="webFade" <?php if ($piece) {echo 'class="collapsed" style="background: url(/images/webFade.png) 0 0 repeat-y;"';} ?>></div>
+          <a href="#" id="webToggle" <?php if ($piece) {echo 'style="display: block;"'; } ?>>
+            <div id="webOverlay">
+              <div class="outer">
+                <div class="inner <?php echo $piece ? 'expand off' : 'contract off' ?>">click</div>
+              </div>
+            </div>
+          </a>
+        </div>
       </div>
       <div class='pieceBottomSpacer'>&nbsp;</div>
     </div>

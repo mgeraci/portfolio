@@ -490,33 +490,6 @@ div.text{ /* text columns for index and links page */
 /* = Web Design Page = */
 /* =================== */
 
-/*#pageWeb{margin-left: 15px;}
-
-#pageWeb #pieceList{
-  padding-right: 20px;
-  width: 310px;
-}
-
-#pageWeb #pieceContent{
-  font-size: 10pt;
-  font-style: normal;
-  float: left;
-  width: 500px;
-  margin: 0 0 0 -2px;
-  padding: 0 0 30px 20px;
-  color: @text;
-  border-style: solid;
-  border-width: 0 0 0 2px;
-  border-color: @cream;
-}
-*/
-
-
-
-
-
-
-
 // general web styles
 #pageWeb{
   width: @siteWidth;
@@ -545,7 +518,7 @@ div.text{ /* text columns for index and links page */
   
   #pieceList{
     padding-right: 20px;
-    width: 310px;
+    width: 330px;
     whitespace: no-wrap;
     background: @green;
     position: relative;
@@ -553,8 +526,38 @@ div.text{ /* text columns for index and links page */
     left: 0;
     margin: 0 20px 0 10px;
     border: 0;
-
+    
     li{padding: 0 0 18px 0;}
+  }
+  
+  @webContentWidth: 750px;
+  
+  #pieceContent{
+    position: absolute;
+    left: @siteWidth - @webContentWidth;
+    width: @webContentWidth;
+    margin: 0 0 0 -2px;
+    padding: 0 0 40px 20px;
+    
+    color: @text;
+    font-size: 15px;
+    font-style: normal;
+    line-height: 20px;
+    border: 0 solid @cream;
+    
+    // a loading image container
+    .loading{
+      display: block;
+      width: 750px;
+      min-height: 400px;
+      background: url(/images/loading.gif) center center no-repeat;
+    }
+  }
+  
+  // images are links, so style them (and padding)
+  img{
+    padding: 5px 0;
+    border: 0px;
   }
 }
 
@@ -566,35 +569,9 @@ div.text{ /* text columns for index and links page */
   overflow: hidden;
   top: 0;
   right: 0;
-  background: url(/images/webFade.png) 0 0 repeat-y
 }
 
 #webFade.collapsed{width: 20px;}
-
-
-@webContentWidth: 750px;
-
-#pageWeb #pieceContent{
-  position: absolute;
-  left: @siteWidth - @webContentWidth;
-  width: @webContentWidth;
-  margin: 0 0 0 -2px;
-  padding: 0 0 30px 20px;
-
-  color: @text;
-  font-size: 15px;
-  font-style: normal;
-  line-height: 20px;
-  border: 0 solid @cream;
-
-  // a loading image container
-  .loading{
-    display: block;
-    width: 750px;
-    min-height: 400px;
-    background: url(/images/loading.gif) center center no-repeat;
-  }
-}
 
 // 1/3 or whatever count
 #webCountWrapper{
@@ -602,6 +579,7 @@ div.text{ /* text columns for index and links page */
   margin: 0 10px 0 0;
 }
 
+// sits on top of the piece list
 #webOverlay{
   display: block;
   background: none;
@@ -612,42 +590,32 @@ div.text{ /* text columns for index and links page */
   
   .outer{
     position: absolute;
-    top: 50%;
+    top: 200px;
     left: 50%;
   }
   
+  // the arrows for collapsing and expanding
   .inner{
-    width: 17px;
-    height: 20px;
+    width: 23px;
+    height: 27px;
     display: block;
     overflow: hidden;
     line-height: 500px;
     position: relative;
-    bottom: 10px;
-    right: 9px;
+    bottom: 13px;
+    right: 12px;
   }
   
   .expand.off{background: url(/images/webArrows.png) 0 0 no-repeat;}
-  .expand.on{background: url(/images/webArrows.png) 0 -20px no-repeat;}
-  .contract.off{background: url(/images/webArrows.png) -17px 0 no-repeat;}
-  .contract.on{background: url(/images/webArrows.png) -17px -20px no-repeat;}
+  .expand.on{background: url(/images/webArrows.png) 0 -27px no-repeat;}
+  .contract.off{background: url(/images/webArrows.png) -23px 0 no-repeat;}
+  .contract.on{background: url(/images/webArrows.png) -23px -27px no-repeat;}
 }
 
 // hide the the overlayed link on load
 #webToggle{display: none;}
 
-
-
-
-
-
-
-
-#pageWeb img{
-  padding: 5px 0 5px 0;
-  border: 0px;
-}
-
+// piece name style
 a.webTitle{
   .h1;
   text-decoration: none;
