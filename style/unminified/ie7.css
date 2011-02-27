@@ -57,6 +57,12 @@ div.text{ /* text columns for index and links page */
 	right: 25px;
 }
 
+/* Web */
+#pageWeb{height: 1500px;}
+#pageWeb #pieceList{position: absolute; right: 30px;}
+#pageWeb #pieceList ul{padding: 0 0 0 30px; margin: 0 0 0 32px;}
+#webToggle{filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#d9bbd199', endColorstr='#d9bbd199'); /* ie7 specific gradient (colors are in formation AARRGGBB) */}
+
 /* ======== */
 /* = Logo = */
 /* ======== */

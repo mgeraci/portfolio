@@ -95,11 +95,11 @@ keys = ->
 # handle showing/hiding piecelist and ajax loading image
 web = ->
   if $('#pageWeb').length > 0
-    # set opacity of list on ie7
-    $('#piecelist ul').css('opacity', 0.1) = true if $.browser.msie && $.browser.version.substr(0, 1) == '7' && $('#piece').html() != ''
-
     # size of pieceContent's left attr pluss margin-left
-    containerSize = 340
+    containerSize = 330
+    
+    # set opacity of list on ie7
+    $('#pieceList ul').css('opacity', 0.1) if $.browser.msie && $.browser.version.substr(0, 1) == '7' && $('#piece').html() != ''
     
     # onload, preload first image
     webPreload("/media/web/#{$('#piece').text()}/1.jpg", 1) unless $('#piece').html() == ''
@@ -129,7 +129,7 @@ web = ->
     animationTime = 200
     
     # hovering on the web overlay changes the arrow state
-    $('#webOverlay').hover ->
+    $('#webToggle').hover ->
       $(this).find('.inner').removeClass('off').addClass('on');
     , ->
       $(this).find('.inner').removeClass('on').addClass('off');
@@ -140,7 +140,7 @@ web = ->
       if $('#pieceListContainer').attr('class').match(/collapsed/)
         # change the arrows to 'collapse'
         $('#webOverlay').find('.inner').removeClass('expand').addClass('contract')
-
+        
         # scale down the overlay and increase right position
         $('#webOverlay').animate({width: 20, right: 20}, animationTime)
         

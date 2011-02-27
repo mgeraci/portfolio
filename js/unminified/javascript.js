@@ -88,7 +88,10 @@
   web = function() {
     var animationTime, containerSize;
     if ($('#pageWeb').length > 0) {
-      containerSize = 340;
+      containerSize = 330;
+      if ($.browser.msie && $.browser.version.substr(0, 1) === '7' && $('#piece').html() !== '') {
+        $('#pieceList ul').css('opacity', 0.1);
+      }
       if ($('#piece').html() !== '') {
         webPreload("/media/web/" + ($('#piece').text()) + "/1.jpg", 1);
       }
@@ -112,7 +115,7 @@
         return false;
       });
       animationTime = 200;
-      $('#webOverlay').hover(function() {
+      $('#webToggle').hover(function() {
         return $(this).find('.inner').removeClass('off').addClass('on');
       }, function() {
         return $(this).find('.inner').removeClass('on').addClass('off');

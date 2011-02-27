@@ -62,9 +62,10 @@ div.text{width:430px;color:#444444;float:left;margin-left:15px;font-size:16px;}
 #photoAll img{border:0px;padding:0px;float:left;}
 #pageWeb{width:900px;float:left;clear:both;position:relative;}#pageWeb .previous{margin:3px 3px 0 0;}
 #pageWeb .next{position:relative;top:1px;right:5px;}
-#pageWeb #pieceListContainer{position:relative;overflow:hidden;width:320px;padding:0 40px 0 0;}
+#pageWeb #pieceListContainer{position:relative;overflow:hidden;width:320px;height:100%;padding:0 40px 0 0;}
 #pageWeb #pieceListContainer.collapsed{width:100px;}
-#pageWeb #pieceList{padding-right:20px;width:330px;whitespace:no-wrap;background:#bbd199;position:relative;top:0;left:0;margin:0 20px 0 10px;border:0;}#pageWeb #pieceList li{padding:0 0 18px 0;}
+#pageWeb #pieceList{padding-right:20px;width:330px;whitespace:no-wrap;background:#bbd199;position:relative;top:0;left:0;margin:0 20px 0 0;border:0;}#pageWeb #pieceList ul{padding:0 0 0 30px;}
+#pageWeb #pieceList li{padding:0 0 18px 0;}
 #pageWeb #pieceContent{position:absolute;left:150px;width:750px;margin:0 0 0 -2px;padding:0 0 40px 20px;color:#444444;font-size:15px;font-style:normal;line-height:20px;border:0 solid #f3f4d3;}#pageWeb #pieceContent .loading{display:block;width:750px;min-height:400px;background:url(/images/loading.gif) center center no-repeat;}
 #pageWeb img{padding:5px 0;border:0px;}
 .listLoad{opacity:0.1;filter:alpha(opacity=10);-ms-filter:"alpha(opacity=10)";-khtml-opacity:0.1;-moz-opacity:0.1;}
