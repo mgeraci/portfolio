@@ -67,6 +67,7 @@ div.text{width:430px;color:#444444;float:left;margin-left:15px;font-size:16px;}
 #pageWeb #pieceList{padding-right:20px;width:330px;whitespace:no-wrap;background:#bbd199;position:relative;top:0;left:0;margin:0 20px 0 10px;border:0;}#pageWeb #pieceList li{padding:0 0 18px 0;}
 #pageWeb #pieceContent{position:absolute;left:150px;width:750px;margin:0 0 0 -2px;padding:0 0 40px 20px;color:#444444;font-size:15px;font-style:normal;line-height:20px;border:0 solid #f3f4d3;}#pageWeb #pieceContent .loading{display:block;width:750px;min-height:400px;background:url(/images/loading.gif) center center no-repeat;}
 #pageWeb img{padding:5px 0;border:0px;}
+.listLoad{opacity:0.1;filter:alpha(opacity=10);-ms-filter:"alpha(opacity=10)";-khtml-opacity:0.1;-moz-opacity:0.1;}
 #webFade{width:40px;height:100%;position:absolute;overflow:hidden;top:0;right:0;}
 #webFade.collapsed{width:20px;}
 #webCountWrapper{float:left;margin:0 10px 0 0;}

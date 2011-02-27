@@ -95,6 +95,9 @@ keys = ->
 # handle showing/hiding piecelist and ajax loading image
 web = ->
   if $('#pageWeb').length > 0
+    # set opacity of list on ie7
+    $('#piecelist ul').css('opacity', 0.1) = true if $.browser.msie && $.browser.version.substr(0, 1) == '7' && $('#piece').html() != ''
+
     # size of pieceContent's left attr pluss margin-left
     containerSize = 340
     

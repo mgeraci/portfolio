@@ -88,7 +88,7 @@
         </div>
         <div id="pieceListContainer" <?php if ($piece) {echo 'class="collapsed"';} ?>>
           <div id="pieceList">
-            <ul <?php if ($piece) {echo 'style="opacity: 0.1;"';} ?>>
+            <ul <?php if ($piece) {echo 'class="listLoad"';} ?>>
               <?php
                 // query to get all the pieces
                 $listQuery = "SELECT * FROM web ORDER BY sort DESC";
