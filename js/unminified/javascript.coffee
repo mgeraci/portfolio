@@ -177,78 +177,85 @@ web = ->
         $('#pieceListContainer').addClass('collapsed')
       
       return false
-  
-  # handle the 'next' button
-  $('#next').live('click', ->
-    webNext()
     
-    return false
-  )
-  
-  # handle the 'next' button
-  $('#previous').live('click', ->
-    webPrev()
-    
-    return false
-  )
-  
-  # keyboard shortcut if more than 1 image
-  if $('a#next').length != 0
-    $(document).bind('keydown', 'right', ->
+    # handle the 'next' button
+    $('#next').live('click', ->
       webNext()
+      
+      return false
+    )
+    
+    # handle the 'next' button
+    $('#previous').live('click', ->
+      webPrev()
+      
+      return false
     )
 
-  # keyboard shortcut if more than 1 image
-  if $('a#previous').length != 0
-    $(document).bind('keydown', 'left', ->
-      webPrev()
-    )
+
+webKeys = ->
+  if $('#pageWeb').length > 0
+    # keyboard shortcut if more than 1 image
+    if $('a#next').length != 0
+      $(document).bind('keydown', 'right', (evt) ->
+        webNext()
+        return false
+      )
+    
+    # keyboard shortcut if more than 1 image
+    if $('a#previous').length != 0
+      $(document).bind('keydown', 'left',  (evt) ->
+        webPrev()
+        return false
+      )
 
 # get and load the next image
 webNext = ->
-  # get the image number
-  number = parseInt($('#current').text(), 10)
-  
-  # how many images?
-  images = parseInt($('#images').text(), 10)
-  
-  # get the next number
-  next = if number + 1 > images then 1 else number + 1
-  
-  # make the next url
-  url = $('#pieceContent img').attr('src').replace(/\d{1}.jpg/, "#{next}.jpg")
-  
-  # replace the image
-  webPreload(url, next)
-  
-  # set the count
-  $('#current').html(next)
+  if $('#pieceContent img').attr('src')
+    # get the image number
+    number = parseInt($('#current').text(), 10)
+    
+    # how many images?
+    images = parseInt($('#images').text(), 10)
+    
+    # get the next number
+    next = if number + 1 > images then 1 else number + 1
+    
+    # make the next url
+    url = $('#pieceContent img').attr('src').replace(/\d{1}.jpg/, "#{next}.jpg")
+    
+    # replace the image
+    webPreload(url, next)
+    
+    # set the count
+    $('#current').html(next)
 
 # get and load the previous image
 webPrev = ->
-  # get the image number
-  number = parseInt($('#current').text(), 10)
-
-  # how many images?
-  images = parseInt($('#images').text(), 10)
-
-  # get the next number
-  next = if number - 1 == 0 then images else number - 1
-
-  # make the next url
-  url = $('#pieceContent img').attr('src').replace(/\d{1}.jpg/, "#{next}.jpg")
-
-  # replace the image
-  webPreload(url, next)
-
-  # set the count
-  $('#current').html(next)
+  if $('#pieceContent img').attr('src')
+    # get the image number
+    number = parseInt($('#current').text(), 10)
+    
+    # how many images?
+    images = parseInt($('#images').text(), 10)
+    
+    # get the next number
+    next = if number - 1 == 0 then images else number - 1
+    
+    # make the next url
+    url = $('#pieceContent img').attr('src').replace(/\d{1}.jpg/, "#{next}.jpg")
+    
+    # replace the image
+    webPreload(url, next)
+    
+    # set the count
+    $('#current').html(next)
 
 # preload and show an image
 webPreload = (url, number) ->
   # remove the content and add the spinner
   $('#webImage').html('').addClass('loading')
-
+  
   img = new Image()
   $(img).load(->
     # hide the target
@@ -270,4 +277,5 @@ $(->
   photoLoader()
   keys()
   web()
+  webKeys()
 )

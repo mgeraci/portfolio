@@ -57,6 +57,8 @@ div.text{ /* text columns for index and links page */
 	right: 25px;
 }
 
+#pictureInfo{width: 100%;}
+
 /* Web */
 #pageWeb{height: 1500px;}
 #pageWeb #pieceList{position: absolute; right: 30px;}

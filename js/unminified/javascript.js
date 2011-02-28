@@ -1,5 +1,5 @@
 (function() {
-  var keys, newWindow, photoLoader, programNotes, stylesheets, thumbnails, web, webNext, webPreload, webPrev;
+  var keys, newWindow, photoLoader, programNotes, stylesheets, thumbnails, web, webKeys, webNext, webPreload, webPrev;
   stylesheets = function() {
     if (jQuery.browser.safari) {
       $('head').append("<link type='text/css' rel='stylesheet' href='/style/safari.css'>");
@@ -157,43 +157,53 @@
         }
         return false;
       });
-    }
-    $('#next').live('click', function() {
-      webNext();
-      return false;
-    });
-    $('#previous').live('click', function() {
-      webPrev();
-      return false;
-    });
-    if ($('a#next').length !== 0) {
-      $(document).bind('keydown', 'right', function() {
-        return webNext();
+      $('#next').live('click', function() {
+        webNext();
+        return false;
+      });
+      return $('#previous').live('click', function() {
+        webPrev();
+        return false;
       });
     }
-    if ($('a#previous').length !== 0) {
-      return $(document).bind('keydown', 'left', function() {
-        return webPrev();
-      });
+  };
+  webKeys = function() {
+    if ($('#pageWeb').length > 0) {
+      if ($('a#next').length !== 0) {
+        $(document).bind('keydown', 'right', function(evt) {
+          webNext();
+          return false;
+        });
+      }
+      if ($('a#previous').length !== 0) {
+        return $(document).bind('keydown', 'left', function(evt) {
+          webPrev();
+          return false;
+        });
+      }
     }
   };
   webNext = function() {
     var images, next, number, url;
-    number = parseInt($('#current').text(), 10);
-    images = parseInt($('#images').text(), 10);
-    next = number + 1 > images ? 1 : number + 1;
-    url = $('#pieceContent img').attr('src').replace(/\d{1}.jpg/, "" + next + ".jpg");
-    webPreload(url, next);
-    return $('#current').html(next);
+    if ($('#pieceContent img').attr('src')) {
+      number = parseInt($('#current').text(), 10);
+      images = parseInt($('#images').text(), 10);
+      next = number + 1 > images ? 1 : number + 1;
+      url = $('#pieceContent img').attr('src').replace(/\d{1}.jpg/, "" + next + ".jpg");
+      webPreload(url, next);
+      return $('#current').html(next);
+    }
   };
   webPrev = function() {
     var images, next, number, url;
-    number = parseInt($('#current').text(), 10);
-    images = parseInt($('#images').text(), 10);
-    next = number - 1 === 0 ? images : number - 1;
-    url = $('#pieceContent img').attr('src').replace(/\d{1}.jpg/, "" + next + ".jpg");
-    webPreload(url, next);
-    return $('#current').html(next);
+    if ($('#pieceContent img').attr('src')) {
+      number = parseInt($('#current').text(), 10);
+      images = parseInt($('#images').text(), 10);
+      next = number - 1 === 0 ? images : number - 1;
+      url = $('#pieceContent img').attr('src').replace(/\d{1}.jpg/, "" + next + ".jpg");
+      webPreload(url, next);
+      return $('#current').html(next);
+    }
   };
   webPreload = function(url, number) {
     var img;
@@ -212,6 +222,7 @@
     thumbnails();
     photoLoader();
     keys();
-    return web();
+    web();
+    return webKeys();
   });
 }).call(this);

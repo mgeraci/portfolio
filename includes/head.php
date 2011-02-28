@@ -58,7 +58,7 @@
         <script type="text/javascript" src="/js/pack.js"></script>';
       } else {
         echo '<script type="text/javascript" src="/js/jquery1.5.min.js"></script>
-        <script type="text/javascript" src="/js/unminified/jquery.hotkeys-0.7.9.js"></script>
+        <script type="text/javascript" src="/js/unminified/jquery.hotkeys-0.8.js"></script>
         <script type="text/javascript" src="/js/unminified/audio_player.js"></script>
         <script type="text/javascript" src="/js/unminified/json.js"></script>
         <script type="text/javascript" src="/js/unminified/javascript.js"></script>';
