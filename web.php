@@ -3,17 +3,17 @@
   <?php
     // Connect to database
     include('includes/connect.php');
-
+    
     // get and clean the input
     $piece = mysql_real_escape_string($_GET['piece']);
-
+    
     $query = "SELECT * FROM web WHERE shortname='$piece'";
     $result = mysql_query($query);
     if (!$result) {
       echo 'Could not run query: ' . mysql_error();
       exit;
     }
-
+    
     while ($row = mysql_fetch_assoc($result)) {
       $name = $row['name'];
       $tech = $row['tech'];
@@ -22,19 +22,19 @@
       $images = $row['images'];
       $url = $row['url'];
     }
-
+    
     // set the base title
     $title = "Michael P. Geraci - Web Design";
-
+    
     // append the title if there's a piece selected
     if ($piece) {
       $title .= " - $name";
     }
-
+    
     // gets the location of the page and assigns it to $location
     // format is /page.php
     $location = $_SERVER['PHP_SELF'];
-
+    
     include("includes/head.php");
   ?>
   <body>

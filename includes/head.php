@@ -7,10 +7,13 @@
       <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
       <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
       <meta name="verify-v1" content="c3G4kM74qA6ztpDl/bE6D/t9pgqANYt17h1Xjs/b0q8=">';
-
+      
       // page descriptions
       switch ($location) {
-        case '/photography.php' || '/photobrowse.php':
+        case '/photography.php':
+          echo '<meta name="description" content="Michael P. Geraci\'s photography portfolio - a photoblog and professional projects.">';
+          break;
+        case '/photobrowse.php':
           echo '<meta name="description" content="Michael P. Geraci\'s photography portfolio - a photoblog and professional projects.">';
           break;
         case '/grapic.php':
