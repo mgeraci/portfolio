@@ -23,11 +23,14 @@
       $url = $row['url'];
     }
     
+    // if there's a piece and there's a name, then the sql query was successful - set a flag to show piece stuff
+    $viewing = ($piece && $name) ? true : false;
+    
     // set the base title
     $title = "Michael P. Geraci - Web Design";
     
     // append the title if there's a piece selected
-    if ($piece) {
+    if ($viewing) {
       $title .= " - $name";
     }
     
@@ -50,7 +53,7 @@
       <span id="name" style="display: none;"><?php echo $name; ?></span>
       <div id="pageWeb">
         <div id="pieceContent"><?php // content comes before list on this page to set stacking order correctly ?>
-          <?php if ($piece) { ?>
+          <?php if ($viewing) { ?>
             <?php
               // title
               if ($url) {
@@ -86,9 +89,9 @@
             ?>
           <?php } ?>
         </div>
-        <div id="pieceListContainer" <?php if ($piece) {echo 'class="collapsed"';} ?>>
+        <div id="pieceListContainer" <?php if ($viewing) {echo 'class="collapsed"';} ?>>
           <div id="pieceList">
-            <ul <?php if ($piece) {echo 'class="listLoad"';} ?>>
+            <ul <?php if ($viewing) {echo 'class="listLoad"';} ?>>
               <?php
                 // query to get all the pieces
                 $listQuery = "SELECT * FROM web ORDER BY sort DESC";
@@ -112,11 +115,11 @@
               </li>
             </ul>
           </div>
-          <div id="webFade" <?php if ($piece) {echo 'class="collapsed" style="background: url(/images/webFade.png) 0 0 repeat-y;"';} ?>></div>
-          <a href="#" id="webToggle" <?php if ($piece) {echo 'style="display: block;"'; } ?>>
+          <div id="webFade" <?php if ($viewing) {echo 'class="collapsed" style="background: url(/images/webFade.png) 0 0 repeat-y;"';} ?>></div>
+          <a href="#" id="webToggle" <?php if ($viewing) {echo 'style="display: block;"'; } ?>>
             <div id="webOverlay">
               <div class="outer">
-                <div class="inner <?php echo $piece ? 'expand off' : 'contract off' ?>">click</div>
+                <div class="inner <?php echo ($viewing) ? 'expand off' : 'contract off' ?>">click</div>
               </div>
             </div>
           </a>
