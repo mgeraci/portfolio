@@ -1,4 +1,4 @@
-#!/usr/local/bin/php -q
+#!/usr/local/php5/bin/php -q
 
 <?php
   // connect to db
