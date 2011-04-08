@@ -6,3 +6,4 @@ media/photography/blog/*
 media/photography/blog/*/*
 media/graphic/*
 media/graphic/*/*
+.DS_Store
