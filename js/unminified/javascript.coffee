@@ -5,17 +5,6 @@
 # =
 # ===================================================
 
-stylesheets = ->
-  if jQuery.browser.safari
-    $('head').append("<link type='text/css' rel='stylesheet' href='/style/safari.css'>")
-
-  if jQuery.browser.chrome
-    $('head').append("<link type='text/css' rel='stylesheet' href='/style/chrome.css'>")
-
-  if jQuery.browser.opera
-    $('head').append("<link type='text/css' rel='stylesheet' href='/style/opera.css'>")
-
-
 # Open links with class 'new-window' in a new window
 newWindow = ->
   $('a.new-window').live('click', ->
@@ -267,10 +256,10 @@ webPreload = (url, number) ->
     # fade in the image
     $(this).fadeIn()
   ).attr('src', url).attr('width', 750).attr('alt', "#{$('#name').html()} Screenshot #{number}")
+  
 
 # Load these functions when the document is ready
 $(->
-  stylesheets()
   newWindow()
   programNotes()
   thumbnails()

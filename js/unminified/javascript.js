@@ -1,16 +1,5 @@
 (function() {
-  var keys, newWindow, photoLoader, programNotes, stylesheets, thumbnails, web, webKeys, webNext, webPreload, webPrev;
-  stylesheets = function() {
-    if (jQuery.browser.safari) {
-      $('head').append("<link type='text/css' rel='stylesheet' href='/style/safari.css'>");
-    }
-    if (jQuery.browser.chrome) {
-      $('head').append("<link type='text/css' rel='stylesheet' href='/style/chrome.css'>");
-    }
-    if (jQuery.browser.opera) {
-      return $('head').append("<link type='text/css' rel='stylesheet' href='/style/opera.css'>");
-    }
-  };
+  var keys, newWindow, photoLoader, programNotes, thumbnails, web, webKeys, webNext, webPreload, webPrev;
   newWindow = function() {
     return $('a.new-window').live('click', function() {
       window.open(this.href);
@@ -216,7 +205,6 @@
     }).attr('src', url).attr('width', 750).attr('alt', "" + ($('#name').html()) + " Screenshot " + number);
   };
   $(function() {
-    stylesheets();
     newWindow();
     programNotes();
     thumbnails();
