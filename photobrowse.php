@@ -223,23 +223,27 @@
                 // assign the results to a variable
                 $pictures = $row[0];
               }
-
+              
+              // remove a trailing comma from $pictures
+              $pictures = preg_replace('/,$/', '', $pictures);
+              
               // make the variable into an array
               $pictures = explode(',', $pictures);
-
+              
               // open the ul
               echo '<ul>';
                 // for each picture
-                foreach($pictures as $key => $value) {
+                foreach ($pictures as $key => $value) {
                   $current = $pictures[$key];
+                  
                   $query = "SELECT `number` FROM `blog` WHERE id=$current";
-
-                  $result = mysql_query($query);
-
-                  while ($row = mysql_fetch_row($result)){
+                  
+                  $result = mysql_query($query) or die(mysql_error());
+                  
+                  while ($row = mysql_fetch_assoc($result)) {
                     $number = $row[0];
                   }
-
+                  
                   // only show the thumbnail if the id is <= the current photo's id
                   if ($current <= $maxId) {
                     echo "<li><a href='/photography/blog/$number'><img class='photoAllIMG' src='/media/photography/blog/thumbs/$current.jpg' alt='$current' height='75' width='75'></a></li>";
