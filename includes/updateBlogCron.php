@@ -2,7 +2,11 @@
 
 <?php
   // connect to db
-  include('/home/michaelgeraci/michaelgeraci.com/includes/connect.php');
+  if (preg_match('/localhost/', $_SERVER['SERVER_NAME'])) {
+    include('connect.php');
+  } else {
+    include('/home/michaelgeraci/michaelgeraci.com/includes/connect.php');
+  }
   
   // get the number of rows with visible == zero
   $query = "SELECT count(id) as count FROM blog WHERE visible=0";
@@ -34,7 +38,13 @@
         $number = $row['number'];
       }
       
-      echo "Picture id $id (number $number) was published";
+      // get the number of pictures left to publish
+      $query = "SELECT id FROM blog WHERE visible=0";
+      $result = mysql_query($query) or die(mysql_error());
+      
+      $remaining = mysql_num_rows($result);
+      
+      echo "Picture id $id (number $number) was published - $remaining pictures left to publish.";
     }
   } else {
     echo "No new pictures to publish";

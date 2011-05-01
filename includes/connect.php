@@ -8,7 +8,7 @@
     $host = "";
     $database = "michaelgeraci.com_development";
   } else {
-    // online variabls
+    // online variables
     $username = "mgeraci";
     $password = "3dN7hNejLLUeoqVLermf";
     $host = "mysql.michaelgeraci.com";
