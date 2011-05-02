@@ -199,33 +199,33 @@
 
                 // tags section, only if photoblog
                 if ($section == 'blog') {
-                  // // get the tags
-                  // $query = "SELECT DISTINCT tag FROM `tags` WHERE pictures LIKE '%$theId%'";
-                  // 
-                  // if ($query) {
-                  //   $result = mysql_query($query);
-                  //   if (!$result) {
-                  //     echo 'Could not run query: ' . mysql_error();
-                  //     exit;
-                  //   }
-                  // }
-                  // 
-                  // $tags = array();
-                  // 
-                  // while ($row = mysql_fetch_assoc($result)){
-                  //   array_push($tags, $row['tag']);
-                  // }
-                  // 
-                  // $tagsFormatted = array();
-                  // 
-                  // foreach ($tags as $tag) {
-                  //   array_push($tagsFormatted, '<a href="/photography/blog/browse/' . $tag . '">' . preg_replace('/_/', ' ', $tag) . '</a>');
-                  // }
+                  // get the tag ids associated with this photo
+                  $query = "SELECT tag_id FROM tag_relationships WHERE photo_id=$theId";
+                  $result = mysql_query($query) or die(mysql_error());
+                  
+                  $tag_array = array();
+                  
+                  while ($row = mysql_fetch_assoc($result)) {
+                    array_push($tag_array, $row['tag_id']);
+                  }
+                  
+                  $tag_name_array = array();
+                  
+                  foreach ($tag_array as $tag_id) {
+                    // get the tag's name
+                    $query = "SELECT tag FROM tags WHERE id=$tag_id";
+                    $result = mysql_query($query) or die(mysql_error());
+                    
+                    while ($row = mysql_fetch_assoc($result)) {
+                      $link = "<a href='/photography/blog/browse/" . $row['tag'] . "'>" . preg_replace('/_/', ' ', $row['tag']) . "</a>";
+                      
+                      array_push($tag_name_array, $link);
+                    }
+                  }
 
                   // the info for the picture
                   echo '<div id="pictureInfo">';
-                    echo $theTitle . '<br><i>' . $theYear . '</i>';
-                    // echo $theTitle . '<br><i>' . $theYear . '</i><br><span id="tags">tags: ' . implode(', ', $tagsFormatted) . '</span>';
+                    echo $theTitle . '<br><i>' . $theYear . '</i><br><span id="tags">tags: ' . implode(', ', $tag_name_array) . '</span>';
                   echo '</div>';
                 } else {
                   // the info for the picture
