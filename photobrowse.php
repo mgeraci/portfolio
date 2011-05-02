@@ -153,38 +153,25 @@
             // link to the current picture
             echo "<br><a style='line-height: 25px;' href='/photography/blog/$max'>back to photoblog</a><br>&nbsp;";
             
-            $query = "SELECT * FROM `tags` ORDER BY tag ASC";
+            $query = "SELECT id, tag FROM `tags` ORDER BY tag ASC";
+            $result = mysql_query($query) or die(mysql_error());
             
-            if ($query) {
-              $result = mysql_query($query);
-              if (!$result) {
-                echo 'Could not run query: ' . mysql_error();
-                exit;
-              }
-            } else {
-              echo 'Please click <a href="/photography">here</a> to return to Photography';
-              exit;
-            }
-
             echo "<div id='allTags'>";
               // Display Tag Names
               while ($row = mysql_fetch_row($result)){
                 // put the pictures tagged with this tag in an array
-                $pictures = explode(',', $row[2]);
-
-                $i = 0;
-
-                // for each picture <= max, increment i
-                foreach ($pictures as $key => $value) {
-                  if ($value <= $maxId) {
-                    $i++;
-                  }
-                }
-
-                // don't show tags with a zero count
-                if ($i > 0) {
-                  echo "<a class='tagCount$i' href='/photography/blog/browse/$row[1]'>" . preg_replace('/_/', ' ', $row[1]) . '<a> ';
-                }
+                $tagID = $row[0];
+                $tag = $row[1];
+                
+                // how many relationships with this tag exist?
+                $query = "SELECT id FROM tag_relationships WHERE tag_id='$tagID'";
+                $tagResults = mysql_query($query) or die(mysql_error());
+                
+                $numTags = mysql_num_rows($tagResults);
+                
+                // echo "$tag, $tagID, $numTags<br>";
+                
+                echo "<a class='tagCount$numTags' href='/photography/blog/browse/$tag'>" . preg_replace('/_/', ' ', $tag) . '<a> ';
               }
 
             echo "</div>";
@@ -195,64 +182,63 @@
           } else {
             $tag = mysql_real_escape_string($section);
             
-            $query = "SELECT pictures FROM `tags` WHERE tag='$tag'";
+            // get the tag's id
+            $query = "SELECT id FROM tags WHERE tag='$tag'";
+            $result = mysql_query($query) or die(mysql_error());
             
-            if ($query) {
-              $result = mysql_query($query);
-              if (!$result) {
-                echo 'Could not run query: ' . mysql_error();
-                exit;
-              }
-            } else {
-              echo 'Please click <a href="/photography">here</a> to return to Photography';
-              exit;
+            while ($row = mysql_fetch_assoc($result)) {
+              $tagID = $row['id'];
             }
             
             // if there are no matching tags
             if (mysql_num_rows($result) == 0) {
               echo "no pictures matched $section<br><a style='line-height: 25px;' href='/photography/blog/browse/tags'>back to tags</a> | <a style='line-height: 25px;' href='/photography/blog/$max'>back to photoblog</a>";
             } else {
-              // if it's not all, and it's not numeric, than it's a tag
               echo "pictures tagged " . preg_replace('/_/', ' ', $section);
-
-              // link to the current picture
+              
+              // links to tags and photoblog
               echo "<br><a style='line-height: 25px;' href='/photography/blog/browse/tags'>back to tags</a> | <a style='line-height: 25px;' href='/photography/blog/$max'>back to photoblog</a><br>&nbsp;";
-
-              // Display Thumbnails
-              while ($row = mysql_fetch_row($result)){
-                // assign the results to a variable
-                $pictures = $row[0];
-              }
               
-              // remove a trailing comma from $pictures
-              $pictures = preg_replace('/,$/', '', $pictures);
-              
-              // make the variable into an array
-              $pictures = explode(',', $pictures);
+              // retrieve the photo ids associated with this tag
+              $query = "SELECT photo_id FROM tag_relationships WHERE tag_id='$tagID' ORDER BY photo_id ASC";
+              $result = mysql_query($query) or die(mysql_error());
               
               // open the ul
               echo '<ul>';
-                // for each picture
-                foreach ($pictures as $key => $value) {
-                  $current = $pictures[$key];
+                while ($row = mysql_fetch_assoc($result)) {
+                  $photo_id = $row['photo_id'];
                   
-                  $query = "SELECT `number` FROM `blog` WHERE id=$current";
-                  
-                  $result = mysql_query($query) or die(mysql_error());
-                  
-                  while ($row = mysql_fetch_assoc($result)) {
-                    $number = $row[0];
+                  // add padding zeros to photo_id
+                  switch (strlen($photo_id)) {
+                    case 1:
+                      $photo_id = '000' . $photo_id;
+                      break;
+                    case 2:
+                      $photo_id = '00' . $photo_id;
+                      break;
+                    case 3;
+                      $photo_id = '0' . $photo_id;
+                      break;
                   }
                   
-                  // only show the thumbnail if the id is <= the current photo's id
-                  if ($current <= $maxId) {
-                    echo "<li><a href='/photography/blog/$number'><img class='photoAllIMG' src='/media/photography/blog/thumbs/$current.jpg' alt='$current' height='75' width='75'></a></li>";
+                  // get the photo's number
+                  $numberQuery = "SELECT number FROM blog WHERE id='$photo_id' AND visible=1";
+                  $numberResult = mysql_query($numberQuery) or die(mysql_error());
+                  
+                  // if there were no rows returned, the picture may not have been published
+                  if (mysql_num_rows($numberResult) > 0) {
+                    while ($numberRow = mysql_fetch_assoc($numberResult)) {
+                      $photo_number = $numberRow['number'];
+                    }
+                    
+                    // display the thumbnail
+                    echo "<li><a href='/photography/blog/$photo_number'><img class='photoAllIMG' src='/media/photography/blog/thumbs/$photo_id.jpg' alt='$photo_number' height='75' width='75'></a></li>";
                   }
                 }
               echo '</ul>';
             }
           }
-
+          
         // close the centered content div
         echo '</div>';
         
