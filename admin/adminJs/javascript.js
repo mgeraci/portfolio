@@ -143,12 +143,13 @@ function adminAdd(){
   $('a#adminAdd').click(function(){
     // clear/populate the table
     $('#adminAddID, #adminAddTitle').val('');
-    // $('input#adminAddYear').val((new Date).getFullYear()); // add current year
+    
+    // add the year
     $('input#adminAddYear').val('2010');
 
     // make the table appear
     $('#adminAddDiv').slideDown('fast', function(){
-      $('#adminAddID').focus();
+      $('#adminAddTitle').focus();
     });
 
     // add cancel
