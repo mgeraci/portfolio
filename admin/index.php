@@ -11,7 +11,7 @@
   </head>
   <body>
     <div id="content">
-      <h1 id="adminPage" style="display: inline;">All Your Pictures Are Belong To You</h1>
+      <br><h1 id="adminPage" style="display: inline;">All Your Pictures Are Belong To You</h1>
       <br><a href='/admin?adminTable=blog'>photoblog</a> | <a href='/admin?adminTable=graphic'>graphic design</a>
       <br>
       <br>

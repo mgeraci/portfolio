@@ -138,6 +138,17 @@ function adminDelete(){
   });
 }
 
+// admin trigger
+function adminTrigger(){
+  $('a#adminAdd').click(function(){
+    adminAdd();
+  });
+  
+  $(document).bind('keydown', 'a', function(evt){
+    adminAdd();
+  }
+}
+
 // add an image
 function adminAdd(){
   $('a#adminAdd').click(function(){
