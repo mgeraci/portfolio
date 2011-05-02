@@ -3,7 +3,7 @@ $(function(){
   admin();
   adminEdit();
   adminDelete();
-  adminAdd();
+  adminTrigger();
 });
 
 // general admin js
@@ -144,29 +144,33 @@ function adminTrigger(){
     adminAdd();
   });
   
-  $(document).bind('keydown', 'a', function(evt){
+  // keyboard shortcut for add
+  $(document).bind('keydown', 'a', function(){
     adminAdd();
+  });
+  
+  // cancel
+  $(document).bind('keydown', 'esc', function(){
+    $('#adminAddDiv').slideUp('fast');
   });
 }
 
 // add an image
 function adminAdd(){
-  $('a#adminAdd').click(function(){
-    // clear/populate the table
-    $('#adminAddID, #adminAddTitle').val('');
-    
-    // add the year
-    $('input#adminAddYear').val('2010');
+  // clear/populate the table
+  $('#adminAddID, #adminAddTitle').val('');
+  
+  // add the year
+  $('input#adminAddYear').val('2010');
 
-    // make the table appear
-    $('#adminAddDiv').slideDown('fast', function(){
-      $('#adminAddTitle').focus();
-    });
+  // make the table appear
+  $('#adminAddDiv').slideDown('fast', function(){
+    $('#adminAddTitle').focus();
+  });
 
-    // add cancel
-    $('#adminAddCancel').click(function(){
-      $('#adminAddDiv').slideUp('fast');
-    })
+  // add cancel
+  $('#adminAddCancel').click(function(){
+    $('#adminAddDiv').slideUp('fast');
   });
 }
 
