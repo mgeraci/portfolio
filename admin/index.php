@@ -6,7 +6,7 @@
     <link rel="stylesheet" type="text/css" href="style/adminStyle.css">
 
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
-    <script type="text/javascript" src="../js/jquery.hotkeys-0.7.9.min.js"></script>
+    <script type="text/javascript" src="../js/jquery.hotkeys-0.8.min.js"></script>
     <script type="text/javascript" src="adminJs/javascript.js"></script>
   </head>
   <body>
