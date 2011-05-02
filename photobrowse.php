@@ -200,7 +200,7 @@
               echo "<br><a style='line-height: 25px;' href='/photography/blog/browse/tags'>back to tags</a> | <a style='line-height: 25px;' href='/photography/blog/$max'>back to photoblog</a><br>&nbsp;";
               
               // retrieve the photo ids associated with this tag
-              $query = "SELECT photo_id FROM tag_relationships WHERE tag_id='$tagID' ORDER BY photo_id ASC";
+              $query = "SELECT photo_id FROM tag_relationships WHERE tag_id='$tagID' ORDER BY photo_id DESC";
               $result = mysql_query($query) or die(mysql_error());
               
               // open the ul
