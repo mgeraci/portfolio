@@ -146,7 +146,7 @@ function adminTrigger(){
   
   $(document).bind('keydown', 'a', function(evt){
     adminAdd();
-  }
+  });
 }
 
 // add an image
