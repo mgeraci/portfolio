@@ -33,7 +33,7 @@
         <br><a class="new-window" href="http://vimeo.com/6826668">Pan Sonatas, New York - Bandoleros (2009)</a>
         <br><a class="new-window" href="http://www.youtube.com/watch?v=CsayTC-V8VU">Pan Sonatas, New York - The Ten Commandments of Pan (2008)</a>
         <br><a class="new-window" href="http://www.youtube.com/watch?v=qWFmbXErjpA">Pan Sonatas, New York - Pan Lamentation (2007)</a>
-        <br>Pan Sonatas, New York - This One's for You, Bradley (2006)
+        <br><a class="new-window" href="http://vimeo.com/23268333">Pan Sonatas, New York - This One's for You, Bradley (2006)</a>
         <br>Pan Sonatas, New York - From Beyond (2005)
         <br><a class="new-window" href ="http://vimeo.com/7625432">Trinidad All-Stars, Trinidad &amp; Tobago - Free Up (2005)</a>
         <br><a class="new-window" href="http://www.youtube.com/watch?v=aTUMlF9Zt3E">Sforzata Steel Orchestra, Trinidad &amp; Tobago - Dingolay (2005)</a>
