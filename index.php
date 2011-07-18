@@ -11,7 +11,7 @@
 		include("includes/head.php");
 	?>
 	<body>
-		<div id="outer">
+		<div id="indexOuter">
 			<ul id="index">
 				<li class="index1">
 					<a class="bio" href="/bio">Bio/Resume</a>
