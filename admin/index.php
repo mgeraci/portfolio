@@ -10,7 +10,7 @@
     <script type="text/javascript" src="adminJs/javascript.js"></script>
   </head>
   <body>
-    <div id="content">
+    <div id="adminContent">
       <br><h1 id="adminPage" style="display: inline;">All Your Pictures Are Belong To You</h1>
       <br><a href='/admin?adminTable=blog'>photoblog</a> | <a href='/admin?adminTable=graphic'>graphic design</a>
       <br>
@@ -24,17 +24,6 @@
 
         echo '<a id="adminAdd" href="#">Add A Picture</a>';
         echo "<div id='adminTable' style='display: none;'>$adminTable</div>";
-
-        if ($adminTable == 'blog') { ?>
-          <!-- show the tag upload form -->
-          <div id="tags" style="float: right; margin-right: 40px;">
-            <input type="submit" value="Empty Tags Table" id="truncateTags"></input>
-            <br><form enctype="multipart/form-data" action="api/uploadTags.php" method="POST">
-              <input type="hidden" name="MAX_FILE_SIZE" value="100000" />
-              tags: <input name="uploadedfile" type="file" /><input type="submit" value="Upload File" />
-            </form>
-          </div><br>
-        <?php }
       ?>
       <div id="adminAddDiv">
         <form enctype="multipart/form-data" onsubmit="return validateAddPicture();" action="api/add.php" method="POST">
@@ -75,6 +64,14 @@
                 <br><input id="adminAddThumbnail" type="file" name="thumbnail" size="50">
               </td>
             </tr>
+            <?php if ($adminTable == 'blog') { ?>
+              <tr>
+                <td colspan="5">
+                  <b>tags:</b>
+                  <br><textarea id="adminAddTags" name="tags"></textarea>
+                </td>
+              </tr>
+            <?php } ?>
             <tr>
               <td><input id="adminAddSubmit" type="submit" value="submit"></input></td>
               <td><input id="adminAddCancel" type="button" value="cancel"></input></td>
@@ -130,7 +127,10 @@
               ';
 
               if (($adminTable == 'blog') || ($adminTable == 'photoTest')) {
-                echo '<td>visible</td>';
+                echo '
+                  <td>tags</td>
+                  <td>visible</td>
+                ';
               }
 
               echo '
@@ -139,6 +139,31 @@
               </tr>
           ';
             while ($row = mysql_fetch_row($result)){
+              // if we're on the photoblog, get the tags associated with this photo
+              if ($adminTable == 'blog') {
+                // get the tag ids associated with this photo
+                $tag_id_query = "SELECT tag_id FROM tag_relationships WHERE photo_id=$row[1]";
+                $tag_id_result = mysql_query($tag_id_query) or die(mysql_error());
+                
+                $tag_array = array();
+                
+                while ($tag_id_row = mysql_fetch_assoc($tag_id_result)) {
+                  array_push($tag_array, $tag_id_row['tag_id']);
+                }
+                
+                $tag_name_array = array();
+                
+                foreach ($tag_array as $tag_id) {
+                  // get the tag's name
+                  $tag_name_query = "SELECT tag FROM tags WHERE id=$tag_id";
+                  $tag_name_result = mysql_query($tag_name_query) or die(mysql_error());
+                  
+                  while ($tag_name_row = mysql_fetch_assoc($tag_name_result)) {
+                    array_push($tag_name_array, $tag_name_row['tag']);
+                  }
+                }
+              }
+              
               if (($adminTable == 'blog') || ($adminTable == 'photoTest')){
                 echo "<tr class='adminPictureRow";
                 if ($row[6] == 0) {
@@ -152,6 +177,7 @@
                     <td class='width'>$row[4]</td>
                     <td class='height'>$row[5]</td>
                     <td class='anImage'>hover</td>
+                    <td class='tags'>" . join(', ', $tag_name_array) . "</td>
                     <td class='visible'>$row[6]</td>
                     <td class='adminDelete'><a class='delete' href='#'>delete</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
                     <td class='adminEdit'><a class='edit' href='#'>edit</a></td>

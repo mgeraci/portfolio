@@ -2,6 +2,17 @@
 /* = Admin = */
 /* ========= */
 
+/* centered div */
+#adminContent{
+  padding: 0px;
+  margin: 0 auto;
+  width: 1200px;
+}
+
+#adminAddTags{
+  width: 275px;
+}
+
 table#adminPictureTable{
   border-collapse: collapse;
   cellpadding: 5px;

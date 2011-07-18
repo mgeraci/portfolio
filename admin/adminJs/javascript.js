@@ -28,24 +28,6 @@ function admin(){
   }).mouseout(function(){
     $('#picturePreview').css('display', 'none');
   });
-  
-  // truncate the tags table
-  $('#truncateTags').click(function(){
-    var answer = confirm("delete all tags?")
-    if (answer){
-      $.ajax({
-        url: './api/truncateTags.php',
-        success: function(data) {
-          // alert(data);
-          if (data == 1) {
-            // alert('no more tags');
-          } else {
-            // alert(data)
-          }
-        }
-      });
-    }
-  });
 }
 
 // click on row edit
@@ -155,10 +137,10 @@ function adminTrigger(){
   });
 }
 
-// add an image
+// toggle add an image section, and handle clearing it
 function adminAdd(){
   // clear/populate the table
-  $('#adminAddID, #adminAddTitle').val('');
+  $('#adminAddID, #adminAddTitle, #adminAddTags').val('');
   
   // add the year
   $('input#adminAddYear').val('2010');
@@ -200,6 +182,7 @@ function validateAddPicture(){
   var year = $('#adminAddYear');
   var photo = $('#adminAddPhoto');
   var thumbnail = $('#adminAddThumbnail');
+  var tags = $('#adminAddTags');
 
   if (id.val() == "") {
     alert("Enter an ID.");
@@ -228,6 +211,12 @@ function validateAddPicture(){
   if (thumbnail.val() == "") {
     alert("Select a thumbnail.");
     year.focus();
+    return false;
+  }
+
+  if (tags.val() == "") {
+    alert("Enter the tags.");
+    tags.focus();
     return false;
   }
 
