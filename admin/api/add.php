@@ -57,6 +57,12 @@
     // get the current tag
     $currentTag = $tags[$key];
     
+    // make lowercase
+    $currentTag = strtolower($currentTag);
+    
+    // replace " " with "_"
+    $currentTag = preg_replace('/ /', '_', $currentTag);
+    
     // set tagID flag to false;
     $tagID = false;
     
