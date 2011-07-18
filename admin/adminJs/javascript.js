@@ -58,6 +58,7 @@ function adminEdit(){
 
           if (table == 'blog') {
             form += '<td></td>\
+            <td><input name="tags" id="adminTags"></input></td>\
             <td><input name="visible" id="adminVisible"></input></td>';
           }
 
@@ -88,6 +89,7 @@ function adminEdit(){
     $('input#adminHeight').val($(this).parent().prevAll('td.height').html());
 
     if ((table == 'blog')) {
+      $('input#adminTags').val($(this).parent().prevAll('td.tags').html());
       $('input#adminVisible').val($(this).parent().prevAll('td.visible').html());
     }
 
@@ -107,6 +109,7 @@ function adminDelete(){
     if (answer){
       data = 'number=' + $(this).parent().prevAll('td.number').html();
       data += '&table=' + $('#adminTable').html();
+      data += '&id=' + $(this).parent().prevAll('td.id').html();
 
       $.ajax({
         url: "./api/delete.php",

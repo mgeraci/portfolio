@@ -81,12 +81,13 @@
       // The tag is in the database already
       
       // does this photo and tag relationship exist?
-      $query = "SELECT id FROM tag_relationships WHERE tag_id='$tagID' AND photo_id='$currentPicture'";
+      $query = "SELECT id FROM tag_relationships WHERE tag_id='$tagID' AND photo_id='$id'";
+      echo $query . '<br>';
       $result = mysql_query($query) or die(mysql_error());
       
       if (mysql_num_rows($result) == 0) {
         // and add a relationship for the current picture along with the photo id
-        $query = "INSERT INTO `tag_relationships` VALUES ('', '$tagID', '$currentPicture')";
+        $query = "INSERT INTO `tag_relationships` VALUES ('', '$tagID', '$id')";
         $result = mysql_query($query) or die(mysql_error());
         // echo ' added relationship';
       } else {
@@ -101,7 +102,7 @@
       $tagID = mysql_insert_id();
       
       // Add a relationship between the current photo and the current tag
-      $query = "INSERT INTO tag_relationships VALUES ('', $tagID, $currentPicture)";
+      $query = "INSERT INTO tag_relationships VALUES ('', $tagID, $id)";
       $result = mysql_query($query) or die(mysql_error());
     }
   }
