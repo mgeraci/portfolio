@@ -171,7 +171,10 @@
                 
                 // echo "$tag, $tagID, $numTags<br>";
                 
-                echo "<a class='tagCount$numTags' href='/photography/blog/browse/$tag'>" . preg_replace('/_/', ' ', $tag) . '<a> ';
+                // only display the tag if it's being used
+                if ($numTags > 0) {
+                  echo "<a class='tagCount$numTags' href='/photography/blog/browse/$tag'>" . preg_replace('/_/', ' ', $tag) . '<a> ';
+                }
               }
 
             echo "</div>";

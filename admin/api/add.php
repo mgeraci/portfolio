@@ -82,7 +82,6 @@
       
       // does this photo and tag relationship exist?
       $query = "SELECT id FROM tag_relationships WHERE tag_id='$tagID' AND photo_id='$id'";
-      echo $query . '<br>';
       $result = mysql_query($query) or die(mysql_error());
       
       if (mysql_num_rows($result) == 0) {
@@ -108,8 +107,8 @@
   }
 
   // writes the photo to the server
-  // move_uploaded_file($_FILES['photo']['tmp_name'], $photoTarget);
-  // move_uploaded_file($_FILES['thumbnail']['tmp_name'], $thumbTarget);
+  move_uploaded_file($_FILES['photo']['tmp_name'], $photoTarget);
+  move_uploaded_file($_FILES['thumbnail']['tmp_name'], $thumbTarget);
 
   // redirect back to admin
   header("Location: /admin?adminTable=$table");
