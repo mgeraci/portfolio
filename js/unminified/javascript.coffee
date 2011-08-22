@@ -84,7 +84,7 @@ keys = ->
 # handle showing/hiding piecelist and ajax loading image
 web = ->
   if $('#pageWeb').length > 0
-    # size of pieceContent's left attr pluss margin-left
+    # size of pieceContent's left attr plus margin-left
     containerSize = 330
     
     # set opacity of list on ie7
@@ -180,7 +180,6 @@ web = ->
       
       return false
     )
-
 
 webKeys = ->
   if $('#pageWeb').length > 0

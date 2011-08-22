@@ -40,7 +40,19 @@
     
     include("includes/head.php");
   ?>
-  <body>
+  <script type="text/javascript">
+    // set the opacity of the list to 1 if you're not viewing a piece explicitly for firefox
+    firefoxWeb = function(){
+      if ($('#piece').html() == '') {
+        // set the opacity
+        $('#pieceList ul').css('opacity', 1);
+        
+        // set the container width
+        $('#pieceListContainer').css('width', 330)
+      }
+    }
+  </script>
+  <body onpageshow="firefoxWeb();">
     <div id="content">
       <?php
         // // M E N U // //
