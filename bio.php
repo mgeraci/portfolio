@@ -18,7 +18,7 @@
       ?>
       <div class="text">
         <h1>Bio</h1>
-        <br>I'm Michael P. Geraci, a web designer, user experience guy, and entrepreneur based in New York, NY. I have worked with a number of New York startups, and am the co-founder of <a href="http://www.reducify.com" class="new-window">Reducify</a>, a site that helps consumers find local appliances.
+        <br>I'm Michael P. Geraci, a web designer, user experience guy, and entrepreneur based in New York, NY. I have worked with a number of New York startups, and like coding SASS/CSS, CoffeeScript/jQuery, and HAML/HTML.
         <br>
         <br><a href="/media/documents/GeraciResume.pdf">Resume (PDF)</a>
         <br><a href="mailto:mgeraci@gmail.com">&#109;&#103;&#101;&#114;&#97;&#99;&#105;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;</a>
