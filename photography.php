@@ -4,23 +4,28 @@
     $section = $_GET['section'];
 
     // // H E A D // //
-    $title = 'Michael P. Geraci - Photography';
+    $title = 'Michael P. Geraci';
 
     switch ($section) {
       case 'blog':
-        $title .= ' - Photoblog';
+        // get the variables from the url
+        if (is_numeric($_GET["piece"])) {
+          $piece = $_GET["piece"];
+        }
+        
+        $title .= " - Photoblog $piece";
 
         // echo the rss link
         echo '<link rel="alternate" type="application/rss+xml" title="Michael P. Geraci - Photoblog RSS" href="http://feeds.feedburner.com/mpgPhotoblog" />';
         break;
       case 'vegan':
-        $title .= ' - What the Heck do Vegans Eat?';
+        $title .= ' - Photography - What the Heck do Vegans Eat?';
         break;
       case 'dantes':
-        $title .= ' - Dante\'s Southern Cuisine';
+        $title .= ' - Photography - Dante\'s Southern Cuisine';
         break;
       case 'ksklookbook08':
-        $title .= ' - KillShopKill 2008 Lookbook';
+        $title .= ' - Photography - KillShopKill 2008 Lookbook';
         break;
     }
 

@@ -1,9 +1,47 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html>
 	<?php
+	  // connect to the database
+		include('includes/connect.php');
+		
+		// // // Get the piece number of the most current photo (assigned to $max) // // //
+
+		$query = "SELECT max(number) as max FROM `graphic`";
+
+		if ($query) {
+			$result = mysql_query($query);
+			if (!$result) {
+				echo 'Could not run query: ' . mysql_error();
+				exit;
+			}
+		}
+
+		while ($row = mysql_fetch_assoc($result)){
+			$max = $row["max"];
+		}
+
+		$section = $_GET["section"];
+		$piece = $_GET["piece"];
+
+		// if there's no piece, set it to max
+		if (!$piece) {
+			$piece = $max;
+		}
+
+		// get the page number based on the piece number, subtract 1 because they start with 0
+		$page = ceil(($max + 1 - $piece)/12) - 1;
+		$limit = $page * 12;
+			  
 		// // H E A D // //
 		$title = 'Michael P. Geraci - Graphic Design';
-
+    
+    // get the variables from the url
+    if (is_numeric($_GET["piece"])) {
+      $piece = $_GET["piece"];
+    }
+    
+    $title .= " $piece";
+    
 		// gets the location of the page and assigns it to $location
 		// format is /page.php
 		$location = $_SERVER['PHP_SELF'];
@@ -23,38 +61,6 @@
 			?>
 			<div id="pageGraphic">
 				<?php
-					// connect to the database
-					include('includes/connect.php');
-					
-					// // // Get the piece number of the most current photo (assigned to $max) // // //
-
-					$query = "SELECT max(number) as max FROM `graphic`";
-
-					if ($query) {
-						$result = mysql_query($query);
-						if (!$result) {
-							echo 'Could not run query: ' . mysql_error();
-							exit;
-						}
-					}
-			
-					while ($row = mysql_fetch_assoc($result)){
-						$max = $row["max"];
-					}
-
-					$section = $_GET["section"];
-					$piece = $_GET["piece"];
-
-					// if there's no piece, set it to max
-					if (!$piece) {
-						$piece = $max;
-					}
-
-					// get the page number based on the piece number, subtract 1 because they start with 0
-					$page = ceil(($max + 1 - $piece)/12) - 1;
-					$limit = $page * 12;
-
-
 					// // // Thumbnail Section // // //
 
 					echo '<div id="galleryThumbs">';

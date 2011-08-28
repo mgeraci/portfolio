@@ -16,7 +16,7 @@
         case '/photobrowse.php':
           echo '<meta name="description" content="Michael P. Geraci\'s photography portfolio - a photoblog and professional projects.">';
           break;
-        case '/grapic.php':
+        case '/graphic.php':
           echo '<meta name="description" content="Michael P. Geraci\'s graphic design portfolio - silkscreen design and printing, logo design.">';
           break;
         case '/recordings.php':
