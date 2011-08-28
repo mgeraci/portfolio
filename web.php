@@ -85,7 +85,14 @@
               }
 
               echo "<br><br>";
-
+              
+              // if we're on reducify, show the video of the tour
+              if ($piece == 'reducify') {
+                echo '<div id="preVideo">A brief tour of Reducify\'s offerings, shown entirely in the user\'s browser:</div>
+                <br><iframe src="http://player.vimeo.com/video/28252440?title=0&amp;byline=0&amp;portrait=0&amp;color=bbd199" width="750" height="422" frameborder="0"></iframe>
+                <br><br>';
+              }
+              
               // append the navigation if more than one image
               if ($images > 1) {
                 echo "<a class='arrow previous' href='#' id='previous'>previous</a><span id='webCountWrapper'><span id='current'>1</span>/<span id='images'>$images</span></span><a class='arrow next' href='#' id='next'>next</a><br>";

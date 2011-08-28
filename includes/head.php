@@ -42,7 +42,7 @@
         <!--[if IE 7]><link rel="stylesheet" type="text/css" href="/style/ie7.css"><![endif]-->
         <!--[if IE 8]><link rel="stylesheet" type="text/css" href="/style/ie8.css"><![endif]-->';
       } else {
-        echo '<link rel="stylesheet" type="text/css" href="/style/unminified/style.css">
+        echo '<link rel="stylesheet" type="text/css" href="/style/style.css">
         <!--[if lt IE 7]><link rel="stylesheet" type="text/css" href="/style/unminified/ielt7.css"><![endif]-->
         <!--[if IE 7]><link rel="stylesheet" type="text/css" href="/style/unminified/ie7.css"><![endif]-->
         <!--[if IE 8]><link rel="stylesheet" type="text/css" href="/style/unminified/ie8.css"><![endif]-->';
