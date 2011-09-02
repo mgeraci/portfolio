@@ -37,7 +37,7 @@
         <br>Pan Sonatas, New York - From Beyond (2005)
         <br><a class="new-window" href ="http://vimeo.com/7625432">Trinidad All-Stars, Trinidad &amp; Tobago - Free Up (2005)</a>
         <br><a class="new-window" href="http://www.youtube.com/watch?v=aTUMlF9Zt3E">Sforzata Steel Orchestra, Trinidad &amp; Tobago - Dingolay (2005)</a>
-        <br><a class="new-window" href="http://www.youtube.com/watch?v=FXB0WFiBom0">Pan Sonatas, New York - War 2004 (2004)</a>
+        <br><a class="new-window" href="http://vimeo.com/28470859">Pan Sonatas, New York - War 2004 (2004)</a>
       </div>
     </div>
     <?php include('includes/googleAnalytics.php'); ?>
