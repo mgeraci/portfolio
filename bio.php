@@ -24,7 +24,8 @@
         <br><a href="mailto:mgeraci@gmail.com">&#109;&#103;&#101;&#114;&#97;&#99;&#105;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;</a>
       </div>
       <div class="text">
-        <h1>Last Updated: 5.18.11</h1>
+        <h1>Last Updated: 10.9.11</h1>
+        <br><a href="http://vimeo.com/28989090" class="new-window">New Steel Drum Performance: It's Showtime</a>
         <br><a href="/photography/blog">New Photos: Costa Rica</a>
         <br><a href="/web/conservatoryChallenge">New Web Design: Oberlin Conservatory Challenge</a>
         <br><a href="/web/life">New Web Design: Conway's Game of Life in jQuery/Canvas</a>

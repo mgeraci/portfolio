@@ -29,6 +29,7 @@
       <div class="linksText" style="width: 550px;">
         <h1>Steel Drum Performances that Michael has taken part in:</h1>
         <br>
+        <br><a class="new-window" href="http://vimeo.com/28989090">Pan Sonatas, New York - It's Showtime (2011)</a>
         <br><a class="new-window" href="http://vimeo.com/16149060">Pan Sonatas, New York - Battle Zone (2010)</a>
         <br><a class="new-window" href="http://vimeo.com/6826668">Pan Sonatas, New York - Bandoleros (2009)</a>
         <br><a class="new-window" href="http://www.youtube.com/watch?v=CsayTC-V8VU">Pan Sonatas, New York - The Ten Commandments of Pan (2008)</a>
