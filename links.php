@@ -1,15 +1,13 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html>
-  <?php
-    // // H E A D // //
-    $title = 'Michael P. Geraci - Links';
+<?php
+  // // H E A D // //
+  $title = 'Michael P. Geraci - Links';
 
-    // gets the location of the page and assigns it to $location
-    // format is /page.php
-    $location = $_SERVER['PHP_SELF'];
+  // gets the location of the page and assigns it to $location
+  // format is /page.php
+  $location = $_SERVER['PHP_SELF'];
 
-    include("includes/head.php");
-  ?>
+  include("includes/head.php");
+?>
   <body>
     <div id="content">
       <?php

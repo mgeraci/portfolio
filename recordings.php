@@ -1,44 +1,42 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html>
-  <?php
-    $piece = $_GET['piece'];
+<?php
+  $piece = $_GET['piece'];
 
-    // // H E A D // //
-    $title = 'Michael P. Geraci - Recordings';
+  // // H E A D // //
+  $title = 'Michael P. Geraci - Recordings';
 
-    switch ($piece) {
-      case 'dri':
-        $title .= ' - dancerockinfinity';
-        break;
-      case 'dhh':
-        $title .= ' - Death\'s Head Hearth';
-        break;
-      case 'obertones':
-        $title .= ' - The Obertones';
-        break;
-      case 'amos':
-        $title .= ' - Amos Payne';
-        break;
-      case 'guilty':
-        $title .= ' - The Guilty Pleasures';
-        break;
-      case 'osteel':
-        $title .= ' - Oberlin Steel';
-        break;
-      case 'icharge':
-        $title .= ' - I Charge a Mile';
-        break;
-      case 'cellar':
-        $title .= ' - Cellar Door';
-        break;
-    }
+  switch ($piece) {
+    case 'dri':
+      $title .= ' - dancerockinfinity';
+      break;
+    case 'dhh':
+      $title .= ' - Death\'s Head Hearth';
+      break;
+    case 'obertones':
+      $title .= ' - The Obertones';
+      break;
+    case 'amos':
+      $title .= ' - Amos Payne';
+      break;
+    case 'guilty':
+      $title .= ' - The Guilty Pleasures';
+      break;
+    case 'osteel':
+      $title .= ' - Oberlin Steel';
+      break;
+    case 'icharge':
+      $title .= ' - I Charge a Mile';
+      break;
+    case 'cellar':
+      $title .= ' - Cellar Door';
+      break;
+  }
 
-    // gets the location of the page and assigns it to $location
-    // format is /page.php
-    $location = $_SERVER['PHP_SELF'];
+  // gets the location of the page and assigns it to $location
+  // format is /page.php
+  $location = $_SERVER['PHP_SELF'];
 
-    include("includes/head.php");
-  ?>
+  include("includes/head.php");
+?>
   <body>
     <div id="content">
       <?php

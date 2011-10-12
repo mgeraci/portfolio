@@ -1,42 +1,40 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html>
-  <?php
-    $section = $_GET['section'];
+<?php
+  $section = $_GET['section'];
 
-    // // H E A D // //
-    $title = 'Michael P. Geraci';
+  // // H E A D // //
+  $title = 'Michael P. Geraci';
 
-    switch ($section) {
-      case 'blog':
-        // get the variables from the url
-        if (is_numeric($_GET["piece"])) {
-          $piece = $_GET["piece"];
-        }
-        
-        $title .= " - Photoblog $piece";
+  switch ($section) {
+    case 'blog':
+      // get the variables from the url
+      if (is_numeric($_GET["piece"])) {
+        $piece = $_GET["piece"];
+      }
+      
+      $title .= " - Photoblog $piece";
 
-        // echo the rss link
-        echo '<link rel="alternate" type="application/rss+xml" title="Michael P. Geraci - Photoblog RSS" href="http://feeds.feedburner.com/mpgPhotoblog" />';
-        break;
-      case 'vegan':
-        $title .= ' - Photography - What the Heck do Vegans Eat?';
-        break;
-      case 'dantes':
-        $title .= ' - Photography - Dante\'s Southern Cuisine';
-        break;
-      case 'ksklookbook08':
-        $title .= ' - Photography - KillShopKill 2008 Lookbook';
-        break;
-    }
+      // echo the rss link
+      echo '<link rel="alternate" type="application/rss+xml" title="Michael P. Geraci - Photoblog RSS" href="http://feeds.feedburner.com/mpgPhotoblog" />';
+      break;
+    case 'vegan':
+      $title .= ' - Photography - What the Heck do Vegans Eat?';
+      break;
+    case 'dantes':
+      $title .= ' - Photography - Dante\'s Southern Cuisine';
+      break;
+    case 'ksklookbook08':
+      $title .= ' - Photography - KillShopKill 2008 Lookbook';
+      break;
+  }
 
-    // gets the location of the page and assigns it to $location
-    // format is /page.php
-    $location = $_SERVER['PHP_SELF'];
+  // gets the location of the page and assigns it to $location
+  // format is /page.php
+  $location = $_SERVER['PHP_SELF'];
 
-    include("includes/head.php");
-    
-    include('includes/galleryFunctions.php');
-  ?>
+  include("includes/head.php");
+  
+  include('includes/galleryFunctions.php');
+?>
   <body>
     <div id="content">
       <?php

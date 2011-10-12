@@ -1,45 +1,43 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html>
-  <?php
-    // Connect to database
-    include('includes/connect.php');
-    
-    // get and clean the input
-    $piece = mysql_real_escape_string($_GET['piece']);
-    
-    $query = "SELECT * FROM web WHERE shortname='$piece'";
-    $result = mysql_query($query);
-    if (!$result) {
-      echo 'Could not run query: ' . mysql_error();
-      exit;
-    }
-    
-    while ($row = mysql_fetch_assoc($result)) {
-      $name = $row['name'];
-      $tech = $row['tech'];
-      $subtitle = $row['subtitle'];
-      $year = $row['year'];
-      $images = $row['images'];
-      $url = $row['url'];
-    }
-    
-    // if there's a piece and there's a name, then the sql query was successful - set a flag to show piece stuff
-    $viewing = ($piece && $name) ? true : false;
-    
-    // set the base title
-    $title = "Michael P. Geraci - Web Design";
-    
-    // append the title if there's a piece selected
-    if ($viewing) {
-      $title .= " - $name";
-    }
-    
-    // gets the location of the page and assigns it to $location
-    // format is /page.php
-    $location = $_SERVER['PHP_SELF'];
-    
-    include("includes/head.php");
-  ?>
+<?php
+  // Connect to database
+  include('includes/connect.php');
+  
+  // get and clean the input
+  $piece = mysql_real_escape_string($_GET['piece']);
+  
+  $query = "SELECT * FROM web WHERE shortname='$piece'";
+  $result = mysql_query($query);
+  if (!$result) {
+    echo 'Could not run query: ' . mysql_error();
+    exit;
+  }
+  
+  while ($row = mysql_fetch_assoc($result)) {
+    $name = $row['name'];
+    $tech = $row['tech'];
+    $subtitle = $row['subtitle'];
+    $year = $row['year'];
+    $images = $row['images'];
+    $url = $row['url'];
+  }
+  
+  // if there's a piece and there's a name, then the sql query was successful - set a flag to show piece stuff
+  $viewing = ($piece && $name) ? true : false;
+  
+  // set the base title
+  $title = "Michael P. Geraci - Web Design";
+  
+  // append the title if there's a piece selected
+  if ($viewing) {
+    $title .= " - $name";
+  }
+  
+  // gets the location of the page and assigns it to $location
+  // format is /page.php
+  $location = $_SERVER['PHP_SELF'];
+  
+  include("includes/head.php");
+?>
   <script type="text/javascript">
     // set the opacity of the list to 1 if you're not viewing a piece explicitly for firefox
     firefoxWeb = function(){
@@ -69,7 +67,7 @@
             <?php
               // title
               if ($url) {
-                echo "<a class='new-window webTitle' href='$url'>$name, $year</a>";
+                echo "<h1><a class='new-window webTitle' href='$url'>$name, $year</a></h1>";
               } else {
                 echo "<h1>$name, $year</h1>";
               }

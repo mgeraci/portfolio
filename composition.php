@@ -1,50 +1,48 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html>
-  <?php
-    $piece = $_GET['piece'];
+<?php
+  $piece = $_GET['piece'];
 
-    // // H E A D // //
-    $title = 'Michael P. Geraci - Composition';
+  // // H E A D // //
+  $title = 'Michael P. Geraci - Composition';
 
-    switch ($piece) {
-      case 'ascension':
-        $title .= ' - Ascension';
-        break;
-      case 'heptadecality':
-        $title .= ' - Heptadecality';
-        break;
-      case 'futility':
-        $title .= ' - Futility';
-        break;
-      case 'firstflesh':
-        $title .= ' - First Flesh';
-        break;
-      case 'stolen':
-        $title .= ' - Stolen Thoughts';
-        break;
-      case 'though':
-        $title .= ' - Though We Don\'t Know What To Do, We Know How To Do It';
-        break;
-      case 'abstractToExact':
-        $title .= ' - Abstract to Exact';
-        break;
-      case 'home':
-        $title .= ' - Home is a Visuacoustic Space';
-        break;
-      case 'hollow':
-        $title .= ' - Hollow Earth';
-        break;
-      case 'blood':
-        $title .= ' - There is No Blood in a Dying World';
-        break;
-    }
+  switch ($piece) {
+    case 'ascension':
+      $title .= ' - Ascension';
+      break;
+    case 'heptadecality':
+      $title .= ' - Heptadecality';
+      break;
+    case 'futility':
+      $title .= ' - Futility';
+      break;
+    case 'firstflesh':
+      $title .= ' - First Flesh';
+      break;
+    case 'stolen':
+      $title .= ' - Stolen Thoughts';
+      break;
+    case 'though':
+      $title .= ' - Though We Don\'t Know What To Do, We Know How To Do It';
+      break;
+    case 'abstractToExact':
+      $title .= ' - Abstract to Exact';
+      break;
+    case 'home':
+      $title .= ' - Home is a Visuacoustic Space';
+      break;
+    case 'hollow':
+      $title .= ' - Hollow Earth';
+      break;
+    case 'blood':
+      $title .= ' - There is No Blood in a Dying World';
+      break;
+  }
 
-    // gets the location of the page and assigns it to $location
-    // format is /page.php
-    $location = $_SERVER['PHP_SELF'];
+  // gets the location of the page and assigns it to $location
+  // format is /page.php
+  $location = $_SERVER['PHP_SELF'];
 
-    include("includes/head.php");
-  ?>
+  include("includes/head.php");
+?>
   <body>
     <div id="content">
       <?php

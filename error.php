@@ -46,14 +46,11 @@
       ";
       break;
   }
+
+  // // H E A D // //
+  $title = 'Michael P. Geraci - ' . $title;
+  include("includes/head.php");
 ?>
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html>
-  <?php
-    // // H E A D // //
-    $title = 'Michael P. Geraci - ' . $title;
-    include("includes/head.php");
-  ?>
   <body>
     <div id="content">
       <?php
@@ -64,7 +61,7 @@
         include("includes/menu.php");
       ?>
       <div class="linksText">
-        <h1><?php echo $subtitle; ?></h1>
+        <b><?php echo $subtitle; ?></b>
         <br><?php echo $content; ?>
       </div>
       <script type="text/javascript">

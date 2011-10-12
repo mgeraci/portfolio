@@ -1,21 +1,19 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html>
-  <?php
-    $section = $_GET["section"];
+<?php
+  $section = $_GET["section"];
 
-    if (!$section) {
-      $section = 'all';
-    }
+  if (!$section) {
+    $section = 'all';
+  }
 
-    // // H E A D // //
-    $title = "Michael P. Geraci - Photography - Browse " . ucwords($section);
+  // // H E A D // //
+  $title = "Michael P. Geraci - Photography - Browse " . ucwords($section);
 
-    // gets the location of the page and assigns it to $location
-    // format is /page.php
-    $location = $_SERVER['PHP_SELF'];
+  // gets the location of the page and assigns it to $location
+  // format is /page.php
+  $location = $_SERVER['PHP_SELF'];
 
-    include("includes/head.php");
-  ?>
+  include("includes/head.php");
+?>
   <body>
     <div id="content">
       <?php
