@@ -57,46 +57,37 @@
     </div>
     <div id="indexBottom" class="wrapOut">
       <div class="wrapIn">
-        <h1>Last Updated: 10.9.11</h1>
+        <h1>Last Updated: 10.15.11</h1>
+        <?php
+          $recent = array(
+            array('/web/ivysage', '/images/recent_thumbs/ivysage.jpg', "New Web Design:<br>Ivysage", ''),
+            array('http://vimeo.com/28989090', '/images/recent_thumbs/showtime.jpg', "New Steel Drum Performance:<br>It's Showtime", 'new-window'),
+            array('/photography/blog', '/media/photography/blog/thumbs/3937.jpg', "New Photos<br>Costa Rica", ''),
+            array('/web/conservatoryChallenge', '/images/recent_thumbs/con_challenge.jpg', "New Web Design:<br>Oberlin Conservatory Challenge", '')
+          );
+                    
+          function recent_item($array){
+            echo "
+              <div class='group'>
+                <a href='$array[0]' class='$array[3]'>
+                  <img src='$array[1]'>
+                  <div class='text'>$array[2]</div>
+                </a>
+              </div>
+            ";
+          }
+        ?>
         <div class="row">
-          <div class="group">
-            <a href="http://vimeo.com/28989090" class="new-window">
-              <img src="/images/recent_thumbs/showtime.jpg">
-              <div class="text">
-                New Steel Drum Performance:
-                <br>It's Showtime
-              </div>
-            </a>
-          </div>
-          <div class="group">
-            <a href="/photography/blog">
-              <img src="/media/photography/blog/thumbs/3937.jpg">
-              <div class="text">
-                New Photos:
-                <br>Costa Rica
-              </div>
-            </a>
-          </div>
+          <?php
+            echo recent_item($recent[0]);
+            echo recent_item($recent[1]);
+          ?>
         </div>
         <div class="row">
-          <div class="group">
-            <a href="/web/conservatoryChallenge">
-              <img src="/images/recent_thumbs/con_challenge.jpg">
-              <div class="text">
-                New Web Design:
-                <br>Oberlin Conservatory Challenge
-              </div>
-            </a>
-          </div>
-          <div class="group">
-            <a href="/web/life">
-              <img src="/images/recent_thumbs/life.jpg">
-              <div class="text">
-                New Web Design:
-                <br>Conway's Game of Life in jQuery/Canvas
-              </div>
-            </a>
-          </div>
+          <?php
+            echo recent_item($recent[2]);
+            echo recent_item($recent[3]);
+          ?>
         </div>
         <div class="copyright">This website and its contents are &copy; Michael P. Geraci, 2006-<?php echo date("Y") ?></div>
       </div>
