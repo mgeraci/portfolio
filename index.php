@@ -19,36 +19,40 @@
     </div>
     <div id="indexTop" class="wrapOut">
       <div class="wrapIn">
-        <div id="headshot">
-          <img src="/images/headshot.png" width="300" height="478" alt="Michael P. Geraci">
-        </div>
-        <div id="indexRight">
-          <h1>I'm Michael P. Geraci</h1>
-          <div class="text">
-            I'm a web and user experience designer based in New York, NY. I like helping startups with the life cycle of front-end work, from wireframes and mockups to implementation. I hack in SASS/ CSS, CoffeeScript/jQuery, and HAML/HTML.
-            <br>
-            <br>You can see my <a href="/web">web design portfolio</a>, my <a href="/photography/blog">hobby photoblog</a>, and the rest of my work.
-            <br>
-            <br><a href="/media/documents/GeraciResume.pdf">Resume (PDF)</a>
-            <br><a href="mailto:mgeraci@gmail.com">&#109;&#103;&#101;&#114;&#97;&#99;&#105;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;</a>
-          </div>
-          <div class="socialLinks">
-            <ul>
-              <li>
-                <a class="github" href="http://www.github.com/mgeraci">view my github page</a>
-              </li>
-              <li>
-                <a class="twitter" href="http://www.twitter.com/mgeraci">view my twitter stream</a>
-              </li>
-              <li>
-                <a class="linked_in" href="http://www.linkedin.com/in/mpgeraci">view my linked in profile</a>
-              </li>
-              <li>
-                <a class="facebook" href="http://www.facebook.com/michaelgeraci">view my facebook page</a>
-              </li>
-            </ul>
-          </div>
-        </div>
+        <table>
+          <tr>
+            <td id="headshot"></td>
+            <td id="indexRight">
+              <div id="wrapper">
+                <h1>I'm Michael P. Geraci</h1>
+                <div class="text">
+                  I'm a web and user experience designer based in New York, NY. I like helping startups with the life cycle of front-end work, from wireframes and mockups to implementation. I hack in SASS/ CSS, CoffeeScript/jQuery, and HAML/HTML.
+                  <br>
+                  <br>You can see my <a href="/web">web design portfolio</a>, my <a href="/photography/blog">hobby photoblog</a>, and the rest of my work.
+                  <br>
+                  <br><a href="/media/documents/GeraciResume.pdf">Resume (PDF)</a>
+                  <br><a href="mailto:mgeraci@gmail.com">&#109;&#103;&#101;&#114;&#97;&#99;&#105;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;</a>
+                </div>
+                <div class="socialLinks">
+                  <ul>
+                    <li>
+                      <a class="github" href="http://www.github.com/mgeraci">view my github page</a>
+                    </li>
+                    <li>
+                      <a class="twitter" href="http://www.twitter.com/mgeraci">view my twitter stream</a>
+                    </li>
+                    <li>
+                      <a class="linked_in" href="http://www.linkedin.com/in/mpgeraci">view my linked in profile</a>
+                    </li>
+                    <li>
+                      <a class="facebook" href="http://www.facebook.com/michaelgeraci">view my facebook page</a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </td>
+          </tr>
+        </table>
       </div>
     </div>
     <div id="indexBottom" class="wrapOut">

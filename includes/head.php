@@ -36,7 +36,7 @@
         }
 
         // meta keywords
-        echo '<meta name="keywords" content="michael, geraci, michael geraci, michael p. geraci, oberlin, silkscreen, graphic design, recording, photography, web design, web, user experience, reducify">';
+        echo '<meta name="keywords" content="michael, geraci, michael geraci, michael p. geraci, web design, web, user experience, ux design, photography, graphic design, recording">';
 
         // css
         if (preg_match('/michaelgeraci\.com/', $_SERVER['SERVER_NAME'] )) {
