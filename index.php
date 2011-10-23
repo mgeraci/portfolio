@@ -1,6 +1,6 @@
 <?php
   // // H E A D // //
-  $title = 'Michael P. Geraci - Bio/Resume';
+  $title = 'Michael P. Geraci - Web Design, User Experience Design';
 
   // gets the location of the page and assigns it to $location
   // format is /page.php
