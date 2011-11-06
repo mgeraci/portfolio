@@ -146,7 +146,7 @@ function adminAdd(){
   $('#adminAddID, #adminAddTitle, #adminAddTags').val('');
   
   // add the year
-  $('input#adminAddYear').val('2010');
+  $('input#adminAddYear').val('2011');
 
   // make the table appear
   $('#adminAddDiv').slideDown('fast', function(){
