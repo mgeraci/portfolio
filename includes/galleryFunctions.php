@@ -201,4 +201,20 @@
     // the picture div, starts with class 'loading', jQuery adds the image
     echo "<div id='pictureDiv' class='loading' style='width: $theWidth" . "px; height: $theHeight" . "px;'></div>";
   }
+  
+  // get a list of all photo ids that are currently being shown
+  // store in array $visible_photos
+  function visiblePhotos() {
+    $query = "SELECT id FROM blog WHERE visible=1";
+    $result = mysql_query($query) or die(mysql_error());
+  
+    $visible_photos = array();
+
+    while ($row = mysql_fetch_assoc($result)) {
+      array_push($visible_photos, $row['id']);
+    }
+    
+    return $visible_photos;
+  }
+  
 ?>

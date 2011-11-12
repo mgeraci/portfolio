@@ -220,9 +220,12 @@
                     $result = mysql_query($query) or die(mysql_error());
                     
                     while ($row = mysql_fetch_assoc($result)) {
-                      $link = "<a href='/photography/blog/browse/" . $row['tag'] . "'>" . preg_replace('/_/', ' ', $row['tag']) . "</a>";
-                      
-                      array_push($tag_name_array, $link);
+                      // if the tag is not michaelgeraci.com
+                      if ($row['tag'] != 'michaelgeraci.com') {
+                        $link = "<a href='/photography/blog/browse/" . $row['tag'] . "'>" . preg_replace('/_/', ' ', $row['tag']) . "</a>";
+                        
+                        array_push($tag_name_array, $link);
+                      }
                     }
                   }
 

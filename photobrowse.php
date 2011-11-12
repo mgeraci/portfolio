@@ -13,6 +13,7 @@
   $location = $_SERVER['PHP_SELF'];
 
   include("includes/head.php");
+  include('includes/galleryFunctions.php');
 ?>
   <body>
     <div id="content">
@@ -148,30 +149,45 @@
           } else if ($section == 'tags') {
             echo browseNavigation($minYear, $maxYear, $section);
             
-            // link to the current picture
+            // link back to the photoblog
             echo "<br><a style='line-height: 25px;' href='/photography/blog/$max'>back to photoblog</a><br>&nbsp;";
             
+            // get a list of all photo ids that are currently being shown
+            $visible_photos = visiblePhotos();
+            
+            // get all tags
             $query = "SELECT id, tag FROM `tags` ORDER BY tag ASC";
             $result = mysql_query($query) or die(mysql_error());
             
             echo "<div id='allTags'>";
-              // Display Tag Names
+              // for each tag
               while ($row = mysql_fetch_row($result)){
                 // put the pictures tagged with this tag in an array
                 $tagID = $row[0];
                 $tag = $row[1];
                 
-                // how many relationships with this tag exist?
-                $query = "SELECT id FROM tag_relationships WHERE tag_id='$tagID'";
+                // get the photo id for the current tag
+                $query = "SELECT photo_id FROM tag_relationships WHERE tag_id='$tagID'";
                 $tagResults = mysql_query($query) or die(mysql_error());
                 
-                $numTags = mysql_num_rows($tagResults);
+                $numTags = 0;
                 
+                // for each photo id that has this tag
+                while ($tagRow = mysql_fetch_assoc($tagResults)) {
+                  // increment the count if the photo id is in the array of visible photos
+                  if (in_array($tagRow['photo_id'], $visible_photos)) {
+                    $numTags++;
+                  }
+                }
+
                 // echo "$tag, $tagID, $numTags<br>";
                 
                 // only display the tag if it's being used
                 if ($numTags > 0) {
-                  echo "<a class='tagCount$numTags' href='/photography/blog/browse/$tag'>" . preg_replace('/_/', ' ', $tag) . '<a> ';
+                  // do not display michaelgeraci.com
+                  if ($tag != 'michaelgeraci.com') {
+                    echo "<a class='tagCount$numTags' href='/photography/blog/browse/$tag'>" . preg_replace('/_/', ' ', $tag) . '<a> ';
+                  }
                 }
               }
 
@@ -181,7 +197,11 @@
           // = A specific tag =
           // ==================
           } else {
+            // get the tag from the user input / url
             $tag = mysql_real_escape_string($section);
+            
+            // get a list of all photo ids that are currently being shown
+            $visible_photos = visiblePhotos();
             
             // get the tag's id
             $query = "SELECT id FROM tags WHERE tag='$tag'";
@@ -191,8 +211,24 @@
               $tagID = $row['id'];
             }
             
-            // if there are no matching tags
-            if (mysql_num_rows($result) == 0) {
+            // if there's a tag id
+            if ($tagID) {
+              // get a list of photo ids that this tag is associated with
+              $query = "SELECT photo_id FROM tag_relationships WHERE tag_id=$tagID";
+              $result = mysql_query($query) or die(mysql_error());
+            
+              // flag for if any of the photo ids are visible
+              $showing = false;
+            
+              while ($row = mysql_fetch_assoc($result)) {
+                if (in_array($row['photo_id'], $visible_photos)) {
+                  $showing = true;
+                }
+              }
+            }
+            
+            // if there are no matching tags, or if the matching tags aren't visible
+            if (mysql_num_rows($result) == 0 || $showing == false) {
               echo "no pictures matched $section<br><a style='line-height: 25px;' href='/photography/blog/browse/tags'>back to tags</a> | <a style='line-height: 25px;' href='/photography/blog/$max'>back to photoblog</a>";
             } else {
               echo "pictures tagged " . preg_replace('/_/', ' ', $section);
