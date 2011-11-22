@@ -14,7 +14,7 @@
     case 'futility':
       $title .= ' - Futility';
       break;
-    case 'firstflesh':
+    case 'firstFlesh':
       $title .= ' - First Flesh';
       break;
     case 'stolen':
