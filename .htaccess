@@ -17,6 +17,7 @@ RewriteEngine on
 # deny access to the top-level git repository:
 RewriteRule \.git - [F,L]
 
+# site pages
 RewriteRule ^bio/?$ bio.php
 
 RewriteRule ^composition/?$ composition.php
@@ -40,6 +41,8 @@ RewriteRule ^web/(.+)?$ web.php?piece=$1 [L]
 
 RewriteRule ^links/?$ links.php
 
+# extras pages
+RewriteRule ^my-top-records-of-2011/? extras/topAlbums2011/index.php
 
 # redirects
 Redirect 301 /bio.htm http://www.michaelgeraci.com/bio

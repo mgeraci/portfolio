@@ -1,0 +1,64 @@
+// sass --watch extras/topAlbums2011/stylesheets --style compressed
+
+$green: #bbd199
+$cream: #f3f4d3
+$text: #444
+
+=stack
+  float: left
+  clear: both
+
+=stackwide
+  +stack
+  width: 100%
+
+body
+  color: $text
+
+h2, h1
+  +stackwide
+  text-align: center
+  
+h2
+  font-size: 30px
+  font-style: oblique
+
+h1
+  font-size: 65px
+
+
+// =========
+// = album =
+// =========
+
+ul#albums
+  +stackwide
+  margin:
+    top: 100px
+
+  li
+    +stackwide
+    margin:
+      bottom: 50px
+    position: relative
+    
+.count
+  font-size: 500px
+  font-style: oblique
+  position: absolute
+  top: 0px
+  left: -140px
+
+img
+  float: left
+  width: 400px
+  height: 400px
+  background: transparentize(white, 0.8)
+
+#thanks
+  +stackwide
+  margin:
+    bottom: 50px
+  text-align: center
+
+.ignore

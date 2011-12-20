@@ -51,6 +51,12 @@
           <!--[if IE 8]><link rel="stylesheet" type="text/css" href="/style/unminified/ie8.css"><![endif]-->';
         }
 
+
+        // extra stylesheets
+        if ($location == '/extras/topAlbums2011/index.php') {
+          echo '<link type="text/css" rel="stylesheet" href="extras/topAlbums2011/stylesheets/style.css">';
+        }
+        
         // javascript
         if (preg_match('/michaelgeraci\.com/', $_SERVER['SERVER_NAME'] )){
           echo '<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
