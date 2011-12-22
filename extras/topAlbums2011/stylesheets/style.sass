@@ -22,9 +22,12 @@ h2, h1
 h2
   font-size: 30px
   font-style: oblique
+  margin:
+    bottom: 5px
 
 h1
-  font-size: 65px
+  font-size: 70px
+  text-shadow: 1px 1px 1px rgba(0,0,0,0.2)
 
 
 // =========
@@ -34,7 +37,7 @@ h1
 ul#albums
   +stackwide
   margin:
-    top: 100px
+    top: 60px
 
   li
     +stackwide
@@ -48,8 +51,12 @@ ul#albums
   position: absolute
   top: 0px
   left: -140px
-
+  z-index: 1
+  color: darken($green, 4%)
+  
 img
+  position: relative
+  z-index: 2
   float: left
   width: 400px
   height: 400px
@@ -62,6 +69,8 @@ img
   h1, h2
     +stack
     text-align: left
+    color: $text
+    font-size: 45px
   
   h2
     font-size: 20px
@@ -73,6 +82,7 @@ img
     +stackwide
     margin:
       top: 35px
+    font-size: 24px
   
 #thanks
   +stackwide
