@@ -56,9 +56,9 @@
                     <h2>by <span>$artist</span></h2>
                     <div class='text'>$text</div>
                     <div class='song'>$song</div>
-                    <object type='application/x-shockwave-flash' data='../../js/player.swf' id='audioplayer4' height='24' width='290'>
+                    <object type='application/x-shockwave-flash' data='../../js/player.swf' id='audioplayer$i' height='24' width='290'>
                       <param name='movie' value='../../js/player.swf'>
-                      <param name='FlashVars' value='playerID=4&amp;bg=0xbbd199&amp;leftbg=0xf3f4d3&amp;lefticon=0x444444&amp;rightbg=0xf3f4d3&amp;rightbghover=0xdedfb5&amp;righticon=0x444444&amp;righticonhover=0x444444&amp;text=0x666666&amp;slider=0x666666&amp;track=0xFFFFFF&amp;border=0x666666&amp;loader=0xf3f4d3&amp;loop=no&amp;autostart=no&amp;soundFile=$root/music/$code.mp3'>
+                      <param name='FlashVars' value='playerID=$i&amp;bg=0xbbd199&amp;leftbg=0xf3f4d3&amp;lefticon=0x444444&amp;rightbg=0xf3f4d3&amp;rightbghover=0xdedfb5&amp;righticon=0x444444&amp;righticonhover=0x444444&amp;text=0x666666&amp;slider=0x666666&amp;track=0xFFFFFF&amp;border=0x666666&amp;loader=0xf3f4d3&amp;loop=no&amp;autostart=no&amp;soundFile=$root/music/$code.mp3'>
                       <param name='quality' value='high'>
                       <param name='menu' value='false'>
                       <param name='wmode' value='transparent'>
