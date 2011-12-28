@@ -53,8 +53,8 @@
 
 
         // extra stylesheets
-        if ($location == '/extras/topAlbums2011/index.php') {
-          echo '<link type="text/css" rel="stylesheet" href="extras/topAlbums2011/stylesheets/style.css">';
+        if ($location == '/extras/favoriteAlbums2011/index.php') {
+          echo '<link type="text/css" rel="stylesheet" href="extras/favoriteAlbums2011/stylesheets/style.css">';
         }
         
         // javascript
