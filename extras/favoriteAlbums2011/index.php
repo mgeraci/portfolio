@@ -20,7 +20,7 @@
     <div id="contentWrapper" class="wrapOut">
       <div class="wrapIn">
         <h2>I know you don't care, but here are</h2>
-        <h1>My Favorite Records of 2011</h1>
+        <h1>My Favorite Albums of 2011</h1>
         <?php
           $albums = array(
             // artist, title, image, rambling, link
