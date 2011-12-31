@@ -42,7 +42,7 @@ RewriteRule ^web/(.+)?$ web.php?piece=$1 [L]
 RewriteRule ^links/?$ links.php
 
 # extras pages
-RewriteRule ^my-favorite-records-of-2011/? extras/favoriteAlbums2011/index.php
+RewriteRule ^my-favorite-albums-of-2011/? extras/favoriteAlbums2011/index.php
 
 # redirects
 Redirect 301 /bio.htm http://www.michaelgeraci.com/bio
