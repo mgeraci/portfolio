@@ -98,6 +98,8 @@ function adminEdit(){
 
     // set the cancel handlers (button and escape)
     updateCancel();
+    
+    return false;
   });
 }
 
