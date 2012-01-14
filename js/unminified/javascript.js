@@ -1,5 +1,16 @@
 (function() {
-  var keys, newWindow, photoLoader, programNotes, thumbnails, web, webKeys, webNext, webPreload, webPrev;
+  var keys, newWindow, photoLoader, preloadHeadshot, programNotes, thumbnails, web, webKeys, webNext, webPreload, webPrev;
+  preloadHeadshot = function() {
+    return $(function() {
+      var img;
+      img = new Image();
+      return $(img).load(function() {
+        return $('#headshot').animate({
+          opacity: 1
+        }, 250);
+      }).attr('src', '/images/headshot.png');
+    });
+  };
   newWindow = function() {
     return $('a.new-window').live('click', function() {
       window.open(this.href);
@@ -205,6 +216,7 @@
     }).attr('src', url).attr('width', 750).attr('alt', "" + ($('#name').html()) + " Screenshot " + number);
   };
   $(function() {
+    preloadHeadshot();
     newWindow();
     programNotes();
     thumbnails();

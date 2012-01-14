@@ -5,6 +5,16 @@
 # =
 # ===================================================
 
+# home page headshot loader
+preloadHeadshot = ->
+  $(->
+    img = new Image()
+    $(img).load(->
+      # fade in the td (which has the headshot set as the background)
+      $('#headshot').animate({opacity: 1}, 250)
+    ).attr('src', '/images/headshot.png')
+  )
+
 # Open links with class 'new-window' in a new window
 newWindow = ->
   $('a.new-window').live('click', ->
@@ -259,6 +269,7 @@ webPreload = (url, number) ->
 
 # Load these functions when the document is ready
 $(->
+  preloadHeadshot()
   newWindow()
   programNotes()
   thumbnails()
