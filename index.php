@@ -31,7 +31,7 @@
                   <br>You can see my <a href="/web">web design portfolio</a>, my <a href="/photography/blog">hobby photoblog</a>, and the rest of my work.
                   <br>
                   <br><a href="/media/documents/GeraciResume.pdf">Resume (PDF)</a>
-                  <br><a href="mailto:mgeraci@gmail.com">&#109;&#103;&#101;&#114;&#97;&#99;&#105;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;</a>
+                  <br><a href="mailto:me@mgeraci.com">&#109;&#101;&#64;&#109;&#103;&#101;&#114;&#97;&#99;&#105;&#46;&#99;&#111;&#109;</a>
                 </div>
                 <div class="socialLinks">
                   <ul>
