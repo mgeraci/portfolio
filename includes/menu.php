@@ -1,6 +1,6 @@
 <ul id="menu">
   <li>
-    <a class="bio<?php if (preg_match('/.+index.+/', $location)) { echo '_on'; } ?>" href="/">Bio/Resume</a>
+    <a class="bio<?php if (preg_match('/^\/index.+/', $location)) { echo '_on'; } ?>" href="/">Bio/Resume</a>
   </li>
   <li>
     <a class="web<?php if (preg_match('/.+web.+/', $location)) { echo "_on"; } ?>" href="/web">Web Design</a>

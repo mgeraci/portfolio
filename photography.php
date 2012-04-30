@@ -10,7 +10,7 @@
       if (is_numeric($_GET["piece"])) {
         $piece = $_GET["piece"];
       }
-      
+
       $title .= " - Photoblog $piece";
 
       // echo the rss link
@@ -32,7 +32,7 @@
   $location = $_SERVER['PHP_SELF'];
 
   include("includes/head.php");
-  
+
   include('includes/galleryFunctions.php');
 ?>
   <body>
@@ -205,25 +205,25 @@
                   // get the tag ids associated with this photo
                   $query = "SELECT tag_id FROM tag_relationships WHERE photo_id=$theId";
                   $result = mysql_query($query) or die(mysql_error());
-                  
+
                   $tag_array = array();
-                  
+
                   while ($row = mysql_fetch_assoc($result)) {
                     array_push($tag_array, $row['tag_id']);
                   }
-                  
+
                   $tag_name_array = array();
-                  
+
                   foreach ($tag_array as $tag_id) {
                     // get the tag's name
                     $query = "SELECT tag FROM tags WHERE id=$tag_id";
                     $result = mysql_query($query) or die(mysql_error());
-                    
+
                     while ($row = mysql_fetch_assoc($result)) {
                       // if the tag is not michaelgeraci.com
                       if ($row['tag'] != 'michaelgeraci.com') {
                         $link = "<a href='/photography/blog/browse/" . $row['tag'] . "'>" . preg_replace('/_/', ' ', $row['tag']) . "</a>";
-                        
+
                         array_push($tag_name_array, $link);
                       }
                     }

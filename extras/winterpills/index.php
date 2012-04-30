@@ -18,13 +18,26 @@
       </div>
     </div>
     <div id="contentWrapper" class="wrapOut">
-      <div class="wrapIn">
-        <h2>I know you don't care, but here are</h2>
-        <h1>My Favorite Albums of 2011</h1>
-        <div id='thanks'>
-          that's it. thanks for reading.
-          <br>complain via <a href='mailto:mgeraci@gmail.com'>email</a> or <a href='http://twitter.com/mgeraci' target='_blank'>twitter</a>.
-        </div>
+      <div class="wrapIn" style='text-align:center;width:960px;'>
+        <h1>Winterpills in Westchester</h1>
+        <br>
+        <br>
+        <img src='./winterpills_geraci_1.jpg'>
+        <br>
+        <br>
+        <img src='./winterpills_geraci_2.jpg'>
+        <br>
+        <br>
+        <img src='./winterpills_geraci_3.jpg'>
+        <br>
+        <br>
+        <img src='./winterpills_geraci_4.jpg'>
+        <br>
+        <br>
+        <img src='./winterpills_geraci_5.jpg'>
+        <br>
+        <br>
+        <img src='./winterpills_geraci_6.jpg'>
       </div>
     </div>
     <?php include('../../includes/googleAnalytics.php'); ?>
