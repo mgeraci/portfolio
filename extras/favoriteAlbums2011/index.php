@@ -1,7 +1,7 @@
 <?php
   // // H E A D // //
   $title = 'Michael P. Geraci - My Favorite Albums of 2011';
-  
+
   // gets the location of the page and assigns it to $location
   // format is /page.php
   $location = $_SERVER['PHP_SELF'];
@@ -37,7 +37,7 @@
         <ul id='albums'>
           <?php
             $i = 1;
-            
+
             foreach($albums as $album) {
               $artist = $album[0];
               $title = $album[1];
@@ -47,7 +47,7 @@
               $code = $album[5];
               $song = $album[6];
               $root = preg_replace('/\/index.php\/?/', '', $_SERVER['PHP_SELF']);
-              
+
               echo "
                 <li>
                   <span class='count'>$i</span>
@@ -68,7 +68,7 @@
                   </div>
                 </li>
               ";
-              
+
               $i += 1;
             }
           ?>
