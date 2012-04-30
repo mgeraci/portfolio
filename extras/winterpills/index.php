@@ -22,22 +22,22 @@
         <h1>Winterpills in Westchester</h1>
         <br>
         <br>
-        <img src='./winterpills_geraci_1.jpg'>
+        <img src='/extras/winterpills/winterpills_geraci_1.jpg'>
         <br>
         <br>
-        <img src='./winterpills_geraci_2.jpg'>
+        <img src='/extras/winterpills/winterpills_geraci_2.jpg'>
         <br>
         <br>
-        <img src='./winterpills_geraci_3.jpg'>
+        <img src='/extras/winterpills/winterpills_geraci_3.jpg'>
         <br>
         <br>
-        <img src='./winterpills_geraci_4.jpg'>
+        <img src='/extras/winterpills/winterpills_geraci_4.jpg'>
         <br>
         <br>
-        <img src='./winterpills_geraci_5.jpg'>
+        <img src='/extras/winterpills/winterpills_geraci_5.jpg'>
         <br>
         <br>
-        <img src='./winterpills_geraci_6.jpg'>
+        <img src='/extras/winterpills/winterpills_geraci_6.jpg'>
       </div>
     </div>
     <?php include('../../includes/googleAnalytics.php'); ?>
