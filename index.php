@@ -57,13 +57,13 @@
     </div>
     <div id="indexBottom" class="wrapOut">
       <div class="wrapIn">
-        <h1>Last Updated: 1.6.12</h1>
+        <h1>Last Updated: 5.14.12</h1>
         <?php
           $recent = array(
-            array('/photography/blog', '/media/photography/blog/thumbs/4529.jpg', "New Photos<br>Green-Wood Cemetery", ''),
+            array('/winterpills', '/extras/winterpills/winterpills_thumbnail.jpg', "New Recording:<br>Winterpills Live", ''),
+            array('/photography/blog', '/media/photography/blog/thumbs/4529.jpg', "New Photos:<br>Green-Wood Cemetery", ''),
             array('/web/ivysage', '/images/recent_thumbs/ivysage.jpg', "New Web Design:<br>Ivysage", ''),
-            array('http://vimeo.com/28989090', '/images/recent_thumbs/showtime.jpg', "New Steel Drum Performance:<br>It's Showtime", 'new-window'),
-            array('/web/conservatoryChallenge', '/images/recent_thumbs/con_challenge.jpg', "New Web Design:<br>Oberlin Conservatory Challenge", '')
+            array('http://vimeo.com/28989090', '/images/recent_thumbs/showtime.jpg', "New Steel Drum Performance:<br>It's Showtime", 'new-window')
           );
                     
           function recent_item($array){
