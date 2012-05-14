@@ -49,14 +49,14 @@
         <br>
         <br>
         <div id='audio'>
-          <a href='/extras/winterpills/winterpillz_flac.zip' onClick='_gaq.push(["_trackEvent", "Winterpills Audio", "flac"])'>
+          <a href='/extras/winterpills/winterpills_flac.zip' onClick='_gaq.push(["_trackEvent", "Winterpills Audio", "flac"])'>
             <img src='/extras/winterpills/zip.png'>
             <span>
               Audio from the concert
               <br>flac - 456mb
             </span>
           </a>
-          <a href='/extras/winterpills/winterpillz_mp3.zip' onClick='_gaq.push(["_trackEvent", "Winterpills Audio", "mp3"])'>
+          <a href='/extras/winterpills/winterpills_mp3.zip' onClick='_gaq.push(["_trackEvent", "Winterpills Audio", "mp3"])'>
             <img src='/extras/winterpills/zip.png'>
             <span>
               Audio from the concert
