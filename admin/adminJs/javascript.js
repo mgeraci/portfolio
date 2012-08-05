@@ -98,7 +98,7 @@ function adminEdit(){
 
     // set the cancel handlers (button and escape)
     updateCancel();
-    
+
     return false;
   });
 }
@@ -130,12 +130,12 @@ function adminTrigger(){
   $('a#adminAdd').click(function(){
     adminAdd();
   });
-  
+
   // keyboard shortcut for add
   $(document).bind('keydown', 'a', function(){
     adminAdd();
   });
-  
+
   // cancel
   $(document).bind('keydown', 'esc', function(){
     $('#adminAddDiv').slideUp('fast');
@@ -146,9 +146,9 @@ function adminTrigger(){
 function adminAdd(){
   // clear/populate the table
   $('#adminAddID, #adminAddTitle, #adminAddTags').val('');
-  
+
   // add the year
-  $('input#adminAddYear').val('2011');
+  $('input#adminAddYear').val('2012');
 
   // make the table appear
   $('#adminAddDiv').slideDown('fast', function(){
