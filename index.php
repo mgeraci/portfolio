@@ -42,9 +42,6 @@
                       <a class="twitter" href="http://www.twitter.com/mgeraci">view my twitter stream</a>
                     </li>
                     <li>
-                      <a class="linked_in" href="http://www.linkedin.com/in/mpgeraci">view my linked in profile</a>
-                    </li>
-                    <li>
                       <a class="facebook" href="http://www.facebook.com/michaelgeraci">view my facebook page</a>
                     </li>
                   </ul>
