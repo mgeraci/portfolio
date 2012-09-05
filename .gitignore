@@ -9,6 +9,7 @@ media/graphic/*/*
 .DS_Store
 */.DS_Store
 */*/.DS_Store
+**/*.DS_Store
 now_playing/*
 now_playing/*/*
 now_playing/*/*/*
