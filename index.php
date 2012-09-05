@@ -41,9 +41,6 @@
                     <li>
                       <a class="twitter" href="http://www.twitter.com/mgeraci">view my twitter stream</a>
                     </li>
-                    <li>
-                      <a class="facebook" href="http://www.facebook.com/michaelgeraci">view my facebook page</a>
-                    </li>
                   </ul>
                 </div>
               </div>
