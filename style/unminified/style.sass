@@ -45,9 +45,9 @@ $text: #444
   font-style: normal
 
 
-// ========== 
-// = Global = 
-// ========== 
+// ==========
+// = Global =
+// ==========
 
 body
   height: 100%
@@ -97,10 +97,10 @@ $siteWidth: 900px
 // ===========================================
 // = List Styles for the appropriate pages   =
 // =  including composition, recording,      =
-// =    photography, and web design          = 
+// =    photography, and web design          =
 // ===========================================
 
-// list of pieces on the left hand side 
+// list of pieces on the left hand side
 #pieceList
   float: left
   padding-right: 50px
@@ -108,24 +108,24 @@ $siteWidth: 900px
   border-style: solid
   border-width: 0 2px 0 0
   border-color: $cream
-  
+
   ul
     margin-top: 0px
     margin-bottom: 0px
-  
+
   li
     margin-left: -30px
     color: $text
     padding: 0 0 13px 0px
     list-style-type: none
     font-size: 18px
-  
+
   // piece title
   h1
     display: inline
     font-size: normal
     line-height: 18px
-  
+
   a
     color: $text
     text-decoration: none
@@ -139,11 +139,11 @@ $siteWidth: 900px
     color: $cream
     text-decoration: none
     text-shadow: 1px 1px 0px #A1B97B
-  
+
   // links out
   a.new-window
     line-height: 25px
-  
+
 // the pieces' content on the right hand side
 #pieceContent
   float: left
@@ -158,13 +158,13 @@ $siteWidth: 900px
   border-color: $cream
 
 
-// ========================= 
-// =   Gallery Templates   = 
-// =  Used in Photography  = 
-// =  and Graphic Design   = 
-// ========================= 
+// =========================
+// =   Gallery Templates   =
+// =  Used in Photography  =
+// =  and Graphic Design   =
+// =========================
 
-// the thumnail div on the left 
+// the thumnail div on the left
 #galleryThumbs
   float: left
   width: 190px
@@ -179,7 +179,7 @@ $siteWidth: 900px
     margin-top: 0px
     padding: 0px
 
-  // 
+  //
   li
     list-style-type: none
     float: left
@@ -193,7 +193,7 @@ $siteWidth: 900px
     opacity: 0.4 // ff, opera, safari
     filter: alpha(opacity=40) // IE lt 8
     -ms-filter: alpha(opacity=40) // IE 8
-  
+
   img.on
     opacity: 1 // ff, opera, safari
     filter: alpha(opacity=100) // IE lt 8
@@ -214,7 +214,7 @@ $siteWidth: 900px
   // no underlines on page links
   a
     text-decoration: none
-  
+
   // active page
   a.on
     color: $text
@@ -247,7 +247,7 @@ span#clickThumbnail
 #pictureArrows
   padding-bottom: 10px
   float: left
-  
+
   span
     position: relative
     top: 2px
@@ -274,11 +274,11 @@ img#thePicture
   margin: 7px 0 0 0
 
 
-// ========================== 
-// =      Program Notes     = 
-// =  used in compositions  = 
-// =     and recordings     = 
-// ========================== 
+// ==========================
+// =      Program Notes     =
+// =  used in compositions  =
+// =     and recordings     =
+// ==========================
 
 .pieceBottomSpacer
   float: left
@@ -304,9 +304,9 @@ img#thePicture
   margin-bottom: 30px
 
 
-// ============== 
-// = Bio/Resume = 
-// ============== 
+// ==============
+// = Bio/Resume =
+// ==============
 
 // body gets special background for the bottom
 // since the page can be variable height
@@ -324,10 +324,10 @@ body#index
     width: 100%
     position: relative
     top: 2px
-    
+
   td
     width: $contentWidth / 2
-  
+
   // picture td
   #headshot
     background: url(/images/headshot.png) bottom center no-repeat
@@ -336,10 +336,10 @@ body#index
   // other td
   #indexRight
     padding: 30px 0 30px 0
-    
+
     #wrapper
       min-height: 478px - 60px // padding
-    
+
     h1
       +floatClear
       margin: 0 0 10px 0
@@ -347,94 +347,91 @@ body#index
       font-size: 40px
       text-shadow: 0 1px rgba(255,255,255,0.3)
       color: $text
-  
+
     .text
       +floatClear
       color: $text
       font-size: 23px
-    
+
     .socialLinks
       +floatClear
       margin: 30px 0 0 0
       width: 100%
-    
+
       ul
         +floatClear
-      
+
       li
         float: left
         margin: 0 10px 0 0
-    
+
       $icon_size: 37px
-    
+
       a
         +sprite
         width: $icon_size
         height: $icon_size + 1
         +floatClear
-    
+
       .github
         background: url(/images/socialSprite.png) 0 0 no-repeat
-    
+
       .twitter
         background: url(/images/socialSprite.png) $icon_size * -1 0 no-repeat
-      
-      .linked_in
+
+      .newsblur
         background: url(/images/socialSprite.png) $icon_size * -2 0 no-repeat
-      
-      .facebook
-        background: url(/images/socialSprite.png) $icon_size * -3 0 no-repeat
 
 #indexBottom
   padding: 30px 0 0 0
   border:
     top: 1px solid desaturate(darken($green, 25%), 20%)
   color: $text
-  
+
   h1
     +floatClear
     font-weight: bold
     font-size: 23px
     margin: 0 0 10px 0
-  
+
   .row
     +floatClear
     width: 100%
     margin: 0 0 15px 0
-    
+
   .group
     float: left
     margin: 0 15px 0 0
     width: $contentWidth / 2 - 15
-    
+
     img
       float: left
       margin: 0 12px 0 0
       width: 45px
       height: 45px
-    
+
     .text
       float: left
       margin: 4px 0 0 0
       width: $contentWidth / 2 - 80
-    
+
     a
       text-decoration: none
-      
+
       &:hover
         text-decoration: underline
-    
+
   a:hover
     text-shadow: none
-  
+
   .copyright
     +floatClear
     margin: 20px 0 0 0
     width: 100%
 
-// ===================== 
-// = Compositions Page = 
-// ===================== 
+// =====================
+// = Compositions Page =
+// =====================
 
 #pageComposition
   margin-left: 5px
@@ -476,9 +473,9 @@ $pieceContentPadding: 30px
   width: 460 - $pieceContentPadding - 10px
 
 
-// =================== 
-// = Recordings Page = 
-// =================== 
+// ===================
+// = Recordings Page =
+// ===================
 
 #pageRecordings
   margin-left: 15px
@@ -514,7 +511,7 @@ $pieceContentPadding: 30px
     float: left
     margin-bottom: 5px
     font-size: 16px
-  
+
   span.song
     font-style: oblique
     line-height: 20px
@@ -532,18 +529,18 @@ $pieceContentPadding: 30px
     width: 580px
 
 
-// ======================= 
-// = Graphic Design Page = 
-// ======================= 
+// =======================
+// = Graphic Design Page =
+// =======================
 
 #pageGraphic
   width: $siteWidth
   margin-left: 10px
 
 
-// ==================== 
-// = Photography Page = 
-// ==================== 
+// ====================
+// = Photography Page =
+// ====================
 
 #pagePhotography
   width: $siteWidth
@@ -551,7 +548,7 @@ $pieceContentPadding: 30px
 
   #pieceList
     width: 400px
-  
+
     li
       padding: 0 0 15px 0
 
@@ -559,7 +556,7 @@ $pieceContentPadding: 30px
 #photoblogNav
   padding-bottom: 10px
   float: right
-  
+
   span
     float: right
 
@@ -581,7 +578,7 @@ $pieceContentPadding: 30px
 
   a
     text-decoration: none
-    
+
     &.on
       color: $text
       text-decoration: none
@@ -593,16 +590,16 @@ $pieceContentPadding: 30px
     margin: 0px
     margin-top: 5px
     padding: 0px
-  
+
   img
     border: 0px
     padding: 0px
     float: left
 
 
-// =================== 
-// = Web Design Page = 
-// =================== 
+// ===================
+// = Web Design Page =
+// ===================
 
 // general web styles
 #pageWeb
@@ -610,16 +607,16 @@ $pieceContentPadding: 30px
   float: left
   clear: both
   position: relative// for positioning the pieceContent
-  
+
   // spacing fixes for arrows
   .previous
     margin: 3px 3px 0 0
-  
+
   .next
     position: relative
     top: 1px
     right: 5px
-  
+
   // wraps and overflows the list
   // this is what shrinks and expands
   #pieceListContainer
@@ -628,10 +625,10 @@ $pieceContentPadding: 30px
     width: 320px
     height: 100%
     padding: 0 40px 0 0// padding-right for the fade image
-  
+
   #pieceListContainer.collapsed
     width: 100px
-  
+
   #pieceList
     padding-right: 20px
     width: 330px
@@ -642,35 +639,35 @@ $pieceContentPadding: 30px
     left: 0
     margin: 0 20px 0 0
     border: 0
-    
+
     // list positioning
     ul
       padding: 0 0 0 30px
-    
+
     li
       padding: 0 0 18px 0
-  
+
   $webContentWidth: 750px
-  
+
   #pieceContent
     position: absolute
     left: $siteWidth - $webContentWidth
     width: $webContentWidth
     margin: 0 0 0 -2px
     padding: 0 0 40px 20px
-    
+
     color: $text
     font-style: normal
     line-height: 26px
     border: 0 solid $cream
-    
+
     // a loading image container
     .loading
       display: block
       width: 750px
       min-height: 750px
       background: url(/images/loading.gif) center center no-repeat
-  
+
   // images are links, so style them (and padding)
   img
     padding: 5px 0
@@ -678,11 +675,11 @@ $pieceContentPadding: 30px
 
 // load state for list opacity with piece
 .listLoad
-  opacity: 0.1 // Standard: FF gt 1.5, Opera, Safari 
-  filter: alpha(opacity=10) // IE lt 8 
-  -ms-filter: alpha(opacity=10) // IE 8 
-  -khtml-opacity: 0.1 // Safari 1.x 
-  -moz-opacity: 0.1 // FF lt 1.5, Netscape 
+  opacity: 0.1 // Standard: FF gt 1.5, Opera, Safari
+  filter: alpha(opacity=10) // IE lt 8
+  -ms-filter: alpha(opacity=10) // IE 8
+  -khtml-opacity: 0.1 // Safari 1.x
+  -moz-opacity: 0.1 // FF lt 1.5, Netscape
 
 // the fade on the right of the piece list
 #webFade
@@ -709,12 +706,12 @@ $pieceContentPadding: 30px
   height: 100%
   position: absolute
   right: 0
-  
+
   .outer
     position: absolute
     top: 200px
     left: 50%
-  
+
   // the arrows for collapsing and expanding
   .inner
     width: 23px
@@ -725,16 +722,16 @@ $pieceContentPadding: 30px
     position: relative
     bottom: 13px
     right: 12px
-  
+
   .expand.off
     background: url(/images/webArrows.png) 0 0 no-repeat
-  
+
   .expand.on
     background: url(/images/webArrows.png) 0 -27px no-repeat
-  
+
   .contract.off
     background: url(/images/webArrows.png) -23px 0 no-repeat
-  
+
   .contract.on
     background: url(/images/webArrows.png) -23px -27px no-repeat
 
@@ -753,11 +750,11 @@ $pieceContentPadding: 30px
   margin: 0 0 4px 0
 
 
-// ============== 
-// = Links Page = 
-// ============== 
+// ==============
+// = Links Page =
+// ==============
 
-// text columns for links page 
+// text columns for links page
 div.linksText
   width: 430px
   color: $text
@@ -772,9 +769,9 @@ div.linksText
   margin-bottom: 5px
 
 
-// =================== 
-// = Inside Top Menu = 
-// =================== 
+// ===================
+// = Inside Top Menu =
+// ===================
 
 #menu
   float: left
@@ -785,7 +782,7 @@ div.linksText
   li
     list-style: none
     float: left
-  
+
   a
     margin-right: 40px
     text-decoration: none
@@ -795,53 +792,53 @@ div.linksText
     display: block
     width: 90px
     height: 90px
-  
+
   a.bio
     background: url(/images/insideButtons.png) 0 0
-  
+
   .bio_on, .bio:hover
     background: url(/images/insideButtons.png) -90px 0
 
   a.composition
     background: url(/images/insideButtons.png) 0 -270px
-  
+
   .composition_on, .composition:hover
     background: url(/images/insideButtons.png) -90px -270px
 
   a.recordings
     background: url(/images/insideButtons.png) 0 -180px
-  
+
   .recordings_on, .recordings:hover
     background: url(/images/insideButtons.png) -90px -180px
 
   a.graphic
     background: url(/images/insideButtons.png) -180px 0
-  
+
   .graphic_on, .graphic:hover
     background: url(/images/insideButtons.png) -270px 0
 
   a.photo
     background: url(/images/insideButtons.png) -180px -180px
-    
+
   .photo_on, .photo:hover
     background: url(/images/insideButtons.png) -270px -180px
 
   a.web
     background: url(/images/insideButtons.png) 0 -90px
-  
+
   .web_on, .web:hover
     background: url(/images/insideButtons.png) -90px -90px
 
   a.links
     background: url(/images/insideButtons.png) -180px -90px
-  
+
   .links_on, .links:hover
     background: url(/images/insideButtons.png) -270px -90px
 
 
-// ========== 
-// = Arrows = 
-// ========== 
+// ==========
+// = Arrows =
+// ==========
 
 .arrow
   +sprite
@@ -858,7 +855,7 @@ a.previous
 
 a.next
   background: url("/images/arrows.png") 0 0 no-repeat
-  
+
   &:hover
     background: url("/images/arrows.png") 0 -15px no-repeat
 
@@ -882,9 +879,9 @@ a.rss
     background: url(/images/arrows.png) -36px -10px no-repeat
 
 
-// =============== 
-// = Logo Design = 
-// =============== 
+// ===============
+// = Logo Design =
+// ===============
 
 #logo
   color: $text
@@ -942,9 +939,9 @@ input.mailform_input
   margin: 20px 0px 20px 0px
 
 
-// ======== 
-// = Tags = 
-// ======== 
+// ========
+// = Tags =
+// ========
 
 #allTags
   line-height: 25px
@@ -997,15 +994,15 @@ input.mailform_input
     font-size: 33px
 
 
-// =========================== 
-// = Tags list on each photo = 
-// =========================== 
+// ===========================
+// = Tags list on each photo =
+// ===========================
 
 span#tags
   color: #7A8E5A
 
   a
     color: #7A8E5A
-    
+
     &:hover, &:active
       color: $text

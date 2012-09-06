@@ -41,6 +41,9 @@
                     <li>
                       <a class="twitter" href="http://www.twitter.com/mgeraci">view my twitter stream</a>
                     </li>
+                    <li>
+                      <a class="newsblur" href="http://mgeraci.newsblur.com/">view my shared items on newsblur</a>
+                    </li>
                   </ul>
                 </div>
               </div>
