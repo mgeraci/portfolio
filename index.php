@@ -56,11 +56,11 @@
       <div class="wrapIn">
         <h1>Last Updated: 9.6.12</h1>
         <?php
-            //array('https://www.youtube.com/watch?v=Jjym9fKzE5U', '/images/recent_thumbs/gie_dem_tempo.jpg', "New Steel Drum Performance:<br>Gie Dem Tempo", 'new-window')
           $recent = array(
+            array('http://www.youtube.com/watch?v=Jjym9fKzE5U', '/images/recent_thumbs/gie_dem_tempo.jpg', "New Steel Drum Performance:<br>Gie Dem Tempo", 'new-window'),
             array('/photography/blog/359', '/media/photography/blog/thumbs/5467.jpg', "New Photos:<br>PDX => SFO Bike Tour", ''),
             array('/winterpills', '/extras/winterpills/winterpills_thumbnail.jpg', "New Recording:<br>Winterpills Live", ''),
-            array('/web/ivysage', '/images/recent_thumbs/ivysage.jpg', "New Web Design:<br>Ivysage", ''),
+            array('/web/ivysage', '/images/recent_thumbs/ivysage.jpg', "New Web Design:<br>Ivysage", '')
           );
 
           function recent_item($array){
