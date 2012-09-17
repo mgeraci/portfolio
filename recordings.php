@@ -5,6 +5,8 @@
   $title = 'Michael P. Geraci - Recordings';
 
   switch ($piece) {
+    case: 'me-and-jonah'
+      $title .= ' - Me and Jonah';
     case 'dri':
       $title .= ' - dancerockinfinity';
       break;
@@ -49,6 +51,12 @@
       <div id="pageRecordings">
         <div id="pieceList">
           <ul>
+            <li>
+              <a <?php if ($piece == 'me-and-jonah') echo 'class="on"'?> href="/recordings/me-and-jonah">
+                <h1>Me and Jonah, 2012</h1>
+                <br>Playing Music in a Basement
+              </a>
+            </li>
             <li>
               <a <?php if ($piece == 'dri') echo 'class="on"'?> href="/recordings/dri">
                 <h1>dancerockinfinity, 2007</h1>
@@ -99,7 +107,27 @@
             </li>
           </ul>
         </div>
-        <?php if ($piece == 'dri') { ?>
+        <?php if ($piece == 'me-and-jonah') { ?>
+          <div id='pieceContent'>
+            <h1>Me and Jonah, 2012</h1>
+            <div class='clearBreak'><br></div>
+            <div id='rImage'>
+              <img class='recordings' src='/images/recordings/me-and-jonah.jpg' alt='Me and Jonah'>
+            </div>
+            <div id='rInfo'>
+              Recorded in my Basement
+              <br>
+              <br><span class='song'>Old Stanky</span>
+              <br><object type='application/x-shockwave-flash' data='/js/player.swf' id='audioplayer1' height='24' width='290'>
+                <param name='movie' value='/js/player.swf'>
+                <param name='FlashVars' value='playerID=1&amp;bg=0xbbd199&amp;leftbg=0xf3f4d3&amp;lefticon=0x444444&amp;rightbg=0xf3f4d3&amp;rightbghover=0xdedfb5&amp;righticon=0x444444&amp;righticonhover=0x444444&amp;text=0x666666&amp;slider=0x666666&amp;track=0xFFFFFF&amp;border=0x666666&amp;loader=0xf3f4d3&amp;loop=no&amp;autostart=no&amp;soundFile=/media/music/OldStanky.mp3'>
+                <param name='quality' value='high'>
+                <param name='menu' value='false'>
+                <param name='wmode' value='transparent'>
+              </object>
+            </div>
+          </div>
+        <?php elseif ($piece == 'dri') { ?>
           <div id='pieceContent'>
             <h1>dancerockinfinity, 2007</h1>
             <div class='clearBreak'><br></div>
