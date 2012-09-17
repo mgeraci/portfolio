@@ -5,7 +5,7 @@
   $title = 'Michael P. Geraci - Recordings';
 
   switch ($piece) {
-    case: 'me-and-jonah'
+    case: 'me-and-jonah':
       $title .= ' - Me and Jonah';
     case 'dri':
       $title .= ' - dancerockinfinity';
