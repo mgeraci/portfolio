@@ -127,7 +127,7 @@
               </object>
             </div>
           </div>
-        <?php elseif ($piece == 'dri') { ?>
+        <?php } elseif ($piece == 'dri') { ?>
           <div id='pieceContent'>
             <h1>dancerockinfinity, 2007</h1>
             <div class='clearBreak'><br></div>
