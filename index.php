@@ -57,7 +57,7 @@
         <h1>Last Updated: 10.2.12</h1>
         <?php
           $recent = array(
-            array('/photography/blog/369', '/media/photography/blog/thumbs/5467.jpg', "New Photos:<br>PDX => SFO Bike Tour", ''),
+            array('/photography/blog/369', '/media/photography/blog/thumbs/5887.jpg', "New Photos:<br>Rainy Camping in the Shenandoahs", ''),
             array('/recordings/me-and-jonah', '/images/recent_thumbs/me-and-jonah.jpg', "New Song:<br>Me and Jonah", ''),
             array('http://www.youtube.com/watch?v=Jjym9fKzE5U', '/images/recent_thumbs/gie_dem_tempo.jpg', "New Steel Drum Performance:<br>Gie Dem Tempo", 'new-window'),
             array('/winterpills', '/extras/winterpills/winterpills_thumbnail.jpg', "New Recording:<br>Winterpills Live", '')
