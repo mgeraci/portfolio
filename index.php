@@ -54,10 +54,10 @@
     </div>
     <div id="indexBottom" class="wrapOut">
       <div class="wrapIn">
-        <h1>Last Updated: 10.15.12</h1>
+        <h1>Last Updated: 10.16.12</h1>
         <?php
           $recent = array(
-            array('/photography/blog/370', '/media/photography/blog/thumbs/5969.jpg', "New Photos:<br>IKEA, Baltimore", ''),
+            array('/photography/blog/371', '/media/photography/blog/thumbs/5973.jpg', "New Photos:<br>IKEA, Baltimore", ''),
             array('/recordings/me-and-jonah', '/images/recent_thumbs/me-and-jonah.jpg', "New Song:<br>Me and Jonah", ''),
             array('http://www.youtube.com/watch?v=Jjym9fKzE5U', '/images/recent_thumbs/gie_dem_tempo.jpg', "New Steel Drum Performance:<br>Gie Dem Tempo", 'new-window'),
             array('/winterpills', '/extras/winterpills/winterpills_thumbnail.jpg', "New Recording:<br>Winterpills Live", '')
