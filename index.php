@@ -54,13 +54,14 @@
     </div>
     <div id="indexBottom" class="wrapOut">
       <div class="wrapIn">
-        <h1>Last Updated: 10.16.12</h1>
+        <h1>Last Updated: 11.18.12</h1>
         <?php
           $recent = array(
+            array('/graphic/51', '/media/graphic/thumbs/pumptrain.jpg', "New Graphic Design:<br>Pump Train", ''),
+            array('http://mgeraci.github.com/Coffee-Filter/', '/images/recent_thumbs/coffee-filter.png', "New Open Source JavaScript Library:<br>Coffee Filter", 'new-window'),
             array('/photography/blog/371', '/media/photography/blog/thumbs/5973.jpg', "New Photos:<br>IKEA, Baltimore", ''),
             array('/recordings/me-and-jonah', '/images/recent_thumbs/me-and-jonah.jpg', "New Song:<br>Me and Jonah", ''),
-            array('http://www.youtube.com/watch?v=Jjym9fKzE5U', '/images/recent_thumbs/gie_dem_tempo.jpg', "New Steel Drum Performance:<br>Gie Dem Tempo", 'new-window'),
-            array('/winterpills', '/extras/winterpills/winterpills_thumbnail.jpg', "New Recording:<br>Winterpills Live", '')
+            array('http://www.youtube.com/watch?v=Jjym9fKzE5U', '/images/recent_thumbs/gie_dem_tempo.jpg', "New Steel Drum Performance:<br>Gie Dem Tempo", 'new-window')
           );
 
           function recent_item($array){

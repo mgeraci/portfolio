@@ -6,7 +6,7 @@
     $username = "root";
     $password = "";
     $host = "";
-    $database = "michaelgeraci.com_development";
+    $database = "michaelgeraci_development";
   } else {
     // online variables
     $username = "mgeraci";
