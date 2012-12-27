@@ -43,6 +43,7 @@ RewriteRule ^links/?$ links.php
 
 # extras pages
 RewriteRule ^my-favorite-albums-of-2011/?$ extras/favoriteAlbums2011/index.php
+RewriteRule ^my-favorite-albums-of-2012/?$ extras/favoriteAlbums2012/index.php
 RewriteRule ^winterpills/?$ extras/winterpills/index.php
 
 # redirects

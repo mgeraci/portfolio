@@ -57,6 +57,10 @@
           echo '<link type="text/css" rel="stylesheet" href="extras/favoriteAlbums2011/stylesheets/style.css">';
         }
         
+        if ($location == '/extras/favoriteAlbums2012/index.php') {
+          echo '<link type="text/css" rel="stylesheet" href="extras/favoriteAlbums2012/stylesheets/style.css">';
+        }
+        
         // javascript
         if (preg_match('/michaelgeraci\.com/', $_SERVER['SERVER_NAME'] )){
           echo '<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
