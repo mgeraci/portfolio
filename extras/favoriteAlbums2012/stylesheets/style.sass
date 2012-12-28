@@ -114,8 +114,23 @@ img
     font-size: 20px
     font-style: oblique
 
-  object
+  .audio-wrapper
     +stack
+    position: relative
+
+  audio
+    +stack
+    margin:
+      top: 5px
+
+  .play
+    position: absolute
+    top: 5px
+    left: 0
+    overflow: hidden
+    line-height: 100px
+    width: 40px
+    height: 30px
 
   .link
     +stack

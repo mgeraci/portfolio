@@ -73,6 +73,11 @@
           <script type="text/javascript" src="/js/unminified/javascript.js"></script>';
         }
 
+        // extras javascripts
+        if ($location == '/extras/favoriteAlbums2012/index.php') {
+          echo '<script type="text/javascript" src="/extras/favoriteAlbums2012/javascripts/application.js"></script>';
+        }
+
         // set the default timezone to handle places that use the date
         date_default_timezone_set('America/New_York');
       ?>

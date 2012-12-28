@@ -23,19 +23,19 @@
         <h1>My Favorite Albums of 2012</h1>
         <?php
           $albums = array(
-            // artist, title, image, rambling, link, mp3 file, song name
-            array('alt-J', 'An Awesome Wave', "altj", "Description", '#', 'altj', 'Tesselate'),
-            array('Anaïs Mitchell', 'Young Man in America', "anaismitchell", "Description", '#', 'altj', 'Tesselate'),
-            array('Beach House', 'Bloom', "beachhouse", "Description", '#', 'altj', 'Tesselate'),
-            array('Bear in Heaven', "I Love You, It's Cool", "bearinheaven", "Description", '#', 'altj', 'Tesselate'),
-            array("Dinosaur Feathers", "Whistle Tips", "dinosaurfeathers", "Description", '#', 'altj', 'Tesselate'),
-            array("Grace Woodroofe", "Always Want", "gracewoodroofe", "Description", '#', 'altj', 'Tesselate'),
-            array("Here We Go Magic", "A Different Ship", "herewegomagic", "Description", '#', 'altj', 'Tesselate'),
-            array("Lemolo", "The Kaleidoscope", "lemolo", "Description", '#', 'altj', 'Tesselate'),
-            array("Lower Dens", "Nootropics", "lowerdens", "Description", '#', 'altj', 'Tesselate'),
-            array("Opossum", "Electric Hawaii", "opossum", "Description", '#', 'altj', 'Tesselate'),
-            array("WhoMadeWho", "Brighter", "whomadewho", "Description", '#', 'altj', 'Tesselate'),
-            array("Winterpills", "All My Lovely Goners", "winterpills", "Description", '#', 'altj', 'Tesselate')
+            // artist, title, image, rambling, link, song name
+            array('alt-J', 'An Awesome Wave', "altj", "Description", '#', 'Tesselate'),
+            array('Anaïs Mitchell', 'Young Man in America', "anaismitchell", "Description", '#', 'Dyin Day'),
+            array('Beach House', 'Bloom', "beachhouse", "Description", '#', 'Tesselate'),
+            array('Bear in Heaven', "I Love You, It's Cool", "bearinheaven", "Description", '#', 'Tesselate'),
+            array("Dinosaur Feathers", "Whistle Tips", "dinosaurfeathers", "Description", '#', 'Tesselate'),
+            array("Grace Woodroofe", "Always Want", "gracewoodroofe", "Description", '#', 'Tesselate'),
+            array("Here We Go Magic", "A Different Ship", "herewegomagic", "Description", '#', 'Tesselate'),
+            array("Lemolo", "The Kaleidoscope", "lemolo", "Description", '#', 'Tesselate'),
+            array("Lower Dens", "Nootropics", "lowerdens", "Description", '#', 'Tesselate'),
+            array("Opossum", "Electric Hawaii", "opossum", "Description", '#', 'Tesselate'),
+            array("WhoMadeWho", "Brighter", "whomadewho", "Description", '#', 'Tesselate'),
+            array("Winterpills", "All My Lovely Goners", "winterpills", "Description", '#', 'Tesselate')
           );
         ?>
         <ul id='albums'>
@@ -48,8 +48,7 @@
               $image = $album[2];
               $text = $album[3];
               $link = $album[4];
-              $code = $album[5];
-              $song = $album[6];
+              $song = $album[5];
               $root = preg_replace('/\/index.php\/?/', '', $_SERVER['PHP_SELF']);
 
               echo "
@@ -61,18 +60,17 @@
                     <h2>by <span>$artist</span></h2>
                     <div class='text'>$text</div>
                     <div class='song'>$song</div>
+                    <div class='audio-wrapper'>
+                      <audio controls>
+                        <source src='$root/music/$image.ogg'></source>
+                        <source src='$root/music/$image.mp3'></source>
+                        <p>Your browser does not support html5 audio, <a href='$root/music/$artist.mp3'>download the file</a>.</p>
+                      </audio>
+                      <a class='play' href='#'>play</a>
+                    </div>
                     <a class='link' href='$link' target='_blank'>buy it</a>
                   </div>
                 </li>
-              ";
-              $o = "
-                    <object type='application/x-shockwave-flash' data='../../js/player.swf' id='audioplayer$i' height='24' width='290'>
-                      <param name='movie' value='../../js/player.swf'>
-                      <param name='FlashVars' value='playerID=$i&amp;bg=0xbbd199&amp;leftbg=0xf3f4d3&amp;lefticon=0x444444&amp;rightbg=0xf3f4d3&amp;rightbghover=0xdedfb5&amp;righticon=0x444444&amp;righticonhover=0x444444&amp;text=0x666666&amp;slider=0x666666&amp;track=0xFFFFFF&amp;border=0x666666&amp;loader=0xf3f4d3&amp;loop=no&amp;autostart=no&amp;soundFile=$root/music/$code.mp3'>
-                      <param name='quality' value='high'>
-                      <param name='menu' value='false'>
-                      <param name='wmode' value='transparent'>
-                    </object>
               ";
 
               $i += 1;
