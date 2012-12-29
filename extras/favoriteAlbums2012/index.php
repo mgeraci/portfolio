@@ -27,7 +27,7 @@
         <?php
           $albums = array(
             // artist, title, image, rambling, link, song name
-            array("Lower Dens", "Nootropics", "lowerdens", "Lana Hunter's haunting voice floats above beguilingly simple guitars. The songs strike me more as art music; there are a few longer songs and an experimental piece which punctuate the catchy but surreal pop.", "http://www.amazon.com/gp/product/B007IMOWX4/ref=as_li_ss_tl?ie=UTF8&tag=micpgerpor-20&linkCode=as2&camp=1789&creative=390957&creativeASIN=B007IMOWX4", "Brains"),
+            array("Lower Dens", "Nootropics", "lowerdens", "Lana Hunter's haunting voice floats above beguilingly simple guitars. This record is close to art music; there are a few longer songs and an experimental piece which punctuate the catchy but surreal pop.", "http://www.amazon.com/gp/product/B007IMOWX4/ref=as_li_ss_tl?ie=UTF8&tag=micpgerpor-20&linkCode=as2&camp=1789&creative=390957&creativeASIN=B007IMOWX4", "Brains"),
             array('Anaïs Mitchell', 'Young Man in America', "anaismitchell", "Anaïs has the most amazing voice, and her folk music is sparse and beautifully arranged. Stories about love, loss, and forgiveness.", 'http://www.amazon.com/gp/product/B006X08FEO/ref=as_li_ss_tl?ie=UTF8&tag=micpgerpor-20&linkCode=as2&camp=1789&creative=390957&creativeASIN=B006X08FEO', 'Dyin Day'),
             array("Here We Go Magic", "A Different Ship", "herewegomagic", "Quiet, contemplative pop. Drenched in reverb and echoing guitars, the songs are meticulously assembled. This plays in nice contrast to the nature of the lyrics, which often describe uncertainty.", 'http://www.amazon.com/gp/product/B007A4Y1HC/ref=as_li_ss_tl?ie=UTF8&tag=micpgerpor-20&linkCode=as2&camp=1789&creative=390957&creativeASIN=B007A4Y1HC', "Over the Ocean"),
             array("Grace Woodroofe", "Always Want", "gracewoodroofe", "Grace Woodroofe has a beautiful voice, and her record is filled with a pervasive melancholy that is very affecting. She's a great storyteller and some songs draw from very personal experiences. Hers was my favorite live show of the year; her backing band is fantastic.", 'http://www.amazon.com/gp/product/B004FS2772/ref=as_li_ss_tl?ie=UTF8&tag=micpgerpor-20&linkCode=as2&camp=1789&creative=390957&creativeASIN=B004FS2772', "I've Handled Myself Wrong"),
@@ -37,7 +37,7 @@
             array("Lemolo", "The Kaleidoscope", "lemolo", "Two female singers in close harmony. Lots of pianos and spacious guitars give this dream pop a longing, deliberate feel.", 'http://www.amazon.com/gp/product/B009ZTKG0Q/ref=as_li_ss_tl?ie=UTF8&tag=micpgerpor-20&linkCode=as2&camp=1789&creative=390957&creativeASIN=B009ZTKG0Q', "On Again, Off Again"),
             array("Opossum", "Electric Hawaii", "opossum", "This is a great summer record; you can't escape its sun-drenched optimism and happiness. The Beach Boys, but more compressed and a bit more harsh. Short and sweet.", 'http://www.amazon.com/gp/product/B008DL3TPQ/ref=as_li_ss_tl?ie=UTF8&tag=micpgerpor-20&linkCode=as2&camp=1789&creative=390957&creativeASIN=B008DL3TPQ', "Blue Meanies"),
             array("Winterpills", "All My Lovely Goners", "winterpills", "Winterpills is beautiful chamber pop. Their songs are exquisitely arranged, with male and female harmonies, and guitar parts that float on top of the songs. They're particularly special to me as they played a <a href='/winterpills'>show at my parents' house this year</a>.", 'http://www.amazon.com/gp/product/B006UFHGDS/ref=as_li_ss_tl?ie=UTF8&tag=micpgerpor-20&linkCode=as2&camp=1789&creative=390957&creativeASIN=B006UFHGDS', "Minxy"),
-            array("WhoMadeWho", "Brighter", "whomadewho", "On the list for the second year in a row, Brighter is a more upbeat counterpart to last year's Knee Deep. Slightly more playful, they still manage to create suspense and drama in their songs. Infectuous, catchy Danish electro-pop.", 'http://www.amazon.com/gp/product/B006ICUJYG/ref=as_li_ss_tl?ie=UTF8&tag=micpgerpor-20&linkCode=as2&camp=1789&creative=390957&creativeASIN=B006ICUJYG', "The Sun"),
+            array("WhoMadeWho", "Brighter", "whomadewho", "On this list for the second year in a row, Brighter is the more upbeat counterpart to last year's Knee Deep. While more playful, they still create suspense and drama in their songs. Infectuous, catchy Danish electro-pop.", 'http://www.amazon.com/gp/product/B006ICUJYG/ref=as_li_ss_tl?ie=UTF8&tag=micpgerpor-20&linkCode=as2&camp=1789&creative=390957&creativeASIN=B006ICUJYG', "The Sun"),
             array('Beach House', 'Bloom', "beachhouse", "Synthesizers, high voices, electronic drums. Beach House is a dream: a slowly moving, cloud-filled haze. The album is beautiful and captivating as it brings you into its own world.", 'http://www.amazon.com/gp/product/B007LNJ4YW/ref=as_li_ss_tl?ie=UTF8&tag=micpgerpor-20&linkCode=as2&camp=1789&creative=390957&creativeASIN=B007LNJ4YW', "Other People"),
           );
         ?>
@@ -62,14 +62,14 @@
                     <h1>$title</h1>
                     <h2>by <span>$artist</span></h2>
                     <div class='text'>$text</div>
-                    <div class='song'>$song</div>
-                    <div class='audio-wrapper'>
+                    <div class='song_wrapper'>
                       <audio controls>
                         <source src='$root/music/$image.ogg'></source>
                         <source src='$root/music/$image.mp3'></source>
                         <p>Your browser does not support html5 audio, <a href='$root/music/$artist.mp3'>download the file</a>.</p>
                       </audio>
-                      <a class='play' href='#'>play</a>
+                      <a class='control' href='#'></a>
+                      <span>$song</span>
                     </div>
                     <a class='link' href='$link' target='_blank'>buy it</a>
                   </div>

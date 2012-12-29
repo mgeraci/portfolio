@@ -87,29 +87,34 @@ img {
     width: 100%;
     margin-top: 25px;
     font-size: 24px; }
-  .content .song {
+  .content .song_wrapper {
     float: left;
     clear: both;
     margin-top: 25px;
-    margin-bottom: 3px;
+    padding: 10px;
+      padding-left: 15px;
+    background: #444444;
+    border-radius: 4px;
+    color: #f3f4d3;
     font-size: 20px;
-    font-style: oblique; }
-  .content .audio-wrapper {
-    float: left;
-    clear: both;
-    position: relative; }
-  .content audio {
-    float: left;
-    clear: both;
-    margin-top: 5px; }
-  .content .play {
-    position: absolute;
-    top: 5px;
-    left: 0;
-    overflow: hidden;
-    line-height: 100px;
-    width: 40px;
-    height: 30px; }
+    font-style: oblique;
+    letter-spacing: 2px; }
+    .content .song_wrapper .control {
+      float: left;
+      width: 23px;
+      height: 23px;
+      position: relative;
+      line-height: 500px;
+      overflow: hidden;
+      background: url(../images/play-sprite.png) 0px 0px no-repeat; }
+      .content .song_wrapper .control.playing {
+        background: url(../images/play-sprite.png) -25px 0px no-repeat; }
+    .content .song_wrapper span {
+      float: left;
+      margin-top: 6px;
+      margin-left: 5px; }
+    .content .song_wrapper audio {
+      display: none; }
   .content .link {
     float: left;
     clear: both;

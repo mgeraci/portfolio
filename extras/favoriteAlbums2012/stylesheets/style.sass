@@ -116,31 +116,40 @@ img
       top: 25px
     font-size: 24px
 
-  .song
+  .song_wrapper
     +stack
     margin:
       top: 25px
-      bottom: 3px
+    padding: 10px
+      left: 15px
+    background: $text
+    border-radius: 4px
+
+    color: $cream
     font-size: 20px
     font-style: oblique
+    letter-spacing: 2px
 
-  .audio-wrapper
-    +stack
-    position: relative
+    .control
+      float: left
+      width: 23px
+      height: 23px
+      position: relative
+      line-height: 500px
+      overflow: hidden
+      background: url(../images/play-sprite.png) 0px 0px no-repeat
 
-  audio
-    +stack
-    margin:
-      top: 5px
+      &.playing
+        background: url(../images/play-sprite.png) -25px 0px no-repeat
 
-  .play
-    position: absolute
-    top: 5px
-    left: 0
-    overflow: hidden
-    line-height: 100px
-    width: 40px
-    height: 30px
+    span
+      float: left
+      margin:
+        top: 6px
+        left: 5px
+
+    audio
+      display: none
 
   .link
     +stack
