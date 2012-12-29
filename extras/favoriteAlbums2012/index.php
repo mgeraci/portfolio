@@ -21,6 +21,9 @@
       <div class="wrapIn">
         <h2>I know you don't care, but here are</h2>
         <h1>My Favorite Albums of 2012</h1>
+        <div class="links">
+          See also: <a href='/my-favorite-albums-of-2011'>2011</a>
+        </div>
         <?php
           $albums = array(
             // artist, title, image, rambling, link, song name

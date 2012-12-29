@@ -16,6 +16,14 @@ h1 {
   font-size: 70px;
   text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2); }
 
+.links {
+  text-align: center;
+  color: gray; }
+  .links a {
+    color: gray; }
+    .links a:hover {
+      color: #f3f4d3; }
+
 ul#albums {
   float: left;
   clear: both;
