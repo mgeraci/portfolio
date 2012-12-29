@@ -24,18 +24,18 @@
         <?php
           $albums = array(
             // artist, title, image, rambling, link, song name
-            array('alt-J', 'An Awesome Wave', "altj", "Description", '#', 'Tesselate'),
-            array('Anaïs Mitchell', 'Young Man in America', "anaismitchell", "Description", '#', 'Dyin Day'),
-            array('Beach House', 'Bloom', "beachhouse", "Description", '#', 'Tesselate'),
-            array('Bear in Heaven', "I Love You, It's Cool", "bearinheaven", "Description", '#', 'Tesselate'),
-            array("Dinosaur Feathers", "Whistle Tips", "dinosaurfeathers", "Description", '#', 'Tesselate'),
-            array("Grace Woodroofe", "Always Want", "gracewoodroofe", "Description", '#', 'Tesselate'),
-            array("Here We Go Magic", "A Different Ship", "herewegomagic", "Description", '#', 'Tesselate'),
-            array("Lemolo", "The Kaleidoscope", "lemolo", "Description", '#', 'Tesselate'),
-            array("Lower Dens", "Nootropics", "lowerdens", "Description", '#', 'Tesselate'),
-            array("Opossum", "Electric Hawaii", "opossum", "Description", '#', 'Tesselate'),
-            array("WhoMadeWho", "Brighter", "whomadewho", "Description", '#', 'Tesselate'),
-            array("Winterpills", "All My Lovely Goners", "winterpills", "Description", '#', 'Tesselate')
+            array('alt-J', 'An Awesome Wave', "altj", "This is some of the greatest weird pop I've heard recently. The production is clean and tight, and the voices are just odd enough to be interesting. The album has great flow and doesn't shy away from interesting interludes and experimentation.", '#', "Tesselate"),
+            array('Anaïs Mitchell', 'Young Man in America', "anaismitchell", "Anaïs has the most amazing voice, and her folk music is sparse and beautifully arranged. Stories about love, loss, and forgiveness.", '#', 'Dyin Day'),
+            array('Beach House', 'Bloom', "beachhouse", "Synthesizers, high voices, electronic drums. Beach House is a dream, a slowly moving, cloud-filled haze. The album is beautiful, and captivating as it brings you into its own world.", '#', "Other People"),
+            array('Bear in Heaven', "I Love You, It's Cool", "bearinheaven", "This is self referential electronic pop. It's filled with an enviable and almost overwhelming sense of cool. This was a great show; the singer has exudes a boyish charm as he seems to sing about you and him, in the present tense.", '#', "Kiss Me Crazy"),
+            array("Dinosaur Feathers", "Whistle Tips", "dinosaurfeathers", "Dinosaur Feathers is intricate, upbeat pop. It's complex, well arranged, well performed, and full of edgy guitars and time changes. They had me at the Bubb Rubb reference.", '#', "Young Bucks"),
+            array("Grace Woodroofe", "Always Want", "gracewoodroofe", "Grace Woodroofe has a beautiful voice, and her record is filled with a pervasive melancholy that is very affecting. She's a great storyteller and some songs draw from very personal experiences. Hers was maybe the best live show of the year; her backing band is fantastic.", '#', "I've Handled Myself Wrong"),
+            array("Here We Go Magic", "A Different Ship", "herewegomagic", "Quiet, contemplative pop. Drenched in reverb and echoing guitars, the songs are meticulously assembled, which plays in nice contrast to the nature of the lyrics; they often deal in uncertainty.", '#', "Over the Ocean"),
+            array("Lemolo", "The Kaleidoscope", "lemolo", "Two female singers in close harmony, and lots of pianos and spacious guitars give this dream pop a longing, deliberate feel.", '#', "On Again, Off Again"),
+            array("Lower Dens", "Nootropics", "lowerdens", "Lana Hunter's beautifully androgenous voice floats above beguilingly simple guitars. The songs strike me more as compositions or art music; the record is very well layed out, with a few longer songs and a musique concrète piece punctuating the catchy but surreal pop.", '#', "Brains"),
+            array("Opossum", "Electric Hawaii", "opossum", "Description", '#', "Tesselate"),
+            array("WhoMadeWho", "Brighter", "whomadewho", "Description", '#', "Tesselate"),
+            array("Winterpills", "All My Lovely Goners", "winterpills", "Description", '#', "Tesselate")
           );
         ?>
         <ul id='albums'>
