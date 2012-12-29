@@ -33,9 +33,9 @@
             array("Here We Go Magic", "A Different Ship", "herewegomagic", "Quiet, contemplative pop. Drenched in reverb and echoing guitars, the songs are meticulously assembled, which plays in nice contrast to the nature of the lyrics; they often deal in uncertainty.", '#', "Over the Ocean"),
             array("Lemolo", "The Kaleidoscope", "lemolo", "Two female singers in close harmony, and lots of pianos and spacious guitars give this dream pop a longing, deliberate feel.", '#', "On Again, Off Again"),
             array("Lower Dens", "Nootropics", "lowerdens", "Lana Hunter's beautifully androgenous voice floats above beguilingly simple guitars. The songs strike me more as compositions or art music; the record is very well layed out, with a few longer songs and a musique concrète piece punctuating the catchy but surreal pop.", '#', "Brains"),
-            array("Opossum", "Electric Hawaii", "opossum", "Description", '#', "Tesselate"),
-            array("WhoMadeWho", "Brighter", "whomadewho", "Description", '#', "Tesselate"),
-            array("Winterpills", "All My Lovely Goners", "winterpills", "Description", '#', "Tesselate")
+            array("Opossum", "Electric Hawaii", "opossum", "This is a great summer record. The Beach Boys, but more compressed and a bit more harsh. But you can't escape the sun-drenched optimism and happiness of this record. It's short and sweet.", '#', "Blue Meanies"),
+            array("WhoMadeWho", "Brighter", "whomadewho", "On the list for the second year in a row, Brighter is a more upbeat counterpart to last year's Knee Deep. Slightly more playful, they still manage to create suspense and drama in their songs. Infectuous, catchy Danish electro-pop.", '#', "The Sun"),
+            array("Winterpills", "All My Lovely Goners", "winterpills", "Winterpills is beautiful chamber pop from the Northeast. Their love songs are exquisitely arranged and performed, with male and female harmonies, and guitar parts that float on top of the songs. They'll always be particularly special as they played a show at my parents' house.", '#', "Minxy")
           );
         ?>
         <ul id='albums'>
