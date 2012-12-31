@@ -18,11 +18,7 @@ h1 {
 
 .links {
   text-align: center;
-  color: gray; }
-  .links a {
-    color: gray; }
-    .links a:hover {
-      color: #f3f4d3; }
+  font-size: 18px; }
 
 ul#albums {
   float: left;
@@ -57,8 +53,10 @@ ul#albums {
     top: 30px; }
   .count.count7 {
     top: -30px; }
-  .count.count10, .count.count11, .count.count12, .count.count13 {
+  .count.count10, .count.count12, .count.count13 {
     left: -250px; }
+  .count.count11 {
+    left: -220px; }
 
 img {
   position: relative;
@@ -116,11 +114,45 @@ img {
       text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.5); }
     .content .song_wrapper audio {
       display: none; }
-  .content .link {
+  .content .buy-links {
     float: left;
     clear: both;
-    margin-top: 35px;
-    font-size: 24px; }
+    margin-top: 25px; }
+  .content .link {
+    float: left;
+    margin-left: 10px;
+    font-size: 24px;
+    padding: 5px 8px;
+    position: relative;
+    overflow: hidden;
+    line-height: 500px;
+    opacity: 0.5;
+    -webkit-transition: opacity 0.1s linear;
+    -moz-transition: opacity 0.1s linear;
+    transition: opacity 0.1s linear; }
+    .content .link:hover {
+      opacity: 1; }
+    .content .link:first-child {
+      margin: 0; }
+    .content .link.amazon {
+      top: 7px;
+      width: 61px;
+      height: 20px;
+      background: url(../images/amazon.png) 0 0 no-repeat; }
+    .content .link.itunes {
+      width: 74px;
+      height: 20px;
+      background: url(../images/itunes.png) 0 0 no-repeat; }
+    .content .link.personal {
+      bottom: 2px;
+      right: 8px;
+      line-height: normal;
+      text-decoration: none;
+      text-transform: lowercase;
+      font-size: 20px;
+      color: #444444; }
+      .content .link.personal:hover {
+        text-shadow: none; }
 
 #thanks {
   float: left;

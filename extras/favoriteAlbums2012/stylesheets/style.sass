@@ -31,13 +31,7 @@ h1
 
 .links
   text-align: center
-  color: gray
-
-  a
-    color: gray
-
-    &:hover
-      color: $cream
+  font-size: 18px
 
 
 // =========
@@ -83,8 +77,11 @@ ul#albums
   &.count7
     top: -30px
 
-  &.count10, &.count11, &.count12, &.count13
+  &.count10, &.count12, &.count13
     left: -250px
+
+  &.count11
+    left: -220px
 
 img
   position: relative
@@ -152,11 +149,53 @@ img
     audio
       display: none
 
-  .link
+  .buy-links
     +stack
     margin:
-      top: 35px
+      top: 25px
+
+  .link
+    float: left
+    margin:
+      left: 10px
     font-size: 24px
+    padding: 5px 8px
+    position: relative
+    overflow: hidden
+    line-height: 500px
+    opacity: 0.5
+    -webkit-transition: opacity 0.1s linear
+    -moz-transition: opacity 0.1s linear
+    transition: opacity 0.1s linear
+
+    &:hover
+      opacity: 1
+
+    &:first-child
+      margin: 0
+
+    &.amazon
+      top: 7px
+      width: 61px
+      height: 20px
+      background: url(../images/amazon.png) 0 0 no-repeat
+
+    &.itunes
+      width: 74px
+      height: 20px
+      background: url(../images/itunes.png) 0 0 no-repeat
+
+    &.personal
+      bottom: 2px
+      right: 8px
+      line-height: normal
+      text-decoration: none
+      text-transform: lowercase
+      font-size: 20px
+      color: $text
+
+      &:hover
+        text-shadow: none
 
 #thanks
   +stackwide
