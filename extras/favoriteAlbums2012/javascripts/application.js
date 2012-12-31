@@ -18,6 +18,8 @@ audioPlayer = function(){
   AudioPlayer.setup("http://localhost/extras/favoriteAlbums2012/javascripts/player.swf", {
     width: 290,
     transparentpagebg: 'yes',
+    titles: '',
+    artists: '',
     bg: 'bbd199',
     leftbg: 'f3f4d3',
     lefticon: '444444',
@@ -27,7 +29,7 @@ audioPlayer = function(){
     righticonhover: '444444',
     text: '666666',
     slider: '666666',
-    track: 'ffffff',
+    track: 'E3F1CD',
     border: '666666',
     loader: 'f3f4d3'
   });
