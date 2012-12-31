@@ -1,4 +1,6 @@
 $(function(){
+  preloadImages()
+
   // only allow one audio to play at a time
   $('.song_wrapper').click(function(e){
     e.preventDefault();
@@ -18,3 +20,14 @@ $(function(){
     }
   });
 });
+
+preloadImages = function(){
+  $('.image').each(function(){
+    var container, img;
+    container = $(this);
+    img = $('<img>');
+    img.load(function() {
+      container.html(img);
+    }).attr('src', container.data('src'));
+  });
+}

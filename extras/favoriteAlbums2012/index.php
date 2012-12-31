@@ -59,7 +59,7 @@
               $html = "
                 <li>
                   <span class='count count$i'>$i</span>
-                  <img src='$root/images/$image.jpg'>
+                  <div class='image' data-src='$root/images/$image.jpg'></div>
                   <div class='content'>
                     <h1>$title</h1>
                     <h2>by <span>$artist</span></h2>

@@ -58,13 +58,15 @@ ul#albums {
   .count.count11 {
     left: -220px; }
 
-img {
+.image {
   position: relative;
   z-index: 2;
   float: left;
   width: 400px;
   height: 400px;
   background: rgba(255, 255, 255, 0.2); }
+  .image img {
+    float: left; }
 
 .content {
   width: 50%;
