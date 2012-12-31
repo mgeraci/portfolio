@@ -76,9 +76,11 @@
                     <div class='buy-links'>
                       <a class='link amazon' href='$amazon' target='_blank'><span>amazon</span></a>
                       <a class='link itunes' href='$itunes' target='_blank'><span>itunes</span></a>";
-                      
+
                       if ($personal) {
-                        $html .= "<a class='link personal' href='$personal' target='_blank'>$artist's store</a>";
+                        $html .= "<a class='link personal' href='$personal' target='_blank'>$artist'";
+                        if (substr($artist, strlen($artist) - 1) != 's') { $html .= 's'; }
+                        $html .=" store</a>";
                       }
 
                     $html .= "</div>
