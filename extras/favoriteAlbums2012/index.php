@@ -92,7 +92,7 @@
         </ul>
         <div id='thanks'>
           that's it. thanks for reading.
-          <br>complain via <a href='mailto:mgeraci@gmail.com'>email</a> or <a href='http://twitter.com/mgeraci' target='_blank'>twitter</a>.
+          <br>complain via <a href='mailto:me@mgeraci.com'>email</a> or <a href='http://twitter.com/mgeraci' target='_blank'>twitter</a>.
         </div>
       </div>
     </div>
