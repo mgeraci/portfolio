@@ -4,11 +4,10 @@ $(function(){
 
 audioPlayer = function(){
   // http://wpaudioplayer.com/standalone/
-  AudioPlayer.setup("http://localhost/extras/favoriteAlbums2012/javascripts/player.swf", {
+  AudioPlayer.setup(window.location.origin + "/extras/favoriteAlbums2012/javascripts/player.swf", {
     width: 290,
     transparentpagebg: 'yes',
-    titles: '',
-    artists: '',
+    noinfo: 'yes',
     bg: 'bbd199',
     leftbg: 'f3f4d3',
     lefticon: '444444',
