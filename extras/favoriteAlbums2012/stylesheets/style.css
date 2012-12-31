@@ -91,14 +91,15 @@ img {
     float: left;
     clear: both;
     margin-top: 25px;
-    padding: 7px 10px;
-      padding-left: 13px;
+    padding: 5px 8px;
+      padding-left: 11px;
     background: #444444;
     border-radius: 4px;
     color: #f3f4d3;
     font-size: 20px;
     font-style: oblique;
-    letter-spacing: 2px; }
+    letter-spacing: 2px;
+    cursor: pointer; }
     .content .song_wrapper .control {
       float: left;
       width: 23px;
@@ -112,7 +113,7 @@ img {
     .content .song_wrapper span {
       float: left;
       margin-top: 6px;
-      margin-left: 5px; }
+      text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.5); }
     .content .song_wrapper audio {
       display: none; }
   .content .link {
