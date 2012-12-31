@@ -1,6 +1,6 @@
 $(function(){
   preloadImages()
-  //handleAudio()
+  audioPlayer()
 });
 
 preloadImages = function(){
@@ -14,23 +14,25 @@ preloadImages = function(){
   });
 }
 
-handleAudio = function(){
-  // only allow one audio to play at a time
-  $('.song_wrapper').click(function(e){
-    e.preventDefault();
-    audio = $(this).find('audio')[0];
-    if (audio.paused) {
-      // control
-      $('.control').removeClass('playing')
-      $(this).find('.control').addClass('playing')
+audioPlayer = function(){
+  AudioPlayer.setup("http://localhost/extras/favoriteAlbums2012/javascripts/player.swf", {
+    width: 290,
+    transparentpagebg: 'yes',
+    bg: 'bbd199',
+    leftbg: 'f3f4d3',
+    lefticon: '444444',
+    rightbg: 'f3f4d3',
+    rightbghover: 'dedfb5',
+    righticon: '444444',
+    righticonhover: '444444',
+    text: '666666',
+    slider: '666666',
+    track: 'ffffff',
+    border: '666666',
+    loader: 'f3f4d3'
+  });
 
-      // audio
-      $("audio").not(audio).each(function(){$(this)[0].pause()});
-      audio.currentTime = 0
-      audio.play();
-    } else {
-      $(this).find('.control').removeClass('playing')
-      audio.pause();
-    }
+  $('.audioplayer').each(function(){
+    AudioPlayer.embed($(this).attr('id'), {soundFile: $(this).data('src')});
   });
 }

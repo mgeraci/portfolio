@@ -22,7 +22,7 @@
         <h2>I know you don't care, but here are</h2>
         <h1>My Favorite Albums of 2011</h1>
         <div class="links">
-          See also: <a href='/my-favorite-albums-of-2012'>2012</a>
+          see also: <a href='/my-favorite-albums-of-2012'>2012</a>
         </div>
         <?php
           $albums = array(
