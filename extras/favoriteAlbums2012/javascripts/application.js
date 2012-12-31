@@ -16,7 +16,7 @@ preloadImages = function(){
 
 audioPlayer = function(){
   // http://wpaudioplayer.com/standalone/
-  AudioPlayer.setup(window.location.origin + "/extras/favoriteAlbums2012/javascripts/player.swf", {
+  AudioPlayer.setup(window.location.protocol + "//" window.location.host + "/extras/favoriteAlbums2012/javascripts/player.swf", {
     width: 290,
     transparentpagebg: 'yes',
     noinfo: 'yes',
