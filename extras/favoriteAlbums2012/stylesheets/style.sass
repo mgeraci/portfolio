@@ -116,46 +116,21 @@ ul#albums
       top: 25px
     font-size: 24px
 
-  .song_wrapper
+  .song
     +stack
     margin:
       top: 25px
-    padding: 5px 8px
-      left: 11px
-    background: $text
-    border-radius: 4px
-
-    color: $cream
-    font-size: 20px
     font-style: oblique
-    letter-spacing: 2px
-    cursor: pointer
 
-    .control
-      float: left
-      width: 23px
-      height: 23px
-      position: relative
-      line-height: 500px
-      overflow: hidden
-      background: url(../images/play-sprite.png) 0px 0px no-repeat
-
-      &.playing
-        background: url(../images/play-sprite.png) -25px 0px no-repeat
-
-    span
-      float: left
-      margin:
-        top: 6px
-      text-shadow: 0 -1px 0 rgba(0,0,0,0.5)
-
-    audio
-      display: none
+  object
+    +stack
+    margin:
+      top: 3px
 
   .buy-links
     +stack
     margin:
-      top: 25px
+      top: 20px
 
   .link
     float: left
