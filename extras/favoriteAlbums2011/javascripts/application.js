@@ -1,18 +1,6 @@
 $(function(){
-  preloadImages()
   audioPlayer()
 });
-
-preloadImages = function(){
-  $('.image').each(function(){
-    var container, img;
-    container = $(this);
-    img = $('<img>');
-    img.load(function() {
-      container.html(img);
-    }).attr('src', container.data('src'));
-  });
-}
 
 audioPlayer = function(){
   // http://wpaudioplayer.com/standalone/

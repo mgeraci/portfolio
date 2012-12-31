@@ -18,7 +18,8 @@ h1 {
 
 .links {
   width: 100%;
-  text-align: center; }
+  text-align: center;
+  font-size: 18px; }
 
 ul#albums {
   float: left;

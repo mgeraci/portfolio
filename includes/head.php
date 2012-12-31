@@ -64,13 +64,13 @@
         // javascript
         if (preg_match('/michaelgeraci\.com/', $_SERVER['SERVER_NAME'] )){
           echo '<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>';
-          if ($location != '/extras/favoriteAlbums2012/index.php') {
+          if ($location != '/extras/favoriteAlbums2011/index.php' && $location != '/extras/favoriteAlbums2012/index.php') {
             echo '<script type="text/javascript" src="/js/pack.js"></script>';
           }
         } else {
           echo '<script type="text/javascript" src="/js/jquery1.5.min.js"></script>
           <script type="text/javascript" src="/js/unminified/jquery.hotkeys-0.8.js"></script>';
-          if ($location != '/extras/favoriteAlbums2012/index.php') {
+          if ($location != '/extras/favoriteAlbums2011/index.php' && $location != '/extras/favoriteAlbums2012/index.php') {
             echo '<script type="text/javascript" src="/js/unminified/audio_player.js"></script>';
           }
           echo '<script type="text/javascript" src="/js/unminified/json.js"></script>
@@ -78,6 +78,11 @@
         }
 
         // extras javascripts
+        if ($location == '/extras/favoriteAlbums2011/index.php') {
+          echo '<script type="text/javascript" src="/extras/favoriteAlbums2011/javascripts/audioplayer.js"></script>';
+          echo '<script type="text/javascript" src="/extras/favoriteAlbums2011/javascripts/application.js"></script>';
+        }
+
         if ($location == '/extras/favoriteAlbums2012/index.php') {
           echo '<script type="text/javascript" src="/extras/favoriteAlbums2012/javascripts/audioplayer.js"></script>';
           echo '<script type="text/javascript" src="/extras/favoriteAlbums2012/javascripts/application.js"></script>';
