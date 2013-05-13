@@ -1,0 +1,4 @@
+AuthName "Admin"
+AuthType Basic
+AuthUserFile /home/michaelgeraci/michaelgeraci.com/extras/matchmaker/.htpasswd
+require valid-user
