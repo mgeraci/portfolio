@@ -10,6 +10,7 @@ ErrorDocument 500 /error.php?error=500
 
 # force download on .mus files
 AddType application/octet-stream .mus .cdr
+AddType application/octet-stream .m4a .cdr
 
 # rewrites
 RewriteEngine on
