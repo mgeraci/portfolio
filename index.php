@@ -54,11 +54,11 @@
     </div>
     <div id="indexBottom" class="wrapOut">
       <div class="wrapIn">
-        <h1>Last Updated: 12.24.12</h1>
+        <h1>Last Updated: 3.13.13</h1>
         <?php
           $recent = array(
+            array('/photography/blog/414', '/media/photography/blog/thumbs/6987.jpg', "New Photos:<br>Pictured Rocks National Lakeshore & Chicago", ''),
             array('/web/dtime2', '/images/recent_thumbs/dtime2.jpg', "New Web Design:<br>Dtime Version 2", ''),
-            array('/photography/blog/382', '/media/photography/blog/thumbs/6214.jpg', "New Photos:<br>Kinetic Sculpture Race and Baltimore", ''),
             array('/graphic/51', '/media/graphic/thumbs/pumptrain.jpg', "New Graphic Design:<br>Pump Train", ''),
             array('http://mgeraci.github.com/Coffee-Filter/', '/images/recent_thumbs/coffee-filter.png', "New Open Source JavaScript Library:<br>Coffee Filter", 'new-window'),
           );
