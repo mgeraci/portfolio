@@ -52,7 +52,6 @@ thumbnails = ->
 # handles loading image for photos
 photoLoader = ->
   if $('#photoLoaderInfo').length != 0
-    console.log 'photo preloader'
     # get the image parameters
     siteSection = $('#photoLoaderSiteSection').html()
     section = $('#photoLoaderSection').html()
@@ -65,13 +64,9 @@ photoLoader = ->
       srcString = '/media/' + siteSection + '/' + section + '/' + id + '.jpg'
     else
       srcString = '/media/' + siteSection + '/' + id + '.jpg'
-    console.log srcString
 
-    img = new Image()
-    console.log img
+    img = document.createElement "img"
     $(img).load(->
-      console.log 'loaded', this
-
       # hide the target
       $(this).hide()
 

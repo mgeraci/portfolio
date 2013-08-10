@@ -55,7 +55,6 @@
   photoLoader = function() {
     var height, id, img, section, siteSection, srcString, title, width;
     if ($('#photoLoaderInfo').length !== 0) {
-      console.log('photo preloader');
       siteSection = $('#photoLoaderSiteSection').html();
       section = $('#photoLoaderSection').html();
       id = $('#photoLoaderID').html();
@@ -67,11 +66,8 @@
       } else {
         srcString = '/media/' + siteSection + '/' + id + '.jpg';
       }
-      console.log(srcString);
-      img = new Image();
-      console.log(img);
+      img = document.createElement("img");
       return $(img).load(function() {
-        console.log('loaded', this);
         $(this).hide();
         $('#pictureDiv').removeClass('loading').append(this);
         return $(this).fadeIn();
