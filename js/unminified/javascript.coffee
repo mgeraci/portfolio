@@ -4,6 +4,8 @@
 # =              (c) Michael P. Geraci
 # =
 # ===================================================
+#
+# coffee -w -c js/unminified/
 
 # home page headshot loader
 preloadHeadshot = ->
@@ -27,13 +29,13 @@ programNotes = ->
   $('.programNotesOpen').click ->
     $(this).prevAll('.programNotes').slideDown('medium')
     $(this).html('').animate({marginBottom: "0px"}, 'medium')
-    
+
     return false
 
   $('.programNotesClose').click ->
     $(this).parent().slideUp('medium')
     $(this).parent().nextAll('.programNotesOpen').html('[+]&nbsp;Program Notes').animate({marginBottom: "30px"}, 'medium')
-    
+
     return false
 
 # Handle thumbnail opacity in galleries
@@ -50,6 +52,7 @@ thumbnails = ->
 # handles loading image for photos
 photoLoader = ->
   if $('#photoLoaderInfo').length != 0
+    console.log 'photo preloader'
     # get the image parameters
     siteSection = $('#photoLoaderSiteSection').html()
     section = $('#photoLoaderSection').html()
@@ -62,20 +65,22 @@ photoLoader = ->
       srcString = '/media/' + siteSection + '/' + section + '/' + id + '.jpg'
     else
       srcString = '/media/' + siteSection + '/' + id + '.jpg'
+    console.log srcString
 
-    $(->
-      img = new Image()
-      $(img).load(->
-        # hide the target
-        $(this).hide()
-        
-        # remove the spinner and add the image
-        $('#pictureDiv').removeClass('loading').append(this)
+    img = new Image()
+    console.log img
+    $(img).load(->
+      console.log 'loaded', this
 
-        # fade in the image
-        $(this).fadeIn()
-      ).attr('src', srcString).attr('width', width).attr('height', height).attr('alt', title)
-    )
+      # hide the target
+      $(this).hide()
+
+      # remove the spinner and add the image
+      $('#pictureDiv').removeClass('loading').append(this)
+
+      # fade in the image
+      $(this).fadeIn()
+    ).attr('src', srcString).attr('width', width).attr('height', height).attr('alt', title)
 
 # Map Left and Right Keys to Navigation in Photo and Graphic
 keys = ->
@@ -96,62 +101,62 @@ web = ->
   if $('#pageWeb').length > 0
     # size of pieceContent's left attr plus margin-left
     containerSize = 330
-    
+
     # set opacity of list on ie7
     $('#pieceList ul').css('opacity', 0.1) if $.browser.msie && $.browser.version.substr(0, 1) == '7' && $('#piece').html() != ''
-    
+
     # onload, preload first image
     webPreload("/media/web/#{$('#piece').text()}/1.jpg", 1) unless $('#piece').html() == ''
-    
+
     # clicking a piece link
     $('#pieceList a').click ->
       # get the url
       url = $(this).attr('href')
-      
+
       # change the opacity of the list
       $('#pieceListContainer ul').stop().animate({opacity: 0.1}, animationTime)
-      
+
       # collapse the container
       $('#pieceListContainer').stop().animate({width: 100}, animationTime)
-      
+
       # expand the overlay
       $('#webOverlay').animate({width: '100%'}, animationTime)
-      
+
       # hide the piecelist on clicking a piece
       $('#webFade').stop().animate({width: 20}, animationTime + 20, ->
         # go to link on end animation
         window.location = url
       )
-      
+
       return false
-    
+
     animationTime = 200
-    
+
     # hovering on the web overlay changes the arrow state
     $('#webToggle').hover ->
       $(this).find('.inner').removeClass('off').addClass('on');
     , ->
       $(this).find('.inner').removeClass('on').addClass('off');
-    
+
     # hide and show the piece list on hover
     $('#webToggle').click ->
       # expanding
       if $('#pieceListContainer').attr('class').match(/collapsed/)
         # change the arrows to 'collapse'
         $('#webOverlay').find('.inner').removeClass('expand').addClass('contract')
-        
+
         # scale down the overlay and increase right position
         $('#webOverlay').animate({width: 20, right: 20}, animationTime)
-        
+
         # expand the container
         $('#pieceListContainer').stop().animate({width: containerSize}, animationTime)
-        
+
         # change the opacity of the list
         $('#pieceListContainer ul').stop().animate({opacity: 1}, animationTime)
-        
+
         # expand the fade
         $('#webFade').stop().animate({width: 40}, animationTime)
-        
+
         # remove the collapsed class
         $('#pieceListContainer').removeClass('collapsed')
       else # contracting
@@ -159,35 +164,35 @@ web = ->
         $('#webFade').css('background', 'background: url(/images/webFade.png) 0 0 repeat-y;')
         # change the arrows to 'expand'
         $('#webOverlay').find('.inner').removeClass('contract').addClass('expand')
-        
+
         # expand the overlay
         $('#webOverlay').animate({width: '100%', right: 0}, animationTime)
-        
+
         # collapse the container
         $('#pieceListContainer').stop().animate({width: 100}, animationTime)
-        
+
         # change the opacity of the list
         $('#pieceListContainer ul').stop().animate({opacity: 0.1}, animationTime)
-        
+
         # collapse the fade
         $('#webFade').stop().animate({width: 20}, animationTime)
-        
+
         # add the collapsed class
         $('#pieceListContainer').addClass('collapsed')
-      
+
       return false
-    
+
     # handle the 'next' button
     $('#next').live('click', ->
       webNext()
-      
+
       return false
     )
-    
+
     # handle the 'next' button
     $('#previous').live('click', ->
       webPrev()
-      
+
       return false
     )
 
@@ -199,7 +204,7 @@ webKeys = ->
         webNext()
         return false
       )
-    
+
     # keyboard shortcut if more than 1 image
     if $('a#previous').length != 0
       $(document).bind('keydown', 'left',  (evt) ->
@@ -212,19 +217,19 @@ webNext = ->
   if $('#pieceContent img').attr('src')
     # get the image number
     number = parseInt($('#current').text(), 10)
-    
+
     # how many images?
     images = parseInt($('#images').text(), 10)
-    
+
     # get the next number
     next = if number + 1 > images then 1 else number + 1
-    
+
     # make the next url
     url = $('#pieceContent img').attr('src').replace(/\d{1}.jpg/, "#{next}.jpg")
-    
+
     # replace the image
     webPreload(url, next)
-    
+
     # set the count
     $('#current').html(next)
 
@@ -233,19 +238,19 @@ webPrev = ->
   if $('#pieceContent img').attr('src')
     # get the image number
     number = parseInt($('#current').text(), 10)
-    
+
     # how many images?
     images = parseInt($('#images').text(), 10)
-    
+
     # get the next number
     next = if number - 1 == 0 then images else number - 1
-    
+
     # make the next url
     url = $('#pieceContent img').attr('src').replace(/\d{1}.jpg/, "#{next}.jpg")
-    
+
     # replace the image
     webPreload(url, next)
-    
+
     # set the count
     $('#current').html(next)
 
@@ -253,19 +258,19 @@ webPrev = ->
 webPreload = (url, number) ->
   # remove the content and add the spinner
   $('#webImage').html('').addClass('loading')
-  
+
   img = new Image()
   $(img).load(->
     # hide the target
     $(this).hide()
-    
+
     # remove the spinner and add the image
     $('#webImage').removeClass('loading').append(this)
-    
+
     # fade in the image
     $(this).fadeIn()
   ).attr('src', url).attr('width', 750).attr('alt', "#{$('#name').html()} Screenshot #{number}")
-  
+
 
 # Load these functions when the document is ready
 $(->
