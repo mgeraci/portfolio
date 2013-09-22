@@ -27,6 +27,7 @@
       <div class="linksText" style="width: 550px;">
         <h1>Steel Drum Performances that Michael has taken part in:</h1>
         <br>
+        <br><a class="new-window" href="http://www.youtube.com/watch?v=cTOi7ON1kpU">CASYM, New York - Fantastic Friday (2013)</a>
         <br><a class="new-window" href="https://www.youtube.com/watch?v=Jjym9fKzE5U">Pan Sonatas, New York - Gie Dem Tempo (2012)</a>
         <br><a class="new-window" href="http://vimeo.com/28989090">Pan Sonatas, New York - It's Showtime (2011)</a>
         <br><a class="new-window" href="http://vimeo.com/16149060">Pan Sonatas, New York - Battle Zone (2010)</a>
