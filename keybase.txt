@@ -1,0 +1,72 @@
+==================================================================
+https://keybase.io/mgeraci
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of http://michaelgeraci.com
+  * I am mgeraci (https://keybase.io/mgeraci) on keybase.
+  * I have a public key with fingerprint C7B2 3496 19DC 4F2A 73FF  147D 69E4 0628 490D DCD9
+
+To claim this, I am signing this object:
+
+{
+    "body": {
+        "key": {
+            "fingerprint": "c7b2349619dc4f2a73ff147d69e40628490ddcd9",
+            "host": "keybase.io",
+            "key_id": "69e40628490ddcd9",
+            "uid": "3660fa6e82bcc19e278e5b6bc57a1500",
+            "username": "mgeraci"
+        },
+        "service": {
+            "hostname": "michaelgeraci.com",
+            "protocol": "http:"
+        },
+        "type": "web_service_binding",
+        "version": 1
+    },
+    "ctime": 1397322696,
+    "expire_in": 157680000,
+    "prev": "9aca9df65d8ffe99f0f1aad31b10bbe08e2c20cd32721ceec0e68af13c8c3d76",
+    "seqno": 4,
+    "tag": "signature"
+}
+
+with the aforementioned key, yielding the PGP signature:
+
+-----BEGIN PGP MESSAGE-----
+Version: Keybase OpenPGP v0.1.5
+Comment: https://keybase.io/crypto
+
+yMMEAnicbZF9UBRlHMcPOCEvRWIazgOk2PFQ6Eb25di9pagEPPMcaXxhru7Mc/fZ
+Z+9WuN3zbgEZhAx8uyaLiVJspqbQiGaIHMHUIuvIwcqoQw584WYoYxLDUEGcgBL3
+MP/r+eeZ5/v7fL+/3zO/swtjVJqoNkKww6WyNer8t5Nlqo1rfN9XIazEVSK5VUgJ
+nLt4QXRCr8criDKSiwCKxQkjTWI0B4w8zlAEz2NGiiNpaERJ3GSkUY4DHI0YEJfk
+iziUGJbxwRWCpGjKwyFwivo/fNlcgSBJlGdIaMJZADAa4pQJ5rAkC3IoBstB0Qjo
+g16RcUOFdiujMUBAqg2IIpYLQBGr5jo/BATgYmDpA2wFkNyK3+OVZAlIpUrZJcue
+3IhbrvRE8ArIOv4LcrCCyCl/Vwzl0OsTJBHJxRQSyEIkGSNoisBxkiYNCNzhEbzQ
+IUSIHIo0ocqJtIHlSiTNAIbmeDKHM/E8pGke5TGG4QiMxVCWhagJ4gBHAUfgFI4B
+CAEKSRPDYwQwAYKjSKW/D24XJSTXqIzJOJVIn+AUGbnMC5HqrsBmtSpKo4qdFx3Z
+nkozP+HhTodfTlCd/3hwweGVxtPugev1d/61rT2IZk9x0ydnW/ijfY3amKr5hn51
+zIxWfGz5nmMcZt27fMBv7tKvGTm77QS0jO3SJa3rMNz6fXRydaOnd3ACZtnSz9Wn
+1N7cW1SS8TSz9LMb2tC92yX8SH14qq1Ps75wZ8tupObMX3mX3mz3j+cH4zKKzRsb
+xqqPqOxvacfv9j5/zJLZrK/LXnLIrXZb0z74yRLuCJzaBujN4dGp6LrQviVjx1tR
+16+ny9IybPpMc7/+7/ftmkFD0CZK9g/lhEW2gYu304p+Gd+ie7dx8X70t/ymR6YN
+YzELkJqCrZNN0Y+LKrt/3x9bC5LuBEPL8leNUKmrnyhPKV75w5WWJ3fvXLg9Nmye
+2SBfdiUHb7Y0ZM0uqqt7u19XGrBcrITR5KVNyeYXqOGCoT9lZ8qWpMJb/pPBihOW
+GWbYuDb1xhvvtPUUpx5/Kj/rx1rVjKG7efCT2R3DV/nM7i8s4cIB7jXi9Rf7r15z
+nXNscpZnh7s6O77qut7Q/s2BppFn0vcnTM0rhtbUT/2hgNR3YOzaP0Xxrx6qyWOP
+9Ey0rrsQfzi94oo6VhsK1NYkLv5c9/NonHC0s5lA36v8LvFgxxm/3uPqt8a/NO3W
+zPZUXl420dC5/tkNvdGrpncNZX50YU/70F11MvhyavBeaiIe98rX1a26buep5/Iy
+Hr0PcqmUdg==
+=LlNQ
+-----END PGP MESSAGE-----
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/mgeraci
+
+==================================================================
+
