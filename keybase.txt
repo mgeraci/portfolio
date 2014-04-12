@@ -70,3 +70,75 @@ View my publicly-auditable identity here: https://keybase.io/mgeraci
 
 ==================================================================
 
+==================================================================
+https://keybase.io/mgeraci
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of http://mgeraci.com
+  * I am mgeraci (https://keybase.io/mgeraci) on keybase.
+  * I have a public key with fingerprint C7B2 3496 19DC 4F2A 73FF  147D 69E4 0628 490D DCD9
+
+To claim this, I am signing this object:
+
+{
+    "body": {
+        "key": {
+            "fingerprint": "c7b2349619dc4f2a73ff147d69e40628490ddcd9",
+            "host": "keybase.io",
+            "key_id": "69e40628490ddcd9",
+            "uid": "3660fa6e82bcc19e278e5b6bc57a1500",
+            "username": "mgeraci"
+        },
+        "service": {
+            "hostname": "mgeraci.com",
+            "protocol": "http:"
+        },
+        "type": "web_service_binding",
+        "version": 1
+    },
+    "ctime": 1397322872,
+    "expire_in": 157680000,
+    "prev": "2d519326aa83f8ca3854d2681d0c8f10560c615e8aae64d71782226b4e7a7eab",
+    "seqno": 6,
+    "tag": "signature"
+}
+
+with the aforementioned key, yielding the PGP signature:
+
+-----BEGIN PGP MESSAGE-----
+Version: Keybase OpenPGP v0.1.5
+Comment: https://keybase.io/crypto
+
+yMMBAnicbZF7UFTlG8eXhdVZ/K1cRo1kHehMQS2Xzm3PObtTMA2BY4w0RGUosZ7L
+e+DAcs6y5yyXWSChoAn7jWhEztioiBoZS17GxByVDcgZk2HBDdpKLQ1RNDAHIpBR
+zzL1RzO9/7zzfp/P9/s87zz9hlBNeEg3JmwBTyubQr7rnXZp8jYoVW6IkbhqyOqG
+SsHSxQtiEXA6nIKoQFaIJRkUwy0EYuFYnEdpEuN5BCc5wgJwmEAp3AJzHMtZoGSo
+WJKDDjWGoWWQKkiqpj5sAqeq/8G7lgoYQcA8TQAKZVgWsQCUpICZIRjWTNKIGYaD
+oAycIl0GVLpMHY1mBag2GVLFCoFVRfdS538DqaxUpjodTkmRWMmuFooVxWEN+pRq
+RxCsBIzt7wgbI4ic+mvVUAGcsiCJkBVRSVYRgpkIZiExFKVINBkCVQ7BCWxCkDCT
+BAWrJ9gGVKiRKGdGLBhK0DSF8RRLY5QZ51CCQjiYpXgENhMwSyBmQNE0IHCOREgK
+RVGCwQFJk4Bm1P4yKBclyEqoY9JFaqQsFIm04nICqPYbb0GYJiRcs0ynVfdWrQnX
+R/6zzc2jkZqT+2cufe27vCfw7baklwenWv4UOs56rXs9HdGh+57/cHHUOXDgnapr
+3w9vcbeFES8csgWMEQdePDfS690utaXsQBfWZ84ce7POHjW04l7gx5dmx17dbedG
+kvzrqjcurloeW3dK6rl1vGbO17GWGeppPFPwFX2w/aljpohn8qpOxdOP3MbP3X+0
+/nX+jVJD/v+XayekiQ8UY5h++nSPnH0x5kvt+VU55WtONDQmxHjSJo8IiSMNzOEd
+Q+P+a7NZnTf6Ytvt9hxvc+Dm+L2DMdrTlqScNtq78FGxK1f/ZEbEBb0jUVsyaUro
+yheR+r6Qz5Zl9k+UmN7+vT73NT7zXbQrd/WVB1mbx/9X1S+vloeJutn8eQ/OBXZ2
+TxbEGv2ehoznPsEzdt2+lf7L0ZT72V39G+ru87f1R/PmKhe2pzXtheIWd7Z2DhbO
+mc80/jR/Fk6FH9xd8et4irI2fiZrX1ST//245ou6poTUFj68MnrsN/eujEAg4Ge3
+RQ9eP+w1xSU1717ZeUU3KhtNA+Unktcc+TRrq+/6Q3Ss1zHtSZtvWcQu7DFGjrQt
+bjz0cfz6n2UB6NLSt5a6jp/0pfft/+Jud239GFLLKoYSjyFxYPbcnaj3Lt0sfKv9
+as1Ed+Erxilba/bU8OtRoTWX18VE37gT/4NY6KM39T56uNJQamVmhiN0T4jPXn0M
+RvmV6g==
+=FKVp
+-----END PGP MESSAGE-----
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/mgeraci
+
+==================================================================
+
