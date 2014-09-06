@@ -342,10 +342,10 @@ body#index
 
     h1
       +floatClear
-      margin: 0 0 10px 0
+      margin: 0 0 20px 0
       font-family: 'headline'
       font-size: 40px
-      text-shadow: 0 1px rgba(255,255,255,0.3)
+      text-shadow: 0 1px rgba(255,255,255,0.1)
       color: $text
 
     .text
@@ -358,29 +358,29 @@ body#index
       margin: 30px 0 0 0
       width: 100%
 
-      ul
-        +floatClear
-
-      li
-        float: left
-        margin: 0 10px 0 0
-
-      $icon_size: 37px
+      $icon-size: 35px
 
       a
+        float: left
         +sprite
-        width: $icon_size
-        height: $icon_size + 1
-        +floatClear
+        width: $icon-size
+        height: $icon-size
+        margin-left: 10px
+
+        &:first-child
+          margin-left: 0
 
       .github
         background: url(/images/socialSprite.png) 0 0 no-repeat
 
-      .twitter
-        background: url(/images/socialSprite.png) $icon_size * -1 0 no-repeat
+        &:hover
+          background-position: 0 $icon-size * -1
 
       .newsblur
-        background: url(/images/socialSprite.png) $icon_size * -2 0 no-repeat
+        background: url(/images/socialSprite.png) -$icon-size 0 no-repeat
+
+        &:hover
+          background-position: $icon-size * -1 $icon-size * -1
 
 #indexBottom
   padding: 30px 0 0 0
