@@ -45,12 +45,12 @@
     </div>
     <div id="indexBottom" class="wrapOut">
       <div class="wrapIn">
-        <h1>Last Updated: 9.6.14</h1>
+        <h1>Last Updated: 2.5.15</h1>
         <?php
           $recent = array(
+            array('http://albums.michaelgeraci.com/list/2014', '/images/recent_thumbs/albums-2014.jpg', "My favorite albums of 2014", ''),
             array('https://www.youtube.com/watch?v=UaLBILfJ5ag', '/images/recent_thumbs/casym-2014.jpg', "New Steel Drum Performance<br>CASYM - Big People Party", 'new-window'),
             array('/photography/blog/427', '/media/photography/blog/thumbs/7352.jpg', "New Photos:<br>Summer Trip to Duluth", ''),
-            array('/web/dtime2', '/images/recent_thumbs/dtime2.jpg', "New Web Design:<br>Dtime Version 2", ''),
             array('/graphic/51', '/media/graphic/thumbs/pumptrain.jpg', "New Graphic Design:<br>Pump Train", ''),
           );
 
