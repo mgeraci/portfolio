@@ -45,13 +45,13 @@
     </div>
     <div id="indexBottom" class="wrapOut">
       <div class="wrapIn">
-        <h1>Last Updated: 2.5.15</h1>
+        <h1>Last Updated: 11.11.15</h1>
         <?php
           $recent = array(
+            array('https://github.com/mgeraci/auto-hud', '/images/recent_thumbs/auto-hud.jpg', "New Project:<br>Smart mirror display", 'new-window'),
             array('http://albums.michaelgeraci.com/list/2014', '/images/recent_thumbs/albums-2014.jpg', "My favorite albums of 2014", ''),
             array('https://www.youtube.com/watch?v=UaLBILfJ5ag', '/images/recent_thumbs/casym-2014.jpg', "New Steel Drum Performance<br>CASYM - Big People Party", 'new-window'),
             array('/photography/blog/427', '/media/photography/blog/thumbs/7352.jpg', "New Photos:<br>Summer Trip to Duluth", ''),
-            array('/graphic/51', '/media/graphic/thumbs/pumptrain.jpg', "New Graphic Design:<br>Pump Train", ''),
           );
 
           function recent_item($array){
