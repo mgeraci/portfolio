@@ -1,4 +1,0 @@
-AuthName "Admin"
-AuthType Basic
-AuthUserFile /home/michaelgeraci/michaelgeraci.com/admin/.htpasswd
-require valid-user

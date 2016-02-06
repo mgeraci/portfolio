@@ -19,3 +19,9 @@ extras/linkedlistnyc/*
 extras/linkedlistnyc/*/*
 extras/linkedlistnyc/*/*/*
 extras/synth
+
+includes/connect.php
+admin/.htaccess
+admin/.htpasswd
+extras/rumney/.htaccess
+extras/rumney/.htpasswd
