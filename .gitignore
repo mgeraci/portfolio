@@ -29,3 +29,5 @@ extras/rumney/.htpasswd
 michael_dot_com/michael_dot_com/localsettings.py
 michael_dot_com/michael_dot_com/localsettings.pyc
 michael_dot_com/staticfiles/**/*
+
+node_modules
