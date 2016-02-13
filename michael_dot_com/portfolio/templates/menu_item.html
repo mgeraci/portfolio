@@ -1,3 +1,9 @@
 <li>
-	{{ menu_item }}
+	<a href="{{ menu_item.href }}"
+		{% ifequal request.path menu_item.href %}
+			class="active"
+		{% endifequal %}
+	>
+		{{ menu_item.name }}
+	</a>
 </li>
