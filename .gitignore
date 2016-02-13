@@ -25,3 +25,6 @@ admin/.htaccess
 admin/.htpasswd
 extras/rumney/.htaccess
 extras/rumney/.htpasswd
+
+michael_dot_com/michael_dot_com/localsettings.py
+michael_dot_com/michael_dot_com/localsettings.pyc
