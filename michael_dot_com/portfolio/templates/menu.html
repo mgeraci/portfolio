@@ -1,0 +1,11 @@
+{% url 'index_url' as index_url %}
+
+<nav>
+	<ul>
+		{% include "menu_item.html" with menu_item="foo" %}
+
+		<li>
+			<a href="{{ index_url }}">Bio/ Resume</a>
+		</li>
+	</ul>
+</nav>
