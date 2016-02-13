@@ -5,16 +5,13 @@
 			Michael P. Geraci - {% block title %}{% endblock %}
 		</title>
 		<link rel="shortcut icon" href="http://michaelgeraci.com/favicon.ico" type="image/x-icon">
+		<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}/test.css">
 	</head>
 	<body>
 
 		{% include "menu.html" %}
 
-		<div id="contentWrapper" class="wrapOut">
-			<div class="wrapIn">
-				{% block content %}{% endblock %}
-			</div>
-		</div>
+		{% block content %}{% endblock %}
 
 		<script type="text/javascript">
 			var _gaq = _gaq || [];
