@@ -5,8 +5,10 @@ var sass = require('gulp-ruby-sass');
 
 var webpackConfig = require("./webpack.config.js");
 var cssRoot = "michael_dot_com/portfolio/static/css/";
+var cssFiles = cssRoot + "**/*.sass";
 var cssEntry = "michael_dot_com/portfolio/static/css/styles.sass";
 var jsRoot = "michael_dot_com/portfolio/static/js/";
+var jsFiles = jsRoot + "**/*.coffee";
 var jsEntry = jsRoot + "app.coffee";
 
 gulp.task("default", function() {
@@ -15,8 +17,8 @@ gulp.task("default", function() {
 	gulp.start("compileJS");
 
 	// start watchers
-	gulp.watch(cssEntry, ["compileCSS"]);
-	gulp.watch(jsEntry, ["compileJS"]);
+	gulp.watch(cssFiles, ["compileCSS"]);
+	gulp.watch(jsFiles, ["compileJS"]);
 });
 
 gulp.task('compileCSS', function() {

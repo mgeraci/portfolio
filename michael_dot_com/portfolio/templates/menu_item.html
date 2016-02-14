@@ -4,6 +4,6 @@
 			class="active"
 		{% endifequal %}
 	>
-		{{ menu_item.name }}
+		{{ menu_item.split_name|safe }}
 	</a>
 </li>

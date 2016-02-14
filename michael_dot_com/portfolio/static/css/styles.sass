@@ -1,26 +1,31 @@
 @import "bourbon/bourbon"
 @import "reset.css"
 @import "mixins"
-@import "fonts"
 
 
-// colors
+// variables
 ///////////////////////////////////////////////////////////////////////////////
 
+// colors
 $green: #bbd199
 $cream: #f3f4d3
 $text: #444
 
 
 // sizes
-///////////////////////////////////////////////////////////////////////////////
-
 $body-width: 1100px
 $body-breakpoint-gutter: 50px
+$menu-max-width: 1000px
+
+// various
+$menu-items: 7
 
 
-// styles
+// general styles
 ///////////////////////////////////////////////////////////////////////////////
+
+*
+  box-sizing: border-box
 
 body
   background: $green
@@ -46,7 +51,7 @@ nav
     width: 92%
     margin-left: 4%
 
-a
+.content a
   text-decoration: none
   @include link($text, $cream)
 
@@ -55,3 +60,10 @@ a
 
   a
     @include link(rebeccapurple, red)
+
+
+// includes
+///////////////////////////////////////////////////////////////////////////////
+
+@import "fonts"
+@import "menu"

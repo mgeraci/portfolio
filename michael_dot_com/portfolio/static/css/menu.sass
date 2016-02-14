@@ -1,0 +1,44 @@
+$circle-size: 90px
+$menu-breakpoint: 800px
+$menu-border-size: 4px
+$menu-padding: 23px
+
+nav
+  @include clearfix
+  padding-top: 20px
+  max-width: $menu-max-width
+
+  li
+    float: left
+    width: 100% / $menu-items
+    text-align: center
+
+    a
+      text-decoration: none
+
+    @media (min-width: $menu-breakpoint)
+      text-align: center
+
+      a
+        display: inline-block
+        width: $circle-size
+        height: $circle-size
+        padding-top: $menu-padding
+        background: $cream
+        @include transition-property(background, color)
+        @include transition-duration(75ms)
+        @include transition-timing-function(linear)
+        border-radius: 50%
+        color: $green
+        @include type(22px, 24px)
+
+        &:hover,
+        &:active,
+        &.active
+          background: $green
+          padding-top: $menu-padding - $menu-border-size
+          border: $menu-border-size solid $cream
+          color: $cream
+
+    @media (max-width: $menu-breakpoint - 1)
+      background: gray
