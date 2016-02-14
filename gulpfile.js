@@ -1,32 +1,38 @@
-var gulp = require('gulp');
-var util = require('gulp-util');
-var plumber = require('gulp-plumber');
+var gulp = require("gulp");
+var webpack = require("webpack");
+var gutil = require("gulp-util");
 var sass = require('gulp-ruby-sass');
-var coffee = require('gulp-coffee');
 
-var sassFiles = '**/*.sass';
-var sassMain = 'michael_dot_com/portfolio/static/css/styles.sass';
-var cssDir = 'michael_dot_com/portfolio/static/css/';
+var webpackConfig = require("./webpack.config.js");
+var cssRoot = "michael_dot_com/portfolio/static/css/";
+var cssEntry = "michael_dot_com/portfolio/static/css/styles.sass";
+var jsRoot = "michael_dot_com/portfolio/static/js/";
+var jsEntry = jsRoot + "wp_test.coffee";
 
-var coffeeFiles = '**/*.coffee';
+gulp.task("default", function() {
+	// compile on start
+	gulp.start("compileCSS");
+	gulp.start("compileJS");
 
-gulp.task('default', function() {
-  gulp.run('compileSass')
-  gulp.run('compileCoffee')
-  gulp.watch(sassFiles, ['compileSass']);
-  gulp.watch(coffeeFiles, ['compileCoffee']);
+	// start watchers
+	gulp.watch(cssEntry, ["compileCSS"]);
+	gulp.watch(jsEntry, ["compileJS"]);
 });
 
-gulp.task('compileSass', function() {
-  return sass(sassMain)
-    .on('error', sass.logError)
-    .pipe(gulp.dest(cssDir));
+gulp.task('compileCSS', function() {
+	return sass(cssEntry)
+		.on('error', sass.logError)
+		.pipe(gulp.dest(cssRoot));
 });
 
-gulp.task('compileCoffee', function() {
-  return gulp.src(coffeeFiles)
-    .pipe(plumber())
-    .pipe(coffee().on('error', util.log))
-    // write js to same dir as coffee
-    .pipe(gulp.dest(''));
+gulp.task("compileJS", function(callback) {
+	webpack(webpackConfig, function(err, stats) {
+		if(err) throw new gutil.PluginError("webpack", err);
+
+		gutil.log("[webpack]", stats.toString({
+			// webpack compilation display options
+		}));
+
+		callback();
+	});
 });
