@@ -1,17 +1,24 @@
 @import "bourbon/bourbon"
 @import "reset.css"
+@import "mixins"
 @import "fonts"
 
 $green: #bbd199
 $cream: #f3f4d3
 $text: #444
 
-@mixin type($font-size, $line-height)
-  font-size: $font-size
-  line-height: $line-height
-
 body
   background: $green
   color: $text
   font-family: body, Georgia, serif
   @include type(22px, 30px)
+
+a
+  text-decoration: none
+  @include link($text, $cream)
+
+.other-color
+  @include type(40px, 52px)
+
+  a
+    @include link(rebeccapurple, red)
