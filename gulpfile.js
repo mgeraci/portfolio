@@ -7,7 +7,7 @@ var webpackConfig = require("./webpack.config.js");
 var cssRoot = "michael_dot_com/portfolio/static/css/";
 var cssEntry = "michael_dot_com/portfolio/static/css/styles.sass";
 var jsRoot = "michael_dot_com/portfolio/static/js/";
-var jsEntry = jsRoot + "wp_test.coffee";
+var jsEntry = jsRoot + "app.coffee";
 
 gulp.task("default", function() {
 	// compile on start

@@ -1,10 +1,10 @@
 jsRoot = "./michael_dot_com/portfolio/static/js/";
 
 module.exports = {
-	entry:  jsRoot + "wp_test.coffee",
+	entry:  jsRoot + "app.coffee",
 	output: {
 		path:     jsRoot,
-		filename: 'bundle.js',
+		filename: 'app.js',
 	},
 	module: {
 		loaders: [
