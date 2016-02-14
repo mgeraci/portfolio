@@ -74,6 +74,7 @@ TEMPLATES = [
                 'django.template.context_processors.static',
 
                 'portfolio.context_processors.menu',
+                'portfolio.context_processors.year',
             ],
         },
     },

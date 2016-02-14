@@ -1,5 +1,6 @@
 from django.conf import settings
 from django.core.urlresolvers import reverse
+from datetime import date
 
 def menu(request):
     return {
@@ -33,4 +34,9 @@ def menu(request):
                 'href': reverse('links_url'),
             },
         ]
+    }
+
+def year(request):
+    return {
+        'year': date.today().year
     }

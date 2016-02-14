@@ -3,15 +3,48 @@
 @import "mixins"
 @import "fonts"
 
+
+// colors
+///////////////////////////////////////////////////////////////////////////////
+
 $green: #bbd199
 $cream: #f3f4d3
 $text: #444
+
+
+// sizes
+///////////////////////////////////////////////////////////////////////////////
+
+$body-width: 1100px
+$body-breakpoint-gutter: 50px
+
+
+// styles
+///////////////////////////////////////////////////////////////////////////////
 
 body
   background: $green
   color: $text
   font-family: body, Georgia, serif
   @include type(22px, 30px)
+
+section,
+nav
+  display: block
+  margin-top: 40px
+  max-width: $body-width
+
+  &:first-child
+    margin-top: 0
+
+  @media (min-width: $body-width + $body-breakpoint-gutter + 1)
+    position: relative
+    left: 50%
+    @include transform(translateX(-50%))
+
+  @media (max-width: $body-width + $body-breakpoint-gutter)
+    width: 92%
+    margin-left: 4%
 
 a
   text-decoration: none

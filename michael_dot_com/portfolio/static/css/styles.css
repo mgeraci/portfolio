@@ -26,6 +26,30 @@ body {
   font-size: 22px;
   line-height: 30px; }
 
+section,
+nav {
+  display: block;
+  margin-top: 40px;
+  max-width: 1100px; }
+  section:first-child,
+  nav:first-child {
+    margin-top: 0; }
+  @media (min-width: 1151px) {
+    section,
+    nav {
+      position: relative;
+      left: 50%;
+      -webkit-transform: translateX(-50%);
+      -moz-transform: translateX(-50%);
+      -ms-transform: translateX(-50%);
+      -o-transform: translateX(-50%);
+      transform: translateX(-50%); } }
+  @media (max-width: 1150px) {
+    section,
+    nav {
+      width: 92%;
+      margin-left: 4%; } }
+
 a {
   text-decoration: none;
   text-decoration: none;

@@ -12,7 +12,13 @@
 
 		{% include "menu.html" %}
 
-		{% block content %}{% endblock %}
+		<section class="content">
+			{% block content %}{% endblock %}
+		</section>
+
+		<section class="footer">
+			This website and its contents are © Michael P. Geraci, 2006-{{ year }}
+		</section>
 
 		<script type="text/javascript">
 			var _gaq = _gaq || [];
