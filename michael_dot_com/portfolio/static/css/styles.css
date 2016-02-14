@@ -1,2 +1,4 @@
+@import url(reset.css);
 body {
-  background: gray; }
+  background: #bbd199;
+  color: #444; }
