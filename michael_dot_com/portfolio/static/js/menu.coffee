@@ -1,5 +1,5 @@
 module.exports = {
-	menuClass: "nav-mobile-menu"
+	headerClass: "nav-mobile"
 
 	init: ->
 		$("body").on("click", ".nav-mobile-menu-trigger", (e) =>
@@ -8,5 +8,5 @@ module.exports = {
 		)
 
 	toggleMenu: ->
-		$(".#{@menuClass}").toggleClass("#{@menuClass}--show")
+		$(".#{@headerClass}").toggleClass("#{@headerClass}--has-menu")
 }

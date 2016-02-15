@@ -56,7 +56,7 @@
 /***/ function(module, exports) {
 
 	module.exports = {
-	  menuClass: "nav-mobile-menu",
+	  headerClass: "nav-mobile",
 	  init: function() {
 	    return $("body").on("click", ".nav-mobile-menu-trigger", (function(_this) {
 	      return function(e) {
@@ -66,7 +66,7 @@
 	    })(this));
 	  },
 	  toggleMenu: function() {
-	    return $("." + this.menuClass).toggleClass(this.menuClass + "--show");
+	    return $("." + this.headerClass).toggleClass(this.headerClass + "--has-menu");
 	  }
 	};
 
