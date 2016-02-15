@@ -18,9 +18,15 @@ $mobile-icon-size: 12px
 
 nav
   @include clearfix
-  max-width: $menu-max-width
 
 .nav-desktop
+  @include clearfix
+  margin-top: 20px
+  max-width: $menu-max-width
+
+  @media (max-width: $menu-breakpoint - 1)
+    display: none
+
   li
     float: left
     width: 100% / $menu-items
@@ -44,9 +50,6 @@ nav
           padding-top: $menu-padding - $menu-border-size
           border: $menu-border-size solid $cream
           color: $cream
-
-    @media (max-width: $menu-breakpoint - 1)
-      display: none
 
 .nav-mobile
   @include clearfix
