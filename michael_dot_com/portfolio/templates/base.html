@@ -6,7 +6,6 @@
 		</title>
 		<link rel="shortcut icon" href="http://michaelgeraci.com/favicon.ico" type="image/x-icon">
 		<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/styles.css">
-		<script type="text/javascript" src="{{ STATIC_URL }}js/app.js"></script>
 	</head>
 	<body>
 
@@ -19,6 +18,9 @@
 		<section class="footer">
 			This website and its contents are © Michael P. Geraci, 2006-{{ year }}
 		</section>
+
+		<script type="text/javascript" src="{{ STATIC_URL }}js/vendor/jquery-2.2.0.min.js"></script>
+		<script type="text/javascript" src="{{ STATIC_URL }}js/app.js"></script>
 
 		<script type="text/javascript">
 			var _gaq = _gaq || [];

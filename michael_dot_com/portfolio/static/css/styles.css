@@ -171,35 +171,46 @@ nav {
     height: 100%;
     text-align: right;
     line-height: 90px; }
-  .nav-mobile-selector {
+  .nav-mobile-menu {
     position: relative;
+    overflow: hidden;
     float: left;
     width: 100%;
+    max-height: 0;
     background: rgba(0, 0, 0, 0.1);
-    border-bottom: 1px solid rgba(0, 0, 0, 0.05); }
-    .nav-mobile-selector::before {
+    -webkit-transition: max-height 400ms linear;
+    -moz-transition: max-height 400ms linear;
+    transition: max-height 400ms linear; }
+    .nav-mobile-menu--show {
+      max-height: 500px; }
+    .nav-mobile-menu::before, .nav-mobile-menu::after {
       content: "";
       display: block;
       position: absolute;
       z-index: 1;
-      top: 0;
       left: 0;
-      width: 100%;
+      width: 100%; }
+    .nav-mobile-menu::before {
+      top: 0;
       height: 7px;
       background-color: rgba(0, 0, 0, 0.05);
       background-image: -webkit-linear-gradient(rgba(0, 0, 0, 0.05), transparent);
       background-image: linear-gradient(rgba(0, 0, 0, 0.05), transparent);
       background-color: transparent; }
-    .nav-mobile-selector li {
+    .nav-mobile-menu::after {
+      bottom: 0;
+      height: 1px;
+      background: rgba(0, 0, 0, 0.05); }
+    .nav-mobile-menu li {
       float: left;
       width: 25%; }
       @media (max-width: 770px) {
-        .nav-mobile-selector li {
+        .nav-mobile-menu li {
           width: 33%; } }
       @media (max-width: 590px) {
-        .nav-mobile-selector li {
+        .nav-mobile-menu li {
           width: 50%; } }
-    .nav-mobile-selector a {
+    .nav-mobile-menu a {
       position: relative;
       z-index: 2;
       display: block;
@@ -207,5 +218,5 @@ nav {
       text-decoration: none;
       color: #f3f4d3; }
       @media (max-width: 590px) {
-        .nav-mobile-selector a {
+        .nav-mobile-menu a {
           padding: 10px; } }

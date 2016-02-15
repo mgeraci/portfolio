@@ -75,24 +75,37 @@ nav
     text-align: right
     line-height: $mobile-header-height
 
-  &-selector
+  &-menu
     position: relative
+    overflow: hidden
     float: left
     width: 100%
+    max-height: 0
     background: rgba(#000, 0.1)
-    border-bottom: 1px solid rgba(#000, 0.05)
+    @include transition(max-height 400ms linear)
 
-    &::before
+    &--show
+      max-height: 500px
+
+    &::before,
+    &::after
       content: ""
       display: block
       position: absolute
       z-index: 1
-      top: 0
       left: 0
       width: 100%
+
+    &::before
+      top: 0
       height: 7px
       @include linear-gradient(rgba(#000, 0.05), rgba(#000, 0))
       background-color: transparent
+
+    &::after
+      bottom: 0
+      height: 1px
+      background: rgba(#000, 0.05)
 
     li
       float: left

@@ -44,15 +44,11 @@
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var o;
+	var menu;
 
-	o = __webpack_require__(1);
+	menu = __webpack_require__(1);
 
-	window.wp_test = function() {
-	  return console.log('test funky-town dude');
-	};
-
-	window.o = o;
+	menu.init();
 
 
 /***/ },
@@ -60,7 +56,18 @@
 /***/ function(module, exports) {
 
 	module.exports = {
-	  foo: 'bar'
+	  menuClass: "nav-mobile-menu",
+	  init: function() {
+	    return $("body").on("click", ".nav-mobile-menu-trigger", (function(_this) {
+	      return function(e) {
+	        e.preventDefault();
+	        return _this.toggleMenu();
+	      };
+	    })(this));
+	  },
+	  toggleMenu: function() {
+	    return $("." + this.menuClass).toggleClass(this.menuClass + "--show");
+	  }
 	};
 
 

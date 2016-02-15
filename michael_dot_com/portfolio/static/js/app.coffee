@@ -1,6 +1,3 @@
-o = require("./_wp_include.coffee")
+menu = require("./menu.coffee")
 
-window.wp_test = ->
-	console.log 'test funky-town dude'
-
-window.o = o
+menu.init()
