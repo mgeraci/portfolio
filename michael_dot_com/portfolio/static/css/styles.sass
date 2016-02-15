@@ -15,6 +15,7 @@ $text: #444
 // sizes
 $body-width: 1100px
 $body-breakpoint-gutter: 50px
+$body-mobile-gutter: 4%
 $menu-max-width: 1000px
 
 // various
@@ -34,7 +35,7 @@ body
   @include type(22px, 30px)
 
 section,
-nav
+.nav-desktop
   display: block
   margin-top: 40px
   max-width: $body-width
@@ -48,8 +49,8 @@ nav
     @include transform(translateX(-50%))
 
   @media (max-width: $body-width + $body-breakpoint-gutter)
-    width: 92%
-    margin-left: 4%
+    width: 100% - $body-mobile-gutter * 2
+    margin-left: $body-mobile-gutter
 
 .content a
   text-decoration: none

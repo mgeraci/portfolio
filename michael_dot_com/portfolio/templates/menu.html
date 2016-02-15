@@ -1,7 +1,25 @@
 <nav>
-	<ul>
+
+	<ul class="nav-desktop">
 		{% for menu_item in menu %}
-			{% include "menu_item.html" %}
+			{% include "menu_item.html" with name=menu_item.split_name %}
 		{% endfor %}
 	</ul>
+
+	<div class="nav-mobile">
+		<div class="nav-mobile-header">
+			<a class="nav-mobile-title" href="/">
+				MPG
+			</a>
+			<button class="nav-mobile-menu-trigger">
+				{{ active_page_name }}
+			</button>
+		</div>
+		<ul class="nav-mobile-selector">
+			{% for menu_item in menu %}
+				{% include "menu_item.html" with name=menu_item.name %}
+			{% endfor %}
+		</ul>
+	</div>
+
 </nav>

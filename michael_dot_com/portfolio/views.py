@@ -1,5 +1,6 @@
 from django.shortcuts import render
 
+# main pages
 def index(request):
     return render(request, 'pages/index.html')
 
@@ -20,3 +21,11 @@ def recordings(request):
 
 def links(request):
     return render(request, 'pages/links.html')
+
+
+# verification pages
+def keybase(request):
+    return render(request, 'verification_pages/keybase.html', content_type='text/plain')
+
+def google(request):
+    return render(request, 'verification_pages/google.html', content_type='text/plain')

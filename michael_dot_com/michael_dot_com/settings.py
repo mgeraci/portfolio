@@ -75,6 +75,7 @@ TEMPLATES = [
 
                 'portfolio.context_processors.menu',
                 'portfolio.context_processors.year',
+                'portfolio.context_processors.active_page_name',
             ],
         },
     },

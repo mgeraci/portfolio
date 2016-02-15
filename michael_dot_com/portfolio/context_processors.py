@@ -47,3 +47,18 @@ def year(request):
     return {
         'year': date.today().year
     }
+
+def active_page_name(request):
+    name = False
+
+    menu_items = menu(request)['menu']
+    for menu_item in menu_items:
+        if request.path == menu_item['href']:
+            name = menu_item['name']
+
+    if not name:
+        name = 'Select a page'
+
+    return {
+        'active_page_name': name
+    }

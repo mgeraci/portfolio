@@ -2,34 +2,38 @@ $circle-size: 90px
 $menu-breakpoint: 800px
 $menu-border-size: 4px
 $menu-padding: 23px
+$mobile-header-height: 90px
+$mobile-header-padding: 20px
+
+@mixin circle-style($size)
+  display: inline-block
+  width: $size
+  height: $size
+  border-radius: 50%
+  background: $cream
+  color: $green
+  text-align: center
+  text-decoration: none
 
 nav
   @include clearfix
-  padding-top: 20px
   max-width: $menu-max-width
 
+.nav-desktop
   li
     float: left
     width: 100% / $menu-items
     text-align: center
 
-    a
-      text-decoration: none
-
     @media (min-width: $menu-breakpoint)
       text-align: center
 
       a
-        display: inline-block
-        width: $circle-size
-        height: $circle-size
+        @include circle-style($circle-size)
         padding-top: $menu-padding
-        background: $cream
         @include transition-property(background, color)
         @include transition-duration(75ms)
         @include transition-timing-function(linear)
-        border-radius: 50%
-        color: $green
         @include type(22px, 24px)
 
         &:hover,
@@ -41,4 +45,73 @@ nav
           color: $cream
 
     @media (max-width: $menu-breakpoint - 1)
-      background: gray
+      display: none
+
+.nav-mobile
+  @include clearfix
+  display: none
+
+  @media (max-width: $menu-breakpoint - 1)
+    display: block
+
+  &-header
+    display: block
+    height: $mobile-header-height
+
+  &-title
+    float: left
+    margin-top: $mobile-header-padding
+    margin-left: $body-mobile-gutter
+    @include circle-style($mobile-header-height - $mobile-header-padding * 2)
+    @include type(20px, 54px)
+
+  &-menu-trigger
+    @include bare-button
+    float: right
+    margin-right: $body-mobile-gutter
+    @include ellipsis
+    max-width: 230px
+    height: 100%
+    text-align: right
+    line-height: $mobile-header-height
+
+  &-selector
+    position: relative
+    float: left
+    width: 100%
+    background: rgba(#000, 0.1)
+    border-bottom: 1px solid rgba(#000, 0.05)
+
+    &::before
+      content: ""
+      display: block
+      position: absolute
+      z-index: 1
+      top: 0
+      left: 0
+      width: 100%
+      height: 7px
+      @include linear-gradient(rgba(#000, 0.05), rgba(#000, 0))
+      background-color: transparent
+
+    li
+      float: left
+      width: 25%
+
+      @media (max-width: 770px)
+        width: 33%
+
+      @media (max-width: 590px)
+        width: 50%
+
+    // z-index to get on top of the -selector pseudoelement
+    a
+      position: relative
+      z-index: 2
+      display: block
+      padding: 20px
+      text-decoration: none
+      color: $cream
+
+      @media (max-width: 590px)
+        padding: 10px
