@@ -10,10 +10,17 @@ $index-breakpoint: 550px
   .index-top
     background: $green
 
+  // undo the default content sizing
+  section.content
+    width: 100%
+    max-width: 100%
+    margin: 0
+    padding-top: 0
+
 .index-top
   @include clearfix
   background: $green
-  padding-bottom: 20px
+  padding-bottom: 30px
 
   &-content
     @include content-sizing
@@ -57,3 +64,29 @@ $index-breakpoint: 550px
 
   &-content
     @include content-sizing
+
+  &-copyright
+    font-size: 18px
+
+$image-size: 75px
+.recent-item
+  position: relative
+  float: left
+  width: 50%
+  min-height: $image-size
+  margin-bottom: 20px
+  padding-top: 10px
+  padding-right: 20px
+  padding-left: $image-size + 20px
+
+  @media (max-width: $index-breakpoint)
+    width: 100%
+    padding-right: 0
+
+  &-image
+    position: absolute
+    top: 0
+    left: 0
+    width: $image-size
+    height: $image-size
+    background: rgba(#000, 0.1)
