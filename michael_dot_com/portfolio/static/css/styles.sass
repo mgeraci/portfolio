@@ -1,8 +1,3 @@
-@import "bourbon/bourbon"
-@import "reset.css"
-@import "mixins"
-
-
 // variables
 ///////////////////////////////////////////////////////////////////////////////
 
@@ -22,6 +17,14 @@ $menu-max-width: 1000px
 $menu-items: 7
 
 
+// global includes
+///////////////////////////////////////////////////////////////////////////////
+
+@import "bourbon/bourbon"
+@import "reset.css"
+@import "mixins"
+
+
 // general styles
 ///////////////////////////////////////////////////////////////////////////////
 
@@ -32,36 +35,25 @@ body
   background: $green
   color: $text
   font-family: body, Georgia, serif
-  @include type(22px, 30px)
+  @include type(23px, 29px)
 
 section,
 .nav-desktop
   display: block
-  margin-top: 40px
-  max-width: $body-width
-
-  @media (min-width: $body-width + $body-breakpoint-gutter + 1)
-    position: relative
-    left: 50%
-    @include transform(translateX(-50%))
-
-  @media (max-width: $body-width + $body-breakpoint-gutter)
-    width: 100% - $body-mobile-gutter * 2
-    margin-left: $body-mobile-gutter
+  width: 100%
 
 .content a
   text-decoration: none
   @include link($text, $cream)
 
-.other-color
-  @include type(40px, 52px)
 
-  a
-    @include link(rebeccapurple, red)
-
-
-// includes
+// local includes
 ///////////////////////////////////////////////////////////////////////////////
 
+// general
 @import "fonts"
 @import "menu"
+@import "footer"
+
+// pages
+@import "index"

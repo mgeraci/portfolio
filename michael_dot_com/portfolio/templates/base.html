@@ -7,16 +7,12 @@
 		<link rel="shortcut icon" href="http://michaelgeraci.com/favicon.ico" type="image/x-icon">
 		<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/styles.css">
 	</head>
-	<body>
+	<body class="page-{% block bodyclass %}{% endblock %}">
 
 		{% include "menu.html" %}
 
 		<section class="content">
 			{% block content %}{% endblock %}
-		</section>
-
-		<section class="footer">
-			This website and its contents are © Michael P. Geraci, 2006-{{ year }}
 		</section>
 
 		<script type="text/javascript" src="{{ STATIC_URL }}js/vendor/jquery-2.2.0.min.js"></script>

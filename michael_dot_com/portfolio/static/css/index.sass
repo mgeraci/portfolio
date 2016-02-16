@@ -1,0 +1,59 @@
+$index-breakpoint: 550px
+
+// the body on the index gets a darker background color, and then everything
+// else gets the "normal" background, that way the darker color extends to the
+// screen bottom
+.page-index
+  background: darken($green, 4%)
+
+  nav,
+  .index-top
+    background: $green
+
+.index-top
+  @include clearfix
+  background: $green
+  padding-bottom: 20px
+
+  &-content
+    @include content-sizing
+
+  @media (max-width: $index-breakpoint)
+    .index-top-left,
+    .index-top-right
+      width: 100%
+      margin: 0
+      padding: 0
+
+      &:last-child
+        margin-top: 20px
+
+  &-left
+    float: left
+    width: 33%
+    background: rgba(#000, 0.1)
+
+  &-right
+    float: right
+    width: 60%
+    padding-top: 20px
+
+  h1,
+  p
+    padding-bottom: 20px
+
+    &:last-child
+      padding-bottom: 0
+
+  h1
+    font-family: headline
+    font-size: 36px
+
+    @media (max-width: 690px)
+      font-size: 28px
+
+.index-bottom
+  border-top: 1px solid darken($green, 10%)
+
+  &-content
+    @include content-sizing

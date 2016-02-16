@@ -21,7 +21,8 @@ nav
 
 .nav-desktop
   @include clearfix
-  margin-top: 20px
+  @include content-sizing
+  padding-top: 20px
   max-width: $menu-max-width
 
   @media (max-width: $menu-breakpoint - 1)
