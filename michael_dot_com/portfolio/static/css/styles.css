@@ -310,14 +310,14 @@ nav::after {
       width: 100%;
       padding-top: 100%;
       background: rgba(0, 0, 0, 0.1);
-      border-radius: 50%; }
+      border-radius: 50%;
+      box-shadow: 0 0 2px rgba(0, 0, 0, 0.2); }
     .index-top-left-image {
       position: absolute;
       top: 0;
       left: 0;
       width: 100%;
-      height: auto;
-      box-shadow: 0 0 2px rgba(0, 0, 0, 0.2); }
+      height: auto; }
   .index-top-right {
     float: right;
     width: 60%;

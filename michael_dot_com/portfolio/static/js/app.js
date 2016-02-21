@@ -44,11 +44,15 @@
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var menu;
+	var lazyImages, menu;
 
 	menu = __webpack_require__(1);
 
+	lazyImages = __webpack_require__(2);
+
 	menu.init();
+
+	lazyImages.search();
 
 
 /***/ },
@@ -67,6 +71,32 @@
 	  },
 	  toggleMenu: function() {
 	    return $("." + this.headerClass).toggleClass(this.headerClass + "--has-menu");
+	  }
+	};
+
+
+/***/ },
+/* 2 */
+/***/ function(module, exports) {
+
+	module.exports = {
+	  search: function() {
+	    var self;
+	    self = this;
+	    return $("[data-lazy-image]").each(function() {
+	      return self.loadImage($(this));
+	    });
+	  },
+	  loadImage: function(el) {
+	    var alt, img, src;
+	    src = el.attr("data-lazy-image");
+	    alt = el.attr("data-lazy-image-alt");
+	    img = new Image();
+	    return $(img).load((function(_this) {
+	      return function() {
+	        return el.append(img);
+	      };
+	    })(this)).attr("src", src).attr("alt", alt);
 	  }
 	};
 
