@@ -287,27 +287,56 @@ nav::after {
       padding: 0; }
       .index-top .index-top-left:last-child,
       .index-top .index-top-right:last-child {
-        margin-top: 20px; } }
+        margin-top: 20px; }
+    .index-top .index-top-left-image-wrapper {
+      width: 50%;
+      padding-top: 50%; } }
   .index-top-left {
     float: left;
+    margin-top: 30px;
     width: 33%;
-    background: rgba(0, 0, 0, 0.1); }
+    text-align: center; }
+    @media (min-width: 820px) {
+      .index-top-left {
+        text-align: right; }
+        .index-top-left .index-top-left-image-wrapper {
+          width: 250px;
+          height: 250px;
+          padding: 0; } }
+    .index-top-left-image-wrapper {
+      display: inline-block;
+      position: relative;
+      overflow: hidden;
+      width: 100%;
+      padding-top: 100%;
+      background: rgba(0, 0, 0, 0.1);
+      border-radius: 50%; }
+    .index-top-left-image {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: auto;
+      box-shadow: 0 0 2px rgba(0, 0, 0, 0.2); }
   .index-top-right {
     float: right;
     width: 60%;
     padding-top: 20px; }
-  .index-top h1,
-  .index-top p {
-    padding-bottom: 20px; }
-    .index-top h1:last-child,
-    .index-top p:last-child {
-      padding-bottom: 0; }
-  .index-top h1 {
-    font-family: headline;
-    font-size: 36px; }
-    @media (max-width: 690px) {
-      .index-top h1 {
-        font-size: 28px; } }
+    @media (min-width: 1000px) {
+      .index-top-right {
+        padding-right: 100px; } }
+    .index-top-right h1,
+    .index-top-right p {
+      padding-bottom: 20px; }
+      .index-top-right h1:last-child,
+      .index-top-right p:last-child {
+        padding-bottom: 0; }
+    .index-top-right h1 {
+      font-family: headline;
+      font-size: 36px; }
+      @media (max-width: 690px) {
+        .index-top-right h1 {
+          font-size: 28px; } }
 
 .index-bottom {
   border-top: 1px solid #a4c176; }

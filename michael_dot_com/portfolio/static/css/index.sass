@@ -35,29 +35,62 @@ $index-breakpoint: 550px
       &:last-child
         margin-top: 20px
 
+    .index-top-left-image-wrapper
+      width: 50%
+      padding-top: 50%
+
   &-left
     float: left
+    margin-top: 30px
     width: 33%
-    background: rgba(#000, 0.1)
+    text-align: center
+
+    @media (min-width: 820px)
+      text-align: right
+
+      .index-top-left-image-wrapper
+        width: 250px
+        height: 250px
+        padding: 0
+
+    &-image-wrapper
+      display: inline-block
+      position: relative
+      overflow: hidden
+      width: 100%
+      padding-top: 100%
+      background: rgba(#000, 0.1)
+      border-radius: 50%
+
+    &-image
+      position: absolute
+      top: 0
+      left: 0
+      width: 100%
+      height: auto
+      box-shadow: 0 0 2px rgba(#000, 0.2)
 
   &-right
     float: right
     width: 60%
     padding-top: 20px
+    
+    @media (min-width: 1000px)
+      padding-right: 100px
 
-  h1,
-  p
-    padding-bottom: 20px
+    h1,
+    p
+      padding-bottom: 20px
 
-    &:last-child
-      padding-bottom: 0
+      &:last-child
+        padding-bottom: 0
 
-  h1
-    font-family: headline
-    font-size: 36px
+    h1
+      font-family: headline
+      font-size: 36px
 
-    @media (max-width: 690px)
-      font-size: 28px
+      @media (max-width: 690px)
+        font-size: 28px
 
 .index-bottom
   border-top: 1px solid darken($green, 10%)
