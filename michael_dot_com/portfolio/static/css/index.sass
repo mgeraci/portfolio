@@ -65,8 +65,18 @@ $index-breakpoint: 550px
   &-content
     @include content-sizing
 
+  &-headline
+    display: block
+    width: 100%
+    margin-bottom: 20px
+
+  &-recent
+    @include clearfix
+
   &-copyright
+    display: block
     font-size: 18px
+    margin-top: 40px
 
 $image-size: 75px
 .recent-item
@@ -75,9 +85,11 @@ $image-size: 75px
   width: 50%
   min-height: $image-size
   margin-bottom: 20px
-  padding-top: 10px
+  padding-top: 12px
   padding-right: 20px
   padding-left: $image-size + 20px
+  background-image: none !important
+  @include type(20px, 28px)
 
   @media (max-width: $index-breakpoint)
     width: 100%
@@ -90,3 +102,7 @@ $image-size: 75px
     width: $image-size
     height: $image-size
     background: rgba(#000, 0.1)
+
+  &-text
+    display: block
+    width: 100%

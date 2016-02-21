@@ -328,8 +328,18 @@ nav::after {
       .index-bottom-content {
         width: 92%;
         margin-left: 4%; } }
+  .index-bottom-headline {
+    display: block;
+    width: 100%;
+    margin-bottom: 20px; }
+  .index-bottom-recent::after {
+    clear: both;
+    content: "";
+    display: table; }
   .index-bottom-copyright {
-    font-size: 18px; }
+    display: block;
+    font-size: 18px;
+    margin-top: 40px; }
 
 .recent-item {
   position: relative;
@@ -337,9 +347,12 @@ nav::after {
   width: 50%;
   min-height: 75px;
   margin-bottom: 20px;
-  padding-top: 10px;
+  padding-top: 12px;
   padding-right: 20px;
-  padding-left: 95px; }
+  padding-left: 95px;
+  background-image: none !important;
+  font-size: 20px;
+  line-height: 28px; }
   @media (max-width: 550px) {
     .recent-item {
       width: 100%;
@@ -351,3 +364,6 @@ nav::after {
     width: 75px;
     height: 75px;
     background: rgba(0, 0, 0, 0.1); }
+  .recent-item-text {
+    display: block;
+    width: 100%; }

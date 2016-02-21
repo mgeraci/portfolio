@@ -1,11 +1,12 @@
-<div class="recent-item">
-	<span class="recent-item-image">
-	</span>
-	<span class="recent-item-title">
-		asdf
-	</span>
-	<br />
-	<span class="recent-item-description">
-		qwer qwer qwer qwer
-	</span>
-</div>
+<a class="recent-item" href="{{ recent_item.href }}">
+	<img
+		class="recent-item-image"
+		src="{{ recent_item.image }}"
+		alt="recent work thumbnail"
+	/>
+	{% for text in recent_item.text %}
+		<span class="recent-item-text">
+			{{ text }}
+		</span>
+	{% endfor %}
+</a>
