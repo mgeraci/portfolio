@@ -1,5 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from michael_dot_com.localsettings import STATIC_URL
+from portfolio.models import Composition
 
 # main pages
 def index(request):
@@ -45,7 +46,23 @@ def graphic(request):
     return render(request, 'pages/graphic.html')
 
 def composition(request):
-    return render(request, 'pages/composition.html')
+    compositions = Composition.objects.all()
+    context = {
+        'compositions': compositions
+    }
+
+    return render(request, 'pages/composition.html', context)
+
+def composition_item(request, slug):
+    compositions = Composition.objects.all()
+    piece = get_object_or_404(Composition, slug=slug)
+
+    context = {
+        'compositions': compositions,
+        'piece': piece,
+    }
+
+    return render(request, 'pages/composition_item.html', context)
 
 def recordings(request):
     return render(request, 'pages/recordings.html')

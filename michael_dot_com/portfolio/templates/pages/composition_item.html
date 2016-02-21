@@ -1,9 +1,15 @@
 {% extends 'base.html' %}
 
 {% block title %}
-Composition
+Composition | {{ piece.title }}
 {% endblock %}
 
 {% block content %}
+
 {% include 'pages/composition_menu.html' %}
+
+{{ piece.title }}, {{ piece.year }}
+<br />
+{{ piece.materials }}
+
 {% endblock %}
