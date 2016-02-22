@@ -7,6 +7,7 @@ class Composition(models.Model):
     slug = models.SlugField(max_length=200, unique=True)
     materials = models.CharField(max_length=400)
     performers = models.CharField(max_length=800, blank=True)
+    duration = models.CharField(max_length=10, blank=True)
     video = models.URLField(max_length=200, blank=True)
     audio = models.FileField(upload_to='composition', blank=True, null=True)
     description = models.TextField(blank=True)

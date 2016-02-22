@@ -10,6 +10,6 @@ Composition | {{ piece.title }}
 
 {{ piece.title }}, {{ piece.year }}
 <br />
-{{ piece.materials }}
+{{ piece.materials }}{% if piece.duration %}, {{ piece.duration }}{% endif %}
 
 {% endblock %}

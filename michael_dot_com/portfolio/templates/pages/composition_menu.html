@@ -1,6 +1,10 @@
 {% for composition in compositions %}
   <a href="{% url 'composition_item_url' composition.slug %}">
 		{{ composition.title }}
+		<br />
+		<em>
+			{{ composition.materials }}
+		</em>
 	</a>
 	<br />
 {% endfor %}
