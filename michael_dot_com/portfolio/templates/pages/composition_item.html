@@ -8,8 +8,19 @@ Composition | {{ piece.title }}
 
 {% include 'pages/composition_menu.html' %}
 
-{{ piece.title }}, {{ piece.year }}
-<br />
-{{ piece.materials }}{% if piece.duration %}, {{ piece.duration }}{% endif %}
+<div class="submenu-content">
+	{{ piece.title }}, {{ piece.year }}
+	<br />
+	{{ piece.materials }}{% if piece.duration %}, {{ piece.duration }}{% endif %}
+	<br />
+	{% if piece.audio %}
+	<audio controls preload="none">
+		<source src="{{ MEDIA_URL }}{{ piece.audio }}" type="audio/mpeg" />
+	{% endif %}
+	<br />
+	<br />
+	<br />
+	great musix
+</div>
 
 {% endblock %}

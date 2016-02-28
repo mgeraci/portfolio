@@ -244,6 +244,17 @@ nav::after {
         .nav-mobile-menu a {
           padding: 10px; } }
 
+.submenu {
+  float: left;
+  width: 20%;
+  display: table-cell;
+  border-right: 1px solid #f3f4d3; }
+
+.submenu-content {
+  float: right;
+  width: 75%;
+  display: table-cell; }
+
 .page-index {
   background: #b2cb8b; }
   .page-index nav,
@@ -343,7 +354,15 @@ nav::after {
   .index-bottom-content {
     display: block;
     padding-top: 40px;
-    max-width: 1100px; }
+    max-width: 1100px;
+    max-width: 900px;
+    position: relative;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    -o-transform: translateX(-50%);
+    transform: translateX(-50%); }
     @media (min-width: 1151px) {
       .index-bottom-content {
         position: relative;

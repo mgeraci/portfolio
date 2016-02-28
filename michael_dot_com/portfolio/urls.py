@@ -1,6 +1,8 @@
 from django.conf.urls import url
 from django.contrib import admin
+from django.conf import settings
 from . import views
+from django.conf.urls.static import static
 
 urlpatterns = [
     # admin
@@ -20,3 +22,5 @@ urlpatterns = [
     url('keybase.txt', views.keybase, name='keybase_url'),
     url('google1d143f0e0c8262c1.html', views.google, name='google_url'),
 ]
+
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -74,7 +74,7 @@ $index-breakpoint: 550px
     float: right
     width: 60%
     padding-top: 20px
-    
+
     @media (min-width: 1000px)
       padding-right: 100px
 
@@ -97,6 +97,10 @@ $index-breakpoint: 550px
 
   &-content
     @include content-sizing
+    max-width: 900px
+    position: relative
+    left: 50%
+    @include transform(translateX(-50%))
 
   &-headline
     display: block
