@@ -1,3 +1,5 @@
+$ = require("jquery")
+
 module.exports = {
 	headerClass: "nav-mobile"
 
