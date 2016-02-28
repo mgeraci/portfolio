@@ -1,12 +1,15 @@
-<div class="submenu">
+<ul class="submenu">
 	{% for composition in compositions %}
-		<a href="{% url 'composition_item_url' composition.slug %}">
-			{{ composition.title }}
-			<br />
-			<em>
-				{{ composition.materials }}
-			</em>
-		</a>
-		<br />
+		<li>
+			<a href="{% url 'composition_item_url' composition.slug %}">
+				{{ request.path }}
+				<h3>
+					{{ composition.title }}, {{ composition.year }}
+				</h3>
+				<em>
+					{{ composition.materials }}
+				</em>
+			</a>
+		</li>
 	{% endfor %}
-</div>
+</ul>

@@ -4,14 +4,17 @@
 Composition | {{ piece.title }}
 {% endblock %}
 
+{% block bodyclass %}composition{% endblock %}
+
 {% block content %}
 
 {% include 'pages/composition_menu.html' %}
 
 <div class="submenu-content">
-	{{ piece.title }}, {{ piece.year }}
-	<br />
-	{{ piece.materials }}{% if piece.duration %}, {{ piece.duration }}{% endif %}
+	<h2>{{ piece.title }}, {{ piece.year }}</h2>
+	<span class="materials">
+		{{ piece.materials }}{% if piece.duration %}, {{ piece.duration }}{% endif %}
+	</span>
 	<br />
 	{% if piece.audio %}
 		<audio src="{{ MEDIA_URL }}{{ piece.audio }}" preload="none"></audio>

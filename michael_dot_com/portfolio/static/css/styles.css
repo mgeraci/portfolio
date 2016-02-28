@@ -17,7 +17,12 @@ section,
 section.content {
   display: block;
   padding-top: 40px;
-  max-width: 1100px; }
+  max-width: 1100px;
+  display: table; }
+  section.content::after {
+    clear: both;
+    content: "";
+    display: table; }
   @media (min-width: 1151px) {
     section.content {
       position: relative;
@@ -45,6 +50,22 @@ section.content {
     color: #f3f4d3;
     background-image: linear-gradient(to bottom, transparent 50%, rgba(243, 244, 211, 0.6) 50%);
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); }
+
+h2 {
+  font-weight: bold;
+  font-size: 26px;
+  padding-bottom: 10px; }
+
+h3 {
+  font-weight: bold; }
+
+blockquote {
+  border-left: 3px solid rgba(0, 0, 0, 0.1);
+  padding-left: 20px;
+  margin: 20px 0; }
+
+em {
+  font-style: oblique; }
 
 @font-face {
   font-family: "body";
@@ -244,15 +265,28 @@ nav::after {
         .nav-mobile-menu a {
           padding: 10px; } }
 
+.submenu,
+.submenu-content {
+  padding-bottom: 20px; }
+
 .submenu {
-  float: left;
-  width: 20%;
+  width: 30%;
+  padding-right: 6%;
   display: table-cell;
   border-right: 1px solid #f3f4d3; }
+  .submenu li {
+    margin-top: 20px; }
+    .submenu li:first-child {
+      margin-top: 0; }
+  .submenu a, .submenu a:hover {
+    background-image: none; }
+  .submenu a.active {
+    color: #f3f4d3;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); }
 
 .submenu-content {
-  float: right;
-  width: 75%;
+  width: 70%;
+  padding-left: 6%;
   display: table-cell; }
 
 .page-index {
@@ -415,3 +449,12 @@ nav::after {
   .recent-item-text {
     display: block;
     width: 100%; }
+
+.page-composition h2,
+.page-composition .materials {
+  display: block;
+  width: 100%;
+  text-align: center; }
+.page-composition .materials {
+  position: relative;
+  bottom: 10px; }
