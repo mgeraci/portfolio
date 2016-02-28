@@ -14,13 +14,13 @@ Composition | {{ piece.title }}
 	{{ piece.materials }}{% if piece.duration %}, {{ piece.duration }}{% endif %}
 	<br />
 	{% if piece.audio %}
-	<audio controls preload="none">
-		<source src="{{ MEDIA_URL }}{{ piece.audio }}" type="audio/mpeg" />
+		<audio src="{{ MEDIA_URL }}{{ piece.audio }}" preload="none"></audio>
 	{% endif %}
-	<br />
-	<br />
-	<br />
-	great musix
+	{% if piece.description %}
+		<br />
+		<h3>About the piece</h3>
+		{{ piece.description|safe }}
+	{% endif %}
 </div>
 
 {% endblock %}
