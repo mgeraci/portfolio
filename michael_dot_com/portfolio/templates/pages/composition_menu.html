@@ -1,8 +1,14 @@
+{% load extra_tags %}
+
 <ul class="submenu">
 	{% for composition in compositions %}
 		<li>
-			<a href="{% url 'composition_item_url' composition.slug %}">
-				{{ request.path }}
+			<a
+				href="{% url 'composition_item_url' composition.slug %}"
+				{% if request.path|active_menu_item:composition.slug %}
+					class="active"
+				{% endif %}
+			>
 				<h3>
 					{{ composition.title }}, {{ composition.year }}
 				</h3>

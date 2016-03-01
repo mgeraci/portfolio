@@ -32,7 +32,7 @@ def menu(request):
             },
             {
                 'name': 'Recordings',
-                'split_name': 'Record-ings',
+                'split_name': 'Record-<br />ings',
                 'href': reverse('recordings_url'),
             },
             {

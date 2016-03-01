@@ -1,8 +1,11 @@
+{% load extra_tags %}
+
 <li>
-	<a href="{{ menu_item.href }}"
-		{% ifequal request.path menu_item.href %}
+	<a
+		href="{{ menu_item.href }}"
+		{% if request.path|active_menu_item:menu_item.href %}
 			class="active"
-		{% endifequal %}
+		{% endif %}
 	>
 		{{ name|safe }}
 	</a>
