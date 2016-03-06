@@ -6,7 +6,9 @@ module.exports = {
 		audiojs = audiojs.audiojs
 
 		audiojs.events.ready(=>
-			audioElements = audiojs.createAll()
+			audioElements = audiojs.createAll({
+				css: false
+			})
 
 			# pause all other players on click of a play button
 			$("body").on("click", ".audiojs .play-pause", ->

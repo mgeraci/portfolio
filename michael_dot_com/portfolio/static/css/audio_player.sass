@@ -1,0 +1,55 @@
+$audio-width: 80%
+$audio-height: 40px
+$audio-br: 4px
+$play-width: 40px
+$time-width: 100px
+$scrubber-height: 15px
+$scrubber-padding: ($audio-height - $scrubber-height) / 2
+
+.audiojs
+  position: relative
+  width: $audio-width
+  height: $audio-height
+  padding-top: $scrubber-padding
+  padding-right: $time-width + $scrubber-padding
+  padding-bottom: $scrubber-padding
+  padding-left: $play-width + $scrubber-padding
+  background: $cream
+  border-radius: $audio-br
+  color: $green
+  line-height: $audio-height
+
+  .play-pause,
+  .time
+    position: absolute
+    top: 0
+    height: 100%
+    background: darken($cream, 10%)
+
+  .play-pause
+    left: 0
+    width: $play-width
+    @include border-left-radius($audio-br)
+
+  .time
+    right: 0
+    width: $time-width
+    overflow: hidden
+    @include border-right-radius($audio-br)
+    text-align: center
+    font-family: monospace
+
+    &,
+    em
+      font-style: normal
+      font-size: 13px
+
+  .scrubber
+    width: 100%
+    height: 100%
+    background: darken($cream, 10%)
+
+    .progress
+      width: 0
+      height: 100%
+      background: $green

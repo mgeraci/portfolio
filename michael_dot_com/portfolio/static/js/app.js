@@ -9966,7 +9966,9 @@
 	    return audiojs.events.ready((function(_this) {
 	      return function() {
 	        var audioElements;
-	        audioElements = audiojs.createAll();
+	        audioElements = audiojs.createAll({
+	          css: false
+	        });
 	        return $("body").on("click", ".audiojs .play-pause", function() {
 	          var thisIndex;
 	          thisIndex = $(this).parents(".audiojs").index(".audiojs");
