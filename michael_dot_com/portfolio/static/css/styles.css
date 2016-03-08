@@ -17,13 +17,12 @@ section,
 section.content {
   display: block;
   padding-top: 40px;
-  max-width: 1100px;
-  display: table; }
+  max-width: 1000px; }
   section.content::after {
     clear: both;
     content: "";
     display: table; }
-  @media (min-width: 1151px) {
+  @media (min-width: 1051px) {
     section.content {
       position: relative;
       left: 50%;
@@ -32,7 +31,7 @@ section.content {
       -ms-transform: translateX(-50%);
       -o-transform: translateX(-50%);
       transform: translateX(-50%); } }
-  @media (max-width: 1150px) {
+  @media (max-width: 1050px) {
     section.content {
       width: 92%;
       margin-left: 4%; } }
@@ -95,14 +94,15 @@ nav::after {
 .nav-desktop {
   display: block;
   padding-top: 40px;
-  max-width: 1100px;
+  max-width: 1000px;
   padding-top: 20px;
+  padding-bottom: 20px;
   max-width: 1000px; }
   .nav-desktop::after {
     clear: both;
     content: "";
     display: table; }
-  @media (min-width: 1151px) {
+  @media (min-width: 1051px) {
     .nav-desktop {
       position: relative;
       left: 50%;
@@ -111,7 +111,7 @@ nav::after {
       -ms-transform: translateX(-50%);
       -o-transform: translateX(-50%);
       transform: translateX(-50%); } }
-  @media (max-width: 1150px) {
+  @media (max-width: 1050px) {
     .nav-desktop {
       width: 92%;
       margin-left: 4%; } }
@@ -265,29 +265,55 @@ nav::after {
         .nav-mobile-menu a {
           padding: 10px; } }
 
-.submenu,
-.submenu-content {
-  padding-bottom: 20px; }
+.submenu-mobile {
+  position: relative;
+  bottom: 20px;
+  float: left;
+  clear: both;
+  margin-bottom: 20px; }
+  @media (min-width: 801px) {
+    .submenu-mobile {
+      display: none; } }
 
 .submenu {
-  width: 30%;
-  padding-right: 6%;
-  display: table-cell;
-  border-right: 1px solid #f3f4d3; }
-  .submenu li {
-    margin-top: 20px; }
-    .submenu li:first-child {
-      margin-top: 0; }
-  .submenu a, .submenu a:hover {
-    background-image: none; }
-  .submenu a.active {
-    color: #f3f4d3;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); }
-
-.submenu-content {
-  width: 70%;
-  padding-left: 6%;
-  display: table-cell; }
+  float: left;
+  width: 100%;
+  display: table; }
+  .submenu-menu, .submenu-content {
+    padding: 20px 0; }
+  .submenu-menu {
+    width: 30%;
+    padding-right: 6%;
+    display: table-cell;
+    border-right: 1px solid #f3f4d3; }
+    @media (max-width: 800px) {
+      .submenu-menu {
+        display: none; } }
+    @media (max-width: 800px) {
+      .submenu-menu--no-hide {
+        display: block;
+        width: 100%;
+        border: none; } }
+    .submenu-menu li {
+      margin-top: 20px; }
+      .submenu-menu li:first-child {
+        margin-top: 0; }
+    .submenu-menu a, .submenu-menu a:hover {
+      background-image: none; }
+    .submenu-menu a.active {
+      color: #f3f4d3;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); }
+  .submenu-content {
+    width: 70%;
+    padding-left: 6%;
+    display: table-cell; }
+    @media (max-width: 800px) {
+      .submenu-content {
+        width: 100%;
+        padding-left: 0; } }
+    @media (max-width: 800px) {
+      .submenu-content--hide {
+        display: none; } }
 
 .audiojs {
   position: relative;
@@ -301,7 +327,7 @@ nav::after {
   border-radius: 5px;
   color: #444;
   line-height: 40px; }
-  @media (max-width: 600px) {
+  @media (max-width: 800px) {
     .audiojs {
       width: 100%; } }
   .audiojs .play-pause,
@@ -395,8 +421,8 @@ nav::after {
   .index-top-content {
     display: block;
     padding-top: 40px;
-    max-width: 1100px; }
-    @media (min-width: 1151px) {
+    max-width: 1000px; }
+    @media (min-width: 1051px) {
       .index-top-content {
         position: relative;
         left: 50%;
@@ -405,7 +431,7 @@ nav::after {
         -ms-transform: translateX(-50%);
         -o-transform: translateX(-50%);
         transform: translateX(-50%); } }
-    @media (max-width: 1150px) {
+    @media (max-width: 1050px) {
       .index-top-content {
         width: 92%;
         margin-left: 4%; } }
@@ -473,7 +499,7 @@ nav::after {
   .index-bottom-content {
     display: block;
     padding-top: 40px;
-    max-width: 1100px;
+    max-width: 1000px;
     max-width: 900px;
     position: relative;
     left: 50%;
@@ -482,7 +508,7 @@ nav::after {
     -ms-transform: translateX(-50%);
     -o-transform: translateX(-50%);
     transform: translateX(-50%); }
-    @media (min-width: 1151px) {
+    @media (min-width: 1051px) {
       .index-bottom-content {
         position: relative;
         left: 50%;
@@ -491,7 +517,7 @@ nav::after {
         -ms-transform: translateX(-50%);
         -o-transform: translateX(-50%);
         transform: translateX(-50%); } }
-    @media (max-width: 1150px) {
+    @media (max-width: 1050px) {
       .index-bottom-content {
         width: 92%;
         margin-left: 4%; } }

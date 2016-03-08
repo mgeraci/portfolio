@@ -7,5 +7,10 @@ Composition
 {% block bodyclass %}composition{% endblock %}
 
 {% block content %}
-{% include 'pages/composition_menu.html' %}
+
+<div class="submenu">
+	{% include 'pages/composition_menu.html' %}
+	<div class="submenu-content submenu-content--hide"></div>
+</div>
+
 {% endblock %}

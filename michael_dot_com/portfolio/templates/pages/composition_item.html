@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% url 'composition_url' as composition_url %}
 
 {% block title %}
 Composition | {{ piece.title }}
@@ -8,22 +9,28 @@ Composition | {{ piece.title }}
 
 {% block content %}
 
-{% include 'pages/composition_menu.html' %}
+<a class="submenu-mobile" href="{{ composition_url }}">
+	&laquo; Back to composition
+</a>
 
-<div class="submenu-content">
-	<h2>{{ piece.title }}, {{ piece.year }}</h2>
-	<span class="materials">
-		{{ piece.materials }}{% if piece.duration %}, {{ piece.duration }}{% endif %}
-	</span>
-	<br />
-	{% if piece.audio %}
-		<audio src="{{ MEDIA_URL }}{{ piece.audio }}" preload="none"></audio>
-	{% endif %}
-	{% if piece.description %}
+<div class="submenu">
+	{% include 'pages/composition_menu.html' %}
+
+	<div class="submenu-content">
+		<h2>{{ piece.title }}, {{ piece.year }}</h2>
+		<span class="materials">
+			{{ piece.materials }}{% if piece.duration %}, {{ piece.duration }}{% endif %}
+		</span>
 		<br />
-		<h3>About the piece</h3>
-		{{ piece.description|safe }}
-	{% endif %}
+		{% if piece.audio %}
+			<audio src="{{ MEDIA_URL }}{{ piece.audio }}" preload="none"></audio>
+		{% endif %}
+		{% if piece.description %}
+			<br />
+			<h3>About the piece</h3>
+			{{ piece.description|safe }}
+		{% endif %}
+	</div>
 </div>
 
 {% endblock %}

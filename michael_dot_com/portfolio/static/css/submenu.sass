@@ -1,31 +1,63 @@
 $menu-padding: 6%
 
-.submenu,
-.submenu-content
-  padding-bottom: 20px
+.submenu-mobile
+  position: relative
+  bottom: 20px
+  float: left
+  clear: both
+  margin-bottom: 20px
+
+  @media (min-width: $menu-breakpoint + 1)
+    display: none
 
 .submenu
-  width: 30%
-  padding-right: $menu-padding
-  display: table-cell
-  border-right: 1px solid $cream
+  float: left
+  width: 100%
+  display: table
 
-  li
-    margin-top: 20px
+  &-menu,
+  &-content
+    padding: 20px 0
 
-    &:first-child
-      margin-top: 0
+  &-menu
+    width: 30%
+    padding-right: $menu-padding
+    display: table-cell
+    border-right: 1px solid $cream
 
-  a
-    &,
-    &:hover
-      background-image: none
+    @media (max-width: $menu-breakpoint)
+      display: none
 
-    &.active
-      color: $cream
-      text-shadow: $active-link-shadow
+    &--no-hide
+      @media (max-width: $menu-breakpoint)
+        display: block
+        width: 100%
+        border: none
 
-.submenu-content
-  width: 70%
-  padding-left: $menu-padding
-  display: table-cell
+    li
+      margin-top: 20px
+
+      &:first-child
+        margin-top: 0
+
+    a
+      &,
+      &:hover
+        background-image: none
+
+      &.active
+        color: $cream
+        text-shadow: $active-link-shadow
+
+  &-content
+    width: 70%
+    padding-left: $menu-padding
+    display: table-cell
+
+    @media (max-width: $menu-breakpoint)
+      width: 100%
+      padding-left: 0
+
+    &--hide
+      @media (max-width: $menu-breakpoint)
+        display: none
