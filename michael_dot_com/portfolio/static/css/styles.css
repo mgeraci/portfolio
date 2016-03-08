@@ -293,15 +293,17 @@ nav::after {
   position: relative;
   width: 80%;
   height: 40px;
-  padding-top: 12.5px;
-  padding-right: 112.5px;
-  padding-bottom: 12.5px;
-  padding-left: 52.5px;
-  background: #bbd199;
+  padding-top: 15px;
+  padding-right: 115px;
+  padding-bottom: 15px;
+  padding-left: 55px;
+  background: #d7e3b6;
   border-radius: 5px;
-  border: 1px solid #f3f4d3;
   color: #444;
   line-height: 40px; }
+  @media (max-width: 600px) {
+    .audiojs {
+      width: 100%; } }
   .audiojs .play-pause,
   .audiojs .time {
     position: absolute;
@@ -359,11 +361,11 @@ nav::after {
     .audiojs .time,
     .audiojs .time em {
       font-style: normal;
-      font-size: 13px; }
+      font-size: 12px; }
   .audiojs .scrubber {
     width: 100%;
     height: 100%;
-    background: #f3f4d3; }
+    background: #a4c176; }
     .audiojs .scrubber .progress {
       width: 0;
       height: 100%;
