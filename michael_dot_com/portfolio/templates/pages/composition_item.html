@@ -1,5 +1,4 @@
 {% extends 'base.html' %}
-{% url 'composition_url' as composition_url %}
 
 {% block title %}
 Composition | {{ piece.title }}
@@ -9,6 +8,7 @@ Composition | {{ piece.title }}
 
 {% block content %}
 
+{% url 'composition_url' as composition_url %}
 <a class="submenu-mobile" href="{{ composition_url }}">
 	&laquo; Back to composition
 </a>

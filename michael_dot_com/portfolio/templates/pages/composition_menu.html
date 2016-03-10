@@ -1,7 +1,11 @@
 {% load extra_tags %}
 {% url 'composition_url' as composition_url %}
 
-<ul class="submenu-menu {% if request.path == composition_url %}submenu-menu--no-hide{% endif %}">
+<ul
+		class="
+			submenu-menu
+			{% if request.path == composition_url %}submenu-menu--no-hide{% endif %}
+		">
 	{% for composition in compositions %}
 		<li>
 			<a
