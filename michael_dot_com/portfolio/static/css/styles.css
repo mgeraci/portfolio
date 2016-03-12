@@ -126,6 +126,7 @@ nav::after {
     @media (min-width: 800px) {
       .nav-desktop li {
         text-align: center; }
+        .nav-desktop li h1,
         .nav-desktop li a {
           display: inline-block;
           width: 90px;
@@ -147,7 +148,10 @@ nav::after {
           transition-timing-function: linear;
           font-size: 22px;
           line-height: 24px; }
-          .nav-desktop li a:hover, .nav-desktop li a:active, .nav-desktop li a.active {
+          .nav-desktop li h1:hover, .nav-desktop li h1:active, .nav-desktop li h1.active,
+          .nav-desktop li a:hover,
+          .nav-desktop li a:active,
+          .nav-desktop li a.active {
             background: #bbd199;
             padding-top: 19px;
             border: 4px solid #f3f4d3;
@@ -481,17 +485,17 @@ nav::after {
     @media (min-width: 1000px) {
       .index-top-right {
         padding-right: 100px; } }
-    .index-top-right h1,
+    .index-top-right h2,
     .index-top-right p {
       padding-bottom: 20px; }
-      .index-top-right h1:last-child,
+      .index-top-right h2:last-child,
       .index-top-right p:last-child {
         padding-bottom: 0; }
-    .index-top-right h1 {
+    .index-top-right h2 {
       font-family: headline;
       font-size: 36px; }
       @media (max-width: 690px) {
-        .index-top-right h1 {
+        .index-top-right h2 {
           font-size: 28px; } }
 
 .index-bottom {

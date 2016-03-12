@@ -1,12 +1,13 @@
 {% load extra_tags %}
 
 <li>
-	<a
-		href="{{ menu_item.href }}"
-		{% if request.path|active_menu_item:menu_item.href %}
-			class="active"
-		{% endif %}
-	>
-		{{ name|safe }}
-	</a>
+	{% if request.path|active_menu_item:menu_item.href %}
+		<h1 class="active">
+			{{ name|safe }}
+		</h1>
+	{% else %}
+		<a href="{{ menu_item.href }}">
+			{{ name|safe }}
+		</a>
+	{% endif %}
 </li>
