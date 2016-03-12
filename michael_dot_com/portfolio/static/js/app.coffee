@@ -1,3 +1,5 @@
+FastClick = require("fastclick")
+
 menu = require("./menu.coffee")
 lazyImages = require("./lazy_images.coffee")
 audio = require("./audio.coffee")
@@ -8,3 +10,4 @@ menu.init()
 lazyImages.search()
 audio.init()
 video.init()
+FastClick.attach(document.body)
