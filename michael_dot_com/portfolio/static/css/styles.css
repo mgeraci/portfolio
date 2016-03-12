@@ -299,11 +299,13 @@ nav::after {
       margin-top: 20px; }
       .submenu-menu li:first-child {
         margin-top: 0; }
-    .submenu-menu a, .submenu-menu a:hover {
-      background-image: none; }
-    .submenu-menu a.active {
-      color: #f3f4d3;
-      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.15); }
+    .submenu-menu a {
+      display: block; }
+      .submenu-menu a, .submenu-menu a:hover {
+        background-image: none; }
+      .submenu-menu a.active {
+        color: #f3f4d3;
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.15); }
   .submenu-content {
     width: 70%;
     padding-left: 6%;
