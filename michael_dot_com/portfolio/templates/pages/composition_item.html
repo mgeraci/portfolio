@@ -17,19 +17,33 @@ Composition | {{ piece.title }}
 	{% include 'pages/composition_menu.html' %}
 
 	<div class="submenu-content">
+
 		<h2>{{ piece.title }}, {{ piece.year }}</h2>
 		<span class="materials">
 			{{ piece.materials }}{% if piece.duration %}, {{ piece.duration }}{% endif %}
 		</span>
+		{% if piece.performers %}
+			<span class="performers">
+				With {{ piece.performers }}
+			</span>
+		{% endif %}
+
 		<br />
+
 		{% if piece.audio %}
 			<audio src="{{ MEDIA_URL }}{{ piece.audio }}" preload="none"></audio>
 		{% endif %}
+
+		{% if piece.video %}
+			<iframe src="{{ piece.video }}?title=0&amp;byline=0&amp;portrait=0&amp;color=bbd199" width="430" height="287" frameborder="0"></iframe>
+		{% endif %}
+
 		{% if piece.description %}
 			<br />
 			<h3>About the piece</h3>
 			{{ piece.description|safe }}
 		{% endif %}
+
 	</div>
 </div>
 

@@ -1,5 +1,5 @@
-audiojs = require("./vendor/audio.min.js")
 $ = require("jquery")
+audiojs = require("./vendor/audio.min.js")
 
 module.exports = {
 	init: ->

@@ -562,10 +562,12 @@ nav::after {
     width: 100%; }
 
 .page-composition h2,
-.page-composition .materials {
+.page-composition .materials,
+.page-composition .performers {
   display: block;
   width: 100%;
   text-align: center; }
-.page-composition .materials {
+.page-composition .materials,
+.page-composition .performers {
   position: relative;
   bottom: 10px; }

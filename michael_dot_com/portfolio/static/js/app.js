@@ -44,7 +44,7 @@
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var audio, lazyImages, menu;
+	var audio, lazyImages, menu, video;
 
 	menu = __webpack_require__(1);
 
@@ -52,11 +52,15 @@
 
 	audio = __webpack_require__(4);
 
+	video = __webpack_require__(6);
+
 	menu.init();
 
 	lazyImages.search();
 
 	audio.init();
+
+	video.init();
 
 
 /***/ },
@@ -9956,9 +9960,9 @@
 
 	var $, audiojs;
 
-	audiojs = __webpack_require__(5);
-
 	$ = __webpack_require__(2);
+
+	audiojs = __webpack_require__(5);
 
 	module.exports = {
 	  init: function() {
@@ -10014,6 +10018,117 @@
 	loadError:function(){this.settings.loadError.apply(this)},init:function(){this.settings.init.apply(this)},loadStarted:function(){if(!this.element.duration)return false;this.duration=this.element.duration;this.updatePlayhead();this.settings.loadStarted.apply(this)},loadProgress:function(){if(this.element.buffered!=null&&this.element.buffered.length){if(!this.loadStartedCalled)this.loadStartedCalled=this.loadStarted();this.loadedPercent=this.element.buffered.end(this.element.buffered.length-1)/this.duration;
 	this.settings.loadProgress.apply(this,[this.loadedPercent])}},playPause:function(){this.playing?this.pause():this.play()},play:function(){/(ipod|iphone|ipad)/i.test(navigator.userAgent)&&this.element.readyState==0&&this.init.apply(this);if(!this.settings.preload){this.settings.preload=true;this.element.setAttribute("preload","auto");g[h].events.trackLoadProgress(this)}this.playing=true;this.element.play();this.settings.play.apply(this)},pause:function(){this.playing=false;this.element.pause();this.settings.pause.apply(this)},
 	setVolume:function(b){this.element.volume=b},trackEnded:function(){this.skipTo.apply(this,[0]);this.settings.loop||this.pause.apply(this);this.settings.trackEnded.apply(this)}};var j=function(b,a){var c=[];a=a||document;if(a.getElementsByClassName)c=a.getElementsByClassName(b);else{var d,e,i=a.getElementsByTagName("*"),f=RegExp("(^|\\s)"+b+"(\\s|$)");d=0;for(e=i.length;d<e;d++)f.test(i[d].className)&&c.push(i[d])}return c.length>1?c:c[0]}})("audiojs","audiojsInstance",this);
+
+
+/***/ },
+/* 6 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var $, fitvids;
+
+	$ = __webpack_require__(2);
+
+	fitvids = __webpack_require__(7);
+
+	module.exports = {
+	  init: function() {
+	    return fitvids();
+	  }
+	};
+
+
+/***/ },
+/* 7 */
+/***/ function(module, exports) {
+
+	
+	'use strict'
+
+	var selectors = [
+		'iframe[src*="player.vimeo.com"]',
+		'iframe[src*="youtube.com"]',
+		'iframe[src*="youtube-nocookie.com"]',
+		'iframe[src*="kickstarter.com"][src*="video.html"]',
+		'object'
+	]
+
+	var css = '.fluid-width-video-wrapper{width:100%;position:relative;padding:0;}.fluid-width-video-wrapper iframe,.fluid-width-video-wrapper object,.fluid-width-video-wrapper embed {position:absolute;top:0;left:0;width:100%;height:100%;}'
+
+	module.exports = function (selector, opts) {
+		opts = opts || {}
+		selector = selector || 'body'
+
+		if (isObject(selector)) {
+			opts = selector
+			selector = 'body'
+		}
+
+		var containers = queryAll(selector)
+		if (containers.length < 1) return
+
+		if (!document.getElementById('fit-vids-style')) {
+			var head = document.head || document.getElementsByTagName('head')[0]
+			head.appendChild(styles())
+		}
+
+		var customSelector = toSelector(opts.players)
+		var videoSelector = toSelector(selectors)
+
+		if (customSelector.length) {
+			videoSelector = videoSelector + ',' + customSelector
+		}
+
+		for (var i = 0, l = containers.length; i < l; i++) {
+			var container = containers[i]
+			var videos = queryAll(container, videoSelector)
+			for (var j = 0, ll = videos.length; j < ll; j++) {
+				wrap(videos[j])
+			}
+		}
+	}
+
+	function queryAll (el, selector) {
+		if (typeof el === 'string') {
+			selector = el
+			el = document
+		}
+		return Array.prototype.slice.call(el.querySelectorAll(selector))
+	}
+
+	function wrap (el) {
+		if (/fluid-width-video-wrapper/.test(el.parentNode.className)) return
+
+		var widthAttr = parseInt(el.getAttribute('width'), 10)
+		var heightAttr = parseInt(el.getAttribute('height'), 10)
+
+		var width = !isNaN(widthAttr) ? widthAttr : el.clientWidth
+		var height = !isNaN(heightAttr) ? heightAttr : el.clientHeight
+		var aspect = height / width
+
+		el.removeAttribute('width')
+		el.removeAttribute('height')
+
+		var wrapper = document.createElement('div')
+		el.parentNode.insertBefore(wrapper, el)
+		wrapper.className = 'fluid-width-video-wrapper'
+		wrapper.style.paddingTop = (aspect * 100) + '%'
+		wrapper.appendChild(el)
+	}
+
+	function toSelector (input) {
+		if (typeof input === 'undefined') return ''
+		return Array.isArray(input) ? input.join() : input
+	}
+
+	function styles () {
+		var div = document.createElement('div')
+		div.innerHTML = '<p>x</p><style id="fit-vids-style">' + css + '</style>'
+		return div.childNodes[1]
+	}
+
+	function isObject (input) {
+		return Object.prototype.toString.call(input) === '[object Object]'
+	}
 
 
 /***/ }
