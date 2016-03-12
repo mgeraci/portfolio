@@ -11,6 +11,7 @@ class Composition(models.Model):
     video = models.URLField(max_length=200, blank=True)
     audio = models.FileField(upload_to='composition', blank=True, null=True)
     description = models.TextField(blank=True)
+    score = models.CharField(max_length=200, blank=True)
 
     class Meta:
         ordering = ['-year']

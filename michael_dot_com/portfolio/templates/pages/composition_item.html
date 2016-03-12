@@ -44,6 +44,14 @@ Composition | {{ piece.title }}
 			{{ piece.description|safe }}
 		{% endif %}
 
+		{% if piece.score %}
+			<br />
+			<br />
+			<a href="{{ STATIC_URL }}documents/{{ piece.score }}">
+				View the score
+			</a>
+		{% endif %}
+
 	</div>
 </div>
 
