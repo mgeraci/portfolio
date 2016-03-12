@@ -13,7 +13,7 @@ class Composition(models.Model):
     description = models.TextField(blank=True)
 
     class Meta:
-        ordering = ['year']
+        ordering = ['-year']
 
     def __unicode__(self):
         return u'{} - {}'.format(self.year, self.title)
