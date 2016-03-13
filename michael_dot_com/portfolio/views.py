@@ -1,6 +1,8 @@
 from django.shortcuts import render, get_object_or_404
 from michael_dot_com.localsettings import STATIC_URL
 from portfolio.models import Composition
+from portfolio.models import Web
+from portfolio.models import WebItem
 
 # main pages
 def index(request):
@@ -37,7 +39,25 @@ def index(request):
     return render(request, 'pages/index.html', context)
 
 def web(request):
-    return render(request, 'pages/web.html')
+    webs = Web.objects.all()
+    context = {
+        'webs': webs,
+    }
+
+    return render(request, 'pages/web.html', context)
+
+def web_item(request, slug):
+    webs = Web.objects.all()
+    web = get_object_or_404(Web, slug=slug)
+    web_items = WebItem.objects.filter(web=web)
+
+    context = {
+        'webs': webs,
+        'web': web,
+        'web_items': web_items,
+    }
+
+    return render(request, 'pages/web_item.html', context)
 
 def photography(request):
     return render(request, 'pages/photography.html')

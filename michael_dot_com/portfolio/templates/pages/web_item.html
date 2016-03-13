@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{{ web.title }} | Web Design
+{% endblock %}
+
+{% block bodyclass %}web{% endblock %}
+
+{% block content %}
+
+<h2>{{ web.title }}, {{ web.year }}</h2>
+
+{% for web_item in web_items %}
+	<img src="{{ MEDIA_URL }}/{{ web_item.image }}" />
+{% endfor %}
+
+{% endblock %}

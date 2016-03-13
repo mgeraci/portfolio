@@ -4,6 +4,15 @@
 Web Design
 {% endblock %}
 
+{% block bodyclass %}web{% endblock %}
+
 {% block content %}
-heya, this is the "web" page
+
+{% for web in webs %}
+	<a
+			href="{% url 'web_item_url' web.slug %}">
+		{{ web.title }}, {{ web.year }}
+	</a>
+{% endfor %}
+
 {% endblock %}

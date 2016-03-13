@@ -9,7 +9,7 @@
 	{% for composition in compositions %}
 		<li>
 			<a
-				href="{% url 'composition_item_url' composition.slug %}"
+					href="{% url 'composition_item_url' composition.slug %}"
 				{% if request.path|active_menu_item:composition.slug %}
 					class="active"
 				{% endif %}
