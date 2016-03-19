@@ -8,12 +8,16 @@ Web Design
 
 {% block content %}
 
-{% for web in webs %}
-	<a
-			href="{% url 'web_item_url' web.slug %}">
-		{{ web.title }}, {{ web.year }}
-	</a>
-	<br />
-{% endfor %}
+<div class="page-web-menu">
+	{% for web in webs %}
+		<a
+				class="page-web-menu-item"
+				href="{% url 'web_item_url' web.slug %}">
+			<span class="page-web-menu-item-text">
+				{{ web.title }}, {{ web.year }}
+			</span>
+		</a>
+	{% endfor %}
+</div>
 
 {% endblock %}

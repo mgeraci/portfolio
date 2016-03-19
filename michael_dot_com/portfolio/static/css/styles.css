@@ -573,3 +573,38 @@ nav::after {
   .recent-item-text {
     display: block;
     width: 100%; }
+
+.page-web-menu {
+  display: block;
+  width: 100%; }
+  .page-web-menu::after {
+    clear: both;
+    content: "";
+    display: table; }
+  .page-web-menu-item {
+    position: relative;
+    float: left;
+    width: 31%;
+    margin: 1.166%;
+    padding-top: 10%;
+    background: rgba(0, 0, 0, 0.05);
+    background-image: none !important;
+    text-align: center; }
+    @media (max-width: 800px) {
+      .page-web-menu-item {
+        width: 45%;
+        margin: 2.5%;
+        padding-top: 16%; } }
+    @media (max-width: 450px) {
+      .page-web-menu-item {
+        width: 100%;
+        padding-top: 28%;
+        margin: 0;
+        margin-bottom: 20px; } }
+    .page-web-menu-item-text {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      padding: 20px;
+      text-align: center; }
