@@ -67,6 +67,15 @@ blockquote {
 em {
   font-style: oblique; }
 
+.title h2,
+.title .subtitle {
+  display: block;
+  width: 100%;
+  text-align: center; }
+.title .subtitle {
+  position: relative;
+  bottom: 10px; }
+
 @font-face {
   font-family: "body";
   src: url("../fonts/body.eot?#iefix") format("embedded-opentype"), url("../fonts/body.woff") format("woff"), url("../fonts/body.ttf") format("truetype"), url("../fonts/body.svg#Body") format("svg");
@@ -564,14 +573,3 @@ nav::after {
   .recent-item-text {
     display: block;
     width: 100%; }
-
-.page-composition h2,
-.page-composition .materials,
-.page-composition .performers {
-  display: block;
-  width: 100%;
-  text-align: center; }
-.page-composition .materials,
-.page-composition .performers {
-  position: relative;
-  bottom: 10px; }

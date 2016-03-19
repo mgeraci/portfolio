@@ -50,11 +50,22 @@ def web_item(request, slug):
     webs = Web.objects.all()
     web = get_object_or_404(Web, slug=slug)
     web_items = WebItem.objects.filter(web=web)
+    title_bundle = {
+        'title': u'{}, {}'.format(web.title, web.year),
+        'subtitles': [],
+    }
+
+    if web.tech:
+        title_bundle['subtitles'].append(web.tech)
+
+    if web.subtitle:
+        title_bundle['subtitles'].append(web.subtitle)
 
     context = {
         'webs': webs,
         'web': web,
         'web_items': web_items,
+        'title_bundle': title_bundle
     }
 
     return render(request, 'pages/web_item.html', context)
@@ -76,10 +87,27 @@ def composition(request):
 def composition_item(request, slug):
     compositions = Composition.objects.all()
     piece = get_object_or_404(Composition, slug=slug)
+    title_bundle = {
+        'title': u'{}, {}'.format(piece.title, piece.year),
+        'subtitles': [],
+    }
+
+    subtitle1 = piece.materials
+
+    if piece.duration:
+        subtitle1 = u'{}, {}'.format(subtitle1, piece.duration)
+
+    title_bundle['subtitles'].append(subtitle1)
+
+    if piece.performers:
+        title_bundle['subtitles'].append(
+            u'With {}'.format(piece.performers)
+        )
 
     context = {
         'compositions': compositions,
         'piece': piece,
+        'title_bundle': title_bundle
     }
 
     return render(request, 'pages/composition_item.html', context)

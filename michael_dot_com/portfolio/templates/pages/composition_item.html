@@ -18,15 +18,7 @@ Composition | {{ piece.title }}
 
 	<div class="submenu-content">
 
-		<h2>{{ piece.title }}, {{ piece.year }}</h2>
-		<span class="materials">
-			{{ piece.materials }}{% if piece.duration %}, {{ piece.duration }}{% endif %}
-		</span>
-		{% if piece.performers %}
-			<span class="performers">
-				With {{ piece.performers }}
-			</span>
-		{% endif %}
+		{% include "title.html" with item=title_bundle %}
 
 		<br />
 

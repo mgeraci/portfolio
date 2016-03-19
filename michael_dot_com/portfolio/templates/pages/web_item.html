@@ -8,7 +8,7 @@
 
 {% block content %}
 
-<h2>{{ web.title }}, {{ web.year }}</h2>
+{% include 'title.html' with item=title_bundle %}
 
 {% for web_item in web_items %}
 	<img src="{{ MEDIA_URL }}/{{ web_item.image }}" />
