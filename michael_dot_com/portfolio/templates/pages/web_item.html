@@ -11,7 +11,11 @@
 {% include 'title.html' with item=title_bundle %}
 
 {% for web_item in web_items %}
-	<img src="{{ MEDIA_URL }}/{{ web_item.image }}" />
+	<div
+		class="web-image"
+		data-lazy-image="{{ MEDIA_URL }}/{{ web_item.image }}"
+		data-lazy-image-alt="an image of {{ web.title }}">
+	</div>
 {% endfor %}
 
 {% endblock %}

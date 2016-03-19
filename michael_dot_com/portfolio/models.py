@@ -36,7 +36,7 @@ class Web(models.Model):
 
 class WebItem(models.Model):
     web = models.ForeignKey(Web)
-    order = models.PositiveSmallIntegerField(unique=True, blank=True)
+    order = models.PositiveSmallIntegerField(blank=True)
     image = models.FileField(upload_to='web', blank=True, null=True)
     video = models.URLField(max_length=200, blank=True)
 
