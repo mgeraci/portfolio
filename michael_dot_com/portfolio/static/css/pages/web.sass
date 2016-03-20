@@ -27,8 +27,21 @@
 
       &-text
         position: absolute
-        top: 0
+        top: 50%
         left: 0
         width: 100%
         padding: 20px
         text-align: center
+        @include transform(translateY(-50%))
+
+  .fluid-width-video-wrapper,
+  .web-image
+    max-width: 750px
+    margin: 40px auto 0
+
+  .web-image
+    @include clearfix
+
+    img
+      float: left
+      width: 100%

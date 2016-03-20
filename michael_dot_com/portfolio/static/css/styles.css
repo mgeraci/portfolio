@@ -603,8 +603,24 @@ nav::after {
         margin-bottom: 20px; } }
     .page-web-menu-item-text {
       position: absolute;
-      top: 0;
+      top: 50%;
       left: 0;
       width: 100%;
       padding: 20px;
-      text-align: center; }
+      text-align: center;
+      -webkit-transform: translateY(-50%);
+      -moz-transform: translateY(-50%);
+      -ms-transform: translateY(-50%);
+      -o-transform: translateY(-50%);
+      transform: translateY(-50%); }
+.page-web .fluid-width-video-wrapper,
+.page-web .web-image {
+  max-width: 750px;
+  margin: 40px auto 0; }
+.page-web .web-image::after {
+  clear: both;
+  content: "";
+  display: table; }
+.page-web .web-image img {
+  float: left;
+  width: 100%; }
