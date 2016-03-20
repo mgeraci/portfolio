@@ -10,6 +10,14 @@
 
 {% include 'title.html' with item=title_bundle %}
 
+{% if web.link %}
+	<a href="{{ web.link }}">visit</a>
+{% endif %}
+{% if web.link and web.source %}/{% endif %}
+{% if web.source %}
+	<a href="{{ web.source }}">view source</a>
+{% endif %}
+
 {% for web_item in web_items %}
 	{% if web_item.image %}
 		<div

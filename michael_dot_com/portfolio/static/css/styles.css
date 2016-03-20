@@ -570,53 +570,55 @@ nav::after {
     display: block;
     width: 100%; }
 
-.page-web-menu {
-  display: block;
-  width: 100%; }
-  .page-web-menu::after {
+.page-web {
+  text-align: center; }
+  .page-web-menu {
+    display: block;
+    width: 100%; }
+    .page-web-menu::after {
+      clear: both;
+      content: "";
+      display: table; }
+    .page-web-menu-item {
+      position: relative;
+      float: left;
+      width: 31%;
+      margin: 1.166%;
+      padding-top: 10%;
+      background: rgba(0, 0, 0, 0.05);
+      background-image: none !important;
+      text-align: center; }
+      @media (max-width: 800px) {
+        .page-web-menu-item {
+          width: 45%;
+          margin: 2.5%;
+          padding-top: 16%; } }
+      @media (max-width: 450px) {
+        .page-web-menu-item {
+          width: 100%;
+          padding-top: 28%;
+          margin: 0;
+          margin-bottom: 20px; } }
+      .page-web-menu-item-text {
+        position: absolute;
+        top: 50%;
+        left: 0;
+        width: 100%;
+        padding: 20px;
+        text-align: center;
+        -webkit-transform: translateY(-50%);
+        -moz-transform: translateY(-50%);
+        -ms-transform: translateY(-50%);
+        -o-transform: translateY(-50%);
+        transform: translateY(-50%); }
+  .page-web .fluid-width-video-wrapper,
+  .page-web .web-image {
+    max-width: 750px;
+    margin: 40px auto 0; }
+  .page-web .web-image::after {
     clear: both;
     content: "";
     display: table; }
-  .page-web-menu-item {
-    position: relative;
+  .page-web .web-image img {
     float: left;
-    width: 31%;
-    margin: 1.166%;
-    padding-top: 10%;
-    background: rgba(0, 0, 0, 0.05);
-    background-image: none !important;
-    text-align: center; }
-    @media (max-width: 800px) {
-      .page-web-menu-item {
-        width: 45%;
-        margin: 2.5%;
-        padding-top: 16%; } }
-    @media (max-width: 450px) {
-      .page-web-menu-item {
-        width: 100%;
-        padding-top: 28%;
-        margin: 0;
-        margin-bottom: 20px; } }
-    .page-web-menu-item-text {
-      position: absolute;
-      top: 50%;
-      left: 0;
-      width: 100%;
-      padding: 20px;
-      text-align: center;
-      -webkit-transform: translateY(-50%);
-      -moz-transform: translateY(-50%);
-      -ms-transform: translateY(-50%);
-      -o-transform: translateY(-50%);
-      transform: translateY(-50%); }
-.page-web .fluid-width-video-wrapper,
-.page-web .web-image {
-  max-width: 750px;
-  margin: 40px auto 0; }
-.page-web .web-image::after {
-  clear: both;
-  content: "";
-  display: table; }
-.page-web .web-image img {
-  float: left;
-  width: 100%; }
+    width: 100%; }

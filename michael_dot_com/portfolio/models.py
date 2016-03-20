@@ -26,6 +26,7 @@ class Web(models.Model):
     tech = models.CharField(max_length=400, blank=True)
     subtitle = models.CharField(max_length=400, blank=True)
     link = models.URLField(max_length=200, blank=True)
+    source = models.URLField(max_length=200, blank=True)
     description = models.TextField(blank=True)
 
     class Meta:
