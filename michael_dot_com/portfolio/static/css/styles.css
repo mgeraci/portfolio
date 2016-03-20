@@ -135,7 +135,6 @@ nav::after {
     @media (min-width: 800px) {
       .nav-desktop li {
         text-align: center; }
-        .nav-desktop li h1,
         .nav-desktop li a {
           display: inline-block;
           width: 90px;
@@ -157,10 +156,7 @@ nav::after {
           transition-timing-function: linear;
           font-size: 22px;
           line-height: 24px; }
-          .nav-desktop li h1:hover, .nav-desktop li h1:active, .nav-desktop li h1.active,
-          .nav-desktop li a:hover,
-          .nav-desktop li a:active,
-          .nav-desktop li a.active {
+          .nav-desktop li a:hover, .nav-desktop li a:active, .nav-desktop li a.active {
             background: #bbd199;
             padding-top: 19px;
             border: 4px solid #f3f4d3;

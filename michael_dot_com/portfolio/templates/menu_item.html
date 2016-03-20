@@ -2,9 +2,11 @@
 
 <li>
 	{% if request.path|active_menu_item:menu_item.href %}
-		<h1 class="active">
-			{{ name|safe }}
-		</h1>
+		<a href="{{ menu_item.href }}" class="active">
+			<h1 class="active">
+				{{ name|safe }}
+			</h1>
+		</a>
 	{% else %}
 		<a href="{{ menu_item.href }}">
 			{{ name|safe }}
