@@ -4,6 +4,7 @@ menu = require("./menu.coffee")
 lazyImages = require("./lazy_images.coffee")
 audio = require("./audio.coffee")
 video = require("./video.coffee")
+modernizr = require("./vendor/modernizr.js")
 
 # initialize at page bottom
 menu.init()

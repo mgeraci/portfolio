@@ -13,8 +13,10 @@ Web Design
 		<a
 				class="page-web-menu-item"
 				href="{% url 'web_item_url' web.slug %}">
-			<span class="page-web-menu-item-text">
-				{{ web.title }}
+			<span class="page-web-menu-item-text-wrapper">
+				<span class="page-web-menu-item-text">
+					{{ web.title }}
+				</span>
 			</span>
 		</a>
 	{% endfor %}

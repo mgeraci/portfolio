@@ -16,25 +16,44 @@
       background-image: none !important
       text-align: center
 
-      @media (max-width: $menu-breakpoint)
+      @media (max-width: 870px)
         width: 45%
         margin: 2.5%
         padding-top: 16%
 
-      @media (max-width: 450px)
+      @media (max-width: 590px)
         width: 100%
         padding-top: 28%
         margin: 0
         margin-bottom: 20px
 
+      &-text-wrapper
+        position: absolute
+        top: 0
+        left: 0
+        width: 100%
+        height: 100%
+        background: rgba(#000, 0.2)
+
+        .no-touchevents &
+          opacity: 0
+          @include transition(opacity 75ms linear)
+
+          &:hover
+            opacity: 1
+            @include transition(opacity 150ms linear)
+
       &-text
         position: absolute
         top: 50%
         left: 0
+        @include transform(translateY(-50%))
         width: 100%
         padding: 20px
         text-align: center
-        @include transform(translateY(-50%))
+        color: $cream
+        text-shadow: 0 0 6px rgba(#000, 0.2)
+        letter-spacing: 0.02em
 
   .fluid-width-video-wrapper,
   .web-image

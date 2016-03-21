@@ -16,11 +16,12 @@
     color: $default-color
     @include link-underline($default-color)
 
-  &:hover,
-  &:active
-    color: $hover-color
-    @include link-underline($hover-color)
-    text-shadow: $active-link-shadow
+  .no-touchevents &
+    &:hover,
+    &:active
+      color: $hover-color
+      @include link-underline($hover-color)
+      text-shadow: $active-link-shadow
 
 @mixin bare-button
   padding: 0
