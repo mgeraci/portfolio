@@ -310,7 +310,7 @@ nav::after {
         margin-top: 0; }
     .submenu-menu a {
       display: block; }
-      .submenu-menu a, .submenu-menu a:hover {
+      .submenu-menu a, .submenu-menu a:hover, .no-touchevents .submenu-menu a, .no-touchevents .submenu-menu a:hover {
         background-image: none; }
       .submenu-menu a.active {
         color: #f3f4d3;
