@@ -35,7 +35,7 @@ class Web(models.Model):
     def __unicode__(self):
         return u'{} - {}'.format(self.year, self.title)
 
-class WebItem(models.Model):
+class WebImage(models.Model):
     web = models.ForeignKey(Web)
     order = models.PositiveSmallIntegerField(blank=True)
     image = models.FileField(upload_to='web', blank=True, null=True)

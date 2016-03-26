@@ -2,7 +2,7 @@ from django.contrib import admin
 from portfolio.models import (
     Composition,
     Web,
-    WebItem,
+    WebImage,
 )
 
 class CompositionAdmin(admin.ModelAdmin):
@@ -11,9 +11,9 @@ class CompositionAdmin(admin.ModelAdmin):
 class WebAdmin(admin.ModelAdmin):
     pass
 
-class WebItemAdmin(admin.ModelAdmin):
+class WebImageAdmin(admin.ModelAdmin):
     pass
 
 admin.site.register(Composition, CompositionAdmin)
 admin.site.register(Web, WebAdmin)
-admin.site.register(WebItem, WebItemAdmin)
+admin.site.register(WebImage, WebImageAdmin)

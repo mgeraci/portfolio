@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404
 from michael_dot_com.localsettings import STATIC_URL
 from portfolio.models import Composition
 from portfolio.models import Web
-from portfolio.models import WebItem
+from portfolio.models import WebImage
 
 # main pages
 def index(request):
@@ -49,7 +49,7 @@ def web(request):
 def web_item(request, slug):
     webs = Web.objects.all()
     web = get_object_or_404(Web, slug=slug)
-    web_items = WebItem.objects.filter(web=web)
+    web_items = WebImage.objects.filter(web=web)
     title_bundle = {
         'title': u'{}, {}'.format(web.title, web.year),
         'subtitles': [],
