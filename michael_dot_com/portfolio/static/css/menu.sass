@@ -62,7 +62,7 @@ nav
   // showing menu state
   &--has-menu
     .nav-mobile-menu
-      display: block
+      height: 254px
 
     .nav-mobile-menu-trigger-icon
       border: 0
@@ -99,13 +99,17 @@ nav
       @include triangle($mobile-icon-size, $text, down)
 
   &-menu
-    display: none
     position: absolute
+    overflow: hidden
+    z-index: 2
     top: $mobile-header-height
     left: 0
     float: left
     width: 100%
     background: rgba(#000, 0.7)
+
+    @include transition(height 100ms ease-in-out)
+    height: 0
 
     $decoration-color: rgba(#000, 0.1)
 
