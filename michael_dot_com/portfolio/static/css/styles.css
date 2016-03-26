@@ -581,31 +581,45 @@ nav::after {
       display: table; }
     .page-web-menu-item {
       position: relative;
+      overflow: hidden;
       float: left;
       width: 31%;
       margin: 1.166%;
-      padding-top: 10%;
+      padding-top: 13%;
       background: rgba(0, 0, 0, 0.05);
       background-image: none !important;
-      text-align: center; }
+      text-align: center;
+      outline: none; }
       @media (max-width: 870px) {
         .page-web-menu-item {
           width: 45%;
           margin: 2.5%;
-          padding-top: 16%; } }
+          padding-top: 18.5%; } }
       @media (max-width: 590px) {
         .page-web-menu-item {
-          width: 100%;
-          padding-top: 28%;
+          position: relative;
+          left: 50%;
+          -webkit-transform: translateX(-50%);
+          -moz-transform: translateX(-50%);
+          -ms-transform: translateX(-50%);
+          -o-transform: translateX(-50%);
+          transform: translateX(-50%);
+          width: 400px;
+          height: 165px;
           margin: 0;
           margin-bottom: 20px; } }
+      @media (max-width: 440px) {
+        .page-web-menu-item {
+          width: 100%;
+          height: auto;
+          padding-top: 41%; } }
       .page-web-menu-item-text-wrapper {
         position: absolute;
         top: 0;
         left: 0;
         width: 100%;
         height: 100%;
-        background: rgba(0, 0, 0, 0.2); }
+        background: rgba(0, 0, 0, 0.7); }
         .no-touchevents .page-web-menu-item-text-wrapper {
           opacity: 0;
           -webkit-transition: opacity 75ms linear;
@@ -616,6 +630,15 @@ nav::after {
             -webkit-transition: opacity 150ms linear;
             -moz-transition: opacity 150ms linear;
             transition: opacity 150ms linear; }
+      .page-web-menu-item-image {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: auto; }
+        .page-web-menu-item-image img {
+          width: 100%;
+          height: auto; }
       .page-web-menu-item-text {
         position: absolute;
         top: 50%;

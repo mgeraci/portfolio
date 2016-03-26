@@ -28,6 +28,7 @@ class Web(models.Model):
     link = models.URLField(max_length=200, blank=True)
     source = models.URLField(max_length=200, blank=True)
     description = models.TextField(blank=True)
+    thumbnail = models.FileField(upload_to='web', blank=True, null=True)
 
     class Meta:
         ordering = ['-year']
