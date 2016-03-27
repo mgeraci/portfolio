@@ -108,7 +108,7 @@ def composition_item(request, slug):
     context = {
         'compositions': compositions,
         'piece': piece,
-        'title_bundle': title_bundle
+        'title_bundle': title_bundle,
     }
 
     return render(request, 'pages/composition_item.html', context)
@@ -116,10 +116,25 @@ def composition_item(request, slug):
 def recordings(request):
     pages = RecordingPage.objects.all()
     context = {
-        'pages': pages
+        'pages': pages,
     }
 
     return render(request, 'pages/recordings.html', context)
+
+def recordings_item(request, slug):
+    pages = RecordingPage.objects.all()
+    page = get_object_or_404(RecordingPage, slug=slug)
+    title_bundle = {
+        'title': u'{}, {}'.format(page.title, page.year)
+    }
+
+    context = {
+        'pages': pages,
+        'page': page,
+        'title_bundle': title_bundle,
+    }
+
+    return render(request, 'pages/recordings_item.html', context)
 
 def links(request):
     return render(request, 'pages/links.html')

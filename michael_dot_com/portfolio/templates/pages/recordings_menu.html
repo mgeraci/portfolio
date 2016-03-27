@@ -9,7 +9,7 @@
 	{% for page in pages %}
 		<li>
 			<a
-					href="{% url 'composition_item_url' page.slug %}"
+					href="{% url 'recordings_item_url' page.slug %}"
 				{% if request.path|active_menu_item:page.slug %}
 					class="active"
 				{% endif %}

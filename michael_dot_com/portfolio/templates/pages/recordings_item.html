@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{{ page.title }} | Recordings
+{% endblock %}
+
+{% block bodyclass %}recordings{% endblock %}
+
+{% block content %}
+
+{% url 'recordings_url' as recordings_url %}
+<a class="submenu-mobile" href="{{ recordings_url }}">
+	&laquo; Back to recordings
+</a>
+
+<div class="submenu">
+	{% include 'pages/recordings_menu.html' %}
+
+	<div class="submenu-content">
+		{% include "title.html" with item=title_bundle %}
+
+		{% if page.notes %}
+			{{ page.notes|linebreaksbr }}
+		{% endif %}
+
+		<br />
+		<br />
+		audio goes here
+		<br />
+		<br />
+
+		{% if page.description %}
+			{{ page.description|safe|linebreaksbr }}
+		{% endif %}
+	</div>
+</div>
+
+{% endblock %}
