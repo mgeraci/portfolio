@@ -3,6 +3,7 @@ from michael_dot_com.localsettings import STATIC_URL
 from portfolio.models import Composition
 from portfolio.models import Web
 from portfolio.models import WebImage
+from portfolio.models import RecordingPage
 
 # main pages
 def index(request):
@@ -113,7 +114,12 @@ def composition_item(request, slug):
     return render(request, 'pages/composition_item.html', context)
 
 def recordings(request):
-    return render(request, 'pages/recordings.html')
+    pages = RecordingPage.objects.all()
+    context = {
+        'pages': pages
+    }
+
+    return render(request, 'pages/recordings.html', context)
 
 def links(request):
     return render(request, 'pages/links.html')

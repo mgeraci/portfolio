@@ -1,0 +1,26 @@
+{% load extra_tags %}
+{% url 'recordings_url' as recordings_url %}
+
+<ul
+		class="
+			submenu-menu
+			{% if request.path == recordings_url %}submenu-menu--no-hide{% endif %}
+		">
+	{% for page in pages %}
+		<li>
+			<a
+					href="{% url 'composition_item_url' page.slug %}"
+				{% if request.path|active_menu_item:page.slug %}
+					class="active"
+				{% endif %}
+			>
+				<h3>
+					{{ page.title }}, {{ page.year }}
+				</h3>
+				<em>
+					{{ page.subtitle }}
+				</em>
+			</a>
+		</li>
+	{% endfor %}
+</ul>

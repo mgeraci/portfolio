@@ -4,6 +4,13 @@
 Recordings
 {% endblock %}
 
+{% block bodyclass %}recordings{% endblock %}
+
 {% block content %}
-records
+
+<div class="submenu">
+	{% include 'pages/recordings_menu.html' %}
+	<div class="submenu-content submenu-content--hide"></div>
+</div>
+
 {% endblock %}

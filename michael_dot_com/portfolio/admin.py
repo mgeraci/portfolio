@@ -3,6 +3,7 @@ from portfolio.models import (
     Composition,
     Web,
     WebImage,
+    RecordingPage,
 )
 
 class CompositionAdmin(admin.ModelAdmin):
@@ -14,6 +15,10 @@ class WebAdmin(admin.ModelAdmin):
 class WebImageAdmin(admin.ModelAdmin):
     pass
 
+class RecordingPageAdmin(admin.ModelAdmin):
+    pass
+
 admin.site.register(Composition, CompositionAdmin)
 admin.site.register(Web, WebAdmin)
 admin.site.register(WebImage, WebImageAdmin)
+admin.site.register(RecordingPage, RecordingPageAdmin)

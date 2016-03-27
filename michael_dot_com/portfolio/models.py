@@ -47,3 +47,18 @@ class WebImage(models.Model):
 
     def __unicode__(self):
         return u'{} - {}'.format(self.web, self.order)
+
+class RecordingPage(models.Model):
+    title = models.CharField(max_length=200)
+    subtitle = models.CharField(max_length=200)
+    year = models.PositiveSmallIntegerField()
+    slug = models.SlugField(max_length=200, unique=True)
+    notes = models.TextField(blank=True)
+    description = models.TextField(blank=True)
+    thumbnail = models.FileField(upload_to='web', blank=True, null=True)
+
+    class Meta:
+        ordering = ['-year']
+
+    def __unicode__(self):
+        return u'{} - {}'.format(self.title, self.year)
