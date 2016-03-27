@@ -19,18 +19,39 @@
 	<div class="submenu-content">
 		{% include "title.html" with item=title_bundle %}
 
-		{% if page.notes %}
-			{{ page.notes|linebreaksbr }}
-		{% endif %}
+		<div class="recording-content-wrapper">
+			{% if page.thumbnail %}
+				<div
+					class="recording-thumbnail"
+					data-lazy-image="{{ MEDIA_URL }}{{ page.thumbnail }}"
+					data-lazy-alt="An image of {{ page.title }}">
+				</div>
+			{% endif %}
 
-		<br />
-		<br />
-		audio goes here
+			<div class="recording-content">
+				{% if page.notes %}
+					{{ page.notes|linebreaksbr }}
+				{% endif %}
+			</div>
+		</div>
+
+		{% for recording in recordings %}
+			<div class="recording">
+				<span class="recording-title">
+					{{ recording.title }}
+				</span>
+				<audio src="{{ MEDIA_URL }}{{ recording.audio }}" preload="none"></audio>
+			</div>
+		{% endfor %}
+
 		<br />
 		<br />
 
 		{% if page.description %}
-			{{ page.description|safe|linebreaksbr }}
+			<div class="recording-description">
+				<h3>About the recording</h3>
+				{{ page.description|safe|linebreaksbr }}
+			</div>
 		{% endif %}
 	</div>
 </div>

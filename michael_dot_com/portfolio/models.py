@@ -62,3 +62,15 @@ class RecordingPage(models.Model):
 
     def __unicode__(self):
         return u'{} - {}'.format(self.title, self.year)
+
+class Recording(models.Model):
+    recording_page = models.ForeignKey(RecordingPage)
+    title = models.CharField(max_length=200)
+    audio = models.FileField(upload_to='recordings')
+    order = models.PositiveSmallIntegerField(blank=True)
+
+    class Meta:
+        ordering = ['order']
+
+    def __unicode__(self):
+        return u'{}'.format(self.title)

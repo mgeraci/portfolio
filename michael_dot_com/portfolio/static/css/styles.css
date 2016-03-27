@@ -575,6 +575,51 @@ nav::after {
     display: block;
     width: 100%; }
 
+.page-recordings .title {
+  margin-bottom: 20px; }
+.page-recordings .recording-content-wrapper {
+  position: relative; }
+.page-recordings .recording-thumbnail {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 200px;
+  height: 200px; }
+  @media (max-width: 875px) {
+    .page-recordings .recording-thumbnail {
+      position: relative;
+      width: 100%;
+      margin-bottom: 20px; }
+      .page-recordings .recording-thumbnail img {
+        position: relative;
+        left: 50%;
+        -webkit-transform: translateX(-50%);
+        -moz-transform: translateX(-50%);
+        -ms-transform: translateX(-50%);
+        -o-transform: translateX(-50%);
+        transform: translateX(-50%); } }
+  .page-recordings .recording-thumbnail img {
+    float: left; }
+.page-recordings .recording-content {
+  margin-bottom: 20px; }
+.page-recordings .recording-thumbnail + .recording-content {
+  margin-bottom: 0;
+  padding-left: 220px;
+  min-height: 220px; }
+  @media (max-width: 875px) {
+    .page-recordings .recording-thumbnail + .recording-content {
+      min-height: 0;
+      padding-left: 0; } }
+.page-recordings .recording + .recording {
+  margin-top: 20px; }
+.page-recordings .recording-title {
+  padding-bottom: 10px;
+  font-style: oblique;
+  font-size: 20px; }
+.page-recordings .recording-description {
+  font-size: 20px;
+  line-height: 26px; }
+
 .page-web {
   text-align: center; }
   .page-web-menu {

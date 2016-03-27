@@ -4,6 +4,7 @@ from portfolio.models import Composition
 from portfolio.models import Web
 from portfolio.models import WebImage
 from portfolio.models import RecordingPage
+from portfolio.models import Recording
 
 # main pages
 def index(request):
@@ -124,6 +125,7 @@ def recordings(request):
 def recordings_item(request, slug):
     pages = RecordingPage.objects.all()
     page = get_object_or_404(RecordingPage, slug=slug)
+    recordings = Recording.objects.filter(recording_page=page)
     title_bundle = {
         'title': u'{}, {}'.format(page.title, page.year)
     }
@@ -132,6 +134,7 @@ def recordings_item(request, slug):
         'pages': pages,
         'page': page,
         'title_bundle': title_bundle,
+        'recordings': recordings,
     }
 
     return render(request, 'pages/recordings_item.html', context)
