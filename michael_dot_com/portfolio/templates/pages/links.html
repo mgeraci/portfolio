@@ -4,6 +4,28 @@
 Links/Misc.
 {% endblock %}
 
+{% block bodyclass %}links{% endblock %}
+
 {% block content %}
-links dawg
+
+<div class="page-links-column">
+	<h3>Institutions and affiliations</h3>
+	{% for school in schools %}
+		<br />
+		<a href="{{ school.href }}">{{ school.name }}</a>
+	{% endfor %}
+</div>
+
+<div class="page-links-column">
+	<h3>Performances on steel pan</h3>
+	{% for steel in steels %}
+		<br />
+		{% if steel.href %}
+			<a href="{{ steel.href }}">{{ steel.name }}</a>
+		{% else %}
+			{{ steel.name }}
+		{% endif %}
+	{% endfor %}
+</div>
+
 {% endblock %}

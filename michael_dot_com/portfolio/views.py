@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 from django.shortcuts import render, get_object_or_404
 from michael_dot_com.localsettings import STATIC_URL
 from portfolio.models import Composition
@@ -140,7 +142,85 @@ def recordings_item(request, slug):
     return render(request, 'pages/recordings_item.html', context)
 
 def links(request):
-    return render(request, 'pages/links.html')
+    schools = [
+        {
+            'name': 'Oberlin Conservatory: TIMARA',
+            'href': 'http://timara.con.oberlin.edu/',
+        },
+        {
+            'name': 'Oberlin College/Conservatory',
+            'href': 'http://www.oberlin.edu/',
+        },
+        {
+            'name': 'Horace Mann',
+            'href': 'http://www.horacemann.org/',
+        },
+    ]
+
+    steels = [
+        {
+            'href': 'https://www.youtube.com/watch?v=x691_sB19Ww',
+            'name': 'CASYM, New York - Like Ah Boss (2015)',
+        },
+        {
+            'href': 'https://www.youtube.com/watch?v=UaLBILfJ5ag',
+            'name': 'CASYM, New York - Big People Party (2014)',
+        },
+        {
+            'href': 'http://www.youtube.com/watch?v=cTOi7ON1kpU',
+            'name': 'CASYM, New York - Fantastic Friday (2013)',
+        },
+        {
+            'href': 'https://www.youtube.com/watch?v=Jjym9fKzE5U',
+            'name': 'Pan Sonatas, New York - Gie Dem Tempo (2012)',
+        },
+        {
+            'href': 'http://vimeo.com/28989090',
+            'name': u'Pan Sonatas, New York - It’s Showtime (2011)',
+        },
+        {
+            'href': 'http://vimeo.com/16149060',
+            'name': 'Pan Sonatas, New York - Battle Zone (2010)',
+        },
+        {
+            'href': 'http://vimeo.com/6826668',
+            'name': 'Pan Sonatas, New York - Bandoleros (2009)',
+        },
+        {
+            'href': 'http://www.youtube.com/watch?v=CsayTC-V8VU',
+            'name': 'Pan Sonatas, New York - The Ten Commandments of Pan (2008)',
+        },
+        {
+            'href': 'http://www.youtube.com/watch?v=qWFmbXErjpA',
+            'name': 'Pan Sonatas, New York - Pan Lamentation (2007)',
+        },
+        {
+            'href': 'http://vimeo.com/23268333',
+            'name': u'Pan Sonatas, New York - This One’s for You, Bradley (2006)',
+        },
+        {
+            'name': 'Pan Sonatas, New York - From Beyond (2005)',
+        },
+        {
+            'href': 'http://vimeo.com/7625432',
+            'name': 'Trinidad All-Stars, Trinidad & Tobago - Free Up (2005)',
+        },
+        {
+            'href': 'http://www.youtube.com/watch?v=aTUMlF9Zt3E',
+            'name': 'Sforzata Steel Orchestra, Trinidad & Tobago - Dingolay (2005)',
+        },
+        {
+            'href': 'http://vimeo.com/28470859',
+            'name': 'Pan Sonatas, New York - War 2004 (2004)',
+        },
+    ]
+
+    context = {
+        'schools': schools,
+        'steels': steels,
+    }
+
+    return render(request, 'pages/links.html', context)
 
 
 # verification pages
