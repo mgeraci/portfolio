@@ -17,7 +17,7 @@ class Composition(models.Model):
         ordering = ['-year']
 
     def __unicode__(self):
-        return u'{} - {}'.format(self.year, self.title)
+        return u'{} - {}'.format(self.title, self.year)
 
 class Web(models.Model):
     title = models.CharField(max_length=200)
@@ -47,6 +47,19 @@ class WebImage(models.Model):
 
     def __unicode__(self):
         return u'{} - {}'.format(self.web, self.order)
+
+class Graphic(models.Model):
+    title = models.CharField(max_length=200)
+    year = models.PositiveSmallIntegerField()
+    description = models.TextField(blank=True)
+    thumbnail = models.FileField(upload_to='graphic', blank=True, null=True)
+    image = models.FileField(upload_to='graphic', blank=True, null=True)
+
+    class Meta:
+        ordering = ['-year']
+
+    def __unicode__(self):
+        return u'{} - {}'.format(self.title, self.year)
 
 class RecordingPage(models.Model):
     title = models.CharField(max_length=200)
