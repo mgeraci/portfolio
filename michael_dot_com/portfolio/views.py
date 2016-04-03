@@ -7,6 +7,8 @@ from portfolio.models import Web
 from portfolio.models import WebImage
 from portfolio.models import RecordingPage
 from portfolio.models import Recording
+from portfolio.models import Graphic
+from portfolio.models import GraphicImage
 
 # main pages
 def index(request):
@@ -78,7 +80,24 @@ def photography(request):
     return render(request, 'pages/photography.html')
 
 def graphic(request):
-    return render(request, 'pages/graphic.html')
+    graphics = Graphic.objects.all()
+    context = {
+        'graphics': graphics
+    }
+
+    return render(request, 'pages/graphic.html', context)
+
+def graphic_item(request, slug):
+    graphics = Graphic.objects.all()
+    graphic = get_object_or_404(Graphic, slug=slug)
+    graphic_images = GraphicImage.objects.filter(graphic=graphic)
+    context = {
+        'graphics': graphics,
+        'graphic': graphic,
+        'images': graphic_images,
+    }
+
+    return render(request, 'pages/graphic_item.html', context)
 
 def composition(request):
     compositions = Composition.objects.all()

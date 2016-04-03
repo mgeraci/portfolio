@@ -1,0 +1,19 @@
+{% load extra_tags %}
+{% url 'graphic_url' as graphic_url %}
+
+{% for graphic in graphics %}
+	<br />
+
+	<a
+			href="{% url 'graphic_item_url' graphic.slug %}"
+		{% if request.path|active_menu_item:graphic.slug %}
+			class="active"
+		{% endif %}
+	>
+		<div
+			data-lazy-image="{{ MEDIA_URL }}{{ graphic.thumbnail }}"
+			data-lazy-alt="A thumbnail of {{ graphic.title }}">
+		</div>
+	</a>
+
+{% endfor %}

@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Graphic Design
+{% endblock %}
+
+{% block bodyclass %}graphic{% endblock %}
+
+{% block content %}
+
+{% include "pages/graphic_menu.html" %}
+
+{{ graphic.title }}, {{ graphic.year }}
+
+{% if graphic.description %}
+	<br />
+	{{ graphic.description|safe }}
+{% endif %}
+
+{% if graphic.image %}
+	<div
+		data-lazy-image="{{ MEDIA_URL }}{{ graphic.image}}"
+		data-lazy-alt="An image of {{ graphic.title }}">
+	</div>
+{% endif %}
+
+{% for image in images %}
+	<div
+		data-lazy-image="{{ MEDIA_URL }}{{ image.image}}"
+		data-lazy-alt="An image of {{ graphic.title }}">
+	</div>
+{% endfor %}
+
+{% endblock %}

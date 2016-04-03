@@ -13,6 +13,7 @@ urlpatterns = [
     url(r'^web/(?P<slug>[^/]+)/$', views.web_item, name='web_item_url'),
     url(r'^web$', views.web, name='web_url'),
     url(r'^photography', views.photography, name='photography_url'),
+    url(r'^graphic/(?P<slug>[^/]+)/$', views.graphic_item, name='graphic_item_url'),
     url(r'^graphic', views.graphic, name='graphic_url'),
     url(r'^composition/(?P<slug>[^/]+)/$', views.composition_item, name='composition_item_url'),
     url(r'^composition/$', views.composition, name='composition_url'),

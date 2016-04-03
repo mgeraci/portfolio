@@ -51,8 +51,9 @@ class WebImage(models.Model):
 class Graphic(models.Model):
     title = models.CharField(max_length=200)
     year = models.PositiveSmallIntegerField()
+    slug = models.SlugField(max_length=200, unique=True)
     description = models.TextField(blank=True)
-    thumbnail = models.FileField(upload_to='graphic', blank=True, null=True)
+    thumbnail = models.FileField(upload_to='graphic')
     image = models.FileField(upload_to='graphic', blank=True, null=True)
 
     class Meta:
@@ -60,6 +61,13 @@ class Graphic(models.Model):
 
     def __unicode__(self):
         return u'{} - {}'.format(self.title, self.year)
+
+class GraphicImage(models.Model):
+    graphic = models.ForeignKey(Graphic)
+    image = models.FileField(upload_to='graphic', blank=True, null=True)
+
+    def __unicode__(self):
+        return u'{} - {}'.format(self.graphic.title, self.image)
 
 class RecordingPage(models.Model):
     title = models.CharField(max_length=200)
