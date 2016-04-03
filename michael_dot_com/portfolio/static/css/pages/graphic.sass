@@ -1,0 +1,20 @@
+$menu-item-size: 75px
+
+.page-graphic
+  &-menu
+    a
+      display: block
+      width: $menu-item-size
+      height: $menu-item-size
+      @include transition(opacity 150ms linear)
+      opacity: 0.5
+
+      &:hover,
+      &.active
+        @include transition(opacity 75ms linear)
+        opacity: 1
+
+      img
+        float: left
+        width: 100%
+        height: 100%

@@ -158,8 +158,8 @@ nav::after {
           line-height: 24px; }
           .nav-desktop li a:hover, .nav-desktop li a:active, .nav-desktop li a.active {
             background: #bbd199;
-            padding-top: 19px;
-            border: 4px solid #f3f4d3;
+            padding-top: 20px;
+            border: 3px solid #f3f4d3;
             color: #f3f4d3; } }
 
 .nav-mobile {
@@ -734,3 +734,21 @@ nav::after {
         width: 100%;
         margin-top: 30px;
         margin-left: 0; } }
+
+.page-graphic-menu a {
+  display: block;
+  width: 75px;
+  height: 75px;
+  -webkit-transition: opacity 150ms linear;
+  -moz-transition: opacity 150ms linear;
+  transition: opacity 150ms linear;
+  opacity: 0.5; }
+  .page-graphic-menu a:hover, .page-graphic-menu a.active {
+    -webkit-transition: opacity 75ms linear;
+    -moz-transition: opacity 75ms linear;
+    transition: opacity 75ms linear;
+    opacity: 1; }
+  .page-graphic-menu a img {
+    float: left;
+    width: 100%;
+    height: 100%; }
