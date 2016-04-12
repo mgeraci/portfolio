@@ -13,11 +13,6 @@ Graphic Design
 <div class="page-graphic-content">
 	{% include "title.html" with item=title_bundle %}
 
-	{% if graphic.description %}
-		<br />
-		{{ graphic.description|safe }}
-	{% endif %}
-
 	{% if graphic.image %}
 		<div
 			data-lazy-image="{{ MEDIA_URL }}{{ graphic.image}}"

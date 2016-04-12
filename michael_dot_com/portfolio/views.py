@@ -94,7 +94,8 @@ def graphic_item(request, slug):
     graphic_images = GraphicImage.objects.filter(graphic=graphic)
 
     title_bundle = {
-        'title': u'{}, {}'.format(graphic.title, graphic.year)
+        'title': u'{}, {}'.format(graphic.title, graphic.year),
+        'subtitles': [graphic.description],
     }
 
     context = {

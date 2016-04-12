@@ -771,3 +771,5 @@ nav::after {
 .page-graphic-content {
   width: 70%;
   padding-left: 3%; }
+  .page-graphic-content img {
+    max-width: 100%; }
