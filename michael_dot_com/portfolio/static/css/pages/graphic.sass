@@ -1,28 +1,55 @@
 $menu-item-size: 75px
+$menu-item-margin: 20px
 
 .page-graphic
+  .submenu-mobile
+    float: left
+    clear: both
+    margin-bottom: 0
+
   .content
     @include display(flex)
+
+    @media (max-width: $menu-breakpoint)
+      @include display(block)
 
   &-menu,
   &-content
     padding-top: 20px
     padding-bottom: 20px
 
+  &-menu-mobile
+    display: none
+
+    li
+      margin-bottom: 20px
+
+    a,
+    a:hover
+      background-image: none
+
+    @media (max-width: $menu-breakpoint)
+      display: block
+
   &-menu
-    width: 30%
+    width: 25%
     padding-right: 3%
     border-right: 1px solid $cream
 
+    @media (max-width: $menu-breakpoint)
+      display: none
+
     &-wrapper
-      display: inline
+      width: $menu-item-size * 2 + $menu-item-margin * 2
+      @include center
 
     a
       float: left
       width: $menu-item-size
       height: $menu-item-size
+      margin: $menu-item-margin / 2
       @include transition(opacity 150ms linear)
-      opacity: 0.5
+      opacity: 0.3
 
       &:hover,
       &.active
@@ -35,10 +62,14 @@ $menu-item-size: 75px
         height: 100%
 
   &-content
-    width: 70%
+    width: 75%
     padding-left: 3%
+
+    @media (max-width: $menu-breakpoint)
+      width: 100%
+      padding: 0
 
     img
       max-width: 100%
-      margin-top: 20px
+      margin-top: 30px
       @include center

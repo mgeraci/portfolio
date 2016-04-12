@@ -8,6 +8,15 @@ Graphic Design
 
 {% block content %}
 
+{% if graphic %}
+	{% url 'graphic_url' as graphic_url %}
+	<a class="submenu-mobile" href="{{ graphic_url }}">
+		&laquo; Back to graphic design
+	</a>
+	<br />
+	<br />
+{% endif %}
+
 {% include "pages/graphic_menu.html" %}
 
 {% if graphic %}

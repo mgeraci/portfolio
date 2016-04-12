@@ -734,6 +734,10 @@ nav::after {
         margin-top: 30px;
         margin-left: 0; } }
 
+.page-graphic .submenu-mobile {
+  float: left;
+  clear: both;
+  margin-bottom: 0; }
 .page-graphic .content {
   display: -webkit-box;
   display: -moz-box;
@@ -742,23 +746,47 @@ nav::after {
   display: -moz-flex;
   display: -ms-flexbox;
   display: flex; }
+  @media (max-width: 800px) {
+    .page-graphic .content {
+      display: block; } }
 .page-graphic-menu, .page-graphic-content {
   padding-top: 20px;
   padding-bottom: 20px; }
+.page-graphic-menu-mobile {
+  display: none; }
+  .page-graphic-menu-mobile li {
+    margin-bottom: 20px; }
+  .page-graphic-menu-mobile a,
+  .page-graphic-menu-mobile a:hover {
+    background-image: none; }
+  @media (max-width: 800px) {
+    .page-graphic-menu-mobile {
+      display: block; } }
 .page-graphic-menu {
-  width: 30%;
+  width: 25%;
   padding-right: 3%;
   border-right: 1px solid #f3f4d3; }
+  @media (max-width: 800px) {
+    .page-graphic-menu {
+      display: none; } }
   .page-graphic-menu-wrapper {
-    display: inline; }
+    width: 190px;
+    position: relative;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    -o-transform: translateX(-50%);
+    transform: translateX(-50%); }
   .page-graphic-menu a {
     float: left;
     width: 75px;
     height: 75px;
+    margin: 10px;
     -webkit-transition: opacity 150ms linear;
     -moz-transition: opacity 150ms linear;
     transition: opacity 150ms linear;
-    opacity: 0.5; }
+    opacity: 0.3; }
     .page-graphic-menu a:hover, .page-graphic-menu a.active {
       -webkit-transition: opacity 75ms linear;
       -moz-transition: opacity 75ms linear;
@@ -769,11 +797,15 @@ nav::after {
       width: 100%;
       height: 100%; }
 .page-graphic-content {
-  width: 70%;
+  width: 75%;
   padding-left: 3%; }
+  @media (max-width: 800px) {
+    .page-graphic-content {
+      width: 100%;
+      padding: 0; } }
   .page-graphic-content img {
     max-width: 100%;
-    margin-top: 20px;
+    margin-top: 30px;
     position: relative;
     left: 50%;
     -webkit-transform: translateX(-50%);

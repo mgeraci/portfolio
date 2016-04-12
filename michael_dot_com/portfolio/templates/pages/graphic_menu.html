@@ -2,17 +2,36 @@
 {% url 'graphic_url' as graphic_url %}
 
 <div class="page-graphic-menu">
-	{% for graphic in graphics %}
-		<a
-				href="{% url 'graphic_item_url' graphic.slug %}"
-			{% if request.path|active_menu_item:graphic.slug %}
-				class="active"
-			{% endif %}
-		>
-			<div
-				data-lazy-image="{{ MEDIA_URL }}{{ graphic.thumbnail }}"
-				data-lazy-alt="A thumbnail of {{ graphic.title }}">
-			</div>
-		</a>
-	{% endfor %}
+	<div class="page-graphic-menu-wrapper">
+		{% for graphic in graphics %}
+			<a
+					href="{% url 'graphic_item_url' graphic.slug %}"
+				{% if request.path|active_menu_item:graphic.slug %}
+					class="active"
+				{% endif %}
+			>
+				<div
+					data-lazy-image="{{ MEDIA_URL }}{{ graphic.thumbnail }}"
+					data-lazy-alt="A thumbnail of {{ graphic.title }}">
+				</div>
+			</a>
+		{% endfor %}
+	</div>
 </div>
+
+{% if not graphic %}
+	<ul class="page-graphic-menu-mobile">
+		{% for graphic in graphics %}
+			<li>
+				<a
+						href="{% url 'graphic_item_url' graphic.slug %}"
+					{% if request.path|active_menu_item:graphic.slug %}
+						class="active"
+					{% endif %}
+				>
+					{{ graphic.title }}, {{ graphic.year }}
+				</a>
+			</li>
+		{% endfor %}
+	</ul>
+{% endif %}
