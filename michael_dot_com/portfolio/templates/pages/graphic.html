@@ -10,4 +10,24 @@ Graphic Design
 
 {% include "pages/graphic_menu.html" %}
 
+{% if graphic %}
+	<div class="page-graphic-content">
+		{% include "title.html" with item=title_bundle %}
+
+		{% if graphic.image %}
+			<div
+				data-lazy-image="{{ MEDIA_URL }}{{ graphic.image}}"
+				data-lazy-alt="An image of {{ graphic.title }}">
+			</div>
+		{% endif %}
+
+		{% for image in images %}
+			<div
+				data-lazy-image="{{ MEDIA_URL }}{{ image.image}}"
+				data-lazy-alt="An image of {{ graphic.title }}">
+			</div>
+		{% endfor %}
+	</div>
+{% endif %}
+
 {% endblock %}

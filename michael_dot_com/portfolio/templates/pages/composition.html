@@ -8,9 +8,44 @@ Composition
 
 {% block content %}
 
+{% if piece %}
+	{% url 'composition_url' as composition_url %}
+	<a class="submenu-mobile" href="{{ composition_url }}">
+		&laquo; Back to composition
+	</a>
+{% endif %}
+
 <div class="submenu">
 	{% include 'pages/composition_menu.html' %}
-	<div class="submenu-content submenu-content--hide"></div>
+	<div class="submenu-content {% if not piece %}submenu-content--hide{% endif %}">
+		{% if piece %}
+			{% include "title.html" with item=title_bundle %}
+
+			<br />
+
+			{% if piece.audio %}
+				<audio src="{{ MEDIA_URL }}{{ piece.audio }}" preload="none"></audio>
+			{% endif %}
+
+			{% if piece.video %}
+				<iframe src="{{ piece.video }}?title=0&amp;byline=0&amp;portrait=0&amp;color=bbd199" width="430" height="287" frameborder="0"></iframe>
+			{% endif %}
+
+			{% if piece.description %}
+				<br />
+				<h3>About the piece</h3>
+				{{ piece.description|safe }}
+			{% endif %}
+
+			{% if piece.score %}
+				<br />
+				<br />
+				<a href="{{ STATIC_URL }}documents/{{ piece.score }}">
+					View the score
+				</a>
+			{% endif %}
+		{% endif %}
+	</div>
 </div>
 
 {% endblock %}

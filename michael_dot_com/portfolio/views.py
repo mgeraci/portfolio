@@ -105,7 +105,7 @@ def graphic_item(request, slug):
         'title_bundle': title_bundle,
     }
 
-    return render(request, 'pages/graphic_item.html', context)
+    return render(request, 'pages/graphic.html', context)
 
 def composition(request):
     compositions = Composition.objects.all()
@@ -141,7 +141,7 @@ def composition_item(request, slug):
         'title_bundle': title_bundle,
     }
 
-    return render(request, 'pages/composition_item.html', context)
+    return render(request, 'pages/composition.html', context)
 
 def recordings(request):
     pages = RecordingPage.objects.all()
@@ -166,7 +166,7 @@ def recordings_item(request, slug):
         'recordings': recordings,
     }
 
-    return render(request, 'pages/recordings_item.html', context)
+    return render(request, 'pages/recordings.html', context)
 
 def links(request):
     schools = [
