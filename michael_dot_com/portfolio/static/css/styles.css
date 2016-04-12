@@ -773,6 +773,7 @@ nav::after {
   padding-left: 3%; }
   .page-graphic-content img {
     max-width: 100%;
+    margin-top: 20px;
     position: relative;
     left: 50%;
     -webkit-transform: translateX(-50%);

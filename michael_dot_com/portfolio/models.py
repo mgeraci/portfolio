@@ -65,6 +65,10 @@ class Graphic(models.Model):
 class GraphicImage(models.Model):
     graphic = models.ForeignKey(Graphic)
     image = models.FileField(upload_to='graphic', blank=True, null=True)
+    order = models.PositiveSmallIntegerField(blank=True, null=True)
+
+    class Meta:
+        ordering = ['order']
 
     def __unicode__(self):
         return u'{} - {}'.format(self.graphic.title, self.image)
