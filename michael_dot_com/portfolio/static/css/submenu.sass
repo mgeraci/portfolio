@@ -13,16 +13,16 @@ $menu-padding: 6%
 .submenu
   float: left
   width: 100%
-  display: table
+  @include display(table)
 
   &-menu,
   &-content
+    float: left
     padding: 20px 0
 
   &-menu
     width: 30%
     padding-right: $menu-padding
-    display: table-cell
     border-right: 1px solid $cream
 
     @media (max-width: $menu-breakpoint)
@@ -56,7 +56,6 @@ $menu-padding: 6%
   &-content
     width: 70%
     padding-left: $menu-padding
-    display: table-cell
 
     @media (max-width: $menu-breakpoint)
       width: 100%

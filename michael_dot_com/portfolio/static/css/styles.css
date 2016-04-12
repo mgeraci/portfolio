@@ -295,11 +295,11 @@ nav::after {
   width: 100%;
   display: table; }
   .submenu-menu, .submenu-content {
+    float: left;
     padding: 20px 0; }
   .submenu-menu {
     width: 30%;
     padding-right: 6%;
-    display: table-cell;
     border-right: 1px solid #f3f4d3; }
     @media (max-width: 800px) {
       .submenu-menu {
@@ -322,8 +322,7 @@ nav::after {
         text-shadow: 0 1px 2px rgba(0, 0, 0, 0.15); }
   .submenu-content {
     width: 70%;
-    padding-left: 6%;
-    display: table-cell; }
+    padding-left: 6%; }
     @media (max-width: 800px) {
       .submenu-content {
         width: 100%;
@@ -735,20 +734,40 @@ nav::after {
         margin-top: 30px;
         margin-left: 0; } }
 
-.page-graphic-menu a {
-  display: block;
-  width: 75px;
-  height: 75px;
-  -webkit-transition: opacity 150ms linear;
-  -moz-transition: opacity 150ms linear;
-  transition: opacity 150ms linear;
-  opacity: 0.5; }
-  .page-graphic-menu a:hover, .page-graphic-menu a.active {
-    -webkit-transition: opacity 75ms linear;
-    -moz-transition: opacity 75ms linear;
-    transition: opacity 75ms linear;
-    opacity: 1; }
-  .page-graphic-menu a img {
+.page-graphic .content {
+  display: -webkit-box;
+  display: -moz-box;
+  display: box;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: flex; }
+.page-graphic-menu, .page-graphic-content {
+  padding-top: 20px;
+  padding-bottom: 20px; }
+.page-graphic-menu {
+  width: 30%;
+  padding-right: 3%;
+  border-right: 1px solid #f3f4d3; }
+  .page-graphic-menu-wrapper {
+    display: inline; }
+  .page-graphic-menu a {
     float: left;
-    width: 100%;
-    height: 100%; }
+    width: 75px;
+    height: 75px;
+    -webkit-transition: opacity 150ms linear;
+    -moz-transition: opacity 150ms linear;
+    transition: opacity 150ms linear;
+    opacity: 0.5; }
+    .page-graphic-menu a:hover, .page-graphic-menu a.active {
+      -webkit-transition: opacity 75ms linear;
+      -moz-transition: opacity 75ms linear;
+      transition: opacity 75ms linear;
+      opacity: 1; }
+    .page-graphic-menu a img {
+      float: left;
+      width: 100%;
+      height: 100%; }
+.page-graphic-content {
+  width: 70%;
+  padding-left: 3%; }

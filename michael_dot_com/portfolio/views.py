@@ -56,6 +56,7 @@ def web_item(request, slug):
     webs = Web.objects.all()
     web = get_object_or_404(Web, slug=slug)
     web_items = WebImage.objects.filter(web=web)
+
     title_bundle = {
         'title': u'{}, {}'.format(web.title, web.year),
         'subtitles': [],
@@ -91,10 +92,16 @@ def graphic_item(request, slug):
     graphics = Graphic.objects.all()
     graphic = get_object_or_404(Graphic, slug=slug)
     graphic_images = GraphicImage.objects.filter(graphic=graphic)
+
+    title_bundle = {
+        'title': u'{}, {}'.format(graphic.title, graphic.year)
+    }
+
     context = {
         'graphics': graphics,
         'graphic': graphic,
         'images': graphic_images,
+        'title_bundle': title_bundle,
     }
 
     return render(request, 'pages/graphic_item.html', context)
