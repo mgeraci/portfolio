@@ -95,7 +95,10 @@ def graphic_item(request, slug):
 
     title_bundle = {
         'title': u'{}, {}'.format(graphic.title, graphic.year),
-        'subtitles': [graphic.description],
+        'subtitles': [
+            graphic.materials,
+            graphic.description,
+        ],
     }
 
     context = {

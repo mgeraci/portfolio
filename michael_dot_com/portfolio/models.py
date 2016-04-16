@@ -52,6 +52,7 @@ class Graphic(models.Model):
     title = models.CharField(max_length=200)
     year = models.PositiveSmallIntegerField()
     slug = models.SlugField(max_length=200, unique=True)
+    materials = models.TextField()
     description = models.TextField(blank=True)
     thumbnail = models.FileField(upload_to='graphic')
     image = models.FileField(upload_to='graphic', blank=True, null=True)
