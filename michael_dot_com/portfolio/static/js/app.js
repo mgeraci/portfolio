@@ -52,11 +52,11 @@
 
 	lazyImages = __webpack_require__(4);
 
-	audio = __webpack_require__(5);
+	audio = __webpack_require__(6);
 
-	video = __webpack_require__(7);
+	video = __webpack_require__(8);
 
-	modernizr = __webpack_require__(9);
+	modernizr = __webpack_require__(10);
 
 	menu.init();
 
@@ -10781,16 +10781,47 @@
 /* 4 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var $;
+	var $, LazyImages, throttle;
 
 	$ = __webpack_require__(3);
 
-	module.exports = {
+	throttle = __webpack_require__(5);
+
+	$.expr[':'].onScreen = (function(_this) {
+	  return function(elem) {
+	    var $window, bottom, bottomIsVisible, buffer, isBiggerThanScreen, rect, top, topIsVisible, windowBottom, windowTop;
+	    $window = $(window);
+	    if (!LazyImages.windowHeight) {
+	      LazyImages.windowHeight = $window.height();
+	    }
+	    buffer = LazyImages.buffer || 0;
+	    windowTop = $window.scrollTop();
+	    windowBottom = windowTop + LazyImages.windowHeight;
+	    rect = elem.getBoundingClientRect();
+	    top = rect.top + windowTop;
+	    bottom = rect.bottom + windowTop;
+	    topIsVisible = top >= (windowTop - buffer) && top < (windowBottom + buffer);
+	    bottomIsVisible = bottom > (windowTop - buffer) && bottom <= (windowBottom + buffer);
+	    isBiggerThanScreen = (rect.height !== null) && rect.height > LazyImages.windowHeight && top <= (windowTop - buffer) && bottom >= (windowBottom + buffer);
+	    return topIsVisible || bottomIsVisible || isBiggerThanScreen;
+	  };
+	})(this);
+
+	LazyImages = {
+	  buffer: 200,
 	  search: function() {
-	    var self;
-	    self = this;
-	    return $("[data-lazy-image]").each(function() {
-	      return self.loadImage($(this));
+	    var lazyScroll;
+	    this.checkScroll();
+	    lazyScroll = throttle(this.checkScroll.bind(this), 300);
+	    return $(document).on("scroll", (function(_this) {
+	      return function() {
+	        return lazyScroll();
+	      };
+	    })(this));
+	  },
+	  checkScroll: function() {
+	    return $("[data-lazy-image]:onScreen").each(function() {
+	      return LazyImages.loadImage($(this));
 	    });
 	  },
 	  loadImage: function(el) {
@@ -10800,22 +10831,87 @@
 	    img = new Image();
 	    return $(img).load((function(_this) {
 	      return function() {
-	        return el.append(img);
+	        el.append(img);
+	        return el.removeAttr("data-lazy-image");
 	      };
 	    })(this)).attr("src", src).attr("alt", alt);
 	  }
 	};
 
+	module.exports = LazyImages;
+
 
 /***/ },
 /* 5 */
+/***/ function(module, exports) {
+
+	// taken from underscore.js
+
+	var _ = {};
+
+	_.now = Date.now || function() {
+		return (new Date).getTime();
+	};
+
+	_.throttle = function(func, wait, options) {
+	  var args, context, later, previous, result, timeout;
+	  context = void 0;
+	  args = void 0;
+	  result = void 0;
+	  timeout = null;
+	  previous = 0;
+
+	  if (!options) {
+	    options = {};
+	  }
+
+	  later = function() {
+	    previous = options.leading === false ? 0 : _.now();
+	    timeout = null;
+	    result = func.apply(context, args);
+	    if (!timeout) {
+	      context = args = null;
+	    }
+	  };
+
+	  return function() {
+	    var now, remaining;
+	    now = _.now();
+	    if (!previous && options.leading === false) {
+	      previous = now;
+	    }
+	    remaining = wait - (now - previous);
+	    context = this;
+	    args = arguments;
+	    if (remaining <= 0 || remaining > wait) {
+	      if (timeout) {
+	        clearTimeout(timeout);
+	        timeout = null;
+	      }
+	      previous = now;
+	      result = func.apply(context, args);
+	      if (!timeout) {
+	        context = args = null;
+	      }
+	    } else if (!timeout && options.trailing !== false) {
+	      timeout = setTimeout(later, remaining);
+	    }
+	    return result;
+	  };
+	};
+
+	module.exports = _.throttle;
+
+
+/***/ },
+/* 6 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var $, audiojs;
 
 	$ = __webpack_require__(3);
 
-	audiojs = __webpack_require__(6);
+	audiojs = __webpack_require__(7);
 
 	module.exports = {
 	  init: function() {
@@ -10844,7 +10940,7 @@
 
 
 /***/ },
-/* 6 */
+/* 7 */
 /***/ function(module, exports) {
 
 	(function(h,o,g){var p=function(){for(var b=/audio(.min)?.js.*/,a=document.getElementsByTagName("script"),c=0,d=a.length;c<d;c++){var e=a[c].getAttribute("src");if(b.test(e))return e.replace(b,"")}}();g[h]={instanceCount:0,instances:{},flashSource:'      <object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" id="$1" width="1" height="1" name="$1" style="position: absolute; left: -1px;">         <param name="movie" value="$2?playerInstance='+h+'.instances[\'$1\']&datetime=$3">         <param name="allowscriptaccess" value="always">         <embed name="$1" src="$2?playerInstance='+
@@ -10874,14 +10970,14 @@
 
 
 /***/ },
-/* 7 */
+/* 8 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var $, fitvids;
 
 	$ = __webpack_require__(3);
 
-	fitvids = __webpack_require__(8);
+	fitvids = __webpack_require__(9);
 
 	module.exports = {
 	  init: function() {
@@ -10891,7 +10987,7 @@
 
 
 /***/ },
-/* 8 */
+/* 9 */
 /***/ function(module, exports) {
 
 	
@@ -10985,7 +11081,7 @@
 
 
 /***/ },
-/* 9 */
+/* 10 */
 /***/ function(module, exports) {
 
 	/*! modernizr 3.3.1 (Custom Build) | MIT *

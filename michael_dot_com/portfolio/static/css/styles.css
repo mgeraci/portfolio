@@ -789,7 +789,12 @@ nav::after {
     -webkit-transition: opacity 150ms linear;
     -moz-transition: opacity 150ms linear;
     transition: opacity 150ms linear;
+    background-image: none;
     opacity: 0.3; }
+    .page-graphic-menu a [data-lazy-image] {
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.3); }
     .page-graphic-menu a:hover, .page-graphic-menu a.active {
       -webkit-transition: opacity 75ms linear;
       -moz-transition: opacity 75ms linear;
