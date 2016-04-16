@@ -766,6 +766,9 @@ nav::after {
   width: 25%;
   padding-right: 3%;
   border-right: 1px solid #f3f4d3; }
+  @media (min-width: 929px) {
+    .page-graphic-menu {
+      padding-left: 3%; } }
   @media (max-width: 800px) {
     .page-graphic-menu {
       display: none; } }
