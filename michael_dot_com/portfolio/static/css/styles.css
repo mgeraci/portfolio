@@ -756,8 +756,7 @@ nav::after {
   display: none; }
   .page-graphic-menu-mobile li {
     margin-bottom: 20px; }
-  .page-graphic-menu-mobile a,
-  .page-graphic-menu-mobile a:hover {
+  .page-graphic-menu-mobile a, .page-graphic-menu-mobile a:hover, .no-touchevents .page-graphic-menu-mobile a, .no-touchevents .page-graphic-menu-mobile a:hover {
     background-image: none; }
   @media (max-width: 800px) {
     .page-graphic-menu-mobile {
