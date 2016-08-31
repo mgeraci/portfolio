@@ -1,5 +1,5 @@
 <?php
-	$root = "http://mgeraci.com/dropbox/rumney";
+	$root = "http://dropbox.michaelgeraci.com/rumney";
 	$zip_prefix = "/rumney.z";
 ?>
 
