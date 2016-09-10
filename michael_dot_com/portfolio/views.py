@@ -80,6 +80,16 @@ def web_item(request, slug):
 def photography(request):
     return render(request, 'pages/photography.html')
 
+# helper for generating the text for a graphic design
+def graphic_title(graphic):
+    return {
+        'title': u'{}, {}'.format(graphic.title, graphic.year),
+        'subtitles': [
+            graphic.materials,
+            graphic.description,
+        ],
+    }
+
 def graphic(request):
     graphics = Graphic.objects.all()
     context = {
@@ -93,19 +103,11 @@ def graphic_item(request, slug):
     graphic = get_object_or_404(Graphic, slug=slug)
     graphic_images = GraphicImage.objects.filter(graphic=graphic)
 
-    title_bundle = {
-        'title': u'{}, {}'.format(graphic.title, graphic.year),
-        'subtitles': [
-            graphic.materials,
-            graphic.description,
-        ],
-    }
-
     context = {
         'graphics': graphics,
         'graphic': graphic,
         'images': graphic_images,
-        'title_bundle': title_bundle,
+        'title_bundle': graphic_title(graphic),
     }
 
     return render(request, 'pages/graphic.html', context)
