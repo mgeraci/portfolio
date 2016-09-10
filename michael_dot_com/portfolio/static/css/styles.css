@@ -570,6 +570,9 @@ nav::after {
     width: 75px;
     height: 75px;
     background: rgba(0, 0, 0, 0.1); }
+    .recent-item-image img {
+      width: 100%;
+      height: 100%; }
   .recent-item-text {
     display: block;
     width: 100%; }
