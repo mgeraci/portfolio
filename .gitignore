@@ -25,3 +25,7 @@ admin/.htaccess
 admin/.htpasswd
 extras/rumney/.htaccess
 extras/rumney/.htpasswd
+
+mediafiles
+node_modules
+michael_dot_com
