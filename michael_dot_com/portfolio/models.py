@@ -55,7 +55,6 @@ class Graphic(models.Model):
     materials = models.TextField()
     description = models.TextField(blank=True)
     thumbnail = models.FileField(upload_to='graphic')
-    image = models.FileField(upload_to='graphic', blank=True, null=True)
 
     class Meta:
         ordering = ['-year']
