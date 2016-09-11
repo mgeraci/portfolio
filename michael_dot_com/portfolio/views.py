@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 
+import json
 from django.shortcuts import render, get_object_or_404
 from michael_dot_com.localsettings import STATIC_URL
 from portfolio.models import Composition
@@ -9,6 +10,7 @@ from portfolio.models import RecordingPage
 from portfolio.models import Recording
 from portfolio.models import Graphic
 from portfolio.models import GraphicImage
+from portfolio.models import PhotoblogImage
 
 # main pages
 def index(request):
@@ -86,7 +88,18 @@ def web_item(request, slug):
     return render(request, 'pages/web_item.html', context)
 
 def photography(request):
-    return render(request, 'pages/photography.html')
+    images = PhotoblogImage.objects.all()
+    images_json = []
+
+    for image in images:
+        images_json.append(image.to_json())
+
+    context = {
+        'images': images,
+        'images_json': json.dumps(images_json),
+    }
+
+    return render(request, 'pages/photography.html', context)
 
 # helper for generating the text for a graphic design
 def graphic_title(graphic):

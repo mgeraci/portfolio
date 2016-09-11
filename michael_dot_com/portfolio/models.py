@@ -1,6 +1,7 @@
 from __future__ import unicode_literals
 from django.db import models
 
+
 class Composition(models.Model):
     title = models.CharField(max_length=200)
     year = models.PositiveSmallIntegerField()
@@ -19,6 +20,7 @@ class Composition(models.Model):
     def __unicode__(self):
         return u'{} - {}'.format(self.title, self.year)
 
+
 class Web(models.Model):
     title = models.CharField(max_length=200)
     year = models.PositiveSmallIntegerField()
@@ -36,6 +38,7 @@ class Web(models.Model):
     def __unicode__(self):
         return u'{} - {}'.format(self.year, self.title)
 
+
 class WebImage(models.Model):
     web = models.ForeignKey(Web)
     order = models.PositiveSmallIntegerField(blank=True)
@@ -47,6 +50,7 @@ class WebImage(models.Model):
 
     def __unicode__(self):
         return u'{} - {}'.format(self.web, self.order)
+
 
 class Graphic(models.Model):
     title = models.CharField(max_length=200)
@@ -62,6 +66,7 @@ class Graphic(models.Model):
     def __unicode__(self):
         return u'{} - {}'.format(self.title, self.year)
 
+
 class GraphicImage(models.Model):
     graphic = models.ForeignKey(Graphic)
     image = models.FileField(upload_to='graphic', blank=True, null=True)
@@ -72,6 +77,7 @@ class GraphicImage(models.Model):
 
     def __unicode__(self):
         return u'{} - {}'.format(self.graphic.title, self.image)
+
 
 class RecordingPage(models.Model):
     title = models.CharField(max_length=200)
@@ -88,6 +94,7 @@ class RecordingPage(models.Model):
     def __unicode__(self):
         return u'{} - {}'.format(self.title, self.year)
 
+
 class Recording(models.Model):
     recording_page = models.ForeignKey(RecordingPage)
     title = models.CharField(max_length=200)
@@ -96,6 +103,26 @@ class Recording(models.Model):
 
     class Meta:
         ordering = ['order']
+
+    def __unicode__(self):
+        return u'{}'.format(self.title)
+
+
+class PhotoblogImage(models.Model):
+    id = models.PositiveSmallIntegerField(primary_key=True)
+    title = models.CharField(max_length=200)
+    year = models.PositiveSmallIntegerField()
+    thumbnail = models.FileField(upload_to='photoblog', blank=True, null=True)
+    image = models.FileField(upload_to='photoblog', blank=True, null=True)
+
+    def to_json(self):
+        return {
+            'id': self.id,
+            'title': self.title,
+            'year': self.year,
+            'thumbnail': self.thumbnail.url,
+            'image': self.image.url,
+        }
 
     def __unicode__(self):
         return u'{}'.format(self.title)

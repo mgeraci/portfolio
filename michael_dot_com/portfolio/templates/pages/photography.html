@@ -4,6 +4,18 @@
 Photography
 {% endblock %}
 
+{% block bodyclass %}photoblog{% endblock %}
+
+{% block scripts %}
+	<script type="text/javascript" src="{{ STATIC_URL }}js/photoblog.js"></script>
+	<script>
+		var photoblogData = {{ images_json|safe }};
+		Photoblog.init(photoblogData);
+	</script>
+{% endblock %}
+
 {% block content %}
-pictures
+
+<div id="react-root"></div>
+
 {% endblock %}
