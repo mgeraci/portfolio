@@ -64,11 +64,15 @@
 
 	var _reducer = __webpack_require__(197);
 
+	var _reducer2 = _interopRequireDefault(_reducer);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	/* global window, document */
 
 	window.Photoblog = {
 		init: function init(data) {
-			var store = (0, _redux.createStore)(_reducer.reducer, { images: data });
+			var store = (0, _redux.createStore)(_reducer2.default, { images: data });
 
 			_reactDom2.default.render(_react2.default.createElement(
 				_reactRedux.Provider,
@@ -23109,8 +23113,10 @@
 	Object.defineProperty(exports, "__esModule", {
 		value: true
 	});
-	exports.reducer = reducer;
+	exports.default = reducer;
 	function reducer(state, action) {
+		console.log(action);
+
 		return state;
 	}
 
