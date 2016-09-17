@@ -1,4 +1,5 @@
 import React, { PropTypes } from "react";
+import MainImage from "./MainImage";
 
 const ImageDetail = React.createClass({
 	propTypes: {
@@ -13,7 +14,10 @@ const ImageDetail = React.createClass({
 
 		return (
 			<div>
-				<img src={image.image} alt={image.title} />
+				<MainImage
+					src={image.image}
+					alt={image.title}
+				/>
 
 				<h3>{image.title}</h3>
 				<span>{image.year}</span>

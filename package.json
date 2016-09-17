@@ -4,7 +4,7 @@
   "description": "Tooling for compiling frontend files for michaelgeraci.com",
   "main": "gulpfile.js",
   "scripts": {
-    "start": "webpack --watch"
+    "watch": "webpack --watch"
   },
   "repository": {
     "type": "git",
@@ -16,12 +16,12 @@
     "url": "https://github.com/mgeraci/portfolio/issues"
   },
   "homepage": "https://github.com/mgeraci/portfolio#readme",
-	"dependencies": {
+  "dependencies": {
     "react": "^15.3.0",
     "react-dom": "^15.3.0",
     "react-redux": "^4.4.5",
     "redux": "^3.5.2"
-	},
+  },
   "devDependencies": {
     "babel-core": "^6.13.2",
     "babel-eslint": "^6.1.2",

@@ -23317,6 +23317,10 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
+	var _MainImage = __webpack_require__(200);
+
+	var _MainImage2 = _interopRequireDefault(_MainImage);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	var ImageDetail = _react2.default.createClass({
@@ -23336,7 +23340,10 @@
 			return _react2.default.createElement(
 				"div",
 				null,
-				_react2.default.createElement("img", { src: image.image, alt: image.title }),
+				_react2.default.createElement(_MainImage2.default, {
+					src: image.image,
+					alt: image.title
+				}),
 				_react2.default.createElement(
 					"h3",
 					null,
@@ -23368,6 +23375,83 @@
 	});
 
 	exports.default = ImageDetail;
+
+/***/ },
+/* 200 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var MainImage = _react2.default.createClass({
+		displayName: "MainImage",
+
+		propTypes: {
+			src: _react.PropTypes.string.isRequired,
+			alt: _react.PropTypes.string.isRequired
+		},
+
+		getInitialState: function getInitialState() {
+			return { loaded: false };
+		},
+
+
+		// trigger the initial load
+		componentDidMount: function componentDidMount() {
+			this._loadImage();
+		},
+
+
+		// if we get a new image source via props, reset the loading state
+		componentWillReceiveProps: function componentWillReceiveProps(nextProps) {
+			if (nextProps.src !== this.props.src) {
+				this.setState({ loaded: false });
+			}
+		},
+
+
+		// if we get a new image source via props, trigger the new load
+		componentDidUpdate: function componentDidUpdate(prevProps) {
+			if (prevProps.src !== this.props.src) {
+				this._loadImage();
+			}
+		},
+		_loadImage: function _loadImage() {
+			var _this = this;
+
+			var i = new Image();
+			i.src = this.props.src;
+
+			i.onload = function () {
+				_this.setState({ loaded: true });
+			};
+		},
+		render: function render() {
+			console.log(this.state.loaded);
+
+			return _react2.default.createElement(
+				"div",
+				null,
+				!this.state.loaded && _react2.default.createElement(
+					"span",
+					null,
+					"loading"
+				),
+				this.state.loaded && _react2.default.createElement("img", { src: this.props.src, alt: this.props.alt })
+			);
+		}
+	}); /* global Image */
+
+	exports.default = MainImage;
 
 /***/ }
 /******/ ]);

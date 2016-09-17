@@ -31,3 +31,4 @@ michael_dot_com/staticfiles/**/*
 mediafiles
 
 node_modules
+npm-debug.log
