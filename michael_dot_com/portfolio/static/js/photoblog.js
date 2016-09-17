@@ -23072,37 +23072,65 @@
 
 	var _reactRedux = __webpack_require__(172);
 
+	var _reducer = __webpack_require__(197);
+
+	var _ImageLink = __webpack_require__(198);
+
+	var _ImageLink2 = _interopRequireDefault(_ImageLink);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	var App = _react2.default.createClass({
 		displayName: "App",
 
 		propTypes: {
-			images: _react.PropTypes.array.isRequired
+			images: _react.PropTypes.array.isRequired,
+			activeImage: _react.PropTypes.number,
+			onSetActiveImage: _react.PropTypes.func.isRequired
 		},
 
 		render: function render() {
+			var _this = this;
+
+			var images = this.props.images.sort(function (a, b) {
+				return a.id < b.id;
+			});
+
 			return _react2.default.createElement(
 				"div",
 				null,
-				this.props.images.map(function (image, i) {
-					return _react2.default.createElement("img", {
+				_react2.default.createElement(
+					"span",
+					null,
+					this.props.activeImage
+				),
+				images.map(function (image, i) {
+					return _react2.default.createElement(_ImageLink2.default, {
 						key: i,
-						src: image.thumbnail,
-						alt: "A thumbnail of " + image.title
-					});
+						image: image,
+						setActiveImage: _this.props.onSetActiveImage });
 				})
 			);
 		}
 	});
 
 	function mapStateToProps(state) {
+		console.log(state);
 		return {
-			images: state.images
+			images: state.images,
+			activeImage: state.activeImage
 		};
 	}
 
-	exports.default = (0, _reactRedux.connect)(mapStateToProps, null)(App);
+	function mapDispatchToProps(dispatch) {
+		return {
+			onSetActiveImage: function onSetActiveImage(id) {
+				dispatch((0, _reducer.setActiveImage)(id));
+			}
+		};
+	}
+
+	exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(App);
 
 /***/ },
 /* 197 */
@@ -23113,12 +23141,99 @@
 	Object.defineProperty(exports, "__esModule", {
 		value: true
 	});
+
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 	exports.default = reducer;
+	exports.setActiveImage = setActiveImage;
+	exports.clearActiveImage = clearActiveImage;
+	// action types
+	// ----------------------------------------------------------------------------
+
+	var SET_ACTIVE_IMAGE = exports.SET_ACTIVE_IMAGE = "PHOTOBLOG.SET_ACTIVE_IMAGE";
+	var CLEAR_ACTIVE_IMAGE = exports.CLEAR_ACTIVE_IMAGE = "PHOTOBLOG.CLEAR_ACTIVE_IMAGE";
+
+	// reducer
+	// ----------------------------------------------------------------------------
+
 	function reducer(state, action) {
 		console.log(action);
 
-		return state;
+		switch (action.type) {
+			case SET_ACTIVE_IMAGE:
+				return _extends({}, state, {
+					activeImage: action.id
+				});
+
+			case CLEAR_ACTIVE_IMAGE:
+				return _extends({}, state, {
+					activeImage: null
+				});
+
+			default:
+				return state;
+		}
 	}
+
+	// action creators
+	// ----------------------------------------------------------------------------
+
+	function setActiveImage(id) {
+		return {
+			type: SET_ACTIVE_IMAGE,
+			id: id
+		};
+	}
+
+	function clearActiveImage() {
+		return {
+			type: SET_ACTIVE_IMAGE
+		};
+	}
+
+/***/ },
+/* 198 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var ImageLink = _react2.default.createClass({
+		displayName: "ImageLink",
+
+		propTypes: {
+			image: _react.PropTypes.object.isRequired,
+			setActiveImage: _react.PropTypes.func.isRequired
+		},
+
+		_handleClick: function _handleClick(e) {
+			e.preventDefault();
+			this.props.setActiveImage(this.props.image.id);
+		},
+		render: function render() {
+			return _react2.default.createElement(
+				"a",
+				{
+					href: "/photography/blog/" + this.props.image.id,
+					onClick: this._handleClick },
+				_react2.default.createElement("img", {
+					src: this.props.image.thumbnail,
+					alt: "A thumbnail of " + this.props.image.title
+				})
+			);
+		}
+	});
+
+	exports.default = ImageLink;
 
 /***/ }
 /******/ ]);

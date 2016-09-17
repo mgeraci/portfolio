@@ -43,5 +43,6 @@
 		"react/prefer-stateless-function": 0,
 		"react/react-in-jsx-scope": 0,
 		"prefer-object-spread/prefer-object-spread": 1,
+		"no-underscore-dangle": 0,
 	}
 }
