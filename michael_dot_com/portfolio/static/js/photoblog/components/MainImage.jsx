@@ -1,6 +1,7 @@
 /* global Image */
 
 import React, { PropTypes } from "react";
+import ReactCSSTransitionGroup from "react-addons-css-transition-group";
 
 const MainImage = React.createClass({
 	propTypes: {
@@ -49,7 +50,16 @@ const MainImage = React.createClass({
 					<span>loading</span>
 				}
 				{this.state.loaded &&
-					<img src={this.props.src} alt={this.props.alt} />
+					<ReactCSSTransitionGroup
+							transitionName="main-image"
+							transitionAppear
+							transitionEnterTimeout={500} >
+						<img
+							key={this.props.src}
+							src={this.props.src}
+							alt={this.props.alt}
+						/>
+					</ReactCSSTransitionGroup>
 				}
 			</div>
 		);

@@ -1,0 +1,10 @@
+.page-photography
+
+.main-image-enter,
+.main-image-appear
+  opacity: 0.01
+
+.main-image-enter.main-image-enter-active,
+.main-image-appear.main-image-appear-active
+  opacity: 1
+  @include transition(opacity 200ms ease-in)
