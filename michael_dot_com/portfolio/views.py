@@ -89,14 +89,21 @@ def web_item(request, slug):
 
 def photography(request):
     images = PhotoblogImage.objects.all()
-    images_json = []
+    imageOrder = []
+    imageMap = {}
 
     for image in images:
-        images_json.append(image.to_json())
+        imageOrder.append(image.id)
+        imageMap[image.id] = image.to_json()
+
+    imageOrder.reverse()
 
     context = {
         'images': images,
-        'images_json': json.dumps(images_json),
+        'images_json': json.dumps({
+            'order': imageOrder,
+            'images': imageMap,
+        }),
     }
 
     return render(request, 'pages/photography.html', context)

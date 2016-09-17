@@ -72,7 +72,7 @@
 
 	window.Photoblog = {
 		init: function init(data) {
-			var store = (0, _redux.createStore)(_reducer2.default, { images: data });
+			var store = (0, _redux.createStore)(_reducer2.default, data);
 
 			_reactDom2.default.render(_react2.default.createElement(
 				_reactRedux.Provider,
@@ -23078,46 +23078,49 @@
 
 	var _ImageLink2 = _interopRequireDefault(_ImageLink);
 
+	var _ImageDetail = __webpack_require__(199);
+
+	var _ImageDetail2 = _interopRequireDefault(_ImageDetail);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	var App = _react2.default.createClass({
 		displayName: "App",
 
 		propTypes: {
-			images: _react.PropTypes.array.isRequired,
+			order: _react.PropTypes.array.isRequired,
+			images: _react.PropTypes.object.isRequired,
 			activeImage: _react.PropTypes.number,
-			onSetActiveImage: _react.PropTypes.func.isRequired
+			onSetActiveImage: _react.PropTypes.func.isRequired,
+			onClearActiveImage: _react.PropTypes.func.isRequired
 		},
 
 		render: function render() {
 			var _this = this;
 
-			var images = this.props.images.sort(function (a, b) {
-				return a.id < b.id;
-			});
-
 			return _react2.default.createElement(
 				"div",
 				null,
-				_react2.default.createElement(
-					"span",
-					null,
-					this.props.activeImage
-				),
-				images.map(function (image, i) {
+				this.props.order.map(function (id) {
 					return _react2.default.createElement(_ImageLink2.default, {
-						key: i,
-						image: image,
-						setActiveImage: _this.props.onSetActiveImage });
+						key: id,
+						image: _this.props.images[id],
+						setActiveImage: _this.props.onSetActiveImage,
+						clearActiveImage: _this.props.onClearActiveImage
+					});
+				}),
+				this.props.activeImage && _react2.default.createElement(_ImageDetail2.default, {
+					image: this.props.images[this.props.activeImage],
+					clearActiveImage: this.props.onClearActiveImage
 				})
 			);
 		}
 	});
 
 	function mapStateToProps(state) {
-		console.log(state);
 		return {
 			images: state.images,
+			order: state.order,
 			activeImage: state.activeImage
 		};
 	}
@@ -23126,6 +23129,9 @@
 		return {
 			onSetActiveImage: function onSetActiveImage(id) {
 				dispatch((0, _reducer.setActiveImage)(id));
+			},
+			onClearActiveImage: function onClearActiveImage() {
+				dispatch((0, _reducer.clearActiveImage)());
 			}
 		};
 	}
@@ -23157,8 +23163,6 @@
 	// ----------------------------------------------------------------------------
 
 	function reducer(state, action) {
-		console.log(action);
-
 		switch (action.type) {
 			case SET_ACTIVE_IMAGE:
 				return _extends({}, state, {
@@ -23234,6 +23238,59 @@
 	});
 
 	exports.default = ImageLink;
+
+/***/ },
+/* 199 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var ImageDetail = _react2.default.createClass({
+		displayName: "ImageDetail",
+
+		propTypes: {
+			image: _react.PropTypes.object.isRequired,
+			clearActiveImage: _react.PropTypes.func.isRequired
+		},
+
+		render: function render() {
+			var image = this.props.image;
+
+
+			return _react2.default.createElement(
+				"div",
+				null,
+				_react2.default.createElement("img", { src: image.image, alt: image.title }),
+				_react2.default.createElement(
+					"h3",
+					null,
+					image.title
+				),
+				_react2.default.createElement(
+					"span",
+					null,
+					image.year
+				),
+				_react2.default.createElement(
+					"button",
+					{ onClick: this.props.clearActiveImage },
+					"close"
+				)
+			);
+		}
+	});
+
+	exports.default = ImageDetail;
 
 /***/ }
 /******/ ]);

@@ -9,8 +9,6 @@ export const CLEAR_ACTIVE_IMAGE = "PHOTOBLOG.CLEAR_ACTIVE_IMAGE";
 // ----------------------------------------------------------------------------
 
 export default function reducer(state, action) {
-	console.log(action);
-
 	switch (action.type) {
 		case SET_ACTIVE_IMAGE:
 			return {

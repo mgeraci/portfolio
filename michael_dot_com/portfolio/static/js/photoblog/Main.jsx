@@ -12,7 +12,7 @@ window.Photoblog = {
 	init(data) {
 		const store = createStore(
 			reducer,
-			{ images: data }
+			data
 		);
 
 		ReactDOM.render(

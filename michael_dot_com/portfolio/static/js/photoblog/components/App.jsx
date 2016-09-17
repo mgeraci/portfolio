@@ -1,38 +1,45 @@
 import React, { PropTypes } from "react";
 import { connect } from "react-redux";
-import { setActiveImage } from "../reducer";
+import { setActiveImage, clearActiveImage } from "../reducer";
 import ImageLink from "./ImageLink";
+import ImageDetail from "./ImageDetail";
 
 const App = React.createClass({
 	propTypes: {
-		images: PropTypes.array.isRequired,
+		order: PropTypes.array.isRequired,
+		images: PropTypes.object.isRequired,
 		activeImage: PropTypes.number,
 		onSetActiveImage: PropTypes.func.isRequired,
+		onClearActiveImage: PropTypes.func.isRequired,
 	},
 
 	render() {
-		const images = this.props.images.sort((a, b) => {
-			return a.id < b.id;
-		});
-
 		return (
 			<div>
-				<span>{this.props.activeImage}</span>
-				{images.map((image, i) =>
+				{this.props.order.map(id =>
 					<ImageLink
-						key={i}
-						image={image}
-						setActiveImage={this.props.onSetActiveImage} />
+						key={id}
+						image={this.props.images[id]}
+						setActiveImage={this.props.onSetActiveImage}
+						clearActiveImage={this.props.onClearActiveImage}
+					/>
 				)}
+
+				{this.props.activeImage &&
+					<ImageDetail
+						image={this.props.images[this.props.activeImage]}
+						clearActiveImage={this.props.onClearActiveImage}
+					/>
+				}
 			</div>
 		);
 	},
 });
 
 function mapStateToProps(state) {
-	console.log(state);
 	return {
 		images: state.images,
+		order: state.order,
 		activeImage: state.activeImage,
 	};
 }
@@ -41,6 +48,9 @@ function mapDispatchToProps(dispatch) {
 	return {
 		onSetActiveImage(id) {
 			dispatch(setActiveImage(id));
+		},
+		onClearActiveImage() {
+			dispatch(clearActiveImage());
 		},
 	};
 }
