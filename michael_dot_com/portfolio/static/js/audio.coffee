@@ -1,9 +1,9 @@
 $ = require("jquery")
-audiojs = require("./vendor/audio.min.js")
 
 module.exports = {
 	init: ->
-		audiojs = audiojs.audiojs
+		audiojs = require("./vendor/audio.js")("audiojs", "audiojsInstance", this)
+		audiojs = this.audiojs
 
 		audiojs.events.ready(=>
 			audioElements = audiojs.createAll({

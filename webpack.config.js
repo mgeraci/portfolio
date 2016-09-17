@@ -2,7 +2,10 @@ const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const WebpackNotifierPlugin = require("webpack-notifier");
 
 module.exports = {
-  entry: "./michael_dot_com/portfolio/static/js/photoblog/Main.jsx",
+  entry: {
+		photoblog: "./michael_dot_com/portfolio/static/js/photoblog/Photoblog.jsx",
+		app: "./michael_dot_com/portfolio/static/js/app.coffee",
+	},
 
 	eslint: {
 		emitError: true,
@@ -10,8 +13,8 @@ module.exports = {
 	},
 
   output: {
-    path: "./michael_dot_com/portfolio/static/js/",
-    filename: "photoblog.js"
+    path: "./michael_dot_com/portfolio/static/js/build/",
+    filename: "[name].js"
   },
 
   module: {
@@ -21,6 +24,9 @@ module.exports = {
 			loader: "eslint-loader",
 			exclude: [
 				/node_modules/,
+				/coffee/,
+				/throttle\.js/,
+				/vendor/,
 			],
 		}],
 
@@ -31,14 +37,24 @@ module.exports = {
 			query: {
 				presets: ['es2015', 'react', 'stage-2']
 			}
+		}, {
+			test: /\.coffee$/,
+			loader: "coffee-loader",
     }, {
-      test: /\.scss$/,
+      test: /\.sass$/,
       exclude: [/node_modules/],
       loader: ExtractTextPlugin.extract("css!sass")
-    }]
+    }, {
+			test: /.(png|woff(2)?|eot|ttf|svg)(\?[a-z0-9=\.]+)?$/,
+			loader: "file?name=../../../static/fonts/[name].[ext]"
+		}
+		]
   },
 
   plugins: [
+		new ExtractTextPlugin('../../css/build/styles.css', {
+			allChunks: true
+		}),
     new WebpackNotifierPlugin(),
   ],
 

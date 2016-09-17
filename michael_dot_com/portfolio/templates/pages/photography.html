@@ -7,7 +7,7 @@ Photography
 {% block bodyclass %}photoblog{% endblock %}
 
 {% block scripts %}
-	<script type="text/javascript" src="{{ STATIC_URL }}js/photoblog.js"></script>
+	<script type="text/javascript" src="{{ STATIC_URL }}js/build/photoblog.js"></script>
 	<script>
 		var photoblogData = {{ images_json|safe }};
 		Photoblog.init(photoblogData);

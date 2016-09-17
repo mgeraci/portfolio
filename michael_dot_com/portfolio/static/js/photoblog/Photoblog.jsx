@@ -8,6 +8,8 @@ import { createStore } from "redux";
 import App from "./components/App";
 import reducer from "./reducer";
 
+require("../../css/styles.sass");
+
 window.Photoblog = {
 	init(data) {
 		const store = createStore(
