@@ -4,6 +4,8 @@ const ImageDetail = React.createClass({
 	propTypes: {
 		image: PropTypes.object.isRequired,
 		clearActiveImage: PropTypes.func.isRequired,
+		navigatePrev: PropTypes.func.isRequired,
+		navigateNext: PropTypes.func.isRequired,
 	},
 
 	render() {
@@ -18,6 +20,15 @@ const ImageDetail = React.createClass({
 
 				<button onClick={this.props.clearActiveImage}>
 					close
+				</button>
+
+				<br />
+
+				<button onClick={this.props.navigatePrev}>
+					prev
+				</button>
+				<button onClick={this.props.navigateNext}>
+					next
 				</button>
 			</div>
 		);

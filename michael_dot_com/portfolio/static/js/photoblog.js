@@ -23092,7 +23092,9 @@
 			images: _react.PropTypes.object.isRequired,
 			activeImage: _react.PropTypes.number,
 			onSetActiveImage: _react.PropTypes.func.isRequired,
-			onClearActiveImage: _react.PropTypes.func.isRequired
+			onClearActiveImage: _react.PropTypes.func.isRequired,
+			onNavigatePrev: _react.PropTypes.func.isRequired,
+			onNavigateNext: _react.PropTypes.func.isRequired
 		},
 
 		render: function render() {
@@ -23111,7 +23113,9 @@
 				}),
 				this.props.activeImage && _react2.default.createElement(_ImageDetail2.default, {
 					image: this.props.images[this.props.activeImage],
-					clearActiveImage: this.props.onClearActiveImage
+					clearActiveImage: this.props.onClearActiveImage,
+					navigatePrev: this.props.onNavigatePrev,
+					navigateNext: this.props.onNavigateNext
 				})
 			);
 		}
@@ -23132,6 +23136,12 @@
 			},
 			onClearActiveImage: function onClearActiveImage() {
 				dispatch((0, _reducer.clearActiveImage)());
+			},
+			onNavigatePrev: function onNavigatePrev() {
+				dispatch((0, _reducer.navigatePrev)());
+			},
+			onNavigateNext: function onNavigateNext() {
+				dispatch((0, _reducer.navigateNext)());
 			}
 		};
 	}
@@ -23153,11 +23163,19 @@
 	exports.default = reducer;
 	exports.setActiveImage = setActiveImage;
 	exports.clearActiveImage = clearActiveImage;
+	exports.navigatePrev = navigatePrev;
+	exports.navigateNext = navigateNext;
+	var DIRECTIONS = {
+		prev: "prev",
+		next: "next"
+	};
+
 	// action types
 	// ----------------------------------------------------------------------------
 
 	var SET_ACTIVE_IMAGE = exports.SET_ACTIVE_IMAGE = "PHOTOBLOG.SET_ACTIVE_IMAGE";
 	var CLEAR_ACTIVE_IMAGE = exports.CLEAR_ACTIVE_IMAGE = "PHOTOBLOG.CLEAR_ACTIVE_IMAGE";
+	var NAVIGATE = exports.NAVIGATE = "PHOTOBLOG.NAVIGATE";
 
 	// reducer
 	// ----------------------------------------------------------------------------
@@ -23165,17 +23183,49 @@
 	function reducer(state, action) {
 		switch (action.type) {
 			case SET_ACTIVE_IMAGE:
-				return _extends({}, state, {
-					activeImage: action.id
-				});
+				{
+					return _extends({}, state, {
+						activeImage: action.id
+					});
+				}
 
 			case CLEAR_ACTIVE_IMAGE:
-				return _extends({}, state, {
-					activeImage: null
-				});
+				{
+					return _extends({}, state, {
+						activeImage: null
+					});
+				}
+
+			case NAVIGATE:
+				{
+					if (!state.activeImage) {
+						return state;
+					}
+
+					var currentIndex = state.order.indexOf(state.activeImage);
+					var nextIndex = void 0;
+
+					if (action.direction === DIRECTIONS.prev) {
+						nextIndex = currentIndex - 1;
+					} else if (action.direction === DIRECTIONS.next) {
+						nextIndex = currentIndex + 1;
+					} else {
+						return state;
+					}
+
+					if (nextIndex < 0 || nextIndex + 1 > state.order.length) {
+						return state;
+					}
+
+					return _extends({}, state, {
+						activeImage: state.order[nextIndex]
+					});
+				}
 
 			default:
-				return state;
+				{
+					return state;
+				}
 		}
 	}
 
@@ -23192,6 +23242,20 @@
 	function clearActiveImage() {
 		return {
 			type: SET_ACTIVE_IMAGE
+		};
+	}
+
+	function navigatePrev() {
+		return {
+			type: NAVIGATE,
+			direction: DIRECTIONS.prev
+		};
+	}
+
+	function navigateNext() {
+		return {
+			type: NAVIGATE,
+			direction: DIRECTIONS.next
 		};
 	}
 
@@ -23260,7 +23324,9 @@
 
 		propTypes: {
 			image: _react.PropTypes.object.isRequired,
-			clearActiveImage: _react.PropTypes.func.isRequired
+			clearActiveImage: _react.PropTypes.func.isRequired,
+			navigatePrev: _react.PropTypes.func.isRequired,
+			navigateNext: _react.PropTypes.func.isRequired
 		},
 
 		render: function render() {
@@ -23285,6 +23351,17 @@
 					"button",
 					{ onClick: this.props.clearActiveImage },
 					"close"
+				),
+				_react2.default.createElement("br", null),
+				_react2.default.createElement(
+					"button",
+					{ onClick: this.props.navigatePrev },
+					"prev"
+				),
+				_react2.default.createElement(
+					"button",
+					{ onClick: this.props.navigateNext },
+					"next"
 				)
 			);
 		}

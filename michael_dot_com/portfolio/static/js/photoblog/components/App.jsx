@@ -1,6 +1,11 @@
 import React, { PropTypes } from "react";
 import { connect } from "react-redux";
-import { setActiveImage, clearActiveImage } from "../reducer";
+import {
+	setActiveImage,
+	clearActiveImage,
+	navigatePrev,
+	navigateNext,
+} from "../reducer";
 import ImageLink from "./ImageLink";
 import ImageDetail from "./ImageDetail";
 
@@ -11,6 +16,8 @@ const App = React.createClass({
 		activeImage: PropTypes.number,
 		onSetActiveImage: PropTypes.func.isRequired,
 		onClearActiveImage: PropTypes.func.isRequired,
+		onNavigatePrev: PropTypes.func.isRequired,
+		onNavigateNext: PropTypes.func.isRequired,
 	},
 
 	render() {
@@ -29,6 +36,8 @@ const App = React.createClass({
 					<ImageDetail
 						image={this.props.images[this.props.activeImage]}
 						clearActiveImage={this.props.onClearActiveImage}
+						navigatePrev={this.props.onNavigatePrev}
+						navigateNext={this.props.onNavigateNext}
 					/>
 				}
 			</div>
@@ -51,6 +60,12 @@ function mapDispatchToProps(dispatch) {
 		},
 		onClearActiveImage() {
 			dispatch(clearActiveImage());
+		},
+		onNavigatePrev() {
+			dispatch(navigatePrev());
+		},
+		onNavigateNext() {
+			dispatch(navigateNext());
 		},
 	};
 }
