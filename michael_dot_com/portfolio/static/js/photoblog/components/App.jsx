@@ -5,6 +5,8 @@ import {
 	clearActiveImage,
 	navigatePrev,
 	navigateNext,
+	filterTag,
+	clearFilterTag,
 } from "../reducer";
 import ImageLink from "./ImageLink";
 import ImageDetail from "./ImageDetail";
@@ -12,18 +14,37 @@ import ImageDetail from "./ImageDetail";
 const App = React.createClass({
 	propTypes: {
 		order: PropTypes.array.isRequired,
+		filteredOrder: PropTypes.array,
+		filteredTerm: PropTypes.string,
 		images: PropTypes.object.isRequired,
 		activeImage: PropTypes.number,
 		onSetActiveImage: PropTypes.func.isRequired,
 		onClearActiveImage: PropTypes.func.isRequired,
 		onNavigatePrev: PropTypes.func.isRequired,
 		onNavigateNext: PropTypes.func.isRequired,
+		onFilterTag: PropTypes.func.isRequired,
+		onClearFilterTag: PropTypes.func.isRequired,
 	},
 
 	render() {
+		let imageIds = this.props.order;
+
+		if (this.props.filteredOrder && this.props.filteredOrder.length) {
+			imageIds = this.props.filteredOrder;
+		}
+
 		return (
 			<div>
-				{this.props.order.map(id =>
+				{this.props.filteredTerm &&
+					<span>
+						Browsing images tagged "{this.props.filteredTerm}"
+						<button onClick={this.props.onClearFilterTag}>
+							clear
+						</button>
+					</span>
+				}
+
+				{imageIds.map(id =>
 					<ImageLink
 						key={id}
 						image={this.props.images[id]}
@@ -38,6 +59,7 @@ const App = React.createClass({
 						clearActiveImage={this.props.onClearActiveImage}
 						navigatePrev={this.props.onNavigatePrev}
 						navigateNext={this.props.onNavigateNext}
+						filterTag={this.props.onFilterTag}
 					/>
 				}
 			</div>
@@ -49,6 +71,8 @@ function mapStateToProps(state) {
 	return {
 		images: state.images,
 		order: state.order,
+		filteredOrder: state.filteredOrder,
+		filteredTerm: state.filteredTerm,
 		activeImage: state.activeImage,
 	};
 }
@@ -66,6 +90,12 @@ function mapDispatchToProps(dispatch) {
 		},
 		onNavigateNext() {
 			dispatch(navigateNext());
+		},
+		onFilterTag(tag) {
+			dispatch(filterTag(tag));
+		},
+		onClearFilterTag() {
+			dispatch(clearFilterTag());
 		},
 	};
 }

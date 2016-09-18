@@ -23101,21 +23101,43 @@
 
 		propTypes: {
 			order: _react.PropTypes.array.isRequired,
+			filteredOrder: _react.PropTypes.array,
+			filteredTerm: _react.PropTypes.string,
 			images: _react.PropTypes.object.isRequired,
 			activeImage: _react.PropTypes.number,
 			onSetActiveImage: _react.PropTypes.func.isRequired,
 			onClearActiveImage: _react.PropTypes.func.isRequired,
 			onNavigatePrev: _react.PropTypes.func.isRequired,
-			onNavigateNext: _react.PropTypes.func.isRequired
+			onNavigateNext: _react.PropTypes.func.isRequired,
+			onFilterTag: _react.PropTypes.func.isRequired,
+			onClearFilterTag: _react.PropTypes.func.isRequired
 		},
 
 		render: function render() {
 			var _this = this;
 
+			var imageIds = this.props.order;
+
+			if (this.props.filteredOrder && this.props.filteredOrder.length) {
+				imageIds = this.props.filteredOrder;
+			}
+
 			return _react2.default.createElement(
 				"div",
 				null,
-				this.props.order.map(function (id) {
+				this.props.filteredTerm && _react2.default.createElement(
+					"span",
+					null,
+					"Browsing images tagged \"",
+					this.props.filteredTerm,
+					"\"",
+					_react2.default.createElement(
+						"button",
+						{ onClick: this.props.onClearFilterTag },
+						"clear"
+					)
+				),
+				imageIds.map(function (id) {
 					return _react2.default.createElement(_ImageLink2.default, {
 						key: id,
 						image: _this.props.images[id],
@@ -23127,7 +23149,8 @@
 					image: this.props.images[this.props.activeImage],
 					clearActiveImage: this.props.onClearActiveImage,
 					navigatePrev: this.props.onNavigatePrev,
-					navigateNext: this.props.onNavigateNext
+					navigateNext: this.props.onNavigateNext,
+					filterTag: this.props.onFilterTag
 				})
 			);
 		}
@@ -23137,6 +23160,8 @@
 		return {
 			images: state.images,
 			order: state.order,
+			filteredOrder: state.filteredOrder,
+			filteredTerm: state.filteredTerm,
 			activeImage: state.activeImage
 		};
 	}
@@ -23154,6 +23179,12 @@
 			},
 			onNavigateNext: function onNavigateNext() {
 				dispatch((0, _reducer.navigateNext)());
+			},
+			onFilterTag: function onFilterTag(tag) {
+				dispatch((0, _reducer.filterTag)(tag));
+			},
+			onClearFilterTag: function onClearFilterTag() {
+				dispatch((0, _reducer.clearFilterTag)());
 			}
 		};
 	}
@@ -23170,6 +23201,8 @@
 		value: true
 	});
 
+	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
+
 	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 	exports.default = reducer;
@@ -23177,6 +23210,8 @@
 	exports.clearActiveImage = clearActiveImage;
 	exports.navigatePrev = navigatePrev;
 	exports.navigateNext = navigateNext;
+	exports.filterTag = filterTag;
+	exports.clearFilterTag = clearFilterTag;
 	var DIRECTIONS = {
 		prev: "prev",
 		next: "next"
@@ -23188,6 +23223,8 @@
 	var SET_ACTIVE_IMAGE = exports.SET_ACTIVE_IMAGE = "PHOTOBLOG.SET_ACTIVE_IMAGE";
 	var CLEAR_ACTIVE_IMAGE = exports.CLEAR_ACTIVE_IMAGE = "PHOTOBLOG.CLEAR_ACTIVE_IMAGE";
 	var NAVIGATE = exports.NAVIGATE = "PHOTOBLOG.NAVIGATE";
+	var FILTER_TAG = exports.FILTER_TAG = "PHOTOBLOG.FILTER_TAG";
+	var CLEAR_FILTER_TAG = exports.CLEAR_FILTER_TAG = "PHOTOBLOG.CLEAR_FILTER_TAG";
 
 	// reducer
 	// ----------------------------------------------------------------------------
@@ -23214,7 +23251,14 @@
 						return state;
 					}
 
-					var currentIndex = state.order.indexOf(state.activeImage);
+					// get the current set of images
+					var order = state.order;
+
+					if (state.filteredOrder && state.filteredOrder.length) {
+						order = state.filteredOrder;
+					}
+
+					var currentIndex = order.indexOf(state.activeImage);
 					var nextIndex = void 0;
 
 					if (action.direction === DIRECTIONS.prev) {
@@ -23231,6 +23275,46 @@
 
 					return _extends({}, state, {
 						activeImage: state.order[nextIndex]
+					});
+				}
+
+			case FILTER_TAG:
+				{
+					var _ret = function () {
+						if (!action.tag) {
+							return {
+								v: state
+							};
+						}
+
+						var filteredOrder = [];
+
+						state.order.forEach(function (id) {
+							state.images[id].tags.forEach(function (tag) {
+								if (tag.slug === action.tag.slug) {
+									filteredOrder.push(id);
+								}
+							});
+						});
+
+						return {
+							v: _extends({}, state, {
+								activeImage: null,
+								filteredOrder: filteredOrder,
+								filteredTerm: action.tag.name
+							})
+						};
+					}();
+
+					if ((typeof _ret === "undefined" ? "undefined" : _typeof(_ret)) === "object") return _ret.v;
+				}
+
+			case CLEAR_FILTER_TAG:
+				{
+					return _extends({}, state, {
+						activeImage: null,
+						filteredOrder: null,
+						filteredTerm: null
 					});
 				}
 
@@ -23268,6 +23352,19 @@
 		return {
 			type: NAVIGATE,
 			direction: DIRECTIONS.next
+		};
+	}
+
+	function filterTag(tag) {
+		return {
+			type: FILTER_TAG,
+			tag: tag
+		};
+	}
+
+	function clearFilterTag() {
+		return {
+			type: CLEAR_FILTER_TAG
 		};
 	}
 
@@ -23333,6 +23430,10 @@
 
 	var _MainImage2 = _interopRequireDefault(_MainImage);
 
+	var _Tag = __webpack_require__(219);
+
+	var _Tag2 = _interopRequireDefault(_Tag);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	var ImageDetail = _react2.default.createClass({
@@ -23342,10 +23443,13 @@
 			image: _react.PropTypes.object.isRequired,
 			clearActiveImage: _react.PropTypes.func.isRequired,
 			navigatePrev: _react.PropTypes.func.isRequired,
-			navigateNext: _react.PropTypes.func.isRequired
+			navigateNext: _react.PropTypes.func.isRequired,
+			filterTag: _react.PropTypes.func.isRequired
 		},
 
 		render: function render() {
+			var _this = this;
+
 			var image = this.props.image;
 
 
@@ -23361,11 +23465,22 @@
 					null,
 					image.title
 				),
+				_react2.default.createElement("br", null),
 				_react2.default.createElement(
 					"span",
 					null,
 					image.year
 				),
+				_react2.default.createElement("br", null),
+				image.tags.map(function (tag, i) {
+					return _react2.default.createElement(_Tag2.default, {
+						key: i,
+						name: tag.name,
+						slug: tag.slug,
+						filterTag: _this.props.filterTag
+					});
+				}),
+				_react2.default.createElement("br", null),
 				_react2.default.createElement(
 					"button",
 					{ onClick: this.props.clearActiveImage },
@@ -23454,8 +23569,6 @@
 			};
 		},
 		render: function render() {
-			console.log(this.state.loaded);
-
 			return _react2.default.createElement(
 				"div",
 				null,
@@ -23469,7 +23582,9 @@
 					{
 						transitionName: "main-image",
 						transitionAppear: true,
-						transitionEnterTimeout: 500 },
+						transitionEnterTimeout: 500,
+						transitionAppearTimeout: 500,
+						transitionLeaveTimeout: 500 },
 					_react2.default.createElement("img", {
 						key: this.props.src,
 						src: this.props.src,
@@ -24323,6 +24438,51 @@
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
+
+/***/ },
+/* 219 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+
+	var _react = __webpack_require__(11);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var Tag = _react2.default.createClass({
+		displayName: "Tag",
+
+		propTypes: {
+			name: _react.PropTypes.string.isRequired,
+			slug: _react.PropTypes.string.isRequired,
+			filterTag: _react.PropTypes.func.isRequired
+		},
+
+		_handleClick: function _handleClick(e) {
+			e.preventDefault();
+			this.props.filterTag({
+				name: this.props.name,
+				slug: this.props.slug
+			});
+		},
+		render: function render() {
+			return _react2.default.createElement(
+				"a",
+				{
+					onClick: this._handleClick,
+					href: "/photography/blog/browse/" + this.props.slug },
+				this.props.name
+			);
+		}
+	});
+
+	exports.default = Tag;
 
 /***/ }
 /******/ ]);

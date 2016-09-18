@@ -9,6 +9,8 @@ const DIRECTIONS = {
 export const SET_ACTIVE_IMAGE = "PHOTOBLOG.SET_ACTIVE_IMAGE";
 export const CLEAR_ACTIVE_IMAGE = "PHOTOBLOG.CLEAR_ACTIVE_IMAGE";
 export const NAVIGATE = "PHOTOBLOG.NAVIGATE";
+export const FILTER_TAG = "PHOTOBLOG.FILTER_TAG";
+export const CLEAR_FILTER_TAG = "PHOTOBLOG.CLEAR_FILTER_TAG";
 
 
 // reducer
@@ -35,7 +37,14 @@ export default function reducer(state, action) {
 				return state;
 			}
 
-			const currentIndex = state.order.indexOf(state.activeImage);
+			// get the current set of images
+			let order = state.order;
+
+			if (state.filteredOrder && state.filteredOrder.length) {
+				order = state.filteredOrder;
+			}
+
+			const currentIndex = order.indexOf(state.activeImage);
 			let nextIndex;
 
 			if (action.direction === DIRECTIONS.prev)	{
@@ -53,6 +62,38 @@ export default function reducer(state, action) {
 			return {
 				...state,
 				activeImage: state.order[nextIndex],
+			};
+		}
+
+		case FILTER_TAG: {
+			if (!action.tag) {
+				return state;
+			}
+
+			const filteredOrder = [];
+
+			state.order.forEach((id) => {
+				state.images[id].tags.forEach((tag) => {
+					if (tag.slug === action.tag.slug) {
+						filteredOrder.push(id);
+					}
+				});
+			});
+
+			return {
+				...state,
+				activeImage: null,
+				filteredOrder,
+				filteredTerm: action.tag.name,
+			};
+		}
+
+		case CLEAR_FILTER_TAG: {
+			return {
+				...state,
+				activeImage: null,
+				filteredOrder: null,
+				filteredTerm: null,
 			};
 		}
 
@@ -90,5 +131,18 @@ export function navigateNext() {
 	return {
 		type: NAVIGATE,
 		direction: DIRECTIONS.next,
+	};
+}
+
+export function filterTag(tag) {
+	return {
+		type: FILTER_TAG,
+		tag,
+	};
+}
+
+export function clearFilterTag() {
+	return {
+		type: CLEAR_FILTER_TAG,
 	};
 }

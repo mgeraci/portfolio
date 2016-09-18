@@ -42,8 +42,6 @@ const MainImage = React.createClass({
 	},
 
 	render() {
-		console.log(this.state.loaded);
-
 		return (
 			<div>
 				{!this.state.loaded &&
@@ -53,7 +51,9 @@ const MainImage = React.createClass({
 					<ReactCSSTransitionGroup
 							transitionName="main-image"
 							transitionAppear
-							transitionEnterTimeout={500} >
+							transitionEnterTimeout={500}
+							transitionAppearTimeout={500}
+							transitionLeaveTimeout={500}>
 						<img
 							key={this.props.src}
 							src={this.props.src}

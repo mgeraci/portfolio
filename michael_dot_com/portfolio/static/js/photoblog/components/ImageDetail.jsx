@@ -1,5 +1,6 @@
 import React, { PropTypes } from "react";
 import MainImage from "./MainImage";
+import Tag from "./Tag";
 
 const ImageDetail = React.createClass({
 	propTypes: {
@@ -7,6 +8,7 @@ const ImageDetail = React.createClass({
 		clearActiveImage: PropTypes.func.isRequired,
 		navigatePrev: PropTypes.func.isRequired,
 		navigateNext: PropTypes.func.isRequired,
+		filterTag: PropTypes.func.isRequired,
 	},
 
 	render() {
@@ -20,7 +22,20 @@ const ImageDetail = React.createClass({
 				/>
 
 				<h3>{image.title}</h3>
+				<br />
 				<span>{image.year}</span>
+				<br />
+
+				{image.tags.map((tag, i) =>
+					<Tag
+						key={i}
+						name={tag.name}
+						slug={tag.slug}
+						filterTag={this.props.filterTag}
+					/>
+				)}
+
+				<br />
 
 				<button onClick={this.props.clearActiveImage}>
 					close
