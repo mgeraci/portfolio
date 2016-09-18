@@ -23401,7 +23401,7 @@
 
 	function clearActiveImage() {
 		return {
-			type: SET_ACTIVE_IMAGE
+			type: CLEAR_ACTIVE_IMAGE
 		};
 	}
 
