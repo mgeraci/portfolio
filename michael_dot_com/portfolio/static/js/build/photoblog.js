@@ -70,7 +70,7 @@
 
 	/* global window, document */
 
-	__webpack_require__(218);
+	__webpack_require__(219);
 
 	window.Photoblog = {
 		init: function init(data) {
@@ -23110,17 +23110,22 @@
 			onNavigatePrev: _react.PropTypes.func.isRequired,
 			onNavigateNext: _react.PropTypes.func.isRequired,
 			onFilterTag: _react.PropTypes.func.isRequired,
-			onClearFilterTag: _react.PropTypes.func.isRequired
+			onClearFilterTag: _react.PropTypes.func.isRequired,
+			atBeginning: _react.PropTypes.bool,
+			atEnd: _react.PropTypes.bool
 		},
 
-		render: function render() {
-			var _this = this;
-
+		_getVisibleImageIds: function _getVisibleImageIds() {
 			var imageIds = this.props.order;
 
 			if (this.props.filteredOrder && this.props.filteredOrder.length) {
 				imageIds = this.props.filteredOrder;
 			}
+
+			return imageIds;
+		},
+		render: function render() {
+			var _this = this;
 
 			return _react2.default.createElement(
 				"div",
@@ -23137,7 +23142,7 @@
 						"clear"
 					)
 				),
-				imageIds.map(function (id) {
+				this._getVisibleImageIds().map(function (id) {
 					return _react2.default.createElement(_ImageLink2.default, {
 						key: id,
 						image: _this.props.images[id],
@@ -23150,6 +23155,8 @@
 					clearActiveImage: this.props.onClearActiveImage,
 					navigatePrev: this.props.onNavigatePrev,
 					navigateNext: this.props.onNavigateNext,
+					atBeginning: this.props.atBeginning,
+					atEnd: this.props.atEnd,
 					filterTag: this.props.onFilterTag
 				})
 			);
@@ -23162,7 +23169,10 @@
 			order: state.order,
 			filteredOrder: state.filteredOrder,
 			filteredTerm: state.filteredTerm,
-			activeImage: state.activeImage
+			activeImage: state.activeImage,
+
+			atBeginning: state.atBeginning,
+			atEnd: state.atEnd
 		};
 	}
 
@@ -23212,9 +23222,49 @@
 	exports.navigateNext = navigateNext;
 	exports.filterTag = filterTag;
 	exports.clearFilterTag = clearFilterTag;
+	// constants and helpers
+	// ----------------------------------------------------------------------------
+
 	var DIRECTIONS = {
 		prev: "prev",
 		next: "next"
+	};
+
+	var getVisibleImages = function getVisibleImages(state) {
+		// get the current set of images
+		var order = state.order;
+
+		if (state.filteredOrder && state.filteredOrder.length) {
+			order = state.filteredOrder;
+		}
+
+		return order;
+	};
+
+	var getPositionMeta = function getPositionMeta(params) {
+		if (typeof params.index === "undefined" || params.index === null) {
+			return {};
+		}
+
+		if (!params.images || params.images.length === 0) {
+			return {};
+		}
+
+		var atBeginning = false;
+		var atEnd = false;
+
+		if (params.index === 0) {
+			atBeginning = true;
+		}
+
+		if (params.index + 1 === params.images.length) {
+			atEnd = true;
+		}
+
+		return {
+			atBeginning: atBeginning,
+			atEnd: atEnd
+		};
 	};
 
 	// action types
@@ -23233,9 +23283,20 @@
 		switch (action.type) {
 			case SET_ACTIVE_IMAGE:
 				{
+					if (!action.id) {
+						return state;
+					}
+
+					var order = getVisibleImages(state);
+					var index = order.indexOf(action.id);
+					var positionMeta = getPositionMeta({
+						index: index,
+						images: order
+					});
+
 					return _extends({}, state, {
 						activeImage: action.id
-					});
+					}, positionMeta);
 				}
 
 			case CLEAR_ACTIVE_IMAGE:
@@ -23251,14 +23312,8 @@
 						return state;
 					}
 
-					// get the current set of images
-					var order = state.order;
-
-					if (state.filteredOrder && state.filteredOrder.length) {
-						order = state.filteredOrder;
-					}
-
-					var currentIndex = order.indexOf(state.activeImage);
+					var _order = getVisibleImages(state);
+					var currentIndex = _order.indexOf(state.activeImage);
 					var nextIndex = void 0;
 
 					if (action.direction === DIRECTIONS.prev) {
@@ -23269,13 +23324,22 @@
 						return state;
 					}
 
-					if (nextIndex < 0 || nextIndex + 1 > state.order.length) {
-						return state;
+					if (nextIndex < 0) {
+						return _extends({}, state);
 					}
+
+					if (nextIndex + 1 > _order.length) {
+						return _extends({}, state);
+					}
+
+					var _positionMeta = getPositionMeta({
+						index: nextIndex,
+						images: _order
+					});
 
 					return _extends({}, state, {
 						activeImage: state.order[nextIndex]
-					});
+					}, _positionMeta);
 				}
 
 			case FILTER_TAG:
@@ -23430,7 +23494,7 @@
 
 	var _MainImage2 = _interopRequireDefault(_MainImage);
 
-	var _Tag = __webpack_require__(219);
+	var _Tag = __webpack_require__(218);
 
 	var _Tag2 = _interopRequireDefault(_Tag);
 
@@ -23441,6 +23505,8 @@
 
 		propTypes: {
 			image: _react.PropTypes.object.isRequired,
+			atBeginning: _react.PropTypes.bool,
+			atEnd: _react.PropTypes.bool,
 			clearActiveImage: _react.PropTypes.func.isRequired,
 			navigatePrev: _react.PropTypes.func.isRequired,
 			navigateNext: _react.PropTypes.func.isRequired,
@@ -23489,12 +23555,16 @@
 				_react2.default.createElement("br", null),
 				_react2.default.createElement(
 					"button",
-					{ onClick: this.props.navigatePrev },
+					{
+						onClick: this.props.navigatePrev,
+						disabled: this.props.atBeginning },
 					"prev"
 				),
 				_react2.default.createElement(
 					"button",
-					{ onClick: this.props.navigateNext },
+					{
+						onClick: this.props.navigateNext,
+						disabled: this.props.atEnd },
 					"next"
 				)
 			);
@@ -24435,12 +24505,6 @@
 
 /***/ },
 /* 218 */
-/***/ function(module, exports) {
-
-	// removed by extract-text-webpack-plugin
-
-/***/ },
-/* 219 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -24483,6 +24547,12 @@
 	});
 
 	exports.default = Tag;
+
+/***/ },
+/* 219 */
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
 
 /***/ }
 /******/ ]);

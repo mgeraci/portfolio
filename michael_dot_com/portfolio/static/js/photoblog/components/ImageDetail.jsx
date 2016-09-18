@@ -5,6 +5,8 @@ import Tag from "./Tag";
 const ImageDetail = React.createClass({
 	propTypes: {
 		image: PropTypes.object.isRequired,
+		atBeginning: PropTypes.bool,
+		atEnd: PropTypes.bool,
 		clearActiveImage: PropTypes.func.isRequired,
 		navigatePrev: PropTypes.func.isRequired,
 		navigateNext: PropTypes.func.isRequired,
@@ -43,10 +45,14 @@ const ImageDetail = React.createClass({
 
 				<br />
 
-				<button onClick={this.props.navigatePrev}>
+				<button
+						onClick={this.props.navigatePrev}
+						disabled={this.props.atBeginning}>
 					prev
 				</button>
-				<button onClick={this.props.navigateNext}>
+				<button
+						onClick={this.props.navigateNext}
+						disabled={this.props.atEnd}>
 					next
 				</button>
 			</div>

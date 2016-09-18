@@ -24,15 +24,21 @@ const App = React.createClass({
 		onNavigateNext: PropTypes.func.isRequired,
 		onFilterTag: PropTypes.func.isRequired,
 		onClearFilterTag: PropTypes.func.isRequired,
+		atBeginning: PropTypes.bool,
+		atEnd: PropTypes.bool,
 	},
 
-	render() {
+	_getVisibleImageIds() {
 		let imageIds = this.props.order;
 
 		if (this.props.filteredOrder && this.props.filteredOrder.length) {
 			imageIds = this.props.filteredOrder;
 		}
 
+		return imageIds;
+	},
+
+	render() {
 		return (
 			<div>
 				{this.props.filteredTerm &&
@@ -44,7 +50,7 @@ const App = React.createClass({
 					</span>
 				}
 
-				{imageIds.map(id =>
+				{this._getVisibleImageIds().map(id =>
 					<ImageLink
 						key={id}
 						image={this.props.images[id]}
@@ -59,6 +65,8 @@ const App = React.createClass({
 						clearActiveImage={this.props.onClearActiveImage}
 						navigatePrev={this.props.onNavigatePrev}
 						navigateNext={this.props.onNavigateNext}
+						atBeginning={this.props.atBeginning}
+						atEnd={this.props.atEnd}
 						filterTag={this.props.onFilterTag}
 					/>
 				}
@@ -74,6 +82,9 @@ function mapStateToProps(state) {
 		filteredOrder: state.filteredOrder,
 		filteredTerm: state.filteredTerm,
 		activeImage: state.activeImage,
+
+		atBeginning: state.atBeginning,
+		atEnd: state.atEnd,
 	};
 }
 

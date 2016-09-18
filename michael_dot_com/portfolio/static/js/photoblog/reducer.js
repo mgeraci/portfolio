@@ -1,7 +1,48 @@
+// constants and helpers
+// ----------------------------------------------------------------------------
+
 const DIRECTIONS = {
 	prev: "prev",
 	next: "next",
 };
+
+const getVisibleImages = function getVisibleImages(state) {
+	// get the current set of images
+	let order = state.order;
+
+	if (state.filteredOrder && state.filteredOrder.length) {
+		order = state.filteredOrder;
+	}
+
+	return order;
+};
+
+const getPositionMeta = function getPositionMeta(params) {
+	if (typeof(params.index) === "undefined" || params.index === null) {
+		return {};
+	}
+
+	if (!params.images || params.images.length === 0) {
+		return {};
+	}
+
+	let atBeginning = false;
+	let atEnd = false;
+
+	if (params.index === 0) {
+		atBeginning = true;
+	}
+
+	if (params.index + 1 === params.images.length) {
+		atEnd = true;
+	}
+
+	return {
+		atBeginning,
+		atEnd,
+	};
+};
+
 
 // action types
 // ----------------------------------------------------------------------------
@@ -19,9 +60,21 @@ export const CLEAR_FILTER_TAG = "PHOTOBLOG.CLEAR_FILTER_TAG";
 export default function reducer(state, action) {
 	switch (action.type) {
 		case SET_ACTIVE_IMAGE: {
+			if (!action.id) {
+				return state;
+			}
+
+			const order = getVisibleImages(state);
+			const index = order.indexOf(action.id);
+			const positionMeta = getPositionMeta({
+				index: index,
+				images: order,
+			});
+
 			return {
 				...state,
 				activeImage: action.id,
+				...positionMeta,
 			};
 		}
 
@@ -37,13 +90,7 @@ export default function reducer(state, action) {
 				return state;
 			}
 
-			// get the current set of images
-			let order = state.order;
-
-			if (state.filteredOrder && state.filteredOrder.length) {
-				order = state.filteredOrder;
-			}
-
+			const order = getVisibleImages(state);
 			const currentIndex = order.indexOf(state.activeImage);
 			let nextIndex;
 
@@ -55,13 +102,27 @@ export default function reducer(state, action) {
 				return state;
 			}
 
-			if (nextIndex < 0 || nextIndex + 1 > state.order.length) {
-				return state;
+			if (nextIndex < 0) {
+				return {
+					...state,
+				};
 			}
+
+			if (nextIndex + 1 > order.length) {
+				return {
+					...state,
+				};
+			}
+
+			const positionMeta = getPositionMeta({
+				index: nextIndex,
+				images: order,
+			});
 
 			return {
 				...state,
 				activeImage: state.order[nextIndex],
+				...positionMeta,
 			};
 		}
 
