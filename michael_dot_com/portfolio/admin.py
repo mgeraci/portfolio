@@ -8,6 +8,7 @@ from portfolio.models import (
     Graphic,
     GraphicImage,
     PhotoblogImage,
+    PhotoblogTag,
 )
 
 
@@ -33,6 +34,11 @@ class GraphicImageAdmin(admin.ModelAdmin):
     pass
 
 class PhotoblogImageAdmin(admin.ModelAdmin):
+    filter_horizontal = (
+        'tags',
+    )
+
+class PhotoblogTagAdmin(admin.ModelAdmin):
     pass
 
 
@@ -44,3 +50,4 @@ admin.site.register(Recording, RecordingAdmin)
 admin.site.register(Graphic, GraphicAdmin)
 admin.site.register(GraphicImage, GraphicImageAdmin)
 admin.site.register(PhotoblogImage, PhotoblogImageAdmin)
+admin.site.register(PhotoblogTag, PhotoblogTagAdmin)

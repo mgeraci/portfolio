@@ -96,8 +96,6 @@ def photography(request):
         imageOrder.append(image.id)
         imageMap[image.id] = image.to_json()
 
-    imageOrder.reverse()
-
     context = {
         'images': images,
         'images_json': json.dumps({

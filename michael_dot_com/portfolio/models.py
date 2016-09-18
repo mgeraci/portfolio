@@ -1,5 +1,6 @@
 from __future__ import unicode_literals
 from django.db import models
+from django.template.defaultfilters import slugify
 
 
 class Composition(models.Model):
@@ -108,20 +109,54 @@ class Recording(models.Model):
         return u'{}'.format(self.title)
 
 
+class PhotoblogTag(models.Model):
+    name = models.CharField(max_length=200)
+    slug = models.SlugField(blank=True)
+
+    class Meta:
+        ordering = ['name']
+
+    # add a slug on save, if one doesn't exist
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.name)
+
+        super(PhotoblogTag, self).save(*args, **kwargs)
+
+    def to_json(self):
+        return {
+            'name': self.name,
+            'slug': self.slug,
+        }
+
+    def __unicode__(self):
+        return u'{}'.format(self.name)
+
+
 class PhotoblogImage(models.Model):
     id = models.PositiveSmallIntegerField(primary_key=True)
     title = models.CharField(max_length=200)
     year = models.PositiveSmallIntegerField()
     thumbnail = models.FileField(upload_to='photoblog', blank=True, null=True)
     image = models.FileField(upload_to='photoblog', blank=True, null=True)
+    tags = models.ManyToManyField(PhotoblogTag, blank=True)
+
+    class Meta:
+        ordering = ['-id']
 
     def to_json(self):
+        json_tags = []
+
+        for tag in self.tags.all():
+            json_tags.append(tag.to_json())
+
         return {
             'id': self.id,
             'title': self.title,
             'year': self.year,
             'thumbnail': self.thumbnail.url,
             'image': self.image.url,
+            'tags': json_tags,
         }
 
     def __unicode__(self):
