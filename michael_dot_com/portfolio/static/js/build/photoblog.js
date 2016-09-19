@@ -23222,6 +23222,8 @@
 	exports.navigateNext = navigateNext;
 	exports.filterTag = filterTag;
 	exports.clearFilterTag = clearFilterTag;
+	/* global history */
+
 	// constants and helpers
 	// ----------------------------------------------------------------------------
 
@@ -23267,6 +23269,16 @@
 		};
 	};
 
+	var setHistory = function setHistory(url, data) {
+		if (typeof history === "undefined" || history === null) {
+			return false;
+		}
+
+		history.pushState(data, null, url);
+
+		return true;
+	};
+
 	// action types
 	// ----------------------------------------------------------------------------
 
@@ -23294,6 +23306,8 @@
 						images: order
 					});
 
+					setHistory("/photography/blog/" + action.id);
+
 					return _extends({}, state, {
 						activeImage: action.id
 					}, positionMeta);
@@ -23301,6 +23315,8 @@
 
 			case CLEAR_ACTIVE_IMAGE:
 				{
+					setHistory("/photography/blog");
+
 					return _extends({}, state, {
 						activeImage: null
 					});
@@ -23337,8 +23353,12 @@
 						images: _order
 					});
 
+					var nextId = state.order[nextIndex];
+
+					setHistory("/photography/blog/" + nextId);
+
 					return _extends({}, state, {
-						activeImage: state.order[nextIndex]
+						activeImage: nextId
 					}, _positionMeta);
 				}
 
@@ -23361,6 +23381,8 @@
 							});
 						});
 
+						setHistory("/photography/blog/browse/" + action.tag.slug);
+
 						return {
 							v: _extends({}, state, {
 								activeImage: null,
@@ -23375,6 +23397,8 @@
 
 			case CLEAR_FILTER_TAG:
 				{
+					setHistory("/photography/blog");
+
 					return _extends({}, state, {
 						activeImage: null,
 						filteredOrder: null,
