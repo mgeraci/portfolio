@@ -80,7 +80,38 @@
 				_reactRedux.Provider,
 				{ store: store },
 				_react2.default.createElement(_App2.default, null)
-			), document.body.appendChild(document.getElementById("react-root")));
+			), document.getElementById("react-root"));
+
+			// initial navigation
+			var url = window.location.pathname;
+
+			if (url.match(/photography\/blog\/[0-9]+\/?$/)) {
+				var id = url.replace("/photography/blog/", "").replace(/\/$/, "");
+				id = parseInt(id, 10);
+
+				store.dispatch((0, _reducer.setActiveImage)(id));
+			} else if (url.match("/photography/blog/browse/")) {
+				(function () {
+					var slug = url.replace("/photography/blog/browse/", "");
+
+					// this kind of sucks, but the tag action expects to be called with its
+					// name and slug. so let's just try to find it from the initial data
+					// load.
+					var res = void 0;
+
+					data.order.forEach(function (id) {
+						data.images[id].tags.forEach(function (tag) {
+							if (tag.slug === slug) {
+								res = tag;
+							}
+						});
+					});
+
+					if (res.name && res.slug) {
+						store.dispatch((0, _reducer.filterTag)(res));
+					}
+				})();
+			}
 		}
 	};
 
