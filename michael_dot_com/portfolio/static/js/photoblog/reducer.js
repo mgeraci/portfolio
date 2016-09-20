@@ -1,56 +1,10 @@
-/* global history */
-
-// constants and helpers
-// ----------------------------------------------------------------------------
 
 import { DIRECTIONS } from "./util/constants.js";
-
-const getVisibleImages = function getVisibleImages(state) {
-	// get the current set of images
-	let order = state.order;
-
-	if (state.filteredOrder && state.filteredOrder.length) {
-		order = state.filteredOrder;
-	}
-
-	return order;
-};
-
-const getPositionMeta = function getPositionMeta(params) {
-	if (typeof(params.index) === "undefined" || params.index === null) {
-		return {};
-	}
-
-	if (!params.images || params.images.length === 0) {
-		return {};
-	}
-
-	let atBeginning = false;
-	let atEnd = false;
-
-	if (params.index === 0) {
-		atBeginning = true;
-	}
-
-	if (params.index + 1 === params.images.length) {
-		atEnd = true;
-	}
-
-	return {
-		atBeginning,
-		atEnd,
-	};
-};
-
-const setHistory = function setHistory(url, data) {
-	if (typeof(history) === "undefined" || history === null) {
-		return false;
-	}
-
-	history.pushState(data, null, url);
-
-	return true;
-};
+import {
+	getVisibleImages,
+	getPositionMeta,
+	setHistory,
+} from "./util/helpers.js";
 
 
 // action types

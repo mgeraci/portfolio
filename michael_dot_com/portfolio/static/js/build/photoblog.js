@@ -24098,10 +24098,7 @@
 
 	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
 
-	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; /* global history */
-
-	// constants and helpers
-	// ----------------------------------------------------------------------------
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 	exports.default = reducer;
 	exports.setActiveImage = setActiveImage;
@@ -24113,52 +24110,7 @@
 
 	var _constants = __webpack_require__(215);
 
-	var getVisibleImages = function getVisibleImages(state) {
-		// get the current set of images
-		var order = state.order;
-
-		if (state.filteredOrder && state.filteredOrder.length) {
-			order = state.filteredOrder;
-		}
-
-		return order;
-	};
-
-	var getPositionMeta = function getPositionMeta(params) {
-		if (typeof params.index === "undefined" || params.index === null) {
-			return {};
-		}
-
-		if (!params.images || params.images.length === 0) {
-			return {};
-		}
-
-		var atBeginning = false;
-		var atEnd = false;
-
-		if (params.index === 0) {
-			atBeginning = true;
-		}
-
-		if (params.index + 1 === params.images.length) {
-			atEnd = true;
-		}
-
-		return {
-			atBeginning: atBeginning,
-			atEnd: atEnd
-		};
-	};
-
-	var setHistory = function setHistory(url, data) {
-		if (typeof history === "undefined" || history === null) {
-			return false;
-		}
-
-		history.pushState(data, null, url);
-
-		return true;
-	};
+	var _helpers = __webpack_require__(220);
 
 	// action types
 	// ----------------------------------------------------------------------------
@@ -24180,14 +24132,14 @@
 						return state;
 					}
 
-					var order = getVisibleImages(state);
+					var order = (0, _helpers.getVisibleImages)(state);
 					var index = order.indexOf(action.id);
-					var positionMeta = getPositionMeta({
+					var positionMeta = (0, _helpers.getPositionMeta)({
 						index: index,
 						images: order
 					});
 
-					setHistory("/photography/blog/" + action.id);
+					(0, _helpers.setHistory)("/photography/blog/" + action.id);
 
 					return _extends({}, state, {
 						activeImage: action.id
@@ -24196,7 +24148,7 @@
 
 			case CLEAR_ACTIVE_IMAGE:
 				{
-					setHistory("/photography/blog");
+					(0, _helpers.setHistory)("/photography/blog");
 
 					return _extends({}, state, {
 						activeImage: null
@@ -24209,7 +24161,7 @@
 						return state;
 					}
 
-					var _order = getVisibleImages(state);
+					var _order = (0, _helpers.getVisibleImages)(state);
 					var currentIndex = _order.indexOf(state.activeImage);
 					var nextIndex = void 0;
 
@@ -24229,14 +24181,14 @@
 						return _extends({}, state);
 					}
 
-					var _positionMeta = getPositionMeta({
+					var _positionMeta = (0, _helpers.getPositionMeta)({
 						index: nextIndex,
 						images: _order
 					});
 
 					var nextId = state.order[nextIndex];
 
-					setHistory("/photography/blog/" + nextId);
+					(0, _helpers.setHistory)("/photography/blog/" + nextId);
 
 					return _extends({}, state, {
 						activeImage: nextId
@@ -24262,7 +24214,7 @@
 							});
 						});
 
-						setHistory("/photography/blog/browse/" + action.tag.slug);
+						(0, _helpers.setHistory)("/photography/blog/browse/" + action.tag.slug);
 
 						return {
 							v: _extends({}, state, {
@@ -24278,7 +24230,7 @@
 
 			case CLEAR_FILTER_TAG:
 				{
-					setHistory("/photography/blog");
+					(0, _helpers.setHistory)("/photography/blog");
 
 					return _extends({}, state, {
 						activeImage: null,
@@ -24656,9 +24608,12 @@
 		value: true
 	});
 
-	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
+	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; }; /* global history */
 
 	exports.parseUrl = parseUrl;
+	exports.getVisibleImages = getVisibleImages;
+	exports.getPositionMeta = getPositionMeta;
+	exports.setHistory = setHistory;
 
 	var _constants = __webpack_require__(215);
 
@@ -24721,6 +24676,76 @@
 		}
 
 		return null;
+	}
+
+	/*
+	 * Get the filtered images, falling back to all of the images
+	 *
+	 * @param {object} state - the whole application state
+	 *
+	 * @returns {array} order - an ordered list of photo ids that are visible
+	 */
+	function getVisibleImages(state) {
+		// get the current set of images
+		var order = state.order;
+
+		if (state.filteredOrder && state.filteredOrder.length) {
+			order = state.filteredOrder;
+		}
+
+		return order;
+	}
+
+	/*
+	 * Given an index and a set of images, decide if the image is at the start or
+	 * end of the set.
+	 *
+	 * @param {integer} index - the position of the image in the set
+	 * @param {array} images - a set of images that the index is theoretically in
+	 *
+	 * @returns {object} - a dict with the booleans atBeginning and atEnd
+	 */
+	function getPositionMeta(params) {
+		if (typeof params.index === "undefined" || params.index === null) {
+			return {};
+		}
+
+		if (!params.images || params.images.length === 0) {
+			return {};
+		}
+
+		var atBeginning = false;
+		var atEnd = false;
+
+		if (params.index === 0) {
+			atBeginning = true;
+		}
+
+		if (params.index + 1 === params.images.length) {
+			atEnd = true;
+		}
+
+		return {
+			atBeginning: atBeginning,
+			atEnd: atEnd
+		};
+	}
+
+	/*
+	 * Set the history, if available
+	 *
+	 * @param {string} url - the url to set
+	 *
+	 * @returns {boolean} - whether or not the page history was updated
+	 */
+	function setHistory(url) {
+		if (typeof history === "undefined" || history === null) {
+			return false;
+		}
+
+		history.pushState(null, null, url);
+
+		return true;
 	}
 
 	exports.default = {};
