@@ -1,4 +1,6 @@
 $thumbnail-size: 75px
+$image-dimension-big: 700px
+$image-dimension-small: 469px
 
 .page-photography
   &-thumbnails
@@ -47,6 +49,17 @@ $thumbnail-size: 75px
 
       &:first-child
         margin-left: 0
+
+    &-content
+      margin-top: 40px
+      margin-right: auto
+      margin-left: auto
+
+      &--portrait
+        width: $image-dimension-small
+
+      &--landscape
+        width: $image-dimension-big
 
 
 // react css transition group

@@ -1,5 +1,6 @@
 import React, { PropTypes } from "react";
 import ReactCSSTransitionGroup from "react-addons-css-transition-group";
+import classnames from "classnames";
 
 import MainImage from "./MainImage";
 import ImageMeta from "./ImageMeta";
@@ -41,50 +42,60 @@ const ImageDetail = React.createClass({
 
 	render() {
 		const { image } = this.props;
+		const contentClasses = {
+			"page-photography-main-content": true,
+			"page-photography-main-content--portrait":
+				this.state.orientation === ORIENTATIONS.portrait,
+			"page-photography-main-content--landscape":
+				this.state.orientation === ORIENTATIONS.landscape,
+		};
 
 		return (
 			<div className="page-photography-main" key={image.title}>
-				<MainImage
-					src={image.image}
-					alt={image.title}
-					loaded={this.state.loaded}
-					onLoad={this._onLoad}
-				/>
 
-				<ReactCSSTransitionGroup
-						transitionName="main-image"
-						transitionAppear
-						transitionEnterTimeout={500}
-						transitionAppearTimeout={500}
-						transitionLeaveTimeout={500}>
-					{this.state.loaded &&
-						<ImageMeta
-							title={image.title}
-							year={image.year}
-							tags={image.tags}
-							filterTag={this.props.filterTag}
-						/>
-					}
-				</ReactCSSTransitionGroup>
+				<div className={classnames(contentClasses)}>
+					<MainImage
+						src={image.image}
+						alt={image.title}
+						loaded={this.state.loaded}
+						onLoad={this._onLoad}
+					/>
 
-				<br />
+					<ReactCSSTransitionGroup
+							transitionName="main-image"
+							transitionAppear
+							transitionEnterTimeout={500}
+							transitionAppearTimeout={500}
+							transitionLeaveTimeout={500}>
+						{this.state.loaded &&
+							<ImageMeta
+								title={image.title}
+								year={image.year}
+								tags={image.tags}
+								filterTag={this.props.filterTag}
+							/>
+						}
+					</ReactCSSTransitionGroup>
 
-				<button onClick={this.props.clearActiveImage}>
-					close
-				</button>
+					<br />
 
-				<br />
+					<button onClick={this.props.clearActiveImage}>
+						close
+					</button>
 
-				<button
-						onClick={this.props.navigatePrev}
-						disabled={this.props.atBeginning}>
-					prev
-				</button>
-				<button
-						onClick={this.props.navigateNext}
-						disabled={this.props.atEnd}>
-					next
-				</button>
+					<br />
+
+					<button
+							onClick={this.props.navigatePrev}
+							disabled={this.props.atBeginning}>
+						prev
+					</button>
+					<button
+							onClick={this.props.navigateNext}
+							disabled={this.props.atEnd}>
+						next
+					</button>
+				</div>
 			</div>
 		);
 	},

@@ -724,6 +724,14 @@ nav::after {
       text-shadow: 0 1px 2px rgba(0, 0, 0, 0.15); }
     .page-photography-main a.page-photography-main-tag:first-child {
       margin-left: 0; }
+  .page-photography-main-content {
+    margin-top: 40px;
+    margin-right: auto;
+    margin-left: auto; }
+    .page-photography-main-content--portrait {
+      width: 469px; }
+    .page-photography-main-content--landscape {
+      width: 700px; }
 
 .main-image-enter,
 .main-image-appear {
