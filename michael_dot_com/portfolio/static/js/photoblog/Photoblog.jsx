@@ -6,51 +6,50 @@ import { Provider } from "react-redux";
 import { createStore } from "redux";
 
 import App from "./components/App";
-import reducer, { setActiveImage, filterTag } from "./reducer";
+import reducer, { setActiveImage, filterTag, clearActiveImage } from "./reducer";
+import { URLS } from "./util/constants.js";
+import { parseUrl } from "./util/helpers.js";
 
 require("../../css/styles.sass");
 
+
 window.Photoblog = {
 	init(data) {
-		const store = createStore(
+		this.store = createStore(
 			reducer,
 			data
 		);
 
 		ReactDOM.render(
-			<Provider store={store}>
+			<Provider store={this.store}>
 				<App />
 			</Provider>,
 			document.getElementById("react-root")
 		);
 
-		// initial navigation
-		const url = window.location.pathname;
+		// trigger an action for the initial navigation (i.e., the url that the
+		// user hits when they first load the app)
+		this._navigate();
 
-		if (url.match(/photography\/blog\/[0-9]+\/?$/)) {
-			let id = url.replace("/photography/blog/", "").replace(/\/$/, "");
-			id = parseInt(id, 10);
+		// add a watcher for the browser back buttons
+		window.addEventListener("popstate", () => this._navigate());
+	},
 
-			store.dispatch(setActiveImage(id));
-		} else if (url.match("/photography/blog/browse/")) {
-			const slug = url.replace("/photography/blog/browse/", "");
+	_navigate() {
+		const parsedUrl = parseUrl(window.location.pathname, this.store.getState());
 
-			// this kind of sucks, but the tag action expects to be called with its
-			// name and slug. so let's just try to find it from the initial data
-			// load.
-			let res;
-
-			data.order.forEach((id) => {
-				data.images[id].tags.forEach((tag) => {
-					if (tag.slug === slug) {
-						res = tag;
-					}
-				});
-			});
-
-			if (res.name && res.slug) {
-				store.dispatch((filterTag(res)));
-			}
+		if (parsedUrl.page === URLS.photo) {
+			this.store.dispatch(
+				setActiveImage(parsedUrl.data)
+			);
+		} else if (parsedUrl.page === URLS.tag) {
+			this.store.dispatch(
+				filterTag(parsedUrl.data)
+			);
+		} else if (parsedUrl.page === URLS.home) {
+			this.store.dispatch(
+				clearActiveImage()
+			);
 		}
 	},
 };

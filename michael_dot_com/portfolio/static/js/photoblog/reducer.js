@@ -3,10 +3,7 @@
 // constants and helpers
 // ----------------------------------------------------------------------------
 
-const DIRECTIONS = {
-	prev: "prev",
-	next: "next",
-};
+import { DIRECTIONS } from "./util/constants.js";
 
 const getVisibleImages = function getVisibleImages(state) {
 	// get the current set of images

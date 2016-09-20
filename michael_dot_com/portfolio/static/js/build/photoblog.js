@@ -66,6 +66,10 @@
 
 	var _reducer2 = _interopRequireDefault(_reducer);
 
+	var _constants = __webpack_require__(221);
+
+	var _helpers = __webpack_require__(222);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	/* global window, document */
@@ -74,43 +78,34 @@
 
 	window.Photoblog = {
 		init: function init(data) {
-			var store = (0, _redux.createStore)(_reducer2.default, data);
+			var _this = this;
+
+			this.store = (0, _redux.createStore)(_reducer2.default, data);
 
 			_reactDom2.default.render(_react2.default.createElement(
 				_reactRedux.Provider,
-				{ store: store },
+				{ store: this.store },
 				_react2.default.createElement(_App2.default, null)
 			), document.getElementById("react-root"));
 
-			// initial navigation
-			var url = window.location.pathname;
+			// trigger an action for the initial navigation (i.e., the url that the
+			// user hits when they first load the app)
+			this._navigate();
 
-			if (url.match(/photography\/blog\/[0-9]+\/?$/)) {
-				var id = url.replace("/photography/blog/", "").replace(/\/$/, "");
-				id = parseInt(id, 10);
+			// add a watcher for the browser back buttons
+			window.addEventListener("popstate", function () {
+				return _this._navigate();
+			});
+		},
+		_navigate: function _navigate() {
+			var parsedUrl = (0, _helpers.parseUrl)(window.location.pathname, this.store.getState());
 
-				store.dispatch((0, _reducer.setActiveImage)(id));
-			} else if (url.match("/photography/blog/browse/")) {
-				(function () {
-					var slug = url.replace("/photography/blog/browse/", "");
-
-					// this kind of sucks, but the tag action expects to be called with its
-					// name and slug. so let's just try to find it from the initial data
-					// load.
-					var res = void 0;
-
-					data.order.forEach(function (id) {
-						data.images[id].tags.forEach(function (tag) {
-							if (tag.slug === slug) {
-								res = tag;
-							}
-						});
-					});
-
-					if (res.name && res.slug) {
-						store.dispatch((0, _reducer.filterTag)(res));
-					}
-				})();
+			if (parsedUrl.page === _constants.URLS.photo) {
+				this.store.dispatch((0, _reducer.setActiveImage)(parsedUrl.data));
+			} else if (parsedUrl.page === _constants.URLS.tag) {
+				this.store.dispatch((0, _reducer.filterTag)(parsedUrl.data));
+			} else if (parsedUrl.page === _constants.URLS.home) {
+				this.store.dispatch((0, _reducer.clearActiveImage)());
 			}
 		}
 	};
@@ -23234,17 +23229,21 @@
 
 /***/ },
 /* 207 */
-/***/ function(module, exports) {
+/***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 
 	Object.defineProperty(exports, "__esModule", {
 		value: true
 	});
+	exports.CLEAR_FILTER_TAG = exports.FILTER_TAG = exports.NAVIGATE = exports.CLEAR_ACTIVE_IMAGE = exports.SET_ACTIVE_IMAGE = undefined;
 
 	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
 
-	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; /* global history */
+
+	// constants and helpers
+	// ----------------------------------------------------------------------------
 
 	exports.default = reducer;
 	exports.setActiveImage = setActiveImage;
@@ -23253,15 +23252,8 @@
 	exports.navigateNext = navigateNext;
 	exports.filterTag = filterTag;
 	exports.clearFilterTag = clearFilterTag;
-	/* global history */
 
-	// constants and helpers
-	// ----------------------------------------------------------------------------
-
-	var DIRECTIONS = {
-		prev: "prev",
-		next: "next"
-	};
+	var _constants = __webpack_require__(221);
 
 	var getVisibleImages = function getVisibleImages(state) {
 		// get the current set of images
@@ -23363,9 +23355,9 @@
 					var currentIndex = _order.indexOf(state.activeImage);
 					var nextIndex = void 0;
 
-					if (action.direction === DIRECTIONS.prev) {
+					if (action.direction === _constants.DIRECTIONS.prev) {
 						nextIndex = currentIndex - 1;
-					} else if (action.direction === DIRECTIONS.next) {
+					} else if (action.direction === _constants.DIRECTIONS.next) {
 						nextIndex = currentIndex + 1;
 					} else {
 						return state;
@@ -23463,14 +23455,14 @@
 	function navigatePrev() {
 		return {
 			type: NAVIGATE,
-			direction: DIRECTIONS.prev
+			direction: _constants.DIRECTIONS.prev
 		};
 	}
 
 	function navigateNext() {
 		return {
 			type: NAVIGATE,
-			direction: DIRECTIONS.next
+			direction: _constants.DIRECTIONS.next
 		};
 	}
 
@@ -24608,6 +24600,108 @@
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
+
+/***/ },
+/* 220 */,
+/* 221 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	var URLS = exports.URLS = {
+		home: "home",
+		photo: "photo",
+		tag: "tag"
+	};
+
+	var DIRECTIONS = exports.DIRECTIONS = {
+		prev: "prev",
+		next: "next"
+	};
+
+	exports.default = {};
+
+/***/ },
+/* 222 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+
+	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
+
+	exports.parseUrl = parseUrl;
+
+	var _constants = __webpack_require__(221);
+
+	/*
+	 * Determine what page a given url is (home, a photo, or a tag), and return
+	 * pertinent information about that url.
+	 *
+	 * @param {string} url - the current page url
+	 * @param {object} state - the current application state
+	 *
+	 * @returns {obejct} - keys page, the current page, and data, additional info
+	 */
+	function parseUrl(url) {
+		var initialData = arguments.length <= 1 || arguments[1] === undefined ? {} : arguments[1];
+
+		if (url.match(/photography\/blog\/[0-9]+\/?$/)) {
+			var id = url.replace("/photography/blog/", "").replace(/\/$/, "");
+			id = parseInt(id, 10);
+
+			return {
+				page: _constants.URLS.photo,
+				data: id
+			};
+		} else if (url.match("/photography/blog/browse/")) {
+			var _ret = function () {
+				var slug = url.replace("/photography/blog/browse/", "");
+
+				// this kind of sucks, but the tag action expects to be called with its
+				// name and slug. so let's just try to find it from the initial data
+				// load.
+				var res = void 0;
+				var data = {};
+
+				initialData.order.forEach(function (id) {
+					initialData.images[id].tags.forEach(function (tag) {
+						if (tag.slug === slug) {
+							res = tag;
+						}
+					});
+				});
+
+				if (res.name && res.slug) {
+					data = res;
+				}
+
+				return {
+					v: {
+						page: _constants.URLS.tag,
+						data: data
+					}
+				};
+			}();
+
+			if ((typeof _ret === "undefined" ? "undefined" : _typeof(_ret)) === "object") return _ret.v;
+		} else if (url.match(/\/photography\/blog\/?/)) {
+			return {
+				page: _constants.URLS.home,
+				data: null
+			};
+		}
+
+		return null;
+	}
+
+	exports.default = {};
 
 /***/ }
 /******/ ]);
