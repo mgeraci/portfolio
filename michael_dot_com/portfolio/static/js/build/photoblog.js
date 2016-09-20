@@ -62,19 +62,19 @@
 
 	var _App2 = _interopRequireDefault(_App);
 
-	var _reducer = __webpack_require__(207);
+	var _reducer = __webpack_require__(214);
 
 	var _reducer2 = _interopRequireDefault(_reducer);
 
-	var _constants = __webpack_require__(221);
+	var _constants = __webpack_require__(215);
 
-	var _helpers = __webpack_require__(222);
+	var _helpers = __webpack_require__(220);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	/* global window, document */
 
-	__webpack_require__(219);
+	__webpack_require__(221);
 
 	window.Photoblog = {
 		init: function init(data) {
@@ -23108,15 +23108,19 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
+	var _reactAddonsCssTransitionGroup = __webpack_require__(207);
+
+	var _reactAddonsCssTransitionGroup2 = _interopRequireDefault(_reactAddonsCssTransitionGroup);
+
 	var _reactRedux = __webpack_require__(182);
 
-	var _reducer = __webpack_require__(207);
+	var _reducer = __webpack_require__(214);
 
-	var _ImageLink = __webpack_require__(208);
+	var _Thumbnail = __webpack_require__(216);
 
-	var _ImageLink2 = _interopRequireDefault(_ImageLink);
+	var _Thumbnail2 = _interopRequireDefault(_Thumbnail);
 
-	var _ImageDetail = __webpack_require__(209);
+	var _ImageDetail = __webpack_require__(217);
 
 	var _ImageDetail2 = _interopRequireDefault(_ImageDetail);
 
@@ -23154,37 +23158,55 @@
 			var _this = this;
 
 			return _react2.default.createElement(
-				"div",
+				"span",
 				null,
-				this.props.filteredTerm && _react2.default.createElement(
-					"span",
-					null,
-					"Browsing images tagged \"",
-					this.props.filteredTerm,
-					"\"",
-					_react2.default.createElement(
-						"button",
-						{ onClick: this.props.onClearFilterTag },
-						"clear"
-					)
+				_react2.default.createElement(
+					"div",
+					{ className: "page-photography-thumbnails" },
+					this.props.filteredTerm && _react2.default.createElement(
+						"h2",
+						{ className: "page-photography-thumbnails-title" },
+						"Images tagged ",
+						_react2.default.createElement(
+							"em",
+							null,
+							this.props.filteredTerm
+						),
+						_react2.default.createElement(
+							"button",
+							{
+								className: "page-photography-thumbnails-title-clear",
+								onClick: this.props.onClearFilterTag },
+							"remove filter"
+						)
+					),
+					this._getVisibleImageIds().map(function (id) {
+						return _react2.default.createElement(_Thumbnail2.default, {
+							key: id,
+							image: _this.props.images[id],
+							setActiveImage: _this.props.onSetActiveImage,
+							clearActiveImage: _this.props.onClearActiveImage
+						});
+					})
 				),
-				this._getVisibleImageIds().map(function (id) {
-					return _react2.default.createElement(_ImageLink2.default, {
-						key: id,
-						image: _this.props.images[id],
-						setActiveImage: _this.props.onSetActiveImage,
-						clearActiveImage: _this.props.onClearActiveImage
-					});
-				}),
-				this.props.activeImage && _react2.default.createElement(_ImageDetail2.default, {
-					image: this.props.images[this.props.activeImage],
-					clearActiveImage: this.props.onClearActiveImage,
-					navigatePrev: this.props.onNavigatePrev,
-					navigateNext: this.props.onNavigateNext,
-					atBeginning: this.props.atBeginning,
-					atEnd: this.props.atEnd,
-					filterTag: this.props.onFilterTag
-				})
+				this.props.activeImage && _react2.default.createElement(
+					_reactAddonsCssTransitionGroup2.default,
+					{
+						transitionName: "image-detail",
+						transitionAppear: true,
+						transitionEnterTimeout: 500,
+						transitionAppearTimeout: 500,
+						transitionLeaveTimeout: 500 },
+					_react2.default.createElement(_ImageDetail2.default, {
+						image: this.props.images[this.props.activeImage],
+						clearActiveImage: this.props.onClearActiveImage,
+						navigatePrev: this.props.onNavigatePrev,
+						navigateNext: this.props.onNavigateNext,
+						atBeginning: this.props.atBeginning,
+						atEnd: this.props.atEnd,
+						filterTag: this.props.onFilterTag
+					})
+				)
 			);
 		}
 	});
@@ -23231,497 +23253,10 @@
 /* 207 */
 /***/ function(module, exports, __webpack_require__) {
 
-	"use strict";
-
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-	exports.CLEAR_FILTER_TAG = exports.FILTER_TAG = exports.NAVIGATE = exports.CLEAR_ACTIVE_IMAGE = exports.SET_ACTIVE_IMAGE = undefined;
-
-	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
-
-	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; /* global history */
-
-	// constants and helpers
-	// ----------------------------------------------------------------------------
-
-	exports.default = reducer;
-	exports.setActiveImage = setActiveImage;
-	exports.clearActiveImage = clearActiveImage;
-	exports.navigatePrev = navigatePrev;
-	exports.navigateNext = navigateNext;
-	exports.filterTag = filterTag;
-	exports.clearFilterTag = clearFilterTag;
-
-	var _constants = __webpack_require__(221);
-
-	var getVisibleImages = function getVisibleImages(state) {
-		// get the current set of images
-		var order = state.order;
-
-		if (state.filteredOrder && state.filteredOrder.length) {
-			order = state.filteredOrder;
-		}
-
-		return order;
-	};
-
-	var getPositionMeta = function getPositionMeta(params) {
-		if (typeof params.index === "undefined" || params.index === null) {
-			return {};
-		}
-
-		if (!params.images || params.images.length === 0) {
-			return {};
-		}
-
-		var atBeginning = false;
-		var atEnd = false;
-
-		if (params.index === 0) {
-			atBeginning = true;
-		}
-
-		if (params.index + 1 === params.images.length) {
-			atEnd = true;
-		}
-
-		return {
-			atBeginning: atBeginning,
-			atEnd: atEnd
-		};
-	};
-
-	var setHistory = function setHistory(url, data) {
-		if (typeof history === "undefined" || history === null) {
-			return false;
-		}
-
-		history.pushState(data, null, url);
-
-		return true;
-	};
-
-	// action types
-	// ----------------------------------------------------------------------------
-
-	var SET_ACTIVE_IMAGE = exports.SET_ACTIVE_IMAGE = "PHOTOBLOG.SET_ACTIVE_IMAGE";
-	var CLEAR_ACTIVE_IMAGE = exports.CLEAR_ACTIVE_IMAGE = "PHOTOBLOG.CLEAR_ACTIVE_IMAGE";
-	var NAVIGATE = exports.NAVIGATE = "PHOTOBLOG.NAVIGATE";
-	var FILTER_TAG = exports.FILTER_TAG = "PHOTOBLOG.FILTER_TAG";
-	var CLEAR_FILTER_TAG = exports.CLEAR_FILTER_TAG = "PHOTOBLOG.CLEAR_FILTER_TAG";
-
-	// reducer
-	// ----------------------------------------------------------------------------
-
-	function reducer(state, action) {
-		switch (action.type) {
-			case SET_ACTIVE_IMAGE:
-				{
-					if (!action.id) {
-						return state;
-					}
-
-					var order = getVisibleImages(state);
-					var index = order.indexOf(action.id);
-					var positionMeta = getPositionMeta({
-						index: index,
-						images: order
-					});
-
-					setHistory("/photography/blog/" + action.id);
-
-					return _extends({}, state, {
-						activeImage: action.id
-					}, positionMeta);
-				}
-
-			case CLEAR_ACTIVE_IMAGE:
-				{
-					setHistory("/photography/blog");
-
-					return _extends({}, state, {
-						activeImage: null
-					});
-				}
-
-			case NAVIGATE:
-				{
-					if (!state.activeImage) {
-						return state;
-					}
-
-					var _order = getVisibleImages(state);
-					var currentIndex = _order.indexOf(state.activeImage);
-					var nextIndex = void 0;
-
-					if (action.direction === _constants.DIRECTIONS.prev) {
-						nextIndex = currentIndex - 1;
-					} else if (action.direction === _constants.DIRECTIONS.next) {
-						nextIndex = currentIndex + 1;
-					} else {
-						return state;
-					}
-
-					if (nextIndex < 0) {
-						return _extends({}, state);
-					}
-
-					if (nextIndex + 1 > _order.length) {
-						return _extends({}, state);
-					}
-
-					var _positionMeta = getPositionMeta({
-						index: nextIndex,
-						images: _order
-					});
-
-					var nextId = state.order[nextIndex];
-
-					setHistory("/photography/blog/" + nextId);
-
-					return _extends({}, state, {
-						activeImage: nextId
-					}, _positionMeta);
-				}
-
-			case FILTER_TAG:
-				{
-					var _ret = function () {
-						if (!action.tag) {
-							return {
-								v: state
-							};
-						}
-
-						var filteredOrder = [];
-
-						state.order.forEach(function (id) {
-							state.images[id].tags.forEach(function (tag) {
-								if (tag.slug === action.tag.slug) {
-									filteredOrder.push(id);
-								}
-							});
-						});
-
-						setHistory("/photography/blog/browse/" + action.tag.slug);
-
-						return {
-							v: _extends({}, state, {
-								activeImage: null,
-								filteredOrder: filteredOrder,
-								filteredTerm: action.tag.name
-							})
-						};
-					}();
-
-					if ((typeof _ret === "undefined" ? "undefined" : _typeof(_ret)) === "object") return _ret.v;
-				}
-
-			case CLEAR_FILTER_TAG:
-				{
-					setHistory("/photography/blog");
-
-					return _extends({}, state, {
-						activeImage: null,
-						filteredOrder: null,
-						filteredTerm: null
-					});
-				}
-
-			default:
-				{
-					return state;
-				}
-		}
-	}
-
-	// action creators
-	// ----------------------------------------------------------------------------
-
-	function setActiveImage(id) {
-		return {
-			type: SET_ACTIVE_IMAGE,
-			id: id
-		};
-	}
-
-	function clearActiveImage() {
-		return {
-			type: CLEAR_ACTIVE_IMAGE
-		};
-	}
-
-	function navigatePrev() {
-		return {
-			type: NAVIGATE,
-			direction: _constants.DIRECTIONS.prev
-		};
-	}
-
-	function navigateNext() {
-		return {
-			type: NAVIGATE,
-			direction: _constants.DIRECTIONS.next
-		};
-	}
-
-	function filterTag(tag) {
-		return {
-			type: FILTER_TAG,
-			tag: tag
-		};
-	}
-
-	function clearFilterTag() {
-		return {
-			type: CLEAR_FILTER_TAG
-		};
-	}
+	module.exports = __webpack_require__(208);
 
 /***/ },
 /* 208 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-
-	var _react = __webpack_require__(11);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	var ImageLink = _react2.default.createClass({
-		displayName: "ImageLink",
-
-		propTypes: {
-			image: _react.PropTypes.object.isRequired,
-			setActiveImage: _react.PropTypes.func.isRequired
-		},
-
-		_handleClick: function _handleClick(e) {
-			e.preventDefault();
-			this.props.setActiveImage(this.props.image.id);
-		},
-		render: function render() {
-			return _react2.default.createElement(
-				"a",
-				{
-					href: "/photography/blog/" + this.props.image.id,
-					onClick: this._handleClick },
-				_react2.default.createElement("img", {
-					src: this.props.image.thumbnail,
-					alt: "A thumbnail of " + this.props.image.title
-				})
-			);
-		}
-	});
-
-	exports.default = ImageLink;
-
-/***/ },
-/* 209 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-
-	var _react = __webpack_require__(11);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _MainImage = __webpack_require__(210);
-
-	var _MainImage2 = _interopRequireDefault(_MainImage);
-
-	var _Tag = __webpack_require__(218);
-
-	var _Tag2 = _interopRequireDefault(_Tag);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	var ImageDetail = _react2.default.createClass({
-		displayName: "ImageDetail",
-
-		propTypes: {
-			image: _react.PropTypes.object.isRequired,
-			atBeginning: _react.PropTypes.bool,
-			atEnd: _react.PropTypes.bool,
-			clearActiveImage: _react.PropTypes.func.isRequired,
-			navigatePrev: _react.PropTypes.func.isRequired,
-			navigateNext: _react.PropTypes.func.isRequired,
-			filterTag: _react.PropTypes.func.isRequired
-		},
-
-		render: function render() {
-			var _this = this;
-
-			var image = this.props.image;
-
-
-			return _react2.default.createElement(
-				"div",
-				null,
-				_react2.default.createElement(_MainImage2.default, {
-					src: image.image,
-					alt: image.title
-				}),
-				_react2.default.createElement(
-					"h3",
-					null,
-					image.title
-				),
-				_react2.default.createElement("br", null),
-				_react2.default.createElement(
-					"span",
-					null,
-					image.year
-				),
-				_react2.default.createElement("br", null),
-				image.tags.map(function (tag, i) {
-					return _react2.default.createElement(_Tag2.default, {
-						key: i,
-						name: tag.name,
-						slug: tag.slug,
-						filterTag: _this.props.filterTag
-					});
-				}),
-				_react2.default.createElement("br", null),
-				_react2.default.createElement(
-					"button",
-					{ onClick: this.props.clearActiveImage },
-					"close"
-				),
-				_react2.default.createElement("br", null),
-				_react2.default.createElement(
-					"button",
-					{
-						onClick: this.props.navigatePrev,
-						disabled: this.props.atBeginning },
-					"prev"
-				),
-				_react2.default.createElement(
-					"button",
-					{
-						onClick: this.props.navigateNext,
-						disabled: this.props.atEnd },
-					"next"
-				)
-			);
-		}
-	});
-
-	exports.default = ImageDetail;
-
-/***/ },
-/* 210 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-
-	var _react = __webpack_require__(11);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _reactAddonsCssTransitionGroup = __webpack_require__(211);
-
-	var _reactAddonsCssTransitionGroup2 = _interopRequireDefault(_reactAddonsCssTransitionGroup);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	/* global Image */
-
-	var MainImage = _react2.default.createClass({
-		displayName: "MainImage",
-
-		propTypes: {
-			src: _react.PropTypes.string.isRequired,
-			alt: _react.PropTypes.string.isRequired
-		},
-
-		getInitialState: function getInitialState() {
-			return { loaded: false };
-		},
-
-
-		// trigger the initial load
-		componentDidMount: function componentDidMount() {
-			this._loadImage();
-		},
-
-
-		// if we get a new image source via props, reset the loading state
-		componentWillReceiveProps: function componentWillReceiveProps(nextProps) {
-			if (nextProps.src !== this.props.src) {
-				this.setState({ loaded: false });
-			}
-		},
-
-
-		// if we get a new image source via props, trigger the new load
-		componentDidUpdate: function componentDidUpdate(prevProps) {
-			if (prevProps.src !== this.props.src) {
-				this._loadImage();
-			}
-		},
-		_loadImage: function _loadImage() {
-			var _this = this;
-
-			var i = new Image();
-			i.src = this.props.src;
-
-			i.onload = function () {
-				_this.setState({ loaded: true });
-			};
-		},
-		render: function render() {
-			return _react2.default.createElement(
-				"div",
-				null,
-				!this.state.loaded && _react2.default.createElement(
-					"span",
-					null,
-					"loading"
-				),
-				this.state.loaded && _react2.default.createElement(
-					_reactAddonsCssTransitionGroup2.default,
-					{
-						transitionName: "main-image",
-						transitionAppear: true,
-						transitionEnterTimeout: 500,
-						transitionAppearTimeout: 500,
-						transitionLeaveTimeout: 500 },
-					_react2.default.createElement("img", {
-						key: this.props.src,
-						src: this.props.src,
-						alt: this.props.alt
-					})
-				)
-			);
-		}
-	});
-
-	exports.default = MainImage;
-
-/***/ },
-/* 211 */
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports = __webpack_require__(212);
-
-/***/ },
-/* 212 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -23741,8 +23276,8 @@
 
 	var React = __webpack_require__(12);
 
-	var ReactTransitionGroup = __webpack_require__(213);
-	var ReactCSSTransitionGroupChild = __webpack_require__(215);
+	var ReactTransitionGroup = __webpack_require__(209);
+	var ReactCSSTransitionGroupChild = __webpack_require__(211);
 
 	function createTransitionTimeoutPropValidator(transitionType) {
 	  var timeoutPropName = 'transition' + transitionType + 'Timeout';
@@ -23813,7 +23348,7 @@
 	module.exports = ReactCSSTransitionGroup;
 
 /***/ },
-/* 213 */
+/* 209 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -23833,7 +23368,7 @@
 
 	var React = __webpack_require__(12);
 	var ReactInstanceMap = __webpack_require__(129);
-	var ReactTransitionChildMapping = __webpack_require__(214);
+	var ReactTransitionChildMapping = __webpack_require__(210);
 
 	var emptyFunction = __webpack_require__(22);
 
@@ -24065,7 +23600,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(13)))
 
 /***/ },
-/* 214 */
+/* 210 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -24174,7 +23709,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(13)))
 
 /***/ },
-/* 215 */
+/* 211 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -24193,8 +23728,8 @@
 	var React = __webpack_require__(12);
 	var ReactDOM = __webpack_require__(45);
 
-	var CSSCore = __webpack_require__(216);
-	var ReactTransitionEvents = __webpack_require__(217);
+	var CSSCore = __webpack_require__(212);
+	var ReactTransitionEvents = __webpack_require__(213);
 
 	var onlyChild = __webpack_require__(43);
 
@@ -24346,7 +23881,7 @@
 	module.exports = ReactCSSTransitionGroupChild;
 
 /***/ },
-/* 216 */
+/* 212 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
@@ -24473,7 +24008,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(13)))
 
 /***/ },
-/* 217 */
+/* 213 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -24551,7 +24086,522 @@
 	module.exports = ReactTransitionEvents;
 
 /***/ },
+/* 214 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	exports.CLEAR_FILTER_TAG = exports.FILTER_TAG = exports.NAVIGATE = exports.CLEAR_ACTIVE_IMAGE = exports.SET_ACTIVE_IMAGE = undefined;
+
+	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
+
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; /* global history */
+
+	// constants and helpers
+	// ----------------------------------------------------------------------------
+
+	exports.default = reducer;
+	exports.setActiveImage = setActiveImage;
+	exports.clearActiveImage = clearActiveImage;
+	exports.navigatePrev = navigatePrev;
+	exports.navigateNext = navigateNext;
+	exports.filterTag = filterTag;
+	exports.clearFilterTag = clearFilterTag;
+
+	var _constants = __webpack_require__(215);
+
+	var getVisibleImages = function getVisibleImages(state) {
+		// get the current set of images
+		var order = state.order;
+
+		if (state.filteredOrder && state.filteredOrder.length) {
+			order = state.filteredOrder;
+		}
+
+		return order;
+	};
+
+	var getPositionMeta = function getPositionMeta(params) {
+		if (typeof params.index === "undefined" || params.index === null) {
+			return {};
+		}
+
+		if (!params.images || params.images.length === 0) {
+			return {};
+		}
+
+		var atBeginning = false;
+		var atEnd = false;
+
+		if (params.index === 0) {
+			atBeginning = true;
+		}
+
+		if (params.index + 1 === params.images.length) {
+			atEnd = true;
+		}
+
+		return {
+			atBeginning: atBeginning,
+			atEnd: atEnd
+		};
+	};
+
+	var setHistory = function setHistory(url, data) {
+		if (typeof history === "undefined" || history === null) {
+			return false;
+		}
+
+		history.pushState(data, null, url);
+
+		return true;
+	};
+
+	// action types
+	// ----------------------------------------------------------------------------
+
+	var SET_ACTIVE_IMAGE = exports.SET_ACTIVE_IMAGE = "PHOTOBLOG.SET_ACTIVE_IMAGE";
+	var CLEAR_ACTIVE_IMAGE = exports.CLEAR_ACTIVE_IMAGE = "PHOTOBLOG.CLEAR_ACTIVE_IMAGE";
+	var NAVIGATE = exports.NAVIGATE = "PHOTOBLOG.NAVIGATE";
+	var FILTER_TAG = exports.FILTER_TAG = "PHOTOBLOG.FILTER_TAG";
+	var CLEAR_FILTER_TAG = exports.CLEAR_FILTER_TAG = "PHOTOBLOG.CLEAR_FILTER_TAG";
+
+	// reducer
+	// ----------------------------------------------------------------------------
+
+	function reducer(state, action) {
+		switch (action.type) {
+			case SET_ACTIVE_IMAGE:
+				{
+					if (!action.id) {
+						return state;
+					}
+
+					var order = getVisibleImages(state);
+					var index = order.indexOf(action.id);
+					var positionMeta = getPositionMeta({
+						index: index,
+						images: order
+					});
+
+					setHistory("/photography/blog/" + action.id);
+
+					return _extends({}, state, {
+						activeImage: action.id
+					}, positionMeta);
+				}
+
+			case CLEAR_ACTIVE_IMAGE:
+				{
+					setHistory("/photography/blog");
+
+					return _extends({}, state, {
+						activeImage: null
+					});
+				}
+
+			case NAVIGATE:
+				{
+					if (!state.activeImage) {
+						return state;
+					}
+
+					var _order = getVisibleImages(state);
+					var currentIndex = _order.indexOf(state.activeImage);
+					var nextIndex = void 0;
+
+					if (action.direction === _constants.DIRECTIONS.prev) {
+						nextIndex = currentIndex - 1;
+					} else if (action.direction === _constants.DIRECTIONS.next) {
+						nextIndex = currentIndex + 1;
+					} else {
+						return state;
+					}
+
+					if (nextIndex < 0) {
+						return _extends({}, state);
+					}
+
+					if (nextIndex + 1 > _order.length) {
+						return _extends({}, state);
+					}
+
+					var _positionMeta = getPositionMeta({
+						index: nextIndex,
+						images: _order
+					});
+
+					var nextId = state.order[nextIndex];
+
+					setHistory("/photography/blog/" + nextId);
+
+					return _extends({}, state, {
+						activeImage: nextId
+					}, _positionMeta);
+				}
+
+			case FILTER_TAG:
+				{
+					var _ret = function () {
+						if (!action.tag) {
+							return {
+								v: state
+							};
+						}
+
+						var filteredOrder = [];
+
+						state.order.forEach(function (id) {
+							state.images[id].tags.forEach(function (tag) {
+								if (tag.slug === action.tag.slug) {
+									filteredOrder.push(id);
+								}
+							});
+						});
+
+						setHistory("/photography/blog/browse/" + action.tag.slug);
+
+						return {
+							v: _extends({}, state, {
+								activeImage: null,
+								filteredOrder: filteredOrder,
+								filteredTerm: action.tag.name
+							})
+						};
+					}();
+
+					if ((typeof _ret === "undefined" ? "undefined" : _typeof(_ret)) === "object") return _ret.v;
+				}
+
+			case CLEAR_FILTER_TAG:
+				{
+					setHistory("/photography/blog");
+
+					return _extends({}, state, {
+						activeImage: null,
+						filteredOrder: null,
+						filteredTerm: null
+					});
+				}
+
+			default:
+				{
+					return state;
+				}
+		}
+	}
+
+	// action creators
+	// ----------------------------------------------------------------------------
+
+	function setActiveImage(id) {
+		return {
+			type: SET_ACTIVE_IMAGE,
+			id: id
+		};
+	}
+
+	function clearActiveImage() {
+		return {
+			type: CLEAR_ACTIVE_IMAGE
+		};
+	}
+
+	function navigatePrev() {
+		return {
+			type: NAVIGATE,
+			direction: _constants.DIRECTIONS.prev
+		};
+	}
+
+	function navigateNext() {
+		return {
+			type: NAVIGATE,
+			direction: _constants.DIRECTIONS.next
+		};
+	}
+
+	function filterTag(tag) {
+		return {
+			type: FILTER_TAG,
+			tag: tag
+		};
+	}
+
+	function clearFilterTag() {
+		return {
+			type: CLEAR_FILTER_TAG
+		};
+	}
+
+/***/ },
+/* 215 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	var URLS = exports.URLS = {
+		home: "home",
+		photo: "photo",
+		tag: "tag"
+	};
+
+	var DIRECTIONS = exports.DIRECTIONS = {
+		prev: "prev",
+		next: "next"
+	};
+
+	exports.default = {};
+
+/***/ },
+/* 216 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+
+	var _react = __webpack_require__(11);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var Thumbnail = _react2.default.createClass({
+		displayName: "Thumbnail",
+
+		propTypes: {
+			image: _react.PropTypes.object.isRequired,
+			setActiveImage: _react.PropTypes.func.isRequired
+		},
+
+		_handleClick: function _handleClick(e) {
+			e.preventDefault();
+			this.props.setActiveImage(this.props.image.id);
+		},
+		render: function render() {
+			return _react2.default.createElement(
+				"a",
+				{
+					className: "page-photography-thumbnail",
+					href: "/photography/blog/" + this.props.image.id,
+					onClick: this._handleClick },
+				_react2.default.createElement("img", {
+					className: "page-photography-thumbnail-image",
+					src: this.props.image.thumbnail,
+					alt: "A thumbnail of " + this.props.image.title
+				})
+			);
+		}
+	});
+
+	exports.default = Thumbnail;
+
+/***/ },
+/* 217 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+
+	var _react = __webpack_require__(11);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _MainImage = __webpack_require__(218);
+
+	var _MainImage2 = _interopRequireDefault(_MainImage);
+
+	var _Tag = __webpack_require__(219);
+
+	var _Tag2 = _interopRequireDefault(_Tag);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var ImageDetail = _react2.default.createClass({
+		displayName: "ImageDetail",
+
+		propTypes: {
+			image: _react.PropTypes.object.isRequired,
+			atBeginning: _react.PropTypes.bool,
+			atEnd: _react.PropTypes.bool,
+			clearActiveImage: _react.PropTypes.func.isRequired,
+			navigatePrev: _react.PropTypes.func.isRequired,
+			navigateNext: _react.PropTypes.func.isRequired,
+			filterTag: _react.PropTypes.func.isRequired
+		},
+
+		render: function render() {
+			var _this = this;
+
+			var image = this.props.image;
+
+
+			return _react2.default.createElement(
+				"div",
+				{ className: "page-photography-main", key: image.title },
+				_react2.default.createElement(_MainImage2.default, {
+					src: image.image,
+					alt: image.title
+				}),
+				_react2.default.createElement(
+					"h3",
+					null,
+					image.title
+				),
+				_react2.default.createElement("br", null),
+				_react2.default.createElement(
+					"span",
+					null,
+					image.year
+				),
+				_react2.default.createElement("br", null),
+				_react2.default.createElement(
+					"div",
+					{ className: "page-photography-main-tags" },
+					image.tags.map(function (tag, i) {
+						return _react2.default.createElement(_Tag2.default, {
+							key: i,
+							name: tag.name,
+							slug: tag.slug,
+							filterTag: _this.props.filterTag
+						});
+					})
+				),
+				_react2.default.createElement("br", null),
+				_react2.default.createElement(
+					"button",
+					{ onClick: this.props.clearActiveImage },
+					"close"
+				),
+				_react2.default.createElement("br", null),
+				_react2.default.createElement(
+					"button",
+					{
+						onClick: this.props.navigatePrev,
+						disabled: this.props.atBeginning },
+					"prev"
+				),
+				_react2.default.createElement(
+					"button",
+					{
+						onClick: this.props.navigateNext,
+						disabled: this.props.atEnd },
+					"next"
+				)
+			);
+		}
+	});
+
+	exports.default = ImageDetail;
+
+/***/ },
 /* 218 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+
+	var _react = __webpack_require__(11);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactAddonsCssTransitionGroup = __webpack_require__(207);
+
+	var _reactAddonsCssTransitionGroup2 = _interopRequireDefault(_reactAddonsCssTransitionGroup);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	/* global Image */
+
+	var MainImage = _react2.default.createClass({
+		displayName: "MainImage",
+
+		propTypes: {
+			src: _react.PropTypes.string.isRequired,
+			alt: _react.PropTypes.string.isRequired
+		},
+
+		getInitialState: function getInitialState() {
+			return { loaded: false };
+		},
+
+
+		// trigger the initial load
+		componentDidMount: function componentDidMount() {
+			this._loadImage();
+		},
+
+
+		// if we get a new image source via props, reset the loading state
+		componentWillReceiveProps: function componentWillReceiveProps(nextProps) {
+			if (nextProps.src !== this.props.src) {
+				this.setState({ loaded: false });
+			}
+		},
+
+
+		// if we get a new image source via props, trigger the new load
+		componentDidUpdate: function componentDidUpdate(prevProps) {
+			if (prevProps.src !== this.props.src) {
+				this._loadImage();
+			}
+		},
+		_loadImage: function _loadImage() {
+			var _this = this;
+
+			var i = new Image();
+			i.src = this.props.src;
+
+			i.onload = function () {
+				_this.setState({ loaded: true });
+			};
+		},
+		render: function render() {
+			return _react2.default.createElement(
+				"div",
+				null,
+				!this.state.loaded && _react2.default.createElement(
+					"span",
+					null,
+					"loading"
+				),
+				this.state.loaded && _react2.default.createElement(
+					_reactAddonsCssTransitionGroup2.default,
+					{
+						transitionName: "main-image",
+						transitionAppear: true,
+						transitionEnterTimeout: 500,
+						transitionAppearTimeout: 500,
+						transitionLeaveTimeout: 500 },
+					_react2.default.createElement("img", {
+						key: this.props.src,
+						src: this.props.src,
+						alt: this.props.alt
+					})
+				)
+			);
+		}
+	});
+
+	exports.default = MainImage;
+
+/***/ },
+/* 219 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -24586,6 +24636,7 @@
 			return _react2.default.createElement(
 				"a",
 				{
+					className: "page-photography-main-tag",
 					onClick: this._handleClick,
 					href: "/photography/blog/browse/" + this.props.slug },
 				this.props.name
@@ -24596,36 +24647,7 @@
 	exports.default = Tag;
 
 /***/ },
-/* 219 */
-/***/ function(module, exports) {
-
-	// removed by extract-text-webpack-plugin
-
-/***/ },
-/* 220 */,
-/* 221 */
-/***/ function(module, exports) {
-
-	"use strict";
-
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-	var URLS = exports.URLS = {
-		home: "home",
-		photo: "photo",
-		tag: "tag"
-	};
-
-	var DIRECTIONS = exports.DIRECTIONS = {
-		prev: "prev",
-		next: "next"
-	};
-
-	exports.default = {};
-
-/***/ },
-/* 222 */
+/* 220 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -24638,7 +24660,7 @@
 
 	exports.parseUrl = parseUrl;
 
-	var _constants = __webpack_require__(221);
+	var _constants = __webpack_require__(215);
 
 	/*
 	 * Determine what page a given url is (home, a photo, or a tag), and return
@@ -24702,6 +24724,12 @@
 	}
 
 	exports.default = {};
+
+/***/ },
+/* 221 */
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
 
 /***/ }
 /******/ ]);

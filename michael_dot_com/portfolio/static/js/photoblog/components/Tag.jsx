@@ -18,6 +18,7 @@ const Tag = React.createClass({
 	render() {
 		return (
 			<a
+					className="page-photography-main-tag"
 					onClick={this._handleClick}
 					href={`/photography/blog/browse/${this.props.slug}`}>
 				{this.props.name}

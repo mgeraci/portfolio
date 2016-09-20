@@ -1,5 +1,7 @@
 import React, { PropTypes } from "react";
+import ReactCSSTransitionGroup from "react-addons-css-transition-group";
 import { connect } from "react-redux";
+
 import {
 	setActiveImage,
 	clearActiveImage,
@@ -8,7 +10,7 @@ import {
 	filterTag,
 	clearFilterTag,
 } from "../reducer";
-import ImageLink from "./ImageLink";
+import Thumbnail from "./Thumbnail";
 import ImageDetail from "./ImageDetail";
 
 const App = React.createClass({
@@ -40,37 +42,49 @@ const App = React.createClass({
 
 	render() {
 		return (
-			<div>
-				{this.props.filteredTerm &&
-					<span>
-						Browsing images tagged "{this.props.filteredTerm}"
-						<button onClick={this.props.onClearFilterTag}>
-							clear
-						</button>
-					</span>
-				}
+			<span>
+				<div className="page-photography-thumbnails">
+					{this.props.filteredTerm &&
+						<h2 className="page-photography-thumbnails-title">
+							Images tagged <em>{this.props.filteredTerm}</em>
 
-				{this._getVisibleImageIds().map(id =>
-					<ImageLink
-						key={id}
-						image={this.props.images[id]}
-						setActiveImage={this.props.onSetActiveImage}
-						clearActiveImage={this.props.onClearActiveImage}
-					/>
-				)}
+							<button
+									className="page-photography-thumbnails-title-clear"
+									onClick={this.props.onClearFilterTag}>
+								remove filter
+							</button>
+						</h2>
+					}
+
+					{this._getVisibleImageIds().map(id =>
+						<Thumbnail
+							key={id}
+							image={this.props.images[id]}
+							setActiveImage={this.props.onSetActiveImage}
+							clearActiveImage={this.props.onClearActiveImage}
+						/>
+					)}
+				</div>
 
 				{this.props.activeImage &&
-					<ImageDetail
-						image={this.props.images[this.props.activeImage]}
-						clearActiveImage={this.props.onClearActiveImage}
-						navigatePrev={this.props.onNavigatePrev}
-						navigateNext={this.props.onNavigateNext}
-						atBeginning={this.props.atBeginning}
-						atEnd={this.props.atEnd}
-						filterTag={this.props.onFilterTag}
-					/>
+					<ReactCSSTransitionGroup
+							transitionName="image-detail"
+							transitionAppear
+							transitionEnterTimeout={500}
+							transitionAppearTimeout={500}
+							transitionLeaveTimeout={500}>
+						<ImageDetail
+							image={this.props.images[this.props.activeImage]}
+							clearActiveImage={this.props.onClearActiveImage}
+							navigatePrev={this.props.onNavigatePrev}
+							navigateNext={this.props.onNavigateNext}
+							atBeginning={this.props.atBeginning}
+							atEnd={this.props.atEnd}
+							filterTag={this.props.onFilterTag}
+						/>
+					</ReactCSSTransitionGroup>
 				}
-			</div>
+			</span>
 		);
 	},
 });

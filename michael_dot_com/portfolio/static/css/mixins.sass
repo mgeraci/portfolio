@@ -2,8 +2,10 @@
   font-size: $font-size
   line-height: $line-height
 
+
 @mixin link-underline($color)
   background-image: linear-gradient(to bottom, rgba(0,0,0,0) 50%, rgba($color ,0.6) 50%)
+
 
 @mixin link($default-color, $hover-color)
   text-decoration: none
@@ -23,6 +25,15 @@
       @include link-underline($hover-color)
       text-shadow: $active-link-shadow
 
+
+@mixin no-link
+  &,
+  &:hover,
+  &:active
+    text-shadow: none !important
+    background-image: none !important
+
+
 @mixin bare-button
   padding: 0
   margin: 0
@@ -32,10 +43,12 @@
   font-family: inherit
   outline: none
 
+
 @mixin center
   position: relative
   left: 50%
   @include transform(translateX(-50%))
+
 
 @mixin content-sizing
   display: block
@@ -43,7 +56,7 @@
   max-width: $body-width
 
   @media (min-width: $body-width + $body-breakpoint-gutter + 1)
-    @include center
+    margin: 0 auto
 
   @media (max-width: $body-width + $body-breakpoint-gutter)
     width: 100% - $body-mobile-gutter * 2

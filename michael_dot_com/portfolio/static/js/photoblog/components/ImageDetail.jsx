@@ -1,4 +1,5 @@
 import React, { PropTypes } from "react";
+
 import MainImage from "./MainImage";
 import Tag from "./Tag";
 
@@ -17,7 +18,7 @@ const ImageDetail = React.createClass({
 		const { image } = this.props;
 
 		return (
-			<div>
+			<div className="page-photography-main" key={image.title}>
 				<MainImage
 					src={image.image}
 					alt={image.title}
@@ -28,14 +29,16 @@ const ImageDetail = React.createClass({
 				<span>{image.year}</span>
 				<br />
 
-				{image.tags.map((tag, i) =>
-					<Tag
-						key={i}
-						name={tag.name}
-						slug={tag.slug}
-						filterTag={this.props.filterTag}
-					/>
-				)}
+				<div className="page-photography-main-tags">
+					{image.tags.map((tag, i) =>
+						<Tag
+							key={i}
+							name={tag.name}
+							slug={tag.slug}
+							filterTag={this.props.filterTag}
+						/>
+					)}
+				</div>
 
 				<br />
 
