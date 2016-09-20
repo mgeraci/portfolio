@@ -14,6 +14,20 @@ const ImageDetail = React.createClass({
 		filterTag: PropTypes.func.isRequired,
 	},
 
+	getInitialState() {
+		return { loaded: false };
+	},
+
+	componentWillReceiveProps(nextProps) {
+		if (nextProps.image.id !== this.props.image.id) {
+			this.setState({ loaded: false });
+		}
+	},
+
+	_onLoad() {
+		this.setState({ loaded: true });
+	},
+
 	render() {
 		const { image } = this.props;
 
@@ -22,11 +36,15 @@ const ImageDetail = React.createClass({
 				<MainImage
 					src={image.image}
 					alt={image.title}
+					loaded={this.state.loaded}
+					onLoad={this._onLoad}
 				/>
 
 				<h3>{image.title}</h3>
 				<br />
 				<span>{image.year}</span>
+				<br />
+				X{this.state.loaded}X
 				<br />
 
 				<div className="page-photography-main-tags">

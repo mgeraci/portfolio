@@ -24394,6 +24394,17 @@
 			filterTag: _react.PropTypes.func.isRequired
 		},
 
+		getInitialState: function getInitialState() {
+			return { loaded: false };
+		},
+		componentWillReceiveProps: function componentWillReceiveProps(nextProps) {
+			if (nextProps.image.id !== this.props.image.id) {
+				this.setState({ loaded: false });
+			}
+		},
+		_onLoad: function _onLoad() {
+			this.setState({ loaded: true });
+		},
 		render: function render() {
 			var _this = this;
 
@@ -24405,7 +24416,9 @@
 				{ className: "page-photography-main", key: image.title },
 				_react2.default.createElement(_MainImage2.default, {
 					src: image.image,
-					alt: image.title
+					alt: image.title,
+					loaded: this.state.loaded,
+					onLoad: this._onLoad
 				}),
 				_react2.default.createElement(
 					"h3",
@@ -24418,6 +24431,10 @@
 					null,
 					image.year
 				),
+				_react2.default.createElement("br", null),
+				"X",
+				this.state.loaded,
+				"X",
 				_react2.default.createElement("br", null),
 				_react2.default.createElement(
 					"div",
@@ -24485,25 +24502,14 @@
 
 		propTypes: {
 			src: _react.PropTypes.string.isRequired,
-			alt: _react.PropTypes.string.isRequired
+			alt: _react.PropTypes.string.isRequired,
+			loaded: _react.PropTypes.bool,
+			onLoad: _react.PropTypes.func.isRequired
 		},
-
-		getInitialState: function getInitialState() {
-			return { loaded: false };
-		},
-
 
 		// trigger the initial load
 		componentDidMount: function componentDidMount() {
 			this._loadImage();
-		},
-
-
-		// if we get a new image source via props, reset the loading state
-		componentWillReceiveProps: function componentWillReceiveProps(nextProps) {
-			if (nextProps.src !== this.props.src) {
-				this.setState({ loaded: false });
-			}
 		},
 
 
@@ -24520,19 +24526,19 @@
 			i.src = this.props.src;
 
 			i.onload = function () {
-				_this.setState({ loaded: true });
+				_this.props.onLoad();
 			};
 		},
 		render: function render() {
 			return _react2.default.createElement(
 				"div",
 				null,
-				!this.state.loaded && _react2.default.createElement(
+				!this.props.loaded && _react2.default.createElement(
 					"span",
 					null,
 					"loading"
 				),
-				this.state.loaded && _react2.default.createElement(
+				this.props.loaded && _react2.default.createElement(
 					_reactAddonsCssTransitionGroup2.default,
 					{
 						transitionName: "main-image",

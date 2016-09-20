@@ -7,22 +7,13 @@ const MainImage = React.createClass({
 	propTypes: {
 		src: PropTypes.string.isRequired,
 		alt: PropTypes.string.isRequired,
-	},
-
-	getInitialState() {
-		return { loaded: false };
+		loaded: PropTypes.bool,
+		onLoad: PropTypes.func.isRequired,
 	},
 
 	// trigger the initial load
 	componentDidMount() {
 		this._loadImage();
-	},
-
-	// if we get a new image source via props, reset the loading state
-	componentWillReceiveProps(nextProps) {
-		if (nextProps.src !== this.props.src) {
-			this.setState({ loaded: false });
-		}
 	},
 
 	// if we get a new image source via props, trigger the new load
@@ -37,17 +28,17 @@ const MainImage = React.createClass({
 		i.src = this.props.src;
 
 		i.onload = () => {
-			this.setState({ loaded: true });
+			this.props.onLoad();
 		};
 	},
 
 	render() {
 		return (
 			<div>
-				{!this.state.loaded &&
+				{!this.props.loaded &&
 					<span>loading</span>
 				}
-				{this.state.loaded &&
+				{this.props.loaded &&
 					<ReactCSSTransitionGroup
 							transitionName="main-image"
 							transitionAppear
