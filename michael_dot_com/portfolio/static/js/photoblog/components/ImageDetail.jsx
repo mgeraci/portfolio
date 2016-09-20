@@ -1,7 +1,9 @@
 import React, { PropTypes } from "react";
+import ReactCSSTransitionGroup from "react-addons-css-transition-group";
 
 import MainImage from "./MainImage";
-import Tag from "./Tag";
+import ImageMeta from "./ImageMeta";
+import { ORIENTATIONS } from "../util/constants";
 
 const ImageDetail = React.createClass({
 	propTypes: {
@@ -24,8 +26,17 @@ const ImageDetail = React.createClass({
 		}
 	},
 
-	_onLoad() {
-		this.setState({ loaded: true });
+	_onLoad(dimensions) {
+		let orientation = ORIENTATIONS.portrait;
+
+		if (dimensions.width > dimensions.height) {
+			orientation = ORIENTATIONS.landscape;
+		}
+
+		this.setState({
+			loaded: true,
+			orientation,
+		});
 	},
 
 	render() {
@@ -40,23 +51,21 @@ const ImageDetail = React.createClass({
 					onLoad={this._onLoad}
 				/>
 
-				<h3>{image.title}</h3>
-				<br />
-				<span>{image.year}</span>
-				<br />
-				X{this.state.loaded}X
-				<br />
-
-				<div className="page-photography-main-tags">
-					{image.tags.map((tag, i) =>
-						<Tag
-							key={i}
-							name={tag.name}
-							slug={tag.slug}
+				<ReactCSSTransitionGroup
+						transitionName="main-image"
+						transitionAppear
+						transitionEnterTimeout={500}
+						transitionAppearTimeout={500}
+						transitionLeaveTimeout={500}>
+					{this.state.loaded &&
+						<ImageMeta
+							title={image.title}
+							year={image.year}
+							tags={image.tags}
 							filterTag={this.props.filterTag}
 						/>
-					)}
-				</div>
+					}
+				</ReactCSSTransitionGroup>
 
 				<br />
 

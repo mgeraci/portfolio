@@ -24309,6 +24309,11 @@
 		next: "next"
 	};
 
+	var ORIENTATIONS = exports.ORIENTATIONS = {
+		portrait: "portrait",
+		landscape: "landscape"
+	};
+
 	exports.default = {};
 
 /***/ },
@@ -24371,13 +24376,19 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
+	var _reactAddonsCssTransitionGroup = __webpack_require__(207);
+
+	var _reactAddonsCssTransitionGroup2 = _interopRequireDefault(_reactAddonsCssTransitionGroup);
+
 	var _MainImage = __webpack_require__(218);
 
 	var _MainImage2 = _interopRequireDefault(_MainImage);
 
-	var _Tag = __webpack_require__(219);
+	var _ImageMeta = __webpack_require__(222);
 
-	var _Tag2 = _interopRequireDefault(_Tag);
+	var _ImageMeta2 = _interopRequireDefault(_ImageMeta);
+
+	var _constants = __webpack_require__(215);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -24402,12 +24413,19 @@
 				this.setState({ loaded: false });
 			}
 		},
-		_onLoad: function _onLoad() {
-			this.setState({ loaded: true });
+		_onLoad: function _onLoad(dimensions) {
+			var orientation = _constants.ORIENTATIONS.portrait;
+
+			if (dimensions.width > dimensions.height) {
+				orientation = _constants.ORIENTATIONS.landscape;
+			}
+
+			this.setState({
+				loaded: true,
+				orientation: orientation
+			});
 		},
 		render: function render() {
-			var _this = this;
-
 			var image = this.props.image;
 
 
@@ -24421,31 +24439,18 @@
 					onLoad: this._onLoad
 				}),
 				_react2.default.createElement(
-					"h3",
-					null,
-					image.title
-				),
-				_react2.default.createElement("br", null),
-				_react2.default.createElement(
-					"span",
-					null,
-					image.year
-				),
-				_react2.default.createElement("br", null),
-				"X",
-				this.state.loaded,
-				"X",
-				_react2.default.createElement("br", null),
-				_react2.default.createElement(
-					"div",
-					{ className: "page-photography-main-tags" },
-					image.tags.map(function (tag, i) {
-						return _react2.default.createElement(_Tag2.default, {
-							key: i,
-							name: tag.name,
-							slug: tag.slug,
-							filterTag: _this.props.filterTag
-						});
+					_reactAddonsCssTransitionGroup2.default,
+					{
+						transitionName: "main-image",
+						transitionAppear: true,
+						transitionEnterTimeout: 500,
+						transitionAppearTimeout: 500,
+						transitionLeaveTimeout: 500 },
+					this.state.loaded && _react2.default.createElement(_ImageMeta2.default, {
+						title: image.title,
+						year: image.year,
+						tags: image.tags,
+						filterTag: this.props.filterTag
 					})
 				),
 				_react2.default.createElement("br", null),
@@ -24526,7 +24531,10 @@
 			i.src = this.props.src;
 
 			i.onload = function () {
-				_this.props.onLoad();
+				_this.props.onLoad({
+					width: i.width,
+					height: i.height
+				});
 			};
 		},
 		render: function render() {
@@ -24761,6 +24769,71 @@
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
+
+/***/ },
+/* 222 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+
+	var _react = __webpack_require__(11);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _Tag = __webpack_require__(219);
+
+	var _Tag2 = _interopRequireDefault(_Tag);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var ImageMeta = _react2.default.createClass({
+		displayName: "ImageMeta",
+
+		propTypes: {
+			title: _react.PropTypes.string.isRequired,
+			year: _react.PropTypes.number.isRequired,
+			tags: _react.PropTypes.array,
+			filterTag: _react.PropTypes.func.isRequired
+		},
+
+		render: function render() {
+			var _this = this;
+
+			return _react2.default.createElement(
+				"div",
+				{ className: "page-photography-main-meta" },
+				_react2.default.createElement(
+					"h3",
+					null,
+					this.props.title
+				),
+				_react2.default.createElement(
+					"span",
+					null,
+					this.props.year
+				),
+				_react2.default.createElement("br", null),
+				!!this.props.tags.length && _react2.default.createElement(
+					"div",
+					{ className: "page-photography-main-tags" },
+					this.props.tags.map(function (tag, i) {
+						return _react2.default.createElement(_Tag2.default, {
+							key: i,
+							name: tag.name,
+							slug: tag.slug,
+							filterTag: _this.props.filterTag
+						});
+					})
+				)
+			);
+		}
+	});
+
+	exports.default = ImageMeta;
 
 /***/ }
 /******/ ]);

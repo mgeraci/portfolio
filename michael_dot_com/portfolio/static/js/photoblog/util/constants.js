@@ -9,4 +9,9 @@ export const DIRECTIONS = {
 	next: "next",
 };
 
+export const ORIENTATIONS = {
+	portrait: "portrait",
+	landscape: "landscape",
+};
+
 export default {};

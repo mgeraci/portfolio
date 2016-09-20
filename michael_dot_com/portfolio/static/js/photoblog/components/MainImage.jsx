@@ -28,7 +28,10 @@ const MainImage = React.createClass({
 		i.src = this.props.src;
 
 		i.onload = () => {
-			this.props.onLoad();
+			this.props.onLoad({
+				width: i.width,
+				height: i.height,
+			});
 		};
 	},
 
