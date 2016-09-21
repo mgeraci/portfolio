@@ -10,7 +10,7 @@ import { URLS } from "./constants.js";
  * @param {string} url - the current page url
  * @param {object} state - the current application state
  *
- * @returns {obejct} - keys page, the current page, and data, additional info
+ * @returns {object} - keys page, the current page, and data, additional info
  */
 export function parseUrl(url, initialData = {}) {
 	if (url.match(/photography\/blog\/[0-9]+\/?$/)) {
