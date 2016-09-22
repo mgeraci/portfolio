@@ -1,10 +1,8 @@
 import React, { PropTypes } from "react";
 import ReactCSSTransitionGroup from "react-addons-css-transition-group";
-import classnames from "classnames";
 
 import MainImage from "./MainImage";
 import ImageMeta from "./ImageMeta";
-import { ORIENTATIONS } from "../util/constants";
 
 const ImageDetail = React.createClass({
 	propTypes: {
@@ -36,14 +34,6 @@ const ImageDetail = React.createClass({
 
 	render() {
 		const { image } = this.props;
-		const contentClasses = {
-			"page-photography-main-content": true,
-			"page-photography-main-content--portrait":
-				this.state.orientation === ORIENTATIONS.portrait,
-			"page-photography-main-content--landscape":
-				this.state.orientation === ORIENTATIONS.landscape,
-		};
-
 		const contentStyle = {};
 
 		if (typeof(this.state.dimensions) !== "undefined" && this.state.dimensions !== null) {
@@ -53,7 +43,7 @@ const ImageDetail = React.createClass({
 		return (
 			<div className="page-photography-main" key={image.title}>
 
-				<div className={classnames(contentClasses)} style={contentStyle}>
+				<div className="page-photography-main-content" style={contentStyle}>
 					<MainImage
 						src={image.image}
 						alt={image.title}

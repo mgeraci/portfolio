@@ -24309,11 +24309,6 @@
 		next: "next"
 	};
 
-	var ORIENTATIONS = exports.ORIENTATIONS = {
-		portrait: "portrait",
-		landscape: "landscape"
-	};
-
 	exports.default = {};
 
 /***/ },
@@ -24532,10 +24527,6 @@
 
 	var _reactAddonsCssTransitionGroup2 = _interopRequireDefault(_reactAddonsCssTransitionGroup);
 
-	var _classnames = __webpack_require__(219);
-
-	var _classnames2 = _interopRequireDefault(_classnames);
-
 	var _MainImage = __webpack_require__(220);
 
 	var _MainImage2 = _interopRequireDefault(_MainImage);
@@ -24543,8 +24534,6 @@
 	var _ImageMeta = __webpack_require__(221);
 
 	var _ImageMeta2 = _interopRequireDefault(_ImageMeta);
-
-	var _constants = __webpack_require__(215);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -24578,12 +24567,6 @@
 		render: function render() {
 			var image = this.props.image;
 
-			var contentClasses = {
-				"page-photography-main-content": true,
-				"page-photography-main-content--portrait": this.state.orientation === _constants.ORIENTATIONS.portrait,
-				"page-photography-main-content--landscape": this.state.orientation === _constants.ORIENTATIONS.landscape
-			};
-
 			var contentStyle = {};
 
 			if (typeof this.state.dimensions !== "undefined" && this.state.dimensions !== null) {
@@ -24595,7 +24578,7 @@
 				{ className: "page-photography-main", key: image.title },
 				_react2.default.createElement(
 					"div",
-					{ className: (0, _classnames2.default)(contentClasses), style: contentStyle },
+					{ className: "page-photography-main-content", style: contentStyle },
 					_react2.default.createElement(_MainImage2.default, {
 						src: image.image,
 						alt: image.title,
@@ -24654,60 +24637,7 @@
 	exports.default = ImageDetail;
 
 /***/ },
-/* 219 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
-	  Copyright (c) 2016 Jed Watson.
-	  Licensed under the MIT License (MIT), see
-	  http://jedwatson.github.io/classnames
-	*/
-	/* global define */
-
-	(function () {
-		'use strict';
-
-		var hasOwn = {}.hasOwnProperty;
-
-		function classNames () {
-			var classes = [];
-
-			for (var i = 0; i < arguments.length; i++) {
-				var arg = arguments[i];
-				if (!arg) continue;
-
-				var argType = typeof arg;
-
-				if (argType === 'string' || argType === 'number') {
-					classes.push(arg);
-				} else if (Array.isArray(arg)) {
-					classes.push(classNames.apply(null, arg));
-				} else if (argType === 'object') {
-					for (var key in arg) {
-						if (hasOwn.call(arg, key) && arg[key]) {
-							classes.push(key);
-						}
-					}
-				}
-			}
-
-			return classes.join(' ');
-		}
-
-		if (typeof module !== 'undefined' && module.exports) {
-			module.exports = classNames;
-		} else if (true) {
-			// register as 'classnames', consistent with npm package name
-			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_RESULT__ = function () {
-				return classNames;
-			}.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
-		} else {
-			window.classNames = classNames;
-		}
-	}());
-
-
-/***/ },
+/* 219 */,
 /* 220 */
 /***/ function(module, exports, __webpack_require__) {
 
