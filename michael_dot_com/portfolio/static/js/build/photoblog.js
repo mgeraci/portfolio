@@ -24570,15 +24570,9 @@
 			}
 		},
 		_onLoad: function _onLoad(dimensions) {
-			var orientation = _constants.ORIENTATIONS.portrait;
-
-			if (dimensions.width > dimensions.height) {
-				orientation = _constants.ORIENTATIONS.landscape;
-			}
-
 			this.setState({
 				loaded: true,
-				orientation: orientation
+				dimensions: dimensions
 			});
 		},
 		render: function render() {
@@ -24590,12 +24584,18 @@
 				"page-photography-main-content--landscape": this.state.orientation === _constants.ORIENTATIONS.landscape
 			};
 
+			var contentStyle = {};
+
+			if (typeof this.state.dimensions !== "undefined" && this.state.dimensions !== null) {
+				contentStyle.width = this.state.dimensions.width;
+			}
+
 			return _react2.default.createElement(
 				"div",
 				{ className: "page-photography-main", key: image.title },
 				_react2.default.createElement(
 					"div",
-					{ className: (0, _classnames2.default)(contentClasses) },
+					{ className: (0, _classnames2.default)(contentClasses), style: contentStyle },
 					_react2.default.createElement(_MainImage2.default, {
 						src: image.image,
 						alt: image.title,
@@ -24617,7 +24617,24 @@
 							filterTag: this.props.filterTag
 						})
 					),
-					_react2.default.createElement("br", null),
+					this.state.loaded && _react2.default.createElement(
+						"span",
+						null,
+						_react2.default.createElement(
+							"button",
+							{
+								onClick: this.props.navigatePrev,
+								disabled: this.props.atBeginning },
+							"prev"
+						),
+						_react2.default.createElement(
+							"button",
+							{
+								onClick: this.props.navigateNext,
+								disabled: this.props.atEnd },
+							"next"
+						)
+					),
 					_react2.default.createElement(
 						"button",
 						{
@@ -24628,21 +24645,6 @@
 							{ className: "page-photography-main-close-text" },
 							"close"
 						)
-					),
-					_react2.default.createElement("br", null),
-					_react2.default.createElement(
-						"button",
-						{
-							onClick: this.props.navigatePrev,
-							disabled: this.props.atBeginning },
-						"prev"
-					),
-					_react2.default.createElement(
-						"button",
-						{
-							onClick: this.props.navigateNext,
-							disabled: this.props.atEnd },
-						"next"
 					)
 				)
 			);

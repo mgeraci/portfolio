@@ -1,6 +1,4 @@
 $thumbnail-size: 75px
-$image-dimension-big: 700px
-$image-dimension-small: 469px
 
 .page-photography
   &-thumbnails
@@ -44,22 +42,13 @@ $image-dimension-small: 469px
     color: #aaa;
 
     a.page-photography-main-tag
-      margin-left: 10px
+      margin-right: 10px
       @include link(#ccc, $cream)
-
-      &:first-child
-        margin-left: 0
 
     &-content
       margin-top: 40px
       margin-right: auto
       margin-left: auto
-
-      &--portrait
-        width: $image-dimension-small
-
-      &--landscape
-        width: $image-dimension-big
 
     &-close
       @include bare-button
@@ -87,8 +76,8 @@ $image-dimension-small: 469px
       &:after
         @include transform(translate(-50%, -50%) rotate(-45deg))
 
-      &:hover &:before,
-      &:hover &:after,
+      &:hover:before,
+      &:hover:after,
         background: #ccc
 
       &-text

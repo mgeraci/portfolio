@@ -28,15 +28,9 @@ const ImageDetail = React.createClass({
 	},
 
 	_onLoad(dimensions) {
-		let orientation = ORIENTATIONS.portrait;
-
-		if (dimensions.width > dimensions.height) {
-			orientation = ORIENTATIONS.landscape;
-		}
-
 		this.setState({
 			loaded: true,
-			orientation,
+			dimensions,
 		});
 	},
 
@@ -50,10 +44,16 @@ const ImageDetail = React.createClass({
 				this.state.orientation === ORIENTATIONS.landscape,
 		};
 
+		const contentStyle = {};
+
+		if (typeof(this.state.dimensions) !== "undefined" && this.state.dimensions !== null) {
+			contentStyle.width = this.state.dimensions.width;
+		}
+
 		return (
 			<div className="page-photography-main" key={image.title}>
 
-				<div className={classnames(contentClasses)}>
+				<div className={classnames(contentClasses)} style={contentStyle}>
 					<MainImage
 						src={image.image}
 						alt={image.title}
@@ -77,7 +77,20 @@ const ImageDetail = React.createClass({
 						}
 					</ReactCSSTransitionGroup>
 
-					<br />
+					{this.state.loaded &&
+						<span>
+							<button
+									onClick={this.props.navigatePrev}
+									disabled={this.props.atBeginning}>
+								prev
+							</button>
+							<button
+									onClick={this.props.navigateNext}
+									disabled={this.props.atEnd}>
+								next
+							</button>
+						</span>
+					}
 
 					<button
 							className="page-photography-main-close"
@@ -85,19 +98,6 @@ const ImageDetail = React.createClass({
 						<span className="page-photography-main-close-text">
 							close
 						</span>
-					</button>
-
-					<br />
-
-					<button
-							onClick={this.props.navigatePrev}
-							disabled={this.props.atBeginning}>
-						prev
-					</button>
-					<button
-							onClick={this.props.navigateNext}
-							disabled={this.props.atEnd}>
-						next
 					</button>
 				</div>
 			</div>

@@ -710,7 +710,7 @@ nav::after {
   background: rgba(0, 0, 0, 0.8);
   color: #aaa; }
   .page-photography-main a.page-photography-main-tag {
-    margin-left: 10px;
+    margin-right: 10px;
     text-decoration: none;
     background-repeat: repeat-x;
     background-size: 2px 2px;
@@ -722,16 +722,10 @@ nav::after {
       color: #f3f4d3;
       background-image: linear-gradient(to bottom, transparent 50%, rgba(243, 244, 211, 0.6) 50%);
       text-shadow: 0 1px 2px rgba(0, 0, 0, 0.15); }
-    .page-photography-main a.page-photography-main-tag:first-child {
-      margin-left: 0; }
   .page-photography-main-content {
     margin-top: 40px;
     margin-right: auto;
     margin-left: auto; }
-    .page-photography-main-content--portrait {
-      width: 469px; }
-    .page-photography-main-content--landscape {
-      width: 700px; }
   .page-photography-main-close {
     padding: 0;
     margin: 0;
@@ -767,8 +761,7 @@ nav::after {
       -ms-transform: translate(-50%, -50%) rotate(-45deg);
       -o-transform: translate(-50%, -50%) rotate(-45deg);
       transform: translate(-50%, -50%) rotate(-45deg); }
-    .page-photography-main-close:hover .page-photography-main-close:before,
-    .page-photography-main-close:hover .page-photography-main-close:after {
+    .page-photography-main-close:hover:before, .page-photography-main-close:hover:after {
       background: #ccc; }
     .page-photography-main-close-text {
       position: absolute;
