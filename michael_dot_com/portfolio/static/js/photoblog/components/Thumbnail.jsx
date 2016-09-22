@@ -21,18 +21,18 @@ const Thumbnail = React.createClass({
 		}
 	},
 
-	// if we get a new image source via props, trigger the new load
+	// if we close an active image modal, load
 	componentDidUpdate(prevProps) {
-		if (prevProps.image.thumbnail !== this.props.image.thumbnail) {
-			this._loadImage();
-		}
-
 		if (prevProps.hasActiveImage !== this.props.hasActiveImage) {
 			this._loadImage();
 		}
 	},
 
 	_loadImage() {
+		if (this.state.loaded) {
+			return;
+		}
+
 		const i = new Image();
 		i.src = this.props.image.thumbnail;
 

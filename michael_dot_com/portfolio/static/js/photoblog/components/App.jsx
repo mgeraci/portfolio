@@ -1,6 +1,9 @@
+/* global window, document */
+
 import React, { PropTypes } from "react";
 import ReactCSSTransitionGroup from "react-addons-css-transition-group";
 import { connect } from "react-redux";
+import throttle from "throttle-debounce/throttle";
 
 import {
 	setActiveImage,
@@ -28,6 +31,30 @@ const App = React.createClass({
 		onClearFilterTag: PropTypes.func.isRequired,
 		atBeginning: PropTypes.bool,
 		atEnd: PropTypes.bool,
+	},
+
+	getInitialState() {
+		return {};
+	},
+
+	componentDidMount() {
+		const cb = throttle(200, this._handleScroll);
+
+		document.addEventListener("scroll", cb);
+	},
+
+	_handleScroll() {
+		const buffer = 200;
+		const top = document.body.scrollTop;
+		const height = window.innerHeight
+			|| document.documentElement.clientHeight
+			|| document.body.clientHeight;
+		const bottom = top + height;
+
+		this.setState({
+			scrollTop: top - buffer,
+			scrollBottom: bottom + buffer,
+		});
 	},
 
 	_getVisibleImageIds() {
