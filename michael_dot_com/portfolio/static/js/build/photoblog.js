@@ -24342,7 +24342,7 @@
 	 * @param {string} url - the current page url
 	 * @param {object} state - the current application state
 	 *
-	 * @returns {obejct} - keys page, the current page, and data, additional info
+	 * @returns {object} - keys page, the current page, and data, additional info
 	 */
 	function parseUrl(url) {
 		var initialData = arguments.length <= 1 || arguments[1] === undefined ? {} : arguments[1];
