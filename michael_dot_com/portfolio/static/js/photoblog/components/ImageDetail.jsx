@@ -79,8 +79,12 @@ const ImageDetail = React.createClass({
 
 					<br />
 
-					<button onClick={this.props.clearActiveImage}>
-						close
+					<button
+							className="page-photography-main-close"
+							onClick={this.props.clearActiveImage}>
+						<span className="page-photography-main-close-text">
+							close
+						</span>
 					</button>
 
 					<br />

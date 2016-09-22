@@ -61,6 +61,40 @@ $image-dimension-small: 469px
       &--landscape
         width: $image-dimension-big
 
+    &-close
+      @include bare-button
+      position: absolute
+      overflow: hidden
+      top: 20px
+      right: 20px
+      width: 50px
+      height: 50px
+      cursor: pointer
+
+      &:before,
+      &:after
+        content: ""
+        position: absolute
+        top: 50%
+        left: 50%
+        width: 7%
+        height: 70%
+        background: #fff
+
+      &:before
+        @include transform(translate(-50%, -50%) rotate(45deg))
+
+      &:after
+        @include transform(translate(-50%, -50%) rotate(-45deg))
+
+      &:hover &:before,
+      &:hover &:after,
+        background: #ccc
+
+      &-text
+        position: absolute
+        top: 100px
+
 
 // react css transition group
 // ----------------------------------------------------------------------------

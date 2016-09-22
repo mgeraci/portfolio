@@ -24620,8 +24620,14 @@
 					_react2.default.createElement("br", null),
 					_react2.default.createElement(
 						"button",
-						{ onClick: this.props.clearActiveImage },
-						"close"
+						{
+							className: "page-photography-main-close",
+							onClick: this.props.clearActiveImage },
+						_react2.default.createElement(
+							"span",
+							{ className: "page-photography-main-close-text" },
+							"close"
+						)
 					),
 					_react2.default.createElement("br", null),
 					_react2.default.createElement(

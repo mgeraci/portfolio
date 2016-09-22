@@ -732,6 +732,47 @@ nav::after {
       width: 469px; }
     .page-photography-main-content--landscape {
       width: 700px; }
+  .page-photography-main-close {
+    padding: 0;
+    margin: 0;
+    background: none;
+    border: none;
+    font-size: inherit;
+    font-family: inherit;
+    outline: none;
+    position: absolute;
+    overflow: hidden;
+    top: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    cursor: pointer; }
+    .page-photography-main-close:before, .page-photography-main-close:after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 7%;
+      height: 70%;
+      background: #fff; }
+    .page-photography-main-close:before {
+      -webkit-transform: translate(-50%, -50%) rotate(45deg);
+      -moz-transform: translate(-50%, -50%) rotate(45deg);
+      -ms-transform: translate(-50%, -50%) rotate(45deg);
+      -o-transform: translate(-50%, -50%) rotate(45deg);
+      transform: translate(-50%, -50%) rotate(45deg); }
+    .page-photography-main-close:after {
+      -webkit-transform: translate(-50%, -50%) rotate(-45deg);
+      -moz-transform: translate(-50%, -50%) rotate(-45deg);
+      -ms-transform: translate(-50%, -50%) rotate(-45deg);
+      -o-transform: translate(-50%, -50%) rotate(-45deg);
+      transform: translate(-50%, -50%) rotate(-45deg); }
+    .page-photography-main-close:hover .page-photography-main-close:before,
+    .page-photography-main-close:hover .page-photography-main-close:after {
+      background: #ccc; }
+    .page-photography-main-close-text {
+      position: absolute;
+      top: 100px; }
 
 .main-image-enter,
 .main-image-appear {

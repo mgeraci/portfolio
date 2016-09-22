@@ -111,7 +111,7 @@ class Recording(models.Model):
 
 class PhotoblogTag(models.Model):
     name = models.CharField(max_length=200)
-    slug = models.SlugField(blank=True)
+    slug = models.SlugField(unique=True)
 
     class Meta:
         ordering = ['name']
@@ -134,11 +134,11 @@ class PhotoblogTag(models.Model):
 
 
 class PhotoblogImage(models.Model):
-    id = models.PositiveSmallIntegerField(primary_key=True)
+    lightroom_id = models.IntegerField(blank=True, null=True)
     title = models.CharField(max_length=200)
     year = models.PositiveSmallIntegerField()
-    thumbnail = models.FileField(upload_to='photoblog', blank=True, null=True)
-    image = models.FileField(upload_to='photoblog', blank=True, null=True)
+    thumbnail = models.FileField(upload_to='photoblog/thubmnails', blank=True, null=True)
+    image = models.FileField(upload_to='photoblog/images', blank=True, null=True)
     tags = models.ManyToManyField(PhotoblogTag, blank=True)
 
     class Meta:
