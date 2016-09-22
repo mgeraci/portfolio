@@ -708,7 +708,8 @@ nav::after {
 .page-photography-thumbnails {
   width: 600px;
   margin: 0 auto;
-  text-align: center; }
+  text-align: center;
+  line-height: 0; }
   .page-photography-thumbnails::after {
     clear: both;
     content: "";
@@ -746,7 +747,8 @@ nav::after {
 .page-photography-thumbnail {
   display: inline-block;
   width: 75px;
-  height: 75px; }
+  height: 75px;
+  background: rgba(0, 0, 0, 0.1); }
   .page-photography-thumbnail, .page-photography-thumbnail:hover, .page-photography-thumbnail:active {
     text-shadow: none !important;
     background-image: none !important; }

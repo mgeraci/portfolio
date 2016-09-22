@@ -37,22 +37,20 @@ const MainImage = React.createClass({
 
 	render() {
 		return (
-			<div>
+			<ReactCSSTransitionGroup
+					transitionName="main-image"
+					transitionAppear
+					transitionEnterTimeout={500}
+					transitionAppearTimeout={500}
+					transitionLeaveTimeout={500}>
 				{this.props.loaded &&
-					<ReactCSSTransitionGroup
-							transitionName="main-image"
-							transitionAppear
-							transitionEnterTimeout={500}
-							transitionAppearTimeout={500}
-							transitionLeaveTimeout={500}>
-						<img
-							key={this.props.src}
-							src={this.props.src}
-							alt={this.props.alt}
-						/>
-					</ReactCSSTransitionGroup>
+					<img
+						key={this.props.src}
+						src={this.props.src}
+						alt={this.props.alt}
+					/>
 				}
-			</div>
+			</ReactCSSTransitionGroup>
 		);
 	},
 });

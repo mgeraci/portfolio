@@ -62,6 +62,7 @@ const App = React.createClass({
 							image={this.props.images[id]}
 							setActiveImage={this.props.onSetActiveImage}
 							clearActiveImage={this.props.onClearActiveImage}
+							hasActiveImage={!!this.props.activeImage}
 						/>
 					)}
 				</div>

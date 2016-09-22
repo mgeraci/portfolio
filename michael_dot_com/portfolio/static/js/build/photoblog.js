@@ -46,6 +46,8 @@
 
 	"use strict";
 
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; /* global window, document */
+
 	var _react = __webpack_require__(11);
 
 	var _react2 = _interopRequireDefault(_react);
@@ -72,15 +74,20 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	/* global window, document */
-
 	__webpack_require__(223);
 
 	window.Photoblog = {
 		init: function init(data) {
 			var _this = this;
 
-			this.store = (0, _redux.createStore)(_reducer2.default, data);
+			var initialState = _extends({}, data);
+			var parsedUrl = (0, _helpers.parseUrl)(window.location.pathname);
+
+			if (parsedUrl.page === _constants.URLS.photo) {
+				initialState.activeImage = parsedUrl.data;
+			}
+
+			this.store = (0, _redux.createStore)(_reducer2.default, initialState);
 
 			_reactDom2.default.render(_react2.default.createElement(
 				_reactRedux.Provider,
@@ -23185,7 +23192,8 @@
 							key: id,
 							image: _this.props.images[id],
 							setActiveImage: _this.props.onSetActiveImage,
-							clearActiveImage: _this.props.onClearActiveImage
+							clearActiveImage: _this.props.onClearActiveImage,
+							hasActiveImage: !!_this.props.activeImage
 						});
 					})
 				),
@@ -24483,16 +24491,56 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
+	var _reactAddonsCssTransitionGroup = __webpack_require__(207);
+
+	var _reactAddonsCssTransitionGroup2 = _interopRequireDefault(_reactAddonsCssTransitionGroup);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	/* global Image */
 
 	var Thumbnail = _react2.default.createClass({
 		displayName: "Thumbnail",
 
 		propTypes: {
 			image: _react.PropTypes.object.isRequired,
-			setActiveImage: _react.PropTypes.func.isRequired
+			setActiveImage: _react.PropTypes.func.isRequired,
+			hasActiveImage: _react.PropTypes.bool
 		},
 
+		getInitialState: function getInitialState() {
+			return { loaded: false };
+		},
+
+
+		// trigger the initial load
+		componentDidMount: function componentDidMount() {
+			if (!this.props.hasActiveImage) {
+				this._loadImage();
+			}
+		},
+
+
+		// if we get a new image source via props, trigger the new load
+		componentDidUpdate: function componentDidUpdate(prevProps) {
+			if (prevProps.image.thumbnail !== this.props.image.thumbnail) {
+				this._loadImage();
+			}
+
+			if (prevProps.hasActiveImage !== this.props.hasActiveImage) {
+				this._loadImage();
+			}
+		},
+		_loadImage: function _loadImage() {
+			var _this = this;
+
+			var i = new Image();
+			i.src = this.props.image.thumbnail;
+
+			i.onload = function () {
+				_this.setState({ loaded: true });
+			};
+		},
 		_handleClick: function _handleClick(e) {
 			e.preventDefault();
 			this.props.setActiveImage(this.props.image.id);
@@ -24504,11 +24552,21 @@
 					className: "page-photography-thumbnail",
 					href: "/photography/blog/" + this.props.image.id,
 					onClick: this._handleClick },
-				_react2.default.createElement("img", {
-					className: "page-photography-thumbnail-image",
-					src: this.props.image.thumbnail,
-					alt: "A thumbnail of " + this.props.image.title
-				})
+				!this.props.hasActiveImage && _react2.default.createElement(
+					_reactAddonsCssTransitionGroup2.default,
+					{
+						transitionName: "main-image",
+						transitionAppear: true,
+						transitionEnterTimeout: 500,
+						transitionAppearTimeout: 500,
+						transitionLeaveTimeout: 500 },
+					this.state.loaded && _react2.default.createElement("img", {
+						className: "page-photography-thumbnail-image",
+						key: this.props.image.thumbnail,
+						src: this.props.image.thumbnail,
+						alt: this.props.image.title
+					})
+				)
 			);
 		}
 	});
@@ -24729,22 +24787,18 @@
 		},
 		render: function render() {
 			return _react2.default.createElement(
-				"div",
-				null,
-				this.props.loaded && _react2.default.createElement(
-					_reactAddonsCssTransitionGroup2.default,
-					{
-						transitionName: "main-image",
-						transitionAppear: true,
-						transitionEnterTimeout: 500,
-						transitionAppearTimeout: 500,
-						transitionLeaveTimeout: 500 },
-					_react2.default.createElement("img", {
-						key: this.props.src,
-						src: this.props.src,
-						alt: this.props.alt
-					})
-				)
+				_reactAddonsCssTransitionGroup2.default,
+				{
+					transitionName: "main-image",
+					transitionAppear: true,
+					transitionEnterTimeout: 500,
+					transitionAppearTimeout: 500,
+					transitionLeaveTimeout: 500 },
+				this.props.loaded && _react2.default.createElement("img", {
+					key: this.props.src,
+					src: this.props.src,
+					alt: this.props.alt
+				})
 			);
 		}
 	});

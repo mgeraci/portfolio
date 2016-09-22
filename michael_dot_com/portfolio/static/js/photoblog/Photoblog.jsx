@@ -15,9 +15,16 @@ require("../../css/styles.sass");
 
 window.Photoblog = {
 	init(data) {
+		const initialState = { ...data };
+		const parsedUrl = parseUrl(window.location.pathname);
+
+		if (parsedUrl.page === URLS.photo) {
+			initialState.activeImage = parsedUrl.data;
+		}
+
 		this.store = createStore(
 			reducer,
-			data
+			initialState
 		);
 
 		ReactDOM.render(
