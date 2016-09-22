@@ -24552,7 +24552,7 @@
 					className: "page-photography-thumbnail",
 					href: "/photography/blog/" + this.props.image.id,
 					onClick: this._handleClick },
-				!this.props.hasActiveImage && _react2.default.createElement(
+				_react2.default.createElement(
 					_reactAddonsCssTransitionGroup2.default,
 					{
 						transitionName: "main-image",
@@ -24685,6 +24685,7 @@
 							transitionAppearTimeout: 500,
 							transitionLeaveTimeout: 500 },
 						this.state.loaded && _react2.default.createElement(_ImageMeta2.default, {
+							key: image.id,
 							title: image.title,
 							year: image.year,
 							tags: image.tags,

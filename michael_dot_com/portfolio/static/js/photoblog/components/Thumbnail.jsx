@@ -52,23 +52,21 @@ const Thumbnail = React.createClass({
 					className="page-photography-thumbnail"
 					href={`/photography/blog/${this.props.image.id}`}
 					onClick={this._handleClick}>
-				{!this.props.hasActiveImage &&
-					<ReactCSSTransitionGroup
-							transitionName="main-image"
-							transitionAppear
-							transitionEnterTimeout={500}
-							transitionAppearTimeout={500}
-							transitionLeaveTimeout={500}>
-						{this.state.loaded &&
-							<img
-								className="page-photography-thumbnail-image"
-								key={this.props.image.thumbnail}
-								src={this.props.image.thumbnail}
-								alt={this.props.image.title}
-							/>
-						}
-					</ReactCSSTransitionGroup>
-				}
+				<ReactCSSTransitionGroup
+						transitionName="main-image"
+						transitionAppear
+						transitionEnterTimeout={500}
+						transitionAppearTimeout={500}
+						transitionLeaveTimeout={500}>
+					{this.state.loaded &&
+						<img
+							className="page-photography-thumbnail-image"
+							key={this.props.image.thumbnail}
+							src={this.props.image.thumbnail}
+							alt={this.props.image.title}
+						/>
+					}
+				</ReactCSSTransitionGroup>
 			</a>
 		);
 	},

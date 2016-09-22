@@ -87,6 +87,7 @@ const ImageDetail = React.createClass({
 							transitionLeaveTimeout={500}>
 						{this.state.loaded &&
 							<ImageMeta
+								key={image.id}
 								title={image.title}
 								year={image.year}
 								tags={image.tags}
