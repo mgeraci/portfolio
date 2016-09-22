@@ -85,6 +85,28 @@ em
     position: relative
     bottom: 10px
 
+@include keyframes(spin)
+  from
+    @include transform(rotate(0deg))
+
+  to
+    @include transform(rotate(360deg))
+
+.loader
+  position: absolute
+  top: 50%
+  left: 50%
+  @include transform(translate(-50%, -50%));
+  width: 35px
+  height: 35px
+  border: 6px solid $text
+  border-bottom-color: $green
+  border-radius: 50%
+  @include animation-name(spin);
+  @include animation-duration(1600ms);
+  @include animation-timing-function(linear);
+  @include animation-iteration-count(infinite);
+
 
 // includes
 ///////////////////////////////////////////////////////////////////////////////

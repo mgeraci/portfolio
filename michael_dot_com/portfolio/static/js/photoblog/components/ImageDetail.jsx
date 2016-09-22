@@ -1,8 +1,10 @@
+/* global document */
 import React, { PropTypes } from "react";
 import ReactCSSTransitionGroup from "react-addons-css-transition-group";
 
 import MainImage from "./MainImage";
 import ImageMeta from "./ImageMeta";
+import { KEYS } from "../util/constants";
 
 const ImageDetail = React.createClass({
 	propTypes: {
@@ -19,9 +21,35 @@ const ImageDetail = React.createClass({
 		return { loaded: false };
 	},
 
+	componentDidMount() {
+		document.addEventListener("keyup", (e) => {
+			this._handleKeyup(e.which);
+		});
+	},
+
 	componentWillReceiveProps(nextProps) {
 		if (nextProps.image.id !== this.props.image.id) {
 			this.setState({ loaded: false });
+		}
+	},
+
+	componentWillUnmount() {
+		document.removeEventListener("keyup", this._handleKeyup);
+	},
+
+	_handleKeyup(code) {
+		if (code === KEYS.escape) {
+			this.props.clearActiveImage();
+		}
+
+		if (!this.state.loaded) {
+			return;
+		}
+
+		if (code === KEYS.left) {
+			this.props.navigatePrev();
+		} else if (code === KEYS.right) {
+			this.props.navigateNext();
 		}
 	},
 
@@ -80,6 +108,10 @@ const ImageDetail = React.createClass({
 								next
 							</button>
 						</span>
+					}
+
+					{!this.state.loaded &&
+						<div className="loader" />
 					}
 
 					<button

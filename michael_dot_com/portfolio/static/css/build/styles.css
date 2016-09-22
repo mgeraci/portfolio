@@ -118,6 +118,59 @@ em {
   position: relative;
   bottom: 10px; }
 
+@-webkit-keyframes spin {
+  from {
+    -webkit-transform: rotate(0deg); }
+  to {
+    -webkit-transform: rotate(360deg); } }
+
+@-moz-keyframes spin {
+  from {
+    -moz-transform: rotate(0deg); }
+  to {
+    -moz-transform: rotate(360deg); } }
+
+@keyframes spin {
+  from {
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg); }
+  to {
+    -webkit-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg); } }
+
+.loader {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  width: 35px;
+  height: 35px;
+  border: 6px solid #444;
+  border-bottom-color: #bbd199;
+  border-radius: 50%;
+  -webkit-animation-name: spin;
+  -moz-animation-name: spin;
+  animation-name: spin;
+  -webkit-animation-duration: 1600ms;
+  -moz-animation-duration: 1600ms;
+  animation-duration: 1600ms;
+  -webkit-animation-timing-function: linear;
+  -moz-animation-timing-function: linear;
+  animation-timing-function: linear;
+  -webkit-animation-iteration-count: infinite;
+  -moz-animation-iteration-count: infinite;
+  animation-iteration-count: infinite; }
+
 @font-face {
   font-family: 'body';
   src: url(../../../static/fonts/body.eot?#iefix) format("embedded-opentype"), url(../../../static/fonts/body.woff) format("woff"), url(../../../static/fonts/body.ttf) format("truetype"), url(../../../static/fonts/body.svg#Body) format("svg");
@@ -746,9 +799,9 @@ nav::after {
       position: absolute;
       top: 50%;
       left: 50%;
-      width: 7%;
-      height: 70%;
-      background: #fff; }
+      width: 10%;
+      height: 58%;
+      background: #ccc; }
     .page-photography-main-close:before {
       -webkit-transform: translate(-50%, -50%) rotate(45deg);
       -moz-transform: translate(-50%, -50%) rotate(45deg);
@@ -762,7 +815,7 @@ nav::after {
       -o-transform: translate(-50%, -50%) rotate(-45deg);
       transform: translate(-50%, -50%) rotate(-45deg); }
     .page-photography-main-close:hover:before, .page-photography-main-close:hover:after {
-      background: #ccc; }
+      background: #fff; }
     .page-photography-main-close-text {
       position: absolute;
       top: 100px; }

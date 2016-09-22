@@ -38,9 +38,6 @@ const MainImage = React.createClass({
 	render() {
 		return (
 			<div>
-				{!this.props.loaded &&
-					<span>loading</span>
-				}
 				{this.props.loaded &&
 					<ReactCSSTransitionGroup
 							transitionName="main-image"

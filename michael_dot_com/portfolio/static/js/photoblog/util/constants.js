@@ -9,4 +9,10 @@ export const DIRECTIONS = {
 	next: "next",
 };
 
+export const KEYS = {
+	left: 37,
+	right: 39,
+	escape: 27,
+};
+
 export default {};

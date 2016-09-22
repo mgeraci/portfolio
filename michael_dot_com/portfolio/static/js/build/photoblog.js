@@ -24309,6 +24309,12 @@
 		next: "next"
 	};
 
+	var KEYS = exports.KEYS = {
+		left: 37,
+		right: 39,
+		escape: 27
+	};
+
 	exports.default = {};
 
 /***/ },
@@ -24535,6 +24541,8 @@
 
 	var _ImageMeta2 = _interopRequireDefault(_ImageMeta);
 
+	var _constants = __webpack_require__(215);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	var ImageDetail = _react2.default.createClass({
@@ -24553,9 +24561,34 @@
 		getInitialState: function getInitialState() {
 			return { loaded: false };
 		},
+		componentDidMount: function componentDidMount() {
+			var _this = this;
+
+			document.addEventListener("keyup", function (e) {
+				_this._handleKeyup(e.which);
+			});
+		},
 		componentWillReceiveProps: function componentWillReceiveProps(nextProps) {
 			if (nextProps.image.id !== this.props.image.id) {
 				this.setState({ loaded: false });
+			}
+		},
+		componentWillUnmount: function componentWillUnmount() {
+			document.removeEventListener("keyup", this._handleKeyup);
+		},
+		_handleKeyup: function _handleKeyup(code) {
+			if (code === _constants.KEYS.escape) {
+				this.props.clearActiveImage();
+			}
+
+			if (!this.state.loaded) {
+				return;
+			}
+
+			if (code === _constants.KEYS.left) {
+				this.props.navigatePrev();
+			} else if (code === _constants.KEYS.right) {
+				this.props.navigateNext();
 			}
 		},
 		_onLoad: function _onLoad(dimensions) {
@@ -24618,6 +24651,7 @@
 							"next"
 						)
 					),
+					!this.state.loaded && _react2.default.createElement("div", { className: "loader" }),
 					_react2.default.createElement(
 						"button",
 						{
@@ -24632,8 +24666,7 @@
 				)
 			);
 		}
-	});
-
+	}); /* global document */
 	exports.default = ImageDetail;
 
 /***/ },
@@ -24698,11 +24731,6 @@
 			return _react2.default.createElement(
 				"div",
 				null,
-				!this.props.loaded && _react2.default.createElement(
-					"span",
-					null,
-					"loading"
-				),
 				this.props.loaded && _react2.default.createElement(
 					_reactAddonsCssTransitionGroup2.default,
 					{
