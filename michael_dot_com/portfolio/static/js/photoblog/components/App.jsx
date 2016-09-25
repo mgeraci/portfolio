@@ -41,10 +41,10 @@ const App = React.createClass({
 		const cb = throttle(200, this._handleScroll);
 
 		document.addEventListener("scroll", cb);
+		this._handleScroll();
 	},
 
 	_handleScroll() {
-		const buffer = 200;
 		const top = document.body.scrollTop;
 		const height = window.innerHeight
 			|| document.documentElement.clientHeight
@@ -52,8 +52,8 @@ const App = React.createClass({
 		const bottom = top + height;
 
 		this.setState({
-			scrollTop: top - buffer,
-			scrollBottom: bottom + buffer,
+			scrollTop: top,
+			scrollBottom: bottom,
 		});
 	},
 
@@ -87,6 +87,8 @@ const App = React.createClass({
 						<Thumbnail
 							key={id}
 							image={this.props.images[id]}
+							scrollTop={this.state.scrollTop}
+							scrollBottom={this.state.scrollBottom}
 							setActiveImage={this.props.onSetActiveImage}
 							clearActiveImage={this.props.onClearActiveImage}
 							hasActiveImage={!!this.props.activeImage}

@@ -23163,16 +23163,16 @@
 			var cb = (0, _throttle2.default)(200, this._handleScroll);
 
 			document.addEventListener("scroll", cb);
+			this._handleScroll();
 		},
 		_handleScroll: function _handleScroll() {
-			var buffer = 200;
 			var top = document.body.scrollTop;
 			var height = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
 			var bottom = top + height;
 
 			this.setState({
-				scrollTop: top - buffer,
-				scrollBottom: bottom + buffer
+				scrollTop: top,
+				scrollBottom: bottom
 			});
 		},
 		_getVisibleImageIds: function _getVisibleImageIds() {
@@ -23214,6 +23214,8 @@
 						return _react2.default.createElement(_Thumbnail2.default, {
 							key: id,
 							image: _this.props.images[id],
+							scrollTop: _this.state.scrollTop,
+							scrollBottom: _this.state.scrollBottom,
 							setActiveImage: _this.props.onSetActiveImage,
 							clearActiveImage: _this.props.onClearActiveImage,
 							hasActiveImage: !!_this.props.activeImage
@@ -24542,18 +24544,35 @@
 				this._loadImage();
 			}
 		},
+		componentWillReceiveProps: function componentWillReceiveProps(nextProps) {
+			if (this.thumbnail === null) {
+				return;
+			}
+
+			var top = this.thumbnail.getBoundingClientRect().top + nextProps.scrollTop;
+			var isVisible = top >= nextProps.scrollTop - 200 && top < nextProps.scrollBottom + 200;
+
+			// if we are turning visible, kick off a load
+			if (!this.state.isVisible && isVisible && !this.props.hasActiveImage) {
+				this._loadImage(true);
+			}
+
+			this.setState({ isVisible: isVisible });
+		},
 
 
 		// if we close an active image modal, load
 		componentDidUpdate: function componentDidUpdate(prevProps) {
-			if (prevProps.hasActiveImage !== this.props.hasActiveImage) {
+			if (prevProps.hasActiveImage !== this.props.hasActiveImage && this.state.isVisible) {
 				this._loadImage();
 			}
 		},
 		_loadImage: function _loadImage() {
 			var _this = this;
 
-			if (this.state.loaded) {
+			var force = arguments.length <= 0 || arguments[0] === undefined ? false : arguments[0];
+
+			if (this.state.loaded || !this.state.isVisible && !force) {
 				return;
 			}
 
@@ -24569,10 +24588,15 @@
 			this.props.setActiveImage(this.props.image.id);
 		},
 		render: function render() {
+			var _this2 = this;
+
 			return _react2.default.createElement(
 				"a",
 				{
 					className: "page-photography-thumbnail",
+					ref: function ref(c) {
+						_this2.thumbnail = c;
+					},
 					href: "/photography/blog/" + this.props.image.id,
 					onClick: this._handleClick },
 				_react2.default.createElement(

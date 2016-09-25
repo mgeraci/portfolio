@@ -21,15 +21,33 @@ const Thumbnail = React.createClass({
 		}
 	},
 
+	componentWillReceiveProps(nextProps) {
+		if (this.thumbnail === null) {
+			return;
+		}
+
+		const top = this.thumbnail.getBoundingClientRect().top + nextProps.scrollTop;
+		const isVisible = top >= (nextProps.scrollTop - 200) &&
+			top < (nextProps.scrollBottom + 200);
+
+		// if we are turning visible, kick off a load
+		if (!this.state.isVisible && isVisible && !this.props.hasActiveImage) {
+			this._loadImage(true);
+		}
+
+		this.setState({ isVisible });
+	},
+
 	// if we close an active image modal, load
 	componentDidUpdate(prevProps) {
-		if (prevProps.hasActiveImage !== this.props.hasActiveImage) {
+		if (prevProps.hasActiveImage !== this.props.hasActiveImage &&
+				this.state.isVisible) {
 			this._loadImage();
 		}
 	},
 
-	_loadImage() {
-		if (this.state.loaded) {
+	_loadImage(force = false) {
+		if (this.state.loaded || (!this.state.isVisible && !force)) {
 			return;
 		}
 
@@ -50,6 +68,7 @@ const Thumbnail = React.createClass({
 		return (
 			<a
 					className="page-photography-thumbnail"
+					ref={(c) => { this.thumbnail = c; }}
 					href={`/photography/blog/${this.props.image.id}`}
 					onClick={this._handleClick}>
 				<ReactCSSTransitionGroup
