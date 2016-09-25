@@ -24885,6 +24885,10 @@
 		render: function render() {
 			var _this = this;
 
+			var tags = this.props.tags.filter(function (tag) {
+				return tag.slug !== "michaelgeracicom";
+			});
+
 			return _react2.default.createElement(
 				"div",
 				{ className: "page-photography-main-meta" },
@@ -24902,7 +24906,7 @@
 				!!this.props.tags.length && _react2.default.createElement(
 					"div",
 					{ className: "page-photography-main-tags" },
-					this.props.tags.map(function (tag, i) {
+					tags.map(function (tag, i) {
 						return _react2.default.createElement(_Tag2.default, {
 							key: i,
 							name: tag.name,

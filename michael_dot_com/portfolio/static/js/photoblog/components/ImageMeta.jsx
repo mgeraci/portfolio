@@ -10,6 +10,10 @@ const ImageMeta = React.createClass({
 	},
 
 	render() {
+		const tags = this.props.tags.filter((tag) => {
+			return tag.slug !== "michaelgeracicom";
+		});
+
 		return (
 			<div className="page-photography-main-meta">
 				<h3>{this.props.title}</h3>
@@ -18,7 +22,7 @@ const ImageMeta = React.createClass({
 
 				{!!this.props.tags.length &&
 					<div className="page-photography-main-tags">
-						{this.props.tags.map((tag, i) =>
+						{tags.map((tag, i) =>
 							<Tag
 								key={i}
 								name={tag.name}
