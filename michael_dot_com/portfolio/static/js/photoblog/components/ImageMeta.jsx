@@ -1,5 +1,6 @@
 import React, { PropTypes } from "react";
 import Tag from "./Tag";
+import { BAD_TAGS } from "../util/constants";
 
 const ImageMeta = React.createClass({
 	propTypes: {
@@ -11,7 +12,7 @@ const ImageMeta = React.createClass({
 
 	render() {
 		const tags = this.props.tags.filter((tag) => {
-			return tag.slug !== "michaelgeracicom";
+			return !BAD_TAGS[tag.slug];
 		});
 
 		return (

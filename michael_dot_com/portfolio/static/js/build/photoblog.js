@@ -24348,6 +24348,11 @@
 		escape: 27
 	};
 
+	var BAD_TAGS = exports.BAD_TAGS = {
+		"michaelgeracicom": 1,
+		"slideshow": 1
+	};
+
 	exports.default = {};
 
 /***/ },
@@ -24897,6 +24902,8 @@
 
 	var _Tag2 = _interopRequireDefault(_Tag);
 
+	var _constants = __webpack_require__(215);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	var ImageMeta = _react2.default.createClass({
@@ -24913,7 +24920,7 @@
 			var _this = this;
 
 			var tags = this.props.tags.filter(function (tag) {
-				return tag.slug !== "michaelgeracicom";
+				return !_constants.BAD_TAGS[tag.slug];
 			});
 
 			return _react2.default.createElement(

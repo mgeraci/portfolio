@@ -15,4 +15,9 @@ export const KEYS = {
 	escape: 27,
 };
 
+export const BAD_TAGS = {
+	"michaelgeracicom": 1,
+	"slideshow": 1,
+};
+
 export default {};
