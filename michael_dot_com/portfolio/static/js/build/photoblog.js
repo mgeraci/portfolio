@@ -24638,6 +24638,10 @@
 
 	var _reactAddonsCssTransitionGroup2 = _interopRequireDefault(_reactAddonsCssTransitionGroup);
 
+	var _classnames = __webpack_require__(224);
+
+	var _classnames2 = _interopRequireDefault(_classnames);
+
 	var _MainImage = __webpack_require__(219);
 
 	var _MainImage2 = _interopRequireDefault(_MainImage);
@@ -24649,6 +24653,8 @@
 	var _constants = __webpack_require__(215);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	/* global document */
 
 	var ImageDetail = _react2.default.createClass({
 		displayName: "ImageDetail",
@@ -24707,6 +24713,16 @@
 
 			var contentStyle = {};
 
+			var prevClass = {
+				"page-photography-main-nav": true,
+				"page-photography-main-nav--prev": true
+			};
+
+			var nextClass = {
+				"page-photography-main-nav": true,
+				"page-photography-main-nav--next": true
+			};
+
 			if (typeof this.state.dimensions !== "undefined" && this.state.dimensions !== null) {
 				contentStyle.width = this.state.dimensions.width;
 			}
@@ -24745,16 +24761,26 @@
 						_react2.default.createElement(
 							"button",
 							{
+								className: (0, _classnames2.default)(prevClass),
 								onClick: this.props.navigatePrev,
 								disabled: this.props.atBeginning },
-							"prev"
+							_react2.default.createElement(
+								"span",
+								{ className: "page-photography-main-nav-text" },
+								"previous photo"
+							)
 						),
 						_react2.default.createElement(
 							"button",
 							{
+								className: (0, _classnames2.default)(nextClass),
 								onClick: this.props.navigateNext,
 								disabled: this.props.atEnd },
-							"next"
+							_react2.default.createElement(
+								"span",
+								{ className: "page-photography-main-nav-text" },
+								"next photo"
+							)
 						)
 					),
 					!this.state.loaded && _react2.default.createElement("div", { className: "loader" }),
@@ -24772,7 +24798,8 @@
 				)
 			);
 		}
-	}); /* global document */
+	});
+
 	exports.default = ImageDetail;
 
 /***/ },
@@ -25068,6 +25095,60 @@
 		return wrapper;
 
 	};
+
+
+/***/ },
+/* 224 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
+	  Copyright (c) 2016 Jed Watson.
+	  Licensed under the MIT License (MIT), see
+	  http://jedwatson.github.io/classnames
+	*/
+	/* global define */
+
+	(function () {
+		'use strict';
+
+		var hasOwn = {}.hasOwnProperty;
+
+		function classNames () {
+			var classes = [];
+
+			for (var i = 0; i < arguments.length; i++) {
+				var arg = arguments[i];
+				if (!arg) continue;
+
+				var argType = typeof arg;
+
+				if (argType === 'string' || argType === 'number') {
+					classes.push(arg);
+				} else if (Array.isArray(arg)) {
+					classes.push(classNames.apply(null, arg));
+				} else if (argType === 'object') {
+					for (var key in arg) {
+						if (hasOwn.call(arg, key) && arg[key]) {
+							classes.push(key);
+						}
+					}
+				}
+			}
+
+			return classes.join(' ');
+		}
+
+		if (typeof module !== 'undefined' && module.exports) {
+			module.exports = classNames;
+		} else if (true) {
+			// register as 'classnames', consistent with npm package name
+			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_RESULT__ = function () {
+				return classNames;
+			}.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+		} else {
+			window.classNames = classNames;
+		}
+	}());
 
 
 /***/ }

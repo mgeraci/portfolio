@@ -781,7 +781,7 @@ nav::after {
     margin-top: 40px;
     margin-right: auto;
     margin-left: auto; }
-  .page-photography-main-close {
+  .page-photography-main-nav, .page-photography-main-close {
     padding: 0;
     margin: 0;
     background: none;
@@ -791,19 +791,71 @@ nav::after {
     outline: none;
     position: absolute;
     overflow: hidden;
-    top: 20px;
-    right: 20px;
+    display: block;
     width: 50px;
-    height: 50px;
-    cursor: pointer; }
-    .page-photography-main-close:before, .page-photography-main-close:after {
+    height: 50px; }
+    .page-photography-main-nav:not([disabled]), .page-photography-main-close:not([disabled]) {
+      cursor: pointer; }
+    .page-photography-main-nav[disabled], .page-photography-main-close[disabled] {
+      opacity: 0.1; }
+    .page-photography-main-nav-text, .page-photography-main-close-text {
+      position: absolute;
+      top: 100px; }
+    .page-photography-main-nav:before, .page-photography-main-nav:after, .page-photography-main-close:before, .page-photography-main-close:after {
       content: "";
       position: absolute;
       top: 50%;
-      left: 50%;
       width: 10%;
       height: 58%;
-      background: #ccc; }
+      background: #777;
+      -webkit-transition: background 100ms linear;
+      -moz-transition: background 100ms linear;
+      transition: background 100ms linear; }
+    .page-photography-main-nav:not([disabled]):hover:before, .page-photography-main-nav:not([disabled]):hover:after, .page-photography-main-close:not([disabled]):hover:before, .page-photography-main-close:not([disabled]):hover:after {
+      background: #fff; }
+  .page-photography-main-nav {
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    transform: translateY(-50%); }
+    .page-photography-main-nav:before, .page-photography-main-nav:after {
+      top: 45%;
+      height: 30%; }
+    .page-photography-main-nav--prev {
+      left: 10px; }
+      .page-photography-main-nav--prev:before {
+        -webkit-transform: translate(-1px, -60%) rotate(40deg);
+        -moz-transform: translate(-1px, -60%) rotate(40deg);
+        -ms-transform: translate(-1px, -60%) rotate(40deg);
+        -o-transform: translate(-1px, -60%) rotate(40deg);
+        transform: translate(-1px, -60%) rotate(40deg); }
+      .page-photography-main-nav--prev:after {
+        -webkit-transform: rotate(-40deg);
+        -moz-transform: rotate(-40deg);
+        -ms-transform: rotate(-40deg);
+        -o-transform: rotate(-40deg);
+        transform: rotate(-40deg); }
+    .page-photography-main-nav--next {
+      right: 10px; }
+      .page-photography-main-nav--next:before {
+        -webkit-transform: translate(1px, -60%) rotate(-40deg);
+        -moz-transform: translate(1px, -60%) rotate(-40deg);
+        -ms-transform: translate(1px, -60%) rotate(-40deg);
+        -o-transform: translate(1px, -60%) rotate(-40deg);
+        transform: translate(1px, -60%) rotate(-40deg); }
+      .page-photography-main-nav--next:after {
+        -webkit-transform: rotate(40deg);
+        -moz-transform: rotate(40deg);
+        -ms-transform: rotate(40deg);
+        -o-transform: rotate(40deg);
+        transform: rotate(40deg); }
+  .page-photography-main-close {
+    top: 20px;
+    right: 20px; }
+    .page-photography-main-close:before, .page-photography-main-close:after {
+      left: 50%; }
     .page-photography-main-close:before {
       -webkit-transform: translate(-50%, -50%) rotate(45deg);
       -moz-transform: translate(-50%, -50%) rotate(45deg);
@@ -816,11 +868,6 @@ nav::after {
       -ms-transform: translate(-50%, -50%) rotate(-45deg);
       -o-transform: translate(-50%, -50%) rotate(-45deg);
       transform: translate(-50%, -50%) rotate(-45deg); }
-    .page-photography-main-close:hover:before, .page-photography-main-close:hover:after {
-      background: #fff; }
-    .page-photography-main-close-text {
-      position: absolute;
-      top: 100px; }
 
 .main-image-enter,
 .main-image-appear {

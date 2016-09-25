@@ -1,6 +1,8 @@
 /* global document */
+
 import React, { PropTypes } from "react";
 import ReactCSSTransitionGroup from "react-addons-css-transition-group";
+import classnames from "classnames";
 
 import MainImage from "./MainImage";
 import ImageMeta from "./ImageMeta";
@@ -64,6 +66,16 @@ const ImageDetail = React.createClass({
 		const { image } = this.props;
 		const contentStyle = {};
 
+		const prevClass = {
+			"page-photography-main-nav": true,
+			"page-photography-main-nav--prev": true,
+		};
+
+		const nextClass = {
+			"page-photography-main-nav": true,
+			"page-photography-main-nav--next": true,
+		};
+
 		if (typeof(this.state.dimensions) !== "undefined" && this.state.dimensions !== null) {
 			contentStyle.width = this.state.dimensions.width;
 		}
@@ -99,14 +111,20 @@ const ImageDetail = React.createClass({
 					{this.state.loaded &&
 						<span>
 							<button
+									className={classnames(prevClass)}
 									onClick={this.props.navigatePrev}
 									disabled={this.props.atBeginning}>
-								prev
+								<span className="page-photography-main-nav-text">
+									previous photo
+								</span>
 							</button>
 							<button
+									className={classnames(nextClass)}
 									onClick={this.props.navigateNext}
 									disabled={this.props.atEnd}>
-								next
+								<span className="page-photography-main-nav-text">
+									next photo
+								</span>
 							</button>
 						</span>
 					}
