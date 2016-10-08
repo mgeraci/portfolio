@@ -12,6 +12,7 @@ from portfolio.models import Graphic
 from portfolio.models import GraphicImage
 from portfolio.models import PhotoblogImage
 
+
 # main pages
 def index(request):
     recent_image_root = '{}images/recent_thumbs/'.format(STATIC_URL)
@@ -54,6 +55,7 @@ def index(request):
 
     return render(request, 'pages/index.html', context)
 
+
 def web(request):
     webs = Web.objects.all()
     context = {
@@ -61,6 +63,7 @@ def web(request):
     }
 
     return render(request, 'pages/web.html', context)
+
 
 def web_item(request, slug):
     webs = Web.objects.all()
@@ -87,6 +90,7 @@ def web_item(request, slug):
 
     return render(request, 'pages/web_item.html', context)
 
+
 def photography(request):
     images = PhotoblogImage.objects.all()
     imageOrder = []
@@ -106,6 +110,7 @@ def photography(request):
 
     return render(request, 'pages/photography.html', context)
 
+
 # helper for generating the text for a graphic design
 def graphic_title(graphic):
     return {
@@ -116,6 +121,7 @@ def graphic_title(graphic):
         ],
     }
 
+
 def graphic(request):
     graphics = Graphic.objects.all()
     context = {
@@ -123,6 +129,7 @@ def graphic(request):
     }
 
     return render(request, 'pages/graphic.html', context)
+
 
 def graphic_item(request, slug):
     graphics = Graphic.objects.all()
@@ -138,6 +145,7 @@ def graphic_item(request, slug):
 
     return render(request, 'pages/graphic.html', context)
 
+
 def composition(request):
     compositions = Composition.objects.all()
     context = {
@@ -145,6 +153,7 @@ def composition(request):
     }
 
     return render(request, 'pages/composition.html', context)
+
 
 def composition_item(request, slug):
     compositions = Composition.objects.all()
@@ -174,6 +183,7 @@ def composition_item(request, slug):
 
     return render(request, 'pages/composition.html', context)
 
+
 def recordings(request):
     pages = RecordingPage.objects.all()
     context = {
@@ -181,6 +191,7 @@ def recordings(request):
     }
 
     return render(request, 'pages/recordings.html', context)
+
 
 def recordings_item(request, slug):
     pages = RecordingPage.objects.all()
@@ -198,6 +209,7 @@ def recordings_item(request, slug):
     }
 
     return render(request, 'pages/recordings.html', context)
+
 
 def links(request):
     schools = [
@@ -286,8 +298,11 @@ def links(request):
 
 
 # verification pages
+# -----------------------------------------------------------------------------
+
 def keybase(request):
     return render(request, 'verification_pages/keybase.html', content_type='text/plain')
+
 
 def google(request):
     return render(request, 'verification_pages/google.html', content_type='text/plain')
