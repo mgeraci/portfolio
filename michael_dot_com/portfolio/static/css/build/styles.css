@@ -748,10 +748,16 @@ nav::after {
   display: inline-block;
   width: 75px;
   height: 75px;
-  background: rgba(0, 0, 0, 0.1); }
+  background: rgba(0, 0, 0, 0.1);
+  -webkit-transition: opacity 200ms linear;
+  -moz-transition: opacity 200ms linear;
+  transition: opacity 200ms linear;
+  opacity: 1; }
   .page-photography-thumbnail, .page-photography-thumbnail:hover, .page-photography-thumbnail:active {
     text-shadow: none !important;
     background-image: none !important; }
+  .page-photography-thumbnail:hover {
+    opacity: 0.5; }
   .page-photography-thumbnail-image {
     width: 100%;
     height: 100%; }

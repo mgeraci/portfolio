@@ -29,6 +29,11 @@ $thumbnail-size: 75px
     width: $thumbnail-size
     height: $thumbnail-size
     background: rgba(0, 0, 0, 0.1)
+    @include transition(opacity 200ms linear)
+    opacity: 1
+
+    &:hover
+      opacity: 0.5
 
     &-image
       width: 100%
