@@ -108,26 +108,24 @@ const ImageDetail = React.createClass({
 						}
 					</ReactCSSTransitionGroup>
 
-					{this.state.loaded &&
-						<span>
-							<button
-									className={classnames(prevClass)}
-									onClick={this.props.navigatePrev}
-									disabled={this.props.atBeginning}>
-								<span className="page-photography-main-nav-text">
-									previous photo
-								</span>
-							</button>
-							<button
-									className={classnames(nextClass)}
-									onClick={this.props.navigateNext}
-									disabled={this.props.atEnd}>
-								<span className="page-photography-main-nav-text">
-									next photo
-								</span>
-							</button>
-						</span>
-					}
+					<span>
+						<button
+								className={classnames(prevClass)}
+								onClick={this.props.navigatePrev}
+								disabled={this.props.atBeginning}>
+							<span className="page-photography-main-nav-text">
+								previous photo
+							</span>
+						</button>
+						<button
+								className={classnames(nextClass)}
+								onClick={this.props.navigateNext}
+								disabled={this.props.atEnd}>
+							<span className="page-photography-main-nav-text">
+								next photo
+							</span>
+						</button>
+					</span>
 
 					{!this.state.loaded &&
 						<div className="loader" />

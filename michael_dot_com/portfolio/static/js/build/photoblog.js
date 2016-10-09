@@ -24857,7 +24857,7 @@
 							filterTag: this.props.filterTag
 						})
 					),
-					this.state.loaded && _react2.default.createElement(
+					_react2.default.createElement(
 						"span",
 						null,
 						_react2.default.createElement(
