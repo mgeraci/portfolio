@@ -1,4 +1,5 @@
 import React, { PropTypes } from "react";
+import PureRenderMixin from "react-addons-pure-render-mixin";
 
 const Tag = React.createClass({
 	propTypes: {
@@ -6,6 +7,8 @@ const Tag = React.createClass({
 		slug: PropTypes.string.isRequired,
 		filterTag: PropTypes.func.isRequired,
 	},
+
+	mixins: [ PureRenderMixin ],
 
 	_handleClick(e) {
 		e.preventDefault();

@@ -1,4 +1,5 @@
 import React, { PropTypes } from "react";
+import PureRenderMixin from "react-addons-pure-render-mixin";
 import Tag from "./Tag";
 import { BAD_TAGS } from "../util/constants";
 
@@ -9,6 +10,8 @@ const ImageMeta = React.createClass({
 		tags: PropTypes.array,
 		filterTag: PropTypes.func.isRequired,
 	},
+
+	mixins: [ PureRenderMixin ],
 
 	render() {
 		const tags = this.props.tags.filter((tag) => {

@@ -1,6 +1,7 @@
 /* global Image */
 
 import React, { PropTypes } from "react";
+import PureRenderMixin from "react-addons-pure-render-mixin";
 import ReactCSSTransitionGroup from "react-addons-css-transition-group";
 
 const MainImage = React.createClass({
@@ -10,6 +11,8 @@ const MainImage = React.createClass({
 		loaded: PropTypes.bool,
 		onLoad: PropTypes.func.isRequired,
 	},
+
+	mixins: [ PureRenderMixin ],
 
 	// trigger the initial load
 	componentDidMount() {

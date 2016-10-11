@@ -74,7 +74,7 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	__webpack_require__(224);
+	__webpack_require__(227);
 
 	window.Photoblog = {
 		init: function init(data) {
@@ -24972,13 +24972,15 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
+	var _reactAddonsPureRenderMixin = __webpack_require__(224);
+
+	var _reactAddonsPureRenderMixin2 = _interopRequireDefault(_reactAddonsPureRenderMixin);
+
 	var _reactAddonsCssTransitionGroup = __webpack_require__(207);
 
 	var _reactAddonsCssTransitionGroup2 = _interopRequireDefault(_reactAddonsCssTransitionGroup);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	/* global Image */
 
 	var MainImage = _react2.default.createClass({
 		displayName: "MainImage",
@@ -24989,6 +24991,8 @@
 			loaded: _react.PropTypes.bool,
 			onLoad: _react.PropTypes.func.isRequired
 		},
+
+		mixins: [_reactAddonsPureRenderMixin2.default],
 
 		// trigger the initial load
 		componentDidMount: function componentDidMount() {
@@ -25031,7 +25035,7 @@
 				})
 			);
 		}
-	});
+	}); /* global Image */
 
 	exports.default = MainImage;
 
@@ -25048,6 +25052,10 @@
 	var _react = __webpack_require__(11);
 
 	var _react2 = _interopRequireDefault(_react);
+
+	var _reactAddonsPureRenderMixin = __webpack_require__(224);
+
+	var _reactAddonsPureRenderMixin2 = _interopRequireDefault(_reactAddonsPureRenderMixin);
 
 	var _Tag = __webpack_require__(223);
 
@@ -25066,6 +25074,8 @@
 			tags: _react.PropTypes.array,
 			filterTag: _react.PropTypes.func.isRequired
 		},
+
+		mixins: [_reactAddonsPureRenderMixin2.default],
 
 		render: function render() {
 			var _this = this;
@@ -25129,6 +25139,10 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
+	var _reactAddonsPureRenderMixin = __webpack_require__(224);
+
+	var _reactAddonsPureRenderMixin2 = _interopRequireDefault(_reactAddonsPureRenderMixin);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	var Tag = _react2.default.createClass({
@@ -25139,6 +25153,8 @@
 			slug: _react.PropTypes.string.isRequired,
 			filterTag: _react.PropTypes.func.isRequired
 		},
+
+		mixins: [_reactAddonsPureRenderMixin2.default],
 
 		_handleClick: function _handleClick(e) {
 			e.preventDefault();
@@ -25163,6 +25179,95 @@
 
 /***/ },
 /* 224 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = __webpack_require__(225);
+
+/***/ },
+/* 225 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/**
+	 * Copyright 2013-present, Facebook, Inc.
+	 * All rights reserved.
+	 *
+	 * This source code is licensed under the BSD-style license found in the
+	 * LICENSE file in the root directory of this source tree. An additional grant
+	 * of patent rights can be found in the PATENTS file in the same directory.
+	 *
+	 * @providesModule ReactComponentWithPureRenderMixin
+	 */
+
+	'use strict';
+
+	var shallowCompare = __webpack_require__(226);
+
+	/**
+	 * If your React component's render function is "pure", e.g. it will render the
+	 * same result given the same props and state, provide this mixin for a
+	 * considerable performance boost.
+	 *
+	 * Most React components have pure render functions.
+	 *
+	 * Example:
+	 *
+	 *   var ReactComponentWithPureRenderMixin =
+	 *     require('ReactComponentWithPureRenderMixin');
+	 *   React.createClass({
+	 *     mixins: [ReactComponentWithPureRenderMixin],
+	 *
+	 *     render: function() {
+	 *       return <div className={this.props.className}>foo</div>;
+	 *     }
+	 *   });
+	 *
+	 * Note: This only checks shallow equality for props and state. If these contain
+	 * complex data structures this mixin may have false-negatives for deeper
+	 * differences. Only mixin to components which have simple props and state, or
+	 * use `forceUpdate()` when you know deep data structures have changed.
+	 *
+	 * See https://facebook.github.io/react/docs/pure-render-mixin.html
+	 */
+	var ReactComponentWithPureRenderMixin = {
+	  shouldComponentUpdate: function (nextProps, nextState) {
+	    return shallowCompare(this, nextProps, nextState);
+	  }
+	};
+
+	module.exports = ReactComponentWithPureRenderMixin;
+
+/***/ },
+/* 226 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/**
+	 * Copyright 2013-present, Facebook, Inc.
+	 * All rights reserved.
+	 *
+	 * This source code is licensed under the BSD-style license found in the
+	 * LICENSE file in the root directory of this source tree. An additional grant
+	 * of patent rights can be found in the PATENTS file in the same directory.
+	 *
+	* @providesModule shallowCompare
+	*/
+
+	'use strict';
+
+	var shallowEqual = __webpack_require__(134);
+
+	/**
+	 * Does a shallow comparison for props and state.
+	 * See ReactComponentWithPureRenderMixin
+	 * See also https://facebook.github.io/react/docs/shallow-compare.html
+	 */
+	function shallowCompare(instance, nextProps, nextState) {
+	  return !shallowEqual(instance.props, nextProps) || !shallowEqual(instance.state, nextState);
+	}
+
+	module.exports = shallowCompare;
+
+/***/ },
+/* 227 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
