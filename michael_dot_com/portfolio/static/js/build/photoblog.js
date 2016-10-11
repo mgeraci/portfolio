@@ -23131,9 +23131,9 @@
 
 	var _Thumbnail2 = _interopRequireDefault(_Thumbnail);
 
-	var _ImageDetail = __webpack_require__(219);
+	var _ImageModal = __webpack_require__(228);
 
-	var _ImageDetail2 = _interopRequireDefault(_ImageDetail);
+	var _ImageModal2 = _interopRequireDefault(_ImageModal);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -23230,7 +23230,7 @@
 						transitionEnterTimeout: 500,
 						transitionAppearTimeout: 500,
 						transitionLeaveTimeout: 500 },
-					_react2.default.createElement(_ImageDetail2.default, {
+					_react2.default.createElement(_ImageModal2.default, {
 						image: this.props.images[this.props.activeImage],
 						clearActiveImage: this.props.onClearActiveImage,
 						navigatePrev: this.props.onNavigatePrev,
@@ -24723,188 +24723,7 @@
 	exports.default = Thumbnail;
 
 /***/ },
-/* 219 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-
-	var _react = __webpack_require__(11);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _reactAddonsCssTransitionGroup = __webpack_require__(207);
-
-	var _reactAddonsCssTransitionGroup2 = _interopRequireDefault(_reactAddonsCssTransitionGroup);
-
-	var _classnames = __webpack_require__(220);
-
-	var _classnames2 = _interopRequireDefault(_classnames);
-
-	var _MainImage = __webpack_require__(221);
-
-	var _MainImage2 = _interopRequireDefault(_MainImage);
-
-	var _ImageMeta = __webpack_require__(222);
-
-	var _ImageMeta2 = _interopRequireDefault(_ImageMeta);
-
-	var _constants = __webpack_require__(216);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	/* global document */
-
-	var ImageDetail = _react2.default.createClass({
-		displayName: "ImageDetail",
-
-		propTypes: {
-			image: _react.PropTypes.object.isRequired,
-			atBeginning: _react.PropTypes.bool,
-			atEnd: _react.PropTypes.bool,
-			clearActiveImage: _react.PropTypes.func.isRequired,
-			navigatePrev: _react.PropTypes.func.isRequired,
-			navigateNext: _react.PropTypes.func.isRequired,
-			filterTag: _react.PropTypes.func.isRequired
-		},
-
-		getInitialState: function getInitialState() {
-			return { loaded: false };
-		},
-		componentDidMount: function componentDidMount() {
-			var _this = this;
-
-			document.addEventListener("keyup", function (e) {
-				_this._handleKeyup(e.which);
-			});
-		},
-		componentWillReceiveProps: function componentWillReceiveProps(nextProps) {
-			if (nextProps.image.id !== this.props.image.id) {
-				this.setState({ loaded: false });
-			}
-		},
-		componentWillUnmount: function componentWillUnmount() {
-			document.removeEventListener("keyup", this._handleKeyup);
-		},
-		_handleKeyup: function _handleKeyup(code) {
-			if (code === _constants.KEYS.escape) {
-				this.props.clearActiveImage();
-			}
-
-			if (!this.state.loaded) {
-				return;
-			}
-
-			if (code === _constants.KEYS.left) {
-				this.props.navigatePrev();
-			} else if (code === _constants.KEYS.right) {
-				this.props.navigateNext();
-			}
-		},
-		_onLoad: function _onLoad(dimensions) {
-			this.setState({
-				loaded: true,
-				dimensions: dimensions
-			});
-		},
-		render: function render() {
-			var image = this.props.image;
-
-			var contentStyle = {};
-
-			var prevClass = {
-				"page-photography-main-nav": true,
-				"page-photography-main-nav--prev": true
-			};
-
-			var nextClass = {
-				"page-photography-main-nav": true,
-				"page-photography-main-nav--next": true
-			};
-
-			if (typeof this.state.dimensions !== "undefined" && this.state.dimensions !== null) {
-				contentStyle.width = this.state.dimensions.width;
-			}
-
-			return _react2.default.createElement(
-				"div",
-				{ className: "page-photography-main", key: image.title },
-				_react2.default.createElement(
-					"div",
-					{ className: "page-photography-main-content", style: contentStyle },
-					_react2.default.createElement(_MainImage2.default, {
-						src: image.image,
-						alt: image.title,
-						loaded: this.state.loaded,
-						onLoad: this._onLoad
-					}),
-					_react2.default.createElement(
-						_reactAddonsCssTransitionGroup2.default,
-						{
-							transitionName: "main-image",
-							transitionAppear: true,
-							transitionEnterTimeout: 500,
-							transitionAppearTimeout: 500,
-							transitionLeaveTimeout: 5 },
-						this.state.loaded && _react2.default.createElement(_ImageMeta2.default, {
-							key: image.id,
-							title: image.title,
-							year: image.year,
-							tags: image.tags,
-							filterTag: this.props.filterTag
-						})
-					),
-					_react2.default.createElement(
-						"span",
-						null,
-						_react2.default.createElement(
-							"button",
-							{
-								className: (0, _classnames2.default)(prevClass),
-								onClick: this.props.navigatePrev,
-								disabled: this.props.atBeginning },
-							_react2.default.createElement(
-								"span",
-								{ className: "page-photography-main-nav-text" },
-								"previous photo"
-							)
-						),
-						_react2.default.createElement(
-							"button",
-							{
-								className: (0, _classnames2.default)(nextClass),
-								onClick: this.props.navigateNext,
-								disabled: this.props.atEnd },
-							_react2.default.createElement(
-								"span",
-								{ className: "page-photography-main-nav-text" },
-								"next photo"
-							)
-						)
-					),
-					!this.state.loaded && _react2.default.createElement("div", { className: "loader" }),
-					_react2.default.createElement(
-						"button",
-						{
-							className: "page-photography-main-close",
-							onClick: this.props.clearActiveImage },
-						_react2.default.createElement(
-							"span",
-							{ className: "page-photography-main-close-text" },
-							"close"
-						)
-					)
-				)
-			);
-		}
-	});
-
-	exports.default = ImageDetail;
-
-/***/ },
+/* 219 */,
 /* 220 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -25271,6 +25090,188 @@
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
+
+/***/ },
+/* 228 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+
+	var _react = __webpack_require__(11);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactAddonsCssTransitionGroup = __webpack_require__(207);
+
+	var _reactAddonsCssTransitionGroup2 = _interopRequireDefault(_reactAddonsCssTransitionGroup);
+
+	var _classnames = __webpack_require__(220);
+
+	var _classnames2 = _interopRequireDefault(_classnames);
+
+	var _MainImage = __webpack_require__(221);
+
+	var _MainImage2 = _interopRequireDefault(_MainImage);
+
+	var _ImageMeta = __webpack_require__(222);
+
+	var _ImageMeta2 = _interopRequireDefault(_ImageMeta);
+
+	var _constants = __webpack_require__(216);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	/* global document */
+
+	var ImageDetail = _react2.default.createClass({
+		displayName: "ImageDetail",
+
+		propTypes: {
+			image: _react.PropTypes.object.isRequired,
+			atBeginning: _react.PropTypes.bool,
+			atEnd: _react.PropTypes.bool,
+			clearActiveImage: _react.PropTypes.func.isRequired,
+			navigatePrev: _react.PropTypes.func.isRequired,
+			navigateNext: _react.PropTypes.func.isRequired,
+			filterTag: _react.PropTypes.func.isRequired
+		},
+
+		getInitialState: function getInitialState() {
+			return { loaded: false };
+		},
+		componentDidMount: function componentDidMount() {
+			var _this = this;
+
+			document.addEventListener("keyup", function (e) {
+				_this._handleKeyup(e.which);
+			});
+		},
+		componentWillReceiveProps: function componentWillReceiveProps(nextProps) {
+			if (nextProps.image.id !== this.props.image.id) {
+				this.setState({ loaded: false });
+			}
+		},
+		componentWillUnmount: function componentWillUnmount() {
+			document.removeEventListener("keyup", this._handleKeyup);
+		},
+		_handleKeyup: function _handleKeyup(code) {
+			if (code === _constants.KEYS.escape) {
+				this.props.clearActiveImage();
+			}
+
+			if (!this.state.loaded) {
+				return;
+			}
+
+			if (code === _constants.KEYS.left) {
+				this.props.navigatePrev();
+			} else if (code === _constants.KEYS.right) {
+				this.props.navigateNext();
+			}
+		},
+		_onLoad: function _onLoad(dimensions) {
+			this.setState({
+				loaded: true,
+				dimensions: dimensions
+			});
+		},
+		render: function render() {
+			var image = this.props.image;
+
+			var contentStyle = {};
+
+			var prevClass = {
+				"page-photography-main-nav": true,
+				"page-photography-main-nav--prev": true
+			};
+
+			var nextClass = {
+				"page-photography-main-nav": true,
+				"page-photography-main-nav--next": true
+			};
+
+			if (typeof this.state.dimensions !== "undefined" && this.state.dimensions !== null) {
+				contentStyle.width = this.state.dimensions.width;
+			}
+
+			return _react2.default.createElement(
+				"div",
+				{ className: "page-photography-main", key: image.title },
+				_react2.default.createElement(
+					"div",
+					{ className: "page-photography-main-content", style: contentStyle },
+					_react2.default.createElement(_MainImage2.default, {
+						src: image.image,
+						alt: image.title,
+						loaded: this.state.loaded,
+						onLoad: this._onLoad
+					}),
+					_react2.default.createElement(
+						_reactAddonsCssTransitionGroup2.default,
+						{
+							transitionName: "main-image",
+							transitionAppear: true,
+							transitionEnterTimeout: 500,
+							transitionAppearTimeout: 500,
+							transitionLeaveTimeout: 5 },
+						this.state.loaded && _react2.default.createElement(_ImageMeta2.default, {
+							key: image.id,
+							title: image.title,
+							year: image.year,
+							tags: image.tags,
+							filterTag: this.props.filterTag
+						})
+					),
+					_react2.default.createElement(
+						"span",
+						null,
+						_react2.default.createElement(
+							"button",
+							{
+								className: (0, _classnames2.default)(prevClass),
+								onClick: this.props.navigatePrev,
+								disabled: this.props.atBeginning },
+							_react2.default.createElement(
+								"span",
+								{ className: "page-photography-main-nav-text" },
+								"previous photo"
+							)
+						),
+						_react2.default.createElement(
+							"button",
+							{
+								className: (0, _classnames2.default)(nextClass),
+								onClick: this.props.navigateNext,
+								disabled: this.props.atEnd },
+							_react2.default.createElement(
+								"span",
+								{ className: "page-photography-main-nav-text" },
+								"next photo"
+							)
+						)
+					),
+					!this.state.loaded && _react2.default.createElement("div", { className: "loader" }),
+					_react2.default.createElement(
+						"button",
+						{
+							className: "page-photography-main-close",
+							onClick: this.props.clearActiveImage },
+						_react2.default.createElement(
+							"span",
+							{ className: "page-photography-main-close-text" },
+							"close"
+						)
+					)
+				)
+			);
+		}
+	});
+
+	exports.default = ImageDetail;
 
 /***/ }
 /******/ ]);

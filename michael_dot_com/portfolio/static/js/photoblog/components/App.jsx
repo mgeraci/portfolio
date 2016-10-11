@@ -14,7 +14,7 @@ import {
 	clearFilterTag,
 } from "../reducer";
 import Thumbnail from "./Thumbnail";
-import ImageDetail from "./ImageDetail";
+import ImageModal from "./ImageModal";
 
 const App = React.createClass({
 	propTypes: {
@@ -103,7 +103,7 @@ const App = React.createClass({
 							transitionEnterTimeout={500}
 							transitionAppearTimeout={500}
 							transitionLeaveTimeout={500}>
-						<ImageDetail
+						<ImageModal
 							image={this.props.images[this.props.activeImage]}
 							clearActiveImage={this.props.onClearActiveImage}
 							navigatePrev={this.props.onNavigatePrev}
