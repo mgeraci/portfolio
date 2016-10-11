@@ -28,7 +28,7 @@ $thumbnail-size: 75px
     display: inline-block
     width: $thumbnail-size
     height: $thumbnail-size
-    background: rgba(0, 0, 0, 0.1)
+    background: rgba(0, 0, 0, 0.05)
     @include transition(opacity 200ms linear)
     opacity: 1
 
@@ -46,16 +46,34 @@ $thumbnail-size: 75px
     width: 100%
     height: 100%
     background: rgba(black, 0.8)
-    color: #aaa;
-
-    a.page-photography-main-tag
-      margin-right: 10px
-      @include link(#ccc, $cream)
+    color: #999;
+    font-family: Helvetica Neue, Helvetica, Arial, sans-serif
 
     &-content
       margin-top: 40px
       margin-right: auto
       margin-left: auto
+
+    &-meta
+      margin-top: 5px
+      @include type(17px, 24px)
+      letter-spacing: 0.3px
+
+    &-title
+      font-weight: normal
+
+    &-year
+      font-style: oblique
+
+    &-tags
+      margin-top: 10px
+      color: $text
+
+    // a is required for specificity
+    a.page-photography-main-tag
+      display: inline-block
+      @include link($text, lighten($text, 20%))
+      padding-bottom: 2px
 
     &-nav,
     &-close

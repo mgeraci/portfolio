@@ -24848,7 +24848,7 @@
 							transitionAppear: true,
 							transitionEnterTimeout: 500,
 							transitionAppearTimeout: 500,
-							transitionLeaveTimeout: 500 },
+							transitionLeaveTimeout: 5 },
 						this.state.loaded && _react2.default.createElement(_ImageMeta2.default, {
 							key: image.id,
 							title: image.title,
@@ -25023,7 +25023,7 @@
 					transitionAppear: true,
 					transitionEnterTimeout: 500,
 					transitionAppearTimeout: 500,
-					transitionLeaveTimeout: 500 },
+					transitionLeaveTimeout: 5 },
 				this.props.loaded && _react2.default.createElement("img", {
 					key: this.props.src,
 					src: this.props.src,
@@ -25079,25 +25079,34 @@
 				{ className: "page-photography-main-meta" },
 				_react2.default.createElement(
 					"h3",
-					null,
+					{ className: "page-photography-main-title" },
 					this.props.title
 				),
 				_react2.default.createElement(
 					"span",
-					null,
+					{ className: "page-photography-main-year" },
 					this.props.year
 				),
-				_react2.default.createElement("br", null),
 				!!this.props.tags.length && _react2.default.createElement(
 					"div",
 					{ className: "page-photography-main-tags" },
+					"tags:  ",
 					tags.map(function (tag, i) {
-						return _react2.default.createElement(_Tag2.default, {
-							key: i,
-							name: tag.name,
-							slug: tag.slug,
-							filterTag: _this.props.filterTag
-						});
+						return _react2.default.createElement(
+							"span",
+							null,
+							_react2.default.createElement(_Tag2.default, {
+								key: i,
+								name: tag.name,
+								slug: tag.slug,
+								filterTag: _this.props.filterTag
+							}),
+							i + 1 < tags.length && _react2.default.createElement(
+								"span",
+								null,
+								", "
+							)
+						);
 					})
 				)
 			);

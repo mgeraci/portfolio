@@ -83,7 +83,10 @@ section.content {
   text-decoration: none;
   background-repeat: repeat-x;
   background-size: 2px 2px;
-  background-position: 0 85%; }
+  background-position: 0 85%;
+  -webkit-transition: color 50ms linear;
+  -moz-transition: color 50ms linear;
+  transition: color 50ms linear; }
   .content a, .content a:visited {
     color: #444;
     background-image: linear-gradient(to bottom, transparent 50%, rgba(68, 68, 68, 0.6) 50%); }
@@ -735,7 +738,10 @@ nav::after {
       text-decoration: none;
       background-repeat: repeat-x;
       background-size: 2px 2px;
-      background-position: 0 85%; }
+      background-position: 0 85%;
+      -webkit-transition: color 50ms linear;
+      -moz-transition: color 50ms linear;
+      transition: color 50ms linear; }
       .page-photography-thumbnails-title-clear, .page-photography-thumbnails-title-clear:visited {
         color: #444;
         background-image: linear-gradient(to bottom, transparent 50%, rgba(68, 68, 68, 0.6) 50%); }
@@ -748,7 +754,7 @@ nav::after {
   display: inline-block;
   width: 75px;
   height: 75px;
-  background: rgba(0, 0, 0, 0.1);
+  background: rgba(0, 0, 0, 0.05);
   -webkit-transition: opacity 200ms linear;
   -moz-transition: opacity 200ms linear;
   transition: opacity 200ms linear;
@@ -769,24 +775,41 @@ nav::after {
   width: 100%;
   height: 100%;
   background: rgba(0, 0, 0, 0.8);
-  color: #aaa; }
-  .page-photography-main a.page-photography-main-tag {
-    margin-right: 10px;
-    text-decoration: none;
-    background-repeat: repeat-x;
-    background-size: 2px 2px;
-    background-position: 0 85%; }
-    .page-photography-main a.page-photography-main-tag, .page-photography-main a.page-photography-main-tag:visited {
-      color: #ccc;
-      background-image: linear-gradient(to bottom, transparent 50%, rgba(204, 204, 204, 0.6) 50%); }
-    .no-touchevents .page-photography-main a.page-photography-main-tag:hover, .no-touchevents .page-photography-main a.page-photography-main-tag:active {
-      color: #f3f4d3;
-      background-image: linear-gradient(to bottom, transparent 50%, rgba(243, 244, 211, 0.6) 50%);
-      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.15); }
+  color: #999;
+  font-family: Helvetica Neue, Helvetica, Arial, sans-serif; }
   .page-photography-main-content {
     margin-top: 40px;
     margin-right: auto;
     margin-left: auto; }
+  .page-photography-main-meta {
+    margin-top: 5px;
+    font-size: 17px;
+    line-height: 24px;
+    letter-spacing: 0.3px; }
+  .page-photography-main-title {
+    font-weight: normal; }
+  .page-photography-main-year {
+    font-style: oblique; }
+  .page-photography-main-tags {
+    margin-top: 10px;
+    color: #444; }
+  .page-photography-main a.page-photography-main-tag {
+    display: inline-block;
+    text-decoration: none;
+    background-repeat: repeat-x;
+    background-size: 2px 2px;
+    background-position: 0 85%;
+    -webkit-transition: color 50ms linear;
+    -moz-transition: color 50ms linear;
+    transition: color 50ms linear;
+    padding-bottom: 2px; }
+    .page-photography-main a.page-photography-main-tag, .page-photography-main a.page-photography-main-tag:visited {
+      color: #444;
+      background-image: linear-gradient(to bottom, transparent 50%, rgba(68, 68, 68, 0.6) 50%); }
+    .no-touchevents .page-photography-main a.page-photography-main-tag:hover, .no-touchevents .page-photography-main a.page-photography-main-tag:active {
+      color: #777777;
+      background-image: linear-gradient(to bottom, transparent 50%, rgba(119, 119, 119, 0.6) 50%);
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.15); }
   .page-photography-main-nav, .page-photography-main-close {
     padding: 0;
     margin: 0;

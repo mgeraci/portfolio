@@ -96,7 +96,7 @@ const ImageDetail = React.createClass({
 							transitionAppear
 							transitionEnterTimeout={500}
 							transitionAppearTimeout={500}
-							transitionLeaveTimeout={500}>
+							transitionLeaveTimeout={5}>
 						{this.state.loaded &&
 							<ImageMeta
 								key={image.id}

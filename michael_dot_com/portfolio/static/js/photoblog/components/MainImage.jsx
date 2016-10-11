@@ -42,7 +42,7 @@ const MainImage = React.createClass({
 					transitionAppear
 					transitionEnterTimeout={500}
 					transitionAppearTimeout={500}
-					transitionLeaveTimeout={500}>
+					transitionLeaveTimeout={5}>
 				{this.props.loaded &&
 					<img
 						key={this.props.src}
