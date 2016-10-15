@@ -95,16 +95,28 @@ def photography(request):
     images = PhotoblogImage.objects.all()
     imageOrder = []
     imageMap = {}
+    years = []
+    i = 0
 
     for image in images:
+        if i == 0:
+            latest_year = image.year
+
         imageOrder.append(image.id)
         imageMap[image.id] = image.to_json()
+        i += 1
+
+    i = 2007
+
+    while i <= latest_year:
+        years.append(i)
+        i += 1
 
     context = {
-        'images': images,
         'images_json': json.dumps({
             'order': imageOrder,
             'images': imageMap,
+            'years': years,
         }),
     }
 

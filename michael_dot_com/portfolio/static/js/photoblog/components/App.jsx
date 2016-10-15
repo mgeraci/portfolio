@@ -13,6 +13,7 @@ import {
 	filterTag,
 	clearFilterTag,
 } from "../reducer";
+import Navigation from "./Navigation";
 import Thumbnail from "./Thumbnail";
 import ImageModal from "./ImageModal";
 
@@ -20,7 +21,10 @@ const App = React.createClass({
 	propTypes: {
 		order: PropTypes.array.isRequired,
 		filteredOrder: PropTypes.array,
-		filteredTerm: PropTypes.string,
+		filteredTerm: PropTypes.oneOfType([
+			PropTypes.string,
+			PropTypes.number,
+		]),
 		images: PropTypes.object.isRequired,
 		activeImage: PropTypes.number,
 		onSetActiveImage: PropTypes.func.isRequired,
@@ -70,18 +74,22 @@ const App = React.createClass({
 	render() {
 		return (
 			<span>
-				<div className="page-photography-thumbnails">
+				<div className="page-photography-meta">
 					{this.props.filteredTerm &&
-						<h2 className="page-photography-thumbnails-title">
+						<h2 className="page-photography-meta-title">
 							Images tagged <em>{this.props.filteredTerm}</em>
 
 							<button
-									className="page-photography-thumbnails-title-clear"
+									className="page-photography-meta-title-clear"
 									onClick={this.props.onClearFilterTag}>
 								remove filter
 							</button>
 						</h2>
 					}
+
+					<Navigation />
+				</div>
+				<div className="page-photography-thumbnails">
 
 					{this._getVisibleImageIds().map(id =>
 						<Thumbnail

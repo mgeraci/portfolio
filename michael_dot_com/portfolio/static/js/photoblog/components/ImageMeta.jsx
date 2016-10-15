@@ -32,11 +32,11 @@ const ImageMeta = React.createClass({
 						tags:
 						&nbsp;
 						{tags.map((tag, i) =>
-							<span>
+							<span key={i}>
 								<Tag
-									key={i}
 									name={tag.name}
 									slug={tag.slug}
+									className="page-photography-main-tag"
 									filterTag={this.props.filterTag}
 								/>
 								{i + 1 < tags.length &&

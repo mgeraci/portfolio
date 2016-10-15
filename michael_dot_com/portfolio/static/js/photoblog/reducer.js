@@ -103,13 +103,25 @@ export default function reducer(state, action) {
 			}
 
 			const filteredOrder = [];
+			const isYear = !!`${action.tag.slug}`.match(/2\d{3}/);
+			let year;
+
+			if (isYear) {
+				year = parseInt(action.tag.slug, 10);
+			}
 
 			state.order.forEach((id) => {
-				state.images[id].tags.forEach((tag) => {
-					if (tag.slug === action.tag.slug) {
+				if (isYear) {
+					if (state.images[id].year === year) {
 						filteredOrder.push(id);
 					}
-				});
+				} else {
+					state.images[id].tags.forEach((tag) => {
+						if (tag.slug === action.tag.slug) {
+							filteredOrder.push(id);
+						}
+					});
+				}
 			});
 
 			setHistory(`/photography/blog/browse/${action.tag.slug}`);

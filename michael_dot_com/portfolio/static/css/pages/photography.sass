@@ -1,6 +1,7 @@
 $thumbnail-size: 75px
 
 .page-photography
+  &-meta,
   &-thumbnails
     @include clearfix
     width: $thumbnail-size * 8
@@ -11,6 +12,7 @@ $thumbnail-size: 75px
     @media (max-width: $thumbnail-size * 8 + 40)
       width: 100%
 
+  &-meta
     &-title
       display: block
       width: 100%
@@ -22,6 +24,13 @@ $thumbnail-size: 75px
         cursor: pointer
         font-size: 16px
         @include link($text, $cream)
+
+  &-navigation
+    background: red
+
+    &-item-wrapper
+      display: inline-block
+      margin: 0 5px
 
   &-thumbnail
     @include no-link

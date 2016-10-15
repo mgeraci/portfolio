@@ -16,7 +16,7 @@ require("../../css/styles.sass");
 window.Photoblog = {
 	init(data) {
 		const initialState = { ...data };
-		const parsedUrl = parseUrl(window.location.pathname);
+		const parsedUrl = parseUrl(window.location.pathname, initialState);
 
 		if (parsedUrl.page === URLS.photo) {
 			initialState.activeImage = parsedUrl.data;

@@ -3,8 +3,15 @@ import PureRenderMixin from "react-addons-pure-render-mixin";
 
 const Tag = React.createClass({
 	propTypes: {
-		name: PropTypes.string.isRequired,
-		slug: PropTypes.string.isRequired,
+		name: PropTypes.oneOfType([
+			PropTypes.string.isRequired,
+			PropTypes.number.isRequired,
+		]),
+		slug: PropTypes.oneOfType([
+			PropTypes.string.isRequired,
+			PropTypes.number.isRequired,
+		]),
+		className: PropTypes.string.isRequired,
 		filterTag: PropTypes.func.isRequired,
 	},
 
@@ -21,7 +28,7 @@ const Tag = React.createClass({
 	render() {
 		return (
 			<a
-					className="page-photography-main-tag"
+					className={this.props.className}
 					onClick={this._handleClick}
 					href={`/photography/blog/browse/${this.props.slug}`}>
 				{this.props.name}

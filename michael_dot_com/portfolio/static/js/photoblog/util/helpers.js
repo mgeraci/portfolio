@@ -23,6 +23,7 @@ export function parseUrl(url, initialData = {}) {
 		};
 	} else if (url.match("/photography/blog/browse/")) {
 		const slug = url.replace("/photography/blog/browse/", "");
+		const isYear = !!slug.match(/2\d{3}/);
 
 		// this kind of sucks, but the tag action expects to be called with its
 		// name and slug. so let's just try to find it from the initial data
@@ -30,16 +31,23 @@ export function parseUrl(url, initialData = {}) {
 		let res;
 		let data = {};
 
-		initialData.order.forEach((id) => {
-			initialData.images[id].tags.forEach((tag) => {
-				if (tag.slug === slug) {
-					res = tag;
-				}
+		if (isYear) {
+			data = {
+				name: slug,
+				slug,
+			};
+		} else {
+			initialData.order.forEach((id) => {
+				initialData.images[id].tags.forEach((tag) => {
+					if (tag.slug === slug) {
+						res = tag;
+					}
+				});
 			});
-		});
 
-		if (res.name && res.slug) {
-			data = res;
+			if (res.name && res.slug) {
+				data = res;
+			}
 		}
 
 		return {
