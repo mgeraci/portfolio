@@ -15,6 +15,7 @@ export const CLEAR_ACTIVE_IMAGE = "PHOTOBLOG.CLEAR_ACTIVE_IMAGE";
 export const NAVIGATE = "PHOTOBLOG.NAVIGATE";
 export const FILTER_TAG = "PHOTOBLOG.FILTER_TAG";
 export const CLEAR_FILTER_TAG = "PHOTOBLOG.CLEAR_FILTER_TAG";
+export const APP_INITIALIZE = "PHOTOBLOG.APP_INITIALIZE";
 
 
 // reducer
@@ -145,6 +146,13 @@ export default function reducer(state, action) {
 			};
 		}
 
+		case APP_INITIALIZE: {
+			return {
+				...state,
+				appInitialized: true,
+			};
+		}
+
 		default: {
 			return state;
 		}
@@ -192,5 +200,11 @@ export function filterTag(tag) {
 export function clearFilterTag() {
 	return {
 		type: CLEAR_FILTER_TAG,
+	};
+}
+
+export function appInitialize() {
+	return {
+		type: APP_INITIALIZE,
 	};
 }

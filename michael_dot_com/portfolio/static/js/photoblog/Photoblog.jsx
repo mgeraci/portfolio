@@ -6,7 +6,12 @@ import { Provider } from "react-redux";
 import { createStore } from "redux";
 
 import App from "./components/App";
-import reducer, { setActiveImage, filterTag, clearActiveImage } from "./reducer";
+import reducer, {
+	setActiveImage,
+	filterTag,
+	clearActiveImage,
+	appInitialize,
+} from "./reducer";
 import { URLS } from "./util/constants.js";
 import { parseUrl } from "./util/helpers.js";
 
@@ -37,6 +42,11 @@ window.Photoblog = {
 		// trigger an action for the initial navigation (i.e., the url that the
 		// user hits when they first load the app)
 		this._navigate();
+
+		// the app is initialized now!
+		this.store.dispatch(
+			appInitialize()
+		);
 
 		// add a watcher for the browser back buttons
 		window.addEventListener("popstate", () => this._navigate());

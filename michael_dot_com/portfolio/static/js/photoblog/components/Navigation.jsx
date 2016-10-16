@@ -13,6 +13,9 @@ const Navigation = React.createClass({
 	render() {
 		return (
 			<ul className="page-photography-navigation">
+				<li className="page-photography-navigation-item-wrapper">
+					browse:
+				</li>
 				{this.props.years.map(year =>
 					<li
 							className="page-photography-navigation-item-wrapper"

@@ -19,6 +19,7 @@ import ImageModal from "./ImageModal";
 
 const App = React.createClass({
 	propTypes: {
+		appInitialized: PropTypes.bool,
 		order: PropTypes.array.isRequired,
 		filteredOrder: PropTypes.array,
 		filteredTerm: PropTypes.oneOfType([
@@ -27,14 +28,18 @@ const App = React.createClass({
 		]),
 		images: PropTypes.object.isRequired,
 		activeImage: PropTypes.number,
+
+		// pagination
+		atBeginning: PropTypes.bool,
+		atEnd: PropTypes.bool,
+
+		// action handlers
 		onSetActiveImage: PropTypes.func.isRequired,
 		onClearActiveImage: PropTypes.func.isRequired,
 		onNavigatePrev: PropTypes.func.isRequired,
 		onNavigateNext: PropTypes.func.isRequired,
 		onFilterTag: PropTypes.func.isRequired,
 		onClearFilterTag: PropTypes.func.isRequired,
-		atBeginning: PropTypes.bool,
-		atEnd: PropTypes.bool,
 	},
 
 	getInitialState() {
@@ -46,6 +51,14 @@ const App = React.createClass({
 
 		document.addEventListener("scroll", cb);
 		this._handleScroll();
+	},
+
+	componentDidUpdate(prevProps) {
+		if (this.props.filteredTerm !== prevProps.filteredTerm) {
+			setTimeout(() => {
+				this._handleScroll();
+			}, 50);
+		}
 	},
 
 	_handleScroll() {
@@ -91,7 +104,7 @@ const App = React.createClass({
 				</div>
 				<div className="page-photography-thumbnails">
 
-					{this._getVisibleImageIds().map(id =>
+					{this.props.appInitialized && this._getVisibleImageIds().map(id =>
 						<Thumbnail
 							key={id}
 							image={this.props.images[id]}
@@ -134,6 +147,8 @@ function mapStateToProps(state) {
 		filteredOrder: state.filteredOrder,
 		filteredTerm: state.filteredTerm,
 		activeImage: state.activeImage,
+
+		appInitialized: state.appInitialized,
 
 		atBeginning: state.atBeginning,
 		atEnd: state.atEnd,

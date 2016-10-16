@@ -99,6 +99,9 @@
 			// user hits when they first load the app)
 			this._navigate();
 
+			// the app is initialized now!
+			this.store.dispatch((0, _reducer.appInitialize)());
+
 			// add a watcher for the browser back buttons
 			window.addEventListener("popstate", function () {
 				return _this._navigate();
@@ -23147,19 +23150,24 @@
 		displayName: "App",
 
 		propTypes: {
+			appInitialized: _react.PropTypes.bool,
 			order: _react.PropTypes.array.isRequired,
 			filteredOrder: _react.PropTypes.array,
 			filteredTerm: _react.PropTypes.oneOfType([_react.PropTypes.string, _react.PropTypes.number]),
 			images: _react.PropTypes.object.isRequired,
 			activeImage: _react.PropTypes.number,
+
+			// pagination
+			atBeginning: _react.PropTypes.bool,
+			atEnd: _react.PropTypes.bool,
+
+			// action handlers
 			onSetActiveImage: _react.PropTypes.func.isRequired,
 			onClearActiveImage: _react.PropTypes.func.isRequired,
 			onNavigatePrev: _react.PropTypes.func.isRequired,
 			onNavigateNext: _react.PropTypes.func.isRequired,
 			onFilterTag: _react.PropTypes.func.isRequired,
-			onClearFilterTag: _react.PropTypes.func.isRequired,
-			atBeginning: _react.PropTypes.bool,
-			atEnd: _react.PropTypes.bool
+			onClearFilterTag: _react.PropTypes.func.isRequired
 		},
 
 		getInitialState: function getInitialState() {
@@ -23170,6 +23178,15 @@
 
 			document.addEventListener("scroll", cb);
 			this._handleScroll();
+		},
+		componentDidUpdate: function componentDidUpdate(prevProps) {
+			var _this = this;
+
+			if (this.props.filteredTerm !== prevProps.filteredTerm) {
+				setTimeout(function () {
+					_this._handleScroll();
+				}, 50);
+			}
 		},
 		_handleScroll: function _handleScroll() {
 			var top = document.body.scrollTop;
@@ -23191,7 +23208,7 @@
 			return imageIds;
 		},
 		render: function render() {
-			var _this = this;
+			var _this2 = this;
 
 			return _react2.default.createElement(
 				"span",
@@ -23221,15 +23238,15 @@
 				_react2.default.createElement(
 					"div",
 					{ className: "page-photography-thumbnails" },
-					this._getVisibleImageIds().map(function (id) {
+					this.props.appInitialized && this._getVisibleImageIds().map(function (id) {
 						return _react2.default.createElement(_Thumbnail2.default, {
 							key: id,
-							image: _this.props.images[id],
-							scrollTop: _this.state.scrollTop,
-							scrollBottom: _this.state.scrollBottom,
-							setActiveImage: _this.props.onSetActiveImage,
-							clearActiveImage: _this.props.onClearActiveImage,
-							hasActiveImage: !!_this.props.activeImage
+							image: _this2.props.images[id],
+							scrollTop: _this2.state.scrollTop,
+							scrollBottom: _this2.state.scrollBottom,
+							setActiveImage: _this2.props.onSetActiveImage,
+							clearActiveImage: _this2.props.onClearActiveImage,
+							hasActiveImage: !!_this2.props.activeImage
 						});
 					})
 				),
@@ -23262,6 +23279,8 @@
 			filteredOrder: state.filteredOrder,
 			filteredTerm: state.filteredTerm,
 			activeImage: state.activeImage,
+
+			appInitialized: state.appInitialized,
 
 			atBeginning: state.atBeginning,
 			atEnd: state.atEnd
@@ -24235,7 +24254,7 @@
 	Object.defineProperty(exports, "__esModule", {
 		value: true
 	});
-	exports.CLEAR_FILTER_TAG = exports.FILTER_TAG = exports.NAVIGATE = exports.CLEAR_ACTIVE_IMAGE = exports.SET_ACTIVE_IMAGE = undefined;
+	exports.APP_INITIALIZE = exports.CLEAR_FILTER_TAG = exports.FILTER_TAG = exports.NAVIGATE = exports.CLEAR_ACTIVE_IMAGE = exports.SET_ACTIVE_IMAGE = undefined;
 
 	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
 
@@ -24248,6 +24267,7 @@
 	exports.navigateNext = navigateNext;
 	exports.filterTag = filterTag;
 	exports.clearFilterTag = clearFilterTag;
+	exports.appInitialize = appInitialize;
 
 	var _constants = __webpack_require__(216);
 
@@ -24261,6 +24281,7 @@
 	var NAVIGATE = exports.NAVIGATE = "PHOTOBLOG.NAVIGATE";
 	var FILTER_TAG = exports.FILTER_TAG = "PHOTOBLOG.FILTER_TAG";
 	var CLEAR_FILTER_TAG = exports.CLEAR_FILTER_TAG = "PHOTOBLOG.CLEAR_FILTER_TAG";
+	var APP_INITIALIZE = exports.APP_INITIALIZE = "PHOTOBLOG.APP_INITIALIZE";
 
 	// reducer
 	// ----------------------------------------------------------------------------
@@ -24392,6 +24413,13 @@
 					});
 				}
 
+			case APP_INITIALIZE:
+				{
+					return _extends({}, state, {
+						appInitialized: true
+					});
+				}
+
 			default:
 				{
 					return state;
@@ -24439,6 +24467,12 @@
 	function clearFilterTag() {
 		return {
 			type: CLEAR_FILTER_TAG
+		};
+	}
+
+	function appInitialize() {
+		return {
+			type: APP_INITIALIZE
 		};
 	}
 
@@ -24673,6 +24707,11 @@
 			return _react2.default.createElement(
 				"ul",
 				{ className: "page-photography-navigation" },
+				_react2.default.createElement(
+					"li",
+					{ className: "page-photography-navigation-item-wrapper" },
+					"browse:"
+				),
 				this.props.years.map(function (year) {
 					return _react2.default.createElement(
 						"li",
