@@ -50,7 +50,10 @@ const App = React.createClass({
 		const cb = throttle(200, this._handleScroll);
 
 		document.addEventListener("scroll", cb);
-		this._handleScroll();
+
+		setTimeout(() => {
+			this._handleScroll();
+		}, 50);
 	},
 
 	componentDidUpdate(prevProps) {

@@ -23174,17 +23174,22 @@
 			return {};
 		},
 		componentDidMount: function componentDidMount() {
+			var _this = this;
+
 			var cb = (0, _throttle2.default)(200, this._handleScroll);
 
 			document.addEventListener("scroll", cb);
-			this._handleScroll();
+
+			setTimeout(function () {
+				_this._handleScroll();
+			}, 50);
 		},
 		componentDidUpdate: function componentDidUpdate(prevProps) {
-			var _this = this;
+			var _this2 = this;
 
 			if (this.props.filteredTerm !== prevProps.filteredTerm) {
 				setTimeout(function () {
-					_this._handleScroll();
+					_this2._handleScroll();
 				}, 50);
 			}
 		},
@@ -23208,7 +23213,7 @@
 			return imageIds;
 		},
 		render: function render() {
-			var _this2 = this;
+			var _this3 = this;
 
 			return _react2.default.createElement(
 				"span",
@@ -23241,12 +23246,12 @@
 					this.props.appInitialized && this._getVisibleImageIds().map(function (id) {
 						return _react2.default.createElement(_Thumbnail2.default, {
 							key: id,
-							image: _this2.props.images[id],
-							scrollTop: _this2.state.scrollTop,
-							scrollBottom: _this2.state.scrollBottom,
-							setActiveImage: _this2.props.onSetActiveImage,
-							clearActiveImage: _this2.props.onClearActiveImage,
-							hasActiveImage: !!_this2.props.activeImage
+							image: _this3.props.images[id],
+							scrollTop: _this3.state.scrollTop,
+							scrollBottom: _this3.state.scrollBottom,
+							setActiveImage: _this3.props.onSetActiveImage,
+							clearActiveImage: _this3.props.onClearActiveImage,
+							hasActiveImage: !!_this3.props.activeImage
 						});
 					})
 				),
