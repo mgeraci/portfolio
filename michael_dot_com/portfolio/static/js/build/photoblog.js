@@ -24328,8 +24328,8 @@
 						return state;
 					}
 
-					var _order = (0, _helpers.getVisibleImages)(state);
-					var currentIndex = _order.indexOf(state.activeImage);
+					var currentOrder = (0, _helpers.getVisibleImages)(state);
+					var currentIndex = currentOrder.indexOf(state.activeImage);
 					var nextIndex = void 0;
 
 					if (action.direction === _constants.DIRECTIONS.prev) {
@@ -24344,16 +24344,16 @@
 						return _extends({}, state);
 					}
 
-					if (nextIndex + 1 > _order.length) {
+					if (nextIndex + 1 > currentOrder.length) {
 						return _extends({}, state);
 					}
 
 					var _positionMeta = (0, _helpers.getPositionMeta)({
 						index: nextIndex,
-						images: _order
+						images: currentOrder
 					});
 
-					var nextId = state.order[nextIndex];
+					var nextId = currentOrder[nextIndex];
 
 					(0, _helpers.setHistory)("/photography/blog/" + nextId);
 

@@ -58,9 +58,10 @@ export default function reducer(state, action) {
 				return state;
 			}
 
-			const order = getVisibleImages(state);
-			const currentIndex = order.indexOf(state.activeImage);
+			const currentOrder = getVisibleImages(state);
+			const currentIndex = currentOrder.indexOf(state.activeImage);
 			let nextIndex;
+
 
 			if (action.direction === DIRECTIONS.prev)	{
 				nextIndex = currentIndex - 1;
@@ -76,7 +77,7 @@ export default function reducer(state, action) {
 				};
 			}
 
-			if (nextIndex + 1 > order.length) {
+			if (nextIndex + 1 > currentOrder.length) {
 				return {
 					...state,
 				};
@@ -84,10 +85,11 @@ export default function reducer(state, action) {
 
 			const positionMeta = getPositionMeta({
 				index: nextIndex,
-				images: order,
+				images: currentOrder,
 			});
 
-			const nextId = state.order[nextIndex];
+
+			const nextId = currentOrder[nextIndex];
 
 			setHistory(`/photography/blog/${nextId}`);
 
