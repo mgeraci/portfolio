@@ -1,5 +1,6 @@
 import React, { PropTypes } from "react";
 import { connect } from "react-redux";
+import PureRenderMixin from "react-addons-pure-render-mixin";
 
 import {
 	clearFilterTag,
@@ -10,6 +11,8 @@ const Title = React.createClass({
 		filteredTerm: PropTypes.string,
 		onClearFilterTag: PropTypes.func.isRequired,
 	},
+
+	mixins: [ PureRenderMixin ],
 
 	render() {
 		return (

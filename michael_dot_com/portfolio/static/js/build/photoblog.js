@@ -24675,6 +24675,10 @@
 
 	var _reactRedux = __webpack_require__(182);
 
+	var _reactAddonsPureRenderMixin = __webpack_require__(221);
+
+	var _reactAddonsPureRenderMixin2 = _interopRequireDefault(_reactAddonsPureRenderMixin);
+
 	var _reducer = __webpack_require__(215);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -24686,6 +24690,8 @@
 			filteredTerm: _react.PropTypes.string,
 			onClearFilterTag: _react.PropTypes.func.isRequired
 		},
+
+		mixins: [_reactAddonsPureRenderMixin2.default],
 
 		render: function render() {
 			return _react2.default.createElement(
@@ -24749,6 +24755,10 @@
 
 	var _reactRedux = __webpack_require__(182);
 
+	var _reactAddonsPureRenderMixin = __webpack_require__(221);
+
+	var _reactAddonsPureRenderMixin2 = _interopRequireDefault(_reactAddonsPureRenderMixin);
+
 	var _reducer = __webpack_require__(215);
 
 	var _Tag = __webpack_require__(220);
@@ -24764,6 +24774,8 @@
 			years: _react.PropTypes.array.isRequired,
 			onFilterTag: _react.PropTypes.func.isRequired
 		},
+
+		mixins: [_reactAddonsPureRenderMixin2.default],
 
 		_filterTags: function _filterTags(e) {
 			e.preventDefault();

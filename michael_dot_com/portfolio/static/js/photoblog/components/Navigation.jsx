@@ -1,5 +1,6 @@
 import React, { PropTypes } from "react";
 import { connect } from "react-redux";
+import PureRenderMixin from "react-addons-pure-render-mixin";
 
 import { filterTag } from "../reducer";
 import Tag from "./Tag";
@@ -9,6 +10,8 @@ const Navigation = React.createClass({
 		years: PropTypes.array.isRequired,
 		onFilterTag: PropTypes.func.isRequired,
 	},
+
+	mixins: [ PureRenderMixin ],
 
 	_filterTags(e) {
 		e.preventDefault();
