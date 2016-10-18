@@ -11,8 +11,9 @@ import {
 	navigatePrev,
 	navigateNext,
 	filterTag,
-	clearFilterTag,
 } from "../reducer";
+
+import Title from "./Title";
 import Navigation from "./Navigation";
 import Thumbnail from "./Thumbnail";
 import ImageModal from "./ImageModal";
@@ -39,7 +40,6 @@ const App = React.createClass({
 		onNavigatePrev: PropTypes.func.isRequired,
 		onNavigateNext: PropTypes.func.isRequired,
 		onFilterTag: PropTypes.func.isRequired,
-		onClearFilterTag: PropTypes.func.isRequired,
 	},
 
 	getInitialState() {
@@ -91,18 +91,7 @@ const App = React.createClass({
 		return (
 			<span>
 				<div className="page-photography-meta">
-					{this.props.filteredTerm &&
-						<h2 className="page-photography-meta-title">
-							Images tagged <em>{this.props.filteredTerm}</em>
-
-							<button
-									className="page-photography-meta-title-clear"
-									onClick={this.props.onClearFilterTag}>
-								remove filter
-							</button>
-						</h2>
-					}
-
+					<Title />
 					<Navigation />
 				</div>
 				<div className="page-photography-thumbnails">
@@ -174,9 +163,6 @@ function mapDispatchToProps(dispatch) {
 		},
 		onFilterTag(tag) {
 			dispatch(filterTag(tag));
-		},
-		onClearFilterTag() {
-			dispatch(clearFilterTag());
 		},
 	};
 }

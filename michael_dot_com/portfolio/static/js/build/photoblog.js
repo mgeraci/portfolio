@@ -74,7 +74,7 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	__webpack_require__(228);
+	__webpack_require__(229);
 
 	window.Photoblog = {
 		init: function init(data) {
@@ -23130,21 +23130,23 @@
 
 	var _reducer = __webpack_require__(215);
 
-	var _Navigation = __webpack_require__(218);
+	var _Title = __webpack_require__(218);
+
+	var _Title2 = _interopRequireDefault(_Title);
+
+	var _Navigation = __webpack_require__(219);
 
 	var _Navigation2 = _interopRequireDefault(_Navigation);
 
-	var _Thumbnail = __webpack_require__(223);
+	var _Thumbnail = __webpack_require__(224);
 
 	var _Thumbnail2 = _interopRequireDefault(_Thumbnail);
 
-	var _ImageModal = __webpack_require__(224);
+	var _ImageModal = __webpack_require__(225);
 
 	var _ImageModal2 = _interopRequireDefault(_ImageModal);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	/* global window, document */
 
 	var App = _react2.default.createClass({
 		displayName: "App",
@@ -23166,8 +23168,7 @@
 			onClearActiveImage: _react.PropTypes.func.isRequired,
 			onNavigatePrev: _react.PropTypes.func.isRequired,
 			onNavigateNext: _react.PropTypes.func.isRequired,
-			onFilterTag: _react.PropTypes.func.isRequired,
-			onClearFilterTag: _react.PropTypes.func.isRequired
+			onFilterTag: _react.PropTypes.func.isRequired
 		},
 
 		getInitialState: function getInitialState() {
@@ -23221,23 +23222,7 @@
 				_react2.default.createElement(
 					"div",
 					{ className: "page-photography-meta" },
-					this.props.filteredTerm && _react2.default.createElement(
-						"h2",
-						{ className: "page-photography-meta-title" },
-						"Images tagged ",
-						_react2.default.createElement(
-							"em",
-							null,
-							this.props.filteredTerm
-						),
-						_react2.default.createElement(
-							"button",
-							{
-								className: "page-photography-meta-title-clear",
-								onClick: this.props.onClearFilterTag },
-							"remove filter"
-						)
-					),
+					_react2.default.createElement(_Title2.default, null),
 					_react2.default.createElement(_Navigation2.default, null)
 				),
 				_react2.default.createElement(
@@ -23275,7 +23260,7 @@
 				)
 			);
 		}
-	});
+	}); /* global window, document */
 
 	function mapStateToProps(state) {
 		return {
@@ -23308,9 +23293,6 @@
 			},
 			onFilterTag: function onFilterTag(tag) {
 				dispatch((0, _reducer.filterTag)(tag));
-			},
-			onClearFilterTag: function onClearFilterTag() {
-				dispatch((0, _reducer.clearFilterTag)());
 			}
 		};
 	}
@@ -24373,7 +24355,10 @@
 
 						var filteredOrder = [];
 						var isYear = !!("" + action.tag.slug).match(/2\d{3}/);
+						var isTags = !!("" + action.tag.slug).match(/^tags$/);
 						var year = void 0;
+
+						console.log("filtering", isTags);
 
 						if (isYear) {
 							year = parseInt(action.tag.slug, 10);
@@ -24692,7 +24677,81 @@
 
 	var _reducer = __webpack_require__(215);
 
-	var _Tag = __webpack_require__(219);
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var Title = _react2.default.createClass({
+		displayName: "Title",
+
+		propTypes: {
+			filteredTerm: _react.PropTypes.string,
+			onClearFilterTag: _react.PropTypes.func.isRequired
+		},
+
+		render: function render() {
+			return _react2.default.createElement(
+				"h2",
+				{ className: "page-photography-meta-title" },
+				this.props.filteredTerm && _react2.default.createElement(
+					"span",
+					null,
+					"Images tagged  ",
+					_react2.default.createElement(
+						"em",
+						null,
+						this.props.filteredTerm
+					),
+					_react2.default.createElement(
+						"button",
+						{
+							className: "page-photography-meta-title-clear",
+							onClick: this.props.onClearFilterTag },
+						"remove filter"
+					)
+				),
+				!this.props.filteredTerm && _react2.default.createElement(
+					"span",
+					null,
+					"Photoblog"
+				)
+			);
+		}
+	});
+
+	function mapStateToProps(state) {
+		return {
+			filteredTerm: state.filteredTerm
+		};
+	}
+
+	function mapDispatchToProps(dispatch) {
+		return {
+			onClearFilterTag: function onClearFilterTag(tag) {
+				dispatch((0, _reducer.clearFilterTag)(tag));
+			}
+		};
+	}
+
+	exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(Title);
+
+/***/ },
+/* 219 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+
+	var _react = __webpack_require__(11);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactRedux = __webpack_require__(182);
+
+	var _reducer = __webpack_require__(215);
+
+	var _Tag = __webpack_require__(220);
 
 	var _Tag2 = _interopRequireDefault(_Tag);
 
@@ -24706,6 +24765,14 @@
 			onFilterTag: _react.PropTypes.func.isRequired
 		},
 
+		_filterTags: function _filterTags(e) {
+			e.preventDefault();
+
+			this.props.onFilterTag({
+				name: "tags",
+				slug: "tags"
+			});
+		},
 		render: function render() {
 			var _this = this;
 
@@ -24738,7 +24805,8 @@
 						"a",
 						{
 							className: "page-photography-navigation-item",
-							href: "/photography/blog/browse/tags" },
+							href: "/photography/blog/browse/tags",
+							onClick: this._filterTags },
 						"tags"
 					)
 				)
@@ -24763,7 +24831,7 @@
 	exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(Navigation);
 
 /***/ },
-/* 219 */
+/* 220 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -24776,7 +24844,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _reactAddonsPureRenderMixin = __webpack_require__(220);
+	var _reactAddonsPureRenderMixin = __webpack_require__(221);
 
 	var _reactAddonsPureRenderMixin2 = _interopRequireDefault(_reactAddonsPureRenderMixin);
 
@@ -24816,13 +24884,13 @@
 	exports.default = Tag;
 
 /***/ },
-/* 220 */
+/* 221 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__(221);
+	module.exports = __webpack_require__(222);
 
 /***/ },
-/* 221 */
+/* 222 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -24838,7 +24906,7 @@
 
 	'use strict';
 
-	var shallowCompare = __webpack_require__(222);
+	var shallowCompare = __webpack_require__(223);
 
 	/**
 	 * If your React component's render function is "pure", e.g. it will render the
@@ -24875,7 +24943,7 @@
 	module.exports = ReactComponentWithPureRenderMixin;
 
 /***/ },
-/* 222 */
+/* 223 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -24905,7 +24973,7 @@
 	module.exports = shallowCompare;
 
 /***/ },
-/* 223 */
+/* 224 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -25023,7 +25091,7 @@
 	exports.default = Thumbnail;
 
 /***/ },
-/* 224 */
+/* 225 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -25040,15 +25108,15 @@
 
 	var _reactAddonsCssTransitionGroup2 = _interopRequireDefault(_reactAddonsCssTransitionGroup);
 
-	var _classnames = __webpack_require__(225);
+	var _classnames = __webpack_require__(226);
 
 	var _classnames2 = _interopRequireDefault(_classnames);
 
-	var _MainImage = __webpack_require__(226);
+	var _MainImage = __webpack_require__(227);
 
 	var _MainImage2 = _interopRequireDefault(_MainImage);
 
-	var _ImageMeta = __webpack_require__(227);
+	var _ImageMeta = __webpack_require__(228);
 
 	var _ImageMeta2 = _interopRequireDefault(_ImageMeta);
 
@@ -25205,7 +25273,7 @@
 	exports.default = ImageDetail;
 
 /***/ },
-/* 225 */
+/* 226 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -25259,7 +25327,7 @@
 
 
 /***/ },
-/* 226 */
+/* 227 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -25272,7 +25340,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _reactAddonsPureRenderMixin = __webpack_require__(220);
+	var _reactAddonsPureRenderMixin = __webpack_require__(221);
 
 	var _reactAddonsPureRenderMixin2 = _interopRequireDefault(_reactAddonsPureRenderMixin);
 
@@ -25340,7 +25408,7 @@
 	exports.default = MainImage;
 
 /***/ },
-/* 227 */
+/* 228 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -25353,11 +25421,11 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _reactAddonsPureRenderMixin = __webpack_require__(220);
+	var _reactAddonsPureRenderMixin = __webpack_require__(221);
 
 	var _reactAddonsPureRenderMixin2 = _interopRequireDefault(_reactAddonsPureRenderMixin);
 
-	var _Tag = __webpack_require__(219);
+	var _Tag = __webpack_require__(220);
 
 	var _Tag2 = _interopRequireDefault(_Tag);
 
@@ -25426,7 +25494,7 @@
 	exports.default = ImageMeta;
 
 /***/ },
-/* 228 */
+/* 229 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin

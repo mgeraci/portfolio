@@ -107,7 +107,10 @@ export default function reducer(state, action) {
 
 			const filteredOrder = [];
 			const isYear = !!`${action.tag.slug}`.match(/2\d{3}/);
+			const isTags = !!`${action.tag.slug}`.match(/^tags$/);
 			let year;
+
+			console.log("filtering", isTags);
 
 			if (isYear) {
 				year = parseInt(action.tag.slug, 10);

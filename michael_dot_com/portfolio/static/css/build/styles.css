@@ -742,7 +742,8 @@ nav::after {
     background-position: 0 85%;
     -webkit-transition: color 50ms linear;
     -moz-transition: color 50ms linear;
-    transition: color 50ms linear; }
+    transition: color 50ms linear;
+    height: 0; }
     .page-photography-meta-title-clear, .page-photography-meta-title-clear:visited {
       color: #444;
       background-image: linear-gradient(to bottom, transparent 50%, rgba(68, 68, 68, 0.6) 50%); }

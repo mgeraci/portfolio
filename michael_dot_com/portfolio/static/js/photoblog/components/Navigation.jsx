@@ -10,6 +10,15 @@ const Navigation = React.createClass({
 		onFilterTag: PropTypes.func.isRequired,
 	},
 
+	_filterTags(e) {
+		e.preventDefault();
+
+		this.props.onFilterTag({
+			name: "tags",
+			slug: "tags",
+		});
+	},
+
 	render() {
 		return (
 			<ul className="page-photography-navigation">
@@ -31,7 +40,8 @@ const Navigation = React.createClass({
 				<li className="page-photography-navigation-item-wrapper">
 					<a
 							className="page-photography-navigation-item"
-							href="/photography/blog/browse/tags">
+							href="/photography/blog/browse/tags"
+							onClick={this._filterTags}>
 						tags
 					</a>
 				</li>
