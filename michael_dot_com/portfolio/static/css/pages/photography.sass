@@ -2,7 +2,8 @@ $thumbnail-size: 75px
 
 .page-photography
   &-meta,
-  &-thumbnails
+  &-thumbnails,
+  &-tagslist
     @include clearfix
     width: $thumbnail-size * 9
     margin: 0 auto
@@ -159,6 +160,12 @@ $thumbnail-size: 75px
 
       &:after
         @include transform(translate(-50%, -50%) rotate(-45deg))
+
+  &-tagslist
+    line-height: 24px
+
+    &-tag
+      margin: 5px
 
 
 // react css transition group

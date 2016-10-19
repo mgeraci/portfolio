@@ -24,6 +24,7 @@ export function parseUrl(url, initialData = {}) {
 	} else if (url.match("/photography/blog/browse/")) {
 		const slug = url.replace("/photography/blog/browse/", "");
 		const isYear = !!slug.match(/2\d{3}/);
+		const isTags = !!slug.match(/^tags$/);
 
 		// this kind of sucks, but the tag action expects to be called with its
 		// name and slug. so let's just try to find it from the initial data
@@ -36,6 +37,11 @@ export function parseUrl(url, initialData = {}) {
 				name: slug,
 				slug,
 			};
+		} else if (isTags) {
+			data = {
+				name: "tags",
+				slug: "tags",
+			};
 		} else {
 			initialData.order.forEach((id) => {
 				initialData.images[id].tags.forEach((tag) => {
@@ -45,7 +51,7 @@ export function parseUrl(url, initialData = {}) {
 				});
 			});
 
-			if (res.name && res.slug) {
+			if (typeof(res) === "object" && res.name && res.slug) {
 				data = res;
 			}
 		}

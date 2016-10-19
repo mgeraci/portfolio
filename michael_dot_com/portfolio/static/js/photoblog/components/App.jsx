@@ -13,10 +13,13 @@ import {
 	filterTag,
 } from "../reducer";
 
+import { TAGS_LIST_URL } from "../util/constants.js";
+
 import Title from "./Title";
 import Navigation from "./Navigation";
 import Thumbnail from "./Thumbnail";
 import ImageModal from "./ImageModal";
+import TagsList from "./TagsList";
 
 const App = React.createClass({
 	propTypes: {
@@ -88,44 +91,70 @@ const App = React.createClass({
 	},
 
 	render() {
+		const {
+			filteredTerm,
+			images,
+			onSetActiveImage,
+			onNavigatePrev,
+			onNavigateNext,
+			onClearActiveImage,
+			activeImage,
+			atBeginning,
+			atEnd,
+			onFilterTag,
+			appInitialized,
+		} = this.props;
+
+		const { scrollTop, scrollBottom } = this.state;
+		const isTagsView = filteredTerm === TAGS_LIST_URL;
+
 		return (
 			<span>
 				<div className="page-photography-meta">
 					<Title />
 					<Navigation />
 				</div>
-				<div className="page-photography-thumbnails">
 
-					{this.props.appInitialized && this._getVisibleImageIds().map(id =>
-						<Thumbnail
-							key={id}
-							image={this.props.images[id]}
-							scrollTop={this.state.scrollTop}
-							scrollBottom={this.state.scrollBottom}
-							setActiveImage={this.props.onSetActiveImage}
-							clearActiveImage={this.props.onClearActiveImage}
-							hasActiveImage={!!this.props.activeImage}
-						/>
-					)}
-				</div>
+				{!isTagsView &&
+					<span>
+						<div className="page-photography-thumbnails">
 
-				{this.props.activeImage &&
-					<ReactCSSTransitionGroup
-							transitionName="image-detail"
-							transitionAppear
-							transitionEnterTimeout={500}
-							transitionAppearTimeout={500}
-							transitionLeaveTimeout={500}>
-						<ImageModal
-							image={this.props.images[this.props.activeImage]}
-							clearActiveImage={this.props.onClearActiveImage}
-							navigatePrev={this.props.onNavigatePrev}
-							navigateNext={this.props.onNavigateNext}
-							atBeginning={this.props.atBeginning}
-							atEnd={this.props.atEnd}
-							filterTag={this.props.onFilterTag}
-						/>
-					</ReactCSSTransitionGroup>
+							{appInitialized && this._getVisibleImageIds().map(id =>
+								<Thumbnail
+									key={id}
+									image={images[id]}
+									scrollTop={scrollTop}
+									scrollBottom={scrollBottom}
+									setActiveImage={onSetActiveImage}
+									clearActiveImage={onClearActiveImage}
+									hasActiveImage={!!activeImage}
+								/>
+							)}
+						</div>
+
+						{activeImage &&
+							<ReactCSSTransitionGroup
+									transitionName="image-detail"
+									transitionAppear
+									transitionEnterTimeout={500}
+									transitionAppearTimeout={500}
+									transitionLeaveTimeout={500}>
+								<ImageModal
+									image={images[activeImage]}
+									clearActiveImage={onClearActiveImage}
+									navigatePrev={onNavigatePrev}
+									navigateNext={onNavigateNext}
+									atBeginning={atBeginning}
+									atEnd={atEnd}
+									filterTag={onFilterTag}
+								/>
+							</ReactCSSTransitionGroup>
+						}
+					</span>
+				}
+
+				{isTagsView &&
+					<TagsList />
 				}
 			</span>
 		);

@@ -16,6 +16,7 @@ export const NAVIGATE = "PHOTOBLOG.NAVIGATE";
 export const FILTER_TAG = "PHOTOBLOG.FILTER_TAG";
 export const CLEAR_FILTER_TAG = "PHOTOBLOG.CLEAR_FILTER_TAG";
 export const APP_INITIALIZE = "PHOTOBLOG.APP_INITIALIZE";
+export const GENERATE_TAGS_LIST = "PHOTOBLOG.GENERATE_TAGS_LIST";
 
 
 // reducer
@@ -107,10 +108,7 @@ export default function reducer(state, action) {
 
 			const filteredOrder = [];
 			const isYear = !!`${action.tag.slug}`.match(/2\d{3}/);
-			const isTags = !!`${action.tag.slug}`.match(/^tags$/);
 			let year;
-
-			console.log("filtering", isTags);
 
 			if (isYear) {
 				year = parseInt(action.tag.slug, 10);
@@ -148,6 +146,46 @@ export default function reducer(state, action) {
 				activeImage: null,
 				filteredOrder: null,
 				filteredTerm: null,
+			};
+		}
+
+		case GENERATE_TAGS_LIST: {
+			const tagsDict = {};
+			let tags = [];
+
+			// construct an object of tags and their counts
+			Object.keys(state.images).forEach((id) => {
+				const image = state.images[id];
+
+				image.tags.forEach((tag) => {
+					if (tagsDict[tag.slug]) {
+						const count = tagsDict[tag.slug].count;
+						tagsDict[tag.slug].count = count + 1;
+					} else {
+						tagsDict[tag.slug] = {
+							...tag,
+							count: 0,
+						};
+					}
+				});
+			});
+
+			// get the object into an alphabetically sorted array
+			Object.keys(tagsDict).forEach((slug) => {
+				tags.push(tagsDict[slug]);
+			});
+
+			tags = tags.sort((a, b) => {
+				const aName = a.name.toLowerCase();
+				const bName = b.name.toLowerCase();
+				if (aName < bName) return -1;
+				if (aName > bName) return 1;
+				return 0;
+			});
+
+			return {
+				...state,
+				tags,
 			};
 		}
 
@@ -205,6 +243,12 @@ export function filterTag(tag) {
 export function clearFilterTag() {
 	return {
 		type: CLEAR_FILTER_TAG,
+	};
+}
+
+export function generateTagsList() {
+	return {
+		type: GENERATE_TAGS_LIST,
 	};
 }
 

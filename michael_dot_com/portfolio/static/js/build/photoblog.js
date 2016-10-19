@@ -74,7 +74,7 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	__webpack_require__(229);
+	__webpack_require__(230);
 
 	window.Photoblog = {
 		init: function init(data) {
@@ -23130,11 +23130,13 @@
 
 	var _reducer = __webpack_require__(215);
 
+	var _constants = __webpack_require__(216);
+
 	var _Title = __webpack_require__(218);
 
 	var _Title2 = _interopRequireDefault(_Title);
 
-	var _Navigation = __webpack_require__(219);
+	var _Navigation = __webpack_require__(222);
 
 	var _Navigation2 = _interopRequireDefault(_Navigation);
 
@@ -23145,6 +23147,10 @@
 	var _ImageModal = __webpack_require__(225);
 
 	var _ImageModal2 = _interopRequireDefault(_ImageModal);
+
+	var _TagsList = __webpack_require__(229);
+
+	var _TagsList2 = _interopRequireDefault(_TagsList);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -23214,7 +23220,23 @@
 			return imageIds;
 		},
 		render: function render() {
-			var _this3 = this;
+			var _props = this.props;
+			var filteredTerm = _props.filteredTerm;
+			var images = _props.images;
+			var onSetActiveImage = _props.onSetActiveImage;
+			var onNavigatePrev = _props.onNavigatePrev;
+			var onNavigateNext = _props.onNavigateNext;
+			var onClearActiveImage = _props.onClearActiveImage;
+			var activeImage = _props.activeImage;
+			var atBeginning = _props.atBeginning;
+			var atEnd = _props.atEnd;
+			var onFilterTag = _props.onFilterTag;
+			var appInitialized = _props.appInitialized;
+			var _state = this.state;
+			var scrollTop = _state.scrollTop;
+			var scrollBottom = _state.scrollBottom;
+
+			var isTagsView = filteredTerm === _constants.TAGS_LIST_URL;
 
 			return _react2.default.createElement(
 				"span",
@@ -23225,39 +23247,44 @@
 					_react2.default.createElement(_Title2.default, null),
 					_react2.default.createElement(_Navigation2.default, null)
 				),
-				_react2.default.createElement(
-					"div",
-					{ className: "page-photography-thumbnails" },
-					this.props.appInitialized && this._getVisibleImageIds().map(function (id) {
-						return _react2.default.createElement(_Thumbnail2.default, {
-							key: id,
-							image: _this3.props.images[id],
-							scrollTop: _this3.state.scrollTop,
-							scrollBottom: _this3.state.scrollBottom,
-							setActiveImage: _this3.props.onSetActiveImage,
-							clearActiveImage: _this3.props.onClearActiveImage,
-							hasActiveImage: !!_this3.props.activeImage
-						});
-					})
+				!isTagsView && _react2.default.createElement(
+					"span",
+					null,
+					_react2.default.createElement(
+						"div",
+						{ className: "page-photography-thumbnails" },
+						appInitialized && this._getVisibleImageIds().map(function (id) {
+							return _react2.default.createElement(_Thumbnail2.default, {
+								key: id,
+								image: images[id],
+								scrollTop: scrollTop,
+								scrollBottom: scrollBottom,
+								setActiveImage: onSetActiveImage,
+								clearActiveImage: onClearActiveImage,
+								hasActiveImage: !!activeImage
+							});
+						})
+					),
+					activeImage && _react2.default.createElement(
+						_reactAddonsCssTransitionGroup2.default,
+						{
+							transitionName: "image-detail",
+							transitionAppear: true,
+							transitionEnterTimeout: 500,
+							transitionAppearTimeout: 500,
+							transitionLeaveTimeout: 500 },
+						_react2.default.createElement(_ImageModal2.default, {
+							image: images[activeImage],
+							clearActiveImage: onClearActiveImage,
+							navigatePrev: onNavigatePrev,
+							navigateNext: onNavigateNext,
+							atBeginning: atBeginning,
+							atEnd: atEnd,
+							filterTag: onFilterTag
+						})
+					)
 				),
-				this.props.activeImage && _react2.default.createElement(
-					_reactAddonsCssTransitionGroup2.default,
-					{
-						transitionName: "image-detail",
-						transitionAppear: true,
-						transitionEnterTimeout: 500,
-						transitionAppearTimeout: 500,
-						transitionLeaveTimeout: 500 },
-					_react2.default.createElement(_ImageModal2.default, {
-						image: this.props.images[this.props.activeImage],
-						clearActiveImage: this.props.onClearActiveImage,
-						navigatePrev: this.props.onNavigatePrev,
-						navigateNext: this.props.onNavigateNext,
-						atBeginning: this.props.atBeginning,
-						atEnd: this.props.atEnd,
-						filterTag: this.props.onFilterTag
-					})
-				)
+				isTagsView && _react2.default.createElement(_TagsList2.default, null)
 			);
 		}
 	}); /* global window, document */
@@ -24241,7 +24268,7 @@
 	Object.defineProperty(exports, "__esModule", {
 		value: true
 	});
-	exports.APP_INITIALIZE = exports.CLEAR_FILTER_TAG = exports.FILTER_TAG = exports.NAVIGATE = exports.CLEAR_ACTIVE_IMAGE = exports.SET_ACTIVE_IMAGE = undefined;
+	exports.GENERATE_TAGS_LIST = exports.APP_INITIALIZE = exports.CLEAR_FILTER_TAG = exports.FILTER_TAG = exports.NAVIGATE = exports.CLEAR_ACTIVE_IMAGE = exports.SET_ACTIVE_IMAGE = undefined;
 
 	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
 
@@ -24254,6 +24281,7 @@
 	exports.navigateNext = navigateNext;
 	exports.filterTag = filterTag;
 	exports.clearFilterTag = clearFilterTag;
+	exports.generateTagsList = generateTagsList;
 	exports.appInitialize = appInitialize;
 
 	var _constants = __webpack_require__(216);
@@ -24269,6 +24297,7 @@
 	var FILTER_TAG = exports.FILTER_TAG = "PHOTOBLOG.FILTER_TAG";
 	var CLEAR_FILTER_TAG = exports.CLEAR_FILTER_TAG = "PHOTOBLOG.CLEAR_FILTER_TAG";
 	var APP_INITIALIZE = exports.APP_INITIALIZE = "PHOTOBLOG.APP_INITIALIZE";
+	var GENERATE_TAGS_LIST = exports.GENERATE_TAGS_LIST = "PHOTOBLOG.GENERATE_TAGS_LIST";
 
 	// reducer
 	// ----------------------------------------------------------------------------
@@ -24355,10 +24384,7 @@
 
 						var filteredOrder = [];
 						var isYear = !!("" + action.tag.slug).match(/2\d{3}/);
-						var isTags = !!("" + action.tag.slug).match(/^tags$/);
 						var year = void 0;
-
-						console.log("filtering", isTags);
 
 						if (isYear) {
 							year = parseInt(action.tag.slug, 10);
@@ -24401,6 +24427,51 @@
 						filteredOrder: null,
 						filteredTerm: null
 					});
+				}
+
+			case GENERATE_TAGS_LIST:
+				{
+					var _ret2 = function () {
+						var tagsDict = {};
+						var tags = [];
+
+						// construct an object of tags and their counts
+						Object.keys(state.images).forEach(function (id) {
+							var image = state.images[id];
+
+							image.tags.forEach(function (tag) {
+								if (tagsDict[tag.slug]) {
+									var count = tagsDict[tag.slug].count;
+									tagsDict[tag.slug].count = count + 1;
+								} else {
+									tagsDict[tag.slug] = _extends({}, tag, {
+										count: 0
+									});
+								}
+							});
+						});
+
+						// get the object into an alphabetically sorted array
+						Object.keys(tagsDict).forEach(function (slug) {
+							tags.push(tagsDict[slug]);
+						});
+
+						tags = tags.sort(function (a, b) {
+							var aName = a.name.toLowerCase();
+							var bName = b.name.toLowerCase();
+							if (aName < bName) return -1;
+							if (aName > bName) return 1;
+							return 0;
+						});
+
+						return {
+							v: _extends({}, state, {
+								tags: tags
+							})
+						};
+					}();
+
+					if ((typeof _ret2 === "undefined" ? "undefined" : _typeof(_ret2)) === "object") return _ret2.v;
 				}
 
 			case APP_INITIALIZE:
@@ -24460,6 +24531,12 @@
 		};
 	}
 
+	function generateTagsList() {
+		return {
+			type: GENERATE_TAGS_LIST
+		};
+	}
+
 	function appInitialize() {
 		return {
 			type: APP_INITIALIZE
@@ -24496,6 +24573,8 @@
 		"michaelgeracicom": 1,
 		"slideshow": 1
 	};
+
+	var TAGS_LIST_URL = exports.TAGS_LIST_URL = "tags";
 
 	exports.default = {};
 
@@ -24542,6 +24621,7 @@
 			var _ret = function () {
 				var slug = url.replace("/photography/blog/browse/", "");
 				var isYear = !!slug.match(/2\d{3}/);
+				var isTags = !!slug.match(/^tags$/);
 
 				// this kind of sucks, but the tag action expects to be called with its
 				// name and slug. so let's just try to find it from the initial data
@@ -24554,6 +24634,11 @@
 						name: slug,
 						slug: slug
 					};
+				} else if (isTags) {
+					data = {
+						name: "tags",
+						slug: "tags"
+					};
 				} else {
 					initialData.order.forEach(function (id) {
 						initialData.images[id].tags.forEach(function (tag) {
@@ -24563,7 +24648,7 @@
 						});
 					});
 
-					if (res.name && res.slug) {
+					if ((typeof res === "undefined" ? "undefined" : _typeof(res)) === "object" && res.name && res.slug) {
 						data = res;
 					}
 				}
@@ -24675,7 +24760,7 @@
 
 	var _reactRedux = __webpack_require__(182);
 
-	var _reactAddonsPureRenderMixin = __webpack_require__(221);
+	var _reactAddonsPureRenderMixin = __webpack_require__(219);
 
 	var _reactAddonsPureRenderMixin2 = _interopRequireDefault(_reactAddonsPureRenderMixin);
 
@@ -24687,7 +24772,7 @@
 		displayName: "Title",
 
 		propTypes: {
-			filteredTerm: _react.PropTypes.string,
+			filteredTerm: _react.PropTypes.oneOfType([_react.PropTypes.string, _react.PropTypes.number]),
 			onClearFilterTag: _react.PropTypes.func.isRequired
 		},
 
@@ -24743,6 +24828,95 @@
 /* 219 */
 /***/ function(module, exports, __webpack_require__) {
 
+	module.exports = __webpack_require__(220);
+
+/***/ },
+/* 220 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/**
+	 * Copyright 2013-present, Facebook, Inc.
+	 * All rights reserved.
+	 *
+	 * This source code is licensed under the BSD-style license found in the
+	 * LICENSE file in the root directory of this source tree. An additional grant
+	 * of patent rights can be found in the PATENTS file in the same directory.
+	 *
+	 * @providesModule ReactComponentWithPureRenderMixin
+	 */
+
+	'use strict';
+
+	var shallowCompare = __webpack_require__(221);
+
+	/**
+	 * If your React component's render function is "pure", e.g. it will render the
+	 * same result given the same props and state, provide this mixin for a
+	 * considerable performance boost.
+	 *
+	 * Most React components have pure render functions.
+	 *
+	 * Example:
+	 *
+	 *   var ReactComponentWithPureRenderMixin =
+	 *     require('ReactComponentWithPureRenderMixin');
+	 *   React.createClass({
+	 *     mixins: [ReactComponentWithPureRenderMixin],
+	 *
+	 *     render: function() {
+	 *       return <div className={this.props.className}>foo</div>;
+	 *     }
+	 *   });
+	 *
+	 * Note: This only checks shallow equality for props and state. If these contain
+	 * complex data structures this mixin may have false-negatives for deeper
+	 * differences. Only mixin to components which have simple props and state, or
+	 * use `forceUpdate()` when you know deep data structures have changed.
+	 *
+	 * See https://facebook.github.io/react/docs/pure-render-mixin.html
+	 */
+	var ReactComponentWithPureRenderMixin = {
+	  shouldComponentUpdate: function (nextProps, nextState) {
+	    return shallowCompare(this, nextProps, nextState);
+	  }
+	};
+
+	module.exports = ReactComponentWithPureRenderMixin;
+
+/***/ },
+/* 221 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/**
+	 * Copyright 2013-present, Facebook, Inc.
+	 * All rights reserved.
+	 *
+	 * This source code is licensed under the BSD-style license found in the
+	 * LICENSE file in the root directory of this source tree. An additional grant
+	 * of patent rights can be found in the PATENTS file in the same directory.
+	 *
+	* @providesModule shallowCompare
+	*/
+
+	'use strict';
+
+	var shallowEqual = __webpack_require__(134);
+
+	/**
+	 * Does a shallow comparison for props and state.
+	 * See ReactComponentWithPureRenderMixin
+	 * See also https://facebook.github.io/react/docs/shallow-compare.html
+	 */
+	function shallowCompare(instance, nextProps, nextState) {
+	  return !shallowEqual(instance.props, nextProps) || !shallowEqual(instance.state, nextState);
+	}
+
+	module.exports = shallowCompare;
+
+/***/ },
+/* 222 */
+/***/ function(module, exports, __webpack_require__) {
+
 	"use strict";
 
 	Object.defineProperty(exports, "__esModule", {
@@ -24755,13 +24929,13 @@
 
 	var _reactRedux = __webpack_require__(182);
 
-	var _reactAddonsPureRenderMixin = __webpack_require__(221);
+	var _reactAddonsPureRenderMixin = __webpack_require__(219);
 
 	var _reactAddonsPureRenderMixin2 = _interopRequireDefault(_reactAddonsPureRenderMixin);
 
 	var _reducer = __webpack_require__(215);
 
-	var _Tag = __webpack_require__(220);
+	var _Tag = __webpack_require__(223);
 
 	var _Tag2 = _interopRequireDefault(_Tag);
 
@@ -24843,7 +25017,7 @@
 	exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(Navigation);
 
 /***/ },
-/* 220 */
+/* 223 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -24856,7 +25030,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _reactAddonsPureRenderMixin = __webpack_require__(221);
+	var _reactAddonsPureRenderMixin = __webpack_require__(219);
 
 	var _reactAddonsPureRenderMixin2 = _interopRequireDefault(_reactAddonsPureRenderMixin);
 
@@ -24876,6 +25050,7 @@
 
 		_handleClick: function _handleClick(e) {
 			e.preventDefault();
+
 			this.props.filterTag({
 				name: this.props.name,
 				slug: this.props.slug
@@ -24894,95 +25069,6 @@
 	});
 
 	exports.default = Tag;
-
-/***/ },
-/* 221 */
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports = __webpack_require__(222);
-
-/***/ },
-/* 222 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/**
-	 * Copyright 2013-present, Facebook, Inc.
-	 * All rights reserved.
-	 *
-	 * This source code is licensed under the BSD-style license found in the
-	 * LICENSE file in the root directory of this source tree. An additional grant
-	 * of patent rights can be found in the PATENTS file in the same directory.
-	 *
-	 * @providesModule ReactComponentWithPureRenderMixin
-	 */
-
-	'use strict';
-
-	var shallowCompare = __webpack_require__(223);
-
-	/**
-	 * If your React component's render function is "pure", e.g. it will render the
-	 * same result given the same props and state, provide this mixin for a
-	 * considerable performance boost.
-	 *
-	 * Most React components have pure render functions.
-	 *
-	 * Example:
-	 *
-	 *   var ReactComponentWithPureRenderMixin =
-	 *     require('ReactComponentWithPureRenderMixin');
-	 *   React.createClass({
-	 *     mixins: [ReactComponentWithPureRenderMixin],
-	 *
-	 *     render: function() {
-	 *       return <div className={this.props.className}>foo</div>;
-	 *     }
-	 *   });
-	 *
-	 * Note: This only checks shallow equality for props and state. If these contain
-	 * complex data structures this mixin may have false-negatives for deeper
-	 * differences. Only mixin to components which have simple props and state, or
-	 * use `forceUpdate()` when you know deep data structures have changed.
-	 *
-	 * See https://facebook.github.io/react/docs/pure-render-mixin.html
-	 */
-	var ReactComponentWithPureRenderMixin = {
-	  shouldComponentUpdate: function (nextProps, nextState) {
-	    return shallowCompare(this, nextProps, nextState);
-	  }
-	};
-
-	module.exports = ReactComponentWithPureRenderMixin;
-
-/***/ },
-/* 223 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/**
-	 * Copyright 2013-present, Facebook, Inc.
-	 * All rights reserved.
-	 *
-	 * This source code is licensed under the BSD-style license found in the
-	 * LICENSE file in the root directory of this source tree. An additional grant
-	 * of patent rights can be found in the PATENTS file in the same directory.
-	 *
-	* @providesModule shallowCompare
-	*/
-
-	'use strict';
-
-	var shallowEqual = __webpack_require__(134);
-
-	/**
-	 * Does a shallow comparison for props and state.
-	 * See ReactComponentWithPureRenderMixin
-	 * See also https://facebook.github.io/react/docs/shallow-compare.html
-	 */
-	function shallowCompare(instance, nextProps, nextState) {
-	  return !shallowEqual(instance.props, nextProps) || !shallowEqual(instance.state, nextState);
-	}
-
-	module.exports = shallowCompare;
 
 /***/ },
 /* 224 */
@@ -25352,7 +25438,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _reactAddonsPureRenderMixin = __webpack_require__(221);
+	var _reactAddonsPureRenderMixin = __webpack_require__(219);
 
 	var _reactAddonsPureRenderMixin2 = _interopRequireDefault(_reactAddonsPureRenderMixin);
 
@@ -25433,11 +25519,11 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _reactAddonsPureRenderMixin = __webpack_require__(221);
+	var _reactAddonsPureRenderMixin = __webpack_require__(219);
 
 	var _reactAddonsPureRenderMixin2 = _interopRequireDefault(_reactAddonsPureRenderMixin);
 
-	var _Tag = __webpack_require__(220);
+	var _Tag = __webpack_require__(223);
 
 	var _Tag2 = _interopRequireDefault(_Tag);
 
@@ -25507,6 +25593,94 @@
 
 /***/ },
 /* 229 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+
+	var _react = __webpack_require__(11);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactRedux = __webpack_require__(182);
+
+	var _reducer = __webpack_require__(215);
+
+	var _Tag = __webpack_require__(223);
+
+	var _Tag2 = _interopRequireDefault(_Tag);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var TagsList = _react2.default.createClass({
+		displayName: "TagsList",
+
+		propTypes: {
+			tags: _react.PropTypes.array,
+			onGenerateTagsList: _react.PropTypes.func.isRequired,
+			onFilterTag: _react.PropTypes.func.isRequired
+		},
+
+		componentDidMount: function componentDidMount() {
+			var _props = this.props;
+			var tags = _props.tags;
+			var onGenerateTagsList = _props.onGenerateTagsList;
+
+
+			if (typeof tags === "undefined" || tags === null || !tags.length) {
+				onGenerateTagsList();
+			}
+		},
+		render: function render() {
+			var _props2 = this.props;
+			var tags = _props2.tags;
+			var onFilterTag = _props2.onFilterTag;
+
+
+			return _react2.default.createElement(
+				"div",
+				{ className: "page-photography-tagslist" },
+				tags && tags.length && _react2.default.createElement(
+					"span",
+					null,
+					tags.map(function (tag) {
+						return _react2.default.createElement(_Tag2.default, {
+							key: tag.slug,
+							name: tag.name,
+							slug: tag.slug,
+							filterTag: onFilterTag,
+							className: "page-photography-tagslist-tag"
+						});
+					})
+				)
+			);
+		}
+	});
+
+	function mapStateToProps(state) {
+		return {
+			tags: state.tags
+		};
+	}
+
+	function mapDispatchToProps(dispatch) {
+		return {
+			onGenerateTagsList: function onGenerateTagsList() {
+				dispatch((0, _reducer.generateTagsList)());
+			},
+			onFilterTag: function onFilterTag(tag) {
+				dispatch((0, _reducer.filterTag)(tag));
+			}
+		};
+	}
+
+	exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(TagsList);
+
+/***/ },
+/* 230 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin

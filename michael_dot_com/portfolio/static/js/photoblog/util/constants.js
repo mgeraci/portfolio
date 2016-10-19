@@ -20,4 +20,6 @@ export const BAD_TAGS = {
 	"slideshow": 1,
 };
 
+export const TAGS_LIST_URL = "tags";
+
 export default {};

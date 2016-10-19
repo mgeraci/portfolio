@@ -19,6 +19,7 @@ const Tag = React.createClass({
 
 	_handleClick(e) {
 		e.preventDefault();
+
 		this.props.filterTag({
 			name: this.props.name,
 			slug: this.props.slug,

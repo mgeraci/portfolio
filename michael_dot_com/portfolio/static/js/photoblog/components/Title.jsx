@@ -8,7 +8,10 @@ import {
 
 const Title = React.createClass({
 	propTypes: {
-		filteredTerm: PropTypes.string,
+		filteredTerm: PropTypes.oneOfType([
+			PropTypes.string,
+			PropTypes.number,
+		]),
 		onClearFilterTag: PropTypes.func.isRequired,
 	},
 
