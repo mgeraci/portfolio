@@ -18,6 +18,8 @@ export const KEYS = {
 export const BAD_TAGS = {
 	"michaelgeracicom": 1,
 	"slideshow": 1,
+	"outside": 1,
+	"inside": 1,
 };
 
 export const TAGS_LIST_URL = "tags";

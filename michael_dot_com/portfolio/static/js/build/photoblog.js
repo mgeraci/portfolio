@@ -24573,7 +24573,9 @@
 
 	var BAD_TAGS = exports.BAD_TAGS = {
 		"michaelgeracicom": 1,
-		"slideshow": 1
+		"slideshow": 1,
+		"outside": 1,
+		"inside": 1
 	};
 
 	var TAGS_LIST_URL = exports.TAGS_LIST_URL = "tags";
@@ -25724,7 +25726,7 @@
 							inMin: min,
 							inMax: max,
 							outMin: 14,
-							outMax: 35
+							outMax: 45
 						});
 
 						return _react2.default.createElement(_Tag2.default, {

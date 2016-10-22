@@ -44,7 +44,7 @@ const TagsList = React.createClass({
 							inMin: min,
 							inMax: max,
 							outMin: 14,
-							outMax: 35,
+							outMax: 45,
 						});
 
 						return (
