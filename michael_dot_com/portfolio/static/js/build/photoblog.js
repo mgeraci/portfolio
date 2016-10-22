@@ -23165,7 +23165,6 @@
 			images: _react.PropTypes.object.isRequired,
 			activeImage: _react.PropTypes.number,
 
-			// action handlers
 			onSetActiveImage: _react.PropTypes.func.isRequired,
 			onClearActiveImage: _react.PropTypes.func.isRequired
 		},
@@ -25296,11 +25295,7 @@
 			return { loaded: false };
 		},
 		componentDidMount: function componentDidMount() {
-			var _this = this;
-
-			document.addEventListener("keyup", function (e) {
-				_this._handleKeyup(e.which);
-			});
+			document.addEventListener("keyup", this._handleKeyup);
 		},
 		componentWillReceiveProps: function componentWillReceiveProps(nextProps) {
 			if (nextProps.image.id !== this.props.image.id) {
@@ -25310,7 +25305,9 @@
 		componentWillUnmount: function componentWillUnmount() {
 			document.removeEventListener("keyup", this._handleKeyup);
 		},
-		_handleKeyup: function _handleKeyup(code) {
+		_handleKeyup: function _handleKeyup(e) {
+			var code = e.which;
+
 			if (code === _constants.KEYS.escape) {
 				this.props.onClearActiveImage();
 			}

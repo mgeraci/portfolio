@@ -30,7 +30,6 @@ const App = React.createClass({
 		images: PropTypes.object.isRequired,
 		activeImage: PropTypes.number,
 
-		// action handlers
 		onSetActiveImage: PropTypes.func.isRequired,
 		onClearActiveImage: PropTypes.func.isRequired,
 	},

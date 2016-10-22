@@ -33,9 +33,7 @@ const ImageDetail = React.createClass({
 	},
 
 	componentDidMount() {
-		document.addEventListener("keyup", (e) => {
-			this._handleKeyup(e.which);
-		});
+		document.addEventListener("keyup", this._handleKeyup);
 	},
 
 	componentWillReceiveProps(nextProps) {
@@ -48,7 +46,9 @@ const ImageDetail = React.createClass({
 		document.removeEventListener("keyup", this._handleKeyup);
 	},
 
-	_handleKeyup(code) {
+	_handleKeyup(e) {
+		const code = e.which;
+
 		if (code === KEYS.escape) {
 			this.props.onClearActiveImage();
 		}
