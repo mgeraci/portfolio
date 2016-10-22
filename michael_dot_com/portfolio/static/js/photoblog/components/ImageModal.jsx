@@ -1,8 +1,16 @@
 /* global document */
 
 import React, { PropTypes } from "react";
+import { connect } from "react-redux";
 import ReactCSSTransitionGroup from "react-addons-css-transition-group";
 import classnames from "classnames";
+
+import {
+	clearActiveImage,
+	navigatePrev,
+	navigateNext,
+	filterTag,
+} from "../reducer";
 
 import MainImage from "./MainImage";
 import ImageMeta from "./ImageMeta";
@@ -13,10 +21,11 @@ const ImageDetail = React.createClass({
 		image: PropTypes.object.isRequired,
 		atBeginning: PropTypes.bool,
 		atEnd: PropTypes.bool,
-		clearActiveImage: PropTypes.func.isRequired,
-		navigatePrev: PropTypes.func.isRequired,
-		navigateNext: PropTypes.func.isRequired,
-		filterTag: PropTypes.func.isRequired,
+
+		onClearActiveImage: PropTypes.func.isRequired,
+		onNavigatePrev: PropTypes.func.isRequired,
+		onNavigateNext: PropTypes.func.isRequired,
+		onFilterTag: PropTypes.func.isRequired,
 	},
 
 	getInitialState() {
@@ -41,7 +50,7 @@ const ImageDetail = React.createClass({
 
 	_handleKeyup(code) {
 		if (code === KEYS.escape) {
-			this.props.clearActiveImage();
+			this.props.onClearActiveImage();
 		}
 
 		if (!this.state.loaded) {
@@ -49,9 +58,9 @@ const ImageDetail = React.createClass({
 		}
 
 		if (code === KEYS.left) {
-			this.props.navigatePrev();
+			this.props.onNavigatePrev();
 		} else if (code === KEYS.right) {
-			this.props.navigateNext();
+			this.props.onNavigateNext();
 		}
 	},
 
@@ -103,7 +112,7 @@ const ImageDetail = React.createClass({
 								title={image.title}
 								year={image.year}
 								tags={image.tags}
-								filterTag={this.props.filterTag}
+								filterTag={this.props.onFilterTag}
 							/>
 						}
 					</ReactCSSTransitionGroup>
@@ -111,7 +120,7 @@ const ImageDetail = React.createClass({
 					<span>
 						<button
 								className={classnames(prevClass)}
-								onClick={this.props.navigatePrev}
+								onClick={this.props.onNavigatePrev}
 								disabled={this.props.atBeginning}>
 							<span className="page-photography-main-nav-text">
 								previous photo
@@ -119,7 +128,7 @@ const ImageDetail = React.createClass({
 						</button>
 						<button
 								className={classnames(nextClass)}
-								onClick={this.props.navigateNext}
+								onClick={this.props.onNavigateNext}
 								disabled={this.props.atEnd}>
 							<span className="page-photography-main-nav-text">
 								next photo
@@ -133,7 +142,7 @@ const ImageDetail = React.createClass({
 
 					<button
 							className="page-photography-main-close"
-							onClick={this.props.clearActiveImage}>
+							onClick={this.props.onClearActiveImage}>
 						<span className="page-photography-main-close-text">
 							close
 						</span>
@@ -144,4 +153,31 @@ const ImageDetail = React.createClass({
 	},
 });
 
-export default ImageDetail;
+function mapStateToProps(state) {
+	return {
+		atBeginning: state.atBeginning,
+		atEnd: state.atEnd,
+	};
+}
+
+function mapDispatchToProps(dispatch) {
+	return {
+		onClearActiveImage() {
+			dispatch(clearActiveImage());
+		},
+		onNavigatePrev() {
+			dispatch(navigatePrev());
+		},
+		onNavigateNext() {
+			dispatch(navigateNext());
+		},
+		onFilterTag(tag) {
+			dispatch(filterTag(tag));
+		},
+	};
+}
+
+export default connect(
+	mapStateToProps,
+	mapDispatchToProps
+)(ImageDetail);

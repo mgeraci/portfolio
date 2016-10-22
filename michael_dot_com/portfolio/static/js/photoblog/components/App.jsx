@@ -1,16 +1,13 @@
 /* global window, document */
 
 import React, { PropTypes } from "react";
-import ReactCSSTransitionGroup from "react-addons-css-transition-group";
 import { connect } from "react-redux";
+import ReactCSSTransitionGroup from "react-addons-css-transition-group";
 import throttle from "throttle-debounce/throttle";
 
 import {
 	setActiveImage,
 	clearActiveImage,
-	navigatePrev,
-	navigateNext,
-	filterTag,
 } from "../reducer";
 
 import { TAGS_LIST_URL } from "../util/constants.js";
@@ -33,16 +30,9 @@ const App = React.createClass({
 		images: PropTypes.object.isRequired,
 		activeImage: PropTypes.number,
 
-		// pagination
-		atBeginning: PropTypes.bool,
-		atEnd: PropTypes.bool,
-
 		// action handlers
 		onSetActiveImage: PropTypes.func.isRequired,
 		onClearActiveImage: PropTypes.func.isRequired,
-		onNavigatePrev: PropTypes.func.isRequired,
-		onNavigateNext: PropTypes.func.isRequired,
-		onFilterTag: PropTypes.func.isRequired,
 	},
 
 	getInitialState() {
@@ -95,13 +85,8 @@ const App = React.createClass({
 			filteredTerm,
 			images,
 			onSetActiveImage,
-			onNavigatePrev,
-			onNavigateNext,
 			onClearActiveImage,
 			activeImage,
-			atBeginning,
-			atEnd,
-			onFilterTag,
 			appInitialized,
 		} = this.props;
 
@@ -139,15 +124,7 @@ const App = React.createClass({
 									transitionEnterTimeout={500}
 									transitionAppearTimeout={500}
 									transitionLeaveTimeout={500}>
-								<ImageModal
-									image={images[activeImage]}
-									clearActiveImage={onClearActiveImage}
-									navigatePrev={onNavigatePrev}
-									navigateNext={onNavigateNext}
-									atBeginning={atBeginning}
-									atEnd={atEnd}
-									filterTag={onFilterTag}
-								/>
+								<ImageModal image={images[activeImage]} />
 							</ReactCSSTransitionGroup>
 						}
 					</span>
@@ -183,15 +160,6 @@ function mapDispatchToProps(dispatch) {
 		},
 		onClearActiveImage() {
 			dispatch(clearActiveImage());
-		},
-		onNavigatePrev() {
-			dispatch(navigatePrev());
-		},
-		onNavigateNext() {
-			dispatch(navigateNext());
-		},
-		onFilterTag(tag) {
-			dispatch(filterTag(tag));
 		},
 	};
 }

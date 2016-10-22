@@ -23118,11 +23118,11 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
+	var _reactRedux = __webpack_require__(182);
+
 	var _reactAddonsCssTransitionGroup = __webpack_require__(207);
 
 	var _reactAddonsCssTransitionGroup2 = _interopRequireDefault(_reactAddonsCssTransitionGroup);
-
-	var _reactRedux = __webpack_require__(182);
 
 	var _throttle = __webpack_require__(214);
 
@@ -23165,16 +23165,9 @@
 			images: _react.PropTypes.object.isRequired,
 			activeImage: _react.PropTypes.number,
 
-			// pagination
-			atBeginning: _react.PropTypes.bool,
-			atEnd: _react.PropTypes.bool,
-
 			// action handlers
 			onSetActiveImage: _react.PropTypes.func.isRequired,
-			onClearActiveImage: _react.PropTypes.func.isRequired,
-			onNavigatePrev: _react.PropTypes.func.isRequired,
-			onNavigateNext: _react.PropTypes.func.isRequired,
-			onFilterTag: _react.PropTypes.func.isRequired
+			onClearActiveImage: _react.PropTypes.func.isRequired
 		},
 
 		getInitialState: function getInitialState() {
@@ -23224,13 +23217,8 @@
 			var filteredTerm = _props.filteredTerm;
 			var images = _props.images;
 			var onSetActiveImage = _props.onSetActiveImage;
-			var onNavigatePrev = _props.onNavigatePrev;
-			var onNavigateNext = _props.onNavigateNext;
 			var onClearActiveImage = _props.onClearActiveImage;
 			var activeImage = _props.activeImage;
-			var atBeginning = _props.atBeginning;
-			var atEnd = _props.atEnd;
-			var onFilterTag = _props.onFilterTag;
 			var appInitialized = _props.appInitialized;
 			var _state = this.state;
 			var scrollTop = _state.scrollTop;
@@ -23273,15 +23261,7 @@
 							transitionEnterTimeout: 500,
 							transitionAppearTimeout: 500,
 							transitionLeaveTimeout: 500 },
-						_react2.default.createElement(_ImageModal2.default, {
-							image: images[activeImage],
-							clearActiveImage: onClearActiveImage,
-							navigatePrev: onNavigatePrev,
-							navigateNext: onNavigateNext,
-							atBeginning: atBeginning,
-							atEnd: atEnd,
-							filterTag: onFilterTag
-						})
+						_react2.default.createElement(_ImageModal2.default, { image: images[activeImage] })
 					)
 				),
 				isTagsView && _react2.default.createElement(_TagsList2.default, null)
@@ -23311,15 +23291,6 @@
 			},
 			onClearActiveImage: function onClearActiveImage() {
 				dispatch((0, _reducer.clearActiveImage)());
-			},
-			onNavigatePrev: function onNavigatePrev() {
-				dispatch((0, _reducer.navigatePrev)());
-			},
-			onNavigateNext: function onNavigateNext() {
-				dispatch((0, _reducer.navigateNext)());
-			},
-			onFilterTag: function onFilterTag(tag) {
-				dispatch((0, _reducer.filterTag)(tag));
 			}
 		};
 	}
@@ -25281,6 +25252,8 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
+	var _reactRedux = __webpack_require__(182);
+
 	var _reactAddonsCssTransitionGroup = __webpack_require__(207);
 
 	var _reactAddonsCssTransitionGroup2 = _interopRequireDefault(_reactAddonsCssTransitionGroup);
@@ -25288,6 +25261,8 @@
 	var _classnames = __webpack_require__(226);
 
 	var _classnames2 = _interopRequireDefault(_classnames);
+
+	var _reducer = __webpack_require__(215);
 
 	var _MainImage = __webpack_require__(227);
 
@@ -25310,10 +25285,11 @@
 			image: _react.PropTypes.object.isRequired,
 			atBeginning: _react.PropTypes.bool,
 			atEnd: _react.PropTypes.bool,
-			clearActiveImage: _react.PropTypes.func.isRequired,
-			navigatePrev: _react.PropTypes.func.isRequired,
-			navigateNext: _react.PropTypes.func.isRequired,
-			filterTag: _react.PropTypes.func.isRequired
+
+			onClearActiveImage: _react.PropTypes.func.isRequired,
+			onNavigatePrev: _react.PropTypes.func.isRequired,
+			onNavigateNext: _react.PropTypes.func.isRequired,
+			onFilterTag: _react.PropTypes.func.isRequired
 		},
 
 		getInitialState: function getInitialState() {
@@ -25336,7 +25312,7 @@
 		},
 		_handleKeyup: function _handleKeyup(code) {
 			if (code === _constants.KEYS.escape) {
-				this.props.clearActiveImage();
+				this.props.onClearActiveImage();
 			}
 
 			if (!this.state.loaded) {
@@ -25344,9 +25320,9 @@
 			}
 
 			if (code === _constants.KEYS.left) {
-				this.props.navigatePrev();
+				this.props.onNavigatePrev();
 			} else if (code === _constants.KEYS.right) {
-				this.props.navigateNext();
+				this.props.onNavigateNext();
 			}
 		},
 		_onLoad: function _onLoad(dimensions) {
@@ -25399,7 +25375,7 @@
 							title: image.title,
 							year: image.year,
 							tags: image.tags,
-							filterTag: this.props.filterTag
+							filterTag: this.props.onFilterTag
 						})
 					),
 					_react2.default.createElement(
@@ -25409,7 +25385,7 @@
 							"button",
 							{
 								className: (0, _classnames2.default)(prevClass),
-								onClick: this.props.navigatePrev,
+								onClick: this.props.onNavigatePrev,
 								disabled: this.props.atBeginning },
 							_react2.default.createElement(
 								"span",
@@ -25421,7 +25397,7 @@
 							"button",
 							{
 								className: (0, _classnames2.default)(nextClass),
-								onClick: this.props.navigateNext,
+								onClick: this.props.onNavigateNext,
 								disabled: this.props.atEnd },
 							_react2.default.createElement(
 								"span",
@@ -25435,7 +25411,7 @@
 						"button",
 						{
 							className: "page-photography-main-close",
-							onClick: this.props.clearActiveImage },
+							onClick: this.props.onClearActiveImage },
 						_react2.default.createElement(
 							"span",
 							{ className: "page-photography-main-close-text" },
@@ -25447,7 +25423,31 @@
 		}
 	});
 
-	exports.default = ImageDetail;
+	function mapStateToProps(state) {
+		return {
+			atBeginning: state.atBeginning,
+			atEnd: state.atEnd
+		};
+	}
+
+	function mapDispatchToProps(dispatch) {
+		return {
+			onClearActiveImage: function onClearActiveImage() {
+				dispatch((0, _reducer.clearActiveImage)());
+			},
+			onNavigatePrev: function onNavigatePrev() {
+				dispatch((0, _reducer.navigatePrev)());
+			},
+			onNavigateNext: function onNavigateNext() {
+				dispatch((0, _reducer.navigateNext)());
+			},
+			onFilterTag: function onFilterTag(tag) {
+				dispatch((0, _reducer.filterTag)(tag));
+			}
+		};
+	}
+
+	exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(ImageDetail);
 
 /***/ },
 /* 226 */
