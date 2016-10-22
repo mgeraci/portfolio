@@ -24810,6 +24810,10 @@
 
 	var _reducer = __webpack_require__(215);
 
+	var _TitleClearButton = __webpack_require__(231);
+
+	var _TitleClearButton2 = _interopRequireDefault(_TitleClearButton);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	var Title = _react2.default.createClass({
@@ -24823,27 +24827,42 @@
 		mixins: [_reactAddonsPureRenderMixin2.default],
 
 		render: function render() {
+			var _props = this.props;
+			var filteredTerm = _props.filteredTerm;
+			var onClearFilterTag = _props.onClearFilterTag;
+
+			var isYear = !!("" + filteredTerm).match(/2\d{3}/);
+			var isTagsList = filteredTerm === "tags";
+			var isTag = !isYear && !isTagsList && filteredTerm;
+
 			return _react2.default.createElement(
 				"h2",
 				{ className: "page-photography-meta-title" },
-				this.props.filteredTerm && _react2.default.createElement(
+				isYear && _react2.default.createElement(
+					"span",
+					null,
+					"Images from ",
+					filteredTerm,
+					_react2.default.createElement(_TitleClearButton2.default, { clearFilterTag: onClearFilterTag })
+				),
+				isTagsList && _react2.default.createElement(
+					"span",
+					null,
+					"Browsing tags",
+					_react2.default.createElement(_TitleClearButton2.default, { clearFilterTag: onClearFilterTag })
+				),
+				isTag && _react2.default.createElement(
 					"span",
 					null,
 					"Images tagged  ",
 					_react2.default.createElement(
 						"em",
 						null,
-						this.props.filteredTerm
+						filteredTerm
 					),
-					_react2.default.createElement(
-						"button",
-						{
-							className: "page-photography-meta-title-clear",
-							onClick: this.props.onClearFilterTag },
-						"remove filter"
-					)
+					_react2.default.createElement(_TitleClearButton2.default, { clearFilterTag: onClearFilterTag })
 				),
-				!this.props.filteredTerm && _react2.default.createElement(
+				!filteredTerm && _react2.default.createElement(
 					"span",
 					null,
 					"Photoblog"
@@ -25767,6 +25786,42 @@
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
+
+/***/ },
+/* 231 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+
+	var _react = __webpack_require__(11);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var TitleClearButton = _react2.default.createClass({
+		displayName: "TitleClearButton",
+
+		propTypes: {
+			clearFilterTag: _react.PropTypes.func.isRequired
+		},
+
+		render: function render() {
+			return _react2.default.createElement(
+				"button",
+				{
+					className: "page-photography-meta-title-clear",
+					onClick: this.props.clearFilterTag },
+				"remove filter"
+			);
+		}
+	});
+
+	exports.default = TitleClearButton;
 
 /***/ }
 /******/ ]);

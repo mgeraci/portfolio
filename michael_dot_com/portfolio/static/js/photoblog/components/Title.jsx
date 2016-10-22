@@ -5,6 +5,7 @@ import PureRenderMixin from "react-addons-pure-render-mixin";
 import {
 	clearFilterTag,
 } from "../reducer";
+import TitleClearButton from "./TitleClearButton";
 
 const Title = React.createClass({
 	propTypes: {
@@ -18,23 +19,37 @@ const Title = React.createClass({
 	mixins: [ PureRenderMixin ],
 
 	render() {
+		const { filteredTerm, onClearFilterTag } = this.props;
+		const isYear = !!`${filteredTerm}`.match(/2\d{3}/);
+		const isTagsList = filteredTerm === "tags";
+		const isTag = !isYear && !isTagsList && filteredTerm;
+
 		return (
 			<h2 className="page-photography-meta-title">
-				{this.props.filteredTerm &&
+				{isYear &&
 					<span>
-						Images tagged
-						&nbsp;
-						<em>{this.props.filteredTerm}</em>
-
-						<button
-								className="page-photography-meta-title-clear"
-								onClick={this.props.onClearFilterTag}>
-							remove filter
-						</button>
+						Images from {filteredTerm}
+						<TitleClearButton clearFilterTag={onClearFilterTag} />
 					</span>
 				}
 
-				{!this.props.filteredTerm &&
+				{isTagsList &&
+					<span>
+						Browsing tags
+						<TitleClearButton clearFilterTag={onClearFilterTag} />
+					</span>
+				}
+
+				{isTag &&
+					<span>
+						Images tagged
+						&nbsp;
+						<em>{filteredTerm}</em>
+						<TitleClearButton clearFilterTag={onClearFilterTag} />
+					</span>
+				}
+
+				{!filteredTerm &&
 					<span>Photoblog</span>
 				}
 			</h2>
