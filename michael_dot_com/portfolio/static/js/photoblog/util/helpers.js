@@ -143,4 +143,45 @@ export function setHistory(url) {
 	return true;
 }
 
+
+/*
+ * Given a number, a range within which that number falls, and an output
+ * range, scale the input to the output.
+ *
+ * @param {object} params - an object with the required keys
+ *  - input
+ *  - inMin
+ *  - inMax
+ *  - outMin
+ *  - outMax
+ *
+ * @returns {number} - the result of the input scaled to the output range
+ */
+export function scale(_params = {}) {
+	if (_params.input == null ||
+			_params.inMin == null ||
+			_params.inMax == null ||
+			_params.outMin == null ||
+			_params.outMax == null) {
+		return null;
+	}
+
+	const params = { ..._params };
+
+	// keep the input in bounds
+	if (params.input < params.inMin) {
+		params.input = params.inMin;
+	}
+
+	if (params.input > params.inMax) {
+		params.input = params.inMax;
+	}
+
+	/* eslint-disable no-mixed-operators */
+	const percent = ((params.input - params.inMin) * 100) / (params.inMax - params.inMin);
+	return percent * ((params.outMax - params.outMin) / 100) + params.outMin;
+}
+
+
+// export nothing by default
 export default {};

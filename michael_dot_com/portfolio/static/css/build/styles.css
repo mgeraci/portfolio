@@ -910,6 +910,7 @@ nav::after {
 .page-photography-tagslist {
   line-height: 24px; }
   .page-photography-tagslist-tag {
+    display: inline-block;
     margin: 5px; }
 
 .main-image-enter,

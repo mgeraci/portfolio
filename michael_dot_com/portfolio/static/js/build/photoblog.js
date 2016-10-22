@@ -24440,13 +24440,15 @@
 							var image = state.images[id];
 
 							image.tags.forEach(function (tag) {
-								if (tagsDict[tag.slug]) {
-									var count = tagsDict[tag.slug].count;
-									tagsDict[tag.slug].count = count + 1;
-								} else {
-									tagsDict[tag.slug] = _extends({}, tag, {
-										count: 0
-									});
+								if (!_constants.BAD_TAGS[tag.slug]) {
+									if (tagsDict[tag.slug]) {
+										var count = tagsDict[tag.slug].count;
+										tagsDict[tag.slug].count = count + 1;
+									} else {
+										tagsDict[tag.slug] = _extends({}, tag, {
+											count: 0
+										});
+									}
 								}
 							});
 						});
@@ -24588,12 +24590,15 @@
 		value: true
 	});
 
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; }; /* global history */
 
 	exports.parseUrl = parseUrl;
 	exports.getVisibleImages = getVisibleImages;
 	exports.getPositionMeta = getPositionMeta;
 	exports.setHistory = setHistory;
+	exports.scale = scale;
 
 	var _constants = __webpack_require__(216);
 
@@ -24742,6 +24747,43 @@
 		return true;
 	}
 
+	/*
+	 * Given a number, a range within which that number falls, and an output
+	 * range, scale the input to the output.
+	 *
+	 * @param {object} params - an object with the required keys
+	 *  - input
+	 *  - inMin
+	 *  - inMax
+	 *  - outMin
+	 *  - outMax
+	 *
+	 * @returns {number} - the result of the input scaled to the output range
+	 */
+	function scale() {
+		var _params = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
+
+		if (_params.input == null || _params.inMin == null || _params.inMax == null || _params.outMin == null || _params.outMax == null) {
+			return null;
+		}
+
+		var params = _extends({}, _params);
+
+		// keep the input in bounds
+		if (params.input < params.inMin) {
+			params.input = params.inMin;
+		}
+
+		if (params.input > params.inMax) {
+			params.input = params.inMax;
+		}
+
+		/* eslint-disable no-mixed-operators */
+		var percent = (params.input - params.inMin) * 100 / (params.inMax - params.inMin);
+		return percent * ((params.outMax - params.outMin) / 100) + params.outMin;
+	}
+
+	// export nothing by default
 	exports.default = {};
 
 /***/ },
@@ -25043,7 +25085,8 @@
 			name: _react.PropTypes.oneOfType([_react.PropTypes.string.isRequired, _react.PropTypes.number.isRequired]),
 			slug: _react.PropTypes.oneOfType([_react.PropTypes.string.isRequired, _react.PropTypes.number.isRequired]),
 			className: _react.PropTypes.string.isRequired,
-			filterTag: _react.PropTypes.func.isRequired
+			filterTag: _react.PropTypes.func.isRequired,
+			size: _react.PropTypes.number
 		},
 
 		mixins: [_reactAddonsPureRenderMixin2.default],
@@ -25057,13 +25100,28 @@
 			});
 		},
 		render: function render() {
+			var _props = this.props;
+			var className = _props.className;
+			var slug = _props.slug;
+			var name = _props.name;
+			var size = _props.size;
+
+			var style = void 0;
+
+			if (size) {
+				style = {
+					fontSize: size + "px"
+				};
+			}
+
 			return _react2.default.createElement(
 				"a",
 				{
-					className: this.props.className,
+					className: className,
 					onClick: this._handleClick,
-					href: "/photography/blog/browse/" + this.props.slug },
-				this.props.name
+					style: style,
+					href: "/photography/blog/browse/" + slug },
+				name
 			);
 		}
 	});
@@ -25609,6 +25667,8 @@
 
 	var _reducer = __webpack_require__(215);
 
+	var _helpers = __webpack_require__(217);
+
 	var _Tag = __webpack_require__(223);
 
 	var _Tag2 = _interopRequireDefault(_Tag);
@@ -25639,18 +25699,39 @@
 			var tags = _props2.tags;
 			var onFilterTag = _props2.onFilterTag;
 
+			var counts = [];
+
+			if (typeof tags === "undefined" || tags === null) {
+				return null;
+			}
+
+			tags.forEach(function (tag) {
+				counts.push(tag.count);
+			});
+
+			var min = 1;
+			var max = Math.max.apply(Math, counts);
 
 			return _react2.default.createElement(
 				"div",
 				{ className: "page-photography-tagslist" },
-				tags && tags.length && _react2.default.createElement(
+				_react2.default.createElement(
 					"span",
 					null,
 					tags.map(function (tag) {
+						var size = (0, _helpers.scale)({
+							input: tag.count,
+							inMin: min,
+							inMax: max,
+							outMin: 14,
+							outMax: 35
+						});
+
 						return _react2.default.createElement(_Tag2.default, {
 							key: tag.slug,
 							name: tag.name,
 							slug: tag.slug,
+							size: size,
 							filterTag: onFilterTag,
 							className: "page-photography-tagslist-tag"
 						});

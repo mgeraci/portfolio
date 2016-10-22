@@ -2,6 +2,7 @@ import React, { PropTypes } from "react";
 import { connect } from "react-redux";
 
 import { generateTagsList, filterTag } from "../reducer";
+import { scale } from "../util/helpers";
 import Tag from "./Tag";
 
 const TagsList = React.createClass({
@@ -21,22 +22,43 @@ const TagsList = React.createClass({
 
 	render() {
 		const { tags, onFilterTag } = this.props;
+		const counts = [];
+
+		if (typeof(tags) === "undefined" || tags === null) {
+			return null;
+		}
+
+		tags.forEach((tag) => {
+			counts.push(tag.count);
+		});
+
+		const min = 1;
+		const max = Math.max(...counts);
 
 		return (
 			<div className="page-photography-tagslist">
-				{tags && tags.length &&
-					<span>
-						{tags.map(tag =>
+				<span>
+					{tags.map((tag) => {
+						const size = scale({
+							input: tag.count,
+							inMin: min,
+							inMax: max,
+							outMin: 14,
+							outMax: 35,
+						});
+
+						return (
 							<Tag
 								key={tag.slug}
 								name={tag.name}
 								slug={tag.slug}
+								size={size}
 								filterTag={onFilterTag}
 								className="page-photography-tagslist-tag"
 							/>
-						)}
-					</span>
-				}
+						);
+					})}
+				</span>
 			</div>
 		);
 	},

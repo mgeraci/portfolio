@@ -13,6 +13,7 @@ const Tag = React.createClass({
 		]),
 		className: PropTypes.string.isRequired,
 		filterTag: PropTypes.func.isRequired,
+		size: PropTypes.number,
 	},
 
 	mixins: [ PureRenderMixin ],
@@ -27,12 +28,22 @@ const Tag = React.createClass({
 	},
 
 	render() {
+		const { className, slug, name, size } = this.props;
+		let style;
+
+		if (size) {
+			style = {
+				fontSize: `${size}px`,
+			};
+		}
+
 		return (
 			<a
-					className={this.props.className}
+					className={className}
 					onClick={this._handleClick}
-					href={`/photography/blog/browse/${this.props.slug}`}>
-				{this.props.name}
+					style={style}
+					href={`/photography/blog/browse/${slug}`}>
+				{name}
 			</a>
 		);
 	},

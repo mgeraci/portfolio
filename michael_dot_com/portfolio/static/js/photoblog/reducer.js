@@ -1,5 +1,9 @@
 
-import { DIRECTIONS } from "./util/constants.js";
+import {
+	DIRECTIONS,
+	BAD_TAGS,
+} from "./util/constants.js";
+
 import {
 	getVisibleImages,
 	getPositionMeta,
@@ -158,14 +162,16 @@ export default function reducer(state, action) {
 				const image = state.images[id];
 
 				image.tags.forEach((tag) => {
-					if (tagsDict[tag.slug]) {
-						const count = tagsDict[tag.slug].count;
-						tagsDict[tag.slug].count = count + 1;
-					} else {
-						tagsDict[tag.slug] = {
-							...tag,
-							count: 0,
-						};
+					if (!BAD_TAGS[tag.slug]) {
+						if (tagsDict[tag.slug]) {
+							const count = tagsDict[tag.slug].count;
+							tagsDict[tag.slug].count = count + 1;
+						} else {
+							tagsDict[tag.slug] = {
+								...tag,
+								count: 0,
+							};
+						}
 					}
 				});
 			});
