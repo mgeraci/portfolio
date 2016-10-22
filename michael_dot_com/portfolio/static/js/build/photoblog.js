@@ -23161,7 +23161,7 @@
 			appInitialized: _react.PropTypes.bool,
 			order: _react.PropTypes.array.isRequired,
 			filteredOrder: _react.PropTypes.array,
-			filteredTerm: _react.PropTypes.oneOfType([_react.PropTypes.string, _react.PropTypes.number]),
+			filteredTerm: _react.PropTypes.object,
 			images: _react.PropTypes.object.isRequired,
 			activeImage: _react.PropTypes.number,
 
@@ -23173,24 +23173,33 @@
 			return {};
 		},
 		componentDidMount: function componentDidMount() {
-			var _this = this;
-
 			var cb = (0, _throttle2.default)(200, this._handleScroll);
 
 			document.addEventListener("scroll", cb);
+			this._triggerScroll();
+		},
+		componentDidUpdate: function componentDidUpdate(prevProps) {
+			// has a tag, and it's changing
+			if (this.props.filteredTerm && prevProps.filteredTerm && this.props.filteredTerm.slug !== prevProps.filteredTerm.slug) {
+				this._triggerScroll();
+			}
+
+			// removing a tag
+			if (this.props.filteredTerm === null && prevProps.filteredTerm) {
+				this._triggerScroll();
+			}
+
+			// adding a tag
+			if (this.props.filteredTerm && prevProps.filteredTerm === null) {
+				this._triggerScroll();
+			}
+		},
+		_triggerScroll: function _triggerScroll() {
+			var _this = this;
 
 			setTimeout(function () {
 				_this._handleScroll();
 			}, 50);
-		},
-		componentDidUpdate: function componentDidUpdate(prevProps) {
-			var _this2 = this;
-
-			if (this.props.filteredTerm !== prevProps.filteredTerm) {
-				setTimeout(function () {
-					_this2._handleScroll();
-				}, 50);
-			}
 		},
 		_handleScroll: function _handleScroll() {
 			var top = document.body.scrollTop;
@@ -23223,7 +23232,7 @@
 			var scrollTop = _state.scrollTop;
 			var scrollBottom = _state.scrollBottom;
 
-			var isTagsView = filteredTerm === _constants.TAGS_LIST_URL;
+			var isTagsView = filteredTerm && filteredTerm.slug === _constants.TAGS_LIST_URL;
 
 			return _react2.default.createElement(
 				"span",
@@ -24296,7 +24305,11 @@
 
 			case CLEAR_ACTIVE_IMAGE:
 				{
-					(0, _helpers.setHistory)("/photography/blog");
+					if (state.filteredTerm && state.filteredTerm.slug) {
+						(0, _helpers.setHistory)("/photography/blog/browse/" + state.filteredTerm.slug);
+					} else {
+						(0, _helpers.setHistory)("/photography/blog");
+					}
 
 					return _extends({}, state, {
 						activeImage: null
@@ -24380,7 +24393,7 @@
 							v: _extends({}, state, {
 								activeImage: null,
 								filteredOrder: filteredOrder,
-								filteredTerm: action.tag.name
+								filteredTerm: action.tag
 							})
 						};
 					}();
@@ -24790,7 +24803,7 @@
 		displayName: "Title",
 
 		propTypes: {
-			filteredTerm: _react.PropTypes.oneOfType([_react.PropTypes.string, _react.PropTypes.number]),
+			filteredTerm: _react.PropTypes.object,
 			onClearFilterTag: _react.PropTypes.func.isRequired
 		},
 
@@ -24803,7 +24816,7 @@
 
 			var isYear = !!("" + filteredTerm).match(/2\d{3}/);
 			var isTagsList = filteredTerm === "tags";
-			var isTag = !isYear && !isTagsList && filteredTerm;
+			var isTag = !isYear && !isTagsList && filteredTerm && filteredTerm.slug;
 
 			return _react2.default.createElement(
 				"h2",
@@ -24812,7 +24825,7 @@
 					"span",
 					null,
 					"Images from ",
-					filteredTerm,
+					filteredTerm.name,
 					_react2.default.createElement(_TitleClearButton2.default, { clearFilterTag: onClearFilterTag })
 				),
 				isTagsList && _react2.default.createElement(
@@ -24828,11 +24841,11 @@
 					_react2.default.createElement(
 						"em",
 						null,
-						filteredTerm
+						filteredTerm.name
 					),
 					_react2.default.createElement(_TitleClearButton2.default, { clearFilterTag: onClearFilterTag })
 				),
-				!filteredTerm && _react2.default.createElement(
+				!(filteredTerm && filteredTerm.slug) && _react2.default.createElement(
 					"span",
 					null,
 					"Photoblog"

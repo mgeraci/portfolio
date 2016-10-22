@@ -23,10 +23,7 @@ const App = React.createClass({
 		appInitialized: PropTypes.bool,
 		order: PropTypes.array.isRequired,
 		filteredOrder: PropTypes.array,
-		filteredTerm: PropTypes.oneOfType([
-			PropTypes.string,
-			PropTypes.number,
-		]),
+		filteredTerm: PropTypes.object,
 		images: PropTypes.object.isRequired,
 		activeImage: PropTypes.number,
 
@@ -42,18 +39,31 @@ const App = React.createClass({
 		const cb = throttle(200, this._handleScroll);
 
 		document.addEventListener("scroll", cb);
-
-		setTimeout(() => {
-			this._handleScroll();
-		}, 50);
+		this._triggerScroll();
 	},
 
 	componentDidUpdate(prevProps) {
-		if (this.props.filteredTerm !== prevProps.filteredTerm) {
-			setTimeout(() => {
-				this._handleScroll();
-			}, 50);
+		// has a tag, and it's changing
+		if (this.props.filteredTerm && prevProps.filteredTerm &&
+				this.props.filteredTerm.slug !== prevProps.filteredTerm.slug) {
+			this._triggerScroll();
 		}
+
+		// removing a tag
+		if (this.props.filteredTerm === null && prevProps.filteredTerm) {
+			this._triggerScroll();
+		}
+
+		// adding a tag
+		if (this.props.filteredTerm && prevProps.filteredTerm === null) {
+			this._triggerScroll();
+		}
+	},
+
+	_triggerScroll() {
+		setTimeout(() => {
+			this._handleScroll();
+		}, 50);
 	},
 
 	_handleScroll() {
@@ -90,7 +100,7 @@ const App = React.createClass({
 		} = this.props;
 
 		const { scrollTop, scrollBottom } = this.state;
-		const isTagsView = filteredTerm === TAGS_LIST_URL;
+		const isTagsView = filteredTerm && filteredTerm.slug === TAGS_LIST_URL;
 
 		return (
 			<span>

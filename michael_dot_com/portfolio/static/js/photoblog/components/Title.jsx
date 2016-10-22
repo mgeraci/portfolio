@@ -9,10 +9,7 @@ import TitleClearButton from "./TitleClearButton";
 
 const Title = React.createClass({
 	propTypes: {
-		filteredTerm: PropTypes.oneOfType([
-			PropTypes.string,
-			PropTypes.number,
-		]),
+		filteredTerm: PropTypes.object,
 		onClearFilterTag: PropTypes.func.isRequired,
 	},
 
@@ -22,13 +19,13 @@ const Title = React.createClass({
 		const { filteredTerm, onClearFilterTag } = this.props;
 		const isYear = !!`${filteredTerm}`.match(/2\d{3}/);
 		const isTagsList = filteredTerm === "tags";
-		const isTag = !isYear && !isTagsList && filteredTerm;
+		const isTag = !isYear && !isTagsList && filteredTerm && filteredTerm.slug;
 
 		return (
 			<h2 className="page-photography-meta-title">
 				{isYear &&
 					<span>
-						Images from {filteredTerm}
+						Images from {filteredTerm.name}
 						<TitleClearButton clearFilterTag={onClearFilterTag} />
 					</span>
 				}
@@ -44,12 +41,12 @@ const Title = React.createClass({
 					<span>
 						Images tagged
 						&nbsp;
-						<em>{filteredTerm}</em>
+						<em>{filteredTerm.name}</em>
 						<TitleClearButton clearFilterTag={onClearFilterTag} />
 					</span>
 				}
 
-				{!filteredTerm &&
+				{!(filteredTerm && filteredTerm.slug) &&
 					<span>Photoblog</span>
 				}
 			</h2>

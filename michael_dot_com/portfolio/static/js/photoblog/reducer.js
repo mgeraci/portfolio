@@ -50,7 +50,11 @@ export default function reducer(state, action) {
 		}
 
 		case CLEAR_ACTIVE_IMAGE: {
-			setHistory("/photography/blog");
+			if (state.filteredTerm && state.filteredTerm.slug) {
+				setHistory(`/photography/blog/browse/${state.filteredTerm.slug}`);
+			} else {
+				setHistory("/photography/blog");
+			}
 
 			return {
 				...state,
@@ -138,7 +142,7 @@ export default function reducer(state, action) {
 				...state,
 				activeImage: null,
 				filteredOrder,
-				filteredTerm: action.tag.name,
+				filteredTerm: action.tag,
 			};
 		}
 
