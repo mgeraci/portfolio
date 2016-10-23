@@ -25420,10 +25420,8 @@
 				"page-photography-main-nav--next": true
 			};
 
-			var enableMaxSize = false;
-			console.log(this.state.metaHeight);
-
-			if (enableMaxSize) {
+			// keep images from getting bigger than their native size
+			if (this.state.dimensions) {
 				contentStyle.maxWidth = this.state.dimensions.width;
 				contentStyle.maxHeight = this.state.dimensions.height;
 			}
