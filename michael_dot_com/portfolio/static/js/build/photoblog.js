@@ -74,7 +74,7 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	__webpack_require__(230);
+	__webpack_require__(231);
 
 	window.Photoblog = {
 		init: function init(data) {
@@ -23136,19 +23136,19 @@
 
 	var _Title2 = _interopRequireDefault(_Title);
 
-	var _Navigation = __webpack_require__(222);
+	var _Navigation = __webpack_require__(223);
 
 	var _Navigation2 = _interopRequireDefault(_Navigation);
 
-	var _Thumbnail = __webpack_require__(224);
+	var _Thumbnail = __webpack_require__(225);
 
 	var _Thumbnail2 = _interopRequireDefault(_Thumbnail);
 
-	var _ImageModal = __webpack_require__(225);
+	var _ImageModal = __webpack_require__(226);
 
 	var _ImageModal2 = _interopRequireDefault(_ImageModal);
 
-	var _TagsList = __webpack_require__(229);
+	var _TagsList = __webpack_require__(230);
 
 	var _TagsList2 = _interopRequireDefault(_TagsList);
 
@@ -24563,6 +24563,13 @@
 
 	var TAGS_LIST_URL = exports.TAGS_LIST_URL = "tags";
 
+	var MAIN_IMAGE_SPACE = exports.MAIN_IMAGE_SPACE = 70;
+
+	var ORIENTATIONS = exports.ORIENTATIONS = {
+		landscape: "landscape",
+		portrait: "portrait"
+	};
+
 	exports.default = {};
 
 /***/ },
@@ -24793,7 +24800,7 @@
 
 	var _reducer = __webpack_require__(215);
 
-	var _TitleClearButton = __webpack_require__(231);
+	var _TitleClearButton = __webpack_require__(222);
 
 	var _TitleClearButton2 = _interopRequireDefault(_TitleClearButton);
 
@@ -24973,6 +24980,42 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var TitleClearButton = _react2.default.createClass({
+		displayName: "TitleClearButton",
+
+		propTypes: {
+			clearFilterTag: _react.PropTypes.func.isRequired
+		},
+
+		render: function render() {
+			return _react2.default.createElement(
+				"button",
+				{
+					className: "page-photography-meta-title-clear",
+					onClick: this.props.clearFilterTag },
+				"remove filter"
+			);
+		}
+	});
+
+	exports.default = TitleClearButton;
+
+/***/ },
+/* 223 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+
+	var _react = __webpack_require__(11);
+
+	var _react2 = _interopRequireDefault(_react);
+
 	var _reactRedux = __webpack_require__(182);
 
 	var _reactAddonsPureRenderMixin = __webpack_require__(219);
@@ -24981,7 +25024,7 @@
 
 	var _reducer = __webpack_require__(215);
 
-	var _Tag = __webpack_require__(223);
+	var _Tag = __webpack_require__(224);
 
 	var _Tag2 = _interopRequireDefault(_Tag);
 
@@ -25063,7 +25106,7 @@
 	exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(Navigation);
 
 /***/ },
-/* 223 */
+/* 224 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -25133,7 +25176,7 @@
 	exports.default = Tag;
 
 /***/ },
-/* 224 */
+/* 225 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -25251,7 +25294,7 @@
 	exports.default = Thumbnail;
 
 /***/ },
-/* 225 */
+/* 226 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -25270,17 +25313,17 @@
 
 	var _reactAddonsCssTransitionGroup2 = _interopRequireDefault(_reactAddonsCssTransitionGroup);
 
-	var _classnames = __webpack_require__(226);
+	var _classnames = __webpack_require__(227);
 
 	var _classnames2 = _interopRequireDefault(_classnames);
 
 	var _reducer = __webpack_require__(215);
 
-	var _MainImage = __webpack_require__(227);
+	var _MainImage = __webpack_require__(228);
 
 	var _MainImage2 = _interopRequireDefault(_MainImage);
 
-	var _ImageMeta = __webpack_require__(228);
+	var _ImageMeta = __webpack_require__(229);
 
 	var _ImageMeta2 = _interopRequireDefault(_ImageMeta);
 
@@ -25289,6 +25332,11 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	/* global document */
+
+	var initialState = {
+		isLoaded: false,
+		metaHeight: 0
+	};
 
 	var ImageDetail = _react2.default.createClass({
 		displayName: "ImageDetail",
@@ -25305,14 +25353,14 @@
 		},
 
 		getInitialState: function getInitialState() {
-			return { loaded: false };
+			return initialState;
 		},
 		componentDidMount: function componentDidMount() {
 			document.addEventListener("keyup", this._handleKeyup);
 		},
 		componentWillReceiveProps: function componentWillReceiveProps(nextProps) {
 			if (nextProps.image.id !== this.props.image.id) {
-				this.setState({ loaded: false });
+				this.setState(initialState);
 			}
 		},
 		componentWillUnmount: function componentWillUnmount() {
@@ -25325,7 +25373,7 @@
 				this.props.onClearActiveImage();
 			}
 
-			if (!this.state.loaded) {
+			if (!this.state.isLoaded) {
 				return;
 			}
 
@@ -25337,14 +25385,30 @@
 		},
 		_onLoad: function _onLoad(dimensions) {
 			this.setState({
-				loaded: true,
+				isLoaded: true,
 				dimensions: dimensions
 			});
+		},
+		_handleMetaRender: function _handleMetaRender(height) {
+			this.setState({ metaHeight: height });
+		},
+		_getOrientation: function _getOrientation() {
+			if (typeof this.state.dimensions !== "undefined" && this.state.dimensions !== null) {
+				if (this.state.dimensions.width > this.state.dimensions.height) {
+					return _constants.ORIENTATIONS.landscape;
+				} else {
+					return _constants.ORIENTATIONS.portrait;
+				}
+			} else {
+				return null;
+			}
 		},
 		render: function render() {
 			var image = this.props.image;
 
+			var orientation = this._getOrientation();
 			var contentStyle = {};
+			var bottomSpace = _constants.MAIN_IMAGE_SPACE;
 
 			var prevClass = {
 				"page-photography-main-nav": true,
@@ -25356,77 +25420,101 @@
 				"page-photography-main-nav--next": true
 			};
 
-			if (typeof this.state.dimensions !== "undefined" && this.state.dimensions !== null) {
-				contentStyle.width = this.state.dimensions.width;
+			var enableMaxSize = false;
+			console.log(this.state.metaHeight);
+
+			if (enableMaxSize) {
+				contentStyle.maxWidth = this.state.dimensions.width;
+				contentStyle.maxHeight = this.state.dimensions.height;
 			}
+
+			if (orientation === _constants.ORIENTATIONS.landscape) {
+				contentStyle.width = "100%";
+				contentStyle.height = "auto";
+			} else if (orientation === _constants.ORIENTATIONS.portrait) {
+				contentStyle.width = "auto";
+				contentStyle.height = "100%";
+
+				if (this.state.metaHeight) {
+					bottomSpace += this.state.metaHeight;
+				}
+			}
+
+			var spaceStyle = {
+				top: _constants.MAIN_IMAGE_SPACE + "px",
+				right: _constants.MAIN_IMAGE_SPACE + "px",
+				bottom: bottomSpace + "px",
+				left: _constants.MAIN_IMAGE_SPACE + "px"
+			};
 
 			return _react2.default.createElement(
 				"div",
 				{ className: "page-photography-main", key: image.title },
 				_react2.default.createElement(
 					"div",
-					{ className: "page-photography-main-content", style: contentStyle },
-					_react2.default.createElement(_MainImage2.default, {
-						src: image.image,
-						alt: image.title,
-						loaded: this.state.loaded,
-						onLoad: this._onLoad
-					}),
+					{ className: "page-photography-main-space", style: spaceStyle },
 					_react2.default.createElement(
-						_reactAddonsCssTransitionGroup2.default,
-						{
-							transitionName: "main-image",
-							transitionAppear: true,
-							transitionEnterTimeout: 500,
-							transitionAppearTimeout: 500,
-							transitionLeaveTimeout: 5 },
-						this.state.loaded && _react2.default.createElement(_ImageMeta2.default, {
-							key: image.id,
-							title: image.title,
-							year: image.year,
-							tags: image.tags,
-							filterTag: this.props.onFilterTag
-						})
-					),
+						"div",
+						{ className: "page-photography-main-content", style: contentStyle },
+						_react2.default.createElement(_MainImage2.default, {
+							src: image.image,
+							alt: image.title,
+							loaded: this.state.isLoaded,
+							onLoad: this._onLoad
+						}),
+						!this.state.isLoaded && _react2.default.createElement("div", { className: "loader" }),
+						_react2.default.createElement(
+							_reactAddonsCssTransitionGroup2.default,
+							{
+								transitionName: "main-image",
+								transitionAppear: true,
+								transitionEnterTimeout: 500,
+								transitionAppearTimeout: 500,
+								transitionLeaveTimeout: 5 },
+							this.state.isLoaded && _react2.default.createElement(_ImageMeta2.default, {
+								key: image.id,
+								title: image.title,
+								year: image.year,
+								tags: image.tags,
+								onRender: this._handleMetaRender,
+								filterTag: this.props.onFilterTag
+							})
+						)
+					)
+				),
+				_react2.default.createElement(
+					"button",
+					{
+						className: (0, _classnames2.default)(prevClass),
+						onClick: this.props.onNavigatePrev,
+						disabled: this.props.atBeginning },
 					_react2.default.createElement(
 						"span",
-						null,
-						_react2.default.createElement(
-							"button",
-							{
-								className: (0, _classnames2.default)(prevClass),
-								onClick: this.props.onNavigatePrev,
-								disabled: this.props.atBeginning },
-							_react2.default.createElement(
-								"span",
-								{ className: "page-photography-main-nav-text" },
-								"previous photo"
-							)
-						),
-						_react2.default.createElement(
-							"button",
-							{
-								className: (0, _classnames2.default)(nextClass),
-								onClick: this.props.onNavigateNext,
-								disabled: this.props.atEnd },
-							_react2.default.createElement(
-								"span",
-								{ className: "page-photography-main-nav-text" },
-								"next photo"
-							)
-						)
-					),
-					!this.state.loaded && _react2.default.createElement("div", { className: "loader" }),
+						{ className: "page-photography-main-nav-text" },
+						"previous photo"
+					)
+				),
+				_react2.default.createElement(
+					"button",
+					{
+						className: (0, _classnames2.default)(nextClass),
+						onClick: this.props.onNavigateNext,
+						disabled: this.props.atEnd },
 					_react2.default.createElement(
-						"button",
-						{
-							className: "page-photography-main-close",
-							onClick: this.props.onClearActiveImage },
-						_react2.default.createElement(
-							"span",
-							{ className: "page-photography-main-close-text" },
-							"close"
-						)
+						"span",
+						{ className: "page-photography-main-nav-text" },
+						"next photo"
+					)
+				),
+				_react2.default.createElement(
+					"button",
+					{
+						className: "page-photography-main-close",
+						onClick: this.props.onClearActiveImage },
+					_react2.default.createElement(
+						"span",
+						{ className: "page-photography-main-close-text" },
+						"close"
 					)
 				)
 			);
@@ -25460,7 +25548,7 @@
 	exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(ImageDetail);
 
 /***/ },
-/* 226 */
+/* 227 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -25514,7 +25602,7 @@
 
 
 /***/ },
-/* 227 */
+/* 228 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -25549,6 +25637,11 @@
 
 		mixins: [_reactAddonsPureRenderMixin2.default],
 
+		getInitialState: function getInitialState() {
+			return {};
+		},
+
+
 		// trigger the initial load
 		componentDidMount: function componentDidMount() {
 			this._loadImage();
@@ -25572,9 +25665,26 @@
 					width: i.width,
 					height: i.height
 				});
+
+				_this.setState({
+					width: i.width,
+					height: i.height
+				});
 			};
 		},
 		render: function render() {
+			var style = {};
+
+			if (this.state.width && this.state.height) {
+				if (this.state.width > this.state.height) {
+					style.width = "100%";
+					style.height = "auto";
+				} else {
+					style.width = "auto";
+					style.height = "100%";
+				}
+			}
+
 			return _react2.default.createElement(
 				_reactAddonsCssTransitionGroup2.default,
 				{
@@ -25586,7 +25696,8 @@
 				this.props.loaded && _react2.default.createElement("img", {
 					key: this.props.src,
 					src: this.props.src,
-					alt: this.props.alt
+					alt: this.props.alt,
+					style: style
 				})
 			);
 		}
@@ -25595,7 +25706,7 @@
 	exports.default = MainImage;
 
 /***/ },
-/* 228 */
+/* 229 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -25612,7 +25723,7 @@
 
 	var _reactAddonsPureRenderMixin2 = _interopRequireDefault(_reactAddonsPureRenderMixin);
 
-	var _Tag = __webpack_require__(223);
+	var _Tag = __webpack_require__(224);
 
 	var _Tag2 = _interopRequireDefault(_Tag);
 
@@ -25627,11 +25738,26 @@
 			title: _react.PropTypes.string.isRequired,
 			year: _react.PropTypes.number.isRequired,
 			tags: _react.PropTypes.array,
-			filterTag: _react.PropTypes.func.isRequired
+			filterTag: _react.PropTypes.func.isRequired,
+			onRender: _react.PropTypes.func.isRequired
 		},
 
 		mixins: [_reactAddonsPureRenderMixin2.default],
 
+		componentDidMount: function componentDidMount() {
+			this._getRefSize();
+		},
+		componentDidUpdate: function componentDidUpdate() {
+			this._getRefSize();
+		},
+		_getRefSize: function _getRefSize() {
+			if (!this.meta) {
+				return;
+			}
+
+			var height = this.meta.getBoundingClientRect().height;
+			this.props.onRender(height);
+		},
 		render: function render() {
 			var _this = this;
 
@@ -25641,7 +25767,11 @@
 
 			return _react2.default.createElement(
 				"div",
-				{ className: "page-photography-main-meta" },
+				{
+					ref: function ref(meta) {
+						_this.meta = meta;
+					},
+					className: "page-photography-main-meta" },
 				_react2.default.createElement(
 					"h3",
 					{ className: "page-photography-main-title" },
@@ -25681,7 +25811,7 @@
 	exports.default = ImageMeta;
 
 /***/ },
-/* 229 */
+/* 230 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -25700,7 +25830,7 @@
 
 	var _helpers = __webpack_require__(217);
 
-	var _Tag = __webpack_require__(223);
+	var _Tag = __webpack_require__(224);
 
 	var _Tag2 = _interopRequireDefault(_Tag);
 
@@ -25792,46 +25922,10 @@
 	exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(TagsList);
 
 /***/ },
-/* 230 */
+/* 231 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
-
-/***/ },
-/* 231 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-
-	var _react = __webpack_require__(11);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	var TitleClearButton = _react2.default.createClass({
-		displayName: "TitleClearButton",
-
-		propTypes: {
-			clearFilterTag: _react.PropTypes.func.isRequired
-		},
-
-		render: function render() {
-			return _react2.default.createElement(
-				"button",
-				{
-					className: "page-photography-meta-title-clear",
-					onClick: this.props.clearFilterTag },
-				"remove filter"
-			);
-		}
-	});
-
-	exports.default = TitleClearButton;
 
 /***/ }
 /******/ ]);

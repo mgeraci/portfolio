@@ -14,6 +14,10 @@ const MainImage = React.createClass({
 
 	mixins: [ PureRenderMixin ],
 
+	getInitialState() {
+		return {};
+	},
+
 	// trigger the initial load
 	componentDidMount() {
 		this._loadImage();
@@ -35,10 +39,27 @@ const MainImage = React.createClass({
 				width: i.width,
 				height: i.height,
 			});
+
+			this.setState({
+				width: i.width,
+				height: i.height,
+			});
 		};
 	},
 
 	render() {
+		const style = {};
+
+		if (this.state.width && this.state.height) {
+			if (this.state.width > this.state.height) {
+				style.width = "100%";
+				style.height = "auto";
+			} else {
+				style.width = "auto";
+				style.height = "100%";
+			}
+		}
+
 		return (
 			<ReactCSSTransitionGroup
 					transitionName="main-image"
@@ -51,6 +72,7 @@ const MainImage = React.createClass({
 						key={this.props.src}
 						src={this.props.src}
 						alt={this.props.alt}
+						style={style}
 					/>
 				}
 			</ReactCSSTransitionGroup>

@@ -24,4 +24,11 @@ export const BAD_TAGS = {
 
 export const TAGS_LIST_URL = "tags";
 
+export const MAIN_IMAGE_SPACE = 70;
+
+export const ORIENTATIONS = {
+	landscape: "landscape",
+	portrait: "portrait",
+};
+
 export default {};

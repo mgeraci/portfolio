@@ -14,7 +14,16 @@ import {
 
 import MainImage from "./MainImage";
 import ImageMeta from "./ImageMeta";
-import { KEYS } from "../util/constants";
+import {
+	KEYS,
+	MAIN_IMAGE_SPACE,
+	ORIENTATIONS,
+} from "../util/constants";
+
+const initialState = {
+	isLoaded: false,
+	metaHeight: 0,
+};
 
 const ImageDetail = React.createClass({
 	propTypes: {
@@ -29,7 +38,7 @@ const ImageDetail = React.createClass({
 	},
 
 	getInitialState() {
-		return { loaded: false };
+		return initialState;
 	},
 
 	componentDidMount() {
@@ -38,7 +47,7 @@ const ImageDetail = React.createClass({
 
 	componentWillReceiveProps(nextProps) {
 		if (nextProps.image.id !== this.props.image.id) {
-			this.setState({ loaded: false });
+			this.setState(initialState);
 		}
 	},
 
@@ -53,7 +62,7 @@ const ImageDetail = React.createClass({
 			this.props.onClearActiveImage();
 		}
 
-		if (!this.state.loaded) {
+		if (!this.state.isLoaded) {
 			return;
 		}
 
@@ -66,14 +75,32 @@ const ImageDetail = React.createClass({
 
 	_onLoad(dimensions) {
 		this.setState({
-			loaded: true,
+			isLoaded: true,
 			dimensions,
 		});
 	},
 
+	_handleMetaRender(height) {
+		this.setState({ metaHeight: height });
+	},
+
+	_getOrientation() {
+		if (typeof(this.state.dimensions) !== "undefined" && this.state.dimensions !== null) {
+			if (this.state.dimensions.width > this.state.dimensions.height) {
+				return ORIENTATIONS.landscape;
+			} else {
+				return ORIENTATIONS.portrait;
+			}
+		} else {
+			return null;
+		}
+	},
+
 	render() {
 		const { image } = this.props;
+		const orientation = this._getOrientation();
 		const contentStyle = {};
+		let bottomSpace = MAIN_IMAGE_SPACE;
 
 		const prevClass = {
 			"page-photography-main-nav": true,
@@ -85,69 +112,95 @@ const ImageDetail = React.createClass({
 			"page-photography-main-nav--next": true,
 		};
 
-		if (typeof(this.state.dimensions) !== "undefined" && this.state.dimensions !== null) {
-			contentStyle.width = this.state.dimensions.width;
+		const enableMaxSize = false;
+		console.log(this.state.metaHeight);
+
+		if (enableMaxSize) {
+			contentStyle.maxWidth = this.state.dimensions.width;
+			contentStyle.maxHeight = this.state.dimensions.height;
 		}
+
+		if (orientation === ORIENTATIONS.landscape) {
+			contentStyle.width = "100%";
+			contentStyle.height = "auto";
+		} else if (orientation === ORIENTATIONS.portrait) {
+			contentStyle.width = "auto";
+			contentStyle.height = "100%";
+
+			if (this.state.metaHeight) {
+				bottomSpace += this.state.metaHeight;
+			}
+		}
+
+		const spaceStyle = {
+			top: `${MAIN_IMAGE_SPACE}px`,
+			right: `${MAIN_IMAGE_SPACE}px`,
+			bottom: `${bottomSpace}px`,
+			left: `${MAIN_IMAGE_SPACE}px`,
+		};
 
 		return (
 			<div className="page-photography-main" key={image.title}>
 
-				<div className="page-photography-main-content" style={contentStyle}>
-					<MainImage
-						src={image.image}
-						alt={image.title}
-						loaded={this.state.loaded}
-						onLoad={this._onLoad}
-					/>
+				<div className="page-photography-main-space" style={spaceStyle}>
+					<div className="page-photography-main-content" style={contentStyle}>
+						<MainImage
+							src={image.image}
+							alt={image.title}
+							loaded={this.state.isLoaded}
+							onLoad={this._onLoad}
+						/>
 
-					<ReactCSSTransitionGroup
-							transitionName="main-image"
-							transitionAppear
-							transitionEnterTimeout={500}
-							transitionAppearTimeout={500}
-							transitionLeaveTimeout={5}>
-						{this.state.loaded &&
-							<ImageMeta
-								key={image.id}
-								title={image.title}
-								year={image.year}
-								tags={image.tags}
-								filterTag={this.props.onFilterTag}
-							/>
+						{!this.state.isLoaded &&
+							<div className="loader" />
 						}
-					</ReactCSSTransitionGroup>
 
-					<span>
-						<button
-								className={classnames(prevClass)}
-								onClick={this.props.onNavigatePrev}
-								disabled={this.props.atBeginning}>
-							<span className="page-photography-main-nav-text">
-								previous photo
-							</span>
-						</button>
-						<button
-								className={classnames(nextClass)}
-								onClick={this.props.onNavigateNext}
-								disabled={this.props.atEnd}>
-							<span className="page-photography-main-nav-text">
-								next photo
-							</span>
-						</button>
-					</span>
-
-					{!this.state.loaded &&
-						<div className="loader" />
-					}
-
-					<button
-							className="page-photography-main-close"
-							onClick={this.props.onClearActiveImage}>
-						<span className="page-photography-main-close-text">
-							close
-						</span>
-					</button>
+						<ReactCSSTransitionGroup
+								transitionName="main-image"
+								transitionAppear
+								transitionEnterTimeout={500}
+								transitionAppearTimeout={500}
+								transitionLeaveTimeout={5}>
+							{this.state.isLoaded &&
+								<ImageMeta
+									key={image.id}
+									title={image.title}
+									year={image.year}
+									tags={image.tags}
+									onRender={this._handleMetaRender}
+									filterTag={this.props.onFilterTag}
+								/>
+							}
+						</ReactCSSTransitionGroup>
+					</div>
 				</div>
+
+				<button
+						className={classnames(prevClass)}
+						onClick={this.props.onNavigatePrev}
+						disabled={this.props.atBeginning}>
+					<span className="page-photography-main-nav-text">
+						previous photo
+					</span>
+				</button>
+
+				<button
+						className={classnames(nextClass)}
+						onClick={this.props.onNavigateNext}
+						disabled={this.props.atEnd}>
+					<span className="page-photography-main-nav-text">
+						next photo
+					</span>
+				</button>
+
+				<button
+						className="page-photography-main-close"
+						onClick={this.props.onClearActiveImage}>
+					<span className="page-photography-main-close-text">
+						close
+					</span>
+				</button>
+
 			</div>
 		);
 	},

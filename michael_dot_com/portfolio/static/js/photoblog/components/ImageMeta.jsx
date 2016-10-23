@@ -9,9 +9,27 @@ const ImageMeta = React.createClass({
 		year: PropTypes.number.isRequired,
 		tags: PropTypes.array,
 		filterTag: PropTypes.func.isRequired,
+		onRender: PropTypes.func.isRequired,
 	},
 
 	mixins: [ PureRenderMixin ],
+
+	componentDidMount() {
+		this._getRefSize();
+	},
+
+	componentDidUpdate() {
+		this._getRefSize();
+	},
+
+	_getRefSize() {
+		if (!this.meta) {
+			return;
+		}
+
+		const height = this.meta.getBoundingClientRect().height;
+		this.props.onRender(height);
+	},
 
 	render() {
 		const tags = this.props.tags.filter((tag) => {
@@ -19,7 +37,9 @@ const ImageMeta = React.createClass({
 		});
 
 		return (
-			<div className="page-photography-main-meta">
+			<div
+					ref={(meta) => { this.meta = meta; }}
+					className="page-photography-main-meta">
 				<h3 className="page-photography-main-title">
 					{this.props.title}
 				</h3>

@@ -786,10 +786,20 @@ nav::after {
   background: rgba(0, 0, 0, 0.8);
   color: #999;
   font-family: Helvetica Neue, Helvetica, Arial, sans-serif; }
+  .page-photography-main-space {
+    position: absolute; }
   .page-photography-main-content {
-    margin-top: 40px;
-    margin-right: auto;
-    margin-left: auto; }
+    position: absolute;
+    float: left;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%); }
+    .page-photography-main-content img {
+      border-radius: 2px; }
   .page-photography-main-meta {
     margin-top: 5px;
     font-size: 17px;
