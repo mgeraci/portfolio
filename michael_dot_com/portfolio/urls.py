@@ -2,6 +2,7 @@ from django.conf.urls import url
 from django.contrib import admin
 from django.conf import settings
 from . import views
+from feeds import PhotoblogFeed
 from django.conf.urls.static import static
 
 urlpatterns = [
@@ -12,6 +13,7 @@ urlpatterns = [
     url(r'^$', views.index, name='index_url'),
     url(r'^web/(?P<slug>[^/]+)/$', views.web_item, name='web_item_url'),
     url(r'^web$', views.web, name='web_url'),
+    url(r'^photography/blog/rss/?', PhotoblogFeed(), name='photography_rss_url'),
     url(r'^photography/blog', views.photography, name='photography_url'),
     url(r'^photography/blog/*', views.photography, name='photography_url'),
     url(r'^graphic/(?P<slug>[^/]+)/$', views.graphic_item, name='graphic_item_url'),

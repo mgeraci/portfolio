@@ -142,6 +142,10 @@ const App = React.createClass({
 				{isTagsView &&
 					<TagsList />
 				}
+
+				<a className="page-photography-rss" href="http://feeds.feedburner.com/mpgPhotoblog">
+					subscribe with rss
+				</a>
 			</span>
 		);
 	},

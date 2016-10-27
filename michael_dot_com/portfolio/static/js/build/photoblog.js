@@ -23272,7 +23272,12 @@
 						_react2.default.createElement(_ImageModal2.default, { image: images[activeImage] })
 					)
 				),
-				isTagsView && _react2.default.createElement(_TagsList2.default, null)
+				isTagsView && _react2.default.createElement(_TagsList2.default, null),
+				_react2.default.createElement(
+					"a",
+					{ className: "page-photography-rss", href: "http://feeds.feedburner.com/mpgPhotoblog" },
+					"subscribe with rss"
+				)
 			);
 		}
 	}); /* global window, document */

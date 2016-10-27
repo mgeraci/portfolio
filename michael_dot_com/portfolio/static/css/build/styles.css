@@ -926,6 +926,21 @@ nav::after {
       text-shadow: none !important;
       background-image: none !important; }
 
+.page-photography-rss {
+  display: inline-block;
+  position: relative;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  -moz-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  -o-transform: translateX(-50%);
+  transform: translateX(-50%);
+  margin-top: 20px;
+  font-size: 15px; }
+  .page-photography-rss, .page-photography-rss:hover, .page-photography-rss:active {
+    text-shadow: none !important;
+    background-image: none !important; }
+
 .main-image-enter,
 .main-image-appear {
   opacity: 0.01; }
