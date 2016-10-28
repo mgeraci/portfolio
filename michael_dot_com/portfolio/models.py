@@ -138,7 +138,8 @@ class PhotoblogImage(models.Model):
     title = models.CharField(max_length=200)
     year = models.PositiveSmallIntegerField()
     thumbnail = models.FileField(upload_to='photoblog/thubmnails', blank=True, null=True)
-    image = models.FileField(upload_to='photoblog/images', blank=True, null=True)
+    image700 = models.FileField(upload_to='photoblog/images700', blank=True, null=True)
+    image2000 = models.FileField(upload_to='photoblog/images2000', blank=True, null=True)
     tags = models.ManyToManyField(PhotoblogTag, blank=True)
 
     class Meta:
@@ -155,7 +156,8 @@ class PhotoblogImage(models.Model):
             'title': self.title,
             'year': self.year,
             'thumbnail': self.thumbnail.url,
-            'image': self.image.url,
+            'image700': self.image700.url,
+            'image2000': self.image2000.url,
             'tags': json_tags,
         }
 

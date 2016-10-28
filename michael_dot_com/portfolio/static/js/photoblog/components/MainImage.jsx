@@ -23,6 +23,16 @@ const MainImage = React.createClass({
 		this._loadImage();
 	},
 
+	componentWillReceiveProps(nextProps) {
+		if (nextProps.maxWidth && nextProps.maxHeight &&
+				nextProps.maxWidth > 0 && nextProps.maxHeight > 0) {
+			this.setState({
+				maxWidth: nextProps.maxWidth,
+				maxHeight: nextProps.maxHeight,
+			});
+		}
+	},
+
 	// if we get a new image source via props, trigger the new load
 	componentDidUpdate(prevProps) {
 		if (prevProps.src !== this.props.src) {
@@ -48,16 +58,42 @@ const MainImage = React.createClass({
 	},
 
 	render() {
+		const { src, alt, loaded } = this.props;
+		const { width, height, maxWidth, maxHeight } = this.state;
 		const style = {};
 
-		if (this.state.width && this.state.height) {
-			if (this.state.width > this.state.height) {
-				style.width = "100%";
-				style.height = "auto";
-			} else {
-				style.width = "auto";
-				style.height = "100%";
-			}
+		if (!width || !height) {
+			return null;
+		}
+
+		if (!maxWidth || !maxHeight || maxWidth <= 0 || maxHeight <= 0) {
+			return null;
+		}
+
+		const ratio = height / width;
+		let resWidth;
+		let resHeight;
+
+		// get a proposed set of dimensions, meant to maximize the size...
+		if (width > height) {
+			resWidth = maxWidth;
+			resHeight = resWidth * ratio;
+		} else {
+			resHeight = maxHeight;
+			resWidth = resHeight / ratio;
+		}
+
+		// ...but if the height is bigger than the available height, or the width
+		// is bigger than the available width, keep the size in bounds.
+		if (resHeight > maxHeight) {
+			style.width = "auto";
+			style.height = `${maxHeight}px`;
+		} else if (resWidth > maxWidth) {
+			style.width = `${maxWidth}px`;
+			style.height = "auto";
+		} else {
+			style.width = resWidth;
+			style.height = resHeight;
 		}
 
 		return (
@@ -67,11 +103,11 @@ const MainImage = React.createClass({
 					transitionEnterTimeout={500}
 					transitionAppearTimeout={500}
 					transitionLeaveTimeout={5}>
-				{this.props.loaded &&
+				{loaded &&
 					<img
-						key={this.props.src}
-						src={this.props.src}
-						alt={this.props.alt}
+						key={src}
+						src={src}
+						alt={alt}
 						style={style}
 					/>
 				}

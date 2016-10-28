@@ -25318,6 +25318,10 @@
 
 	var _reactAddonsCssTransitionGroup2 = _interopRequireDefault(_reactAddonsCssTransitionGroup);
 
+	var _throttle = __webpack_require__(214);
+
+	var _throttle2 = _interopRequireDefault(_throttle);
+
 	var _classnames = __webpack_require__(227);
 
 	var _classnames2 = _interopRequireDefault(_classnames);
@@ -25336,12 +25340,10 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	/* global document */
-
 	var initialState = {
 		isLoaded: false,
 		metaHeight: 0
-	};
+	}; /* global window, document */
 
 	var ImageDetail = _react2.default.createClass({
 		displayName: "ImageDetail",
@@ -25361,7 +25363,13 @@
 			return initialState;
 		},
 		componentDidMount: function componentDidMount() {
+			this._throttledHandleResize = (0, _throttle2.default)(200, this._handleResize);
+
 			document.addEventListener("keyup", this._handleKeyup);
+			window.addEventListener("resize", this._throttledHandleResize);
+
+			// trigger an initial resize event
+			this._handleResize();
 		},
 		componentWillReceiveProps: function componentWillReceiveProps(nextProps) {
 			if (nextProps.image.id !== this.props.image.id) {
@@ -25370,6 +25378,7 @@
 		},
 		componentWillUnmount: function componentWillUnmount() {
 			document.removeEventListener("keyup", this._handleKeyup);
+			window.removeEventListener("resize", this._throttledHandleResize);
 		},
 		_handleKeyup: function _handleKeyup(e) {
 			var code = e.which;
@@ -25387,6 +25396,12 @@
 			} else if (code === _constants.KEYS.right) {
 				this.props.onNavigateNext();
 			}
+		},
+		_handleResize: function _handleResize() {
+			this.setState({
+				windowWidth: window.innerWidth,
+				windowHeight: window.innerHeight
+			});
 		},
 		_onLoad: function _onLoad(dimensions) {
 			this.setState({
@@ -25411,7 +25426,8 @@
 		render: function render() {
 			var image = this.props.image;
 
-			var orientation = this._getOrientation();
+			// const orientation = this._getOrientation();
+
 			var contentStyle = {};
 			var bottomSpace = _constants.MAIN_IMAGE_SPACE;
 
@@ -25431,23 +25447,29 @@
 				contentStyle.maxHeight = this.state.dimensions.height;
 			}
 
-			if (orientation === _constants.ORIENTATIONS.landscape) {
-				contentStyle.width = "100%";
-				contentStyle.height = "auto";
-			} else if (orientation === _constants.ORIENTATIONS.portrait) {
-				contentStyle.width = "auto";
-				contentStyle.height = "100%";
-
-				if (this.state.metaHeight) {
-					bottomSpace += this.state.metaHeight;
-				}
-			}
+			/*
+	  if (orientation === ORIENTATIONS.landscape) {
+	  	contentStyle.width = "100%";
+	  	contentStyle.height = "auto";
+	  } else if (orientation === ORIENTATIONS.portrait) {
+	  	contentStyle.width = "auto";
+	  	contentStyle.height = "100%";
+	  		if (this.state.metaHeight) {
+	  		bottomSpace += this.state.metaHeight;
+	  	}
+	  }
+	  */
 
 			var spaceStyle = {
 				top: _constants.MAIN_IMAGE_SPACE + "px",
 				right: _constants.MAIN_IMAGE_SPACE + "px",
 				bottom: bottomSpace + "px",
 				left: _constants.MAIN_IMAGE_SPACE + "px"
+			};
+
+			var spaceDimensions = {
+				width: this.state.windowWidth - _constants.MAIN_IMAGE_SPACE * 2,
+				height: this.state.windowHeight - _constants.MAIN_IMAGE_SPACE - bottomSpace
 			};
 
 			return _react2.default.createElement(
@@ -25460,8 +25482,10 @@
 						"div",
 						{ className: "page-photography-main-content", style: contentStyle },
 						_react2.default.createElement(_MainImage2.default, {
-							src: image.image,
+							src: image.image2000,
 							alt: image.title,
+							maxWidth: spaceDimensions.width,
+							maxHeight: spaceDimensions.height,
 							loaded: this.state.isLoaded,
 							onLoad: this._onLoad
 						}),
@@ -25649,6 +25673,14 @@
 		componentDidMount: function componentDidMount() {
 			this._loadImage();
 		},
+		componentWillReceiveProps: function componentWillReceiveProps(nextProps) {
+			if (nextProps.maxWidth && nextProps.maxHeight && nextProps.maxWidth > 0 && nextProps.maxHeight > 0) {
+				this.setState({
+					maxWidth: nextProps.maxWidth,
+					maxHeight: nextProps.maxHeight
+				});
+			}
+		},
 
 
 		// if we get a new image source via props, trigger the new load
@@ -25676,16 +25708,50 @@
 			};
 		},
 		render: function render() {
+			var _props = this.props;
+			var src = _props.src;
+			var alt = _props.alt;
+			var loaded = _props.loaded;
+			var _state = this.state;
+			var width = _state.width;
+			var height = _state.height;
+			var maxWidth = _state.maxWidth;
+			var maxHeight = _state.maxHeight;
+
 			var style = {};
 
-			if (this.state.width && this.state.height) {
-				if (this.state.width > this.state.height) {
-					style.width = "100%";
-					style.height = "auto";
-				} else {
-					style.width = "auto";
-					style.height = "100%";
-				}
+			if (!width || !height) {
+				return null;
+			}
+
+			if (!maxWidth || !maxHeight || maxWidth <= 0 || maxHeight <= 0) {
+				return null;
+			}
+
+			var ratio = height / width;
+			var resWidth = void 0;
+			var resHeight = void 0;
+
+			// get a proposed set of dimensions, meant to maximize the size...
+			if (width > height) {
+				resWidth = maxWidth;
+				resHeight = resWidth * ratio;
+			} else {
+				resHeight = maxHeight;
+				resWidth = resHeight / ratio;
+			}
+
+			// ...but if the height is bigger than the available height, or the width
+			// is bigger than the available width, keep the size in bounds.
+			if (resHeight > maxHeight) {
+				style.width = "auto";
+				style.height = maxHeight + "px";
+			} else if (resWidth > maxWidth) {
+				style.width = maxWidth + "px";
+				style.height = "auto";
+			} else {
+				style.width = resWidth;
+				style.height = resHeight;
 			}
 
 			return _react2.default.createElement(
@@ -25696,10 +25762,10 @@
 					transitionEnterTimeout: 500,
 					transitionAppearTimeout: 500,
 					transitionLeaveTimeout: 5 },
-				this.props.loaded && _react2.default.createElement("img", {
-					key: this.props.src,
-					src: this.props.src,
-					alt: this.props.alt,
+				loaded && _react2.default.createElement("img", {
+					key: src,
+					src: src,
+					alt: alt,
 					style: style
 				})
 			);
