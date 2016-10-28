@@ -116,7 +116,7 @@ def photography(request):
         'images_json': json.dumps({
             'order': imageOrder,
             'images': imageMap,
-            'years': years,
+            'years': years[::-1],
         }),
     }
 
