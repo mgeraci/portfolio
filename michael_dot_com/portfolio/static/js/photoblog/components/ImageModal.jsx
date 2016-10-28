@@ -18,7 +18,6 @@ import ImageMeta from "./ImageMeta";
 import {
 	KEYS,
 	MAIN_IMAGE_SPACE,
-	ORIENTATIONS,
 } from "../util/constants";
 
 const initialState = {
@@ -99,22 +98,9 @@ const ImageDetail = React.createClass({
 		this.setState({ metaHeight: height });
 	},
 
-	_getOrientation() {
-		if (typeof(this.state.dimensions) !== "undefined" && this.state.dimensions !== null) {
-			if (this.state.dimensions.width > this.state.dimensions.height) {
-				return ORIENTATIONS.landscape;
-			} else {
-				return ORIENTATIONS.portrait;
-			}
-		} else {
-			return null;
-		}
-	},
-
 	render() {
 		const { image } = this.props;
 
-		// const orientation = this._getOrientation();
 		const contentStyle = {};
 		const bottomSpace = MAIN_IMAGE_SPACE;
 
@@ -133,20 +119,6 @@ const ImageDetail = React.createClass({
 			contentStyle.maxWidth = this.state.dimensions.width;
 			contentStyle.maxHeight = this.state.dimensions.height;
 		}
-
-		/*
-		if (orientation === ORIENTATIONS.landscape) {
-			contentStyle.width = "100%";
-			contentStyle.height = "auto";
-		} else if (orientation === ORIENTATIONS.portrait) {
-			contentStyle.width = "auto";
-			contentStyle.height = "100%";
-
-			if (this.state.metaHeight) {
-				bottomSpace += this.state.metaHeight;
-			}
-		}
-		*/
 
 		const spaceStyle = {
 			top: `${MAIN_IMAGE_SPACE}px`,

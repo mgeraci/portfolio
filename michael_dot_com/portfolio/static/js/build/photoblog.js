@@ -25412,21 +25412,9 @@
 		_handleMetaRender: function _handleMetaRender(height) {
 			this.setState({ metaHeight: height });
 		},
-		_getOrientation: function _getOrientation() {
-			if (typeof this.state.dimensions !== "undefined" && this.state.dimensions !== null) {
-				if (this.state.dimensions.width > this.state.dimensions.height) {
-					return _constants.ORIENTATIONS.landscape;
-				} else {
-					return _constants.ORIENTATIONS.portrait;
-				}
-			} else {
-				return null;
-			}
-		},
 		render: function render() {
 			var image = this.props.image;
 
-			// const orientation = this._getOrientation();
 
 			var contentStyle = {};
 			var bottomSpace = _constants.MAIN_IMAGE_SPACE;
@@ -25446,19 +25434,6 @@
 				contentStyle.maxWidth = this.state.dimensions.width;
 				contentStyle.maxHeight = this.state.dimensions.height;
 			}
-
-			/*
-	  if (orientation === ORIENTATIONS.landscape) {
-	  	contentStyle.width = "100%";
-	  	contentStyle.height = "auto";
-	  } else if (orientation === ORIENTATIONS.portrait) {
-	  	contentStyle.width = "auto";
-	  	contentStyle.height = "100%";
-	  		if (this.state.metaHeight) {
-	  		bottomSpace += this.state.metaHeight;
-	  	}
-	  }
-	  */
 
 			var spaceStyle = {
 				top: _constants.MAIN_IMAGE_SPACE + "px",
