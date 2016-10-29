@@ -1,6 +1,9 @@
 from django.conf import settings
 from django.core.urlresolvers import reverse
 from datetime import date
+from michael_dot_com.localsettings import JS_VERSIONS
+from michael_dot_com.localsettings import DEBUG
+
 
 def menu(request):
     return {
@@ -43,10 +46,12 @@ def menu(request):
         ]
     }
 
+
 def year(request):
     return {
-        'year': date.today().year
+        'year': date.today().year,
     }
+
 
 def active_page_name(request):
     name = False
@@ -60,5 +65,17 @@ def active_page_name(request):
         name = 'Select a page'
 
     return {
-        'active_page_name': name
+        'active_page_name': name,
+    }
+
+
+def js_versions(request):
+    return {
+        'js_versions': JS_VERSIONS,
+    }
+
+
+def is_local(request):
+    return {
+        'is_local': DEBUG,
     }

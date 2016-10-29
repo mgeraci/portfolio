@@ -16,7 +16,17 @@
 			{% block content %}{% endblock %}
 		</section>
 
-		<script type="text/javascript" src="{{ STATIC_URL }}js/build/app.js"></script>
+		{% if is_local %}
+			<script
+				type="text/javascript"
+				src="{{ STATIC_URL }}js/build/app.js">
+			</script>
+		{% else %}
+			<script
+				type="text/javascript"
+				src="{{ STATIC_URL }}js/build/app.min.js?v={{ js_versions.app }}">
+			</script>
+		{% endif %}
 
 		{% block scripts %}{% endblock %}
 
