@@ -899,6 +899,8 @@ nav::after {
         -ms-transform: rotate(40deg);
         -o-transform: rotate(40deg);
         transform: rotate(40deg); }
+    .page-photography-main-nav--hidden {
+      display: none; }
   .page-photography-main-close {
     top: 20px;
     right: 20px; }
@@ -916,6 +918,9 @@ nav::after {
       -ms-transform: translate(-50%, -50%) rotate(-45deg);
       -o-transform: translate(-50%, -50%) rotate(-45deg);
       transform: translate(-50%, -50%) rotate(-45deg); }
+    .page-photography-main-close--mobile {
+      top: 0;
+      right: 0; }
 
 .page-photography-tagslist {
   line-height: 24px; }

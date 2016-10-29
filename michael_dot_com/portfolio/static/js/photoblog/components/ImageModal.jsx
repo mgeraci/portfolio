@@ -13,12 +13,15 @@ import {
 	filterTag,
 } from "../reducer";
 
-import MainImage from "./MainImage";
-import ImageMeta from "./ImageMeta";
 import {
 	KEYS,
 	MAIN_IMAGE_SPACE,
+	PHOTOBLOG_MOBILE_BREAKPOINT,
 } from "../util/constants";
+
+import MainImage from "./MainImage";
+import ImageMeta from "./ImageMeta";
+
 
 const initialState = {
 	isLoaded: false,
@@ -102,16 +105,31 @@ const ImageDetail = React.createClass({
 		const { image } = this.props;
 
 		const contentStyle = {};
+		const isMobile = this.state.windowWidth < PHOTOBLOG_MOBILE_BREAKPOINT;
+		let topSpace = MAIN_IMAGE_SPACE;
+		let sideSpace = MAIN_IMAGE_SPACE;
 		const bottomSpace = MAIN_IMAGE_SPACE;
+
+		if (isMobile) {
+			sideSpace = 5;
+			topSpace = MAIN_IMAGE_SPACE * 1.5;
+		}
 
 		const prevClass = {
 			"page-photography-main-nav": true,
 			"page-photography-main-nav--prev": true,
+			"page-photography-main-nav--hidden": isMobile,
 		};
 
 		const nextClass = {
 			"page-photography-main-nav": true,
 			"page-photography-main-nav--next": true,
+			"page-photography-main-nav--hidden": isMobile,
+		};
+
+		const closeClass = {
+			"page-photography-main-close": true,
+			"page-photography-main-close--mobile": isMobile,
 		};
 
 		// keep images from getting bigger than their native size
@@ -121,15 +139,15 @@ const ImageDetail = React.createClass({
 		}
 
 		const spaceStyle = {
-			top: `${MAIN_IMAGE_SPACE}px`,
-			right: `${MAIN_IMAGE_SPACE}px`,
+			top: `${topSpace}px`,
+			right: `${sideSpace}px`,
 			bottom: `${bottomSpace}px`,
-			left: `${MAIN_IMAGE_SPACE}px`,
+			left: `${sideSpace}px`,
 		};
 
 		const spaceDimensions = {
-			width: this.state.windowWidth - (MAIN_IMAGE_SPACE * 2),
-			height: this.state.windowHeight - MAIN_IMAGE_SPACE - bottomSpace,
+			width: this.state.windowWidth - (sideSpace * 2),
+			height: this.state.windowHeight - topSpace - bottomSpace,
 		};
 
 		return (
@@ -189,7 +207,7 @@ const ImageDetail = React.createClass({
 				</button>
 
 				<button
-						className="page-photography-main-close"
+						className={classnames(closeClass)}
 						onClick={this.props.onClearActiveImage}>
 					<span className="page-photography-main-close-text">
 						close

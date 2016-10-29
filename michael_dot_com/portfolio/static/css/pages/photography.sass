@@ -155,6 +155,9 @@ $thumbnail-size: 75px
         &:after
           @include transform(rotate(40deg))
 
+      &--hidden
+        display: none
+
     &-close
       top: 20px
       right: 20px
@@ -168,6 +171,10 @@ $thumbnail-size: 75px
 
       &:after
         @include transform(translate(-50%, -50%) rotate(-45deg))
+
+      &--mobile
+        top: 0
+        right: 0
 
   &-tagslist
     line-height: 24px

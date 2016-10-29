@@ -24570,10 +24570,7 @@
 
 	var MAIN_IMAGE_SPACE = exports.MAIN_IMAGE_SPACE = 70;
 
-	var ORIENTATIONS = exports.ORIENTATIONS = {
-		landscape: "landscape",
-		portrait: "portrait"
-	};
+	var PHOTOBLOG_MOBILE_BREAKPOINT = exports.PHOTOBLOG_MOBILE_BREAKPOINT = 700;
 
 	exports.default = {};
 
@@ -25328,6 +25325,8 @@
 
 	var _reducer = __webpack_require__(215);
 
+	var _constants = __webpack_require__(216);
+
 	var _MainImage = __webpack_require__(228);
 
 	var _MainImage2 = _interopRequireDefault(_MainImage);
@@ -25335,8 +25334,6 @@
 	var _ImageMeta = __webpack_require__(229);
 
 	var _ImageMeta2 = _interopRequireDefault(_ImageMeta);
-
-	var _constants = __webpack_require__(216);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -25417,16 +25414,31 @@
 
 
 			var contentStyle = {};
+			var isMobile = this.state.windowWidth < _constants.PHOTOBLOG_MOBILE_BREAKPOINT;
+			var topSpace = _constants.MAIN_IMAGE_SPACE;
+			var sideSpace = _constants.MAIN_IMAGE_SPACE;
 			var bottomSpace = _constants.MAIN_IMAGE_SPACE;
+
+			if (isMobile) {
+				sideSpace = 5;
+				topSpace = _constants.MAIN_IMAGE_SPACE * 1.5;
+			}
 
 			var prevClass = {
 				"page-photography-main-nav": true,
-				"page-photography-main-nav--prev": true
+				"page-photography-main-nav--prev": true,
+				"page-photography-main-nav--hidden": isMobile
 			};
 
 			var nextClass = {
 				"page-photography-main-nav": true,
-				"page-photography-main-nav--next": true
+				"page-photography-main-nav--next": true,
+				"page-photography-main-nav--hidden": isMobile
+			};
+
+			var closeClass = {
+				"page-photography-main-close": true,
+				"page-photography-main-close--mobile": isMobile
 			};
 
 			// keep images from getting bigger than their native size
@@ -25436,15 +25448,15 @@
 			}
 
 			var spaceStyle = {
-				top: _constants.MAIN_IMAGE_SPACE + "px",
-				right: _constants.MAIN_IMAGE_SPACE + "px",
+				top: topSpace + "px",
+				right: sideSpace + "px",
 				bottom: bottomSpace + "px",
-				left: _constants.MAIN_IMAGE_SPACE + "px"
+				left: sideSpace + "px"
 			};
 
 			var spaceDimensions = {
-				width: this.state.windowWidth - _constants.MAIN_IMAGE_SPACE * 2,
-				height: this.state.windowHeight - _constants.MAIN_IMAGE_SPACE - bottomSpace
+				width: this.state.windowWidth - sideSpace * 2,
+				height: this.state.windowHeight - topSpace - bottomSpace
 			};
 
 			return _react2.default.createElement(
@@ -25511,7 +25523,7 @@
 				_react2.default.createElement(
 					"button",
 					{
-						className: "page-photography-main-close",
+						className: (0, _classnames2.default)(closeClass),
 						onClick: this.props.onClearActiveImage },
 					_react2.default.createElement(
 						"span",

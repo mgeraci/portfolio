@@ -26,9 +26,6 @@ export const TAGS_LIST_URL = "tags";
 
 export const MAIN_IMAGE_SPACE = 70;
 
-export const ORIENTATIONS = {
-	landscape: "landscape",
-	portrait: "portrait",
-};
+export const PHOTOBLOG_MOBILE_BREAKPOINT = 700;
 
 export default {};
