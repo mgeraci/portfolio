@@ -72,7 +72,7 @@ TEMPLATES = [
                 'portfolio.context_processors.menu',
                 'portfolio.context_processors.year',
                 'portfolio.context_processors.active_page_name',
-                'portfolio.context_processors.js_versions',
+                'portfolio.context_processors.static_versions',
                 'portfolio.context_processors.is_local',
             ],
         },

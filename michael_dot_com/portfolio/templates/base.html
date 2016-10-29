@@ -6,7 +6,21 @@
 		</title>
 		<meta name="viewport" content="width=device-width, user-scalable=no" />
 		<link rel="shortcut icon" href="http://michaelgeraci.com/favicon.ico" type="image/x-icon">
-		<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/build/styles.css">
+
+		{% if is_local %}
+			<link
+				rel="stylesheet"
+				type="text/css"
+				href="{{ STATIC_URL }}css/build/styles.css"
+			/>
+		{% else %}
+			<link
+				rel="stylesheet"
+				type="text/css"
+				href="{{ STATIC_URL }}css/build/styles.min.css?v={{ static_versions.styles }}"
+			/>
+		{% endif %}
+
 	</head>
 	<body class="page-{% block bodyclass %}{% endblock %}">
 
@@ -24,7 +38,7 @@
 		{% else %}
 			<script
 				type="text/javascript"
-				src="{{ STATIC_URL }}js/build/app.min.js?v={{ js_versions.app }}">
+				src="{{ STATIC_URL }}js/build/app.min.js?v={{ static_versions.app }}">
 			</script>
 		{% endif %}
 

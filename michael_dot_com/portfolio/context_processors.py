@@ -1,7 +1,7 @@
 from django.conf import settings
 from django.core.urlresolvers import reverse
 from datetime import date
-from michael_dot_com.localsettings import JS_VERSIONS
+from michael_dot_com.localsettings import STATIC_VERSIONS
 from michael_dot_com.localsettings import DEBUG
 
 
@@ -69,9 +69,9 @@ def active_page_name(request):
     }
 
 
-def js_versions(request):
+def static_versions(request):
     return {
-        'js_versions': JS_VERSIONS,
+        'static_versions': STATIC_VERSIONS,
     }
 
 

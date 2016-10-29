@@ -1,9 +1,13 @@
-const ExtractTextPlugin = require("extract-text-webpack-plugin");
-const WebpackNotifierPlugin = require("webpack-notifier");
-
 function createConfig(params) {
 	const isProduction = params.isProduction;
 	const min = isProduction ? ".min" : "";
+	const webpack = require("webpack");
+	const ExtractTextPlugin = require("extract-text-webpack-plugin");
+	const WebpackNotifierPlugin = require("webpack-notifier");
+
+
+	// settings common to both `watch` and `build`
+	// --------------------------------------------------------------------------
 
   const entries = {
 		photoblog: "./michael_dot_com/portfolio/static/js/photoblog/Photoblog.jsx",
@@ -61,11 +65,29 @@ function createConfig(params) {
   };
 
 	plugins = [
-		new ExtractTextPlugin('../../css/build/styles.css', {
+		new ExtractTextPlugin("../../css/build/styles" + min + ".css", {
 			allChunks: true
 		}),
     new WebpackNotifierPlugin(),
   ];
+
+
+	// production options
+	// --------------------------------------------------------------------------
+
+	if (isProduction) {
+		plugins.push(
+			new webpack.optimize.UglifyJsPlugin({
+				compress: {
+					warnings: false,
+				},
+			})
+		);
+	}
+
+
+	// the config object
+	// --------------------------------------------------------------------------
 
 	return {
 		debug: !isProduction,
