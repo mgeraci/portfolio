@@ -11,7 +11,7 @@ function createConfig(params) {
 
   const entries = {
 		photoblog: "./michael_dot_com/portfolio/static/js/photoblog/Photoblog.jsx",
-		app: "./michael_dot_com/portfolio/static/js/app.coffee",
+		app: "./michael_dot_com/portfolio/static/js/app.js",
 	};
 
 	const output = {
@@ -35,7 +35,6 @@ function createConfig(params) {
 				loader: "eslint-loader",
 				exclude: [
 					/node_modules/,
-					/coffee/,
 					/throttle\.js/,
 					/vendor/,
 				],
@@ -50,9 +49,6 @@ function createConfig(params) {
 				query: {
 					presets: ['es2015', 'react', 'stage-2']
 				}
-			}, {
-				test: /\.coffee$/,
-				loader: "coffee-loader",
 			}, {
 				test: /\.sass$/,
 				exclude: [/node_modules/],

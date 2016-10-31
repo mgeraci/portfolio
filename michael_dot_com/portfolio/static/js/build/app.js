@@ -44,30 +44,46 @@
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var FastClick, audio, lazyImages, menu, video;
+	"use strict";
 
-	FastClick = __webpack_require__(1);
+	var _fastclick = __webpack_require__(1);
 
-	menu = __webpack_require__(2);
+	var _fastclick2 = _interopRequireDefault(_fastclick);
 
-	lazyImages = __webpack_require__(4);
+	var _modernizr = __webpack_require__(2);
 
-	audio = __webpack_require__(6);
+	var _modernizr2 = _interopRequireDefault(_modernizr);
 
-	video = __webpack_require__(8);
+	var _menu = __webpack_require__(3);
 
-	__webpack_require__(10);
+	var _menu2 = _interopRequireDefault(_menu);
 
-	menu.init();
+	var _lazy_images = __webpack_require__(5);
 
-	lazyImages.search();
+	var _lazy_images2 = _interopRequireDefault(_lazy_images);
 
-	audio.init();
+	var _audio = __webpack_require__(7);
 
-	video.init();
+	var _audio2 = _interopRequireDefault(_audio);
 
-	FastClick.attach(document.body);
+	var _video = __webpack_require__(9);
 
+	var _video2 = _interopRequireDefault(_video);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	/* eslint-enable */
+
+	/* global document */
+
+	_menu2.default.init();
+
+	/* eslint-disable */
+
+	_lazy_images2.default.search();
+	_audio2.default.init();
+	_video2.default.init();
+	_fastclick2.default.attach(document.body);
 
 /***/ },
 /* 1 */
@@ -918,30 +934,106 @@
 
 /***/ },
 /* 2 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ function(module, exports) {
 
-	var $;
+	"use strict";
 
-	$ = __webpack_require__(3);
+	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
 
-	module.exports = {
-	  headerClass: "nav-mobile",
-	  init: function() {
-	    return $("body").on("click", ".nav-mobile-menu-trigger", (function(_this) {
-	      return function(e) {
-	        e.preventDefault();
-	        return _this.toggleMenu();
-	      };
-	    })(this));
-	  },
-	  toggleMenu: function() {
-	    return $("." + this.headerClass).toggleClass(this.headerClass + "--has-menu");
-	  }
-	};
-
+	/*! modernizr 3.3.1 (Custom Build) | MIT *
+	 * http://modernizr.com/download/?-touchevents-setclasses !*/
+	!function (e, n, t) {
+	  function o(e, n) {
+	    return (typeof e === "undefined" ? "undefined" : _typeof(e)) === n;
+	  }function s() {
+	    var e, n, t, s, a, i, r;for (var l in c) {
+	      if (c.hasOwnProperty(l)) {
+	        if (e = [], n = c[l], n.name && (e.push(n.name.toLowerCase()), n.options && n.options.aliases && n.options.aliases.length)) for (t = 0; t < n.options.aliases.length; t++) {
+	          e.push(n.options.aliases[t].toLowerCase());
+	        }for (s = o(n.fn, "function") ? n.fn() : n.fn, a = 0; a < e.length; a++) {
+	          i = e[a], r = i.split("."), 1 === r.length ? Modernizr[r[0]] = s : (!Modernizr[r[0]] || Modernizr[r[0]] instanceof Boolean || (Modernizr[r[0]] = new Boolean(Modernizr[r[0]])), Modernizr[r[0]][r[1]] = s), f.push((s ? "" : "no-") + r.join("-"));
+	        }
+	      }
+	    }
+	  }function a(e) {
+	    var n = u.className,
+	        t = Modernizr._config.classPrefix || "";if (p && (n = n.baseVal), Modernizr._config.enableJSClass) {
+	      var o = new RegExp("(^|\\s)" + t + "no-js(\\s|$)");n = n.replace(o, "$1" + t + "js$2");
+	    }Modernizr._config.enableClasses && (n += " " + t + e.join(" " + t), p ? u.className.baseVal = n : u.className = n);
+	  }function i() {
+	    return "function" != typeof n.createElement ? n.createElement(arguments[0]) : p ? n.createElementNS.call(n, "http://www.w3.org/2000/svg", arguments[0]) : n.createElement.apply(n, arguments);
+	  }function r() {
+	    var e = n.body;return e || (e = i(p ? "svg" : "body"), e.fake = !0), e;
+	  }function l(e, t, o, s) {
+	    var a,
+	        l,
+	        f,
+	        c,
+	        d = "modernizr",
+	        p = i("div"),
+	        h = r();if (parseInt(o, 10)) for (; o--;) {
+	      f = i("div"), f.id = s ? s[o] : d + (o + 1), p.appendChild(f);
+	    }return a = i("style"), a.type = "text/css", a.id = "s" + d, (h.fake ? h : p).appendChild(a), h.appendChild(p), a.styleSheet ? a.styleSheet.cssText = e : a.appendChild(n.createTextNode(e)), p.id = d, h.fake && (h.style.background = "", h.style.overflow = "hidden", c = u.style.overflow, u.style.overflow = "hidden", u.appendChild(h)), l = t(p, e), h.fake ? (h.parentNode.removeChild(h), u.style.overflow = c, u.offsetHeight) : p.parentNode.removeChild(p), !!l;
+	  }var f = [],
+	      c = [],
+	      d = { _version: "3.3.1", _config: { classPrefix: "", enableClasses: !0, enableJSClass: !0, usePrefixes: !0 }, _q: [], on: function on(e, n) {
+	      var t = this;setTimeout(function () {
+	        n(t[e]);
+	      }, 0);
+	    }, addTest: function addTest(e, n, t) {
+	      c.push({ name: e, fn: n, options: t });
+	    }, addAsyncTest: function addAsyncTest(e) {
+	      c.push({ name: null, fn: e });
+	    } },
+	      Modernizr = function Modernizr() {};Modernizr.prototype = d, Modernizr = new Modernizr();var u = n.documentElement,
+	      p = "svg" === u.nodeName.toLowerCase(),
+	      h = d._config.usePrefixes ? " -webkit- -moz- -o- -ms- ".split(" ") : ["", ""];d._prefixes = h;var m = d.testStyles = l;Modernizr.addTest("touchevents", function () {
+	    var t;if ("ontouchstart" in e || e.DocumentTouch && n instanceof DocumentTouch) t = !0;else {
+	      var o = ["@media (", h.join("touch-enabled),("), "heartz", ")", "{#modernizr{top:9px;position:absolute}}"].join("");m(o, function (e) {
+	        t = 9 === e.offsetTop;
+	      });
+	    }return t;
+	  }), s(), a(f), delete d.addTest, delete d.addAsyncTest;for (var v = 0; v < Modernizr._q.length; v++) {
+	    Modernizr._q[v]();
+	  }e.Modernizr = Modernizr;
+	}(window, document);
 
 /***/ },
 /* 3 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+
+	var _jquery = __webpack_require__(4);
+
+	var _jquery2 = _interopRequireDefault(_jquery);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var Menu = {
+		headerClass: "nav-mobile",
+
+		init: function init() {
+			var _this = this;
+
+			(0, _jquery2.default)("body").on("click", ".nav-mobile-menu-trigger", function (e) {
+				e.preventDefault();
+				_this.toggleMenu();
+			});
+		},
+		toggleMenu: function toggleMenu() {
+			(0, _jquery2.default)("." + this.headerClass).toggleClass(this.headerClass + "--has-menu");
+		}
+	};
+
+	exports.default = Menu;
+
+/***/ },
+/* 4 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -10761,71 +10853,88 @@
 
 
 /***/ },
-/* 4 */
+/* 5 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var $, LazyImages, throttle;
+	"use strict";
 
-	$ = __webpack_require__(3);
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
 
-	throttle = __webpack_require__(5);
+	var _jquery = __webpack_require__(4);
 
-	$.expr[':'].onScreen = (function(_this) {
-	  return function(elem) {
-	    var $window, bottom, bottomIsVisible, buffer, isBiggerThanScreen, rect, top, topIsVisible, windowBottom, windowTop;
-	    $window = $(window);
-	    if (!LazyImages.windowHeight) {
-	      LazyImages.windowHeight = $window.height();
-	    }
-	    buffer = LazyImages.buffer || 0;
-	    windowTop = $window.scrollTop();
-	    windowBottom = windowTop + LazyImages.windowHeight;
-	    rect = elem.getBoundingClientRect();
-	    top = rect.top + windowTop;
-	    bottom = rect.bottom + windowTop;
-	    topIsVisible = top >= (windowTop - buffer) && top < (windowBottom + buffer);
-	    bottomIsVisible = bottom > (windowTop - buffer) && bottom <= (windowBottom + buffer);
-	    isBiggerThanScreen = (rect.height !== null) && rect.height > LazyImages.windowHeight && top <= (windowTop - buffer) && bottom >= (windowBottom + buffer);
-	    return topIsVisible || bottomIsVisible || isBiggerThanScreen;
-	  };
-	})(this);
+	var _jquery2 = _interopRequireDefault(_jquery);
 
-	LazyImages = {
-	  buffer: 200,
-	  search: function() {
-	    var lazyScroll;
-	    this.checkScroll();
-	    lazyScroll = throttle(this.checkScroll.bind(this), 300);
-	    return $(document).on("scroll", (function(_this) {
-	      return function() {
-	        return lazyScroll();
-	      };
-	    })(this));
-	  },
-	  checkScroll: function() {
-	    return $("[data-lazy-image]:onScreen").each(function() {
-	      return LazyImages.loadImage($(this));
-	    });
-	  },
-	  loadImage: function(el) {
-	    var alt, img, src;
-	    src = el.attr("data-lazy-image");
-	    alt = el.attr("data-lazy-image-alt");
-	    img = new Image();
-	    return $(img).load((function(_this) {
-	      return function() {
-	        el.append(img);
-	        return el.removeAttr("data-lazy-image");
-	      };
-	    })(this)).attr("src", src).attr("alt", alt);
-	  }
+	var _throttle = __webpack_require__(6);
+
+	var _throttle2 = _interopRequireDefault(_throttle);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	/* global window, document, Image */
+
+	var LazyImages = {
+		buffer: 200,
+
+		search: function search() {
+			// load images onscreen at init
+			this.checkScroll();
+
+			// load additional images on scroll
+			var lazyScroll = (0, _throttle2.default)(this.checkScroll.bind(this), 300);
+
+			(0, _jquery2.default)(document).on("scroll", function () {
+				lazyScroll();
+			});
+		},
+		checkScroll: function checkScroll() {
+			(0, _jquery2.default)("[data-lazy-image]:onScreen").each(function onScreen() {
+				LazyImages.loadImage((0, _jquery2.default)(this));
+			});
+		},
+		loadImage: function loadImage(el) {
+			var src = el.attr("data-lazy-image");
+			var alt = el.attr("data-lazy-image-alt");
+			var img = new Image();
+
+			(0, _jquery2.default)(img).load(function () {
+				el.append(img);
+
+				// remove the data attribute to keep it from loading again
+				el.removeAttr("data-lazy-image");
+			}).attr("src", src).attr("alt", alt);
+		}
 	};
 
-	module.exports = LazyImages;
+	// add an onScreen selector to jQuery
+	_jquery2.default.expr[":"].onScreen = function (elem) {
+		var $window = (0, _jquery2.default)(window);
 
+		if (!LazyImages.windowHeight) {
+			LazyImages.windowHeight = $window.height();
+		}
+
+		var buffer = LazyImages.buffer || 0;
+		var windowTop = $window.scrollTop();
+		var windowBottom = windowTop + LazyImages.windowHeight;
+		var rect = elem.getBoundingClientRect();
+		var top = rect.top + windowTop;
+		var bottom = rect.bottom + windowTop;
+
+		var topIsVisible = top >= windowTop - buffer && top < windowBottom + buffer;
+
+		var bottomIsVisible = bottom > windowTop - buffer && bottom <= windowBottom + buffer;
+
+		var isBiggerThanScreen = rect.height != null && rect.height > LazyImages.windowHeight && top <= windowTop - buffer && bottom >= windowBottom + buffer;
+
+		return topIsVisible || bottomIsVisible || isBiggerThanScreen;
+	};
+
+	exports.default = LazyImages;
 
 /***/ },
-/* 5 */
+/* 6 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -10888,43 +10997,54 @@
 	module.exports = _.throttle;
 
 /***/ },
-/* 6 */
+/* 7 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var $;
+	"use strict";
 
-	$ = __webpack_require__(3);
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
 
-	module.exports = {
-	  init: function() {
-	    var audiojs;
-	    audiojs = __webpack_require__(7)("audiojs", "audiojsInstance", this);
-	    audiojs = this.audiojs;
-	    return audiojs.events.ready((function(_this) {
-	      return function() {
-	        var audioElements;
-	        audioElements = audiojs.createAll({
-	          css: false
-	        });
-	        return $("body").on("click", ".audiojs .play-pause", function() {
-	          var thisIndex;
-	          thisIndex = $(this).parents(".audiojs").index(".audiojs");
-	          return $.each(audioElements, (function(_this) {
-	            return function(index, val) {
-	              if (index !== thisIndex && audioElements[index].playing) {
-	                return audioElements[index].pause();
-	              }
-	            };
-	          })(this));
-	        });
-	      };
-	    })(this));
-	  }
+	var _jquery = __webpack_require__(4);
+
+	var _jquery2 = _interopRequireDefault(_jquery);
+
+	var _audio = __webpack_require__(8);
+
+	var _audio2 = _interopRequireDefault(_audio);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var Audio = {
+		init: function init() {
+			var audioInstance = (0, _audio2.default)("audiojs", "audiojsInstance", this);
+			audioInstance = this.audiojs;
+
+			audioInstance.events.ready(function () {
+				var audioElements = audioInstance.createAll({ css: false });
+
+				// pause all other players on click of a play button
+				(0, _jquery2.default)("body").on("click", ".audiojs .play-pause", function onClick() {
+					var thisIndex = (0, _jquery2.default)(this).parents(".audiojs").index(".audiojs");
+					var i = 0;
+
+					audioElements.forEach(function () {
+						if (i !== thisIndex && audioElements[i].playing) {
+							audioElements[i].pause();
+						}
+
+						i += 1;
+					});
+				});
+			});
+		}
 	};
 
+	exports.default = Audio;
 
 /***/ },
-/* 7 */
+/* 8 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -11696,24 +11816,31 @@
 	// mgchange ^ don't make this a self-executing function; we'll do that upon import
 
 /***/ },
-/* 8 */
+/* 9 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var $, fitvids;
+	"use strict";
 
-	$ = __webpack_require__(3);
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
 
-	fitvids = __webpack_require__(9);
+	var _fitvids = __webpack_require__(10);
 
-	module.exports = {
-	  init: function() {
-	    return fitvids();
-	  }
+	var _fitvids2 = _interopRequireDefault(_fitvids);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var Video = {
+		init: function init() {
+			(0, _fitvids2.default)();
+		}
 	};
 
+	exports.default = Video;
 
 /***/ },
-/* 9 */
+/* 10 */
 /***/ function(module, exports) {
 
 	
@@ -11805,72 +11932,6 @@
 		return Object.prototype.toString.call(input) === '[object Object]'
 	}
 
-
-/***/ },
-/* 10 */
-/***/ function(module, exports) {
-
-	"use strict";
-
-	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
-
-	/*! modernizr 3.3.1 (Custom Build) | MIT *
-	 * http://modernizr.com/download/?-touchevents-setclasses !*/
-	!function (e, n, t) {
-	  function o(e, n) {
-	    return (typeof e === "undefined" ? "undefined" : _typeof(e)) === n;
-	  }function s() {
-	    var e, n, t, s, a, i, r;for (var l in c) {
-	      if (c.hasOwnProperty(l)) {
-	        if (e = [], n = c[l], n.name && (e.push(n.name.toLowerCase()), n.options && n.options.aliases && n.options.aliases.length)) for (t = 0; t < n.options.aliases.length; t++) {
-	          e.push(n.options.aliases[t].toLowerCase());
-	        }for (s = o(n.fn, "function") ? n.fn() : n.fn, a = 0; a < e.length; a++) {
-	          i = e[a], r = i.split("."), 1 === r.length ? Modernizr[r[0]] = s : (!Modernizr[r[0]] || Modernizr[r[0]] instanceof Boolean || (Modernizr[r[0]] = new Boolean(Modernizr[r[0]])), Modernizr[r[0]][r[1]] = s), f.push((s ? "" : "no-") + r.join("-"));
-	        }
-	      }
-	    }
-	  }function a(e) {
-	    var n = u.className,
-	        t = Modernizr._config.classPrefix || "";if (p && (n = n.baseVal), Modernizr._config.enableJSClass) {
-	      var o = new RegExp("(^|\\s)" + t + "no-js(\\s|$)");n = n.replace(o, "$1" + t + "js$2");
-	    }Modernizr._config.enableClasses && (n += " " + t + e.join(" " + t), p ? u.className.baseVal = n : u.className = n);
-	  }function i() {
-	    return "function" != typeof n.createElement ? n.createElement(arguments[0]) : p ? n.createElementNS.call(n, "http://www.w3.org/2000/svg", arguments[0]) : n.createElement.apply(n, arguments);
-	  }function r() {
-	    var e = n.body;return e || (e = i(p ? "svg" : "body"), e.fake = !0), e;
-	  }function l(e, t, o, s) {
-	    var a,
-	        l,
-	        f,
-	        c,
-	        d = "modernizr",
-	        p = i("div"),
-	        h = r();if (parseInt(o, 10)) for (; o--;) {
-	      f = i("div"), f.id = s ? s[o] : d + (o + 1), p.appendChild(f);
-	    }return a = i("style"), a.type = "text/css", a.id = "s" + d, (h.fake ? h : p).appendChild(a), h.appendChild(p), a.styleSheet ? a.styleSheet.cssText = e : a.appendChild(n.createTextNode(e)), p.id = d, h.fake && (h.style.background = "", h.style.overflow = "hidden", c = u.style.overflow, u.style.overflow = "hidden", u.appendChild(h)), l = t(p, e), h.fake ? (h.parentNode.removeChild(h), u.style.overflow = c, u.offsetHeight) : p.parentNode.removeChild(p), !!l;
-	  }var f = [],
-	      c = [],
-	      d = { _version: "3.3.1", _config: { classPrefix: "", enableClasses: !0, enableJSClass: !0, usePrefixes: !0 }, _q: [], on: function on(e, n) {
-	      var t = this;setTimeout(function () {
-	        n(t[e]);
-	      }, 0);
-	    }, addTest: function addTest(e, n, t) {
-	      c.push({ name: e, fn: n, options: t });
-	    }, addAsyncTest: function addAsyncTest(e) {
-	      c.push({ name: null, fn: e });
-	    } },
-	      Modernizr = function Modernizr() {};Modernizr.prototype = d, Modernizr = new Modernizr();var u = n.documentElement,
-	      p = "svg" === u.nodeName.toLowerCase(),
-	      h = d._config.usePrefixes ? " -webkit- -moz- -o- -ms- ".split(" ") : ["", ""];d._prefixes = h;var m = d.testStyles = l;Modernizr.addTest("touchevents", function () {
-	    var t;if ("ontouchstart" in e || e.DocumentTouch && n instanceof DocumentTouch) t = !0;else {
-	      var o = ["@media (", h.join("touch-enabled),("), "heartz", ")", "{#modernizr{top:9px;position:absolute}}"].join("");m(o, function (e) {
-	        t = 9 === e.offsetTop;
-	      });
-	    }return t;
-	  }), s(), a(f), delete d.addTest, delete d.addAsyncTest;for (var v = 0; v < Modernizr._q.length; v++) {
-	    Modernizr._q[v]();
-	  }e.Modernizr = Modernizr;
-	}(window, document);
 
 /***/ }
 /******/ ]);
