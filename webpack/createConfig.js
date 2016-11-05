@@ -10,8 +10,8 @@ function createConfig(params) {
 	// --------------------------------------------------------------------------
 
   const entries = {
-		photoblog: "./michael_dot_com/portfolio/static/js/photoblog/Photoblog.jsx",
-		app: "./michael_dot_com/portfolio/static/js/app.js",
+		photoblog: "./portfolio/portfolio/static/js/photoblog/Photoblog.jsx",
+		app: "./portfolio/portfolio/static/js/app.js",
 	};
 
 	const output = {
@@ -55,7 +55,7 @@ function createConfig(params) {
 				loader: ExtractTextPlugin.extract("css!sass")
 			}, {
 				test: /.(png|woff(2)?|eot|ttf|svg)(\?[a-z0-9=\.]+)?$/,
-				loader: "file?name=../../../static/fonts/[name].[ext]"
+				loader: "ignore-loader"
 			}
 		]
   };

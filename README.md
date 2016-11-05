@@ -49,7 +49,7 @@ STATIC_VERSIONS = {
 ## Static files
 
 CSS is written using SASS, JS is in es6 and a smattering of react, and both are
-managed with webpack Assuming you already have node and npm installed, to
+managed with webpack. Assuming you already have node and npm installed, to
 install all of the packages required to compile these files, run:
 
 	npm install
