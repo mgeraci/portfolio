@@ -11,7 +11,7 @@ Assuming that you have python, virtualenv, and node/npm:
 * mkvirtualenv portfolio
 * pip install -r requirements.txt
 * create a local database
-* add the file michael_dot_com/michael_dot_com/localsettings.py — see contents below
+* add the file portfolio/michael_dot_com/localsettings.py — see contents below
 * michael_dot_com/manage.py migrate
 * michael_dot_com/manage.py createsuperuser — you can use this to log in at localhost:8000/admin
 * michael_dot_com/manage.py runserver

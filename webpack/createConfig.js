@@ -9,15 +9,21 @@ function createConfig(params) {
 	// settings common to both `watch` and `build`
 	// --------------------------------------------------------------------------
 
-  const entries = {
+  const entry = {
 		photoblog: "./portfolio/portfolio/static/js/photoblog/Photoblog.jsx",
 		app: "./portfolio/portfolio/static/js/app.js",
 	};
 
 	const output = {
-    path: "./michael_dot_com/portfolio/static/js/build/",
+    path: "./portfolio/portfolio/static/js/build/",
     filename: "[name]" + min + ".js"
   };
+
+	if (isProduction) {
+		output.publicPath = "http://static.michaelgeraci.com/";
+	} else {
+		output.publicPath = "http://localhost:8000/static/";
+	}
 
   const resolve = {
     extensions: ["", ".webpack.js", ".web.js", ".js", ".jsx", ".scss", ".sass"]
@@ -28,7 +34,7 @@ function createConfig(params) {
 		emitWarning: true,
 	};
 
-  modules = {
+  const module = {
 		preLoaders: [
 			{
 				test: /\.jsx?$/,
@@ -52,7 +58,7 @@ function createConfig(params) {
 			}, {
 				test: /\.sass$/,
 				exclude: [/node_modules/],
-				loader: ExtractTextPlugin.extract("css!sass")
+				loader: ExtractTextPlugin.extract("css!sass!@epegzz/sass-vars-loader")
 			}, {
 				test: /.(png|woff(2)?|eot|ttf|svg)(\?[a-z0-9=\.]+)?$/,
 				loader: "ignore-loader"
@@ -87,12 +93,12 @@ function createConfig(params) {
 
 	return {
 		debug: !isProduction,
-		entry: entries,
-		output: output,
-		resolve: resolve,
-		eslint: eslint,
-		module: modules,
-		plugins: plugins,
+		entry,
+		output,
+		resolve,
+		eslint,
+		module,
+		plugins,
 	};
 }
 
