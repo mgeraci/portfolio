@@ -108,11 +108,18 @@ const ImageDetail = React.createClass({
 		const isMobile = this.state.windowWidth < PHOTOBLOG_MOBILE_BREAKPOINT;
 		let topSpace = MAIN_IMAGE_SPACE;
 		let sideSpace = MAIN_IMAGE_SPACE;
+		let src = image.image2000;
 		const bottomSpace = MAIN_IMAGE_SPACE;
 
 		if (isMobile) {
 			sideSpace = 5;
 			topSpace = MAIN_IMAGE_SPACE * 1.5;
+			src = image.image700;
+		}
+
+		// don't load any image if we don't have a window size
+		if (!this.state.windowWidth) {
+			src = null;
 		}
 
 		const prevClass = {
@@ -155,14 +162,16 @@ const ImageDetail = React.createClass({
 
 				<div className="page-photography-main-space" style={spaceStyle}>
 					<div className="page-photography-main-content" style={contentStyle}>
-						<MainImage
-							src={image.image2000}
-							alt={image.title}
-							maxWidth={spaceDimensions.width}
-							maxHeight={spaceDimensions.height}
-							loaded={this.state.isLoaded}
-							onLoad={this._onLoad}
-						/>
+						{src &&
+							<MainImage
+								src={src}
+								alt={image.title}
+								maxWidth={spaceDimensions.width}
+								maxHeight={spaceDimensions.height}
+								loaded={this.state.isLoaded}
+								onLoad={this._onLoad}
+							/>
+						}
 
 						{!this.state.isLoaded &&
 							<div className="loader" />

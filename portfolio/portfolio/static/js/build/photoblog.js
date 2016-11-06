@@ -25555,11 +25555,18 @@
 			var isMobile = this.state.windowWidth < _constants.PHOTOBLOG_MOBILE_BREAKPOINT;
 			var topSpace = _constants.MAIN_IMAGE_SPACE;
 			var sideSpace = _constants.MAIN_IMAGE_SPACE;
+			var src = image.image2000;
 			var bottomSpace = _constants.MAIN_IMAGE_SPACE;
 
 			if (isMobile) {
 				sideSpace = 5;
 				topSpace = _constants.MAIN_IMAGE_SPACE * 1.5;
+				src = image.image700;
+			}
+
+			// don't load any image if we don't have a window size
+			if (!this.state.windowWidth) {
+				src = null;
 			}
 
 			var prevClass = {
@@ -25606,8 +25613,8 @@
 					_react2.default.createElement(
 						"div",
 						{ className: "page-photography-main-content", style: contentStyle },
-						_react2.default.createElement(_MainImage2.default, {
-							src: image.image2000,
+						src && _react2.default.createElement(_MainImage2.default, {
+							src: src,
 							alt: image.title,
 							maxWidth: spaceDimensions.width,
 							maxHeight: spaceDimensions.height,
