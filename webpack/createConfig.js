@@ -36,6 +36,7 @@ function createConfig(params) {
 
 	const module = {
 		preLoaders: [
+			// eslint
 			{
 				test: /\.jsx?$/,
 				loader: "eslint-loader",
@@ -44,22 +45,36 @@ function createConfig(params) {
 					/throttle\.js/,
 					/vendor/,
 				],
+			},
+
+			// pass the public path to a sass variable
+			{
+				test: /\.sass?$/,
+				loader: "webpack-append",
+				query: `$STATIC_ROOT: '${output.publicPath}';`
 			}
 		],
 
 		loaders: [
+			// react
 			{
 				test: /\.jsx?$/,
 				exclude: [/node_modules/],
 				loader: "babel-loader",
 				query: {
-					presets: ['es2015', 'react', 'stage-2']
+					presets: ["es2015", "react", "stage-2"]
 				}
-			}, {
+			},
+
+			// sass, pull into standalone file
+			{
 				test: /\.sass$/,
 				exclude: [/node_modules/],
 				loader: ExtractTextPlugin.extract("css!sass")
-			}, {
+			},
+
+			// ignore fonts
+			{
 				test: /.(png|woff(2)?|eot|ttf|svg)(\?[a-z0-9=\.]+)?$/,
 				loader: "ignore-loader"
 			}
