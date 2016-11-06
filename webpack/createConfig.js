@@ -9,15 +9,15 @@ function createConfig(params) {
 	// settings common to both `watch` and `build`
 	// --------------------------------------------------------------------------
 
-  const entry = {
+	const entry = {
 		photoblog: "./portfolio/portfolio/static/js/photoblog/Photoblog.jsx",
 		app: "./portfolio/portfolio/static/js/app.js",
 	};
 
 	const output = {
-    path: "./portfolio/portfolio/static/js/build/",
-    filename: "[name]" + min + ".js"
-  };
+		path: "./portfolio/portfolio/static/js/build/",
+		filename: `[name]${min}.js`
+	};
 
 	if (isProduction) {
 		output.publicPath = "http://static.michaelgeraci.com/";
@@ -25,16 +25,16 @@ function createConfig(params) {
 		output.publicPath = "http://localhost:8000/static/";
 	}
 
-  const resolve = {
-    extensions: ["", ".webpack.js", ".web.js", ".js", ".jsx", ".scss", ".sass"]
-  };
+	const resolve = {
+		extensions: ["", ".webpack.js", ".web.js", ".js", ".jsx", ".scss", ".sass"]
+	};
 
 	const eslint = {
 		emitError: true,
 		emitWarning: true,
 	};
 
-  const module = {
+	const module = {
 		preLoaders: [
 			{
 				test: /\.jsx?$/,
@@ -47,7 +47,7 @@ function createConfig(params) {
 			}
 		],
 
-    loaders: [
+		loaders: [
 			{
 				test: /\.jsx?$/,
 				exclude: [/node_modules/],
@@ -58,20 +58,20 @@ function createConfig(params) {
 			}, {
 				test: /\.sass$/,
 				exclude: [/node_modules/],
-				loader: ExtractTextPlugin.extract("css!sass!@epegzz/sass-vars-loader")
+				loader: ExtractTextPlugin.extract("css!sass")
 			}, {
 				test: /.(png|woff(2)?|eot|ttf|svg)(\?[a-z0-9=\.]+)?$/,
 				loader: "ignore-loader"
 			}
 		]
-  };
+	};
 
 	plugins = [
-		new ExtractTextPlugin("../../css/build/styles" + min + ".css", {
+		new ExtractTextPlugin(`../../css/build/styles${min}.css`, {
 			allChunks: true
 		}),
-    new WebpackNotifierPlugin(),
-  ];
+		new WebpackNotifierPlugin(),
+	];
 
 
 	// production options
