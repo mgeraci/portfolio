@@ -6,7 +6,7 @@
 
 {% block content %}
 
-{% if graphic %}
+{% if not graphic_landing_page %}
 	{% url 'graphic_url' as graphic_url %}
 	<a class="submenu-mobile" href="{{ graphic_url }}">
 		&laquo; Back to graphic design

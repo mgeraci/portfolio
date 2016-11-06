@@ -134,28 +134,31 @@ def graphic_title(graphic):
     }
 
 
-def graphic(request):
-    graphics = Graphic.objects.all()
-    context = {
-        'graphics': graphics
-    }
-
-    return render(request, 'pages/graphic.html', context)
-
-
 def graphic_item(request, slug):
     graphics = Graphic.objects.all()
-    graphic = get_object_or_404(Graphic, slug=slug)
+
+    if slug:
+        graphic = get_object_or_404(Graphic, slug=slug)
+        graphic_landing_page = False
+    else:
+        graphic = graphics[0]
+        graphic_landing_page = graphic.slug
+
     graphic_images = GraphicImage.objects.filter(graphic=graphic)
 
     context = {
         'graphics': graphics,
         'graphic': graphic,
+        'graphic_landing_page': graphic_landing_page,
         'images': graphic_images,
         'title_bundle': graphic_title(graphic),
     }
 
     return render(request, 'pages/graphic.html', context)
+
+
+def graphic(request):
+    return graphic_item(request, False)
 
 
 def composition(request):
