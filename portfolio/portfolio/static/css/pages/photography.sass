@@ -1,6 +1,12 @@
 $thumbnail-size: 75px
 
 .page-photography
+  // special sizing for mobile
+  .content
+    @media (max-width: 700px)
+      width: 94%
+      margin-left: 3%
+
   &-meta,
   &-thumbnails,
   &-tagslist
@@ -12,169 +18,6 @@ $thumbnail-size: 75px
 
     @media (max-width: $thumbnail-size * 8 + 40)
       width: 100%
-
-  &-meta
-    &-title
-      display: block
-      width: 100%
-      margin-bottom: 20px
-
-      &-clear
-        @include bare-button
-        margin-left: 20px
-        cursor: pointer
-        font-size: 16px
-        @include link($text, $cream)
-        height: 0
-
-  &-navigation
-    font-size: 17px
-    margin-bottom: 40px
-
-    &-item-wrapper
-      display: inline-block
-      margin: 0 3px
-
-  &-thumbnail
-    @include no-link
-    display: inline-block
-    width: $thumbnail-size
-    height: $thumbnail-size
-    background: rgba(0, 0, 0, 0.05)
-    @include transition(opacity 200ms linear)
-    opacity: 1
-
-    &:hover
-      opacity: 0.5
-
-    &-image
-      width: 100%
-      height: 100%
-
-  &-main
-    position: fixed
-    top: 0
-    left: 0
-    width: 100%
-    height: 100%
-    background: rgba(black, 0.8)
-    color: #999;
-    font-family: Helvetica Neue, Helvetica, Arial, sans-serif
-
-    &-space
-      position: absolute
-
-    &-content
-      position: absolute
-      float: left
-      top: 50%
-      left: 50%
-      @include transform(translate(-50%, -50%))
-
-      img
-        border-radius: 2px
-
-    &-meta
-      margin-top: 5px
-      @include type(17px, 24px)
-      letter-spacing: 0.3px
-
-    &-title
-      font-weight: normal
-
-    &-year
-      font-style: oblique
-
-    &-tags
-      margin-top: 10px
-      color: $text
-
-    // a is required for specificity
-    a.page-photography-main-tag
-      display: inline-block
-      @include link($text, lighten($text, 20%))
-      padding-bottom: 2px
-
-    &-nav,
-    &-close
-      @include bare-button
-      position: absolute
-      overflow: hidden
-      display: block
-      width: 50px
-      height: 50px
-
-      &:not([disabled])
-        cursor: pointer
-
-      &[disabled]
-        opacity: 0.1
-
-      &-text
-        position: absolute
-        top: 100px
-
-      &:before,
-      &:after
-        content: ""
-        position: absolute
-        top: 50%
-        width: 10%
-        height: 58%
-        background: #777
-        @include transition(background 100ms linear)
-
-      &:not([disabled]):hover:before,
-      &:not([disabled]):hover:after,
-        background: #fff
-
-    &-nav
-      top: 50%
-      @include transform(translateY(-50%))
-
-      &:before,
-      &:after
-        top: 45%
-        height: 30%
-
-      &--prev
-        left: 10px
-
-        &:before
-          @include transform(translate(-1px, -60%) rotate(40deg))
-
-        &:after
-          @include transform(rotate(-40deg))
-
-      &--next
-        right: 10px
-
-        &:before
-          @include transform(translate(1px, -60%) rotate(-40deg))
-
-        &:after
-          @include transform(rotate(40deg))
-
-      &--hidden
-        display: none
-
-    &-close
-      top: 20px
-      right: 20px
-
-      &:before,
-      &:after
-        left: 50%
-
-      &:before
-        @include transform(translate(-50%, -50%) rotate(45deg))
-
-      &:after
-        @include transform(translate(-50%, -50%) rotate(-45deg))
-
-      &--mobile
-        top: 0
-        right: 0
 
   &-tagslist
     line-height: 24px
@@ -214,3 +57,12 @@ $thumbnail-size: 75px
 .image-detail-appear.image-detail-appear-active
   opacity: 1
   @include transition(opacity 200ms ease-in)
+
+
+// subfiles
+// ----------------------------------------------------------------------------
+
+@import "./photography/meta"
+@import "./photography/navigation"
+@import "./photography/thumbnail"
+@import "./photography/main"

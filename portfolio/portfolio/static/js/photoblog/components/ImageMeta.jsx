@@ -39,7 +39,7 @@ const ImageMeta = React.createClass({
 		return (
 			<div
 					ref={(meta) => { this.meta = meta; }}
-					className="page-photography-main-meta">
+					className="page-photography-main-text">
 				<h3 className="page-photography-main-title">
 					{this.props.title}
 				</h3>

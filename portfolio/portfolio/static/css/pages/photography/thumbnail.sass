@@ -1,0 +1,15 @@
+.page-photography-thumbnail
+  @include no-link
+  display: inline-block
+  width: $thumbnail-size
+  height: $thumbnail-size
+  background: rgba(0, 0, 0, 0.05)
+  @include transition(opacity 200ms linear)
+  opacity: 1
+
+  &:hover
+    opacity: 0.5
+
+  &-image
+    width: 100%
+    height: 100%

@@ -25965,7 +25965,7 @@
 					ref: function ref(meta) {
 						_this.meta = meta;
 					},
-					className: "page-photography-main-meta" },
+					className: "page-photography-main-text" },
 				_react2.default.createElement(
 					"h3",
 					{ className: "page-photography-main-title" },

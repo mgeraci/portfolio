@@ -92,13 +92,17 @@ em
   to
     @include transform(rotate(360deg))
 
+
+$loader-size: 34px
+
 .loader
   position: absolute
   top: 50%
   left: 50%
-  @include transform(translate(-50%, -50%));
-  width: 35px
-  height: 35px
+  width: $loader-size
+  height: $loader-size
+  margin-top: $loader-size * -0.5
+  margin-left: $loader-size * -0.5
   border: 6px solid $text
   border-bottom-color: $green
   border-radius: 50%
