@@ -166,6 +166,12 @@ const Swipeable = React.createClass({
 	},
 
 	_dispatchEvent(func) {
+		if (this.isDispatching) {
+			return;
+		}
+
+		this.isDispatching = true;
+
 		setTimeout(() => {
 			func();
 		}, 250);

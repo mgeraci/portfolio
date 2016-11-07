@@ -36160,6 +36160,12 @@
 			return style;
 		},
 		_dispatchEvent: function _dispatchEvent(func) {
+			if (this.isDispatching) {
+				return;
+			}
+
+			this.isDispatching = true;
+
 			setTimeout(function () {
 				func();
 			}, 250);
