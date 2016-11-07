@@ -1,6 +1,7 @@
 /* global window, document */
 
 import React, { PropTypes } from "react";
+import jQuery from "jquery";
 import { connect } from "react-redux";
 import ReactCSSTransitionGroup from "react-addons-css-transition-group";
 import throttle from "throttle-debounce/throttle";
@@ -21,6 +22,7 @@ import {
 
 import MainImage from "./MainImage";
 import ImageMeta from "./ImageMeta";
+import Swipeable from "./Swipeable";
 
 
 const initialState = {
@@ -49,6 +51,7 @@ const ImageDetail = React.createClass({
 
 		document.addEventListener("keyup", this._handleKeyup);
 		window.addEventListener("resize", this._throttledHandleResize);
+		jQuery("body").addClass("no-scroll");
 
 		// trigger an initial resize event
 		this._handleResize();
@@ -63,6 +66,7 @@ const ImageDetail = React.createClass({
 	componentWillUnmount() {
 		document.removeEventListener("keyup", this._handleKeyup);
 		window.removeEventListener("resize", this._throttledHandleResize);
+		jQuery("body").removeClass("no-scroll");
 	},
 
 	_handleKeyup(e) {
@@ -159,43 +163,50 @@ const ImageDetail = React.createClass({
 
 		return (
 			<div className="page-photography-main" key={image.title}>
+				<Swipeable
+						canSwipeLeft={!this.props.atEnd}
+						canSwipeRight={!this.props.atBeginning}
+						onSwipeLeft={this.props.onNavigateNext}
+						onSwipeRight={this.props.onNavigatePrev}>
 
-				<div className="page-photography-main-space" style={spaceStyle}>
-					<div className="page-photography-main-content" style={contentStyle}>
-						{src &&
-							<MainImage
-								src={src}
-								alt={image.title}
-								maxWidth={spaceDimensions.width}
-								maxHeight={spaceDimensions.height}
-								loaded={this.state.isLoaded}
-								onLoad={this._onLoad}
-							/>
-						}
-
-						{!this.state.isLoaded &&
-							<div className="loader" />
-						}
-
-						<ReactCSSTransitionGroup
-								transitionName="main-image"
-								transitionAppear
-								transitionEnterTimeout={500}
-								transitionAppearTimeout={500}
-								transitionLeaveTimeout={5}>
-							{this.state.isLoaded &&
-								<ImageMeta
-									key={image.id}
-									title={image.title}
-									year={image.year}
-									tags={image.tags}
-									onRender={this._handleMetaRender}
-									filterTag={this.props.onFilterTag}
+					<div className="page-photography-main-space" style={spaceStyle}>
+						<div className="page-photography-main-content" style={contentStyle}>
+							{src &&
+								<MainImage
+									src={src}
+									alt={image.title}
+									maxWidth={spaceDimensions.width}
+									maxHeight={spaceDimensions.height}
+									loaded={this.state.isLoaded}
+									onLoad={this._onLoad}
 								/>
 							}
-						</ReactCSSTransitionGroup>
+
+							{!this.state.isLoaded &&
+								<div className="loader" />
+							}
+
+							<ReactCSSTransitionGroup
+									transitionName="main-image"
+									transitionAppear
+									transitionEnterTimeout={500}
+									transitionAppearTimeout={500}
+									transitionLeaveTimeout={5}>
+								{this.state.isLoaded &&
+									<ImageMeta
+										key={image.id}
+										title={image.title}
+										year={image.year}
+										tags={image.tags}
+										onRender={this._handleMetaRender}
+										filterTag={this.props.onFilterTag}
+									/>
+								}
+							</ReactCSSTransitionGroup>
+						</div>
 					</div>
-				</div>
+
+				</Swipeable>
 
 				<button
 						className={classnames(prevClass)}
@@ -219,10 +230,9 @@ const ImageDetail = React.createClass({
 						className={classnames(closeClass)}
 						onClick={this.props.onClearActiveImage}>
 					<span className="page-photography-main-close-text">
-						close
+						dclose
 					</span>
 				</button>
-
 			</div>
 		);
 	},

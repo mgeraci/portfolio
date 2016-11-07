@@ -56,6 +56,8 @@ body {
   font-family: body, Georgia, serif;
   font-size: 23px;
   line-height: 29px; }
+  body.no-scroll {
+    overflow: hidden; }
 
 section,
 .nav-desktop {
@@ -508,6 +510,20 @@ nav::after {
       -moz-transition: width 600ms linear;
       transition: width 600ms linear; }
 
+.swipeable {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  -webkit-transition: -webkit-transform 200ms ease;
+  -moz-transition: -moz-transform 200ms ease;
+  transition: transform 200ms ease; }
+  .swipeable--is-touching {
+    -webkit-transition-duration: 0ms;
+    -moz-transition-duration: 0ms;
+    transition-duration: 0ms; }
+
 .page-index {
   background: #b2cb8b; }
   .page-index nav,
@@ -772,7 +788,8 @@ nav::after {
 .page-photography-meta-title {
   display: block;
   width: 100%;
-  margin-bottom: 20px; }
+  margin-bottom: 10px;
+  line-height: 30px; }
   .page-photography-meta-title-clear {
     padding: 0;
     margin: 0;

@@ -39,6 +39,9 @@ body
   font-family: body, Georgia, serif
   @include type(23px, 29px)
 
+  &.no-scroll
+    overflow: hidden
+
 section,
 .nav-desktop
   display: block
@@ -120,6 +123,7 @@ $loader-size: 34px
 @import "menu"
 @import "submenu"
 @import "audio_player"
+@import "swipeable"
 
 // pages
 @import "pages/index"
