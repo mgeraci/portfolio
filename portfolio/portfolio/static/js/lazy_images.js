@@ -29,11 +29,11 @@ const LazyImages = {
 		const alt = el.attr("data-lazy-image-alt");
 		const img = new Image();
 
+		// remove the data attribute to keep it from loading again
+		el.removeAttr("data-lazy-image");
+
 		$(img).load(() => {
 			el.append(img);
-
-			// remove the data attribute to keep it from loading again
-			el.removeAttr("data-lazy-image");
 		}).attr("src", src).attr("alt", alt);
 	},
 };

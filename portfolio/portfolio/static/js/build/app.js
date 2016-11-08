@@ -10898,11 +10898,11 @@
 			var alt = el.attr("data-lazy-image-alt");
 			var img = new Image();
 
+			// remove the data attribute to keep it from loading again
+			el.removeAttr("data-lazy-image");
+
 			(0, _jquery2.default)(img).load(function () {
 				el.append(img);
-
-				// remove the data attribute to keep it from loading again
-				el.removeAttr("data-lazy-image");
 			}).attr("src", src).attr("alt", alt);
 		}
 	};

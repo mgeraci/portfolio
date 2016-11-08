@@ -74,7 +74,7 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	__webpack_require__(237);
+	__webpack_require__(238);
 
 	window.Photoblog = {
 		init: function init(data) {
@@ -33105,7 +33105,7 @@
 
 	var _ImageModal2 = _interopRequireDefault(_ImageModal);
 
-	var _TagsList = __webpack_require__(236);
+	var _TagsList = __webpack_require__(237);
 
 	var _TagsList2 = _interopRequireDefault(_TagsList);
 
@@ -35296,7 +35296,7 @@
 
 	var _ImageMeta2 = _interopRequireDefault(_ImageMeta);
 
-	var _Swipeable = __webpack_require__(240);
+	var _Swipeable = __webpack_require__(236);
 
 	var _Swipeable2 = _interopRequireDefault(_Swipeable);
 
@@ -35862,125 +35862,6 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _reactRedux = __webpack_require__(182);
-
-	var _reducer = __webpack_require__(221);
-
-	var _helpers = __webpack_require__(223);
-
-	var _Tag = __webpack_require__(230);
-
-	var _Tag2 = _interopRequireDefault(_Tag);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	var TagsList = _react2.default.createClass({
-		displayName: "TagsList",
-
-		propTypes: {
-			tags: _react.PropTypes.array,
-			onGenerateTagsList: _react.PropTypes.func.isRequired,
-			onFilterTag: _react.PropTypes.func.isRequired
-		},
-
-		componentDidMount: function componentDidMount() {
-			var _props = this.props,
-			    tags = _props.tags,
-			    onGenerateTagsList = _props.onGenerateTagsList;
-
-
-			if (typeof tags === "undefined" || tags === null || !tags.length) {
-				onGenerateTagsList();
-			}
-		},
-		render: function render() {
-			var _props2 = this.props,
-			    tags = _props2.tags,
-			    onFilterTag = _props2.onFilterTag;
-
-			var counts = [];
-
-			if (typeof tags === "undefined" || tags === null) {
-				return null;
-			}
-
-			tags.forEach(function (tag) {
-				counts.push(tag.count);
-			});
-
-			var min = 1;
-			var max = Math.max.apply(Math, counts);
-
-			return _react2.default.createElement(
-				"div",
-				{ className: "page-photography-tagslist" },
-				_react2.default.createElement(
-					"span",
-					null,
-					tags.map(function (tag) {
-						var size = (0, _helpers.scale)({
-							input: tag.count,
-							inMin: min,
-							inMax: max,
-							outMin: 14,
-							outMax: 45
-						});
-
-						return _react2.default.createElement(_Tag2.default, {
-							key: tag.slug,
-							name: tag.name,
-							slug: tag.slug,
-							size: size,
-							filterTag: onFilterTag,
-							className: "page-photography-tagslist-tag"
-						});
-					})
-				)
-			);
-		}
-	});
-
-	function mapStateToProps(state) {
-		return {
-			tags: state.tags
-		};
-	}
-
-	function mapDispatchToProps(dispatch) {
-		return {
-			onGenerateTagsList: function onGenerateTagsList() {
-				dispatch((0, _reducer.generateTagsList)());
-			},
-			onFilterTag: function onFilterTag(tag) {
-				dispatch((0, _reducer.filterTag)(tag));
-			}
-		};
-	}
-
-	exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(TagsList);
-
-/***/ },
-/* 237 */
-/***/ function(module, exports) {
-
-	// removed by extract-text-webpack-plugin
-
-/***/ },
-/* 238 */,
-/* 239 */,
-/* 240 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-
-	var _react = __webpack_require__(11);
-
-	var _react2 = _interopRequireDefault(_react);
-
 	var _classnames = __webpack_require__(233);
 
 	var _classnames2 = _interopRequireDefault(_classnames);
@@ -36191,6 +36072,123 @@
 	});
 
 	exports.default = Swipeable;
+
+/***/ },
+/* 237 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+
+	var _react = __webpack_require__(11);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactRedux = __webpack_require__(182);
+
+	var _reducer = __webpack_require__(221);
+
+	var _helpers = __webpack_require__(223);
+
+	var _Tag = __webpack_require__(230);
+
+	var _Tag2 = _interopRequireDefault(_Tag);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var TagsList = _react2.default.createClass({
+		displayName: "TagsList",
+
+		propTypes: {
+			tags: _react.PropTypes.array,
+			onGenerateTagsList: _react.PropTypes.func.isRequired,
+			onFilterTag: _react.PropTypes.func.isRequired
+		},
+
+		componentDidMount: function componentDidMount() {
+			var _props = this.props,
+			    tags = _props.tags,
+			    onGenerateTagsList = _props.onGenerateTagsList;
+
+
+			if (typeof tags === "undefined" || tags === null || !tags.length) {
+				onGenerateTagsList();
+			}
+		},
+		render: function render() {
+			var _props2 = this.props,
+			    tags = _props2.tags,
+			    onFilterTag = _props2.onFilterTag;
+
+			var counts = [];
+
+			if (typeof tags === "undefined" || tags === null) {
+				return null;
+			}
+
+			tags.forEach(function (tag) {
+				counts.push(tag.count);
+			});
+
+			var min = 1;
+			var max = Math.max.apply(Math, counts);
+
+			return _react2.default.createElement(
+				"div",
+				{ className: "page-photography-tagslist" },
+				_react2.default.createElement(
+					"span",
+					null,
+					tags.map(function (tag) {
+						var size = (0, _helpers.scale)({
+							input: tag.count,
+							inMin: min,
+							inMax: max,
+							outMin: 14,
+							outMax: 45
+						});
+
+						return _react2.default.createElement(_Tag2.default, {
+							key: tag.slug,
+							name: tag.name,
+							slug: tag.slug,
+							size: size,
+							filterTag: onFilterTag,
+							className: "page-photography-tagslist-tag"
+						});
+					})
+				)
+			);
+		}
+	});
+
+	function mapStateToProps(state) {
+		return {
+			tags: state.tags
+		};
+	}
+
+	function mapDispatchToProps(dispatch) {
+		return {
+			onGenerateTagsList: function onGenerateTagsList() {
+				dispatch((0, _reducer.generateTagsList)());
+			},
+			onFilterTag: function onFilterTag(tag) {
+				dispatch((0, _reducer.filterTag)(tag));
+			}
+		};
+	}
+
+	exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(TagsList);
+
+/***/ },
+/* 238 */
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
 
 /***/ }
 /******/ ]);
