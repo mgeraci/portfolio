@@ -35991,7 +35991,7 @@
 
 	var EDGE_BUFFER = 60;
 	var SPEED_BUFFER = 0.5;
-	var SWIPE_OFF_TIME_ADJUSTMENT = 2; // bigger == slower
+	var SWIPE_OFF_TIME_ADJUSTMENT = 2.2; // bigger == slower
 	var DIRECTIONS = {
 		left: "left",
 		right: "right"
@@ -36036,6 +36036,8 @@
 			});
 		},
 		_onTouchMove: function _onTouchMove(e) {
+			e.preventDefault();
+
 			this.setState({
 				current: e.touches[0].pageX
 			});

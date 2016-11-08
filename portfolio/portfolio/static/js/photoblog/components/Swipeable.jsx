@@ -5,7 +5,7 @@ import classnames from "classnames";
 
 const EDGE_BUFFER = 60;
 const SPEED_BUFFER = 0.5;
-const SWIPE_OFF_TIME_ADJUSTMENT = 2; // bigger == slower
+const SWIPE_OFF_TIME_ADJUSTMENT = 2.2; // bigger == slower
 const DIRECTIONS = {
 	left: "left",
 	right: "right",
@@ -52,6 +52,8 @@ const Swipeable = React.createClass({
 	},
 
 	_onTouchMove(e) {
+		e.preventDefault();
+
 		this.setState({
 			current: e.touches[0].pageX,
 		});
