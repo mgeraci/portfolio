@@ -6,7 +6,7 @@
   height: 100%
   background: rgba(black, 0.8)
   color: #999;
-  font-family: Helvetica Neue, Helvetica, Arial, sans-serif
+  @include helvetica
 
   &-space
     position: absolute
@@ -47,36 +47,11 @@
 
   &-nav,
   &-close
-    @include bare-button
-    position: absolute
-    overflow: hidden
-    display: block
-    width: 50px
-    height: 50px
-
-    &:not([disabled])
-      cursor: pointer
-
-    &[disabled]
-      opacity: 0.1
+    @include pseudo-icon
 
     &-text
       position: absolute
       top: 100px
-
-    &:before,
-    &:after
-      content: ""
-      position: absolute
-      top: 50%
-      width: 10%
-      height: 58%
-      background: #777
-      @include transition(background 100ms linear)
-
-    &:not([disabled]):hover:before,
-    &:not([disabled]):hover:after,
-      background: #fff
 
   &-nav
     top: 50%
@@ -109,18 +84,9 @@
       display: none
 
   &-close
+    @include close-icon
     top: 20px
     right: 20px
-
-    &:before,
-    &:after
-      left: 50%
-
-    &:before
-      @include transform(translate(-50%, -50%) rotate(45deg))
-
-    &:after
-      @include transform(translate(-50%, -50%) rotate(-45deg))
 
     &--mobile
       top: 0

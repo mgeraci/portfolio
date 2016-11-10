@@ -11,16 +11,25 @@
 			<a class="nav-mobile-title" href="/">
 				MPG
 			</a>
-			<button class="nav-mobile-menu-trigger">
+			<button class="nav-mobile-menu-open">
 				{{ active_page_name }}
-				<span class="nav-mobile-menu-trigger-icon"></span>
+				<span class="nav-mobile-menu-open-icon"></span>
 			</button>
 		</div>
-		<ul class="nav-mobile-menu">
-			{% for menu_item in menu %}
-				{% include "menu_item.html" with name=menu_item.name %}
-			{% endfor %}
-		</ul>
+
+		<div class="nav-mobile-menu">
+			<ul class="nav-mobile-menu-content">
+				{% for menu_item in menu %}
+					{% include "menu_item.html" with name=menu_item.name %}
+				{% endfor %}
+			</ul>
+			<button class="nav-mobile-menu-close">
+				<span class="nav-mobile-menu-close-icon"></span>
+				<span class="nav-mobile-menu-close-text">
+					close menu
+				</span>
+			</button>
+		</div>
 	</div>
 
 </nav>

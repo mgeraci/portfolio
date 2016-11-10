@@ -1,17 +1,28 @@
 import $ from "jquery";
 
 const Menu = {
-	headerClass: "nav-mobile",
+	menuClass: "nav-mobile-menu",
 
 	init() {
-		$("body").on("click", ".nav-mobile-menu-trigger", (e) => {
+		$("body").on("click", ".nav-mobile-menu-open", (e) => {
 			e.preventDefault();
-			this.toggleMenu();
+			this.openMenu();
+		});
+
+		$("body").on("click", ".nav-mobile-menu-close", (e) => {
+			e.preventDefault();
+			this.closeMenu();
 		});
 	},
 
-	toggleMenu() {
-		$(`.${this.headerClass}`).toggleClass(`${this.headerClass}--has-menu`);
+	openMenu() {
+		$(`.${this.menuClass}`).addClass(`${this.menuClass}--show`);
+		$("body").addClass("no-scroll");
+	},
+
+	closeMenu() {
+		$(`.${this.menuClass}`).removeClass(`${this.menuClass}--show`);
+		$("body").removeClass("no-scroll");
 	},
 };
 

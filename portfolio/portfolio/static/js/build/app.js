@@ -1015,18 +1015,28 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	var Menu = {
-		headerClass: "nav-mobile",
+		menuClass: "nav-mobile-menu",
 
 		init: function init() {
 			var _this = this;
 
-			(0, _jquery2.default)("body").on("click", ".nav-mobile-menu-trigger", function (e) {
+			(0, _jquery2.default)("body").on("click", ".nav-mobile-menu-open", function (e) {
 				e.preventDefault();
-				_this.toggleMenu();
+				_this.openMenu();
+			});
+
+			(0, _jquery2.default)("body").on("click", ".nav-mobile-menu-close", function (e) {
+				e.preventDefault();
+				_this.closeMenu();
 			});
 		},
-		toggleMenu: function toggleMenu() {
-			(0, _jquery2.default)("." + this.headerClass).toggleClass(this.headerClass + "--has-menu");
+		openMenu: function openMenu() {
+			(0, _jquery2.default)("." + this.menuClass).addClass(this.menuClass + "--show");
+			(0, _jquery2.default)("body").addClass("no-scroll");
+		},
+		closeMenu: function closeMenu() {
+			(0, _jquery2.default)("." + this.menuClass).removeClass(this.menuClass + "--show");
+			(0, _jquery2.default)("body").removeClass("no-scroll");
 		}
 	};
 

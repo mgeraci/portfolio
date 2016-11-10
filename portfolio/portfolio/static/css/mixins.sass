@@ -62,3 +62,49 @@
   @media (max-width: $body-width + $body-breakpoint-gutter)
     width: 100% - $body-mobile-gutter * 2
     margin-left: $body-mobile-gutter
+
+
+@mixin helvetica
+  font-family: Helvetica Neue, Helvetica, Arial, sans-serif
+
+
+// css icon helpers
+
+@mixin pseudo-icon
+  @include bare-button
+  position: absolute
+  overflow: hidden
+  display: block
+  width: 50px
+  height: 50px
+
+  &:not([disabled])
+    cursor: pointer
+
+  &[disabled]
+    opacity: 0.1
+
+  &:not([disabled]):hover:before,
+  &:not([disabled]):hover:after,
+    background: #fff
+
+  &:before,
+  &:after
+    content: ""
+    position: absolute
+    top: 50%
+    width: 8%
+    height: 58%
+    background: #777
+    @include transition(background 100ms linear)
+
+@mixin close-icon
+  &:before,
+  &:after
+    left: 50%
+
+  &:before
+    @include transform(translate(-50%, -50%) rotate(45deg))
+
+  &:after
+    @include transform(translate(-50%, -50%) rotate(-45deg))
