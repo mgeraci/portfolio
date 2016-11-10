@@ -4,7 +4,7 @@ const Menu = {
 	menuClass: "nav-mobile-menu",
 
 	init() {
-		$("body").on("click", ".nav-mobile-menu-open", (e) => {
+		$("body").on("click", ".nav-mobile-header-title", (e) => {
 			e.preventDefault();
 			this.openMenu();
 		});

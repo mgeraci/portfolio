@@ -17,32 +17,33 @@
   &-header
     display: block
     height: $mobile-header-height
+    padding: $mobile-header-padding $body-mobile-gutter
 
-  &-title
-    float: left
-    margin-top: $mobile-header-padding
-    margin-left: $body-mobile-gutter
-    @include circle-style($mobile-header-height - $mobile-header-padding * 2)
-    @include type(20px, 54px)
-
-  &-menu-open
-    @include bare-button
-    position: relative
-    float: right
-    margin-right: $body-mobile-gutter
-    @include ellipsis
-    max-width: 230px
-    padding-right: 20px // for icon
-    height: 100%
-    text-align: right
-    line-height: $mobile-header-height
+    $inner-height: $mobile-header-height - $mobile-header-padding * 2
 
     &-icon
-      position: absolute
-      top: 50%
-      right: 0
-      margin-top: $mobile-icon-size * -0.3
-      @include triangle($mobile-icon-size, $text, down)
+      float: right
+      @include circle-style($inner-height)
+      @include type(20px, $inner-height + 4)
+
+    &-title
+      @include bare-button
+      position: relative
+      top: 3px
+      float: left
+      @include ellipsis
+      max-width: 230px
+      height: $inner-height
+      padding-right: 20px // for icon
+      text-align: right
+      line-height: $inner-height
+
+      &-icon
+        position: absolute
+        top: 50%
+        right: 0
+        margin-top: $mobile-icon-size * -0.3
+        @include triangle($mobile-icon-size, $text, down)
 
 
   // the pop-up menu

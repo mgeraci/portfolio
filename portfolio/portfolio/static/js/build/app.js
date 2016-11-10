@@ -1020,7 +1020,7 @@
 		init: function init() {
 			var _this = this;
 
-			(0, _jquery2.default)("body").on("click", ".nav-mobile-menu-open", function (e) {
+			(0, _jquery2.default)("body").on("click", ".nav-mobile-header-title", function (e) {
 				e.preventDefault();
 				_this.openMenu();
 			});
