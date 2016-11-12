@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block title %}Web Design{% endblock %}
+{% block description %}Michael P. Geraci's web design portfolio - web apps, user experience.{% endblock %}
+{% block bodyclass %}web{% endblock %}
+
+{% block content %}
+
+<div class="page-web-menu">
+	{% for web in webs %}
+		<a
+				class="page-web-menu-item"
+				href="{% url 'web_item_url' web.slug %}">
+			{% if web.thumbnail %}
+				<div
+					class="page-web-menu-item-image"
+					data-lazy-image="{{ MEDIA_URL }}{{ web.thumbnail }}"
+					data-lazy-alt="A thumbnail of {{ web.title }}">
+				</div>
+			{% endif %}
+			<span class="page-web-menu-item-text-wrapper">
+				<span class="page-web-menu-item-text">
+					{{ web.title }}
+				</span>
+			</span>
+		</a>
+	{% endfor %}
+</div>
+
+{% endblock %}

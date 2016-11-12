@@ -1,0 +1,8 @@
+<div class="title">
+	<h2>{{ item.title }}</h2>
+	{% for subtitle in item.subtitles %}
+		<span class="subtitle">
+			{{ subtitle|safe }}
+		</span>
+	{% endfor %}
+</div>

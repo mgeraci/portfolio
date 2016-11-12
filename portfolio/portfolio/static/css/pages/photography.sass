@@ -1,0 +1,68 @@
+$thumbnail-size: 75px
+
+.page-photography
+  // special sizing for mobile
+  .content
+    @media (max-width: 700px)
+      width: 94%
+      margin-left: 3%
+
+  &-meta,
+  &-thumbnails,
+  &-tagslist
+    @include clearfix
+    width: $thumbnail-size * 9
+    margin: 0 auto
+    text-align: center
+    line-height: 0
+
+    @media (max-width: $thumbnail-size * 8 + 40)
+      width: 100%
+
+  &-tagslist
+    line-height: 24px
+
+    &-tag
+      display: inline-block
+      margin: 5px 7px
+      @include no-link
+
+  &-rss
+    display: inline-block
+    @include center
+    @include no-link
+    margin-top: 20px
+    font-size: 15px
+
+
+// react css transition group
+// ----------------------------------------------------------------------------
+
+// the main image fade
+.main-image-enter,
+.main-image-appear
+  opacity: 0.01
+
+.main-image-enter.main-image-enter-active,
+.main-image-appear.main-image-appear-active
+  opacity: 1
+  @include transition(opacity 200ms ease-in)
+
+// the image detail modal
+.image-detail-enter,
+.image-detail-appear
+  opacity: 0.01
+
+.image-detail-enter.image-detail-enter-active,
+.image-detail-appear.image-detail-appear-active
+  opacity: 1
+  @include transition(opacity 200ms ease-in)
+
+
+// subfiles
+// ----------------------------------------------------------------------------
+
+@import "./photography/meta"
+@import "./photography/navigation"
+@import "./photography/thumbnail"
+@import "./photography/main"

@@ -1,0 +1,65 @@
+<!DOCTYPE HTML>
+<html lang="en">
+	<head>
+		<title>
+			{% block title %}{% endblock %} | Michael P. Geraci
+		</title>
+		<meta name="viewport" content="width=device-width, user-scalable=no" />
+		<meta name="verify-v1" content="c3G4kM74qA6ztpDl/bE6D/t9pgqANYt17h1Xjs/b0q8=">
+		<meta name="description" content="{% block description %}{% endblock %}">
+		<meta name="keywords" content="michael, geraci, michael geraci, michael p. geraci, web design, web, user experience, ux design, photography, graphic design, recording">
+
+		<link rel="shortcut icon" href="http://michaelgeraci.com/favicon.ico" type="image/x-icon">
+
+		{% if is_local %}
+			<link
+				rel="stylesheet"
+				type="text/css"
+				href="{{ STATIC_URL }}css/build/styles.css"
+			/>
+		{% else %}
+			<link
+				rel="stylesheet"
+				type="text/css"
+				href="{{ STATIC_URL }}css/build/styles.min.css?v={{ static_versions.styles }}"
+			/>
+		{% endif %}
+
+		<link href="https://fonts.googleapis.com/css?family=PT+Serif:400,400i,700" rel="stylesheet">
+
+	</head>
+	<body class="page-{% block bodyclass %}{% endblock %}">
+
+		{% include "menu.html" %}
+
+		<section class="content">
+			{% block content %}{% endblock %}
+		</section>
+
+		{% if is_local %}
+			<script
+				type="text/javascript"
+				src="{{ STATIC_URL }}js/build/app.js">
+			</script>
+		{% else %}
+			<script
+				type="text/javascript"
+				src="{{ STATIC_URL }}js/build/app.min.js?v={{ static_versions.app }}">
+			</script>
+		{% endif %}
+
+		{% block scripts %}{% endblock %}
+
+		<script type="text/javascript">
+			var _gaq = _gaq || [];
+			_gaq.push(['_setAccount', 'UA-8480724-2']);
+			_gaq.push(['_trackPageview']);
+			(function() {
+				var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+				ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+				var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+			})();
+		</script>
+
+	</body>
+</html>

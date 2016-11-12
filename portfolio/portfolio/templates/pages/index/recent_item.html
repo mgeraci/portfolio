@@ -1,0 +1,12 @@
+<a class="recent-item" href="{{ recent_item.href }}">
+	<div
+		class="recent-item-image"
+		data-lazy-image="{{ recent_item.image }}"
+		data-lazy-image-alt="recent work thumbnail">
+	</div>
+	{% for text in recent_item.text %}
+		<span class="recent-item-text">
+			{{ text }}
+		</span>
+	{% endfor %}
+</a>

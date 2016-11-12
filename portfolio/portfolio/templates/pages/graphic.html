@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block title %}Graphic Design{% endblock %}
+{% block description %}Michael P. Geraci's graphic design portfolio - silkscreen design and printing, logo design.{% endblock %}
+{% block bodyclass %}graphic{% endblock %}
+
+{% block content %}
+
+{% if not graphic_landing_page %}
+	{% url 'graphic_url' as graphic_url %}
+	<a class="submenu-mobile" href="{{ graphic_url }}">
+		&laquo; Back to graphic design
+	</a>
+	<br />
+	<br />
+{% endif %}
+
+{% include "pages/graphic_menu.html" %}
+
+{% if graphic %}
+	<div class="page-graphic-content">
+		{% include "title.html" with item=title_bundle %}
+
+		{% for image in images %}
+			<div
+				data-lazy-image="{{ MEDIA_URL }}{{ image.image}}"
+				data-lazy-alt="An image of {{ graphic.title }}">
+			</div>
+		{% endfor %}
+	</div>
+{% endif %}
+
+{% endblock %}

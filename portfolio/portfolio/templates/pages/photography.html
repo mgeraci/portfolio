@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block title %}Photography{% endblock %}
+{% block description %}Michael P. Geraci's photographs from daily life.{% endblock %}
+{% block bodyclass %}photography{% endblock %}
+
+{% block scripts %}
+	{% if is_local %}
+		<script
+			type="text/javascript"
+			src="{{ STATIC_URL }}js/build/photoblog.js">
+		</script>
+	{% else %}
+		<script
+			type="text/javascript"
+			src="{{ STATIC_URL }}js/build/photoblog.min.js?v={{ static_versions.app }}">
+		</script>
+	{% endif %}
+
+	<script>
+		var photoblogData = {{ images_json|safe }};
+		Photoblog.init(photoblogData);
+	</script>
+{% endblock %}
+
+{% block content %}
+
+<div id="react-root"></div>
+
+{% endblock %}

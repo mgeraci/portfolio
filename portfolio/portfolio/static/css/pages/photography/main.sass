@@ -1,0 +1,93 @@
+.page-photography-main
+  position: fixed
+  z-index: 5
+  top: 0
+  left: 0
+  width: 100%
+  height: 100%
+  background: rgba(black, 0.8)
+  color: $menu-color
+  @include helvetica
+
+  &-space
+    position: absolute
+
+  &-content
+    position: absolute
+    float: left
+    top: 50%
+    left: 50%
+    @include transform(translate(-50%, -50%))
+
+    img
+      border-radius: 2px
+
+  &-text
+    margin-top: 5px
+    @include type(17px, 24px)
+    letter-spacing: 0.3px
+
+  &-title
+    color: lighten($menu-color, 25%)
+    font-weight: normal
+    font-family: 'PT Serif'
+    font-weight: bold
+
+  &-year
+    font-style: oblique
+
+  &-tags
+    margin-top: 10px
+
+  // a is required for specificity
+  a.page-photography-main-tag
+    display: inline-block
+    @include link($menu-color, $cream)
+    padding-bottom: 2px
+
+  &-nav,
+  &-close
+    @include pseudo-icon
+
+    &-text
+      position: absolute
+      top: 100px
+
+  &-nav
+    top: 50%
+    @include transform(translateY(-50%))
+
+    &:before,
+    &:after
+      top: 45%
+      height: 30%
+
+    &--prev
+      left: 10px
+
+      &:before
+        @include transform(translate(-1px, -60%) rotate(40deg))
+
+      &:after
+        @include transform(rotate(-40deg))
+
+    &--next
+      right: 10px
+
+      &:before
+        @include transform(translate(1px, -60%) rotate(-40deg))
+
+      &:after
+        @include transform(rotate(40deg))
+
+    &--hidden
+      display: none
+
+  &-close
+    @include close-icon
+    top: 20px
+    right: 20px
+
+    &--mobile
+      top: 0
+      right: 0

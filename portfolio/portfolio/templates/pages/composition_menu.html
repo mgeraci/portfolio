@@ -1,0 +1,26 @@
+{% load extra_tags %}
+{% url 'composition_url' as composition_url %}
+
+<ul
+		class="
+			submenu-menu
+			{% if request.path == composition_url %}submenu-menu--no-hide{% endif %}
+		">
+	{% for composition in compositions %}
+		<li>
+			<a
+					href="{% url 'composition_item_url' composition.slug %}"
+				{% if request.path|active_menu_item:composition.slug %}
+					class="active"
+				{% endif %}
+			>
+				<h3>
+					{{ composition.title }}, {{ composition.year }}
+				</h3>
+				<em>
+					{{ composition.materials }}
+				</em>
+			</a>
+		</li>
+	{% endfor %}
+</ul>

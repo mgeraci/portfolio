@@ -1,0 +1,119 @@
+@mixin type($font-size, $line-height)
+  font-size: $font-size
+  line-height: $line-height
+
+
+@mixin link-underline($color)
+  background-image: linear-gradient(to bottom, rgba(0,0,0,0) 50%, rgba($color ,0.6) 50%)
+
+
+@mixin link($default-color, $hover-color)
+  text-decoration: none
+  background-repeat: repeat-x
+  background-size: 2px 2px
+  background-position: 0 85%
+
+  &,
+  h2,
+  h3
+    @include transition(color 50ms linear)
+
+  &,
+  &:visited
+    color: $default-color
+    @include link-underline($default-color)
+
+  .no-touchevents &
+    &:hover,
+    &:active
+      &
+        @include link-underline($hover-color)
+
+      &,
+      h2,
+      h3
+        color: $hover-color
+        text-shadow: $active-link-shadow
+
+
+@mixin no-link
+  &,
+  &:hover,
+  &:active
+    text-shadow: none !important
+    background-image: none !important
+
+
+@mixin bare-button
+  padding: 0
+  margin: 0
+  background: none
+  border: none
+  font-size: inherit
+  font-family: inherit
+  outline: none
+
+
+@mixin center
+  position: relative
+  left: 50%
+  @include transform(translateX(-50%))
+
+
+@mixin content-sizing
+  display: block
+  padding-top: 40px
+  max-width: $body-width
+
+  @media (min-width: $body-width + $body-breakpoint-gutter + 1)
+    margin: 0 auto
+
+  @media (max-width: $body-width + $body-breakpoint-gutter)
+    width: 100% - $body-mobile-gutter * 2
+    margin-left: $body-mobile-gutter
+
+
+@mixin helvetica
+  font-family: Helvetica Neue, Helvetica, Arial, sans-serif
+
+
+// css icon helpers
+
+@mixin pseudo-icon
+  @include bare-button
+  position: absolute
+  overflow: hidden
+  display: block
+  width: 50px
+  height: 50px
+
+  &:not([disabled])
+    cursor: pointer
+
+  &[disabled]
+    opacity: 0.1
+
+  &:not([disabled]):hover:before,
+  &:not([disabled]):hover:after,
+    background: #fff
+
+  &:before,
+  &:after
+    content: ""
+    position: absolute
+    top: 50%
+    width: 8%
+    height: 58%
+    background: #777
+    @include transition(background 100ms linear)
+
+@mixin close-icon
+  &:before,
+  &:after
+    left: 50%
+
+  &:before
+    @include transform(translate(-50%, -50%) rotate(45deg))
+
+  &:after
+    @include transform(translate(-50%, -50%) rotate(-45deg))

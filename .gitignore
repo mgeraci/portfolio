@@ -1,3 +1,81 @@
+# Database connection and other secret settings
+*localsettings.py
+
+# Collected static files (re-collect with ./manage.py collectstatic)
+staticfiles/
+
+# User-uploaded media files
+mediafiles/
+media/
+privatemediafiles/
+
+# Project-specific Node.js packages (e.g. gulp)
+node_modules/
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*.sassc
+*.scssc
+*.css.map
+
+# C extensions
+*.so
+
+# Temporary files
+*.swp
+
+# Distribution / packaging
+.Python
+env/
+bin/
+develop-eggs/
+dist/
+eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.coverage
+.cache
+nosetests.xml
+coverage.xml
+
+# Translations
+*.mo
+
+# Mr Developer
+.mr.developer.cfg
+.project
+.pydevproject
+
+# Rope
+.ropeproject
+
+# Django stuff:
+*.log
+*.pot
+
+# Sphinx documentation
+docs/_build/
+
+# OS X
+*.DS_Store
+
+
+# old gitignore
 .sass-cache
 dropbox/*
 dropbox/*/*
@@ -20,7 +98,6 @@ extras/linkedlistnyc/*/*
 extras/linkedlistnyc/*/*/*
 extras/synth
 
-includes/connect.php
 admin/.htaccess
 admin/.htpasswd
 extras/rumney/.htaccess

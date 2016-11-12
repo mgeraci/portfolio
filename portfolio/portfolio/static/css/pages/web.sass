@@ -1,0 +1,94 @@
+.page-web
+  text-align: center
+
+  &-menu
+    @include clearfix
+    display: block
+    width: 100%
+
+    &-item
+      position: relative
+      overflow: hidden
+      float: left
+      width: 31%
+      margin: 1.166%
+      padding-top: 13% // aspect ratio
+      background: rgba(0, 0, 0, 0.05)
+      background-image: none !important
+      text-align: center
+      outline: none
+
+      @media (max-width: 870px)
+        width: 45%
+        margin: 2.5%
+        padding-top: 18.5%
+
+      @media (max-width: 590px)
+        @include center
+        width: 400px
+        height: 165px
+        margin: 0
+        margin-bottom: 20px
+
+      @media (max-width: 440px)
+        width: 100%
+        height: auto
+        padding-top: 41%
+
+      &-text-wrapper
+        display: none
+        position: absolute
+        top: 0
+        left: 0
+        width: 100%
+        height: 100%
+        background: rgba(#000, 0.6)
+        font-weight: bold
+
+        // only show the text once modernizr has initialized
+        .touchevents &,
+        .no-touchevents &
+          display: block
+
+        .no-touchevents &
+          opacity: 0
+          @include transition(opacity 75ms linear)
+
+          &:hover
+            opacity: 1
+            @include transition(opacity 150ms linear)
+
+      &-image
+        position: absolute
+        left: 0
+        top: 0
+        width: 100%
+        height: auto
+
+        img
+          width: 100%
+          height: auto
+
+      &-text
+        position: absolute
+        top: 50%
+        left: 0
+        @include transform(translateY(-50%))
+        width: 100%
+        padding: 20px
+        text-align: center
+        color: $cream
+        text-shadow: 0 0 6px rgba(#000, 0.2)
+        letter-spacing: 0.02em
+
+  .fluid-width-video-wrapper,
+  .web-image
+    max-width: 750px
+    margin: 40px auto 0
+
+  .web-image
+    @include clearfix
+
+    img
+      float: left
+      width: 100%

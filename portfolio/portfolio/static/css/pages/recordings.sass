@@ -1,0 +1,50 @@
+$image-size: 200px
+$recordings-breakpoint: 875px
+
+.page-recordings
+  .title
+    margin-bottom: 20px
+
+  .recording-content-wrapper
+    position: relative
+
+  .recording-thumbnail
+    position: absolute
+    top: 0
+    left: 0
+    width: $image-size
+    height: $image-size
+
+    @media (max-width: $recordings-breakpoint)
+      position: relative
+      width: 100%
+      margin-bottom: 20px
+
+      img
+        @include center
+
+    img
+      float: left
+
+  .recording-content
+    margin-bottom: 20px
+
+  // content with a thumbnail should have left padding to allow for the the
+  // image
+  .recording-thumbnail + .recording-content
+    margin-bottom: 0
+    padding-left: $image-size + 20
+    min-height: $image-size + 20
+
+    @media (max-width: $recordings-breakpoint)
+      min-height: 0
+      padding-left: 0
+
+  .recording
+    & + .recording
+      margin-top: 20px
+
+    &-title
+      padding-bottom: 10px
+      font-style: oblique
+      font-size: 20px

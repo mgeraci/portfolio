@@ -1,0 +1,69 @@
+$menu-padding: 6%
+
+.submenu-mobile
+  position: relative
+  bottom: 20px
+  float: left
+  clear: both
+  margin-bottom: 20px
+
+  @media (min-width: $menu-breakpoint + 1)
+    display: none
+
+.submenu
+  float: left
+  width: 100%
+  @include display(table)
+
+  &-menu,
+  &-content
+    float: left
+    padding: 20px 0
+
+  &-menu
+    width: 30%
+    padding-right: $menu-padding
+    border-right: 1px solid $cream
+
+    @media (max-width: $menu-breakpoint)
+      display: none
+
+    &--no-hide
+      @media (max-width: $menu-breakpoint)
+        display: block
+        width: 100%
+        border: none
+
+    li
+      margin-top: 20px
+
+      &:first-child
+        margin-top: 0
+
+    a
+      display: block
+
+      &,
+      &:hover,
+      .no-touchevents &,
+      .no-touchevents &:hover,
+        background-image: none
+
+      &.active
+        &,
+        h2,
+        h3
+          color: $cream
+          text-shadow: $active-link-shadow
+
+  &-content
+    width: 70%
+    padding-left: $menu-padding
+
+    @media (max-width: $menu-breakpoint)
+      width: 100%
+      padding-left: 0
+
+    &--hide
+      @media (max-width: $menu-breakpoint)
+        display: none
