@@ -202,18 +202,16 @@ def composition(request):
     return composition_item(request, False)
 
 
-def recordings(request):
-    pages = RecordingPage.objects.all()
-    context = {
-        'pages': pages,
-    }
-
-    return render(request, 'pages/recordings.html', context)
-
-
 def recordings_item(request, slug):
     pages = RecordingPage.objects.all()
-    page = get_object_or_404(RecordingPage, slug=slug)
+
+    if slug:
+        page = get_object_or_404(RecordingPage, slug=slug)
+        recording_landing_page = False
+    else:
+        page = pages[0]
+        recording_landing_page = page.slug
+
     recordings = Recording.objects.filter(recording_page=page)
     title_bundle = {
         'title': u'{}, {}'.format(page.title, page.year)
@@ -224,9 +222,14 @@ def recordings_item(request, slug):
         'page': page,
         'title_bundle': title_bundle,
         'recordings': recordings,
+        'recording_landing_page': recording_landing_page,
     }
 
     return render(request, 'pages/recordings.html', context)
+
+
+def recordings(request):
+    return recordings_item(request, False);
 
 
 def links(request):

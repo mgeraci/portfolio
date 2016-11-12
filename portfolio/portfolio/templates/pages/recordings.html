@@ -6,7 +6,7 @@
 
 {% block content %}
 
-{% if page %}
+{% if not recording_landing_page %}
 	{% url 'recordings_url' as recordings_url %}
 	<a class="submenu-mobile" href="{{ recordings_url }}">
 		&laquo; Back to recordings

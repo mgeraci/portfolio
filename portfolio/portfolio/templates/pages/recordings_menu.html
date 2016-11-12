@@ -13,6 +13,9 @@
 				{% if request.path|active_menu_item:page.slug %}
 					class="active"
 				{% endif %}
+				{% if recording_landing_page|active_menu_item:page.slug %}
+					class="active"
+				{% endif %}
 			>
 				<h3>
 					{{ page.title }}, {{ page.year }}
