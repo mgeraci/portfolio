@@ -6,7 +6,7 @@
 
 {% block content %}
 
-{% if piece %}
+{% if not composition_landing_page %}
 	{% url 'composition_url' as composition_url %}
 	<a class="submenu-mobile" href="{{ composition_url }}">
 		&laquo; Back to composition

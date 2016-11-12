@@ -50,11 +50,12 @@ $menu-padding: 6%
         background-image: none
 
       &.active
-        &,
-        h2,
-        h3
-          color: $cream
-          text-shadow: $active-link-shadow
+        @media (min-width: $menu-breakpoint)
+          &,
+          h2,
+          h3
+            color: $cream
+            text-shadow: $active-link-shadow
 
   &-content
     width: 70%

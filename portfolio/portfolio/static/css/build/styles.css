@@ -444,11 +444,12 @@ nav::after {
       .no-touchevents .submenu-menu a,
       .no-touchevents .submenu-menu a:hover {
         background-image: none; }
-      .submenu-menu a.active,
-      .submenu-menu a.active h2,
-      .submenu-menu a.active h3 {
-        color: #f3f4d3;
-        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.15); }
+      @media (min-width: 800px) {
+        .submenu-menu a.active,
+        .submenu-menu a.active h2,
+        .submenu-menu a.active h3 {
+          color: #f3f4d3;
+          text-shadow: 0 1px 2px rgba(0, 0, 0, 0.15); } }
   .submenu-content {
     width: 70%;
     padding-left: 6%; }

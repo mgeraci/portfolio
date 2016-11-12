@@ -161,18 +161,16 @@ def graphic(request):
     return graphic_item(request, False)
 
 
-def composition(request):
-    compositions = Composition.objects.all()
-    context = {
-        'compositions': compositions
-    }
-
-    return render(request, 'pages/composition.html', context)
-
-
 def composition_item(request, slug):
     compositions = Composition.objects.all()
-    piece = get_object_or_404(Composition, slug=slug)
+
+    if slug:
+        piece = get_object_or_404(Composition, slug=slug)
+        composition_landing_page = False
+    else:
+        piece = compositions[0]
+        composition_landing_page = piece.slug
+
     title_bundle = {
         'title': u'{}, {}'.format(piece.title, piece.year),
         'subtitles': [],
@@ -192,11 +190,16 @@ def composition_item(request, slug):
 
     context = {
         'compositions': compositions,
+        'composition_landing_page': composition_landing_page,
         'piece': piece,
         'title_bundle': title_bundle,
     }
 
     return render(request, 'pages/composition.html', context)
+
+
+def composition(request):
+    return composition_item(request, False)
 
 
 def recordings(request):
