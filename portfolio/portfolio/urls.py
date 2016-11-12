@@ -1,13 +1,22 @@
 from django.conf.urls import url
 from django.contrib import admin
 from django.conf import settings
+from django.views.generic.base import RedirectView
 from . import views
 from feeds import PhotoblogFeed
 from django.conf.urls.static import static
 
+
+home_redirect = RedirectView.as_view(url='/', permanent=False)
+
 urlpatterns = [
     # admin
     url(r'^admin/', admin.site.urls),
+
+    # redirects
+    url(r'^photography/dantes/?$', home_redirect, name='index_url'),
+    url(r'^photography/vegan/?$', home_redirect, name='index_url'),
+    url(r'^extras/.+$', home_redirect, name='index_url'),
 
     # main pages
     url(r'^$', views.index, name='index_url'),
