@@ -1,7 +1,8 @@
 # michaelgeraci.com
 
-This repository stores my personal website. It's written in Django, with a
-smattering of frontend technologies.
+This repository stores my personal website. It's written in Django, with the
+static files managed by webpack. The JS is written in ES6, the styles in Sass,
+and my photoblog subpage is written in react.
 
 
 ## Installation
