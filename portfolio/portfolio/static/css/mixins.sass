@@ -12,7 +12,11 @@
   background-repeat: repeat-x
   background-size: 2px 2px
   background-position: 0 85%
-  @include transition(color 50ms linear)
+
+  &,
+  h2,
+  h3
+    @include transition(color 50ms linear)
 
   &,
   &:visited
@@ -22,9 +26,14 @@
   .no-touchevents &
     &:hover,
     &:active
-      color: $hover-color
-      @include link-underline($hover-color)
-      text-shadow: $active-link-shadow
+      &
+        @include link-underline($hover-color)
+
+      &,
+      h2,
+      h3
+        color: $hover-color
+        text-shadow: $active-link-shadow
 
 
 @mixin no-link

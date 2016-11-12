@@ -1,10 +1,11 @@
 // variables
-///////////////////////////////////////////////////////////////////////////////
+// ----------------------------------------------------------------------------
 
 // colors
 $green: #bbd199
 $cream: #f3f4d3
 $text: #444
+$header-text: #333
 
 // sizes
 $body-width: 1000px
@@ -12,6 +13,7 @@ $body-breakpoint-gutter: 50px
 $body-mobile-gutter: 4%
 $menu-max-width: 1000px
 $menu-breakpoint: 800px
+$menu-color: #777
 
 // various
 $active-link-shadow: 0 1px 2px rgba(#000, 0.15)
@@ -19,7 +21,7 @@ $menu-items: 7
 
 
 // global includes
-///////////////////////////////////////////////////////////////////////////////
+// ----------------------------------------------------------------------------
 
 @import "bourbon/bourbon"
 @import "reset.css"
@@ -27,7 +29,7 @@ $menu-items: 7
 
 
 // general styles
-///////////////////////////////////////////////////////////////////////////////
+// ----------------------------------------------------------------------------
 
 *
   box-sizing: border-box
@@ -36,8 +38,9 @@ body
   background: $green
   padding-bottom: 20px
   color: $text
-  font-family: body, Georgia, serif
-  @include type(23px, 29px)
+  font-family: 'PT Serif', Georgia, serif
+  @include type(18px, 28px)
+  -webkit-font-smoothing: antialiased
 
   &.no-scroll
     overflow: hidden
@@ -56,11 +59,13 @@ section.content
   @include link($text, $cream)
 
 @mixin h2
+  color: $header-text
   font-weight: bold
-  font-size: 26px
+  font-size: 22px
   padding-bottom: 10px
 
 @mixin h3
+  color: $header-text
   font-weight: bold
 
 h2
@@ -83,6 +88,9 @@ em
     display: block
     width: 100%
     text-align: center
+
+  h2
+    padding-bottom: 20px
 
   .subtitle
     position: relative
@@ -116,7 +124,7 @@ $loader-size: 34px
 
 
 // includes
-///////////////////////////////////////////////////////////////////////////////
+// ----------------------------------------------------------------------------
 
 // general
 @import "fonts"

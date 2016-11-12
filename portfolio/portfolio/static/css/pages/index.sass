@@ -20,12 +20,14 @@ $index-breakpoint: 550px
 .index-top
   @include clearfix
   background: $green
-  padding-bottom: 30px
+  padding-bottom: 55px
 
   &-content
     @include content-sizing
 
   @media (max-width: $index-breakpoint)
+    padding-bottom: 40px
+
     .index-top-left,
     .index-top-right
       width: 100%
@@ -33,7 +35,7 @@ $index-breakpoint: 550px
       padding: 0
 
       &:last-child
-        margin-top: 20px
+        margin-top: 25px
 
     .index-top-left-image-wrapper
       width: 50%
@@ -41,7 +43,7 @@ $index-breakpoint: 550px
 
   &-left
     float: left
-    margin-top: 30px
+    margin-top: 9px
     width: 33%
     text-align: center
 
@@ -109,7 +111,7 @@ $index-breakpoint: 550px
 
   &-copyright
     display: block
-    font-size: 18px
+    font-size: 15px
     margin-top: 40px
 
 $image-size: 75px
@@ -123,7 +125,7 @@ $image-size: 75px
   padding-right: 20px
   padding-left: $image-size + 20px
   background-image: none !important
-  @include type(20px, 28px)
+  @include type(17px, 24px)
 
   @media (max-width: $index-breakpoint)
     width: 100%

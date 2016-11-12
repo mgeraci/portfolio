@@ -50,8 +50,11 @@ $menu-padding: 6%
         background-image: none
 
       &.active
-        color: $cream
-        text-shadow: $active-link-shadow
+        &,
+        h2,
+        h3
+          color: $cream
+          text-shadow: $active-link-shadow
 
   &-content
     width: 70%

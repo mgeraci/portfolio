@@ -24,6 +24,7 @@ nav
   padding-top: 20px
   padding-bottom: 20px
   max-width: $menu-max-width
+  -webkit-font-smoothing: subpixel-antialiased
 
   @media (max-width: $menu-breakpoint - 1)
     display: none
@@ -42,7 +43,8 @@ nav
         @include transition-property(background, color)
         @include transition-duration(75ms)
         @include transition-timing-function(linear)
-        @include type(22px, 24px)
+        @include type(18px, 24px)
+        letter-spacing: 0.4px;
 
         &:hover,
         &:active,

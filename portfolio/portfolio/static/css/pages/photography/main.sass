@@ -1,11 +1,12 @@
 .page-photography-main
   position: fixed
+  z-index: 5
   top: 0
   left: 0
   width: 100%
   height: 100%
   background: rgba(black, 0.8)
-  color: #999;
+  color: $menu-color
   @include helvetica
 
   &-space
@@ -27,22 +28,21 @@
     letter-spacing: 0.3px
 
   &-title
+    color: lighten($menu-color, 25%)
     font-weight: normal
+    font-family: 'PT Serif'
+    font-weight: bold
 
   &-year
     font-style: oblique
 
-
-  $tag-color: lighten($text, 10%)
-
   &-tags
     margin-top: 10px
-    color: lighten($text, 5%)
 
   // a is required for specificity
   a.page-photography-main-tag
     display: inline-block
-    @include link($tag-color, lighten($text, 20%))
+    @include link($menu-color, $cream)
     padding-bottom: 2px
 
   &-nav,
