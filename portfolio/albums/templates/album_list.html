@@ -6,10 +6,12 @@
 
 {% block content %}
 
-	<h3>I know you don&rsquo;t care, but here are</h2>
-	<h1>{{ list.name }}</h1>
+	<div class="page-album-list-title">
+		<h3>I know you don&rsquo;t care, but here are</h2>
+		<h1>{{ list.name }}</h1>
+	</div>
 
-	<div class="links">
+	<div class="page-album-list-navigation">
 		see also:
 		{% for link in lists %}
 			{% if not link.hidden %}
@@ -24,30 +26,31 @@
 		{% endfor %}
 	</div>
 
-	<ul id="albums">
+	<ul class="page-album-list-items">
 		{% for selection in selections %}
-			<li>
-				<div class="count count{{ selection.position }}">
+			<li class="page-album-list-item">
+				<div class="page-album-list-item-count">
 					{{ selection.position }}
 				</div>
 
-				<div class="image"
+				<div class="page-album-list-item-image"
 						{% if selection.album.cover %}
-							data-src="{{ MEDIA_URL }}{{ selection.album.cover }}"
+							data-lazy-image="{{ MEDIA_URL }}{{ selection.album.cover }}"
+							data-lazy-alt="{{ selection.album.name }}'s cover"
 						{% endif %}>
 				</div>
 
-				<div class="content">
-					<h2>
+				<div class="page-album-list-item-content">
+					<h2 class="page-album-list-item-album">
 						{{ selection.album.name|safe }}
 					</h2>
-					<h3>
+					<h3 class="page-album-list-item-artist">
 						by
 						<span>{{ selection.album.artist }}</span>
 					</h3>
 
 					{% if selection.description %}
-						<div class="description">
+						<div class="page-album-list-item-description">
 							{{ selection.description|safe }}
 						</div>
 					{% endif %}
@@ -60,9 +63,12 @@
 								data-src="{{ MEDIA_URL }}{{ selection.album.sample }}"></div>
 					{% endif %}
 
-					<div class="buy-links">
+					<div class="page-album-list-item-links">
 						{% for link in selection.album.albumlink_set.all %}
-							<a class="link {{ link.classes }}" href="{{ link.href }}" target="_blank">
+							<a
+									class="page-album-list-item-links-link {{ link.classes }}"
+									href="{{ link.href }}"
+									target="_blank">
 								{{ link.name|safe }}
 							</a>
 						{% endfor %}
@@ -73,7 +79,7 @@
 		{% endfor %}
 	</ul>
 
-	<div id="thanks">
+	<div class="page-album-list-thanks">
 		That&rsquo;s it. Thanks for reading.
 		<br>
 		Complain via <a href="mailto:me@mgeraci.com">email</a>.

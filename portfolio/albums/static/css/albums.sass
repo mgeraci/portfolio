@@ -7,45 +7,35 @@
   width: 100%
 
 .page-album-list
-  h2,
-  h3
-    +stackwide
+  &-title
+    h1,
+    h3
+      +stackwide
+      text-align: center
+
+    h1
+      position: relative
+      display: inline-block
+      width: 100%
+      max-height: 66px
+      @include type(60px, 60px)
+      font-weight: bold
+
+    h3
+      @include type(24px, 36px)
+      font-style: oblique
+      font-weight: normal
+      margin:
+        bottom: 5px
+
+  &-navigation
+    @include stackwide
+    margin-top: 20px
     text-align: center
+    @include type(16px, 26px)
 
-  h1
-    position: relative
-    display: inline-block
-    width: 100%
-    max-height: 66px
-    overflow: hidden
-    font-weight: bold
-    font-size: 70px
-    text-shadow: 1px 1px 1px rgba(0,0,0,0.2)
-    text-align: center
-
-  h2
-    font-weight: bold
-
-  h3
-    font-size: 30px
-    font-style: oblique
-    margin:
-      bottom: 5px
-
-  a
-    color: $text
-
-    &:hover
-      color: $cream
-
-  em
-    font-style: oblique
-
-  // links to other lists
-  .links
-    width: 100%
-    text-align: center
-    font-size: 18px
+    a
+      @include link($text, $cream)
 
     .active
       text-decoration: none
@@ -53,146 +43,113 @@
       &:hover
         color: $text
 
-
-  // album lists
-  ////////////////////////////////////////////////////////////////////////////////
-
-  #albums
+  &-items
     +stackwide
     margin:
       top: 60px
 
-    li
-      +stackwide
-      margin:
-        bottom: 50px
-      position: relative
-
-  .count
-    font-size: 500px
-    font-style: oblique
-    position: absolute
-    top: 0px
-    left: -140px
-    z-index: 1
-    color: darken($green, 4%)
-
-  li:first-child
-    .count
-      left: -115px
-
-  li:nth-child(3)
-    .count
-      top: -50px
-
-  li:nth-child(4)
-    .count
-      top: -60px
-
-  li:nth-child(5)
-    .count
-      top: -50px
-
-  li:nth-child(6)
-    .count
-      top: 30px
-
-  li:nth-child(7)
-    .count
-      top: -30px
-
-  li:nth-child(8)
-    .count
-      top: 30px
-
-  li:nth-child(9)
-    .count
-      top: -40px
-
-  li:nth-child(10),
-  li:nth-child(11),
-  li:nth-child(12),
-  li:nth-child(13),
-  li:nth-child(14),
-  li:nth-child(15)
-    .count
-      letter-spacing: -70px
-      left: -230px
-
-  li:nth-child(11)
-    .count
-      left: -210px
-
-  .image,
-  img
+  &-item
     position: relative
-    z-index: 2
-    float: left
-    width: 400px
-    height: 400px
-    background: transparentize(white, 0.8)
+    +stackwide
+    margin-bottom: 50px
 
-  .content
-    h2, h3
-      +stack
+    &-count
+      font-size: 500px
+      font-style: oblique
+      position: absolute
+      top: 0px
+      left: -140px
+      z-index: 1
+      color: rgba(#000, 0.1)
+
+    &-image
+      position: relative
+      z-index: 2
+      float: left
+      width: 400px
+      height: 400px
+      background: transparentize(white, 0.8)
+
+      img
+        width: 100%
+        height: 100%
+
+    &-content
+      float: left
+      width: 400px
+
+    &-album,
+    &-artist
       text-align: left
       color: $text
       font-size: 45px
 
-    h3
+    &-artist
       font-size: 20px
 
       span
         font-size: 40px
 
-    .description
-      +stackwide
-      margin:
-        top: 25px
-      font-size: 24px
+    &-description
+      @include type(18px, 27px)
 
-    .song
-      +stack
-      margin:
-        top: 25px
-        bottom: 3px
-      font-size: 20px
-      font-style: oblique
+    &-links
+      margin-top: 30px
+      font-size: 15px
 
-    audio,
-    object
-      +stack
+      // `a` for specificity
+      a.page-album-list-item-links-link
+        display: inline-block
+        margin-left: 10px
+        @include link(rgba($text, 0.5), $cream)
 
-    .buy-links
-      +stackwide
-      margin:
-        top: 30px
+        &:first-child
+          margin-left: 0
 
-    .link
-      float: left
-      margin-left: 10px
-      opacity: 0.5
-      @include transition(opacity 75ms linear)
-      font-size: 20px
-      line-height: 13px
-      text-decoration: none
-      border-bottom: 1px solid $text
+        // stubs for potentially styling later
+        //&.amazon
+        //&.itunes
+        //&.spotify
+        //&.bandcamp
+        //&.text
 
-      &:first-child
-        margin-left: 0
+    &:nth-child(1) &-count
+      left: -115px
 
-      &:hover
-        opacity: 1
-        color: $text
+    &:nth-child(3) &-count
+      top: -50px
 
-      // stubs for potentially styling later
-      //&.amazon
-      //&.itunes
-      //&.spotify
-      //&.bandcamp
-      //&.text
+    &:nth-child(4) &-count
+      top: -60px
 
-  #thanks
+    &:nth-child(5) &-count
+      top: -50px
+
+    &:nth-child(6) &-count
+      top: 30px
+
+    &:nth-child(7) &-count
+      top: -30px
+
+    &:nth-child(8) &-count
+      top: 30px
+
+    &:nth-child(9) &-count
+      top: -40px
+
+    &:nth-child(10) &-count,
+    &:nth-child(11) &-count,
+    &:nth-child(12) &-count,
+    &:nth-child(13) &-count,
+    &:nth-child(14) &-count,
+    &:nth-child(15) &-count
+      letter-spacing: -70px
+      left: -230px
+
+    &:nth-child(11) &-count
+      left: -210px
+
+  &-thanks
     +stackwide
     margin:
       bottom: 50px
