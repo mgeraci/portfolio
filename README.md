@@ -3,6 +3,8 @@
 This repository stores my personal website. It's written in Django, with a
 smattering of frontend technologies.
 
+This archive branch holds all the commits made while developing the django
+version of this site.
 
 ## Installation
 
