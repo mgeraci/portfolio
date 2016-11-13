@@ -18,7 +18,7 @@
 {% include "pages/graphic_menu.html" %}
 
 {% if graphic %}
-	<div class="page-graphic-content">
+	<div class="page-graphic-content {% if graphic_landing_page %}page-graphic-content--hideable{% endif %}">
 		{% include "title.html" with item=title_bundle %}
 
 		{% for image in images %}

@@ -78,6 +78,10 @@ $menu-item-margin: 20px
     width: 75%
     padding-left: 3%
 
+    &--hideable
+      @media (max-width: $menu-breakpoint)
+        display: none
+
     @media (max-width: $menu-breakpoint)
       width: 100%
       padding: 0

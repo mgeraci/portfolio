@@ -15,7 +15,7 @@
 
 <div class="submenu">
 	{% include 'pages/composition_menu.html' %}
-	<div class="submenu-content {% if not piece %}submenu-content--hide{% endif %}">
+	<div class="submenu-content {% if composition_landing_page %}submenu-content--hide{% endif %}">
 		{% if piece %}
 			{% include "title.html" with item=title_bundle %}
 

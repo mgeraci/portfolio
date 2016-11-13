@@ -9,31 +9,21 @@ $recordings-breakpoint: 875px
     position: relative
 
   .recording-thumbnail
-    position: absolute
-    top: 0
-    left: 0
-    width: $image-size
-    height: $image-size
-
-    @media (max-width: $recordings-breakpoint)
-      position: relative
-      width: 100%
-      margin-bottom: 20px
-
-      img
-        @include center
+    display: block
+    width: 100%
+    margin-bottom: 20px
 
     img
-      float: left
+      width: $image-size
+      height: $image-size
+      @include center
 
   .recording-content
     margin-bottom: 20px
+    text-align: center
 
-  // content with a thumbnail should have left padding to allow for the the
-  // image
-  .recording-thumbnail + .recording-content
+  .recording-thumbnail
     margin-bottom: 0
-    padding-left: $image-size + 20
     min-height: $image-size + 20
 
     @media (max-width: $recordings-breakpoint)
@@ -47,4 +37,4 @@ $recordings-breakpoint: 875px
     &-title
       padding-bottom: 10px
       font-style: oblique
-      font-size: 20px
+      font-size: 16px

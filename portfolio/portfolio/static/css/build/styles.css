@@ -55,7 +55,7 @@ body {
   color: #444;
   font-family: 'PT Serif', Georgia, serif;
   font-size: 18px;
-  line-height: 28px;
+  line-height: 30px;
   -webkit-font-smoothing: antialiased; }
   body.no-scroll {
     overflow: hidden; }
@@ -711,36 +711,29 @@ nav::after {
   position: relative; }
 
 .page-recordings .recording-thumbnail {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 200px;
-  height: 200px; }
-  @media (max-width: 875px) {
-    .page-recordings .recording-thumbnail {
-      position: relative;
-      width: 100%;
-      margin-bottom: 20px; }
-      .page-recordings .recording-thumbnail img {
-        position: relative;
-        left: 50%;
-        -webkit-transform: translateX(-50%);
-        -moz-transform: translateX(-50%);
-        -ms-transform: translateX(-50%);
-        -o-transform: translateX(-50%);
-        transform: translateX(-50%); } }
+  display: block;
+  width: 100%;
+  margin-bottom: 20px; }
   .page-recordings .recording-thumbnail img {
-    float: left; }
+    width: 200px;
+    height: 200px;
+    position: relative;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    -o-transform: translateX(-50%);
+    transform: translateX(-50%); }
 
 .page-recordings .recording-content {
-  margin-bottom: 20px; }
+  margin-bottom: 20px;
+  text-align: center; }
 
-.page-recordings .recording-thumbnail + .recording-content {
+.page-recordings .recording-thumbnail {
   margin-bottom: 0;
-  padding-left: 220px;
   min-height: 220px; }
   @media (max-width: 875px) {
-    .page-recordings .recording-thumbnail + .recording-content {
+    .page-recordings .recording-thumbnail {
       min-height: 0;
       padding-left: 0; } }
 
@@ -750,7 +743,7 @@ nav::after {
 .page-recordings .recording-title {
   padding-bottom: 10px;
   font-style: oblique;
-  font-size: 20px; }
+  font-size: 16px; }
 
 @media (max-width: 700px) {
   .page-photography .content {
@@ -1235,6 +1228,9 @@ nav::after {
 .page-graphic-content {
   width: 75%;
   padding-left: 3%; }
+  @media (max-width: 800px) {
+    .page-graphic-content--hideable {
+      display: none; } }
   @media (max-width: 800px) {
     .page-graphic-content {
       width: 100%;
