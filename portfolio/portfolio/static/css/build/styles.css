@@ -1245,3 +1245,174 @@ nav::after {
     -ms-transform: translateX(-50%);
     -o-transform: translateX(-50%);
     transform: translateX(-50%); }
+
+.page-album-list h2,
+.page-album-list h3 {
+  float: left;
+  clear: both;
+  width: 100%;
+  text-align: center; }
+
+.page-album-list h1 {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  max-height: 66px;
+  overflow: hidden;
+  font-weight: bold;
+  font-size: 70px;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+  text-align: center; }
+
+.page-album-list h2 {
+  font-weight: bold; }
+
+.page-album-list h3 {
+  font-size: 30px;
+  font-style: oblique;
+  margin-bottom: 5px; }
+
+.page-album-list a {
+  color: #444; }
+  .page-album-list a:hover {
+    color: #f3f4d3; }
+
+.page-album-list em {
+  font-style: oblique; }
+
+.page-album-list .links {
+  width: 100%;
+  text-align: center;
+  font-size: 18px; }
+  .page-album-list .links .active {
+    text-decoration: none; }
+    .page-album-list .links .active:hover {
+      color: #444; }
+
+.page-album-list #albums {
+  float: left;
+  clear: both;
+  width: 100%;
+  margin-top: 60px; }
+  .page-album-list #albums li {
+    float: left;
+    clear: both;
+    width: 100%;
+    margin-bottom: 50px;
+    position: relative; }
+
+.page-album-list .count {
+  font-size: 500px;
+  font-style: oblique;
+  position: absolute;
+  top: 0px;
+  left: -140px;
+  z-index: 1;
+  color: #b2cb8b; }
+
+.page-album-list li:first-child .count {
+  left: -115px; }
+
+.page-album-list li:nth-child(3) .count {
+  top: -50px; }
+
+.page-album-list li:nth-child(4) .count {
+  top: -60px; }
+
+.page-album-list li:nth-child(5) .count {
+  top: -50px; }
+
+.page-album-list li:nth-child(6) .count {
+  top: 30px; }
+
+.page-album-list li:nth-child(7) .count {
+  top: -30px; }
+
+.page-album-list li:nth-child(8) .count {
+  top: 30px; }
+
+.page-album-list li:nth-child(9) .count {
+  top: -40px; }
+
+.page-album-list li:nth-child(10) .count,
+.page-album-list li:nth-child(11) .count,
+.page-album-list li:nth-child(12) .count,
+.page-album-list li:nth-child(13) .count,
+.page-album-list li:nth-child(14) .count,
+.page-album-list li:nth-child(15) .count {
+  letter-spacing: -70px;
+  left: -230px; }
+
+.page-album-list li:nth-child(11) .count {
+  left: -210px; }
+
+.page-album-list .image,
+.page-album-list img {
+  position: relative;
+  z-index: 2;
+  float: left;
+  width: 400px;
+  height: 400px;
+  background: rgba(255, 255, 255, 0.2); }
+
+.page-album-list .content h2, .page-album-list .content h3 {
+  float: left;
+  clear: both;
+  text-align: left;
+  color: #444;
+  font-size: 45px; }
+
+.page-album-list .content h3 {
+  font-size: 20px; }
+  .page-album-list .content h3 span {
+    font-size: 40px; }
+
+.page-album-list .content .description {
+  float: left;
+  clear: both;
+  width: 100%;
+  margin-top: 25px;
+  font-size: 24px; }
+
+.page-album-list .content .song {
+  float: left;
+  clear: both;
+  margin-top: 25px;
+  margin-bottom: 3px;
+  font-size: 20px;
+  font-style: oblique; }
+
+.page-album-list .content audio,
+.page-album-list .content object {
+  float: left;
+  clear: both; }
+
+.page-album-list .content .buy-links {
+  float: left;
+  clear: both;
+  width: 100%;
+  margin-top: 30px; }
+
+.page-album-list .content .link {
+  float: left;
+  margin-left: 10px;
+  opacity: 0.5;
+  -webkit-transition: opacity 75ms linear;
+  -moz-transition: opacity 75ms linear;
+  transition: opacity 75ms linear;
+  font-size: 20px;
+  line-height: 13px;
+  text-decoration: none;
+  border-bottom: 1px solid #444; }
+  .page-album-list .content .link:first-child {
+    margin-left: 0; }
+  .page-album-list .content .link:hover {
+    opacity: 1;
+    color: #444; }
+
+.page-album-list #thanks {
+  float: left;
+  clear: both;
+  width: 100%;
+  margin-bottom: 50px;
+  text-align: center; }
