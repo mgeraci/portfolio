@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}
+	Making Lists of Music
+{% endblock %}
+
+{% block content %}
+	All Lists:
+	<br>
+	{% for list in lists %}
+		{% if not list.hidden %}
+			<br>
+			<a href="{% url 'album_list_url' list.slug %}">{{ list.name }}</a>
+		{% endif %}
+	{% endfor %}
+
+{% endblock %}

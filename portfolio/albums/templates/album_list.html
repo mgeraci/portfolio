@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+
+{% block title %}
+	{{ list.name }}
+{% endblock %}
+
+{% block content %}
+
+	<h3>I know you don&rsquo;t care, but here are</h2>
+	<h1>{{ list.name }}</h1>
+
+	<div class="links">
+		see also:
+		{% for link in lists %}
+			{% if not link.hidden %}
+				<a
+						href="{% url 'album_list_url' link.slug %}"
+						{% if list.slug == link.slug %}
+							class="active"
+						{% endif %}
+						>
+					{{ link.slug }}</a>
+			{% endif %}
+		{% endfor %}
+	</div>
+
+	<ul id="albums">
+		{% for selection in selections %}
+			<li>
+				<div class="count count{{ selection.position }}">
+					{{ selection.position }}
+				</div>
+
+				<div class="image"
+						{% if selection.album.cover %}
+							data-src="{{ MEDIA_URL }}{{ selection.album.cover }}"
+						{% endif %}>
+				</div>
+
+				<div class="content">
+					<h2>
+						{{ selection.album.name|safe }}
+					</h2>
+					<h3>
+						by
+						<span>{{ selection.album.artist }}</span>
+					</h3>
+
+					{% if selection.description %}
+						<div class="description">
+							{{ selection.description|safe }}
+						</div>
+					{% endif %}
+
+					{% if selection.album.sample and selection.album.sample_name %}
+						<div class="song">
+							{{ selection.album.sample_name|safe }}
+						</div>
+						<div id="audioplayer-{{ selection.album.id }}" class="audioplayer"
+								data-src="{{ MEDIA_URL }}{{ selection.album.sample }}"></div>
+					{% endif %}
+
+					<div class="buy-links">
+						{% for link in selection.album.albumlink_set.all %}
+							<a class="link {{ link.classes }}" href="{{ link.href }}" target="_blank">
+								{{ link.name|safe }}
+							</a>
+						{% endfor %}
+					</div>
+				</div>
+
+			</li>
+		{% endfor %}
+	</ul>
+
+	<div id="thanks">
+		That&rsquo;s it. Thanks for reading.
+		<br>
+		Complain via <a href="mailto:me@mgeraci.com">email</a>.
+	</div>
+
+{% endblock %}

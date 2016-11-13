@@ -1,0 +1,305 @@
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, tt, var, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  vertical-align: baseline;
+  background: transparent;
+  font-weight: inherit;
+  font-style: inherit;
+  font-size: 100%;
+  font-family: inherit; }
+
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+  display: block; }
+
+html {
+  margin: 0;
+  padding: 0; }
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: helvetica, arial, verdana, sans-serif;
+  text-rendering: optimizeLegibility; }
+
+img {
+  border: 0; }
+
+ul {
+  list-style-type: none; }
+
+html {
+  width: 100%;
+  height: 100%;
+  min-width: 900px; }
+
+body {
+  position: relative; }
+
+.wrapOut {
+  width: 100%;
+  float: left;
+  clear: both;
+  min-width: 900px; }
+
+.wrapIn {
+  width: 900px;
+  margin: 0 auto; }
+
+.outer {
+  float: left;
+  clear: both;
+  position: relative;
+  left: 50%; }
+
+.inner {
+  position: relative;
+  left: -50%; }
+
+@font-face {
+  font-family: "body";
+  src: url("http://michaelgeraci.com/fonts/body.eot?#iefix") format("embedded-opentype"), url("http://michaelgeraci.com/fonts/body.woff") format("woff"), url("http://michaelgeraci.com/fonts/body.ttf") format("truetype"), url("http://michaelgeraci.com/fonts/body.svg#Body") format("svg");
+  font-weight: normal;
+  font-style: normal; }
+@font-face {
+  font-family: "body";
+  src: url("http://michaelgeraci.com/fonts/body_italic.eot?#iefix") format("embedded-opentype"), url("http://michaelgeraci.com/fonts/body_italic.woff") format("woff"), url("http://michaelgeraci.com/fonts/body_italic.ttf") format("truetype"), url("http://michaelgeraci.com/fonts/body_italic.svg#BodyItalic") format("svg");
+  font-weight: normal;
+  font-style: oblique; }
+@font-face {
+  font-family: "body";
+  src: url("http://michaelgeraci.com/fonts/body_bold.eot?#iefix") format("embedded-opentype"), url("http://michaelgeraci.com/fonts/body_bold.woff") format("woff"), url("http://michaelgeraci.com/fonts/body_bold.ttf") format("truetype"), url("http://michaelgeraci.com/fonts/body_bold.svg#BodyBold") format("svg");
+  font-weight: bold;
+  font-style: normal; }
+@font-face {
+  font-family: "headline";
+  src: url("http://michaelgeraci.com/fonts/headline.eot?#iefix") format("embedded-opentype"), url("http://michaelgeraci.com/fonts/headline.woff") format("woff"), url("http://michaelgeraci.com/fonts/headline.ttf") format("truetype"), url("http://michaelgeraci.com/fonts/headline.svg#Headline") format("svg");
+  font-weight: bold;
+  font-style: normal; }
+#menu {
+  float: left;
+  margin: 10px 0 50px 10px;
+  padding: 0px;
+  width: 900px; }
+  #menu li {
+    list-style: none;
+    float: left; }
+  #menu a {
+    margin-right: 40px;
+    text-decoration: none;
+    overflow: hidden;
+    line-height: 500px;
+    float: left;
+    display: block;
+    width: 90px;
+    height: 90px; }
+  #menu a.bio {
+    background: url("http://michaelgeraci.com/images/insideButtons.png") 0 0; }
+  #menu .bio_on, #menu .bio:hover {
+    background: url("http://michaelgeraci.com/images/insideButtons.png") -90px 0; }
+  #menu a.composition {
+    background: url("http://michaelgeraci.com/images/insideButtons.png") 0 -270px; }
+  #menu .composition_on, #menu .composition:hover {
+    background: url("http://michaelgeraci.com/images/insideButtons.png") -90px -270px; }
+  #menu a.recordings {
+    background: url("http://michaelgeraci.com/images/insideButtons.png") 0 -180px; }
+  #menu .recordings_on, #menu .recordings:hover {
+    background: url("http://michaelgeraci.com/images/insideButtons.png") -90px -180px; }
+  #menu a.graphic {
+    background: url("http://michaelgeraci.com/images/insideButtons.png") -180px 0; }
+  #menu .graphic_on, #menu .graphic:hover {
+    background: url("http://michaelgeraci.com/images/insideButtons.png") -270px 0; }
+  #menu a.photo {
+    background: url("http://michaelgeraci.com/images/insideButtons.png") -180px -180px; }
+  #menu .photo_on, #menu .photo:hover {
+    background: url("http://michaelgeraci.com/images/insideButtons.png") -270px -180px; }
+  #menu a.web {
+    background: url("http://michaelgeraci.com/images/insideButtons.png") 0 -90px; }
+  #menu .web_on, #menu .web:hover {
+    background: url("http://michaelgeraci.com/images/insideButtons.png") -90px -90px; }
+  #menu a.links {
+    background: url("http://michaelgeraci.com/images/insideButtons.png") -180px -90px; }
+  #menu .links_on, #menu .links:hover {
+    background: url("http://michaelgeraci.com/images/insideButtons.png") -270px -90px; }
+
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box; }
+
+body {
+  background: #bbd199;
+  font-family: "body", georgia, serif;
+  color: #444;
+  font-size: 20px; }
+
+h2,
+h3 {
+  float: left;
+  clear: both;
+  width: 100%;
+  text-align: center; }
+
+h1 {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  max-height: 66px;
+  overflow: hidden;
+  font-weight: bold;
+  font-size: 70px;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+  text-align: center; }
+
+h2 {
+  font-weight: bold; }
+
+h3 {
+  font-size: 30px;
+  font-style: oblique;
+  margin-bottom: 5px; }
+
+a {
+  color: #444; }
+  a:hover {
+    color: #f3f4d3; }
+
+em {
+  font-style: oblique; }
+
+.links {
+  width: 100%;
+  text-align: center;
+  font-size: 18px; }
+  .links .active {
+    text-decoration: none; }
+    .links .active:hover {
+      color: #444; }
+
+#albums {
+  float: left;
+  clear: both;
+  width: 100%;
+  margin-top: 60px; }
+  #albums li {
+    float: left;
+    clear: both;
+    width: 100%;
+    margin-bottom: 50px;
+    position: relative; }
+
+.count {
+  font-size: 500px;
+  font-style: oblique;
+  position: absolute;
+  top: 0px;
+  left: -140px;
+  z-index: 1;
+  color: #b2cb8b; }
+
+li:first-child .count {
+  left: -115px; }
+
+li:nth-child(3) .count {
+  top: -50px; }
+
+li:nth-child(4) .count {
+  top: -60px; }
+
+li:nth-child(5) .count {
+  top: -50px; }
+
+li:nth-child(6) .count {
+  top: 30px; }
+
+li:nth-child(7) .count {
+  top: -30px; }
+
+li:nth-child(8) .count {
+  top: 30px; }
+
+li:nth-child(9) .count {
+  top: -40px; }
+
+li:nth-child(10) .count,
+li:nth-child(11) .count,
+li:nth-child(12) .count,
+li:nth-child(13) .count,
+li:nth-child(14) .count,
+li:nth-child(15) .count {
+  letter-spacing: -70px;
+  left: -230px; }
+
+li:nth-child(11) .count {
+  left: -210px; }
+
+.image,
+img {
+  position: relative;
+  z-index: 2;
+  float: left;
+  width: 400px;
+  height: 400px;
+  background: rgba(255, 255, 255, 0.2); }
+
+.content {
+  width: 50%;
+  float: right; }
+  .content h2, .content h3 {
+    float: left;
+    clear: both;
+    text-align: left;
+    color: #444;
+    font-size: 45px; }
+  .content h3 {
+    font-size: 20px; }
+    .content h3 span {
+      font-size: 40px; }
+  .content .description {
+    float: left;
+    clear: both;
+    width: 100%;
+    margin-top: 25px;
+    font-size: 24px; }
+  .content .song {
+    float: left;
+    clear: both;
+    margin-top: 25px;
+    margin-bottom: 3px;
+    font-size: 20px;
+    font-style: oblique; }
+  .content audio,
+  .content object {
+    float: left;
+    clear: both; }
+  .content .buy-links {
+    float: left;
+    clear: both;
+    width: 100%;
+    margin-top: 30px; }
+  .content .link {
+    float: left;
+    margin-left: 10px;
+    opacity: 0.5;
+    -webkit-transition: opacity 75ms linear;
+    -moz-transition: opacity 75ms linear;
+    transition: opacity 75ms linear;
+    font-size: 20px;
+    line-height: 13px;
+    text-decoration: none;
+    border-bottom: 1px solid #444; }
+    .content .link:first-child {
+      margin-left: 0; }
+    .content .link:hover {
+      opacity: 1;
+      color: #444; }
+
+#thanks {
+  float: left;
+  clear: both;
+  width: 100%;
+  margin-bottom: 50px;
+  text-align: center; }
+
+/*# sourceMappingURL=style.css.map */

@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    'portfolio'
+    'portfolio',
+    'albums',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -54,7 +55,7 @@ MIDDLEWARE_CLASSES = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'portfolio.urls'
+ROOT_URLCONF = 'michael_dot_com.urls'
 
 TEMPLATES = [
     {

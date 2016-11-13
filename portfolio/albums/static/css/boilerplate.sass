@@ -1,0 +1,130 @@
+// ============================================================= //
+// =               Boilerplate Sass CSS Styles                 = //
+// =    by Michael P. Geraci, 2011 - www.michaelgeraci.com     = //
+// =    tell me what's missing: mgeraci@gmail.com | @mgeraci   = //
+// =       free for all to use and modify (MIT License)        = //
+// = thanks to nathos for the original less => sass conversion = //
+// ============================================================= //
+
+
+// =============
+// = CSS Reset =
+// =============
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, tt, var, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video
+  margin: 0
+  padding: 0
+  border: 0
+  outline: 0
+  vertical-align: baseline
+  background: transparent
+  font-weight: inherit
+  font-style: inherit
+  font-size: 100%
+  font-family: inherit
+
+// HTML5 display-role reset for older browsers
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section
+  display: block
+
+
+// ==================
+// = General Styles =
+// ==================
+
+// No margin or padding on docroot
+html
+  margin: 0
+  padding: 0
+
+// No margin or padding on body, sensible font defaults
+body
+  margin: 0
+  padding: 0
+  font-family: helvetica, arial, verdana, sans-serif
+  text-rendering: optimizeLegibility // enable better kerning and ligatures for Webkit. FF has this enabled by default for fonts >= 20px. IE does not support this
+
+// Stack your boxes easily with this
+=floatClear
+  float: left
+  clear: both
+
+=stack
+  +floatClear
+
+=stackwide
+  +stack
+  width: 100%
+
+
+// Do you hate borders on your images and image links? Because I do.
+img
+  border: 0
+
+// Wow! You also don't like bullets? Great to meet you.
+ul
+  list-style-type: none
+
+
+// ===========================
+// = Centered Content Blocks =
+// ===========================
+
+// For designs that involve a centered column of fixed with, I've found that
+// for great browser compatability, it's useful to separate page elements
+// into discreet horizontal chunks when possible. These two classes help.
+//
+// example:
+// <div class="wrapOut">
+//   <div class="wrapIn">
+//     header content here
+//   </div>
+// </div>
+// <div class="wrapOut">
+//   <div class="wrapIn">
+//     your main content goes here
+//   </div>
+// </div>
+
+// set the width of your body column
+$contentWidth: 900px
+
+html
+  width: 100%
+  height: 100%
+  min-width: $contentWidth // set so that browsers resized smaller do not change column content
+
+body
+  position: relative // to enable correct absolute positioning
+
+.wrapOut
+  width: 100%
+  +floatClear
+  min-width: $contentWidth
+
+.wrapIn
+  width: $contentWidth
+  margin: 0 auto
+
+
+// ======================================================
+// = Horizontal Centering for Objects of Variable Width =
+// ======================================================
+
+// example:
+//<div class="outer">
+//  <div class="inner">The amount of text in this div can change, and it would still be centered</div>
+//</div>
+
+// It's worth noting that since .outer is positioned in the middle, it could protrude relatively
+// far off to the right depending on the width of the object being centered. I usually set
+// .outer's parent to overflow: hidden to make sure this doesn't affect the layout.
+
+.outer
+  +floatClear
+  position: relative
+  left: 50%
+
+.inner
+  position: relative
+  left: -50%

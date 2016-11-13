@@ -2,6 +2,7 @@ from django.conf.urls import url
 from django.contrib import admin
 from django.conf import settings
 from django.views.generic.base import RedirectView
+
 from . import views
 from feeds import PhotoblogFeed
 from django.conf.urls.static import static
