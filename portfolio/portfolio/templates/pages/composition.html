@@ -22,7 +22,7 @@
 			<br />
 
 			{% if piece.audio %}
-				<audio src="{{ MEDIA_URL }}{{ piece.audio }}" preload="none"></audio>
+				{% include "audio.html" with src=piece.audio %}
 			{% endif %}
 
 			{% if piece.video %}

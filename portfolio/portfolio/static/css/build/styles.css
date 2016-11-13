@@ -137,6 +137,11 @@ em {
   position: relative;
   bottom: 10px; }
 
+.audio-title {
+  padding-bottom: 10px;
+  font-style: oblique;
+  font-size: 16px; }
+
 @-webkit-keyframes spin {
   from {
     -webkit-transform: rotate(0deg); }
@@ -737,13 +742,8 @@ nav::after {
       min-height: 0;
       padding-left: 0; } }
 
-.page-recordings .recording + .recording {
+.page-recordings .audio + .audio {
   margin-top: 20px; }
-
-.page-recordings .recording-title {
-  padding-bottom: 10px;
-  font-style: oblique;
-  font-size: 16px; }
 
 @media (max-width: 700px) {
   .page-photography .content {
@@ -1349,8 +1349,9 @@ nav::after {
   .page-album-list-item-description {
     font-size: 18px;
     line-height: 27px; }
+  .page-album-list-item .audio, .page-album-list-item-links {
+    margin-top: 30px; }
   .page-album-list-item-links {
-    margin-top: 30px;
     font-size: 15px; }
     .page-album-list-item-links a.page-album-list-item-links-link {
       display: inline-block;

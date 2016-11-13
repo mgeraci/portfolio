@@ -37,12 +37,7 @@
 			</div>
 
 			{% for recording in recordings %}
-				<div class="recording">
-					<span class="recording-title">
-						{{ recording.title }}
-					</span>
-					<audio src="{{ MEDIA_URL }}{{ recording.audio }}" preload="none"></audio>
-				</div>
+				{% include "audio.html" with title=recording.title src=recording.audio %}
 			{% endfor %}
 
 			<br />

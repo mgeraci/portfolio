@@ -1,0 +1,14 @@
+{% if src %}
+	<div class="audio">
+		{% if title %}
+			<span class="audio-title">
+				{{ title|safe }}
+			</span>
+		{% endif %}
+
+		<audio
+			src="{{ MEDIA_URL }}{{ src }}"
+			preload="none">
+		</audio>
+	</div>
+{% endif %}
