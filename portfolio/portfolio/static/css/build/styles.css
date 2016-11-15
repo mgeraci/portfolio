@@ -328,7 +328,7 @@ nav::after {
         border-top: 6px solid #444; }
   .nav-mobile-menu {
     position: fixed;
-    z-index: 2;
+    z-index: 200;
     top: 0;
     left: 0;
     width: 100%;
@@ -1316,6 +1316,9 @@ nav::after {
   clear: both;
   width: 100%;
   margin-bottom: 50px; }
+  @media (max-width: 700px) {
+    .page-album-list-item {
+      margin-bottom: 70px; } }
   .page-album-list-item-count {
     font-size: 30vw;
     font-style: oblique;
@@ -1331,6 +1334,9 @@ nav::after {
         top: 173px;
         left: -140px;
         font-size: 400px; } }
+    @media (max-width: 700px) {
+      .page-album-list-item-count {
+        display: none; } }
   .page-album-list-item-image {
     position: relative;
     z-index: 2;
@@ -1338,6 +1344,30 @@ nav::after {
     width: 40%;
     padding-top: 40%;
     background: rgba(255, 255, 255, 0.2); }
+    @media (max-width: 700px) {
+      .page-album-list-item-image {
+        position: relative;
+        left: 50%;
+        -webkit-transform: translateX(-50%);
+        -moz-transform: translateX(-50%);
+        -ms-transform: translateX(-50%);
+        -o-transform: translateX(-50%);
+        transform: translateX(-50%);
+        width: 300px;
+        height: 300px;
+        clear: both; } }
+    @media (max-width: 415px) {
+      .page-album-list-item-image {
+        position: relative;
+        left: 50%;
+        -webkit-transform: translateX(-50%);
+        -moz-transform: translateX(-50%);
+        -ms-transform: translateX(-50%);
+        -o-transform: translateX(-50%);
+        transform: translateX(-50%);
+        width: 100%;
+        height: auto;
+        padding-top: 100%; } }
     .page-album-list-item-image img {
       position: absolute;
       top: 0;
@@ -1345,19 +1375,43 @@ nav::after {
       width: 100%;
       height: auto; }
   .page-album-list-item-content {
+    position: relative;
     float: left;
     width: 55%;
     margin-left: 5%; }
+    .page-album-list-item-content-count {
+      display: none;
+      position: absolute;
+      top: 24px;
+      left: 0;
+      font-style: oblique;
+      font-size: 90px;
+      opacity: 0.4; }
+      @media (max-width: 700px) {
+        .page-album-list-item-content-count {
+          display: block; } }
+    @media (max-width: 700px) {
+      .page-album-list-item-content {
+        width: 100%;
+        margin-top: 20px;
+        margin-left: 0; } }
   .page-album-list-item-description,
   .page-album-list-item .audio, .page-album-list-item-links {
     margin-top: 25px; }
   .page-album-list-item-album, .page-album-list-item-artist {
+    word-wrap: break-word;
     text-align: left;
-    color: #444;
-    font-size: 45px; }
+    color: #444; }
+    @media (max-width: 700px) {
+      .page-album-list-item-album, .page-album-list-item-artist {
+        padding-left: 70px; } }
   .page-album-list-item-album {
     font-size: 38px;
     line-height: 41px; }
+    @media (max-width: 700px) {
+      .page-album-list-item-album {
+        font-size: 30px;
+        line-height: 37px; } }
   .page-album-list-item-artist {
     font-size: 18px;
     line-height: 26px;
@@ -1409,6 +1463,27 @@ nav::after {
     left: -140px; }
   .page-album-list-item:nth-child(12) .page-album-list-item-count-text {
     letter-spacing: -40px; }
+  .page-album-list-item:nth-child(10) .page-album-list-item-content-count,
+  .page-album-list-item:nth-child(11) .page-album-list-item-content-count,
+  .page-album-list-item:nth-child(12) .page-album-list-item-content-count,
+  .page-album-list-item:nth-child(13) .page-album-list-item-content-count,
+  .page-album-list-item:nth-child(14) .page-album-list-item-content-count,
+  .page-album-list-item:nth-child(15) .page-album-list-item-content-count {
+    letter-spacing: -12px; }
+  @media (max-width: 700px) {
+    .page-album-list-item:nth-child(10) .page-album-list-item-artist,
+    .page-album-list-item:nth-child(11) .page-album-list-item-artist,
+    .page-album-list-item:nth-child(12) .page-album-list-item-artist,
+    .page-album-list-item:nth-child(13) .page-album-list-item-artist,
+    .page-album-list-item:nth-child(14) .page-album-list-item-artist,
+    .page-album-list-item:nth-child(15) .page-album-list-item-artist,
+    .page-album-list-item:nth-child(10) .page-album-list-item-album,
+    .page-album-list-item:nth-child(11) .page-album-list-item-album,
+    .page-album-list-item:nth-child(12) .page-album-list-item-album,
+    .page-album-list-item:nth-child(13) .page-album-list-item-album,
+    .page-album-list-item:nth-child(14) .page-album-list-item-album,
+    .page-album-list-item:nth-child(15) .page-album-list-item-album {
+      padding-left: 90px; } }
 
 .page-album-list-thanks {
   float: left;

@@ -6,6 +6,8 @@
   +stack
   width: 100%
 
+$albums-breakpoint: 700px
+
 .page-album-list
   &-title
     h1,
@@ -52,6 +54,10 @@
     +stackwide
     margin-bottom: 50px
 
+    @media (max-width: $albums-breakpoint)
+      margin-bottom: 70px
+
+
     &-count
       font-size: 30vw
       font-style: oblique
@@ -69,6 +75,9 @@
         left: -140px
         font-size: 400px
 
+      @media (max-width: $albums-breakpoint)
+        display: none
+
     &-image
       position: relative
       z-index: 2
@@ -76,6 +85,18 @@
       width: 40%
       padding-top: 40%
       background: transparentize(white, 0.8)
+
+      @media (max-width: $albums-breakpoint)
+        @include center
+        width: 300px
+        height: 300px
+        clear: both
+
+      @media (max-width: 415px)
+        @include center
+        width: 100%
+        height: auto
+        padding-top: 100%
 
       img
         position: absolute
@@ -85,9 +106,27 @@
         height: auto
 
     &-content
+      position: relative
       float: left
       width: 55%
       margin-left: 5%
+
+      &-count
+        display: none
+        position: absolute
+        top: 24px
+        left: 0
+        font-style: oblique
+        font-size: 90px
+        opacity: 0.4
+
+        @media (max-width: $albums-breakpoint)
+          display: block
+
+      @media (max-width: $albums-breakpoint)
+        width: 100%
+        margin-top: 20px
+        margin-left: 0
 
     &-description,
     .audio,
@@ -96,12 +135,18 @@
 
     &-album,
     &-artist
+      word-wrap: break-word
       text-align: left
       color: $text
-      font-size: 45px
+
+      @media (max-width: $albums-breakpoint)
+        padding-left: 70px
 
     &-album
       @include type(38px, 41px)
+
+      @media (max-width: $albums-breakpoint)
+        @include type(30px, 37px)
 
     &-artist
       @include type(18px, 26px)
@@ -133,6 +178,8 @@
         //&.bandcamp
         //&.text
 
+    // count spacing
+
     &:nth-child(10) &-count-text,
     &:nth-child(11) &-count-text,
     &:nth-child(12) &-count-text,
@@ -147,6 +194,30 @@
 
     &:nth-child(12) &-count-text
       letter-spacing: -40px
+
+    // mobile count spacing
+    &:nth-child(10) &-content-count,
+    &:nth-child(11) &-content-count,
+    &:nth-child(12) &-content-count,
+    &:nth-child(13) &-content-count,
+    &:nth-child(14) &-content-count,
+    &:nth-child(15) &-content-count
+      letter-spacing: -12px
+
+    &:nth-child(10) &-artist,
+    &:nth-child(11) &-artist,
+    &:nth-child(12) &-artist,
+    &:nth-child(13) &-artist,
+    &:nth-child(14) &-artist,
+    &:nth-child(15) &-artist,
+    &:nth-child(10) &-album,
+    &:nth-child(11) &-album,
+    &:nth-child(12) &-album,
+    &:nth-child(13) &-album,
+    &:nth-child(14) &-album,
+    &:nth-child(15) &-album
+      @media (max-width: $albums-breakpoint)
+        padding-left: 90px
 
   &-thanks
     +stackwide
