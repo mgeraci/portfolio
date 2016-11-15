@@ -1280,7 +1280,8 @@ nav::after {
     text-decoration: none;
     background-repeat: repeat-x;
     background-size: 2px 2px;
-    background-position: 0 85%; }
+    background-position: 0 85%;
+    margin-left: 2px; }
     .page-album-list-navigation a,
     .page-album-list-navigation a h2,
     .page-album-list-navigation a h3 {
@@ -1299,10 +1300,11 @@ nav::after {
     .no-touchevents .page-album-list-navigation a:active h3 {
       color: #f3f4d3;
       text-shadow: 0 1px 2px rgba(0, 0, 0, 0.15); }
-  .page-album-list-navigation .active {
-    text-decoration: none; }
-    .page-album-list-navigation .active:hover {
-      color: #444; }
+    .page-album-list-navigation a.active {
+      background-image: none !important;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.15) !important;
+      color: #f3f4d3;
+      cursor: default; }
 
 .page-album-list-items {
   float: left;

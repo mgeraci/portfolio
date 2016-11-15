@@ -37,12 +37,13 @@ $albums-breakpoint: 700px
 
     a
       @include link($text, $cream)
+      margin-left: 2px
 
-    .active
-      text-decoration: none
-
-      &:hover
-        color: $text
+      &.active
+        background-image: none !important
+        text-shadow: $active-link-shadow !important
+        color: $cream
+        cursor: default
 
   &-items
     +stackwide
