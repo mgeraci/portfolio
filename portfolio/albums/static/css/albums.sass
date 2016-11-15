@@ -56,12 +56,17 @@
       font-size: 30vw
       font-style: oblique
       position: absolute
-      top: 173px
-      left: -140px
+      top: 16vw
+      left: -9.5vw
       z-index: 1
       color: rgba(#000, 0.1)
 
+      &-text
+        position: relative
+
       @media (min-width: 1300px)
+        top: 173px
+        left: -140px
         font-size: 400px
 
     &-image
@@ -107,7 +112,7 @@
         font-size: 26px
 
     &-description
-      @include type(18px, 27px)
+      @include type(18px, 28px)
 
     &-links
       font-size: 15px
@@ -128,41 +133,20 @@
         //&.bandcamp
         //&.text
 
-    &:nth-child(1) &-count
-      left: -115px
-
-    &:nth-child(3) &-count
-      top: -50px
-
-    &:nth-child(4) &-count
-      top: -60px
-
-    &:nth-child(5) &-count
-      top: -50px
-
-    &:nth-child(6) &-count
-      top: 30px
-
-    &:nth-child(7) &-count
-      top: -30px
-
-    &:nth-child(8) &-count
-      top: 30px
-
-    &:nth-child(9) &-count
-      top: -40px
-
-    &:nth-child(10) &-count,
-    &:nth-child(11) &-count,
-    &:nth-child(12) &-count,
-    &:nth-child(13) &-count,
-    &:nth-child(14) &-count,
-    &:nth-child(15) &-count
+    &:nth-child(10) &-count-text,
+    &:nth-child(11) &-count-text,
+    &:nth-child(12) &-count-text,
+    &:nth-child(13) &-count-text,
+    &:nth-child(14) &-count-text,
+    &:nth-child(15) &-count-text
       letter-spacing: -70px
-      left: -230px
+      left: -167px
 
-    &:nth-child(11) &-count
-      left: -210px
+    &:nth-child(11) &-count-text
+      left: -140px
+
+    &:nth-child(12) &-count-text
+      letter-spacing: -40px
 
   &-thanks
     +stackwide

@@ -1320,12 +1320,16 @@ nav::after {
     font-size: 30vw;
     font-style: oblique;
     position: absolute;
-    top: 173px;
-    left: -140px;
+    top: 16vw;
+    left: -9.5vw;
     z-index: 1;
     color: rgba(0, 0, 0, 0.1); }
+    .page-album-list-item-count-text {
+      position: relative; }
     @media (min-width: 1300px) {
       .page-album-list-item-count {
+        top: 173px;
+        left: -140px;
         font-size: 400px; } }
   .page-album-list-item-image {
     position: relative;
@@ -1363,7 +1367,7 @@ nav::after {
       font-size: 26px; }
   .page-album-list-item-description {
     font-size: 18px;
-    line-height: 27px; }
+    line-height: 28px; }
   .page-album-list-item-links {
     font-size: 15px; }
     .page-album-list-item-links a.page-album-list-item-links-link {
@@ -1393,32 +1397,18 @@ nav::after {
         text-shadow: 0 1px 2px rgba(0, 0, 0, 0.15); }
       .page-album-list-item-links a.page-album-list-item-links-link:first-child {
         margin-left: 0; }
-  .page-album-list-item:nth-child(1) .page-album-list-item-count {
-    left: -115px; }
-  .page-album-list-item:nth-child(3) .page-album-list-item-count {
-    top: -50px; }
-  .page-album-list-item:nth-child(4) .page-album-list-item-count {
-    top: -60px; }
-  .page-album-list-item:nth-child(5) .page-album-list-item-count {
-    top: -50px; }
-  .page-album-list-item:nth-child(6) .page-album-list-item-count {
-    top: 30px; }
-  .page-album-list-item:nth-child(7) .page-album-list-item-count {
-    top: -30px; }
-  .page-album-list-item:nth-child(8) .page-album-list-item-count {
-    top: 30px; }
-  .page-album-list-item:nth-child(9) .page-album-list-item-count {
-    top: -40px; }
-  .page-album-list-item:nth-child(10) .page-album-list-item-count,
-  .page-album-list-item:nth-child(11) .page-album-list-item-count,
-  .page-album-list-item:nth-child(12) .page-album-list-item-count,
-  .page-album-list-item:nth-child(13) .page-album-list-item-count,
-  .page-album-list-item:nth-child(14) .page-album-list-item-count,
-  .page-album-list-item:nth-child(15) .page-album-list-item-count {
+  .page-album-list-item:nth-child(10) .page-album-list-item-count-text,
+  .page-album-list-item:nth-child(11) .page-album-list-item-count-text,
+  .page-album-list-item:nth-child(12) .page-album-list-item-count-text,
+  .page-album-list-item:nth-child(13) .page-album-list-item-count-text,
+  .page-album-list-item:nth-child(14) .page-album-list-item-count-text,
+  .page-album-list-item:nth-child(15) .page-album-list-item-count-text {
     letter-spacing: -70px;
-    left: -230px; }
-  .page-album-list-item:nth-child(11) .page-album-list-item-count {
-    left: -210px; }
+    left: -167px; }
+  .page-album-list-item:nth-child(11) .page-album-list-item-count-text {
+    left: -140px; }
+  .page-album-list-item:nth-child(12) .page-album-list-item-count-text {
+    letter-spacing: -40px; }
 
 .page-album-list-thanks {
   float: left;
