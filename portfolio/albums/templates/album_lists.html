@@ -5,13 +5,17 @@
 {% endblock %}
 
 {% block content %}
-	All Lists:
-	<br>
-	{% for list in lists %}
-		{% if not list.hidden %}
-			<br>
-			<a href="{% url 'album_list_url' list.slug %}">{{ list.name }}</a>
-		{% endif %}
-	{% endfor %}
+	<h2>All Lists:</h2>
+	<ul>
+		{% for list in lists %}
+			{% if not list.hidden %}
+				<li>
+					<a href="{% url 'album_list_url' list.slug %}">
+						{{ list.name }}
+					</a>
+				</li>
+			{% endif %}
+		{% endfor %}
+	</ul>
 
 {% endblock %}

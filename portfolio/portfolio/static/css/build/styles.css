@@ -1260,6 +1260,10 @@ nav::after {
   font-size: 60px;
   line-height: 60px;
   font-weight: bold; }
+  @media (max-width: 700px) {
+    .page-album-list-title h1 {
+      font-size: 35px;
+      line-height: 45px; } }
 
 .page-album-list-title h3 {
   font-size: 24px;
@@ -1267,6 +1271,10 @@ nav::after {
   font-style: oblique;
   font-weight: normal;
   margin-bottom: 5px; }
+  @media (max-width: 700px) {
+    .page-album-list-title h3 {
+      font-size: 14px;
+      line-height: 20px; } }
 
 .page-album-list-navigation {
   float: left;
