@@ -26,7 +26,7 @@ def index(request):
         {
             'text': ['My favorite albums of 2015'],
             'image': '{}albums-2015.jpg'.format(recent_image_root),
-            'href': 'http://albums.michaelgeraci.com/list/2015',
+            'href': 'http://michaelgeraci.com/albums/2015',
         },
         {
             'text': ['New project:', 'Smart mirror display'],
