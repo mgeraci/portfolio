@@ -36,14 +36,13 @@
 
 <div class="index-bottom">
 	<div class="index-bottom-content">
-		<h2 class="index-bottom-headline">Last updated {{ recent_date }}</h2>
-		<div class="index-bottom-recent">
-			{% for recent_item in recent_items %}
-				{% include "pages/index/recent_item.html" %}
-			{% endfor %}
-		</div>
+
+		{% for project in home_projects %}
+			{% include "pages/index/project.html" %}
+		{% endfor %}
+
 		<span class="index-bottom-copyright">
-			This website and its contents are © Michael P. Geraci, 2006-{{ year }}
+			Copyright © Michael P. Geraci, 2006-{{ year }}
 		</span>
 	</div>
 </div>

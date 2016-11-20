@@ -3,6 +3,20 @@ from django.db import models
 from django.template.defaultfilters import slugify
 
 
+class HomeProject(models.Model):
+    title = models.CharField(max_length=200)
+    slug = models.SlugField(max_length=200, unique=True)
+    description = models.TextField(blank=True)
+    image = models.FileField(upload_to='web', blank=True, null=True)
+    order = models.PositiveSmallIntegerField()
+
+    class Meta:
+        ordering = ['order']
+
+    def __unicode__(self):
+        return self.title
+
+
 class Composition(models.Model):
     title = models.CharField(max_length=200)
     year = models.PositiveSmallIntegerField()
