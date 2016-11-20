@@ -696,13 +696,15 @@ nav::after {
   .project:nth-child(even) .project-title,
   .project:nth-child(even) .project-description {
     float: left;
-    clear: left; }
+    clear: left;
+    padding-right: 5%; }
   .project:nth-child(even) .project-image {
     float: right; }
   .project:nth-child(odd) .project-title,
   .project:nth-child(odd) .project-description {
     float: right;
-    clear: right; }
+    clear: right;
+    padding-left: 5%; }
   .project:nth-child(odd) .project-image {
     float: left; }
   @media (max-width: 700px) {
@@ -711,7 +713,9 @@ nav::after {
       .project .project-title,
       .project .project-description,
       .project .project-image {
-        width: 100%; }
+        width: 100%;
+        padding-right: 0 !important;
+        padding-left: 0 !important; }
       .project .project-image {
         margin-bottom: 20px; } }
 

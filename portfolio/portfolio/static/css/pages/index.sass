@@ -114,6 +114,11 @@ $index-breakpoint: 550px
     font-size: 15px
     margin-top: 40px
 
+
+$text-width: 40%
+$image-width: 55%
+$gutter-width: 100 - $text-width - $image-width
+
 .project
   @include clearfix
   width: 100%
@@ -122,10 +127,10 @@ $index-breakpoint: 550px
   &-title,
   &-description
     display: block
-    width: 40%
+    width: $text-width
 
   &-image
-    width: 55%
+    width: $image-width
     min-height: 200px
     background: rgba(#fff, 0.1)
 
@@ -134,6 +139,7 @@ $index-breakpoint: 550px
     .project-description
       float: left
       clear: left
+      padding-right: $gutter-width
 
     .project-image
       float: right
@@ -143,6 +149,7 @@ $index-breakpoint: 550px
     .project-description
       float: right
       clear: right
+      padding-left: $gutter-width
 
     .project-image
       float: left
@@ -154,6 +161,8 @@ $index-breakpoint: 550px
     .project-description,
     .project-image
       width: 100%
+      padding-right: 0 !important
+      padding-left: 0 !important
 
     .project-image
       margin-bottom: 20px

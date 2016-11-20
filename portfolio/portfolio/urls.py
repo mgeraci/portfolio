@@ -19,6 +19,7 @@ urlpatterns = [
 
     # main pages
     url(r'^$', views.index, name='index_url'),
+    url(r'^work/(?P<slug>[^/]+)/$', views.project, name='project_url'),
     url(r'^web/(?P<slug>[^/]+)/$', views.web_item, name='web_item_url'),
     url(r'^web$', views.web, name='web_url'),
     url(r'^photography/blog/rss/?', PhotoblogFeed(), name='photography_rss_url'),

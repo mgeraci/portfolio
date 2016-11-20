@@ -2,7 +2,7 @@
 
 This repository stores my personal website. It's written in Django, with the
 static files managed by webpack. The JS is written in ES6, the styles in Sass,
-and my photoblog subpage is written in react.
+and my photoblog subpage is written in React.
 
 
 ## Installation
@@ -49,7 +49,7 @@ STATIC_VERSIONS = {
 
 ## Static files
 
-CSS is written using SASS, JS is in es6 and a smattering of react, and both are
+CSS is written using SASS, JS is in es6 and a smattering of React, and both are
 managed with webpack. Assuming you already have node and npm installed, to
 install all of the packages required to compile these files, run:
 

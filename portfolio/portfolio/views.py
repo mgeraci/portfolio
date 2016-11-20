@@ -25,6 +25,17 @@ def index(request):
     return render(request, 'pages/index.html', context)
 
 
+def project(request, slug):
+    home_projects = HomeProject.objects.all()
+    project = get_object_or_404(HomeProject, slug=slug)
+
+    context = {
+        'project': project,
+    }
+
+    return render(request, 'pages/project.html', context)
+
+
 def web(request):
     webs = Web.objects.all()
     context = {
