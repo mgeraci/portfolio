@@ -94,6 +94,14 @@ function createConfig(params) {
 
 	if (isProduction) {
 		plugins.push(
+			new webpack.DefinePlugin({
+				"process.env": {
+					NODE_ENV: JSON.stringify("production")
+				}
+			})
+		);
+
+		plugins.push(
 			new webpack.optimize.UglifyJsPlugin({
 				compress: {
 					warnings: false,
