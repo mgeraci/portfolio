@@ -104,6 +104,7 @@ const App = React.createClass({
 
 		const { scrollTop, scrollBottom } = this.state;
 		const isTagsList = filteredTerm && filteredTerm.slug === TAGS_LIST_URL;
+		const hasActiveImage = !!(activeImage && images[activeImage]);
 
 		return (
 			<span>
@@ -122,12 +123,12 @@ const App = React.createClass({
 									scrollBottom={scrollBottom}
 									setActiveImage={onSetActiveImage}
 									clearActiveImage={onClearActiveImage}
-									hasActiveImage={!!activeImage}
+									hasActiveImage={hasActiveImage}
 								/>
 							)}
 						</div>
 
-						{activeImage &&
+						{hasActiveImage &&
 							<ReactCSSTransitionGroup
 									transitionName="main-image"
 									transitionAppear

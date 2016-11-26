@@ -33197,6 +33197,7 @@
 			    scrollBottom = _state.scrollBottom;
 
 			var isTagsList = filteredTerm && filteredTerm.slug === _constants.TAGS_LIST_URL;
+			var hasActiveImage = !!(activeImage && images[activeImage]);
 
 			return _react2.default.createElement(
 				"span",
@@ -33217,11 +33218,11 @@
 								scrollBottom: scrollBottom,
 								setActiveImage: onSetActiveImage,
 								clearActiveImage: onClearActiveImage,
-								hasActiveImage: !!activeImage
+								hasActiveImage: hasActiveImage
 							});
 						})
 					),
-					activeImage && _react2.default.createElement(
+					hasActiveImage && _react2.default.createElement(
 						_reactAddonsCssTransitionGroup2.default,
 						{
 							transitionName: "main-image",
