@@ -18,7 +18,7 @@ class PhotoblogFeed(Feed):
         return "Michael P. Geraci"
 
     def item_description(self, item):
-        return "{}/{}".format(
+        return "{}{}".format(
             MEDIA_URL,
             item.image2000
         )
