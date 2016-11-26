@@ -36,12 +36,13 @@ const App = React.createClass({
 	},
 
 	componentDidMount() {
-		const cb = throttle(200, this._handleScroll);
+		const onScroll = throttle(200, this._onScroll);
 
-		document.addEventListener("scroll", cb);
+		document.addEventListener("scroll", onScroll);
 		this._triggerScroll();
 	},
 
+	// if the set of images is changing, trigger a scroll event to load new photos
 	componentDidUpdate(prevProps) {
 		// has a tag, and it's changing
 		if (this.props.filteredTerm && prevProps.filteredTerm &&
@@ -62,11 +63,11 @@ const App = React.createClass({
 
 	_triggerScroll() {
 		setTimeout(() => {
-			this._handleScroll();
+			this._onScroll();
 		}, 50);
 	},
 
-	_handleScroll() {
+	_onScroll() {
 		const top = document.body.scrollTop;
 		const height = window.innerHeight
 			|| document.documentElement.clientHeight
@@ -100,7 +101,7 @@ const App = React.createClass({
 		} = this.props;
 
 		const { scrollTop, scrollBottom } = this.state;
-		const isTagsView = filteredTerm && filteredTerm.slug === TAGS_LIST_URL;
+		const isTagsList = filteredTerm && filteredTerm.slug === TAGS_LIST_URL;
 
 		return (
 			<span>
@@ -109,7 +110,7 @@ const App = React.createClass({
 					<Navigation />
 				</div>
 
-				{!isTagsView &&
+				{!isTagsList &&
 					<span>
 						<div className="page-photography-thumbnails">
 
@@ -139,7 +140,7 @@ const App = React.createClass({
 					</span>
 				}
 
-				{isTagsView &&
+				{isTagsList &&
 					<TagsList />
 				}
 

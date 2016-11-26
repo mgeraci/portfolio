@@ -33130,11 +33130,14 @@
 			return {};
 		},
 		componentDidMount: function componentDidMount() {
-			var cb = (0, _throttle2.default)(200, this._handleScroll);
+			var onScroll = (0, _throttle2.default)(200, this._onScroll);
 
-			document.addEventListener("scroll", cb);
+			document.addEventListener("scroll", onScroll);
 			this._triggerScroll();
 		},
+
+
+		// if the set of images is changing, trigger a scroll event to load new photos
 		componentDidUpdate: function componentDidUpdate(prevProps) {
 			// has a tag, and it's changing
 			if (this.props.filteredTerm && prevProps.filteredTerm && this.props.filteredTerm.slug !== prevProps.filteredTerm.slug) {
@@ -33155,10 +33158,10 @@
 			var _this = this;
 
 			setTimeout(function () {
-				_this._handleScroll();
+				_this._onScroll();
 			}, 50);
 		},
-		_handleScroll: function _handleScroll() {
+		_onScroll: function _onScroll() {
 			var top = document.body.scrollTop;
 			var height = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
 			var bottom = top + height;
@@ -33189,7 +33192,7 @@
 			    scrollTop = _state.scrollTop,
 			    scrollBottom = _state.scrollBottom;
 
-			var isTagsView = filteredTerm && filteredTerm.slug === _constants.TAGS_LIST_URL;
+			var isTagsList = filteredTerm && filteredTerm.slug === _constants.TAGS_LIST_URL;
 
 			return _react2.default.createElement(
 				"span",
@@ -33200,7 +33203,7 @@
 					_react2.default.createElement(_Title2.default, null),
 					_react2.default.createElement(_Navigation2.default, null)
 				),
-				!isTagsView && _react2.default.createElement(
+				!isTagsList && _react2.default.createElement(
 					"span",
 					null,
 					_react2.default.createElement(
@@ -33229,7 +33232,7 @@
 						_react2.default.createElement(_ImageModal2.default, { image: images[activeImage] })
 					)
 				),
-				isTagsView && _react2.default.createElement(_TagsList2.default, null),
+				isTagsList && _react2.default.createElement(_TagsList2.default, null),
 				_react2.default.createElement(
 					"a",
 					{ className: "page-photography-rss", href: "http://feeds.feedburner.com/mpgPhotoblog" },
@@ -35168,10 +35171,8 @@
 		getInitialState: function getInitialState() {
 			return { loaded: false };
 		},
-
-
-		// trigger the initial load
 		componentDidMount: function componentDidMount() {
+			// trigger the initial load if we aren't showing an image modal
 			if (!this.props.hasActiveImage) {
 				this._loadImage();
 			}
@@ -35280,13 +35281,13 @@
 
 	var _throttle2 = _interopRequireDefault(_throttle);
 
-	var _classnames = __webpack_require__(233);
-
-	var _classnames2 = _interopRequireDefault(_classnames);
-
 	var _reducer = __webpack_require__(221);
 
 	var _constants = __webpack_require__(222);
+
+	var _ImageModalButtons = __webpack_require__(239);
+
+	var _ImageModalButtons2 = _interopRequireDefault(_ImageModalButtons);
 
 	var _MainImage = __webpack_require__(234);
 
@@ -35325,14 +35326,14 @@
 			return initialState;
 		},
 		componentDidMount: function componentDidMount() {
-			this._throttledHandleResize = (0, _throttle2.default)(200, this._handleResize);
+			this._throttledResize = (0, _throttle2.default)(200, this._onResize);
 
-			document.addEventListener("keyup", this._handleKeyup);
-			window.addEventListener("resize", this._throttledHandleResize);
+			document.addEventListener("keyup", this._onKeyup);
+			window.addEventListener("resize", this._throttledResize);
 			(0, _jquery2.default)("body").addClass("no-scroll");
 
 			// trigger an initial resize event
-			this._handleResize();
+			this._onResize();
 		},
 		componentWillReceiveProps: function componentWillReceiveProps(nextProps) {
 			if (nextProps.image.id !== this.props.image.id) {
@@ -35340,11 +35341,11 @@
 			}
 		},
 		componentWillUnmount: function componentWillUnmount() {
-			document.removeEventListener("keyup", this._handleKeyup);
-			window.removeEventListener("resize", this._throttledHandleResize);
+			document.removeEventListener("keyup", this._onKeyup);
+			window.removeEventListener("resize", this._throttledResize);
 			(0, _jquery2.default)("body").removeClass("no-scroll");
 		},
-		_handleKeyup: function _handleKeyup(e) {
+		_onKeyup: function _onKeyup(e) {
 			var code = e.which;
 
 			if (code === _constants.KEYS.escape) {
@@ -35361,19 +35362,19 @@
 				this.props.onNavigateNext();
 			}
 		},
-		_handleResize: function _handleResize() {
+		_onResize: function _onResize() {
 			this.setState({
 				windowWidth: window.innerWidth,
 				windowHeight: window.innerHeight
 			});
 		},
-		_onLoad: function _onLoad(dimensions) {
+		_onImageLoad: function _onImageLoad(dimensions) {
 			this.setState({
 				isLoaded: true,
 				dimensions: dimensions
 			});
 		},
-		_handleMetaRender: function _handleMetaRender(height) {
+		_onImageMetaRender: function _onImageMetaRender(height) {
 			this.setState({ metaHeight: height });
 		},
 		render: function render() {
@@ -35382,38 +35383,21 @@
 
 			var contentStyle = {};
 			var isMobile = this.state.windowWidth < _constants.PHOTOBLOG_MOBILE_BREAKPOINT;
-			var topSpace = _constants.MAIN_IMAGE_SPACE;
-			var sideSpace = _constants.MAIN_IMAGE_SPACE;
+			var topPadding = _constants.MAIN_IMAGE_SPACE;
+			var sidePadding = _constants.MAIN_IMAGE_SPACE;
+			var bottomPadding = _constants.MAIN_IMAGE_SPACE;
 			var src = image.image2000;
-			var bottomSpace = _constants.MAIN_IMAGE_SPACE;
 
 			if (isMobile) {
-				sideSpace = 5;
-				topSpace = _constants.MAIN_IMAGE_SPACE * 1.5;
+				sidePadding = 5;
+				topPadding = _constants.MAIN_IMAGE_SPACE * 1.5;
 				src = image.image700;
 			}
 
-			// don't load any image if we don't have a window size
+			// don't load any image if we don't have a window size yet
 			if (!this.state.windowWidth) {
 				src = null;
 			}
-
-			var prevClass = {
-				"page-photography-main-nav": true,
-				"page-photography-main-nav--prev": true,
-				"page-photography-main-nav--hidden": isMobile
-			};
-
-			var nextClass = {
-				"page-photography-main-nav": true,
-				"page-photography-main-nav--next": true,
-				"page-photography-main-nav--hidden": isMobile
-			};
-
-			var closeClass = {
-				"page-photography-main-close": true,
-				"page-photography-main-close--mobile": isMobile
-			};
 
 			// keep images from getting bigger than their native size
 			if (this.state.dimensions) {
@@ -35422,16 +35406,14 @@
 			}
 
 			var spaceStyle = {
-				top: topSpace + "px",
-				right: sideSpace + "px",
-				bottom: bottomSpace + "px",
-				left: sideSpace + "px"
+				top: topPadding + "px",
+				right: sidePadding + "px",
+				bottom: bottomPadding + "px",
+				left: sidePadding + "px"
 			};
 
-			var spaceDimensions = {
-				width: this.state.windowWidth - sideSpace * 2,
-				height: this.state.windowHeight - topSpace - bottomSpace
-			};
+			var imageMaxWidth = this.state.windowWidth - sidePadding * 2;
+			var imageMaxHeight = this.state.windowHeight - topPadding - bottomPadding;
 
 			return _react2.default.createElement(
 				"div",
@@ -35452,10 +35434,10 @@
 							src && _react2.default.createElement(_MainImage2.default, {
 								src: src,
 								alt: image.title,
-								maxWidth: spaceDimensions.width,
-								maxHeight: spaceDimensions.height,
+								maxWidth: imageMaxWidth,
+								maxHeight: imageMaxHeight,
 								loaded: this.state.isLoaded,
-								onLoad: this._onLoad
+								onLoad: this._onImageLoad
 							}),
 							!this.state.isLoaded && _react2.default.createElement("div", { className: "loader" }),
 							_react2.default.createElement(
@@ -35471,48 +35453,18 @@
 									title: image.title,
 									year: image.year,
 									tags: image.tags,
-									onRender: this._handleMetaRender,
+									onRender: this._onImageMetaRender,
 									filterTag: this.props.onFilterTag
 								})
 							)
 						)
 					)
 				),
-				_react2.default.createElement(
-					"button",
-					{
-						className: (0, _classnames2.default)(prevClass),
-						onClick: this.props.onNavigatePrev,
-						disabled: this.props.atBeginning },
-					_react2.default.createElement(
-						"span",
-						{ className: "page-photography-main-nav-text" },
-						"previous photo"
-					)
-				),
-				_react2.default.createElement(
-					"button",
-					{
-						className: (0, _classnames2.default)(nextClass),
-						onClick: this.props.onNavigateNext,
-						disabled: this.props.atEnd },
-					_react2.default.createElement(
-						"span",
-						{ className: "page-photography-main-nav-text" },
-						"next photo"
-					)
-				),
-				_react2.default.createElement(
-					"button",
-					{
-						className: (0, _classnames2.default)(closeClass),
-						onClick: this.props.onClearActiveImage },
-					_react2.default.createElement(
-						"span",
-						{ className: "page-photography-main-close-text" },
-						"dclose"
-					)
-				)
+				_react2.default.createElement(_ImageModalButtons2.default, {
+					atBeginning: this.props.atBeginning,
+					atEnd: this.props.atEnd,
+					isMobile: isMobile
+				})
 			);
 		}
 	});
@@ -36189,6 +36141,134 @@
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
+
+/***/ },
+/* 239 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+
+	var _react = __webpack_require__(11);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactRedux = __webpack_require__(182);
+
+	var _classnames = __webpack_require__(233);
+
+	var _classnames2 = _interopRequireDefault(_classnames);
+
+	var _reducer = __webpack_require__(221);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var ImageModalButtons = _react2.default.createClass({
+		displayName: "ImageModalButtons",
+
+		propTypes: {
+			atBeginning: _react.PropTypes.bool,
+			atEnd: _react.PropTypes.bool,
+			isMobile: _react.PropTypes.bool,
+			onNavigatePrev: _react.PropTypes.func.isRequired,
+			onNavigateNext: _react.PropTypes.func.isRequired,
+			onClose: _react.PropTypes.func.isRequired
+		},
+
+		render: function render() {
+			var _props = this.props,
+			    atBeginning = _props.atBeginning,
+			    atEnd = _props.atEnd,
+			    isMobile = _props.isMobile,
+			    onNavigatePrev = _props.onNavigatePrev,
+			    onNavigateNext = _props.onNavigateNext,
+			    onClose = _props.onClose;
+
+
+			var prevClass = {
+				"page-photography-main-nav": true,
+				"page-photography-main-nav--prev": true,
+				"page-photography-main-nav--hidden": isMobile
+			};
+
+			var nextClass = {
+				"page-photography-main-nav": true,
+				"page-photography-main-nav--next": true,
+				"page-photography-main-nav--hidden": isMobile
+			};
+
+			var closeClass = {
+				"page-photography-main-close": true,
+				"page-photography-main-close--mobile": isMobile
+			};
+
+			return _react2.default.createElement(
+				"span",
+				null,
+				_react2.default.createElement(
+					"button",
+					{
+						className: (0, _classnames2.default)(prevClass),
+						onClick: onNavigatePrev,
+						disabled: atBeginning },
+					_react2.default.createElement(
+						"span",
+						{ className: "page-photography-main-nav-text" },
+						"previous photo"
+					)
+				),
+				_react2.default.createElement(
+					"button",
+					{
+						className: (0, _classnames2.default)(nextClass),
+						onClick: onNavigateNext,
+						disabled: atEnd },
+					_react2.default.createElement(
+						"span",
+						{ className: "page-photography-main-nav-text" },
+						"next photo"
+					)
+				),
+				_react2.default.createElement(
+					"button",
+					{
+						className: (0, _classnames2.default)(closeClass),
+						onClick: onClose },
+					_react2.default.createElement(
+						"span",
+						{ className: "page-photography-main-close-text" },
+						"close"
+					)
+				)
+			);
+		}
+	});
+
+	function mapStateToProps(state) {
+		return {
+			atBeginning: state.atBeginning,
+			atEnd: state.atEnd
+		};
+	}
+
+	function mapDispatchToProps(dispatch) {
+		return {
+			onClose: function onClose() {
+				dispatch((0, _reducer.clearActiveImage)());
+			},
+			onNavigatePrev: function onNavigatePrev() {
+				dispatch((0, _reducer.navigatePrev)());
+			},
+			onNavigateNext: function onNavigateNext() {
+				dispatch((0, _reducer.navigateNext)());
+			}
+		};
+	}
+
+	exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(ImageModalButtons);
 
 /***/ }
 /******/ ]);

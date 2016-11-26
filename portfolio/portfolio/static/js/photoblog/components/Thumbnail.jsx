@@ -14,8 +14,8 @@ const Thumbnail = React.createClass({
 		return { loaded: false };
 	},
 
-	// trigger the initial load
 	componentDidMount() {
+		// trigger the initial load if we aren't showing an image modal
 		if (!this.props.hasActiveImage) {
 			this._loadImage();
 		}

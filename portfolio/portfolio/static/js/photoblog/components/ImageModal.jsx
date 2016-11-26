@@ -5,7 +5,6 @@ import jQuery from "jquery";
 import { connect } from "react-redux";
 import ReactCSSTransitionGroup from "react-addons-css-transition-group";
 import throttle from "throttle-debounce/throttle";
-import classnames from "classnames";
 
 import {
 	clearActiveImage,
@@ -20,6 +19,7 @@ import {
 	PHOTOBLOG_MOBILE_BREAKPOINT,
 } from "../util/constants";
 
+import ImageModalButtons from "./ImageModalButtons";
 import MainImage from "./MainImage";
 import ImageMeta from "./ImageMeta";
 import Swipeable from "./Swipeable";
@@ -47,14 +47,14 @@ const ImageDetail = React.createClass({
 	},
 
 	componentDidMount() {
-		this._throttledHandleResize = throttle(200, this._handleResize);
+		this._throttledResize = throttle(200, this._onResize);
 
-		document.addEventListener("keyup", this._handleKeyup);
-		window.addEventListener("resize", this._throttledHandleResize);
+		document.addEventListener("keyup", this._onKeyup);
+		window.addEventListener("resize", this._throttledResize);
 		jQuery("body").addClass("no-scroll");
 
 		// trigger an initial resize event
-		this._handleResize();
+		this._onResize();
 	},
 
 	componentWillReceiveProps(nextProps) {
@@ -64,12 +64,12 @@ const ImageDetail = React.createClass({
 	},
 
 	componentWillUnmount() {
-		document.removeEventListener("keyup", this._handleKeyup);
-		window.removeEventListener("resize", this._throttledHandleResize);
+		document.removeEventListener("keyup", this._onKeyup);
+		window.removeEventListener("resize", this._throttledResize);
 		jQuery("body").removeClass("no-scroll");
 	},
 
-	_handleKeyup(e) {
+	_onKeyup(e) {
 		const code = e.which;
 
 		if (code === KEYS.escape) {
@@ -87,21 +87,21 @@ const ImageDetail = React.createClass({
 		}
 	},
 
-	_handleResize() {
+	_onResize() {
 		this.setState({
 			windowWidth: window.innerWidth,
 			windowHeight: window.innerHeight,
 		});
 	},
 
-	_onLoad(dimensions) {
+	_onImageLoad(dimensions) {
 		this.setState({
 			isLoaded: true,
 			dimensions,
 		});
 	},
 
-	_handleMetaRender(height) {
+	_onImageMetaRender(height) {
 		this.setState({ metaHeight: height });
 	},
 
@@ -110,38 +110,21 @@ const ImageDetail = React.createClass({
 
 		const contentStyle = {};
 		const isMobile = this.state.windowWidth < PHOTOBLOG_MOBILE_BREAKPOINT;
-		let topSpace = MAIN_IMAGE_SPACE;
-		let sideSpace = MAIN_IMAGE_SPACE;
+		let topPadding = MAIN_IMAGE_SPACE;
+		let sidePadding = MAIN_IMAGE_SPACE;
+		const bottomPadding = MAIN_IMAGE_SPACE;
 		let src = image.image2000;
-		const bottomSpace = MAIN_IMAGE_SPACE;
 
 		if (isMobile) {
-			sideSpace = 5;
-			topSpace = MAIN_IMAGE_SPACE * 1.5;
+			sidePadding = 5;
+			topPadding = MAIN_IMAGE_SPACE * 1.5;
 			src = image.image700;
 		}
 
-		// don't load any image if we don't have a window size
+		// don't load any image if we don't have a window size yet
 		if (!this.state.windowWidth) {
 			src = null;
 		}
-
-		const prevClass = {
-			"page-photography-main-nav": true,
-			"page-photography-main-nav--prev": true,
-			"page-photography-main-nav--hidden": isMobile,
-		};
-
-		const nextClass = {
-			"page-photography-main-nav": true,
-			"page-photography-main-nav--next": true,
-			"page-photography-main-nav--hidden": isMobile,
-		};
-
-		const closeClass = {
-			"page-photography-main-close": true,
-			"page-photography-main-close--mobile": isMobile,
-		};
 
 		// keep images from getting bigger than their native size
 		if (this.state.dimensions) {
@@ -150,16 +133,14 @@ const ImageDetail = React.createClass({
 		}
 
 		const spaceStyle = {
-			top: `${topSpace}px`,
-			right: `${sideSpace}px`,
-			bottom: `${bottomSpace}px`,
-			left: `${sideSpace}px`,
+			top: `${topPadding}px`,
+			right: `${sidePadding}px`,
+			bottom: `${bottomPadding}px`,
+			left: `${sidePadding}px`,
 		};
 
-		const spaceDimensions = {
-			width: this.state.windowWidth - (sideSpace * 2),
-			height: this.state.windowHeight - topSpace - bottomSpace,
-		};
+		const imageMaxWidth = this.state.windowWidth - (sidePadding * 2);
+		const imageMaxHeight = this.state.windowHeight - topPadding - bottomPadding;
 
 		return (
 			<div className="page-photography-main" key={image.title}>
@@ -175,10 +156,10 @@ const ImageDetail = React.createClass({
 								<MainImage
 									src={src}
 									alt={image.title}
-									maxWidth={spaceDimensions.width}
-									maxHeight={spaceDimensions.height}
+									maxWidth={imageMaxWidth}
+									maxHeight={imageMaxHeight}
 									loaded={this.state.isLoaded}
-									onLoad={this._onLoad}
+									onLoad={this._onImageLoad}
 								/>
 							}
 
@@ -198,7 +179,7 @@ const ImageDetail = React.createClass({
 										title={image.title}
 										year={image.year}
 										tags={image.tags}
-										onRender={this._handleMetaRender}
+										onRender={this._onImageMetaRender}
 										filterTag={this.props.onFilterTag}
 									/>
 								}
@@ -208,31 +189,11 @@ const ImageDetail = React.createClass({
 
 				</Swipeable>
 
-				<button
-						className={classnames(prevClass)}
-						onClick={this.props.onNavigatePrev}
-						disabled={this.props.atBeginning}>
-					<span className="page-photography-main-nav-text">
-						previous photo
-					</span>
-				</button>
-
-				<button
-						className={classnames(nextClass)}
-						onClick={this.props.onNavigateNext}
-						disabled={this.props.atEnd}>
-					<span className="page-photography-main-nav-text">
-						next photo
-					</span>
-				</button>
-
-				<button
-						className={classnames(closeClass)}
-						onClick={this.props.onClearActiveImage}>
-					<span className="page-photography-main-close-text">
-						dclose
-					</span>
-				</button>
+				<ImageModalButtons
+					atBeginning={this.props.atBeginning}
+					atEnd={this.props.atEnd}
+					isMobile={isMobile}
+				/>
 			</div>
 		);
 	},
