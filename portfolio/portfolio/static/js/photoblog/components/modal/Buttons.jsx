@@ -6,9 +6,11 @@ import {
 	clearActiveImage,
 	navigatePrev,
 	navigateNext,
-} from "../reducer";
+} from "../../reducer";
 
-const ImageModalButtons = React.createClass({
+import "./Buttons.sass";
+
+const Buttons = React.createClass({
 	propTypes: {
 		atBeginning: PropTypes.bool,
 		atEnd: PropTypes.bool,
@@ -29,20 +31,21 @@ const ImageModalButtons = React.createClass({
 		} = this.props;
 
 		const prevClass = {
-			"page-photography-main-nav": true,
-			"page-photography-main-nav--prev": true,
-			"page-photography-main-nav--hidden": isMobile,
+			"image-modal-button": true,
+			"image-modal-button--prev": true,
+			"image-modal-button--is-hidden": isMobile,
 		};
 
 		const nextClass = {
-			"page-photography-main-nav": true,
-			"page-photography-main-nav--next": true,
-			"page-photography-main-nav--hidden": isMobile,
+			"image-modal-button": true,
+			"image-modal-button--next": true,
+			"image-modal-button--is-hidden": isMobile,
 		};
 
 		const closeClass = {
-			"page-photography-main-close": true,
-			"page-photography-main-close--mobile": isMobile,
+			"image-modal-button": true,
+			"image-modal-button--close": true,
+			"image-modal-button--is-mobile": isMobile,
 		};
 
 		return (
@@ -51,7 +54,7 @@ const ImageModalButtons = React.createClass({
 						className={classnames(prevClass)}
 						onClick={onNavigatePrev}
 						disabled={atBeginning}>
-					<span className="page-photography-main-nav-text">
+					<span className="image-modal-button-text">
 						previous photo
 					</span>
 				</button>
@@ -60,7 +63,7 @@ const ImageModalButtons = React.createClass({
 						className={classnames(nextClass)}
 						onClick={onNavigateNext}
 						disabled={atEnd}>
-					<span className="page-photography-main-nav-text">
+					<span className="image-modal-button-text">
 						next photo
 					</span>
 				</button>
@@ -68,7 +71,7 @@ const ImageModalButtons = React.createClass({
 				<button
 						className={classnames(closeClass)}
 						onClick={onClose}>
-					<span className="page-photography-main-close-text">
+					<span className="image-modal-button-text">
 						close
 					</span>
 				</button>
@@ -101,4 +104,4 @@ function mapDispatchToProps(dispatch) {
 export default connect(
 	mapStateToProps,
 	mapDispatchToProps
-)(ImageModalButtons);
+)(Buttons);

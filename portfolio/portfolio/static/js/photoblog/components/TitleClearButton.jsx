@@ -8,7 +8,7 @@ const TitleClearButton = React.createClass({
 	render() {
 		return (
 			<button
-					className="page-photography-meta-title-clear"
+					className="page-photography-title-clear"
 					onClick={this.props.clearFilterTag}>
 				remove filter
 			</button>

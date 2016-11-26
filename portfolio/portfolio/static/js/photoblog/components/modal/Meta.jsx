@@ -1,9 +1,12 @@
 import React, { PropTypes } from "react";
 import PureRenderMixin from "react-addons-pure-render-mixin";
-import Tag from "./Tag";
-import { BAD_TAGS } from "../util/constants";
 
-const ImageMeta = React.createClass({
+import { BAD_TAGS } from "../../util/constants";
+import Tag from "../Tag";
+
+import "./Meta.sass";
+
+const Meta = React.createClass({
 	propTypes: {
 		title: PropTypes.string.isRequired,
 		year: PropTypes.number.isRequired,
@@ -39,16 +42,16 @@ const ImageMeta = React.createClass({
 		return (
 			<div
 					ref={(meta) => { this.meta = meta; }}
-					className="page-photography-main-text">
-				<h3 className="page-photography-main-title">
+					className="image-modal-meta">
+				<h3 className="image-modal-meta-title">
 					{this.props.title}
 				</h3>
-				<span className="page-photography-main-year">
+				<span className="image-modal-meta-year">
 					{this.props.year}
 				</span>
 
 				{!!this.props.tags.length &&
-					<div className="page-photography-main-tags">
+					<div className="image-modal-meta-tags">
 						tags:
 						&nbsp;
 						{tags.map((tag, i) =>
@@ -56,7 +59,7 @@ const ImageMeta = React.createClass({
 								<Tag
 									name={tag.name}
 									slug={tag.slug}
-									className="page-photography-main-tag"
+									className="image-modal-meta-tag"
 									filterTag={this.props.filterTag}
 								/>
 								{i + 1 < tags.length &&
@@ -71,4 +74,4 @@ const ImageMeta = React.createClass({
 	},
 });
 
-export default ImageMeta;
+export default Meta;

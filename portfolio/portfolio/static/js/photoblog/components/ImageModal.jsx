@@ -19,11 +19,12 @@ import {
 	PHOTOBLOG_MOBILE_BREAKPOINT,
 } from "../util/constants";
 
-import ImageModalButtons from "./ImageModalButtons";
-import MainImage from "./MainImage";
-import ImageMeta from "./ImageMeta";
+import Buttons from "./modal/Buttons";
+import MainImage from "./modal/MainImage";
+import Meta from "./modal/Meta";
 import Swipeable from "./Swipeable";
 
+import "./ImageModal.sass";
 
 const initialState = {
 	isLoaded: false,
@@ -143,15 +144,15 @@ const ImageDetail = React.createClass({
 		const imageMaxHeight = this.state.windowHeight - topPadding - bottomPadding;
 
 		return (
-			<div className="page-photography-main" key={image.title}>
+			<div className="image-modal" key={image.title}>
 				<Swipeable
 						canSwipeLeft={!this.props.atEnd}
 						canSwipeRight={!this.props.atBeginning}
 						onSwipeLeft={this.props.onNavigateNext}
 						onSwipeRight={this.props.onNavigatePrev}>
 
-					<div className="page-photography-main-space" style={spaceStyle}>
-						<div className="page-photography-main-content" style={contentStyle}>
+					<div className="image-modal-space" style={spaceStyle}>
+						<div className="image-modal-content" style={contentStyle}>
 							{src &&
 								<MainImage
 									src={src}
@@ -174,7 +175,7 @@ const ImageDetail = React.createClass({
 									transitionAppearTimeout={500}
 									transitionLeaveTimeout={5}>
 								{this.state.isLoaded &&
-									<ImageMeta
+									<Meta
 										key={image.id}
 										title={image.title}
 										year={image.year}
@@ -189,7 +190,7 @@ const ImageDetail = React.createClass({
 
 				</Swipeable>
 
-				<ImageModalButtons
+				<Buttons
 					atBeginning={this.props.atBeginning}
 					atEnd={this.props.atEnd}
 					isMobile={isMobile}

@@ -5,6 +5,8 @@ import PureRenderMixin from "react-addons-pure-render-mixin";
 import { filterTag } from "../reducer";
 import Tag from "./Tag";
 
+import "./Navigation.sass";
+
 const Navigation = React.createClass({
 	propTypes: {
 		years: PropTypes.array.isRequired,

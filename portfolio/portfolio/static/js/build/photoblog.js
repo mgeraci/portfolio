@@ -72,9 +72,9 @@
 
 	var _helpers = __webpack_require__(223);
 
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	__webpack_require__(248);
 
-	__webpack_require__(238);
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	window.Photoblog = {
 		init: function init(data) {
@@ -33093,23 +33093,27 @@
 
 	var _Title2 = _interopRequireDefault(_Title);
 
-	var _Navigation = __webpack_require__(229);
+	var _Navigation = __webpack_require__(230);
 
 	var _Navigation2 = _interopRequireDefault(_Navigation);
 
-	var _Thumbnail = __webpack_require__(231);
+	var _Thumbnail = __webpack_require__(233);
 
 	var _Thumbnail2 = _interopRequireDefault(_Thumbnail);
 
-	var _ImageModal = __webpack_require__(232);
+	var _ImageModal = __webpack_require__(235);
 
 	var _ImageModal2 = _interopRequireDefault(_ImageModal);
 
-	var _TagsList = __webpack_require__(237);
+	var _TagsList = __webpack_require__(245);
 
 	var _TagsList2 = _interopRequireDefault(_TagsList);
 
+	__webpack_require__(247);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	/* global window, document */
 
 	var App = _react2.default.createClass({
 		displayName: "App",
@@ -33197,12 +33201,8 @@
 			return _react2.default.createElement(
 				"span",
 				null,
-				_react2.default.createElement(
-					"div",
-					{ className: "page-photography-meta" },
-					_react2.default.createElement(_Title2.default, null),
-					_react2.default.createElement(_Navigation2.default, null)
-				),
+				_react2.default.createElement(_Title2.default, null),
+				_react2.default.createElement(_Navigation2.default, null),
 				!isTagsList && _react2.default.createElement(
 					"span",
 					null,
@@ -33224,7 +33224,7 @@
 					activeImage && _react2.default.createElement(
 						_reactAddonsCssTransitionGroup2.default,
 						{
-							transitionName: "image-detail",
+							transitionName: "main-image",
 							transitionAppear: true,
 							transitionEnterTimeout: 500,
 							transitionAppearTimeout: 500,
@@ -33240,7 +33240,7 @@
 				)
 			);
 		}
-	}); /* global window, document */
+	});
 
 	function mapStateToProps(state) {
 		return {
@@ -34766,6 +34766,8 @@
 
 	var _TitleClearButton2 = _interopRequireDefault(_TitleClearButton);
 
+	__webpack_require__(229);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	var Title = _react2.default.createClass({
@@ -34789,7 +34791,7 @@
 
 			return _react2.default.createElement(
 				"h2",
-				{ className: "page-photography-meta-title" },
+				{ className: "page-photography-title" },
 				isYear && _react2.default.createElement(
 					"span",
 					null,
@@ -34955,7 +34957,7 @@
 			return _react2.default.createElement(
 				"button",
 				{
-					className: "page-photography-meta-title-clear",
+					className: "page-photography-title-clear",
 					onClick: this.props.clearFilterTag },
 				"remove filter"
 			);
@@ -34966,6 +34968,12 @@
 
 /***/ },
 /* 229 */
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
+
+/***/ },
+/* 230 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -34986,9 +34994,11 @@
 
 	var _reducer = __webpack_require__(221);
 
-	var _Tag = __webpack_require__(230);
+	var _Tag = __webpack_require__(231);
 
 	var _Tag2 = _interopRequireDefault(_Tag);
+
+	__webpack_require__(232);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -35068,7 +35078,7 @@
 	exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(Navigation);
 
 /***/ },
-/* 230 */
+/* 231 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -35138,7 +35148,13 @@
 	exports.default = Tag;
 
 /***/ },
-/* 231 */
+/* 232 */
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
+
+/***/ },
+/* 233 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -35155,9 +35171,9 @@
 
 	var _reactAddonsCssTransitionGroup2 = _interopRequireDefault(_reactAddonsCssTransitionGroup);
 
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	__webpack_require__(234);
 
-	/* global Image */
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	var Thumbnail = _react2.default.createClass({
 		displayName: "Thumbnail",
@@ -35249,12 +35265,18 @@
 				)
 			);
 		}
-	});
+	}); /* global Image */
 
 	exports.default = Thumbnail;
 
 /***/ },
-/* 232 */
+/* 234 */
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
+
+/***/ },
+/* 235 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -35285,28 +35307,32 @@
 
 	var _constants = __webpack_require__(222);
 
-	var _ImageModalButtons = __webpack_require__(239);
+	var _Buttons = __webpack_require__(236);
 
-	var _ImageModalButtons2 = _interopRequireDefault(_ImageModalButtons);
+	var _Buttons2 = _interopRequireDefault(_Buttons);
 
-	var _MainImage = __webpack_require__(234);
+	var _MainImage = __webpack_require__(239);
 
 	var _MainImage2 = _interopRequireDefault(_MainImage);
 
-	var _ImageMeta = __webpack_require__(235);
+	var _Meta = __webpack_require__(241);
 
-	var _ImageMeta2 = _interopRequireDefault(_ImageMeta);
+	var _Meta2 = _interopRequireDefault(_Meta);
 
-	var _Swipeable = __webpack_require__(236);
+	var _Swipeable = __webpack_require__(243);
 
 	var _Swipeable2 = _interopRequireDefault(_Swipeable);
 
+	__webpack_require__(244);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	/* global window, document */
 
 	var initialState = {
 		isLoaded: false,
 		metaHeight: 0
-	}; /* global window, document */
+	};
 
 	var ImageDetail = _react2.default.createClass({
 		displayName: "ImageDetail",
@@ -35417,7 +35443,7 @@
 
 			return _react2.default.createElement(
 				"div",
-				{ className: "page-photography-main", key: image.title },
+				{ className: "image-modal", key: image.title },
 				_react2.default.createElement(
 					_Swipeable2.default,
 					{
@@ -35427,10 +35453,10 @@
 						onSwipeRight: this.props.onNavigatePrev },
 					_react2.default.createElement(
 						"div",
-						{ className: "page-photography-main-space", style: spaceStyle },
+						{ className: "image-modal-space", style: spaceStyle },
 						_react2.default.createElement(
 							"div",
-							{ className: "page-photography-main-content", style: contentStyle },
+							{ className: "image-modal-content", style: contentStyle },
 							src && _react2.default.createElement(_MainImage2.default, {
 								src: src,
 								alt: image.title,
@@ -35448,7 +35474,7 @@
 									transitionEnterTimeout: 500,
 									transitionAppearTimeout: 500,
 									transitionLeaveTimeout: 5 },
-								this.state.isLoaded && _react2.default.createElement(_ImageMeta2.default, {
+								this.state.isLoaded && _react2.default.createElement(_Meta2.default, {
 									key: image.id,
 									title: image.title,
 									year: image.year,
@@ -35460,7 +35486,7 @@
 						)
 					)
 				),
-				_react2.default.createElement(_ImageModalButtons2.default, {
+				_react2.default.createElement(_Buttons2.default, {
 					atBeginning: this.props.atBeginning,
 					atEnd: this.props.atEnd,
 					isMobile: isMobile
@@ -35496,7 +35522,138 @@
 	exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(ImageDetail);
 
 /***/ },
-/* 233 */
+/* 236 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+
+	var _react = __webpack_require__(11);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactRedux = __webpack_require__(182);
+
+	var _classnames = __webpack_require__(237);
+
+	var _classnames2 = _interopRequireDefault(_classnames);
+
+	var _reducer = __webpack_require__(221);
+
+	__webpack_require__(238);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var Buttons = _react2.default.createClass({
+		displayName: "Buttons",
+
+		propTypes: {
+			atBeginning: _react.PropTypes.bool,
+			atEnd: _react.PropTypes.bool,
+			isMobile: _react.PropTypes.bool,
+			onNavigatePrev: _react.PropTypes.func.isRequired,
+			onNavigateNext: _react.PropTypes.func.isRequired,
+			onClose: _react.PropTypes.func.isRequired
+		},
+
+		render: function render() {
+			var _props = this.props,
+			    atBeginning = _props.atBeginning,
+			    atEnd = _props.atEnd,
+			    isMobile = _props.isMobile,
+			    onNavigatePrev = _props.onNavigatePrev,
+			    onNavigateNext = _props.onNavigateNext,
+			    onClose = _props.onClose;
+
+
+			var prevClass = {
+				"image-modal-button": true,
+				"image-modal-button--prev": true,
+				"image-modal-button--is-hidden": isMobile
+			};
+
+			var nextClass = {
+				"image-modal-button": true,
+				"image-modal-button--next": true,
+				"image-modal-button--is-hidden": isMobile
+			};
+
+			var closeClass = {
+				"image-modal-button": true,
+				"image-modal-button--close": true,
+				"image-modal-button--is-mobile": isMobile
+			};
+
+			return _react2.default.createElement(
+				"span",
+				null,
+				_react2.default.createElement(
+					"button",
+					{
+						className: (0, _classnames2.default)(prevClass),
+						onClick: onNavigatePrev,
+						disabled: atBeginning },
+					_react2.default.createElement(
+						"span",
+						{ className: "image-modal-button-text" },
+						"previous photo"
+					)
+				),
+				_react2.default.createElement(
+					"button",
+					{
+						className: (0, _classnames2.default)(nextClass),
+						onClick: onNavigateNext,
+						disabled: atEnd },
+					_react2.default.createElement(
+						"span",
+						{ className: "image-modal-button-text" },
+						"next photo"
+					)
+				),
+				_react2.default.createElement(
+					"button",
+					{
+						className: (0, _classnames2.default)(closeClass),
+						onClick: onClose },
+					_react2.default.createElement(
+						"span",
+						{ className: "image-modal-button-text" },
+						"close"
+					)
+				)
+			);
+		}
+	});
+
+	function mapStateToProps(state) {
+		return {
+			atBeginning: state.atBeginning,
+			atEnd: state.atEnd
+		};
+	}
+
+	function mapDispatchToProps(dispatch) {
+		return {
+			onClose: function onClose() {
+				dispatch((0, _reducer.clearActiveImage)());
+			},
+			onNavigatePrev: function onNavigatePrev() {
+				dispatch((0, _reducer.navigatePrev)());
+			},
+			onNavigateNext: function onNavigateNext() {
+				dispatch((0, _reducer.navigateNext)());
+			}
+		};
+	}
+
+	exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(Buttons);
+
+/***/ },
+/* 237 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -35550,7 +35707,13 @@
 
 
 /***/ },
-/* 234 */
+/* 238 */
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
+
+/***/ },
+/* 239 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -35571,7 +35734,11 @@
 
 	var _reactAddonsCssTransitionGroup2 = _interopRequireDefault(_reactAddonsCssTransitionGroup);
 
+	__webpack_require__(240);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	/* global Image */
 
 	var MainImage = _react2.default.createClass({
 		displayName: "MainImage",
@@ -35691,12 +35858,18 @@
 				})
 			);
 		}
-	}); /* global Image */
+	});
 
 	exports.default = MainImage;
 
 /***/ },
-/* 235 */
+/* 240 */
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
+
+/***/ },
+/* 241 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -35713,16 +35886,18 @@
 
 	var _reactAddonsPureRenderMixin2 = _interopRequireDefault(_reactAddonsPureRenderMixin);
 
-	var _Tag = __webpack_require__(230);
+	var _constants = __webpack_require__(222);
+
+	var _Tag = __webpack_require__(231);
 
 	var _Tag2 = _interopRequireDefault(_Tag);
 
-	var _constants = __webpack_require__(222);
+	__webpack_require__(242);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	var ImageMeta = _react2.default.createClass({
-		displayName: "ImageMeta",
+	var Meta = _react2.default.createClass({
+		displayName: "Meta",
 
 		propTypes: {
 			title: _react.PropTypes.string.isRequired,
@@ -35761,20 +35936,20 @@
 					ref: function ref(meta) {
 						_this.meta = meta;
 					},
-					className: "page-photography-main-text" },
+					className: "image-modal-meta" },
 				_react2.default.createElement(
 					"h3",
-					{ className: "page-photography-main-title" },
+					{ className: "image-modal-meta-title" },
 					this.props.title
 				),
 				_react2.default.createElement(
 					"span",
-					{ className: "page-photography-main-year" },
+					{ className: "image-modal-meta-year" },
 					this.props.year
 				),
 				!!this.props.tags.length && _react2.default.createElement(
 					"div",
-					{ className: "page-photography-main-tags" },
+					{ className: "image-modal-meta-tags" },
 					"tags: \xA0",
 					tags.map(function (tag, i) {
 						return _react2.default.createElement(
@@ -35783,7 +35958,7 @@
 							_react2.default.createElement(_Tag2.default, {
 								name: tag.name,
 								slug: tag.slug,
-								className: "page-photography-main-tag",
+								className: "image-modal-meta-tag",
 								filterTag: _this.props.filterTag
 							}),
 							i + 1 < tags.length && _react2.default.createElement(
@@ -35798,10 +35973,16 @@
 		}
 	});
 
-	exports.default = ImageMeta;
+	exports.default = Meta;
 
 /***/ },
-/* 236 */
+/* 242 */
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
+
+/***/ },
+/* 243 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -35814,7 +35995,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _classnames = __webpack_require__(233);
+	var _classnames = __webpack_require__(237);
 
 	var _classnames2 = _interopRequireDefault(_classnames);
 
@@ -36026,7 +36207,13 @@
 	exports.default = Swipeable;
 
 /***/ },
-/* 237 */
+/* 244 */
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
+
+/***/ },
+/* 245 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -36045,9 +36232,11 @@
 
 	var _helpers = __webpack_require__(223);
 
-	var _Tag = __webpack_require__(230);
+	var _Tag = __webpack_require__(231);
 
 	var _Tag2 = _interopRequireDefault(_Tag);
+
+	__webpack_require__(246);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -36137,138 +36326,22 @@
 	exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(TagsList);
 
 /***/ },
-/* 238 */
+/* 246 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 239 */
-/***/ function(module, exports, __webpack_require__) {
+/* 247 */
+/***/ function(module, exports) {
 
-	"use strict";
+	// removed by extract-text-webpack-plugin
 
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
+/***/ },
+/* 248 */
+/***/ function(module, exports) {
 
-	var _react = __webpack_require__(11);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _reactRedux = __webpack_require__(182);
-
-	var _classnames = __webpack_require__(233);
-
-	var _classnames2 = _interopRequireDefault(_classnames);
-
-	var _reducer = __webpack_require__(221);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	var ImageModalButtons = _react2.default.createClass({
-		displayName: "ImageModalButtons",
-
-		propTypes: {
-			atBeginning: _react.PropTypes.bool,
-			atEnd: _react.PropTypes.bool,
-			isMobile: _react.PropTypes.bool,
-			onNavigatePrev: _react.PropTypes.func.isRequired,
-			onNavigateNext: _react.PropTypes.func.isRequired,
-			onClose: _react.PropTypes.func.isRequired
-		},
-
-		render: function render() {
-			var _props = this.props,
-			    atBeginning = _props.atBeginning,
-			    atEnd = _props.atEnd,
-			    isMobile = _props.isMobile,
-			    onNavigatePrev = _props.onNavigatePrev,
-			    onNavigateNext = _props.onNavigateNext,
-			    onClose = _props.onClose;
-
-
-			var prevClass = {
-				"page-photography-main-nav": true,
-				"page-photography-main-nav--prev": true,
-				"page-photography-main-nav--hidden": isMobile
-			};
-
-			var nextClass = {
-				"page-photography-main-nav": true,
-				"page-photography-main-nav--next": true,
-				"page-photography-main-nav--hidden": isMobile
-			};
-
-			var closeClass = {
-				"page-photography-main-close": true,
-				"page-photography-main-close--mobile": isMobile
-			};
-
-			return _react2.default.createElement(
-				"span",
-				null,
-				_react2.default.createElement(
-					"button",
-					{
-						className: (0, _classnames2.default)(prevClass),
-						onClick: onNavigatePrev,
-						disabled: atBeginning },
-					_react2.default.createElement(
-						"span",
-						{ className: "page-photography-main-nav-text" },
-						"previous photo"
-					)
-				),
-				_react2.default.createElement(
-					"button",
-					{
-						className: (0, _classnames2.default)(nextClass),
-						onClick: onNavigateNext,
-						disabled: atEnd },
-					_react2.default.createElement(
-						"span",
-						{ className: "page-photography-main-nav-text" },
-						"next photo"
-					)
-				),
-				_react2.default.createElement(
-					"button",
-					{
-						className: (0, _classnames2.default)(closeClass),
-						onClick: onClose },
-					_react2.default.createElement(
-						"span",
-						{ className: "page-photography-main-close-text" },
-						"close"
-					)
-				)
-			);
-		}
-	});
-
-	function mapStateToProps(state) {
-		return {
-			atBeginning: state.atBeginning,
-			atEnd: state.atEnd
-		};
-	}
-
-	function mapDispatchToProps(dispatch) {
-		return {
-			onClose: function onClose() {
-				dispatch((0, _reducer.clearActiveImage)());
-			},
-			onNavigatePrev: function onNavigatePrev() {
-				dispatch((0, _reducer.navigatePrev)());
-			},
-			onNavigateNext: function onNavigateNext() {
-				dispatch((0, _reducer.navigateNext)());
-			}
-		};
-	}
-
-	exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(ImageModalButtons);
+	// removed by extract-text-webpack-plugin
 
 /***/ }
 /******/ ]);

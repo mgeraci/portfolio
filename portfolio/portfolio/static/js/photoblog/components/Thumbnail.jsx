@@ -3,6 +3,8 @@
 import React, { PropTypes } from "react";
 import ReactCSSTransitionGroup from "react-addons-css-transition-group";
 
+import "./Thumbnail.sass";
+
 const Thumbnail = React.createClass({
 	propTypes: {
 		image: PropTypes.object.isRequired,

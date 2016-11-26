@@ -18,6 +18,8 @@ import Thumbnail from "./Thumbnail";
 import ImageModal from "./ImageModal";
 import TagsList from "./TagsList";
 
+import "./App.sass";
+
 const App = React.createClass({
 	propTypes: {
 		appInitialized: PropTypes.bool,
@@ -105,10 +107,8 @@ const App = React.createClass({
 
 		return (
 			<span>
-				<div className="page-photography-meta">
-					<Title />
-					<Navigation />
-				</div>
+				<Title />
+				<Navigation />
 
 				{!isTagsList &&
 					<span>
@@ -129,7 +129,7 @@ const App = React.createClass({
 
 						{activeImage &&
 							<ReactCSSTransitionGroup
-									transitionName="image-detail"
+									transitionName="main-image"
 									transitionAppear
 									transitionEnterTimeout={500}
 									transitionAppearTimeout={500}
