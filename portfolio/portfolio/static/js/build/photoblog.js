@@ -33154,7 +33154,7 @@
 			}
 
 			// adding a tag
-			if (this.props.filteredTerm && prevProps.filteredTerm === null) {
+			if (this.props.filteredTerm && typeof prevProps.filteredTerm === "undefined") {
 				this._triggerScroll();
 			}
 		},
