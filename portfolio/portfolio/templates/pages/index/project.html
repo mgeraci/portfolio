@@ -1,12 +1,17 @@
 <article class="project">
 	<a href="{% url 'project_url' project.slug %}">
-		<div class="project-image">
+		<div
+			class="project-image"
+			data-lazy-image="{{ MEDIA_URL }}{{ project.image }}"
+			data-lazy-alt="{{ project.title }} screenshot"
+		></div>
+		<div class="project-text">
+			<h2 class="project-text-title">
+				{{ project.title }}
+			</h2>
+			<span class="project-text-description">
+				{{ project.description }}
+			</span>
 		</div>
-		<h2 class="project-title">
-			{{ project.title }}
-		</h2>
-		<span class="project-description">
-			{{ project.description }}
-		</span>
 	</a>
 </article>

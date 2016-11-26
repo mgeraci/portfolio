@@ -115,28 +115,43 @@ $index-breakpoint: 550px
     margin-top: 40px
 
 
-$text-width: 40%
-$image-width: 55%
+$text-width: 50%
+$image-width: 45%
 $gutter-width: 100 - $text-width - $image-width
+$breakpoint: 720px
 
 .project
+  position: relative
   @include clearfix
   width: 100%
   margin-bottom: 100px
 
-  &-title,
-  &-description
+  &-text
+    position: absolute
+    top: 50%
     display: block
     width: $text-width
+    @include transform(translateY(-50%))
+
+    @media (max-width: $breakpoint)
+      position: static
+      @include transform(translateY(0))
 
   &-image
     width: $image-width
-    min-height: 200px
-    background: rgba(#fff, 0.1)
+    min-height: 300px
+
+    @media (max-width: $breakpoint)
+      min-height: 0
+
+    img
+      width: 100%
+      height: auto
+      float: left
 
   &:nth-child(even)
-    .project-title,
-    .project-description
+    .project-text
+      left: 0
       float: left
       clear: left
       padding-right: $gutter-width
@@ -145,8 +160,8 @@ $gutter-width: 100 - $text-width - $image-width
       float: right
 
   &:nth-child(odd)
-    .project-title,
-    .project-description
+    .project-text
+      right: 0
       float: right
       clear: right
       padding-left: $gutter-width
@@ -154,11 +169,10 @@ $gutter-width: 100 - $text-width - $image-width
     .project-image
       float: left
 
-  @media (max-width: 700px)
+  @media (max-width: $breakpoint)
     margin-bottom: 60px
 
-    .project-title,
-    .project-description,
+    .project-text,
     .project-image
       width: 100%
       padding-right: 0 !important

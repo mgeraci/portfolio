@@ -7,7 +7,7 @@ class HomeProject(models.Model):
     title = models.CharField(max_length=200)
     slug = models.SlugField(max_length=200, unique=True)
     description = models.TextField(blank=True)
-    image = models.FileField(upload_to='web', blank=True, null=True)
+    image = models.FileField(upload_to='projects', blank=True, null=True)
     order = models.PositiveSmallIntegerField()
 
     class Meta:

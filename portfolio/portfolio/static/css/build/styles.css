@@ -680,38 +680,59 @@ nav::after {
     margin-top: 40px; }
 
 .project {
+  position: relative;
   width: 100%;
   margin-bottom: 100px; }
   .project::after {
     clear: both;
     content: "";
     display: table; }
-  .project-title, .project-description {
+  .project-text {
+    position: absolute;
+    top: 50%;
     display: block;
-    width: 40%; }
+    width: 50%;
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    transform: translateY(-50%); }
+    @media (max-width: 720px) {
+      .project-text {
+        position: static;
+        -webkit-transform: translateY(0);
+        -moz-transform: translateY(0);
+        -ms-transform: translateY(0);
+        -o-transform: translateY(0);
+        transform: translateY(0); } }
   .project-image {
-    width: 55%;
-    min-height: 200px;
-    background: rgba(255, 255, 255, 0.1); }
-  .project:nth-child(even) .project-title,
-  .project:nth-child(even) .project-description {
+    width: 45%;
+    min-height: 300px; }
+    @media (max-width: 720px) {
+      .project-image {
+        min-height: 0; } }
+    .project-image img {
+      width: 100%;
+      height: auto;
+      float: left; }
+  .project:nth-child(even) .project-text {
+    left: 0;
     float: left;
     clear: left;
     padding-right: 5%; }
   .project:nth-child(even) .project-image {
     float: right; }
-  .project:nth-child(odd) .project-title,
-  .project:nth-child(odd) .project-description {
+  .project:nth-child(odd) .project-text {
+    right: 0;
     float: right;
     clear: right;
     padding-left: 5%; }
   .project:nth-child(odd) .project-image {
     float: left; }
-  @media (max-width: 700px) {
+  @media (max-width: 720px) {
     .project {
       margin-bottom: 60px; }
-      .project .project-title,
-      .project .project-description,
+      .project .project-text,
       .project .project-image {
         width: 100%;
         padding-right: 0 !important;
