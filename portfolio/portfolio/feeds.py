@@ -20,7 +20,7 @@ class PhotoblogFeed(Feed):
     def item_description(self, item):
         return "{}/{}".format(
             MEDIA_ROOT,
-            item.image
+            item.image2000
         )
 
     def item_link(self, item):
