@@ -462,6 +462,24 @@ em {
   animation-iteration-count: infinite; }
 
 @font-face {
+  font-family: 'PT Serif';
+  src: url("http://localhost:8000/static/fonts/PTSerif-Regular.eot?#iefix") format("embedded-opentype"), url("http://localhost:8000/static/fonts/PTSerif-Regular.woff") format("woff"), url("http://localhost:8000/static/fonts/PTSerif-Regular.ttf") format("truetype"), url("http://localhost:8000/static/fonts/PTSerif-Regular.svg#PTSerif-Regular") format("svg");
+  font-weight: normal;
+  font-style: normal; }
+
+@font-face {
+  font-family: 'PT Serif';
+  src: url("http://localhost:8000/static/fonts/PTSerif-Italic.eot?#iefix") format("embedded-opentype"), url("http://localhost:8000/static/fonts/PTSerif-Italic.woff") format("woff"), url("http://localhost:8000/static/fonts/PTSerif-Italic.ttf") format("truetype"), url("http://localhost:8000/static/fonts/PTSerif-Italic.svg#PTSerif-RegularItalic") format("svg");
+  font-weight: normal;
+  font-style: oblique; }
+
+@font-face {
+  font-family: 'PT Serif';
+  src: url("http://localhost:8000/static/fonts/PTSerif-Bold.eot?#iefix") format("embedded-opentype"), url("http://localhost:8000/static/fonts/PTSerif-Bold.woff") format("woff"), url("http://localhost:8000/static/fonts/PTSerif-Bold.ttf") format("truetype"), url("http://localhost:8000/static/fonts/PTSerif-Bold.svg#PTSerif-RegularBold") format("svg");
+  font-weight: bold;
+  font-style: normal; }
+
+@font-face {
   font-family: 'headline';
   src: url("http://localhost:8000/static/fonts/headline.eot?#iefix") format("embedded-opentype"), url("http://localhost:8000/static/fonts/headline.woff") format("woff"), url("http://localhost:8000/static/fonts/headline.ttf") format("truetype"), url("http://localhost:8000/static/fonts/headline.svg#Headline") format("svg");
   font-weight: bold;
