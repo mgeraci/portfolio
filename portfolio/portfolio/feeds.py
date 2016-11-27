@@ -18,9 +18,14 @@ class PhotoblogFeed(Feed):
         return "Michael P. Geraci"
 
     def item_description(self, item):
-        return "{}{}".format(
+        src = "{}{}".format(
             MEDIA_URL,
             item.image2000
+        )
+
+        return "<img src='{}' alt='{}' />".format(
+            src,
+            item.title
         )
 
     def item_link(self, item):
