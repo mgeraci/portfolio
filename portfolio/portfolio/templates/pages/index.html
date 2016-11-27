@@ -36,11 +36,24 @@
 
 <div class="index-bottom">
 	<div class="index-bottom-content">
-		<h3 class="index-bottom-headline">Work</h3>
+		{% if show_home_projects %}
+			<h2 class="index-bottom-headline">
+				Work
+			</h2>
 
-		{% for project in home_projects %}
-			{% include "pages/index/project.html" %}
-		{% endfor %}
+			{% for project in home_projects %}
+				{% include "pages/index/project.html" %}
+			{% endfor %}
+		{% else %}
+			<h2 class="index-bottom-headline index-bottom-headline--old">
+				Last updated {{ recent_date }}
+			</h2>
+			<div class="index-bottom-recent">
+				{% for recent_item in recent_items %}
+					{% include "pages/index/recent_item.html" %}
+				{% endfor %}
+			</div>
+		{% endif %}
 
 		<span class="index-bottom-copyright">
 			Copyright © Michael P. Geraci, 2006-{{ year }}

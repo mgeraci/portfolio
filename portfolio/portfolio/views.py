@@ -17,9 +17,37 @@ from portfolio.models import PhotoblogImage
 # main pages
 def index(request):
     home_projects = HomeProject.objects.all()
+    show_home_projects = request.GET.get('projects') == '1'
+    recent_image_root = '{}images/recent_thumbs/'.format(STATIC_URL)
+
+    recent_items = [
+        {
+            'text': ['New steel drum performance:', 'Despers - Different Me'],
+            'image': '{}despers-2016.jpg'.format(recent_image_root),
+            'href': 'https://www.youtube.com/watch?v=kxqzHEAiwHY',
+        },
+        {
+            'text': ['My favorite albums of 2015'],
+            'image': '{}albums-2015.jpg'.format(recent_image_root),
+            'href': 'http://michaelgeraci.com/albums/2015',
+        },
+        {
+            'text': ['New project:', 'Smart mirror display'],
+            'image': '{}auto-hud.jpg'.format(recent_image_root),
+            'href': 'https://github.com/mgeraci/auto-hud',
+        },
+        {
+            'text': ['New Photos:', 'Summer trip to Duluth'],
+            'image': '{}7352.jpg'.format(recent_image_root),
+            'href': 'http://michaelgeraci.com/photography/blog/427',
+        },
+    ]
 
     context = {
+        'recent_items': recent_items,
+        'recent_date': '9.10.16',
         'home_projects': home_projects,
+        'show_home_projects': show_home_projects,
     }
 
     return render(request, 'pages/index.html', context)
