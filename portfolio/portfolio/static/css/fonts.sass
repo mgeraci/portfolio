@@ -1,5 +1,26 @@
 $font-root: "#{$STATIC_ROOT}fonts/"
 
+// book font
+@font-face
+  font-family: 'PT Serif'
+  src: local('PT Serif'), local('PTSerif-Regular'), url('#{$font-root}PTSerif-Regular.eot?#iefix') format('embedded-opentype'), url('#{$font-root}PTSerif-Regular.woff') format('woff'), url('#{$font-root}PTSerif-Regular.ttf') format('truetype'), url('#{$font-root}PTSerif-Regular.svg#PTSerif-Regular') format('svg')
+  font-weight: normal
+  font-style: normal
+
+// italic font
+@font-face
+  font-family: 'PT Serif'
+  src: local('PT Serif Italic'), local('PTSerif-Italic'), url('#{$font-root}PTSerif-Italic.eot?#iefix') format('embedded-opentype'), url('#{$font-root}PTSerif-Italic.woff') format('woff'), url('#{$font-root}PTSerif-Italic.ttf') format('truetype'), url('#{$font-root}PTSerif-Italic.svg#PTSerif-RegularItalic') format('svg')
+  font-weight: normal
+  font-style: oblique
+
+// bold font
+@font-face
+  font-family: 'PT Serif'
+  src: local('PT Serif Bold'), local('PTSerif-Bold'), url('#{$font-root}PTSerif-Bold.eot?#iefix') format('embedded-opentype'), url('#{$font-root}PTSerif-Bold.woff') format('woff'), url('#{$font-root}PTSerif-Bold.ttf') format('truetype'), url('#{$font-root}PTSerif-Bold.svg#PTSerif-RegularBold') format('svg')
+  font-weight: bold
+  font-style: normal
+
 // headline font
 @font-face
   font-family: 'headline'

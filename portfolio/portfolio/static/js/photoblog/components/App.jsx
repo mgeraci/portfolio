@@ -18,6 +18,8 @@ import Thumbnail from "./Thumbnail";
 import ImageModal from "./ImageModal";
 import TagsList from "./TagsList";
 
+import "./App.sass";
+
 const App = React.createClass({
 	propTypes: {
 		appInitialized: PropTypes.bool,
@@ -36,12 +38,13 @@ const App = React.createClass({
 	},
 
 	componentDidMount() {
-		const cb = throttle(200, this._handleScroll);
+		const onScroll = throttle(200, this._onScroll);
 
-		document.addEventListener("scroll", cb);
+		document.addEventListener("scroll", onScroll);
 		this._triggerScroll();
 	},
 
+	// if the set of images is changing, trigger a scroll event to load new photos
 	componentDidUpdate(prevProps) {
 		// has a tag, and it's changing
 		if (this.props.filteredTerm && prevProps.filteredTerm &&
@@ -55,18 +58,18 @@ const App = React.createClass({
 		}
 
 		// adding a tag
-		if (this.props.filteredTerm && prevProps.filteredTerm === null) {
+		if (this.props.filteredTerm && typeof(prevProps.filteredTerm) === "undefined") {
 			this._triggerScroll();
 		}
 	},
 
 	_triggerScroll() {
 		setTimeout(() => {
-			this._handleScroll();
+			this._onScroll();
 		}, 50);
 	},
 
-	_handleScroll() {
+	_onScroll() {
 		const top = document.body.scrollTop;
 		const height = window.innerHeight
 			|| document.documentElement.clientHeight
@@ -100,16 +103,15 @@ const App = React.createClass({
 		} = this.props;
 
 		const { scrollTop, scrollBottom } = this.state;
-		const isTagsView = filteredTerm && filteredTerm.slug === TAGS_LIST_URL;
+		const isTagsList = filteredTerm && filteredTerm.slug === TAGS_LIST_URL;
+		const hasActiveImage = !!(activeImage && images[activeImage]);
 
 		return (
 			<span>
-				<div className="page-photography-meta">
-					<Title />
-					<Navigation />
-				</div>
+				<Title />
+				<Navigation />
 
-				{!isTagsView &&
+				{!isTagsList &&
 					<span>
 						<div className="page-photography-thumbnails">
 
@@ -121,14 +123,14 @@ const App = React.createClass({
 									scrollBottom={scrollBottom}
 									setActiveImage={onSetActiveImage}
 									clearActiveImage={onClearActiveImage}
-									hasActiveImage={!!activeImage}
+									hasActiveImage={hasActiveImage}
 								/>
 							)}
 						</div>
 
-						{activeImage &&
+						{hasActiveImage &&
 							<ReactCSSTransitionGroup
-									transitionName="image-detail"
+									transitionName="main-image"
 									transitionAppear
 									transitionEnterTimeout={500}
 									transitionAppearTimeout={500}
@@ -139,7 +141,7 @@ const App = React.createClass({
 					</span>
 				}
 
-				{isTagsView &&
+				{isTagsList &&
 					<TagsList />
 				}
 

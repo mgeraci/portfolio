@@ -7,6 +7,8 @@ import {
 } from "../reducer";
 import TitleClearButton from "./TitleClearButton";
 
+import "./Title.sass";
+
 const Title = React.createClass({
 	propTypes: {
 		filteredTerm: PropTypes.object,
@@ -22,7 +24,7 @@ const Title = React.createClass({
 		const isTag = !isYear && !isTagsList && filteredTerm && filteredTerm.slug;
 
 		return (
-			<h2 className="page-photography-meta-title">
+			<h2 className="page-photography-title">
 				{isYear &&
 					<span>
 						Images from {filteredTerm.name}

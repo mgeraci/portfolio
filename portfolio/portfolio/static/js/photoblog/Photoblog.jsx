@@ -15,7 +15,7 @@ import reducer, {
 import { URLS } from "./util/constants.js";
 import { parseUrl } from "./util/helpers.js";
 
-require("../../css/styles.sass");
+import "../../css/styles.sass";
 
 
 window.Photoblog = {

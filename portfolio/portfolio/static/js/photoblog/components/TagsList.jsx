@@ -5,6 +5,8 @@ import { generateTagsList, filterTag } from "../reducer";
 import { scale } from "../util/helpers";
 import Tag from "./Tag";
 
+import "./TagsList.sass";
+
 const TagsList = React.createClass({
 	propTypes: {
 		tags: PropTypes.array,

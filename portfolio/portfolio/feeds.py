@@ -1,6 +1,6 @@
 import os
 from django.contrib.syndication.views import Feed
-from michael_dot_com.localsettings import MEDIA_ROOT
+from michael_dot_com.localsettings import MEDIA_URL
 from portfolio.models import PhotoblogImage
 
 class PhotoblogFeed(Feed):
@@ -18,9 +18,9 @@ class PhotoblogFeed(Feed):
         return "Michael P. Geraci"
 
     def item_description(self, item):
-        return "{}/{}".format(
-            MEDIA_ROOT,
-            item.image
+        return "{}{}".format(
+            MEDIA_URL,
+            item.image2000
         )
 
     def item_link(self, item):

@@ -3,6 +3,8 @@
 import React, { PropTypes } from "react";
 import ReactCSSTransitionGroup from "react-addons-css-transition-group";
 
+import "./Thumbnail.sass";
+
 const Thumbnail = React.createClass({
 	propTypes: {
 		image: PropTypes.object.isRequired,
@@ -14,8 +16,8 @@ const Thumbnail = React.createClass({
 		return { loaded: false };
 	},
 
-	// trigger the initial load
 	componentDidMount() {
+		// trigger the initial load if we aren't showing an image modal
 		if (!this.props.hasActiveImage) {
 			this._loadImage();
 		}

@@ -4,6 +4,8 @@ import React, { PropTypes } from "react";
 import PureRenderMixin from "react-addons-pure-render-mixin";
 import ReactCSSTransitionGroup from "react-addons-css-transition-group";
 
+import "./MainImage.sass";
+
 const MainImage = React.createClass({
 	propTypes: {
 		src: PropTypes.string.isRequired,
