@@ -104,7 +104,9 @@ $index-breakpoint: 550px
   &-headline
     display: block
     width: 100%
-    margin-bottom: 20px
+    text-align: center
+    margin-bottom: 50px
+    font-size: 28px
 
   &-recent
     @include clearfix
@@ -125,6 +127,11 @@ $breakpoint: 720px
   @include clearfix
   width: 100%
   margin-bottom: 100px
+
+  a
+    float: left
+    width: 100%
+    @include no-link
 
   &-text
     position: absolute
