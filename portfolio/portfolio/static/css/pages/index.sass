@@ -134,67 +134,55 @@ $breakpoint: 720px
   position: relative
   @include clearfix
   width: 100%
-  margin-bottom: 100px
+  margin-bottom: 170px
 
   a
     float: left
     width: 100%
     @include no-link
 
-  &-text
-    position: absolute
-    top: 50%
-    display: block
-    width: $text-width
-    @include transform(translateY(-50%))
+    h2,
+    &:hover,
+    &:active
+      @include no-link
+      color: $text !important
 
-    @media (max-width: $breakpoint)
-      position: static
-      @include transform(translateY(0))
+  &-image,
+  &-text
+    width: 100%
 
   &-image
-    width: $image-width
     min-height: 300px
+    margin-bottom: 20px
 
     @media (max-width: $breakpoint)
       min-height: 0
 
     img
-      width: 100%
+      @include center
+      max-width: 100%
       height: auto
-      float: left
 
-  &:nth-child(even)
-    .project-text
-      left: 0
-      float: left
-      clear: left
-      padding-right: $gutter-width
+  &-text
+    display: block
+    max-width: 600px
+    @include center
 
-    .project-image
-      float: right
+    &-title
+      display: block
+      width: 100%
+      text-align: center
 
-  &:nth-child(odd)
-    .project-text
-      right: 0
-      float: right
-      clear: right
-      padding-left: $gutter-width
+    &-more
+      display: inline-block
+      margin-top: 20px
 
-    .project-image
-      float: left
+  .no-touchevents &:hover
+    .project-text-more
+      @include link($text, $text);
 
   @media (max-width: $breakpoint)
     margin-bottom: 60px
-
-    .project-text,
-    .project-image
-      width: 100%
-      padding-right: 0 !important
-      padding-left: 0 !important
-
-    .project-image
-      margin-bottom: 20px
 
 
 // recent items

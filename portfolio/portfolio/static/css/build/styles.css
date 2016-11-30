@@ -975,7 +975,7 @@ nav::after {
 .project {
   position: relative;
   width: 100%;
-  margin-bottom: 100px; }
+  margin-bottom: 170px; }
   .project::after {
     clear: both;
     content: "";
@@ -986,58 +986,72 @@ nav::after {
     .project a, .project a:hover, .project a:active {
       text-shadow: none !important;
       background-image: none !important; }
-  .project-text {
-    position: absolute;
-    top: 50%;
-    display: block;
-    width: 50%;
-    -webkit-transform: translateY(-50%);
-    -moz-transform: translateY(-50%);
-    -ms-transform: translateY(-50%);
-    -o-transform: translateY(-50%);
-    transform: translateY(-50%); }
-    @media (max-width: 720px) {
-      .project-text {
-        position: static;
-        -webkit-transform: translateY(0);
-        -moz-transform: translateY(0);
-        -ms-transform: translateY(0);
-        -o-transform: translateY(0);
-        transform: translateY(0); } }
+    .project a h2, .project a:hover, .project a:active {
+      color: #444 !important; }
+      .project a h2, .project a h2:hover, .project a h2:active, .project a:hover, .project a:hover:hover, .project a:hover:active, .project a:active, .project a:active:hover, .project a:active:active {
+        text-shadow: none !important;
+        background-image: none !important; }
+  .project-image, .project-text {
+    width: 100%; }
   .project-image {
-    width: 45%;
-    min-height: 300px; }
+    min-height: 300px;
+    margin-bottom: 20px; }
     @media (max-width: 720px) {
       .project-image {
         min-height: 0; } }
     .project-image img {
+      position: relative;
+      left: 50%;
+      -webkit-transform: translateX(-50%);
+      -moz-transform: translateX(-50%);
+      -ms-transform: translateX(-50%);
+      -o-transform: translateX(-50%);
+      transform: translateX(-50%);
+      max-width: 100%;
+      height: auto; }
+  .project-text {
+    display: block;
+    max-width: 600px;
+    position: relative;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    -o-transform: translateX(-50%);
+    transform: translateX(-50%); }
+    .project-text-title {
+      display: block;
       width: 100%;
-      height: auto;
-      float: left; }
-  .project:nth-child(even) .project-text {
-    left: 0;
-    float: left;
-    clear: left;
-    padding-right: 5%; }
-  .project:nth-child(even) .project-image {
-    float: right; }
-  .project:nth-child(odd) .project-text {
-    right: 0;
-    float: right;
-    clear: right;
-    padding-left: 5%; }
-  .project:nth-child(odd) .project-image {
-    float: left; }
+      text-align: center; }
+    .project-text-more {
+      display: inline-block;
+      margin-top: 20px; }
+  .no-touchevents .project:hover .project-text-more {
+    text-decoration: none;
+    background-repeat: repeat-x;
+    background-size: 2px 2px;
+    background-position: 0 85%; }
+    .no-touchevents .project:hover .project-text-more,
+    .no-touchevents .project:hover .project-text-more h2,
+    .no-touchevents .project:hover .project-text-more h3 {
+      -webkit-transition: color 50ms linear;
+      -moz-transition: color 50ms linear;
+      transition: color 50ms linear; }
+    .no-touchevents .project:hover .project-text-more, .no-touchevents .project:hover .project-text-more:visited {
+      color: #444;
+      background-image: linear-gradient(to bottom, transparent 50%, rgba(68, 68, 68, 0.6) 50%); }
+    .no-touchevents .no-touchevents .project:hover .project-text-more:hover, .no-touchevents .no-touchevents .project:hover .project-text-more:active {
+      background-image: linear-gradient(to bottom, transparent 50%, rgba(68, 68, 68, 0.6) 50%); }
+    .no-touchevents .no-touchevents .project:hover .project-text-more:hover,
+    .no-touchevents .no-touchevents .project:hover .project-text-more:hover h2,
+    .no-touchevents .no-touchevents .project:hover .project-text-more:hover h3, .no-touchevents .no-touchevents .project:hover .project-text-more:active,
+    .no-touchevents .no-touchevents .project:hover .project-text-more:active h2,
+    .no-touchevents .no-touchevents .project:hover .project-text-more:active h3 {
+      color: #444;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.15); }
   @media (max-width: 720px) {
     .project {
-      margin-bottom: 60px; }
-      .project .project-text,
-      .project .project-image {
-        width: 100%;
-        padding-right: 0 !important;
-        padding-left: 0 !important; }
-      .project .project-image {
-        margin-bottom: 20px; } }
+      margin-bottom: 60px; } }
 
 .recent-item {
   position: relative;

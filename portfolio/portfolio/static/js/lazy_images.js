@@ -28,13 +28,22 @@ const LazyImages = {
 		const src = el.attr("data-lazy-image");
 		const alt = el.attr("data-lazy-image-alt");
 		const img = new Image();
+		let maxWidth = el.attr("data-lazy-max-width");
+
+		if (maxWidth) {
+			maxWidth = `${maxWidth}px`;
+		} else {
+			maxWidth = "auto";
+		}
 
 		// remove the data attribute to keep it from loading again
 		el.removeAttr("data-lazy-image");
 
 		$(img).load(() => {
 			el.append(img);
-		}).attr("src", src).attr("alt", alt);
+		}).attr("src", src)
+			.attr("alt", alt)
+			.css("maxWidth", maxWidth);
 	},
 };
 
