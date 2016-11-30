@@ -35,16 +35,14 @@
 </div>
 
 <div class="index-bottom">
-	<div class="index-bottom-content">
-		{% if show_home_projects %}
-			<h2 class="index-bottom-headline">
-				Work
-			</h2>
-
+	{% if show_home_projects %}
+		<div class="index-bottom-content">
 			{% for project in home_projects %}
 				{% include "pages/index/project.html" %}
 			{% endfor %}
-		{% else %}
+		</div>
+	{% else %}
+		<div class="index-bottom-content index-bottom-content--old">
 			<h2 class="index-bottom-headline index-bottom-headline--old">
 				Last updated {{ recent_date }}
 			</h2>
@@ -53,12 +51,12 @@
 					{% include "pages/index/recent_item.html" %}
 				{% endfor %}
 			</div>
-		{% endif %}
+		</div>
+	{% endif %}
 
-		<span class="index-bottom-copyright">
-			Copyright © Michael P. Geraci, 2006-{{ year }}
-		</span>
-	</div>
+	<span class="index-bottom-copyright">
+		Copyright © Michael P. Geraci, 2006-{{ year }}
+	</span>
 </div>
 
 {% endblock %}

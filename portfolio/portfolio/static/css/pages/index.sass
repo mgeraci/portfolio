@@ -98,8 +98,11 @@ $index-breakpoint: 550px
   border-top: 1px solid darken($green, 10%)
 
   &-content
-    @include content-sizing
-    max-width: 900px
+    width: 100%
+
+    &--old
+      @include content-sizing
+      max-width: 900px
 
   &-headline
     display: block
@@ -117,6 +120,7 @@ $index-breakpoint: 550px
     @include clearfix
 
   &-copyright
+    @include content-sizing
     display: block
     font-size: 15px
     margin-top: 40px
@@ -129,12 +133,19 @@ $text-width: 50%
 $image-width: 45%
 $gutter-width: 100 - $text-width - $image-width
 $breakpoint: 720px
+$even-bg: $green
+$odd-bg: mix($green, #000, 95%)
 
 .project
   position: relative
   @include clearfix
   width: 100%
-  margin-bottom: 170px
+
+  &:nth-child(odd)
+    background: $odd-bg
+
+  &:nth-child(even)
+    background: $even-bg
 
   a
     float: left
@@ -149,24 +160,38 @@ $breakpoint: 720px
 
   &-image,
   &-text
-    width: 100%
+    float: left
+    width: 50%
 
   &-image
     min-height: 300px
-    margin-bottom: 20px
+    background: $cream
+    padding: 70px 0
 
     @media (max-width: $breakpoint)
       min-height: 0
 
     img
+      float: left
       @include center
       max-width: 100%
       height: auto
 
+    &--full-bleed
+      padding: 0
+
+      img
+        width: 100%
+
   &-text
+    position: relative
     display: block
-    max-width: 600px
-    @include center
+
+    &-content
+      @include center
+      width: 100%
+      max-width: 600px
+      padding: 5vw
 
     &-title
       display: block
@@ -180,6 +205,25 @@ $breakpoint: 720px
   .no-touchevents &:hover
     .project-text-more
       @include link($text, $text);
+
+  $size: 20px
+  &-connector
+    position: absolute
+    top: 50%
+    left: 50%
+    width: $size
+    height: $size
+    margin-top: $size * -0.5
+    margin-left: $size * -0.5
+    background: $text
+    border-radius: 4px
+    @include transform(rotate(45deg))
+
+  &:nth-child(even) .project-connector
+    background: $even-bg
+
+  &:nth-child(odd) .project-connector
+    background: $odd-bg
 
   @media (max-width: $breakpoint)
     margin-bottom: 60px

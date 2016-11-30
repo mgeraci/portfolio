@@ -1,7 +1,7 @@
 <article class="project">
 	<a href="{% url 'project_url' project.slug %}">
 		<div
-			class="project-image"
+			class="project-image {% if project.image_full_bleed %}project-image--full-bleed{% endif %}"
 			data-lazy-image="{{ MEDIA_URL }}{{ project.image }}"
 			data-lazy-alt="{{ project.title }} screenshot"
 			{% if project.image_max_width %}
@@ -9,16 +9,21 @@
 			{% endif %}
 		></div>
 		<div class="project-text">
-			<h2 class="project-text-title">
-				{{ project.title }}
-			</h2>
-			<span class="project-text-description">
-				{{ project.description }}
-			</span>
-			<br />
-			<span class="project-text-more">
-				more &raquo;
-			</span>
+			<div class="project-text-content">
+				<h2 class="project-text-title">
+					{{ project.title }}
+				</h2>
+				<span class="project-text-description">
+					{{ project.description }}
+				</span>
+				<br />
+				<span class="project-text-more">
+					more &raquo;
+				</span>
+			</div>
 		</div>
+		<div
+			class="project-connector {% if project.image_full_bleed %}project-connector--full-bleed{% endif %}"
+		></div>
 	</a>
 </article>
