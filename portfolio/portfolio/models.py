@@ -7,6 +7,7 @@ class HomeProject(models.Model):
     title = models.CharField(max_length=200)
     slug = models.SlugField(max_length=200, unique=True)
     description = models.TextField(blank=True)
+    background = models.CharField(max_length=6, blank=True)
     image = models.FileField(upload_to='projects', blank=True, null=True)
     image_max_width = models.PositiveSmallIntegerField(blank=True, null=True)
     image_full_bleed = models.BooleanField(default=False)

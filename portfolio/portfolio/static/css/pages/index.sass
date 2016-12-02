@@ -94,6 +94,24 @@ $index-breakpoint: 550px
       @media (max-width: 690px)
         font-size: 28px
 
+  &-subheader
+    position: relative
+    float: left
+    clear: both
+    width: 100%
+    margin-top: 80px
+    text-align: center
+    font-size: 24px
+    font-style: oblique
+
+    &:after
+      content: ""
+      position: absolute
+      bottom: -10px
+      left: 50%
+      @include transform(translateX(-50%))
+      @include triangle(10px, rgba($text, 0.7), down)
+
 .index-bottom
   border-top: 1px solid darken($green, 10%)
 
@@ -137,9 +155,12 @@ $even-bg: $green
 $odd-bg: mix($green, #000, 95%)
 
 .project
-  position: relative
   @include clearfix
+  position: relative
+  overflow: hidden
   width: 100%
+  height: 45vw
+  max-height: 700px
 
   &:nth-child(odd)
     background: $odd-bg
@@ -151,12 +172,12 @@ $odd-bg: mix($green, #000, 95%)
   &-text
     float: left
     width: 50%
+    height: 100%
 
   &-image
     position: relative
     overflow: hidden
     min-height: 300px
-    background: $cream
     padding: 50px 0
     @include no-link;
 
@@ -165,7 +186,10 @@ $odd-bg: mix($green, #000, 95%)
 
     img
       float: left
-      @include center
+      position: relative
+      top: 50%
+      left: 50%
+      @include transform(translate(-50%, -50%))
       max-width: 100%
       height: auto
 
@@ -182,7 +206,7 @@ $odd-bg: mix($green, #000, 95%)
     &-content
       @include center
       width: 100%
-      max-width: 600px
+      max-width: 800px
       padding: 5vw
 
     &-title
