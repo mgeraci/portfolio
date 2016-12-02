@@ -995,24 +995,18 @@ nav::after {
     background: #b2c791; }
   .project:nth-child(even) {
     background: #bbd199; }
-  .project a {
-    float: left;
-    width: 100%; }
-    .project a, .project a:hover, .project a:active {
-      text-shadow: none !important;
-      background-image: none !important; }
-    .project a h2, .project a:hover, .project a:active {
-      color: #444 !important; }
-      .project a h2, .project a h2:hover, .project a h2:active, .project a:hover, .project a:hover:hover, .project a:hover:active, .project a:active, .project a:active:hover, .project a:active:active {
-        text-shadow: none !important;
-        background-image: none !important; }
   .project-image, .project-text {
     float: left;
     width: 50%; }
   .project-image {
+    position: relative;
+    overflow: hidden;
     min-height: 300px;
     background: #f3f4d3;
-    padding: 70px 0; }
+    padding: 50px 0; }
+    .project-image, .project-image:hover, .project-image:active {
+      text-shadow: none !important;
+      background-image: none !important; }
     @media (max-width: 720px) {
       .project-image {
         min-height: 0; } }
@@ -1052,51 +1046,6 @@ nav::after {
     .project-text-more {
       display: inline-block;
       margin-top: 20px; }
-  .no-touchevents .project:hover .project-text-more {
-    text-decoration: none;
-    background-repeat: repeat-x;
-    background-size: 2px 2px;
-    background-position: 0 85%; }
-    .no-touchevents .project:hover .project-text-more,
-    .no-touchevents .project:hover .project-text-more h2,
-    .no-touchevents .project:hover .project-text-more h3 {
-      -webkit-transition: color 50ms linear;
-      -moz-transition: color 50ms linear;
-      transition: color 50ms linear; }
-    .no-touchevents .project:hover .project-text-more, .no-touchevents .project:hover .project-text-more:visited {
-      color: #444;
-      background-image: linear-gradient(to bottom, transparent 50%, rgba(68, 68, 68, 0.6) 50%); }
-    .no-touchevents .no-touchevents .project:hover .project-text-more:hover, .no-touchevents .no-touchevents .project:hover .project-text-more:active {
-      background-image: linear-gradient(to bottom, transparent 50%, rgba(68, 68, 68, 0.6) 50%); }
-    .no-touchevents .no-touchevents .project:hover .project-text-more:hover,
-    .no-touchevents .no-touchevents .project:hover .project-text-more:hover h2,
-    .no-touchevents .no-touchevents .project:hover .project-text-more:hover h3, .no-touchevents .no-touchevents .project:hover .project-text-more:active,
-    .no-touchevents .no-touchevents .project:hover .project-text-more:active h2,
-    .no-touchevents .no-touchevents .project:hover .project-text-more:active h3 {
-      color: #444;
-      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.15); }
-  .project-connector {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 20px;
-    height: 20px;
-    margin-top: -10px;
-    margin-left: -10px;
-    background: #444;
-    border-radius: 4px;
-    -webkit-transform: rotate(45deg);
-    -moz-transform: rotate(45deg);
-    -ms-transform: rotate(45deg);
-    -o-transform: rotate(45deg);
-    transform: rotate(45deg); }
-  .project:nth-child(even) .project-connector {
-    background: #bbd199; }
-  .project:nth-child(odd) .project-connector {
-    background: #b2c791; }
-  @media (max-width: 720px) {
-    .project {
-      margin-bottom: 60px; } }
 
 .recent-item {
   position: relative;

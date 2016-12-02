@@ -147,26 +147,18 @@ $odd-bg: mix($green, #000, 95%)
   &:nth-child(even)
     background: $even-bg
 
-  a
-    float: left
-    width: 100%
-    @include no-link
-
-    h2,
-    &:hover,
-    &:active
-      @include no-link
-      color: $text !important
-
   &-image,
   &-text
     float: left
     width: 50%
 
   &-image
+    position: relative
+    overflow: hidden
     min-height: 300px
     background: $cream
-    padding: 70px 0
+    padding: 50px 0
+    @include no-link;
 
     @media (max-width: $breakpoint)
       min-height: 0
@@ -201,32 +193,6 @@ $odd-bg: mix($green, #000, 95%)
     &-more
       display: inline-block
       margin-top: 20px
-
-  .no-touchevents &:hover
-    .project-text-more
-      @include link($text, $text);
-
-  $size: 20px
-  &-connector
-    position: absolute
-    top: 50%
-    left: 50%
-    width: $size
-    height: $size
-    margin-top: $size * -0.5
-    margin-left: $size * -0.5
-    background: $text
-    border-radius: 4px
-    @include transform(rotate(45deg))
-
-  &:nth-child(even) .project-connector
-    background: $even-bg
-
-  &:nth-child(odd) .project-connector
-    background: $odd-bg
-
-  @media (max-width: $breakpoint)
-    margin-bottom: 60px
 
 
 // recent items
