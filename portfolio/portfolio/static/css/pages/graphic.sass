@@ -30,6 +30,10 @@ $menu-item-margin: 20px
       .no-touchevents &,
       .no-touchevents &:hover,
         background-image: none
+        @include link-color($text, $text)
+
+      h3
+        margin: 0
 
     @media (max-width: $menu-breakpoint)
       display: block

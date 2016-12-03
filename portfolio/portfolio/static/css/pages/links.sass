@@ -1,19 +1,23 @@
 .page-links
-	h3
-		margin-bottom: -10px
+  .content
+    h3
+      margin-bottom: -10px
 
-	&-column
-		width: 36%
-		float: left
+    a
+      @include link($text, $cream)
 
-		& + .page-links-column
-			width: 56%
-			margin-left: 8%
+  &-column
+    width: 36%
+    float: left
 
-		@media (max-width: 880px)
-			width: 100%
+    & + .page-links-column
+      width: 56%
+      margin-left: 8%
 
-			& + .page-links-column
-				width: 100%
-				margin-top: 30px
-				margin-left: 0
+    @media (max-width: 880px)
+      width: 100%
+
+      & + .page-links-column
+        width: 100%
+        margin-top: 30px
+        margin-left: 0

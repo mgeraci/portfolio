@@ -44,6 +44,29 @@
   .page-photography-navigation-item-wrapper {
     display: inline-block;
     margin: 0 3px; }
+    .page-photography-navigation-item-wrapper a {
+      text-decoration: none;
+      background-repeat: repeat-x;
+      background-size: 2px 2px;
+      background-position: 0 85%; }
+      .page-photography-navigation-item-wrapper a,
+      .page-photography-navigation-item-wrapper a h2,
+      .page-photography-navigation-item-wrapper a h3 {
+        -webkit-transition: color 50ms linear;
+        -moz-transition: color 50ms linear;
+        transition: color 50ms linear; }
+      .page-photography-navigation-item-wrapper a, .page-photography-navigation-item-wrapper a:visited {
+        color: #444;
+        background-image: linear-gradient(to bottom, transparent 50%, rgba(68, 68, 68, 0.6) 50%); }
+      .no-touchevents .page-photography-navigation-item-wrapper a:hover, .no-touchevents .page-photography-navigation-item-wrapper a:active {
+        background-image: linear-gradient(to bottom, transparent 50%, rgba(243, 244, 211, 0.6) 50%); }
+      .no-touchevents .page-photography-navigation-item-wrapper a:hover,
+      .no-touchevents .page-photography-navigation-item-wrapper a:hover h2,
+      .no-touchevents .page-photography-navigation-item-wrapper a:hover h3, .no-touchevents .page-photography-navigation-item-wrapper a:active,
+      .no-touchevents .page-photography-navigation-item-wrapper a:active h2,
+      .no-touchevents .page-photography-navigation-item-wrapper a:active h3 {
+        color: #f3f4d3;
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.15); }
 .page-photography-thumbnail {
   display: inline-block;
   width: 75px;
@@ -267,6 +290,20 @@
   .page-photography-rss, .page-photography-rss:hover, .page-photography-rss:active {
     text-shadow: none !important;
     background-image: none !important; }
+  .page-photography-rss,
+  .page-photography-rss h2,
+  .page-photography-rss h3 {
+    -webkit-transition: color 50ms linear;
+    -moz-transition: color 50ms linear;
+    transition: color 50ms linear; }
+  .page-photography-rss, .page-photography-rss:visited {
+    color: #444; }
+  .no-touchevents .page-photography-rss:hover,
+  .no-touchevents .page-photography-rss:hover h2,
+  .no-touchevents .page-photography-rss:hover h3, .no-touchevents .page-photography-rss:active,
+  .no-touchevents .page-photography-rss:active h2,
+  .no-touchevents .page-photography-rss:active h3 {
+    color: #f3f4d3; }
 /* http://meyerweb.com/eric/tools/css/reset/ 
    v2.0 | 20110126
    License: none (public domain)
@@ -351,29 +388,7 @@ section.content {
       margin-left: 4%; } }
 
 .content a {
-  text-decoration: none;
-  text-decoration: none;
-  background-repeat: repeat-x;
-  background-size: 2px 2px;
-  background-position: 0 85%; }
-  .content a,
-  .content a h2,
-  .content a h3 {
-    -webkit-transition: color 50ms linear;
-    -moz-transition: color 50ms linear;
-    transition: color 50ms linear; }
-  .content a, .content a:visited {
-    color: #444;
-    background-image: linear-gradient(to bottom, transparent 50%, rgba(68, 68, 68, 0.6) 50%); }
-  .no-touchevents .content a:hover, .no-touchevents .content a:active {
-    background-image: linear-gradient(to bottom, transparent 50%, rgba(243, 244, 211, 0.6) 50%); }
-  .no-touchevents .content a:hover,
-  .no-touchevents .content a:hover h2,
-  .no-touchevents .content a:hover h3, .no-touchevents .content a:active,
-  .no-touchevents .content a:active h2,
-  .no-touchevents .content a:active h3 {
-    color: #f3f4d3;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.15); }
+  text-decoration: none; }
 
 h2 {
   color: #333;
@@ -703,6 +718,20 @@ nav::after {
   float: left;
   clear: both;
   margin-bottom: 20px; }
+  .submenu-mobile,
+  .submenu-mobile h2,
+  .submenu-mobile h3 {
+    -webkit-transition: color 50ms linear;
+    -moz-transition: color 50ms linear;
+    transition: color 50ms linear; }
+  .submenu-mobile, .submenu-mobile:visited {
+    color: #444; }
+  .no-touchevents .submenu-mobile:hover,
+  .no-touchevents .submenu-mobile:hover h2,
+  .no-touchevents .submenu-mobile:hover h3, .no-touchevents .submenu-mobile:active,
+  .no-touchevents .submenu-mobile:active h2,
+  .no-touchevents .submenu-mobile:active h3 {
+    color: #444; }
   @media (min-width: 801px) {
     .submenu-mobile {
       display: none; } }
@@ -731,7 +760,29 @@ nav::after {
       .submenu-menu li:first-child {
         margin-top: 0; }
     .submenu-menu a {
-      display: block; }
+      display: block;
+      text-decoration: none;
+      background-repeat: repeat-x;
+      background-size: 2px 2px;
+      background-position: 0 85%; }
+      .submenu-menu a,
+      .submenu-menu a h2,
+      .submenu-menu a h3 {
+        -webkit-transition: color 50ms linear;
+        -moz-transition: color 50ms linear;
+        transition: color 50ms linear; }
+      .submenu-menu a, .submenu-menu a:visited {
+        color: #444;
+        background-image: linear-gradient(to bottom, transparent 50%, rgba(68, 68, 68, 0.6) 50%); }
+      .no-touchevents .submenu-menu a:hover, .no-touchevents .submenu-menu a:active {
+        background-image: linear-gradient(to bottom, transparent 50%, rgba(243, 244, 211, 0.6) 50%); }
+      .no-touchevents .submenu-menu a:hover,
+      .no-touchevents .submenu-menu a:hover h2,
+      .no-touchevents .submenu-menu a:hover h3, .no-touchevents .submenu-menu a:active,
+      .no-touchevents .submenu-menu a:active h2,
+      .no-touchevents .submenu-menu a:active h3 {
+        color: #f3f4d3;
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.15); }
       .submenu-menu a, .submenu-menu a:hover,
       .no-touchevents .submenu-menu a,
       .no-touchevents .submenu-menu a:hover {
@@ -938,6 +989,29 @@ nav::after {
       @media (max-width: 690px) {
         .index-top-right h2 {
           font-size: 28px; } }
+    .index-top-right a {
+      text-decoration: none;
+      background-repeat: repeat-x;
+      background-size: 2px 2px;
+      background-position: 0 85%; }
+      .index-top-right a,
+      .index-top-right a h2,
+      .index-top-right a h3 {
+        -webkit-transition: color 50ms linear;
+        -moz-transition: color 50ms linear;
+        transition: color 50ms linear; }
+      .index-top-right a, .index-top-right a:visited {
+        color: #444;
+        background-image: linear-gradient(to bottom, transparent 50%, rgba(68, 68, 68, 0.6) 50%); }
+      .no-touchevents .index-top-right a:hover, .no-touchevents .index-top-right a:active {
+        background-image: linear-gradient(to bottom, transparent 50%, rgba(243, 244, 211, 0.6) 50%); }
+      .no-touchevents .index-top-right a:hover,
+      .no-touchevents .index-top-right a:hover h2,
+      .no-touchevents .index-top-right a:hover h3, .no-touchevents .index-top-right a:active,
+      .no-touchevents .index-top-right a:active h2,
+      .no-touchevents .index-top-right a:active h3 {
+        color: #f3f4d3;
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.15); }
   .index-top-subheader {
     position: relative;
     float: left;
@@ -945,7 +1019,7 @@ nav::after {
     width: 100%;
     margin-top: 80px;
     text-align: center;
-    font-size: 24px;
+    font-size: 22px;
     font-style: oblique; }
     .index-top-subheader:after {
       content: "";
@@ -1012,7 +1086,7 @@ nav::after {
   position: relative;
   overflow: hidden;
   width: 100%;
-  height: 45vw;
+  height: 70vw;
   max-height: 700px; }
   .project::after {
     clear: both;
@@ -1027,13 +1101,12 @@ nav::after {
     width: 50%;
     height: 100%; }
   .project-image {
+    float: right;
     position: relative;
     overflow: hidden;
     min-height: 300px;
-    padding: 50px 0; }
-    .project-image, .project-image:hover, .project-image:active {
-      text-shadow: none !important;
-      background-image: none !important; }
+    padding: 50px 0;
+    background-color: rgba(0, 0, 0, 0.02); }
     @media (max-width: 720px) {
       .project-image {
         min-height: 0; } }
@@ -1050,20 +1123,23 @@ nav::after {
       max-width: 100%;
       height: auto; }
     .project-image--full-bleed {
-      padding: 0; }
+      padding: 0;
+      background-size: cover;
+      background-position: center center; }
       .project-image--full-bleed img {
         width: 100%; }
   .project-text {
+    float: left;
     position: relative;
     display: block; }
     .project-text-content {
       position: relative;
-      left: 50%;
-      -webkit-transform: translateX(-50%);
-      -moz-transform: translateX(-50%);
-      -ms-transform: translateX(-50%);
-      -o-transform: translateX(-50%);
-      transform: translateX(-50%);
+      top: 50%;
+      -webkit-transform: translateY(-50%);
+      -moz-transform: translateY(-50%);
+      -ms-transform: translateY(-50%);
+      -o-transform: translateY(-50%);
+      transform: translateY(-50%);
       width: 100%;
       max-width: 800px;
       padding: 5vw; }
@@ -1074,6 +1150,31 @@ nav::after {
     .project-text-more {
       display: inline-block;
       margin-top: 20px; }
+      .project-text-more,
+      .project-text-more h2,
+      .project-text-more h3 {
+        -webkit-transition: color 50ms linear;
+        -moz-transition: color 50ms linear;
+        transition: color 50ms linear; }
+      .project-text-more, .project-text-more:visited {
+        color: #444; }
+      .no-touchevents .project-text-more:hover,
+      .no-touchevents .project-text-more:hover h2,
+      .no-touchevents .project-text-more:hover h3, .no-touchevents .project-text-more:active,
+      .no-touchevents .project-text-more:active h2,
+      .no-touchevents .project-text-more:active h3 {
+        color: #444; }
+      .project-text-more-arrow {
+        display: inline-block;
+        -webkit-transition: -webkit-transform 200ms ease;
+        -moz-transition: -moz-transform 200ms ease;
+        transition: transform 200ms ease; }
+      .project-text-more:hover .project-text-more-arrow {
+        -webkit-transform: translateX(4px);
+        -moz-transform: translateX(4px);
+        -ms-transform: translateX(4px);
+        -o-transform: translateX(4px);
+        transform: translateX(4px); }
 
 .recent-item {
   position: relative;
@@ -1086,7 +1187,29 @@ nav::after {
   padding-left: 95px;
   background-image: none !important;
   font-size: 17px;
-  line-height: 24px; }
+  line-height: 24px;
+  text-decoration: none;
+  background-repeat: repeat-x;
+  background-size: 2px 2px;
+  background-position: 0 85%; }
+  .recent-item,
+  .recent-item h2,
+  .recent-item h3 {
+    -webkit-transition: color 50ms linear;
+    -moz-transition: color 50ms linear;
+    transition: color 50ms linear; }
+  .recent-item, .recent-item:visited {
+    color: #444;
+    background-image: linear-gradient(to bottom, transparent 50%, rgba(68, 68, 68, 0.6) 50%); }
+  .no-touchevents .recent-item:hover, .no-touchevents .recent-item:active {
+    background-image: linear-gradient(to bottom, transparent 50%, rgba(243, 244, 211, 0.6) 50%); }
+  .no-touchevents .recent-item:hover,
+  .no-touchevents .recent-item:hover h2,
+  .no-touchevents .recent-item:hover h3, .no-touchevents .recent-item:active,
+  .no-touchevents .recent-item:active h2,
+  .no-touchevents .recent-item:active h3 {
+    color: #f3f4d3;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.15); }
   @media (max-width: 550px) {
     .recent-item {
       width: 100%;
@@ -1230,6 +1353,29 @@ nav::after {
         color: #f3f4d3;
         text-shadow: 0 0 6px rgba(0, 0, 0, 0.2);
         letter-spacing: 0.02em; }
+  .page-web .content a {
+    text-decoration: none;
+    background-repeat: repeat-x;
+    background-size: 2px 2px;
+    background-position: 0 85%; }
+    .page-web .content a,
+    .page-web .content a h2,
+    .page-web .content a h3 {
+      -webkit-transition: color 50ms linear;
+      -moz-transition: color 50ms linear;
+      transition: color 50ms linear; }
+    .page-web .content a, .page-web .content a:visited {
+      color: #444;
+      background-image: linear-gradient(to bottom, transparent 50%, rgba(68, 68, 68, 0.6) 50%); }
+    .no-touchevents .page-web .content a:hover, .no-touchevents .page-web .content a:active {
+      background-image: linear-gradient(to bottom, transparent 50%, rgba(243, 244, 211, 0.6) 50%); }
+    .no-touchevents .page-web .content a:hover,
+    .no-touchevents .page-web .content a:hover h2,
+    .no-touchevents .page-web .content a:hover h3, .no-touchevents .page-web .content a:active,
+    .no-touchevents .page-web .content a:active h2,
+    .no-touchevents .page-web .content a:active h3 {
+      color: #f3f4d3;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.15); }
   .page-web .fluid-width-video-wrapper,
   .page-web .web-image {
     max-width: 750px;
@@ -1242,8 +1388,32 @@ nav::after {
     float: left;
     width: 100%; }
 
-.page-links h3 {
+.page-links .content h3 {
   margin-bottom: -10px; }
+
+.page-links .content a {
+  text-decoration: none;
+  background-repeat: repeat-x;
+  background-size: 2px 2px;
+  background-position: 0 85%; }
+  .page-links .content a,
+  .page-links .content a h2,
+  .page-links .content a h3 {
+    -webkit-transition: color 50ms linear;
+    -moz-transition: color 50ms linear;
+    transition: color 50ms linear; }
+  .page-links .content a, .page-links .content a:visited {
+    color: #444;
+    background-image: linear-gradient(to bottom, transparent 50%, rgba(68, 68, 68, 0.6) 50%); }
+  .no-touchevents .page-links .content a:hover, .no-touchevents .page-links .content a:active {
+    background-image: linear-gradient(to bottom, transparent 50%, rgba(243, 244, 211, 0.6) 50%); }
+  .no-touchevents .page-links .content a:hover,
+  .no-touchevents .page-links .content a:hover h2,
+  .no-touchevents .page-links .content a:hover h3, .no-touchevents .page-links .content a:active,
+  .no-touchevents .page-links .content a:active h2,
+  .no-touchevents .page-links .content a:active h3 {
+    color: #f3f4d3;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.15); }
 
 .page-links-column {
   width: 36%;
@@ -1288,6 +1458,58 @@ nav::after {
   .no-touchevents .page-graphic-menu-mobile a,
   .no-touchevents .page-graphic-menu-mobile a:hover {
     background-image: none; }
+    .page-graphic-menu-mobile a,
+    .page-graphic-menu-mobile a h2,
+    .page-graphic-menu-mobile a h3, .page-graphic-menu-mobile a:hover,
+    .page-graphic-menu-mobile a:hover h2,
+    .page-graphic-menu-mobile a:hover h3,
+    .no-touchevents .page-graphic-menu-mobile a,
+    .no-touchevents .page-graphic-menu-mobile a h2,
+    .no-touchevents .page-graphic-menu-mobile a h3,
+    .no-touchevents .page-graphic-menu-mobile a:hover,
+    .no-touchevents .page-graphic-menu-mobile a:hover h2,
+    .no-touchevents .page-graphic-menu-mobile a:hover h3 {
+      -webkit-transition: color 50ms linear;
+      -moz-transition: color 50ms linear;
+      transition: color 50ms linear; }
+    .page-graphic-menu-mobile a, .page-graphic-menu-mobile a:visited, .page-graphic-menu-mobile a:hover, .page-graphic-menu-mobile a:hover:visited,
+    .no-touchevents .page-graphic-menu-mobile a,
+    .no-touchevents .page-graphic-menu-mobile a:visited,
+    .no-touchevents .page-graphic-menu-mobile a:hover,
+    .no-touchevents .page-graphic-menu-mobile a:hover:visited {
+      color: #444; }
+    .no-touchevents .page-graphic-menu-mobile a:hover,
+    .no-touchevents .page-graphic-menu-mobile a:hover h2,
+    .no-touchevents .page-graphic-menu-mobile a:hover h3, .no-touchevents .page-graphic-menu-mobile a:active,
+    .no-touchevents .page-graphic-menu-mobile a:active h2,
+    .no-touchevents .page-graphic-menu-mobile a:active h3, .no-touchevents .page-graphic-menu-mobile a:hover:hover,
+    .no-touchevents .page-graphic-menu-mobile a:hover:hover h2,
+    .no-touchevents .page-graphic-menu-mobile a:hover:hover h3, .no-touchevents .page-graphic-menu-mobile a:hover:active,
+    .no-touchevents .page-graphic-menu-mobile a:hover:active h2,
+    .no-touchevents .page-graphic-menu-mobile a:hover:active h3, .no-touchevents
+    .no-touchevents .page-graphic-menu-mobile a:hover,
+    .no-touchevents
+    .no-touchevents .page-graphic-menu-mobile a:hover h2,
+    .no-touchevents
+    .no-touchevents .page-graphic-menu-mobile a:hover h3, .no-touchevents
+    .no-touchevents .page-graphic-menu-mobile a:active,
+    .no-touchevents
+    .no-touchevents .page-graphic-menu-mobile a:active h2,
+    .no-touchevents
+    .no-touchevents .page-graphic-menu-mobile a:active h3, .no-touchevents
+    .no-touchevents .page-graphic-menu-mobile a:hover:hover,
+    .no-touchevents
+    .no-touchevents .page-graphic-menu-mobile a:hover:hover h2,
+    .no-touchevents
+    .no-touchevents .page-graphic-menu-mobile a:hover:hover h3, .no-touchevents
+    .no-touchevents .page-graphic-menu-mobile a:hover:active,
+    .no-touchevents
+    .no-touchevents .page-graphic-menu-mobile a:hover:active h2,
+    .no-touchevents
+    .no-touchevents .page-graphic-menu-mobile a:hover:active h3 {
+      color: #444; }
+  .page-graphic-menu-mobile a h3 {
+    margin: 0; }
   @media (max-width: 800px) {
     .page-graphic-menu-mobile {
       display: block; } }

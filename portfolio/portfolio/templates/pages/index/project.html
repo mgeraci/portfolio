@@ -2,6 +2,8 @@
 	class="project"
 	{% if project.background %}style="background-color: #{{ project.background }}"{% endif %}
 >
+	{% include "pages/index/project_image.html" %}
+
 	<div class="project-text">
 		<div class="project-text-content">
 			<h2 class="project-text-title">
@@ -12,17 +14,11 @@
 			</span>
 			<br />
 			<a href="{% url 'project_url' project.slug %}" class="project-text-more">
-				more &raquo;
+				more
+				<span class="project-text-more-arrow">
+					&raquo;
+				</span>
 			</a>
 		</div>
 	</div>
-	<a
-		href="{% url 'project_url' project.slug %}"
-		class="project-image {% if project.image_full_bleed %}project-image--full-bleed{% endif %}"
-		data-lazy-image="{{ MEDIA_URL }}{{ project.image }}"
-		data-lazy-alt="{{ project.title }} screenshot"
-		{% if project.image_max_width %}
-			data-lazy-max-width="{{ project.image_max_width }}"
-		{% endif %}
-	></a>
 </article>

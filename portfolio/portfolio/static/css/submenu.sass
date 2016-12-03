@@ -6,6 +6,7 @@ $menu-padding: 6%
   float: left
   clear: both
   margin-bottom: 20px
+  @include link-color($text, $text)
 
   @media (min-width: $menu-breakpoint + 1)
     display: none
@@ -42,6 +43,7 @@ $menu-padding: 6%
 
     a
       display: block
+      @include link($text, $cream)
 
       &,
       &:hover,

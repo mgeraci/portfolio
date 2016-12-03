@@ -1,0 +1,16 @@
+<a
+	href="{% url 'project_url' project.slug %}"
+	class="project-image {% if project.image_full_bleed %}project-image--full-bleed{% endif %}"
+
+	{% if project.image_full_bleed %}
+		style="background-image: url({{ MEDIA_URL }}{{ project.image }});"
+	{% endif %}
+
+	{% if not project.image_full_bleed %}
+		data-lazy-image="{{ MEDIA_URL }}{{ project.image }}"
+		data-lazy-alt="{{ project.title }} screenshot"
+		{% if project.image_max_width %}
+			data-lazy-max-width="{{ project.image_max_width }}"
+		{% endif %}
+	{% endif %}
+></a>

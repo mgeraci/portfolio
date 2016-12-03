@@ -36,6 +36,25 @@
         text-shadow: $active-link-shadow
 
 
+@mixin link-color($default-color, $hover-color)
+  &,
+  h2,
+  h3
+    @include transition(color 50ms linear)
+
+  &,
+  &:visited
+    color: $default-color
+
+  .no-touchevents &
+    &:hover,
+    &:active
+      &,
+      h2,
+      h3
+        color: $hover-color
+
+
 @mixin no-link
   &,
   &:hover,
