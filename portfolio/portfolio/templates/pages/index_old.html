@@ -1,8 +1,8 @@
 {% extends 'base.html' %}
 
 {% block title %}Bio/Resume{% endblock %}
-{% block description %}Michael P. Geraci is a front-end engineer working in New York, NY.{% endblock %}
-{% block bodyclass %}index{% endblock %}
+{% block description %}Michael P. Geraci is a front-end developer working in New York, NY.{% endblock %}
+{% block bodyclass %}index-old{% endblock %}
 
 {% block content %}
 
@@ -11,8 +11,8 @@
 		<div class="index-top-right">
 			<h2>I’m Michael P. Geraci</h2>
 			<p>
-			I’m a front end engineer who lives in New York City. I like working for
-			small companies, making nice things you can click or tap on. I do that at
+			I’m a front end developer who lives in New York City. I like working for
+			small companies, making nice things you can click on. I work at
 			OkCupid.
 			</p>
 			<p>
@@ -31,33 +31,20 @@
 				data-lazy-image-alt="A photo of Michael P. Geraci">
 			</div>
 		</div>
-		{% if show_home_projects %}
-			<span class="index-top-subheader">
-				Work
-			</span>
-		{% endif %}
 	</div>
 </div>
 
 <div class="index-bottom">
-	{% if show_home_projects %}
-		<div class="index-bottom-content">
-			{% for project in home_projects %}
-				{% include "pages/index/project.html" %}
+	<div class="index-bottom-content">
+		<h2 class="index-bottom-headline">
+			Last updated {{ recent_date }}
+		</h2>
+		<div class="index-bottom-recent">
+			{% for recent_item in recent_items %}
+				{% include "pages/index/recent_item.html" %}
 			{% endfor %}
 		</div>
-	{% else %}
-		<div class="index-bottom-content index-bottom-content--old">
-			<h2 class="index-bottom-headline index-bottom-headline--old">
-				Last updated {{ recent_date }}
-			</h2>
-			<div class="index-bottom-recent">
-				{% for recent_item in recent_items %}
-					{% include "pages/index/recent_item.html" %}
-				{% endfor %}
-			</div>
-		</div>
-	{% endif %}
+	</div>
 
 	<span class="index-bottom-copyright">
 		Copyright © Michael P. Geraci, 2006-{{ year }}

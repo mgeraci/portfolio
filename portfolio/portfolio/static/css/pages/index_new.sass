@@ -3,14 +3,8 @@ $index-breakpoint: 550px
 // the body on the index gets a darker background color, and then everything
 // else gets the "normal" background, that way the darker color extends to the
 // screen bottom
-.page-index
-  background: darken($green, 4%)
-
-  nav,
-  .index-top
-    background: $green
-
-  // undo the default content sizing
+.page-index-new
+  // undo the default content sizing, go full width
   section.content
     width: 100%
     max-width: 100%
@@ -19,34 +13,32 @@ $index-breakpoint: 550px
 
 .index-top
   @include clearfix
-  background: $green
+  @include content-sizing
   padding-bottom: 55px
-
-  &-content
-    @include content-sizing
 
   @media (max-width: $index-breakpoint)
     padding-bottom: 40px
 
-    .index-top-left,
-    .index-top-right
+    .index-top-text,
+    .index-top-image
       width: 100%
       margin: 0
       padding: 0
 
-      &:last-child
-        margin-top: 25px
+    .index-top-image
+      margin-top: 25px
 
-    .index-top-left-image-wrapper
+    .index-top-left-image
       width: 50%
       padding-top: 50%
 
-  &-left
+  &-image
     float: left
     margin-top: 9px
     width: 33%
     text-align: center
 
+    // large screens
     @media (min-width: 820px)
       text-align: right
 
@@ -55,12 +47,12 @@ $index-breakpoint: 550px
         height: 250px
         padding: 0
 
-    &-image-wrapper
+    &-wrapper
       display: inline-block
       position: relative
       overflow: hidden
-      width: 100%
-      padding-top: 100%
+      width: 76%
+      padding-top: 76%
       background: rgba(#000, 0.1)
       border-radius: 50%
       box-shadow: 0 0 2px rgba(#000, 0.2)
@@ -72,7 +64,7 @@ $index-breakpoint: 550px
         width: 100%
         height: auto
 
-  &-right
+  &-text
     float: right
     width: 60%
     padding-top: 20px
@@ -115,36 +107,14 @@ $index-breakpoint: 550px
       @include transform(translateX(-50%))
       @include triangle(10px, rgba($text, 0.7), down)
 
-.index-bottom
-  border-top: 1px solid darken($green, 10%)
+    @media (max-width: $index-breakpoint)
+      margin-top: 40px
 
-  &-content
-    width: 100%
-
-    &--old
-      @include content-sizing
-      max-width: 900px
-
-  &-headline
-    display: block
-    width: 100%
-    text-align: center
-    margin-bottom: 70px
-    font-size: 28px
-
-    &--old
-      margin-bottom: 20px
-      text-align: left
-      font-size: 20px
-
-  &-recent
-    @include clearfix
-
-  &-copyright
-    @include content-sizing
-    display: block
-    font-size: 15px
-    margin-top: 40px
+.index-bottom-copyright
+  @include content-sizing
+  display: block
+  font-size: 15px
+  margin-top: 40px
 
 
 // home projects
@@ -162,20 +132,19 @@ $odd-bg: mix($green, #000, 95%)
   position: relative
   overflow: hidden
   width: 100%
-  height: 70vw
-  max-height: 700px
+  height: 80vh
 
-  &:nth-child(odd)
-    background: $odd-bg
-
-  &:nth-child(even)
-    background: $even-bg
+  @media (max-width: $index-breakpoint)
+    height: auto
 
   &-image,
   &-text
     float: left
     width: 50%
     height: 100%
+
+    @media (max-width: $index-breakpoint)
+      width: 100%
 
   &-image
     float: right
@@ -194,7 +163,8 @@ $odd-bg: mix($green, #000, 95%)
       top: 50%
       left: 50%
       @include transform(translate(-50%, -50%))
-      max-width: 100%
+      max-width: 90%
+      max-height: 90%
       height: auto
 
     &--full-bleed
@@ -217,6 +187,10 @@ $odd-bg: mix($green, #000, 95%)
       width: 100%
       max-width: 800px
       padding: 5vw
+
+      @media (max-width: $index-breakpoint)
+        top: 0
+        @include transform(translateY(0))
 
     &-title
       display: block

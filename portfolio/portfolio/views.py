@@ -43,6 +43,11 @@ def index(request):
         },
     ]
 
+    if show_home_projects:
+        template = 'pages/index_new.html'
+    else:
+        template = "pages/index_old.html"
+
     context = {
         'recent_items': recent_items,
         'recent_date': '9.10.16',
@@ -50,7 +55,7 @@ def index(request):
         'show_home_projects': show_home_projects,
     }
 
-    return render(request, 'pages/index.html', context)
+    return render(request, template, context)
 
 
 def project(request, slug):
