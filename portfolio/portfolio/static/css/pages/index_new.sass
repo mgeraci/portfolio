@@ -11,6 +11,7 @@ $index-breakpoint: 550px
     margin: 0
     padding-top: 0
 
+  // TODO un-nest after removing old index page
   .index-top
     @include clearfix
     @include content-sizing
@@ -152,28 +153,32 @@ $odd-bg: mix($green, #000, 95%)
     overflow: hidden
     min-height: 300px
     padding: 50px 0
-    background-color: rgba(#000, 0.02)
+    background-color: rgba(#000, 0.025)
 
     @media (max-width: $breakpoint)
       min-height: 0
 
     img
-      float: left
+      display: block
       position: relative
-      top: 50%
-      left: 50%
-      @include transform(translate(-50%, -50%))
+      margin: 0 auto;
       max-width: 90%
       max-height: 90%
       height: auto
+
+      @media (min-width: $index-breakpoint)
+        margin: 0
+        top: 50%
+        left: 50%
+        @include transform(translate(-50%, -50%))
 
     &--full-bleed
       padding: 0
       background-size: cover
       background-position: center center
 
-      img
-        width: 100%
+      @media (max-width: $index-breakpoint)
+        min-height: 60vh
 
   &-text
     float: left

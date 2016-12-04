@@ -1276,29 +1276,34 @@ nav::after {
     overflow: hidden;
     min-height: 300px;
     padding: 50px 0;
-    background-color: rgba(0, 0, 0, 0.02); }
+    background-color: rgba(0, 0, 0, 0.025); }
     @media (max-width: 720px) {
       .project-image {
         min-height: 0; } }
     .project-image img {
-      float: left;
+      display: block;
       position: relative;
-      top: 50%;
-      left: 50%;
-      -webkit-transform: translate(-50%, -50%);
-      -moz-transform: translate(-50%, -50%);
-      -ms-transform: translate(-50%, -50%);
-      -o-transform: translate(-50%, -50%);
-      transform: translate(-50%, -50%);
+      margin: 0 auto;
       max-width: 90%;
       max-height: 90%;
       height: auto; }
+      @media (min-width: 550px) {
+        .project-image img {
+          margin: 0;
+          top: 50%;
+          left: 50%;
+          -webkit-transform: translate(-50%, -50%);
+          -moz-transform: translate(-50%, -50%);
+          -ms-transform: translate(-50%, -50%);
+          -o-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%); } }
     .project-image--full-bleed {
       padding: 0;
       background-size: cover;
       background-position: center center; }
-      .project-image--full-bleed img {
-        width: 100%; }
+      @media (max-width: 550px) {
+        .project-image--full-bleed {
+          min-height: 60vh; } }
   .project-text {
     float: left;
     position: relative;
