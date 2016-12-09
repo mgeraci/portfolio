@@ -4,6 +4,8 @@ $index-breakpoint: 700px
 // else gets the "normal" background, that way the darker color extends to the
 // screen bottom
 .page-index-new
+  background: #fff
+
   // undo the default content sizing, go full width
   section.content
     width: 100%
@@ -15,7 +17,7 @@ $index-breakpoint: 700px
   .index-top
     @include clearfix
     @include content-sizing
-    padding-bottom: 55px
+    padding-bottom: 80px
 
     @media (max-width: $index-breakpoint)
       padding-bottom: 40px
@@ -81,14 +83,22 @@ $index-breakpoint: 700px
           padding-bottom: 0
 
       h2
-        font-family: headline
+        margin-top: 19px
         font-size: 36px
 
         @media (max-width: 690px)
           font-size: 28px
 
       a
-        @include link($text, $cream)
+        margin-left: 8px
+        @include link-underline($text)
+        @include link-color($text, $green)
+
+        &:hover
+          @include link-underline($green)
+
+        &:first-child
+          margin-left: 0
 
     &-subheader
       position: relative
@@ -116,6 +126,8 @@ $index-breakpoint: 700px
     display: block
     font-size: 15px
     margin-top: 40px
+    width: 100%
+    text-align: center
 
 
 // home projects
@@ -125,8 +137,6 @@ $text-width: 50%
 $image-width: 45%
 $gutter-width: 100 - $text-width - $image-width
 $breakpoint: 720px
-$even-bg: $green
-$odd-bg: mix($green, #000, 95%)
 
 .project
   @include clearfix
@@ -136,7 +146,7 @@ $odd-bg: mix($green, #000, 95%)
   height: 80vh
 
   @media (max-width: 1500px)
-    height: 60vh
+    height: 75vh
 
   @media (max-width: $index-breakpoint)
     height: auto
@@ -156,7 +166,6 @@ $odd-bg: mix($green, #000, 95%)
     overflow: hidden
     min-height: 300px
     padding: 50px 0
-    background-color: rgba(#fff, 0.1)
 
     @media (max-width: $breakpoint)
       min-height: 0
@@ -188,11 +197,22 @@ $odd-bg: mix($green, #000, 95%)
     position: relative
     display: block
 
+    $light-color: rgba(#fff, 0.9)
+
+    &--light
+      color: $light-color
+
+      .project-text-title
+        color: #fff
+
+      .project-text-more
+        @include link-color($light-color, $light-color)
+
     &-content
       position: relative
       width: 100%
       max-width: 800px
-      padding: 5vw
+      padding: 6vw
 
       @media (min-width: $index-breakpoint)
         top: 50%
@@ -202,7 +222,7 @@ $odd-bg: mix($green, #000, 95%)
     &-title
       display: block
       width: 100%
-      text-align: center
+      text-align: left
 
     &-more
       display: inline-block

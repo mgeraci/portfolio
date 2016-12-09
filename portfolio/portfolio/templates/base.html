@@ -11,6 +11,8 @@
 
 		<link rel="shortcut icon" href="{{ STATIC_URL }}images/favicon.ico" type="image/x-icon">
 
+		<link href="https://fonts.googleapis.com/css?family=Source+Serif+Pro:400,700" rel="stylesheet">
+
 		{% if is_local %}
 			<link
 				rel="stylesheet"
@@ -27,7 +29,11 @@
 	</head>
 	<body class="page-{% block bodyclass %}{% endblock %}">
 
-		{% include "menu.html" %}
+		{% if not show_home_projects %}
+			{% include "menu.html" %}
+		{% else %}
+			{% include "menu_new.html" %}
+		{% endif %}
 
 		<section class="content">
 			{% block content %}{% endblock %}

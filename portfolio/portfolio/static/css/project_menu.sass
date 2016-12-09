@@ -1,0 +1,26 @@
+.project-nav
+  @include content-sizing
+  padding-bottom: 30px
+  font-size: 20px
+
+  &-left
+    float: left
+
+  &-right
+    float: right
+
+  &-title
+    text-decoration: none
+    @include link-color($text, $text)
+
+  &-link
+    margin-left: 10px
+
+    &:not(.active)
+      @include link-color($text, lighten($text, 10%))
+      @include link-underline($text)
+
+    &.active
+      cursor: default
+      text-decoration: none
+      @include link-color($text, $text)

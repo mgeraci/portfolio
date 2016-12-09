@@ -1,10 +1,14 @@
 <article
 	class="project"
-	{% if project.background %}style="background-color: #{{ project.background }}"{% endif %}
+	{% if project.background %}
+		style="background-color: #{{ project.background }}"
+	{% endif %}
 >
 	{% include "pages/index/project_image.html" %}
 
-	<div class="project-text">
+	<div
+		class="project-text {% if project.light_text %}project-text--light{% endif %}"
+	>
 		<div class="project-text-content">
 			<h2 class="project-text-title">
 				{{ project.title }}
