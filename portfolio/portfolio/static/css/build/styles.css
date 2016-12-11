@@ -370,7 +370,7 @@ body {
   background: #bbd199;
   padding-bottom: 20px;
   color: #444;
-  font-family: "Source Serif Pro", "Georgia", times, arial, sans-serif;
+  font-family: "PT Serif", "Georgia", times, arial, sans-serif;
   font-size: 18px;
   line-height: 30px;
   -webkit-font-smoothing: antialiased; }
@@ -508,6 +508,18 @@ em {
 @font-face {
   font-family: 'headline';
   src: url("http://localhost:8000/static/fonts/headline.eot?#iefix") format("embedded-opentype"), url("http://localhost:8000/static/fonts/headline.woff") format("woff"), url("http://localhost:8000/static/fonts/headline.ttf") format("truetype"), url("http://localhost:8000/static/fonts/headline.svg#Headline") format("svg");
+  font-weight: bold;
+  font-style: normal; }
+
+@font-face {
+  font-family: 'Source Serif Pro';
+  src: local("Source Serif Pro"), local("SourceSerifPro-Regular"), url("http://localhost:8000/static/fonts/SourceSerifPro-Regular.eot?#iefix") format("embedded-opentype"), url("http://localhost:8000/static/fonts/SourceSerifPro-Regular.woff") format("woff"), url("http://localhost:8000/static/fonts/SourceSerifPro-Regular.ttf") format("truetype"), url("http://localhost:8000/static/fonts/SourceSerifPro-Regular.svg#SourceSerifPro-Regular") format("svg");
+  font-weight: normal;
+  font-style: normal; }
+
+@font-face {
+  font-family: 'Source Serif Pro';
+  src: local("Source Serif Pro Bold"), local("SourceSerifPro-Bold"), url("http://localhost:8000/static/fonts/SourceSerifPro-Bold.eot?#iefix") format("embedded-opentype"), url("http://localhost:8000/static/fonts/SourceSerifPro-Bold.woff") format("woff"), url("http://localhost:8000/static/fonts/SourceSerifPro-Bold.ttf") format("truetype"), url("http://localhost:8000/static/fonts/SourceSerifPro-Bold.svg#SourceSerifPro-Bold") format("svg");
   font-weight: bold;
   font-style: normal; }
 
@@ -1200,7 +1212,8 @@ nav::after {
     width: 100%; }
 
 .page-index-new {
-  background: #fff; }
+  background: #fff;
+  font-family: "Source Serif Pro"; }
   .page-index-new section.content {
     width: 100%;
     max-width: 100%;
