@@ -18,9 +18,9 @@
     .page-photography-title-clear,
     .page-photography-title-clear h2,
     .page-photography-title-clear h3 {
-      -webkit-transition: color 50ms linear;
-      -moz-transition: color 50ms linear;
-      transition: color 50ms linear; }
+      -webkit-transition: color 50ms linear, background-image 50ms linear;
+      -moz-transition: color 50ms linear, background-image 50ms linear;
+      transition: color 50ms linear, background-image 50ms linear; }
     .page-photography-title-clear, .page-photography-title-clear:visited {
       color: #444;
       text-decoration: none;
@@ -51,9 +51,9 @@
     .page-photography-navigation-item-wrapper a,
     .page-photography-navigation-item-wrapper a h2,
     .page-photography-navigation-item-wrapper a h3 {
-      -webkit-transition: color 50ms linear;
-      -moz-transition: color 50ms linear;
-      transition: color 50ms linear; }
+      -webkit-transition: color 50ms linear, background-image 50ms linear;
+      -moz-transition: color 50ms linear, background-image 50ms linear;
+      transition: color 50ms linear, background-image 50ms linear; }
     .page-photography-navigation-item-wrapper a, .page-photography-navigation-item-wrapper a:visited {
       color: #444;
       text-decoration: none;
@@ -211,9 +211,9 @@
     .image-modal-meta a.image-modal-meta-tag,
     .image-modal-meta a.image-modal-meta-tag h2,
     .image-modal-meta a.image-modal-meta-tag h3 {
-      -webkit-transition: color 50ms linear;
-      -moz-transition: color 50ms linear;
-      transition: color 50ms linear; }
+      -webkit-transition: color 50ms linear, background-image 50ms linear;
+      -moz-transition: color 50ms linear, background-image 50ms linear;
+      transition: color 50ms linear, background-image 50ms linear; }
     .image-modal-meta a.image-modal-meta-tag, .image-modal-meta a.image-modal-meta-tag:visited {
       color: #777;
       text-decoration: none;
@@ -304,9 +304,9 @@
   .page-photography-rss,
   .page-photography-rss h2,
   .page-photography-rss h3 {
-    -webkit-transition: color 50ms linear;
-    -moz-transition: color 50ms linear;
-    transition: color 50ms linear; }
+    -webkit-transition: color 50ms linear, background-image 50ms linear;
+    -moz-transition: color 50ms linear, background-image 50ms linear;
+    transition: color 50ms linear, background-image 50ms linear; }
   .page-photography-rss, .page-photography-rss:visited {
     color: #444; }
   .no-touchevents .page-photography-rss:hover,
@@ -612,9 +612,9 @@ nav::after {
     .project-nav-title,
     .project-nav-title h2,
     .project-nav-title h3 {
-      -webkit-transition: color 50ms linear;
-      -moz-transition: color 50ms linear;
-      transition: color 50ms linear; }
+      -webkit-transition: color 50ms linear, background-image 50ms linear;
+      -moz-transition: color 50ms linear, background-image 50ms linear;
+      transition: color 50ms linear, background-image 50ms linear; }
     .project-nav-title, .project-nav-title:visited {
       color: #444; }
     .no-touchevents .project-nav-title:hover,
@@ -635,9 +635,9 @@ nav::after {
       .project-nav-link:not(.active),
       .project-nav-link:not(.active) h2,
       .project-nav-link:not(.active) h3 {
-        -webkit-transition: color 50ms linear;
-        -moz-transition: color 50ms linear;
-        transition: color 50ms linear; }
+        -webkit-transition: color 50ms linear, background-image 50ms linear;
+        -moz-transition: color 50ms linear, background-image 50ms linear;
+        transition: color 50ms linear, background-image 50ms linear; }
       .project-nav-link:not(.active), .project-nav-link:not(.active):visited {
         color: #444; }
       .no-touchevents .project-nav-link:not(.active):hover,
@@ -645,16 +645,22 @@ nav::after {
       .no-touchevents .project-nav-link:not(.active):hover h3, .no-touchevents .project-nav-link:not(.active):active,
       .no-touchevents .project-nav-link:not(.active):active h2,
       .no-touchevents .project-nav-link:not(.active):active h3 {
-        color: #5e5e5e; }
+        color: #76a231; }
+      .project-nav-link:not(.active):hover {
+        text-decoration: none;
+        background-repeat: repeat-x;
+        background-size: 2px 2px;
+        background-position: 0 85%;
+        background-image: linear-gradient(to bottom, transparent 50%, rgba(118, 162, 49, 0.6) 50%); }
     .project-nav-link.active {
       cursor: default;
       text-decoration: none; }
       .project-nav-link.active,
       .project-nav-link.active h2,
       .project-nav-link.active h3 {
-        -webkit-transition: color 50ms linear;
-        -moz-transition: color 50ms linear;
-        transition: color 50ms linear; }
+        -webkit-transition: color 50ms linear, background-image 50ms linear;
+        -moz-transition: color 50ms linear, background-image 50ms linear;
+        transition: color 50ms linear, background-image 50ms linear; }
       .project-nav-link.active, .project-nav-link.active:visited {
         color: #444; }
       .no-touchevents .project-nav-link.active:hover,
@@ -823,9 +829,9 @@ nav::after {
   .submenu-mobile,
   .submenu-mobile h2,
   .submenu-mobile h3 {
-    -webkit-transition: color 50ms linear;
-    -moz-transition: color 50ms linear;
-    transition: color 50ms linear; }
+    -webkit-transition: color 50ms linear, background-image 50ms linear;
+    -moz-transition: color 50ms linear, background-image 50ms linear;
+    transition: color 50ms linear, background-image 50ms linear; }
   .submenu-mobile, .submenu-mobile:visited {
     color: #444; }
   .no-touchevents .submenu-mobile:hover,
@@ -866,9 +872,9 @@ nav::after {
       .submenu-menu a,
       .submenu-menu a h2,
       .submenu-menu a h3 {
-        -webkit-transition: color 50ms linear;
-        -moz-transition: color 50ms linear;
-        transition: color 50ms linear; }
+        -webkit-transition: color 50ms linear, background-image 50ms linear;
+        -moz-transition: color 50ms linear, background-image 50ms linear;
+        transition: color 50ms linear, background-image 50ms linear; }
       .submenu-menu a, .submenu-menu a:visited {
         color: #444;
         text-decoration: none;
@@ -1097,9 +1103,9 @@ nav::after {
       .page-index-old .index-top-right a,
       .page-index-old .index-top-right a h2,
       .page-index-old .index-top-right a h3 {
-        -webkit-transition: color 50ms linear;
-        -moz-transition: color 50ms linear;
-        transition: color 50ms linear; }
+        -webkit-transition: color 50ms linear, background-image 50ms linear;
+        -moz-transition: color 50ms linear, background-image 50ms linear;
+        transition: color 50ms linear, background-image 50ms linear; }
       .page-index-old .index-top-right a, .page-index-old .index-top-right a:visited {
         color: #444;
         text-decoration: none;
@@ -1176,9 +1182,9 @@ nav::after {
   .recent-item,
   .recent-item h2,
   .recent-item h3 {
-    -webkit-transition: color 50ms linear;
-    -moz-transition: color 50ms linear;
-    transition: color 50ms linear; }
+    -webkit-transition: color 50ms linear, background-image 50ms linear;
+    -moz-transition: color 50ms linear, background-image 50ms linear;
+    transition: color 50ms linear, background-image 50ms linear; }
   .recent-item, .recent-item:visited {
     color: #444;
     text-decoration: none;
@@ -1309,9 +1315,9 @@ nav::after {
       .page-index-new .index-top-link,
       .page-index-new .index-top-link h2,
       .page-index-new .index-top-link h3 {
-        -webkit-transition: color 50ms linear;
-        -moz-transition: color 50ms linear;
-        transition: color 50ms linear; }
+        -webkit-transition: color 50ms linear, background-image 50ms linear;
+        -moz-transition: color 50ms linear, background-image 50ms linear;
+        transition: color 50ms linear, background-image 50ms linear; }
       .page-index-new .index-top-link, .page-index-new .index-top-link:visited {
         color: #444; }
       .no-touchevents .page-index-new .index-top-link:hover,
@@ -1319,13 +1325,13 @@ nav::after {
       .no-touchevents .page-index-new .index-top-link:hover h3, .no-touchevents .page-index-new .index-top-link:active,
       .no-touchevents .page-index-new .index-top-link:active h2,
       .no-touchevents .page-index-new .index-top-link:active h3 {
-        color: #bbd199; }
+        color: #76a231; }
       .page-index-new .index-top-link:hover {
         text-decoration: none;
         background-repeat: repeat-x;
         background-size: 2px 2px;
         background-position: 0 85%;
-        background-image: linear-gradient(to bottom, transparent 50%, rgba(187, 209, 153, 0.6) 50%); }
+        background-image: linear-gradient(to bottom, transparent 50%, rgba(118, 162, 49, 0.6) 50%); }
       .page-index-new .index-top-link:first-child {
         margin-left: 0; }
     .page-index-new .index-top-subheader {
@@ -1405,9 +1411,9 @@ nav::after {
       .project-text--light .project-text-more,
       .project-text--light .project-text-more h2,
       .project-text--light .project-text-more h3 {
-        -webkit-transition: color 50ms linear;
-        -moz-transition: color 50ms linear;
-        transition: color 50ms linear; }
+        -webkit-transition: color 50ms linear, background-image 50ms linear;
+        -moz-transition: color 50ms linear, background-image 50ms linear;
+        transition: color 50ms linear, background-image 50ms linear; }
       .project-text--light .project-text-more, .project-text--light .project-text-more:visited {
         color: rgba(255, 255, 255, 0.9); }
       .no-touchevents .project-text--light .project-text-more:hover,
@@ -1440,9 +1446,9 @@ nav::after {
       .project-text-more,
       .project-text-more h2,
       .project-text-more h3 {
-        -webkit-transition: color 50ms linear;
-        -moz-transition: color 50ms linear;
-        transition: color 50ms linear; }
+        -webkit-transition: color 50ms linear, background-image 50ms linear;
+        -moz-transition: color 50ms linear, background-image 50ms linear;
+        transition: color 50ms linear, background-image 50ms linear; }
       .project-text-more, .project-text-more:visited {
         color: #444; }
       .no-touchevents .project-text-more:hover,
@@ -1624,9 +1630,9 @@ nav::after {
   .page-web .content a,
   .page-web .content a h2,
   .page-web .content a h3 {
-    -webkit-transition: color 50ms linear;
-    -moz-transition: color 50ms linear;
-    transition: color 50ms linear; }
+    -webkit-transition: color 50ms linear, background-image 50ms linear;
+    -moz-transition: color 50ms linear, background-image 50ms linear;
+    transition: color 50ms linear, background-image 50ms linear; }
   .page-web .content a, .page-web .content a:visited {
     color: #444;
     text-decoration: none;
@@ -1665,9 +1671,9 @@ nav::after {
 .page-links .content a,
 .page-links .content a h2,
 .page-links .content a h3 {
-  -webkit-transition: color 50ms linear;
-  -moz-transition: color 50ms linear;
-  transition: color 50ms linear; }
+  -webkit-transition: color 50ms linear, background-image 50ms linear;
+  -moz-transition: color 50ms linear, background-image 50ms linear;
+  transition: color 50ms linear, background-image 50ms linear; }
 
 .page-links .content a, .page-links .content a:visited {
   color: #444;
@@ -1746,9 +1752,9 @@ nav::after {
     .no-touchevents .page-graphic-menu-mobile a:hover,
     .no-touchevents .page-graphic-menu-mobile a:hover h2,
     .no-touchevents .page-graphic-menu-mobile a:hover h3 {
-      -webkit-transition: color 50ms linear;
-      -moz-transition: color 50ms linear;
-      transition: color 50ms linear; }
+      -webkit-transition: color 50ms linear, background-image 50ms linear;
+      -moz-transition: color 50ms linear, background-image 50ms linear;
+      transition: color 50ms linear, background-image 50ms linear; }
     .page-graphic-menu-mobile a, .page-graphic-menu-mobile a:visited, .page-graphic-menu-mobile a:hover, .page-graphic-menu-mobile a:hover:visited,
     .no-touchevents .page-graphic-menu-mobile a,
     .no-touchevents .page-graphic-menu-mobile a:visited,
@@ -1898,9 +1904,9 @@ nav::after {
     .page-album-list-navigation a,
     .page-album-list-navigation a h2,
     .page-album-list-navigation a h3 {
-      -webkit-transition: color 50ms linear;
-      -moz-transition: color 50ms linear;
-      transition: color 50ms linear; }
+      -webkit-transition: color 50ms linear, background-image 50ms linear;
+      -moz-transition: color 50ms linear, background-image 50ms linear;
+      transition: color 50ms linear, background-image 50ms linear; }
     .page-album-list-navigation a, .page-album-list-navigation a:visited {
       color: #444;
       text-decoration: none;
@@ -2053,9 +2059,9 @@ nav::after {
       .page-album-list-item-links a.page-album-list-item-links-link,
       .page-album-list-item-links a.page-album-list-item-links-link h2,
       .page-album-list-item-links a.page-album-list-item-links-link h3 {
-        -webkit-transition: color 50ms linear;
-        -moz-transition: color 50ms linear;
-        transition: color 50ms linear; }
+        -webkit-transition: color 50ms linear, background-image 50ms linear;
+        -moz-transition: color 50ms linear, background-image 50ms linear;
+        transition: color 50ms linear, background-image 50ms linear; }
       .page-album-list-item-links a.page-album-list-item-links-link, .page-album-list-item-links a.page-album-list-item-links-link:visited {
         color: rgba(68, 68, 68, 0.5);
         text-decoration: none;

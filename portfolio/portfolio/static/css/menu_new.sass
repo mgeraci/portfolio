@@ -29,8 +29,11 @@
     margin-left: 10px
 
     &:not(.active)
-      @include link-color($text, lighten($text, 10%))
+      @include link-color($text, $index-highlight)
       @include link-underline($text)
+
+      &:hover
+        @include link-underline($index-highlight)
 
     &.active
       cursor: default

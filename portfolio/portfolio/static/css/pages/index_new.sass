@@ -99,10 +99,10 @@ $index-breakpoint: 700px
       display: inline-block
       margin-left: 10px
       @include link-underline($text)
-      @include link-color($text, $green)
+      @include link-color($text, $index-highlight)
 
       &:hover
-        @include link-underline($green)
+        @include link-underline($index-highlight)
 
       &:first-child
         margin-left: 0
