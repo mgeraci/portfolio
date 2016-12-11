@@ -27,10 +27,10 @@
 	</head>
 	<body class="page-{% block bodyclass %}{% endblock %}">
 
-		{% if not show_home_projects %}
-			{% include "menu.html" %}
-		{% else %}
+		{% if show_home_projects %}
 			{% include "menu_new.html" %}
+		{% else %}
+			{% include "menu.html" %}
 		{% endif %}
 
 		<section class="content">

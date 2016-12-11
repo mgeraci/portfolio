@@ -1,5 +1,10 @@
 $index-breakpoint: 700px
 
+@mixin text-style
+  width: 50%
+  text-align: left
+  padding: 6vh
+
 // the body on the index gets a darker background color, and then everything
 // else gets the "normal" background, that way the darker color extends to the
 // screen bottom
@@ -76,30 +81,31 @@ $index-breakpoint: 700px
       @media (min-width: 1000px)
         padding-right: 100px
 
-      h2,
-      p
-        padding-bottom: 20px
+    &-headline,
+    &-section
+      padding-bottom: 20px
 
-        &:last-child
-          padding-bottom: 0
+      &:last-child
+        padding-bottom: 0
 
-      h2
-        margin-top: 19px
-        font-size: 36px
+    &-headline
+      margin-top: 19px
+      font-size: 36px
 
-        @media (max-width: 690px)
-          font-size: 28px
+      @media (max-width: 690px)
+        font-size: 28px
 
-      a
-        margin-left: 8px
-        @include link-underline($text)
-        @include link-color($text, $green)
+    &-link
+      display: inline-block
+      margin-left: 10px
+      @include link-underline($text)
+      @include link-color($text, $green)
 
-        &:hover
-          @include link-underline($green)
+      &:hover
+        @include link-underline($green)
 
-        &:first-child
-          margin-left: 0
+      &:first-child
+        margin-left: 0
 
     &-subheader
       position: relative
@@ -134,9 +140,6 @@ $index-breakpoint: 700px
 // home projects
 // ----------------------------------------------------------------------------
 
-$text-width: 50%
-$image-width: 45%
-$gutter-width: 100 - $text-width - $image-width
 $breakpoint: 720px
 
 .project
@@ -152,46 +155,14 @@ $breakpoint: 720px
   @media (max-width: $index-breakpoint)
     height: auto
 
-  &-image,
-  &-text
+  &-text,
+  &-image
     float: left
     width: 50%
     height: 100%
 
     @media (max-width: $index-breakpoint)
       width: 100%
-
-  &-image
-    float: right
-    position: relative
-    overflow: hidden
-    min-height: 300px
-    padding: 50px 0
-
-    @media (max-width: $breakpoint)
-      min-height: 0
-
-    img
-      display: block
-      position: relative
-      margin: 0 auto;
-      max-width: 90%
-      max-height: 90%
-      height: auto
-
-      @media (min-width: $index-breakpoint)
-        margin: 0
-        top: 50%
-        left: 50%
-        @include transform(translate(-50%, -50%))
-
-    &--full-bleed
-      padding: 0
-      background-size: cover
-      background-position: center center
-
-      @media (max-width: $index-breakpoint)
-        min-height: 60vh
 
   &-text
     float: left
@@ -237,3 +208,35 @@ $breakpoint: 720px
       &:hover
         .project-text-more-arrow
           @include transform(translateX(4px))
+
+  &-image
+    float: right
+    position: relative
+    overflow: hidden
+    min-height: 300px
+    padding: 50px 0
+
+    @media (max-width: $breakpoint)
+      min-height: 0
+
+    img
+      display: block
+      position: relative
+      margin: 0 auto;
+      max-width: 90%
+      max-height: 90%
+      height: auto
+
+      @media (min-width: $index-breakpoint)
+        margin: 0
+        top: 50%
+        left: 50%
+        @include transform(translate(-50%, -50%))
+
+    &--full-bleed
+      padding: 0
+      background-size: cover
+      background-position: center center
+
+      @media (max-width: $index-breakpoint)
+        min-height: 60vh

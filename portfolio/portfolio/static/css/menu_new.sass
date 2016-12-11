@@ -1,19 +1,31 @@
 .project-nav
-  @include content-sizing
+  padding-top: 40px
   padding-bottom: 30px
   font-size: 20px
 
-  &-left
+  &-content
+    max-width: 800px
+    padding-right: 6vw
+    padding-left: 6vw
+    @include center
+
+  &-left,
+  &-right
     float: left
+    width: 50%
+
+  &-left
+    text-align: left
 
   &-right
-    float: right
+    text-align: right
 
   &-title
     text-decoration: none
     @include link-color($text, $text)
 
   &-link
+    display: inline-block
     margin-left: 10px
 
     &:not(.active)
