@@ -1535,6 +1535,26 @@ nav::after {
   @media (max-width: 1370px) {
     .project.smart-mirror {
       height: 54vw; } }
+  @media (max-width: 700px) {
+    .project.smart-mirror {
+      height: auto; }
+      .project.smart-mirror .project-image {
+        background: rgba(0, 0, 0, 0.1); } }
+  @media (max-width: 600px) {
+    .project.smart-mirror .project-image {
+      min-height: 50vh; } }
+  @media (max-width: 550px) {
+    .project.smart-mirror .project-image {
+      min-height: 45vh; } }
+  @media (max-width: 500px) {
+    .project.smart-mirror .project-image {
+      min-height: 40vh; } }
+  @media (max-width: 410px) {
+    .project.smart-mirror .project-image {
+      min-height: 36vh; } }
+  @media (max-width: 350px) {
+    .project.smart-mirror .project-image {
+      min-height: 30vh; } }
 
 .page-recordings .title {
   margin-bottom: 20px; }

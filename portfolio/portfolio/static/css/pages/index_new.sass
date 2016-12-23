@@ -72,7 +72,7 @@ $index-breakpoint: 700px
           margin-top: 25px
           width: 200px
           height: 200px
-          
+
         @media (max-width: $index-breakpoint)
           margin-top: 20px
           width: 45%
@@ -277,3 +277,25 @@ $breakpoint: 720px
     // more important than having all of the home projects be the same height
     @media (max-width: 1370px)
       height: 54vw
+
+    @media (max-width: $index-breakpoint)
+      height: auto
+
+      .project-image
+        background: rgba(#000, 0.1)
+
+    .project-image
+      @media (max-width: 600px)
+        min-height: 50vh
+
+      @media (max-width: 550px)
+        min-height: 45vh
+
+      @media (max-width: 500px)
+        min-height: 40vh
+
+      @media (max-width: 410px)
+        min-height: 36vh
+
+      @media (max-width: 350px)
+        min-height: 30vh
