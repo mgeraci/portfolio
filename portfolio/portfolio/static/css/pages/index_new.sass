@@ -242,15 +242,21 @@ $breakpoint: 720px
         min-height: 60vh
 
   // special styling for the smart mirror image
-  &.smart-mirror img
-    position: absolute
-    top: auto
-    right: auto
-    left: 6%
-    bottom: 0
-    @include transform(translate(0, 0))
-    max-width: 120%
+  &.smart-mirror
+    img
+      position: absolute
+      top: auto
+      right: auto
+      left: 6%
+      bottom: 0
+      @include transform(translate(0, 0))
+      max-width: 120%
 
-    @media (min-width: 1600px)
-      max-width: 150%
-      left: 18%
+      @media (min-width: 1600px)
+        max-width: 150%
+        left: 18%
+
+    // highly uncouth, but the benefit of having the whole mirror on screen is
+    // more important than having all of the home projects be the same height
+    @media (max-width: 1370px)
+      height: 54vw

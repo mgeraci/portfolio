@@ -1517,6 +1517,9 @@ nav::after {
       .project.smart-mirror img {
         max-width: 150%;
         left: 18%; } }
+  @media (max-width: 1370px) {
+    .project.smart-mirror {
+      height: 54vw; } }
 
 .page-recordings .title {
   margin-bottom: 20px; }
