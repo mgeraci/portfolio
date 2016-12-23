@@ -1501,6 +1501,22 @@ nav::after {
       @media (max-width: 700px) {
         .project-image--full-bleed {
           min-height: 60vh; } }
+  .project.smart-mirror img {
+    position: absolute;
+    top: auto;
+    right: auto;
+    left: 6%;
+    bottom: 0;
+    -webkit-transform: translate(0, 0);
+    -moz-transform: translate(0, 0);
+    -ms-transform: translate(0, 0);
+    -o-transform: translate(0, 0);
+    transform: translate(0, 0);
+    max-width: 120%; }
+    @media (min-width: 1600px) {
+      .project.smart-mirror img {
+        max-width: 150%;
+        left: 18%; } }
 
 .page-recordings .title {
   margin-bottom: 20px; }

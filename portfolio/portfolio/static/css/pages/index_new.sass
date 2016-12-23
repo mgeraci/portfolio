@@ -240,3 +240,17 @@ $breakpoint: 720px
 
       @media (max-width: $index-breakpoint)
         min-height: 60vh
+
+  // special styling for the smart mirror image
+  &.smart-mirror img
+    position: absolute
+    top: auto
+    right: auto
+    left: 6%
+    bottom: 0
+    @include transform(translate(0, 0))
+    max-width: 120%
+
+    @media (min-width: 1600px)
+      max-width: 150%
+      left: 18%
