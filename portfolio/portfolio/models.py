@@ -11,7 +11,6 @@ class HomeProject(models.Model):
     light_text = models.BooleanField(default=False)
     image = models.FileField(upload_to='projects', blank=True, null=True)
     image_max_width = models.PositiveSmallIntegerField(blank=True, null=True)
-    image_full_bleed = models.BooleanField(default=False)
     order = models.PositiveSmallIntegerField()
 
     class Meta:
