@@ -26,7 +26,7 @@
 
   &-link
     display: inline-block
-    margin-left: 10px
+    margin-left: 20px
 
     &:not(.active)
       @include link-color($text, $index-highlight)
@@ -38,4 +38,4 @@
     &.active
       cursor: default
       text-decoration: none
-      @include link-color($text, $text)
+      color: $index-highlight

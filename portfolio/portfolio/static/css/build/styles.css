@@ -625,7 +625,7 @@ nav::after {
       color: #444; }
   .project-nav-link {
     display: inline-block;
-    margin-left: 10px; }
+    margin-left: 20px; }
     .project-nav-link:not(.active) {
       text-decoration: none;
       background-repeat: repeat-x;
@@ -654,21 +654,8 @@ nav::after {
         background-image: linear-gradient(to bottom, transparent 50%, rgba(118, 162, 49, 0.6) 50%); }
     .project-nav-link.active {
       cursor: default;
-      text-decoration: none; }
-      .project-nav-link.active,
-      .project-nav-link.active h2,
-      .project-nav-link.active h3 {
-        -webkit-transition: color 50ms linear, background-image 50ms linear;
-        -moz-transition: color 50ms linear, background-image 50ms linear;
-        transition: color 50ms linear, background-image 50ms linear; }
-      .project-nav-link.active, .project-nav-link.active:visited {
-        color: #444; }
-      .no-touchevents .project-nav-link.active:hover,
-      .no-touchevents .project-nav-link.active:hover h2,
-      .no-touchevents .project-nav-link.active:hover h3, .no-touchevents .project-nav-link.active:active,
-      .no-touchevents .project-nav-link.active:active h2,
-      .no-touchevents .project-nav-link.active:active h3 {
-        color: #444; }
+      text-decoration: none;
+      color: #76a231; }
 
 .nav-mobile {
   display: none; }

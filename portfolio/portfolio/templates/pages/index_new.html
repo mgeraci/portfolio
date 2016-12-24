@@ -6,7 +6,7 @@
 
 {% block content %}
 
-<div class="index-top">
+<div id="about" class="index-top">
 	<div class="index-top-text">
 		<h2 class="index-top-headline">
 			I’m Michael P. Geraci.
@@ -44,9 +44,11 @@
 	</div>
 </div>
 
-{% for project in home_projects %}
-	{% include "pages/index/project.html" %}
-{% endfor %}
+<div id="work">
+	{% for project in home_projects %}
+		{% include "pages/index/project.html" %}
+	{% endfor %}
+</div>
 
 <span class="index-bottom-copyright">
 	Copyright © Michael P. Geraci, 2006-{{ year }}

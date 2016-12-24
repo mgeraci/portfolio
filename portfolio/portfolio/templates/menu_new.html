@@ -9,7 +9,12 @@
 
 	<div class="project-nav-right">
 		<div class="project-nav-content">
-			<a class="project-nav-link active" href="/?projects=1">
+			<a
+				 class="project-nav-link {% if request.path == "/" %}active{% endif %}"
+				 href="/?projects=1#about">
+				About
+			</a>
+				<a class="project-nav-link" href="/?projects=1#work">
 				Work
 			</a>
 			<a class="project-nav-link" href="mailto:me@mgeraci.com">
