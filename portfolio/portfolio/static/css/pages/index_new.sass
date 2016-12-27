@@ -21,6 +21,9 @@ $index-breakpoint: 700px
 
   // TODO un-nest after removing old index page
   .index-top
+    position: relative
+    z-index: 2
+    background: #fff
     @include clearfix
     @include content-sizing
     padding-bottom: 80px
@@ -145,157 +148,27 @@ $index-breakpoint: 700px
       @media (max-width: $index-breakpoint)
         margin-top: 40px
 
-  .index-bottom-copyright
-    @include content-sizing
-    display: block
-    font-size: 15px
-    margin-top: 40px
+
+  padding-bottom: 1200px
+
+  // TODO unnest after removing old index
+  .index-bottom
+    position: fixed
+    z-index: 1
+    top: 0
+    left: 0
     width: 100%
-    text-align: center
-
-
-// home projects
-// ----------------------------------------------------------------------------
-
-$breakpoint: 720px
-
-.project
-  @include clearfix
-  position: relative
-  overflow: hidden
-  width: 100%
-  height: 80vh
-
-  @media (max-width: 1500px)
-    height: 75vh
-
-  @media (max-width: $index-breakpoint)
-    height: auto
-
-  &-text,
-  &-image
-    float: left
-    width: 50%
     height: 100%
 
-    @media (max-width: $index-breakpoint)
-      width: 100%
-
-  &-text
-    float: left
-    position: relative
-    display: block
-
-    $light-color: rgba(#fff, 0.9)
-
-    &--light
-      color: $light-color
-
-      .project-text-title
-        color: #fff
-
-      .project-text-more
-        @include link-color($light-color, $light-color)
-
-    &-content
-      position: relative
-      width: 100%
-      max-width: 800px
-      padding: 6vw
-
-      @media (min-width: $index-breakpoint)
-        top: 50%
-        left: 50%
-        @include transform(translate(-50%, -50%))
-
-    &-title
-      display: block
-      width: 100%
-      text-align: left
-
-    &-more
-      display: inline-block
-      margin-top: 20px
-      @include link-color($text, $text)
-
-      &-arrow
-        display: inline-block
-        @include transition(transform 200ms ease)
-
-      &:hover
-        .project-text-more-arrow
-          @include transform(translateX(4px))
-
-  &-image
-    float: right
-    position: relative
-    overflow: hidden
-    min-height: 300px
-    padding: 50px 0
-
-    @media (max-width: $breakpoint)
-      min-height: 0
-
-    img
-      display: block
-      position: relative
-      margin: 0 auto;
-      max-width: 90%
-      max-height: 90%
-      height: auto
-
-      @media (min-width: $index-breakpoint)
-        margin: 0
-        top: 50%
-        left: 50%
-        @include transform(translate(-50%, -50%))
-
-    &--full-bleed
-      padding: 0
-      background-size: cover
-      background-position: center center
-
-      @media (max-width: $index-breakpoint)
-        min-height: 60vh
-
-  // special styling for the smart mirror image
-  &.smart-mirror
-    img
+    &-copyright
       position: absolute
-      top: auto
-      right: auto
-      left: 6%
       bottom: 0
-      @include transform(translate(0, 0))
-      max-width: 120%
+      left: 0
+      @include content-sizing
+      display: block
+      font-size: 15px
+      margin-top: 40px
+      width: 100%
+      text-align: center
 
-      @media (min-width: 1600px)
-        max-width: 150%
-        left: 18%
-
-    // highly uncouth, but the benefit of having the whole mirror on screen is
-    // more important than having all of the home projects be the same height
-    @media (max-width: 1370px)
-      height: 54vw
-
-    @media (max-width: $index-breakpoint)
-      height: auto
-
-      .project-image
-        background: rgba(#000, 0.1)
-
-    .project-image
-      @media (max-width: 600px)
-        min-height: 50vh
-
-      @media (max-width: 550px)
-        min-height: 45vh
-
-      @media (max-width: 500px)
-        min-height: 40vh
-
-      @media (max-width: 410px)
-        min-height: 36vh
-
-      @media (max-width: 350px)
-        min-height: 30vh
+@import "./index_project.sass"
