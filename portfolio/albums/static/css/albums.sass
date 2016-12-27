@@ -6,6 +6,10 @@
   +stack
   width: 100%
 
+.page-album-lists
+  &-link
+    @include link($text, $cream)
+
 $albums-breakpoint: 700px
 
 .page-album-list
@@ -230,3 +234,6 @@ $albums-breakpoint: 700px
     margin:
       bottom: 50px
     text-align: center
+
+    a
+      @include link($text, $cream)

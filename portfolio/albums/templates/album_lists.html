@@ -1,8 +1,8 @@
 {% extends 'base.html' %}
 
-{% block title %}
-	Making Lists of Music
-{% endblock %}
+{% block title %}Making Lists of Music{% endblock %}
+{% block description %}Lists of Michael P. Geraci's favorite music.{% endblock %}
+{% block bodyclass %}album-lists{% endblock %}
 
 {% block content %}
 	<h2>All Lists:</h2>
@@ -10,7 +10,7 @@
 		{% for list in lists %}
 			{% if not list.hidden %}
 				<li>
-					<a href="{% url 'album_list_url' list.slug %}">
+					<a class="page-album-lists-link" href="{% url 'album_list_url' list.slug %}">
 						{{ list.name }}
 					</a>
 				</li>
