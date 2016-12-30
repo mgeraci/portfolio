@@ -169,8 +169,11 @@ $albums-breakpoint: 700px
     &-description
       @include type(18px, 28px)
 
+      a
+        @include link($text, $cream)
+
     &-links
-      font-size: 15px
+      font-size: 16px
 
       // `a` for specificity
       a.page-album-list-item-links-link

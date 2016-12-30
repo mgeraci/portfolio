@@ -2122,8 +2122,34 @@ nav::after {
   .page-album-list-item-description {
     font-size: 18px;
     line-height: 28px; }
+    .page-album-list-item-description a,
+    .page-album-list-item-description a h2,
+    .page-album-list-item-description a h3 {
+      -webkit-transition: color 50ms linear, background-image 50ms linear;
+      -moz-transition: color 50ms linear, background-image 50ms linear;
+      transition: color 50ms linear, background-image 50ms linear; }
+    .page-album-list-item-description a, .page-album-list-item-description a:visited {
+      color: #444;
+      text-decoration: none;
+      background-repeat: repeat-x;
+      background-size: 2px 2px;
+      background-position: 0 85%;
+      background-image: linear-gradient(to bottom, transparent 50%, rgba(68, 68, 68, 0.6) 50%); }
+    .no-touchevents .page-album-list-item-description a:hover, .no-touchevents .page-album-list-item-description a:active {
+      text-decoration: none;
+      background-repeat: repeat-x;
+      background-size: 2px 2px;
+      background-position: 0 85%;
+      background-image: linear-gradient(to bottom, transparent 50%, rgba(243, 244, 211, 0.6) 50%); }
+    .no-touchevents .page-album-list-item-description a:hover,
+    .no-touchevents .page-album-list-item-description a:hover h2,
+    .no-touchevents .page-album-list-item-description a:hover h3, .no-touchevents .page-album-list-item-description a:active,
+    .no-touchevents .page-album-list-item-description a:active h2,
+    .no-touchevents .page-album-list-item-description a:active h3 {
+      color: #f3f4d3;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.15); }
   .page-album-list-item-links {
-    font-size: 15px; }
+    font-size: 16px; }
     .page-album-list-item-links a.page-album-list-item-links-link {
       display: inline-block;
       margin-left: 10px; }
