@@ -22,14 +22,14 @@ def index(request):
 
     recent_items = [
         {
+            'text': ['My favorite albums of 2016'],
+            'image': '{}albums-2016.jpg'.format(recent_image_root),
+            'href': 'http://michaelgeraci.com/albums/2016',
+        },
+        {
             'text': ['New steel drum performance:', 'Despers - Different Me'],
             'image': '{}despers-2016.jpg'.format(recent_image_root),
             'href': 'https://www.youtube.com/watch?v=kxqzHEAiwHY',
-        },
-        {
-            'text': ['My favorite albums of 2015'],
-            'image': '{}albums-2015.jpg'.format(recent_image_root),
-            'href': 'http://michaelgeraci.com/albums/2015',
         },
         {
             'text': ['New project:', 'Smart mirror display'],
@@ -50,7 +50,7 @@ def index(request):
 
     context = {
         'recent_items': recent_items,
-        'recent_date': '9.10.16',
+        'recent_date': '1.1.17',
         'home_projects': home_projects,
         'show_home_projects': show_home_projects,
     }
