@@ -6,8 +6,24 @@
 
 {% block content %}
 
-<h1>
+<h1 class="page-project-title">
 	{{ project.title }}
 </h1>
+
+<div
+	class="page-project-hero"
+	data-lazy-image="{{ MEDIA_URL }}{{ project.image }}"
+  data-lazy-alt="The hero image for {{ project.title }}"
+></div>
+
+{% for p in project.long_description %}
+	<p class="page-project-paragraph">
+		{{ p|safe }}
+	</p>
+{% endfor %}
+
+<span class="page-project-footer">
+	Thanks for reading.
+</span>
 
 {% endblock %}

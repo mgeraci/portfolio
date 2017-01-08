@@ -62,8 +62,12 @@ def project(request, slug):
     home_projects = HomeProject.objects.all()
     project = get_object_or_404(HomeProject, slug=slug)
 
+    # split the long description into a list of paragraphs
+    project.long_description = project.long_description.split("\r\n\r")
+
     context = {
         'project': project,
+        'show_home_projects': True,
     }
 
     return render(request, 'pages/project.html', context)

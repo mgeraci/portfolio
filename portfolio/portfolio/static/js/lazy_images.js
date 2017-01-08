@@ -4,7 +4,7 @@ import $ from "jquery";
 import throttle from "./vendor/throttle";
 
 const LazyImages = {
-	buffer: 200,
+	buffer: 350,
 
 	search() {
 		// load images onscreen at init

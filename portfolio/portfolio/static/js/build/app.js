@@ -10885,7 +10885,7 @@
 	/* global window, document, Image */
 
 	var LazyImages = {
-		buffer: 200,
+		buffer: 350,
 
 		search: function search() {
 			// load images onscreen at init

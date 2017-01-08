@@ -645,17 +645,17 @@ nav::after {
       .no-touchevents .project-nav-link:not(.active):hover h3, .no-touchevents .project-nav-link:not(.active):active,
       .no-touchevents .project-nav-link:not(.active):active h2,
       .no-touchevents .project-nav-link:not(.active):active h3 {
-        color: #76a231; }
+        color: #3260c7; }
       .project-nav-link:not(.active):hover {
         text-decoration: none;
         background-repeat: repeat-x;
         background-size: 2px 2px;
         background-position: 0 85%;
-        background-image: linear-gradient(to bottom, transparent 50%, rgba(118, 162, 49, 0.6) 50%); }
+        background-image: linear-gradient(to bottom, transparent 50%, rgba(50, 96, 199, 0.6) 50%); }
     .project-nav-link.active {
       cursor: default;
       text-decoration: none;
-      color: #76a231; }
+      color: #3260c7; }
 
 .nav-mobile {
   display: none; }
@@ -1327,13 +1327,13 @@ nav::after {
       .no-touchevents .page-index-new .index-top-link:hover h3, .no-touchevents .page-index-new .index-top-link:active,
       .no-touchevents .page-index-new .index-top-link:active h2,
       .no-touchevents .page-index-new .index-top-link:active h3 {
-        color: #76a231; }
+        color: #3260c7; }
       .page-index-new .index-top-link:hover {
         text-decoration: none;
         background-repeat: repeat-x;
         background-size: 2px 2px;
         background-position: 0 85%;
-        background-image: linear-gradient(to bottom, transparent 50%, rgba(118, 162, 49, 0.6) 50%); }
+        background-image: linear-gradient(to bottom, transparent 50%, rgba(50, 96, 199, 0.6) 50%); }
       .page-index-new .index-top-link:first-child {
         margin-left: 0; }
     .page-index-new .index-top-subheader {
@@ -1542,6 +1542,38 @@ nav::after {
   @media (max-width: 350px) {
     .project.smart-mirror .project-image {
       min-height: 30vh; } }
+
+.page-project {
+  background: #fff;
+  text-align: center; }
+  .page-project-title {
+    display: block;
+    width: 100%;
+    margin: 30px 0 60px;
+    text-align: center;
+    font-size: 28px;
+    line-height: 36px;
+    font-weight: bold; }
+  .page-project-hero {
+    margin-bottom: 50px; }
+    .page-project-hero,
+    .page-project-hero img {
+      width: 100%; }
+  .page-project-paragraph {
+    display: inline-block;
+    width: 100%;
+    max-width: 620px;
+    margin-top: 20px;
+    text-align: left;
+    font-size: 18px;
+    line-height: 29px; }
+  .page-project-footer {
+    display: block;
+    width: 100%;
+    margin-top: 80px;
+    text-align: center;
+    font-size: 15px;
+    font-style: oblique; }
 
 .page-recordings .title {
   margin-bottom: 20px; }
