@@ -1567,6 +1567,29 @@ nav::after {
     text-align: left;
     font-size: 18px;
     line-height: 29px; }
+  .page-project-media {
+    position: relative;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    -o-transform: translateX(-50%);
+    transform: translateX(-50%);
+    display: block;
+    width: 100%;
+    margin-top: 30px;
+    margin-bottom: 40px; }
+    .page-project-media-content {
+      width: 100%;
+      min-height: 350px;
+      background: rgba(0, 0, 0, 0.03); }
+    .page-project-media-caption {
+      display: block;
+      width: 100%;
+      margin-top: 5px;
+      text-align: left;
+      font-size: 14px;
+      color: #5e6573; }
   .page-project-footer {
     display: block;
     width: 100%;

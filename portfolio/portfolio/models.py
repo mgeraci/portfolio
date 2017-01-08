@@ -21,6 +21,16 @@ class HomeProject(models.Model):
         return self.title
 
 
+class HomeProjectMedia(models.Model):
+    project = models.ForeignKey(HomeProject)
+    caption = models.CharField(max_length=200, blank=True)
+    media = models.FileField(upload_to='projects', blank=True, null=True)
+    position = models.PositiveSmallIntegerField(blank=True)
+
+    def __unicode__(self):
+        return u'{} - {}'.format(self.project.title, self.caption)
+
+
 class Composition(models.Model):
     title = models.CharField(max_length=200)
     year = models.PositiveSmallIntegerField()

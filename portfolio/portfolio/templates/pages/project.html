@@ -16,10 +16,14 @@
   data-lazy-alt="The hero image for {{ project.title }}"
 ></div>
 
-{% for p in project.long_description %}
-	<p class="page-project-paragraph">
-		{{ p|safe }}
-	</p>
+{% for p in project.content %}
+	{% if p.is_media %}
+		{% include "pages/project/media.html" with media=p %}
+	{% else %}
+		<p class="page-project-paragraph">
+			{{ p|safe }}
+		</p>
+	{% endif %}
 {% endfor %}
 
 <span class="page-project-footer">

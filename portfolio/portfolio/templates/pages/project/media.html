@@ -1,0 +1,12 @@
+<div
+	class="page-project-media"
+	{% if media.max_width %}style="max-width: {{ media.max_width }}px;"{% endif %}
+>
+	<div class="page-project-media-content">
+	</div>
+	{% if media.caption %}
+		<span class="page-project-media-caption">
+			{{ media.caption }}
+		</span>
+	{% endif %}
+</div>

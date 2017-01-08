@@ -1,6 +1,7 @@
 from django.contrib import admin
 from portfolio.models import (
     HomeProject,
+    HomeProjectMedia,
     Composition,
     Web,
     WebImage,
@@ -14,6 +15,9 @@ from portfolio.models import (
 
 
 class HomeProjectAdmin(admin.ModelAdmin):
+    pass
+
+class HomeProjectMediaAdmin(admin.ModelAdmin):
     pass
 
 class CompositionAdmin(admin.ModelAdmin):
@@ -47,6 +51,7 @@ class PhotoblogTagAdmin(admin.ModelAdmin):
 
 
 admin.site.register(HomeProject, HomeProjectAdmin)
+admin.site.register(HomeProjectMedia, HomeProjectMediaAdmin)
 admin.site.register(Composition, CompositionAdmin)
 admin.site.register(Web, WebAdmin)
 admin.site.register(WebImage, WebImageAdmin)

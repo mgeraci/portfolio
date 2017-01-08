@@ -4,6 +4,7 @@ import json
 from django.shortcuts import render, get_object_or_404
 from michael_dot_com.localsettings import STATIC_URL
 from portfolio.models import HomeProject
+from portfolio.models import HomeProjectMedia
 from portfolio.models import Composition
 from portfolio.models import Web
 from portfolio.models import WebImage
@@ -61,12 +62,32 @@ def index(request):
 def project(request, slug):
     home_projects = HomeProject.objects.all()
     project = get_object_or_404(HomeProject, slug=slug)
+    project_media = HomeProjectMedia.objects.filter(project=project)
+    project_media_map = {}
+
+    for media in project_media:
+        media.is_media = True
+        project_media_map[media.position] = media
 
     # split the long description into a list of paragraphs
     project.long_description = project.long_description.split("\r\n\r")
 
+    content = []
+
+    for i, p in enumerate(project.long_description):
+        content.append(p)
+
+        try:
+            content.append(project_media_map[i])
+
+        except:
+            pass
+
+    project.content = content
+
     context = {
         'project': project,
+        'project_media_map': project_media_map,
         'show_home_projects': True,
     }
 
