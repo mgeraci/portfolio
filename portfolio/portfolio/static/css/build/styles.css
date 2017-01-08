@@ -1583,6 +1583,9 @@ nav::after {
       width: 100%;
       min-height: 350px;
       background: rgba(0, 0, 0, 0.03); }
+      .page-project-media-content img {
+        width: 100%;
+        height: auto; }
     .page-project-media-caption {
       display: block;
       width: 100%;
