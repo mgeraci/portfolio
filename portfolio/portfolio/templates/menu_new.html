@@ -1,4 +1,7 @@
-<nav class="project-nav">
+<nav
+	class="project-nav {% if light_text %}project-nav--light-text{% endif %}"
+	{% if background %}style="background: #{{ background }}"{% endif %}
+>
 	<div class="project-nav-left">
 		<div class="project-nav-content">
 			<a class="project-nav-title" href="/?projects=1">

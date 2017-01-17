@@ -6,28 +6,35 @@
 
 {% block content %}
 
-<h1 class="page-project-title">
-	{{ project.title }}
-</h1>
-
 <div
-	class="page-project-hero"
-	data-lazy-image="{{ MEDIA_URL }}{{ project.image }}"
-  data-lazy-alt="The hero image for {{ project.title }}"
-></div>
+	class="page-project-top {% if project.light_text %}page-project-top--light-text{% endif %}"
+	{% if project.background %}style="background: #{{ project.background }}"{% endif %}
+>
+	<h1 class="page-project-title">
+		{{ project.title }}
+	</h1>
 
-{% for p in project.content %}
-	{% if p.is_media %}
-		{% include "pages/project/media.html" with media=p %}
-	{% else %}
-		<p class="page-project-paragraph">
-			{{ p|safe }}
-		</p>
-	{% endif %}
-{% endfor %}
+	<div
+		class="page-project-hero"
+		data-lazy-image="{{ MEDIA_URL }}{{ project.image }}"
+		data-lazy-alt="The hero image for {{ project.title }}"
+	></div>
+</div>
 
-<span class="page-project-footer">
-	Thanks for reading.
-</span>
+<div class="content-inner">
+	{% for p in project.content %}
+		{% if p.is_media %}
+			{% include "pages/project/media.html" with media=p %}
+		{% else %}
+			<p class="page-project-paragraph">
+				{{ p|safe }}
+			</p>
+		{% endif %}
+	{% endfor %}
+
+	<span class="page-project-footer">
+		Thanks for reading.
+	</span>
+</div>
 
 {% endblock %}

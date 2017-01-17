@@ -3,6 +3,19 @@
   padding-bottom: 30px
   font-size: 20px
 
+  &--light-text
+    color: #fff
+
+    .project-nav-link:not(.active),
+      @include link-color(#fff, #e4edfd)
+      @include link-underline(#fff)
+
+      &:hover
+        @include link-underline(#e4edfd)
+
+    .project-nav-title
+      @include link-color(#fff, #e4edfd)
+
   &-content
     max-width: 800px
     padding-right: 6vw

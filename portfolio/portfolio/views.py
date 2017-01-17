@@ -74,6 +74,7 @@ def project(request, slug):
 
     content = []
 
+    # mix the media into the paragraphs
     for i, p in enumerate(project.long_description):
         content.append(p)
 

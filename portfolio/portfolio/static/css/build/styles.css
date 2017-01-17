@@ -589,6 +589,48 @@ nav::after {
   padding-top: 40px;
   padding-bottom: 30px;
   font-size: 20px; }
+  .project-nav--light-text {
+    color: #fff; }
+    .project-nav--light-text .project-nav-link:not(.active) {
+      text-decoration: none;
+      background-repeat: repeat-x;
+      background-size: 2px 2px;
+      background-position: 0 85%;
+      background-image: linear-gradient(to bottom, transparent 50%, rgba(255, 255, 255, 0.6) 50%); }
+      .project-nav--light-text .project-nav-link:not(.active),
+      .project-nav--light-text .project-nav-link:not(.active) h2,
+      .project-nav--light-text .project-nav-link:not(.active) h3 {
+        -webkit-transition: color 50ms linear, background-image 50ms linear;
+        -moz-transition: color 50ms linear, background-image 50ms linear;
+        transition: color 50ms linear, background-image 50ms linear; }
+      .project-nav--light-text .project-nav-link:not(.active), .project-nav--light-text .project-nav-link:not(.active):visited {
+        color: #fff; }
+      .no-touchevents .project-nav--light-text .project-nav-link:not(.active):hover,
+      .no-touchevents .project-nav--light-text .project-nav-link:not(.active):hover h2,
+      .no-touchevents .project-nav--light-text .project-nav-link:not(.active):hover h3, .no-touchevents .project-nav--light-text .project-nav-link:not(.active):active,
+      .no-touchevents .project-nav--light-text .project-nav-link:not(.active):active h2,
+      .no-touchevents .project-nav--light-text .project-nav-link:not(.active):active h3 {
+        color: #e4edfd; }
+      .project-nav--light-text .project-nav-link:not(.active):hover {
+        text-decoration: none;
+        background-repeat: repeat-x;
+        background-size: 2px 2px;
+        background-position: 0 85%;
+        background-image: linear-gradient(to bottom, transparent 50%, rgba(228, 237, 253, 0.6) 50%); }
+    .project-nav--light-text .project-nav-title,
+    .project-nav--light-text .project-nav-title h2,
+    .project-nav--light-text .project-nav-title h3 {
+      -webkit-transition: color 50ms linear, background-image 50ms linear;
+      -moz-transition: color 50ms linear, background-image 50ms linear;
+      transition: color 50ms linear, background-image 50ms linear; }
+    .project-nav--light-text .project-nav-title, .project-nav--light-text .project-nav-title:visited {
+      color: #fff; }
+    .no-touchevents .project-nav--light-text .project-nav-title:hover,
+    .no-touchevents .project-nav--light-text .project-nav-title:hover h2,
+    .no-touchevents .project-nav--light-text .project-nav-title:hover h3, .no-touchevents .project-nav--light-text .project-nav-title:active,
+    .no-touchevents .project-nav--light-text .project-nav-title:active h2,
+    .no-touchevents .project-nav--light-text .project-nav-title:active h3 {
+      color: #e4edfd; }
   .project-nav-content {
     max-width: 800px;
     padding-right: 6vw;
@@ -1546,16 +1588,32 @@ nav::after {
 .page-project {
   background: #fff;
   text-align: center; }
+  .page-project .content {
+    padding-top: 0;
+    width: 100%;
+    max-width: 100%; }
+    .page-project .content-inner {
+      max-width: 1000px;
+      margin: 0 auto; }
+  .page-project-top {
+    width: 100%;
+    padding: 30px 0 20px;
+    margin-bottom: 30px; }
+    .page-project-top--light-text {
+      color: #fff; }
+    .page-project-top img {
+      max-width: 1000px; }
   .page-project-title {
     display: block;
     width: 100%;
-    margin: 30px 0 60px;
+    margin-bottom: 60px;
     text-align: center;
     font-size: 28px;
     line-height: 36px;
     font-weight: bold; }
   .page-project-hero {
-    margin-bottom: 50px; }
+    margin-bottom: 50px;
+    min-height: 45vh; }
     .page-project-hero,
     .page-project-hero img {
       width: 100%; }

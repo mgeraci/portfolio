@@ -2,16 +2,38 @@
   background: #fff
   text-align: center
 
+  // undo default content centering
+  .content
+    padding-top: 0
+    width: 100%
+    max-width: 100%
+
+    &-inner
+      max-width: 1000px
+      margin: 0 auto
+
+  &-top
+    width: 100%
+    padding: 30px 0 20px
+    margin-bottom: 30px
+
+    &--light-text
+      color: #fff
+
+    img
+      max-width: 1000px
+
   &-title
     display: block
     width: 100%
-    margin: 30px 0 60px
+    margin-bottom: 60px
     text-align: center
     @include type(28px, 36px)
     font-weight: bold
 
   &-hero
     margin-bottom: 50px
+    min-height: 45vh
 
     &,
     img
