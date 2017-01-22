@@ -25,7 +25,8 @@ class HomeProjectMedia(models.Model):
     project = models.ForeignKey(HomeProject)
     caption = models.CharField(max_length=200, blank=True)
     image = models.FileField(upload_to='projects', blank=True, null=True)
-    video = models.FileField(upload_to='projects', blank=True, null=True)
+    video_mp4 = models.FileField(upload_to='projects', blank=True, null=True)
+    video_webm = models.FileField(upload_to='projects', blank=True, null=True)
     position = models.PositiveSmallIntegerField(blank=True)
 
     def __unicode__(self):
