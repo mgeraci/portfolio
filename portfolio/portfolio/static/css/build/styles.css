@@ -1591,7 +1591,8 @@ nav::after {
   .page-project .content {
     padding-top: 0;
     width: 100%;
-    max-width: 100%; }
+    max-width: 100%;
+    margin-left: 0 !important; }
     .page-project .content-inner {
       max-width: 1000px;
       margin: 0 auto; }
@@ -1644,6 +1645,9 @@ nav::after {
       .page-project-media-content img {
         width: 100%;
         height: auto; }
+    .page-project-media-video {
+      width: 100%;
+      height: auto; }
     .page-project-media-caption {
       display: block;
       width: 100%;
@@ -1651,6 +1655,9 @@ nav::after {
       text-align: left;
       font-size: 14px;
       color: #5e6573; }
+      @media (max-width: 1040px) {
+        .page-project-media-caption {
+          padding-left: 2%; } }
   .page-project-footer {
     display: block;
     width: 100%;
