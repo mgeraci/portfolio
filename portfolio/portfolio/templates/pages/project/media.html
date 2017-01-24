@@ -1,23 +1,26 @@
 <div
-	class="page-project-media {% if media.image and media.video_mp4 and media.video_webm %}hoverVideo{% endif %}"
+	class="page-project-media {% if media.video_mp4 and media.video_webm %}has-video{% endif %}"
 	{% if media.max_width %}style="max-width: {{ media.max_width }}px;"{% endif %}
 >
 	{% if media.video_mp4 and media.video_mp4 %}
-		<video
-			class="page-project-media-video"
-			loop
-		>
-			<source src="{{ MEDIA_URL }}{{ media.video_mp4 }}" type="video/mp4">
-			<source src="{{ MEDIA_URL }}{{ media.video_webm }}" type="video/webm">
-			<p>
-				Your browser doesn't support HTML5 video. Here is a
-				<a href="{{ MEDIA_URL }}{{ media.video_mp4 }}">link to the video</a>
-				instead.
-			</p>
-		</video>
+		<div class="page-project-media-video-wrapper">
+			<video
+				class="page-project-media-video"
+				loop
+			>
+				<source src="{{ MEDIA_URL }}{{ media.video_mp4 }}" type="video/mp4">
+				<source src="{{ MEDIA_URL }}{{ media.video_webm }}" type="video/webm">
+				<p>
+					Your browser doesn't support HTML5 video. Here is a
+					<a href="{{ MEDIA_URL }}{{ media.video_mp4 }}">link to the video</a>
+					instead.
+				</p>
+			</video>
+			<div class="page-project-media-video-icon"></div>
+		</div>
 	{% else %}
 		<div
-			class="page-project-media-content"
+			class="page-project-media-image"
 			{% if media.image %}
 				data-lazy-image="{{ MEDIA_URL }}{{ media.image }}"
 				data-lazy-alt="{{ media.caption }}"

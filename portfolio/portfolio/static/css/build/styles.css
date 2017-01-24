@@ -1638,16 +1638,66 @@ nav::after {
     width: 100%;
     margin-top: 30px;
     margin-bottom: 40px; }
-    .page-project-media-content {
+    .page-project-media-image {
       width: 100%;
       min-height: 350px;
       background: rgba(0, 0, 0, 0.03); }
-      .page-project-media-content img {
+      .page-project-media-image img {
         width: 100%;
         height: auto; }
+    .page-project-media-video-wrapper {
+      position: relative;
+      background: #000; }
+      .page-project-media-video-wrapper::after {
+        clear: both;
+        content: "";
+        display: table; }
     .page-project-media-video {
+      float: left;
       width: 100%;
-      height: auto; }
+      height: auto;
+      opacity: 0.8;
+      -webkit-transition: opacity 100ms ease-in;
+      -moz-transition: opacity 100ms ease-in;
+      transition: opacity 100ms ease-in; }
+      .page-project-media-video:hover {
+        opacity: 1; }
+        .page-project-media-video:hover ~ .page-project-media-video-icon {
+          opacity: 0; }
+    .page-project-media-video-icon {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      -webkit-transform: translate(-50%, -50%);
+      -moz-transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+      -o-transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%);
+      display: block;
+      width: 80px;
+      height: 80px;
+      background: rgba(0, 0, 0, 0.6);
+      border-radius: 50%;
+      opacity: 1;
+      -webkit-transition: opacity 100ms ease-in;
+      -moz-transition: opacity 100ms ease-in;
+      transition: opacity 100ms ease-in; }
+      .page-project-media-video-icon:after {
+        content: " ";
+        display: block;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        -webkit-transform: translate(-40%, -50%);
+        -moz-transform: translate(-40%, -50%);
+        -ms-transform: translate(-40%, -50%);
+        -o-transform: translate(-40%, -50%);
+        transform: translate(-40%, -50%);
+        height: 0;
+        width: 0;
+        border-bottom: 16px solid transparent;
+        border-left: 24px solid #fff;
+        border-top: 16px solid transparent; }
     .page-project-media-caption {
       display: block;
       width: 100%;
