@@ -4,9 +4,8 @@
 >
 	{% if media.video_mp4 and media.video_mp4 %}
 		<video
-			autoplay loop
-			poster="{{ MEDIA_URL }}{{ media.image }}"
 			class="page-project-media-video"
+			loop
 		>
 			<source src="{{ MEDIA_URL }}{{ media.video_mp4 }}" type="video/mp4">
 			<source src="{{ MEDIA_URL }}{{ media.video_webm }}" type="video/webm">

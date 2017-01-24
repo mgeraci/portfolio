@@ -11842,6 +11842,10 @@
 		value: true
 	});
 
+	var _jquery = __webpack_require__(4);
+
+	var _jquery2 = _interopRequireDefault(_jquery);
+
 	var _fitvids = __webpack_require__(10);
 
 	var _fitvids2 = _interopRequireDefault(_fitvids);
@@ -11851,6 +11855,22 @@
 	var Video = {
 		init: function init() {
 			(0, _fitvids2.default)();
+			this.projectVideo();
+		},
+		projectVideo: function projectVideo() {
+			var videos = (0, _jquery2.default)(".page-project-media-video");
+
+			if (!videos.length) {
+				return;
+			}
+
+			videos.on("mouseover", function (e) {
+				var video = (0, _jquery2.default)(e.currentTarget);
+				video.get(0).play();
+			}).on("mouseout", function (e) {
+				var video = (0, _jquery2.default)(e.currentTarget);
+				video.get(0).pause();
+			});
 		}
 	};
 
