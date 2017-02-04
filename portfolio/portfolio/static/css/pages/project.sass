@@ -1,4 +1,3 @@
-$video-transition: opacity 100ms ease-in
 $video-icon-size: 80px
 
 .page-project
@@ -36,8 +35,12 @@ $video-icon-size: 80px
     font-weight: bold
 
   &-hero
-    margin-bottom: 50px
     min-height: 45vh
+    margin-bottom: 50px
+
+    @media (max-width: 700px)
+      min-height: 0
+      margin-bottom: 15px
 
     &,
     img
@@ -50,6 +53,10 @@ $video-icon-size: 80px
     margin-top: 20px
     text-align: left
     @include type(18px, 29px)
+
+    @media (max-width: 700px)
+      padding-right: 5%
+      padding-left: 5%
 
   &-media
     @include center
@@ -73,23 +80,28 @@ $video-icon-size: 80px
     &-video-wrapper
       @include clearfix
       position: relative
-      background: #000
 
     // video element
     &-video
       float: left
       width: 100%
       height: auto
-      opacity: 0.8
-      @include transition($video-transition)
 
-      &:hover
-        opacity: 1
+    // play icon and gray overlay
+    &-video-icon-wrapper
+      position: absolute
+      top: 0
+      left: 0
+      width: 100%
+      height: 100%
+      background: rgba(#000, 0.2)
 
-        & ~ .page-project-media-video-icon
-          opacity: 0
+      opacity: 1
+      @include transition(opacity 100ms ease-in)
 
-    // play icon
+      .is-playing &
+        opacity: 0
+
     &-video-icon
       position: absolute
       top: 50%
@@ -100,8 +112,6 @@ $video-icon-size: 80px
       height: $video-icon-size
       background: rgba(#000, 0.6)
       border-radius: 50%
-      opacity: 1
-      @include transition($video-transition)
 
       &:after
         content: " "

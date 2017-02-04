@@ -1613,8 +1613,12 @@ nav::after {
     line-height: 36px;
     font-weight: bold; }
   .page-project-hero {
-    margin-bottom: 50px;
-    min-height: 45vh; }
+    min-height: 45vh;
+    margin-bottom: 50px; }
+    @media (max-width: 700px) {
+      .page-project-hero {
+        min-height: 0;
+        margin-bottom: 15px; } }
     .page-project-hero,
     .page-project-hero img {
       width: 100%; }
@@ -1626,6 +1630,10 @@ nav::after {
     text-align: left;
     font-size: 18px;
     line-height: 29px; }
+    @media (max-width: 700px) {
+      .page-project-paragraph {
+        padding-right: 5%;
+        padding-left: 5%; } }
   .page-project-media {
     position: relative;
     left: 50%;
@@ -1646,8 +1654,7 @@ nav::after {
         width: 100%;
         height: auto; }
     .page-project-media-video-wrapper {
-      position: relative;
-      background: #000; }
+      position: relative; }
       .page-project-media-video-wrapper::after {
         clear: both;
         content: "";
@@ -1655,15 +1662,20 @@ nav::after {
     .page-project-media-video {
       float: left;
       width: 100%;
-      height: auto;
-      opacity: 0.8;
+      height: auto; }
+    .page-project-media-video-icon-wrapper {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.2);
+      opacity: 1;
       -webkit-transition: opacity 100ms ease-in;
       -moz-transition: opacity 100ms ease-in;
       transition: opacity 100ms ease-in; }
-      .page-project-media-video:hover {
-        opacity: 1; }
-        .page-project-media-video:hover ~ .page-project-media-video-icon {
-          opacity: 0; }
+      .is-playing .page-project-media-video-icon-wrapper {
+        opacity: 0; }
     .page-project-media-video-icon {
       position: absolute;
       top: 50%;
@@ -1677,11 +1689,7 @@ nav::after {
       width: 80px;
       height: 80px;
       background: rgba(0, 0, 0, 0.6);
-      border-radius: 50%;
-      opacity: 1;
-      -webkit-transition: opacity 100ms ease-in;
-      -moz-transition: opacity 100ms ease-in;
-      transition: opacity 100ms ease-in; }
+      border-radius: 50%; }
       .page-project-media-video-icon:after {
         content: " ";
         display: block;

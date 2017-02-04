@@ -11853,23 +11853,59 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	var Video = {
+		projectVideoClasses: ".page-project-media-video",
+		projectVideoButtons: ".page-project-media-video-icon-wrapper",
+		projectPlayingClass: "is-playing",
+
 		init: function init() {
 			(0, _fitvids2.default)();
+
+			this.projectSelectors = this.projectVideoClasses + ", " + this.projectVideoButtons;
 			this.projectVideo();
 		},
 		projectVideo: function projectVideo() {
-			var videos = (0, _jquery2.default)(".page-project-media-video");
-
-			if (!videos.length) {
-				return;
+			if ((0, _jquery2.default)("html").hasClass("touchevents")) {
+				this.videoMobile();
+			} else {
+				this.videoDesktop();
 			}
+		},
+		getVideoEls: function getVideoEls(e) {
+			var wrapper = e.closest(".page-project-media-video-wrapper");
+			var video = wrapper.find("video");
 
-			videos.on("mouseover", function (e) {
-				var video = (0, _jquery2.default)(e.currentTarget);
-				video.get(0).play();
-			}).on("mouseout", function (e) {
-				var video = (0, _jquery2.default)(e.currentTarget);
-				video.get(0).pause();
+			return {
+				wrapper: wrapper,
+				video: video
+			};
+		},
+		videoMobile: function videoMobile() {
+			var _this = this;
+
+			(0, _jquery2.default)("body").on("click tap", this.projectSelectors, function (e) {
+				var els = _this.getVideoEls((0, _jquery2.default)(e.currentTarget));
+				var video = els.video.get(0);
+
+				if (video.paused) {
+					video.play();
+					els.wrapper.addClass(_this.projectPlayingClass);
+				} else {
+					video.pause();
+					els.wrapper.removeClass(_this.projectPlayingClass);
+				}
+			});
+		},
+		videoDesktop: function videoDesktop() {
+			var _this2 = this;
+
+			(0, _jquery2.default)("body").on("mouseover", this.projectSelectors, function (e) {
+				var els = _this2.getVideoEls((0, _jquery2.default)(e.currentTarget));
+				els.video.get(0).play();
+				els.wrapper.addClass(_this2.projectPlayingClass);
+			}).on("mouseout", this.projectSelectors, function (e) {
+				var els = _this2.getVideoEls((0, _jquery2.default)(e.currentTarget));
+				els.video.get(0).pause();
+				els.wrapper.removeClass(_this2.projectPlayingClass);
 			});
 		}
 	};
