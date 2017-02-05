@@ -1,7 +1,12 @@
+$nav-breakpoint: 600px
+
 .project-nav
   padding-top: 40px
   padding-bottom: 30px
   font-size: 20px
+
+  @media (max-width: $nav-breakpoint)
+    padding-top: 20px
 
   &--light-text
     color: #fff
@@ -22,16 +27,24 @@
     padding-left: 6vw
     @include center
 
+  &-left
+    text-align: left
+    font-weight: bold
+
+  &-right
+    text-align: right
+
+    @media (max-width: $nav-breakpoint)
+      margin-top: 10px
+
   &-left,
   &-right
     float: left
     width: 50%
 
-  &-left
-    text-align: left
-
-  &-right
-    text-align: right
+    @media (max-width: $nav-breakpoint)
+      width: 100%;
+      text-align: center
 
   &-title
     text-decoration: none
@@ -40,13 +53,19 @@
   &-link
     display: inline-block
     margin-left: 20px
+    text-decoration: none
+
+    &:first-child
+      margin-left: 0
 
     &:not(.active)
       @include link-color($text, $index-highlight)
-      @include link-underline($text)
 
-      &:hover
-        @include link-underline($index-highlight)
+      .no-touchevents &
+        @include link-underline($text)
+
+        &:hover
+          @include link-underline($index-highlight)
 
     &.active
       cursor: default

@@ -1,7 +1,10 @@
 $video-icon-size: 80px
 
+@import "./project/media"
+
 .page-project
   background: #fff
+  font-family: "Source Serif Pro"
   text-align: center
 
   // undo default content centering
@@ -34,12 +37,17 @@ $video-icon-size: 80px
     @include type(28px, 36px)
     font-weight: bold
 
+    @media (max-width: 700px)
+      @include type(22px, 30px)
+      margin-bottom: 30px
+
   &-hero
     min-height: 45vh
     margin-bottom: 50px
 
     @media (max-width: 700px)
       min-height: 0
+      padding: 0 3%
       margin-bottom: 15px
 
     &,
@@ -57,81 +65,6 @@ $video-icon-size: 80px
     @media (max-width: 700px)
       padding-right: 5%
       padding-left: 5%
-
-  &-media
-    @include center
-    display: block
-    width: 100%
-    margin-top: 30px
-    margin-bottom: 40px
-
-    &.has-video
-
-    // image wrapper
-    &-image
-      width: 100%
-      min-height: 350px
-      background: rgba(#000, 0.03)
-
-      img
-        width: 100%
-        height: auto
-
-    &-video-wrapper
-      @include clearfix
-      position: relative
-
-    // video element
-    &-video
-      float: left
-      width: 100%
-      height: auto
-
-    // play icon and gray overlay
-    &-video-icon-wrapper
-      position: absolute
-      top: 0
-      left: 0
-      width: 100%
-      height: 100%
-      background: rgba(#000, 0.2)
-
-      opacity: 1
-      @include transition(opacity 100ms ease-in)
-
-      .is-playing &
-        opacity: 0
-
-    &-video-icon
-      position: absolute
-      top: 50%
-      left: 50%
-      @include transform(translate(-50%, -50%))
-      display: block
-      width: $video-icon-size
-      height: $video-icon-size
-      background: rgba(#000, 0.6)
-      border-radius: 50%
-
-      &:after
-        content: " "
-        display: block
-        position: absolute
-        top: 50%
-        left: 50%
-        @include transform(translate(-40%, -50%))
-        @include triangle($video-icon-size * 0.4 $video-icon-size * 0.3, #fff, right)
-
-    &-caption
-      display: block
-      width: 100%
-      margin-top: 5px
-      text-align: left
-      font-size: 14px
-      color: #5e6573
-
-      @media (max-width: 1040px)
-        padding-left: 2%
 
   &-footer
     display: block
