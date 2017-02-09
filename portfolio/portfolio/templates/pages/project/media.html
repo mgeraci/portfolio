@@ -1,7 +1,13 @@
 <div
-	class="page-project-media {% if media.video_mp4 and media.video_webm %}has-video{% endif %}"
+	class="
+		page-project-media
+		{% if media.video_mp4 and media.video_webm %}has-video{% endif %}
+		{% if media.is_mobile %}is-mobile{% endif %}
+	"
 	{% if media.max_width %}style="max-width: {{ media.max_width }}px;"{% endif %}
 >
+	{% if media.is_mobile %}<div class="page-project-media-mobile-bg">{% endif %}
+
 	{% if media.video_mp4 and media.video_mp4 %}
 		<div class="page-project-media-video-wrapper">
 			<video
@@ -30,6 +36,8 @@
 		>
 		</div>
 	{% endif %}
+
+	{% if media.is_mobile %}</div>{% endif %}
 
 	{% if media.caption %}
 		<span class="page-project-media-caption">

@@ -1601,6 +1601,7 @@ nav::after {
 
 .page-project-media {
   position: relative;
+  position: relative;
   left: 50%;
   -webkit-transform: translateX(-50%);
   -moz-transform: translateX(-50%);
@@ -1622,6 +1623,22 @@ nav::after {
       float: left;
       width: 100%;
       height: auto; }
+  .page-project-media.is-mobile {
+    max-width: 500px; }
+    .page-project-media.is-mobile .page-project-media-mobile-bg {
+      width: 100%;
+      padding-top: 171%;
+      background-image: url("http://localhost:8000/static/images/iphone-7-black-flat.png");
+      background-size: cover;
+      background-repeat: no-repeat; }
+    .page-project-media.is-mobile .page-project-media-video-wrapper {
+      position: absolute;
+      top: 11%;
+      left: 15%;
+      width: 70%; }
+    .page-project-media.is-mobile .page-project-media-caption {
+      margin-top: -15px;
+      padding-left: 11%; }
   .page-project-media-video-wrapper {
     position: relative; }
     .page-project-media-video-wrapper::after {
