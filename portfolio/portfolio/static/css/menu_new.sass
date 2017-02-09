@@ -61,12 +61,6 @@ $nav-breakpoint: 600px
     &:not(.active)
       @include link-color($text, $index-highlight)
 
-      .no-touchevents &
-        @include link-underline($text)
-
-        &:hover
-          @include link-underline($index-highlight)
-
     &.active
       cursor: default
       text-decoration: none

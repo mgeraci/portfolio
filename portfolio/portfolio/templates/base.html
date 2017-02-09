@@ -25,7 +25,7 @@
 			/>
 		{% endif %}
 	</head>
-	<body class="page-{% block bodyclass %}{% endblock %}">
+	<body id="{% block bodyid %}{% endblock %}" class="page-{% block bodyclass %}{% endblock %}">
 
 		{% if show_home_projects %}
 			{% include "menu_new.html" with background=project.background light_text=project.light_text %}
