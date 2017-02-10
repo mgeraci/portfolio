@@ -1,0 +1,155 @@
+// global includes
+// ----------------------------------------------------------------------------
+
+@import "variables";
+@import "bourbon/bourbon";
+@import "reset.css";
+@import "mixins";
+
+
+// general styles
+// ----------------------------------------------------------------------------
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background: $green;
+  padding-bottom: 20px;
+  color: $text;
+  font-family: "PT Serif", "Georgia", times, arial, sans-serif;
+  @include type(18px, 30px);
+  -webkit-font-smoothing: antialiased;
+
+  &.no-scroll {
+    overflow: hidden;
+	}
+}
+
+section,
+.nav-desktop {
+  display: block;
+  width: 100%;
+}
+
+section.content {
+  @include clearfix;
+  @include content-sizing;
+}
+
+.content a {
+  text-decoration: none;
+}
+
+@mixin h2 {
+  color: $header-text;
+  font-weight: bold;
+  font-size: 22px;
+  padding-bottom: 10px;
+}
+
+@mixin h3 {
+  color: $header-text;
+  font-weight: bold;
+}
+
+h2 {
+  @include h2;
+}
+
+h3 {
+  @include h3;
+}
+
+blockquote {
+  border-left: 3px solid rgba(#000, 0.1);
+  padding-left: 20px;
+  margin: 20px 0;
+}
+
+em {
+  font-style: oblique;
+}
+
+.title {
+  h2,
+  .subtitle {
+    display: block;
+    width: 100%;
+    text-align: center;
+	}
+
+  h2 {
+    padding-bottom: 20px;
+	}
+
+  .subtitle {
+    position: relative;
+    bottom: 10px;
+	}
+}
+
+.audio {
+  &-title {
+    padding-bottom: 10px;
+    font-style: oblique;
+    font-size: 16px;
+	}
+}
+
+@include keyframes(spin) {
+  from {
+    @include transform(rotate(0deg));
+	}
+
+  to {
+    @include transform(rotate(360deg));
+	}
+}
+
+
+$loader-size: 34px;
+
+.loader {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: $loader-size;
+  height: $loader-size;
+  margin-top: $loader-size * -0.5;
+  margin-left: $loader-size * -0.5;
+  border: 6px solid $text;
+  border-bottom-color: $green;
+  border-radius: 50%;
+  @include animation-name(spin);
+  @include animation-duration(1600ms);
+  @include animation-timing-function(linear);
+  @include animation-iteration-count(infinite);
+}
+
+
+// includes
+// ----------------------------------------------------------------------------
+
+// general
+@import "fonts";
+@import "menu";
+@import "menu_new";
+@import "menu_mobile";
+@import "submenu";
+@import "audio_player";
+@import "swipeable";
+
+// pages
+@import "pages/index_old";
+@import "pages/index_new";
+@import "pages/project";
+@import "pages/composition";
+@import "pages/recordings";
+@import "pages/web";
+@import "pages/links";
+@import "pages/graphic";
+
+// albums
+@import "../../../albums/static/css/albums";

@@ -49,7 +49,7 @@ function createConfig(params) {
 
 			// pass the public path to a sass variable
 			{
-				test: /\.sass?$/,
+				test: /\.(sass|scss)?$/,
 				loader: "webpack-append",
 				query: `$STATIC_ROOT: '${output.publicPath}';`
 			}
@@ -68,7 +68,7 @@ function createConfig(params) {
 
 			// sass, pull into standalone file
 			{
-				test: /\.sass$/,
+				test: /\.(sass|scss)$/,
 				exclude: [/node_modules/],
 				loader: ExtractTextPlugin.extract("css!sass")
 			},

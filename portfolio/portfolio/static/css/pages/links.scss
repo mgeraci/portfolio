@@ -1,0 +1,31 @@
+.page-links {
+  .content {
+    h3 {
+      margin-bottom: -10px;
+		}
+
+    a {
+      @include link($text, $cream);
+		}
+	}
+
+  &-column {
+    width: 36%;
+    float: left;
+
+    & + .page-links-column {
+      width: 56%;
+      margin-left: 8%;
+		}
+
+    @media (max-width: 880px) {
+      width: 100%;
+
+      & + .page-links-column {
+        width: 100%;
+        margin-top: 30px;
+        margin-left: 0;
+			}
+		}
+	}
+}
