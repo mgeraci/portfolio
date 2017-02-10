@@ -1,0 +1,63 @@
+$circle-size: 90px;
+$menu-border-size: 3px;
+$menu-padding: 23px;
+$mobile-header-height: 80px;
+$mobile-header-padding: 14px;
+$mobile-icon-size: 12px;
+
+@mixin circle-style($size) {
+  display: inline-block;
+  width: $size;
+  height: $size;
+  border-radius: 50%;
+  background: $cream;
+  color: $green;
+  text-align: center;
+  text-decoration: none;
+}
+
+nav {
+  @include clearfix;
+}
+
+.nav-desktop {
+  @include clearfix;
+  @include content-sizing;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  max-width: $menu-max-width;
+  -webkit-font-smoothing: subpixel-antialiased;
+
+  @media (max-width: $menu-breakpoint - 1) {
+    display: none;
+	}
+
+  li {
+    float: left;
+    width: 100% / $menu-items;
+    text-align: center;
+
+    @media (min-width: $menu-breakpoint) {
+      text-align: center;
+
+      a {
+        @include circle-style($circle-size);
+        padding-top: $menu-padding;
+        @include transition-property(background, color);
+        @include transition-duration(75ms);
+        @include transition-timing-function(linear);
+        @include type(18px, 24px);
+        letter-spacing: 0.4px;;
+
+        &:hover,
+        &:active,
+        &.active {
+          background: $green;
+          padding-top: $menu-padding - $menu-border-size;
+          border: $menu-border-size solid $cream;
+          color: $cream;
+				}
+			}
+		}
+	}
+}

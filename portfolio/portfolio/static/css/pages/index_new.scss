@@ -1,0 +1,362 @@
+$index-breakpoint: 700px;
+
+@mixin text-style {
+  width: 50%;
+  text-align: left;
+  padding: 6vh;
+}
+
+// the body on the index gets a darker background color, and then everything
+// else gets the "normal" background, that way the darker color extends to the
+// screen bottom
+.page-index-new {
+  background: #fff;
+  font-family: "Source Serif Pro";
+
+  // undo the default content sizing, go full width
+  section.content {
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    padding-top: 0;
+	}
+
+  // TODO un-nest after removing old index page
+  .index-top {
+    @include clearfix;
+    @include content-sizing;
+    padding-bottom: 80px;
+
+    @media (max-width: $index-breakpoint) {
+      padding-bottom: 40px;
+
+      .index-top-text,
+      .index-top-image {
+        width: 100%;
+        margin: 0;
+        padding: 0;
+			}
+
+      .index-top-image {
+        margin-top: 25px;
+			}
+
+      .index-top-left-image {
+        width: 50%;
+        padding-top: 50%;
+			}
+		}
+
+    &-image {
+      float: left;
+      margin-top: 9px;
+      width: 33%;
+      text-align: center;
+
+      // large screens
+      @media (min-width: 820px) {
+        text-align: right;
+
+        .index-top-left-image-wrapper {
+          width: 250px;
+          height: 250px;
+          padding: 0;
+				}
+			}
+
+      &-wrapper {
+        display: inline-block;
+        position: relative;
+        overflow: hidden;
+        width: 250px;
+        height: 250px;
+        background: rgba(#000, 0.1);
+        border-radius: 50%;
+        box-shadow: 0 0 2px rgba(#000, 0.2);
+
+        @media (max-width: 800px) {
+          margin-top: 25px;
+          width: 200px;
+          height: 200px;
+				}
+
+        @media (max-width: $index-breakpoint) {
+          margin-top: 20px;
+          width: 45%;
+          height: auto;
+          padding-top: 45%;
+				}
+
+        @media (max-width: 350px) {
+          width: 75%;
+          padding-top: 75%;
+				}
+
+        img {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: auto;
+				}
+			}
+		}
+
+    &-text {
+      float: right;
+      width: 60%;
+      padding-top: 20px;
+
+      @media (min-width: 1000px) {
+        padding-right: 100px;
+			}
+		}
+
+    &-headline,
+    &-section {
+      padding-bottom: 20px;
+
+      &:last-child {
+        padding-bottom: 0;
+			}
+		}
+
+    &-headline {
+      margin-top: 19px;
+      font-size: 36px;
+
+      @media (max-width: 690px) {
+        font-size: 28px;
+			}
+		}
+
+    &-link {
+      display: inline-block;
+      margin-left: 10px;
+      @include link-underline($text);
+      @include link-color($text, $index-highlight);
+
+      &:hover {
+        @include link-underline($index-highlight);
+			}
+
+      &:first-child {
+        margin-left: 0;
+			}
+		}
+
+    &-subheader {
+      position: relative;
+      float: left;
+      clear: both;
+      width: 100%;
+      margin-top: 80px;
+      text-align: center;
+      font-size: 22px;
+      font-style: oblique;
+
+      &:after {
+        content: "";
+        position: absolute;
+        bottom: -10px;
+        left: 50%;
+        @include transform(translateX(-50%));
+        @include triangle(10px, rgba($text, 0.7), down);
+			}
+
+      @media (max-width: $index-breakpoint) {
+        margin-top: 40px;
+			}
+		}
+	}
+
+  .index-bottom-copyright {
+    @include content-sizing;
+    display: block;
+    font-size: 15px;
+    margin-top: 40px;
+    width: 100%;
+    text-align: center;
+	}
+}
+
+
+// home projects
+// ----------------------------------------------------------------------------
+
+$breakpoint: 720px;
+
+.project {
+  @include clearfix;
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: 80vh;
+
+  @media (max-width: 1500px) {
+    height: 75vh;
+	}
+
+  @media (max-width: $index-breakpoint) {
+    height: auto;
+	}
+
+  &-text,
+  &-image {
+    float: left;
+    width: 50%;
+    height: 100%;
+
+    @media (max-width: $index-breakpoint) {
+      width: 100%;
+		}
+	}
+
+  &-text {
+    float: left;
+    position: relative;
+    display: block;
+
+    $light-color: rgba(#fff, 0.9);
+
+    &--light {
+      color: $light-color;
+
+      .project-text-title {
+        color: #fff;
+			}
+
+      .project-text-more {
+        @include link-color($light-color, $light-color);
+			}
+		}
+
+    &-content {
+      position: relative;
+      width: 100%;
+      max-width: 800px;
+      padding: 6vw;
+
+      @media (min-width: $index-breakpoint) {
+        top: 50%;
+        left: 50%;
+        @include transform(translate(-50%, -50%));
+			}
+		}
+
+    &-title {
+      display: block;
+      width: 100%;
+      text-align: left;
+		}
+
+    &-more {
+      display: inline-block;
+      margin-top: 20px;
+      @include link-color($text, $text);
+
+      &-arrow {
+        display: inline-block;
+        @include transition(transform 200ms ease);
+			}
+
+      &:hover {
+        .project-text-more-arrow {;
+          @include transform(translateX(4px));
+				}
+			}
+		}
+	}
+
+  &-image {
+    float: right;
+    position: relative;
+    overflow: hidden;
+    min-height: 300px;
+    padding: 50px 0;
+
+    @media (max-width: $breakpoint) {
+      min-height: 0;
+		}
+
+    img {
+      display: block;
+      position: relative;
+      margin: 0 auto;
+      max-width: 90%;
+      max-height: 90%;
+      height: auto;
+
+      @media (min-width: $index-breakpoint) {
+        margin: 0;
+        top: 50%;
+        left: 50%;
+        @include transform(translate(-50%, -50%));
+			}
+		}
+
+    &--full-bleed {
+      padding: 0;
+      background-size: cover;
+      background-position: center center;
+
+      @media (max-width: $index-breakpoint) {
+        min-height: 60vh;
+			}
+		}
+	}
+
+  // special styling for the smart mirror image
+  &.smart-mirror {
+    img {
+      position: absolute;
+      top: auto;
+      right: auto;
+      left: 6%;
+      bottom: 0;
+      @include transform(translate(0, 0));
+      max-width: 120%;
+
+      @media (min-width: 1600px) {
+        max-width: 150%;
+        left: 18%;
+			}
+		}
+
+    // highly uncouth, but the benefit of having the whole mirror on screen is
+    // more important than having all of the home projects be the same height
+    @media (max-width: 1370px) {
+      height: 54vw;
+		}
+
+    @media (max-width: $index-breakpoint) {
+      height: auto;
+
+      .project-image {
+        background: rgba(#000, 0.1);
+			}
+		}
+
+    .project-image {
+      @media (max-width: 600px) {
+        min-height: 50vh;
+			}
+
+      @media (max-width: 550px) {
+        min-height: 45vh;
+			}
+
+      @media (max-width: 500px) {
+        min-height: 40vh;
+			}
+
+      @media (max-width: 410px) {
+        min-height: 36vh;
+			}
+
+      @media (max-width: 350px) {
+        min-height: 30vh;
+			}
+		}
+	}
+}
