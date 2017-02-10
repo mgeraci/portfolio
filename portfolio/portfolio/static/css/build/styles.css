@@ -1735,6 +1735,27 @@ nav::after {
     .page-project-hero,
     .page-project-hero img {
       width: 100%; }
+  .page-project .project-links {
+    width: 100%;
+    text-align: center;
+    color: #949aa6; }
+    .page-project .project-links-link {
+      font-size: 15px;
+      line-height: 24px; }
+      .page-project .project-links-link,
+      .page-project .project-links-link h2,
+      .page-project .project-links-link h3 {
+        -webkit-transition: color 50ms linear, background-image 50ms linear;
+        -moz-transition: color 50ms linear, background-image 50ms linear;
+        transition: color 50ms linear, background-image 50ms linear; }
+      .page-project .project-links-link, .page-project .project-links-link:visited {
+        color: #949aa6; }
+      .no-touchevents .page-project .project-links-link:hover,
+      .no-touchevents .page-project .project-links-link:hover h2,
+      .no-touchevents .page-project .project-links-link:hover h3, .no-touchevents .page-project .project-links-link:active,
+      .no-touchevents .page-project .project-links-link:active h2,
+      .no-touchevents .page-project .project-links-link:active h3 {
+        color: #5e6573; }
   .page-project-paragraph {
     display: inline-block;
     width: 100%;
