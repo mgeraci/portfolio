@@ -6,11 +6,8 @@ $index-breakpoint: 700px;
   padding: 6vh;
 }
 
-// the body on the index gets a darker background color, and then everything
-// else gets the "normal" background, that way the darker color extends to the
-// screen bottom
 .page-index-new {
-  background: #fff;
+  background: $Colors-gray-8;
   font-family: "Source Serif Pro";
 
   // undo the default content sizing, go full width
@@ -128,6 +125,14 @@ $index-breakpoint: 700px;
       @media (max-width: 690px) {
         font-size: 28px;
 			}
+
+			@media (max-width: 350px) {
+				font-size: 25px;
+			}
+		}
+
+		&-section {
+			@include type(17px, 26px);
 		}
 
     &-link {
@@ -142,6 +147,13 @@ $index-breakpoint: 700px;
 
       &:first-child {
         margin-left: 0;
+			}
+
+			@media (max-width: 400px) {
+				float: left;
+				clear: both;
+				margin-top: 4px;
+				margin-left: 0;
 			}
 		}
 

@@ -3,7 +3,7 @@ $video-icon-size: 80px;
 @import "./project/media";
 
 .page-project {
-  background: #fff;
+  background: $Colors-gray-8;
   font-family: "Source Serif Pro";
   text-align: center;
 
@@ -43,7 +43,7 @@ $video-icon-size: 80px;
     font-weight: bold;
 
     @media (max-width: 700px) {
-      @include type(22px, 30px);
+      @include type(24px, 30px);
       margin-bottom: 30px;
 		}
 	}
@@ -84,8 +84,9 @@ $video-icon-size: 80px;
     @include type(18px, 29px);
 
     @media (max-width: 700px) {
-      padding-right: 5%;
-      padding-left: 5%;
+      padding-right: 7%;
+      padding-left: 7%;
+			@include type(17px, 26px);
 		}
 	}
 

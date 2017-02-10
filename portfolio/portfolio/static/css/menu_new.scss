@@ -4,6 +4,7 @@ $nav-breakpoint: 600px;
   padding-top: 40px;
   padding-bottom: 30px;
   font-size: 20px;
+	color: $Colors-gray-1;
 
   @media (max-width: $nav-breakpoint) {
     padding-top: 20px;
@@ -13,16 +14,16 @@ $nav-breakpoint: 600px;
     color: #fff;
 
     .project-nav-link:not(.active) {
-      @include link-color(#fff, #e4edfd);
-      @include link-underline(#fff);
+      @include link-color($Colors-white, $Colors-white);
+			opacity: 0.85;
 
-      &:hover {
-        @include link-underline(#e4edfd);
+			&:hover {
+				opacity: 1;
 			}
 		}
 
     .project-nav-title {
-      @include link-color(#fff, #e4edfd);
+      @include link-color($Colors-white, $Colors-white);
 		}
 	}
 
@@ -72,7 +73,7 @@ $nav-breakpoint: 600px;
 		}
 
     &:not(.active) {
-      @include link-color($text, $index-highlight);
+      @include link-color($Colors-gray-2, $index-highlight);
 		}
 
     &.active {
