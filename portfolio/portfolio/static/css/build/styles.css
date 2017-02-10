@@ -1650,6 +1650,8 @@ nav::after {
     transition: opacity 100ms ease-in; }
     .is-playing .page-project-media-video-icon-wrapper {
       opacity: 0; }
+    .touchevents .page-project-media-video-icon-wrapper {
+      display: none; }
   .page-project-media-video-icon {
     position: absolute;
     top: 50%;

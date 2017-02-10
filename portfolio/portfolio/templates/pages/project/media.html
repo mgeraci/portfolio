@@ -13,6 +13,9 @@
 			<video
 				class="page-project-media-video"
 				loop
+				{% if media.image %}
+					poster="{{ MEDIA_URL }}{{ media.image }}"
+				{% endif %}
 			>
 				<source src="{{ MEDIA_URL }}{{ media.video_mp4 }}" type="video/mp4">
 				<source src="{{ MEDIA_URL }}{{ media.video_webm }}" type="video/webm">
