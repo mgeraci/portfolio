@@ -20,7 +20,7 @@ function createConfig(params) {
 	};
 
 	if (isProduction) {
-		output.publicPath = "http://static.michaelgeraci.com/";
+		output.publicPath = "//static.michaelgeraci.com/";
 	} else {
 		output.publicPath = "http://localhost:8000/static/";
 	}
