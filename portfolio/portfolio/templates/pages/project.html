@@ -18,6 +18,9 @@
 		class="page-project-hero"
 		data-lazy-image="{{ MEDIA_URL }}{{ project.image }}"
 		data-lazy-alt="The hero image for {{ project.title }}"
+		{% if project.image_max_width %}
+			data-lazy-max-width="{{ project.image_max_width }}"
+		{% endif %}
 	></div>
 </div>
 
