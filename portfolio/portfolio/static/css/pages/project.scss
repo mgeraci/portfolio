@@ -29,7 +29,30 @@ $video-icon-size: 80px;
       color: #fff;
 		}
 
+		// the mirror hits the bottom of the top section
+		&.smart-mirror {
+			padding-bottom: 0;
+
+			img {
+				@include transform(translateX(-27%));
+				max-width: 1500px;
+				width: 130%;
+
+				@media (max-width: 700px) {
+					width: 150%;
+				}
+
+				@media (max-width: 450px) {
+					width: 180%;
+				}
+			}
+		}
+
     img {
+			float: left;
+			position: relative;
+			left: 50%;
+			@include transform(translateX(-50%));
       max-width: 1000px;
 		}
 	}
@@ -49,6 +72,7 @@ $video-icon-size: 80px;
 	}
 
   &-hero {
+		@include clearfix;
     min-height: 45vh;
     margin-bottom: 50px;
 

@@ -1,4 +1,5 @@
 $index-breakpoint: 700px;
+$project-breakpoint: 720px;
 
 @mixin text-style {
   width: 50%;
@@ -123,6 +124,7 @@ $index-breakpoint: 700px;
       font-size: 36px;
 
       @media (max-width: 690px) {
+				margin-top: 0;
         font-size: 28px;
 			}
 
@@ -189,14 +191,17 @@ $index-breakpoint: 700px;
     margin-top: 40px;
     width: 100%;
     text-align: center;
+
+		@media (max-width: $project-breakpoint) {
+			margin-top: 0;
+			padding-top: 25px;
+		}
 	}
 }
 
 
 // home projects
 // ----------------------------------------------------------------------------
-
-$breakpoint: 720px;
 
 .project {
   @include clearfix;
@@ -287,15 +292,16 @@ $breakpoint: 720px;
     min-height: 300px;
     padding: 50px 0;
 
-    @media (max-width: $breakpoint) {
+    @media (max-width: $project-breakpoint) {
       min-height: 0;
+			padding: 30px 0 10px;
 		}
 
     img {
       display: block;
       position: relative;
       margin: 0 auto;
-      max-width: 90%;
+      max-width: 90% !important; // this has to override an inline style applied by js
       max-height: 90%;
       height: auto;
 
@@ -327,11 +333,14 @@ $breakpoint: 720px;
       left: 6%;
       bottom: 0;
       @include transform(translate(0, 0));
-      max-width: 120%;
+      width: 160%;
+      max-width: 1200px !important;
+			max-height: 160%;
 
       @media (min-width: 1600px) {
-        max-width: 150%;
-        left: 18%;
+        max-width: 1400px !important;
+				left: 50%;
+				@include transform(translateX(-27%));
 			}
 		}
 
@@ -345,29 +354,9 @@ $breakpoint: 720px;
       height: auto;
 
       .project-image {
-        background: rgba(#000, 0.1);
-			}
-		}
-
-    .project-image {
-      @media (max-width: 600px) {
-        min-height: 50vh;
-			}
-
-      @media (max-width: 550px) {
-        min-height: 45vh;
-			}
-
-      @media (max-width: 500px) {
-        min-height: 40vh;
-			}
-
-      @media (max-width: 410px) {
-        min-height: 36vh;
-			}
-
-      @media (max-width: 350px) {
-        min-height: 30vh;
+				padding: 0;
+				padding-top: 100%;
+        background: rgba(#000, 0.05);
 			}
 		}
 	}
