@@ -31,6 +31,7 @@ class HomeProjectMedia(models.Model):
     video_webm = models.FileField(upload_to='projects', blank=True, null=True)
     position = models.PositiveSmallIntegerField(blank=True)
     is_mobile = models.BooleanField(default=False)
+    max_width = models.PositiveSmallIntegerField(blank=True, null=True)
 
     def __unicode__(self):
         return u'{} - {}'.format(self.project.title, self.caption)
