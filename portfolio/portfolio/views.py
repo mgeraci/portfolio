@@ -70,8 +70,11 @@ def project(request, slug):
         media.is_media = True
         project_media_map[media.position] = media
 
-    # split the long description into a list of paragraphs
-    project.long_description = project.long_description.split("\r\n\r")
+    # split the long description into a list of paragraphs. strip whitespace,
+    # and only append the paragraph if it isn't blank
+    project.long_description = [
+        p.strip() for p in project.long_description.split('\n') if p.strip()
+    ]
 
     content = []
 
@@ -81,7 +84,7 @@ def project(request, slug):
             'text': p,
         }
 
-        if p[:1] == "#":
+        if re.search('##', p, re.UNICODE):
             res['is_title'] = True
             res['text'] = p.replace("## ", "")
         else:
