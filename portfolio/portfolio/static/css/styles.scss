@@ -43,14 +43,14 @@ section.content {
 }
 
 @mixin h2 {
-  color: $header-text;
+  color: $Colors-gray-1;
   font-weight: bold;
   font-size: 22px;
   padding-bottom: 10px;
 }
 
 @mixin h3 {
-  color: $header-text;
+  color: $Colors-gray-1;
   font-weight: bold;
 }
 

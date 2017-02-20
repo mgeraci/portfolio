@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 import json
+import re
 from django.shortcuts import render, get_object_or_404
 from michael_dot_com.localsettings import STATIC_URL
 from portfolio.models import HomeProject
@@ -76,7 +77,17 @@ def project(request, slug):
 
     # mix the media into the paragraphs
     for i, p in enumerate(project.long_description):
-        content.append(p)
+        res = {
+            'text': p,
+        }
+
+        if p[:1] == "#":
+            res['is_title'] = True
+            res['text'] = p.replace("## ", "")
+        else:
+            res['is_title'] = False
+
+        content.append(res)
 
         try:
             content.append(project_media_map[i])
@@ -88,7 +99,6 @@ def project(request, slug):
 
     context = {
         'project': project,
-        'project_media_map': project_media_map,
         'show_home_projects': True,
     }
 

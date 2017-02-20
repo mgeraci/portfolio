@@ -52,9 +52,13 @@
 	{% for p in project.content %}
 		{% if p.is_media %}
 			{% include "pages/project/media.html" with media=p %}
+		{% elif p.is_title %}
+			<h2 class="page-project-header">
+				{{ p.text|safe }}
+			</h2>
 		{% else %}
 			<p class="page-project-paragraph">
-				{{ p|safe }}
+				{{ p.text|safe }}
 			</p>
 		{% endif %}
 	{% endfor %}

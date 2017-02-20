@@ -5,6 +5,7 @@ $video-icon-size: 80px;
 .page-project {
   background: $Colors-gray-8;
   font-family: "Source Serif Pro";
+	color: $Colors-gray-1;
   text-align: center;
 
   // undo default content centering
@@ -23,7 +24,7 @@ $video-icon-size: 80px;
   &-top {
     width: 100%;
     padding: 30px 0 20px;
-    margin-bottom: 30px;
+    margin-bottom: 50px;
 
     &--light-text {
       color: #fff;
@@ -99,19 +100,28 @@ $video-icon-size: 80px;
 		}
 	}
 
+  &-header,
   &-paragraph {
     display: inline-block;
     width: 100%;
     max-width: 620px;
-    margin-top: 20px;
-    text-align: left;
-    @include type(18px, 29px);
+		text-align: left;
 
     @media (max-width: 700px) {
       padding-right: 7%;
       padding-left: 7%;
 			@include type(17px, 26px);
 		}
+	}
+
+  &-header {
+		padding-bottom: 0;
+		font-size: 18px;
+	}
+
+  &-paragraph {
+    margin-top: 25px;
+    @include type(18px, 29px);
 	}
 
   &-footer {

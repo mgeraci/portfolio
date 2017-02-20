@@ -10,6 +10,7 @@ $project-breakpoint: 720px;
 .page-index-new {
   background: $Colors-gray-8;
   font-family: "Source Serif Pro";
+	color: $Colors-gray-1;
 
   // undo the default content sizing, go full width
   section.content {
