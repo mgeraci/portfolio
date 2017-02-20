@@ -124,8 +124,19 @@ $video-icon-size: 80px;
     @include type(18px, 30px);
 	}
 
+	// paragraphs after headers
 	&-header + &-paragraph {
 		margin-top: 15px;
+	}
+
+	// headers after paragraphs
+	&-paragraph + &-header {
+		margin-top: 70px;
+	}
+
+	// headers after media
+	&-media + &-header {
+		margin-top: 27px;
 	}
 
   &-footer {

@@ -1813,6 +1813,10 @@ nav::after {
     line-height: 30px; }
   .page-project-header + .page-project-paragraph {
     margin-top: 15px; }
+  .page-project-paragraph + .page-project-header {
+    margin-top: 70px; }
+  .page-project-media + .page-project-header {
+    margin-top: 27px; }
   .page-project-footer {
     display: block;
     width: 100%;
