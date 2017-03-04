@@ -1438,6 +1438,13 @@ nav::after {
       display: block;
       width: 100%;
       text-align: left; }
+    .project-text-description, .project-text-more {
+      font-size: 18px;
+      line-height: 30px; }
+      @media (min-width: 1300px) {
+        .project-text-description, .project-text-more {
+          font-size: 20px;
+          line-height: 32px; } }
     .project-text-more {
       display: inline-block;
       margin-top: 20px; }

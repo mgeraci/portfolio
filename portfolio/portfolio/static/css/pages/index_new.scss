@@ -226,6 +226,15 @@ $project-breakpoint: 720px;
       text-align: left;
 		}
 
+		&-description,
+    &-more {
+			@include type(18px, 30px);
+
+			@media (min-width: 1300px) {
+				@include type(20px, 32px);
+			}
+		}
+
     &-more {
       display: inline-block;
       margin-top: 20px;
