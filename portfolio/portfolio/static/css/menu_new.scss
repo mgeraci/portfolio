@@ -13,7 +13,7 @@ $nav-breakpoint: 600px;
   &--light-text {
     color: #fff;
 
-    .project-nav-link:not(.active) {
+    .project-nav-link {
       @include link-color($Colors-white, $Colors-white);
 			opacity: 0.85;
 
@@ -24,6 +24,10 @@ $nav-breakpoint: 600px;
 
     .project-nav-title {
       @include link-color($Colors-white, $Colors-white);
+
+			&:hover {
+				opacity: 0.85;
+			}
 		}
 	}
 
@@ -60,26 +64,17 @@ $nav-breakpoint: 600px;
 
   &-title {
     text-decoration: none;
-    @include link-color($text, $text);
+		@include link-color($text, $index-highlight);
 	}
 
   &-link {
     display: inline-block;
     margin-left: 20px;
     text-decoration: none;
+		@include link-color($Colors-gray-2, $index-highlight);
 
     &:first-child {
       margin-left: 0;
-		}
-
-    &:not(.active) {
-      @include link-color($Colors-gray-2, $index-highlight);
-		}
-
-    &.active {
-      cursor: default;
-      text-decoration: none;
-      color: $index-highlight;
 		}
 	}
 }

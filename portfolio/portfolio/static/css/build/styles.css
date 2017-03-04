@@ -595,23 +595,23 @@ nav::after {
       padding-top: 20px; } }
   .project-nav--light-text {
     color: #fff; }
-    .project-nav--light-text .project-nav-link:not(.active) {
+    .project-nav--light-text .project-nav-link {
       opacity: 0.85; }
-      .project-nav--light-text .project-nav-link:not(.active),
-      .project-nav--light-text .project-nav-link:not(.active) h2,
-      .project-nav--light-text .project-nav-link:not(.active) h3 {
+      .project-nav--light-text .project-nav-link,
+      .project-nav--light-text .project-nav-link h2,
+      .project-nav--light-text .project-nav-link h3 {
         -webkit-transition: color 50ms linear, background-image 50ms linear;
         -moz-transition: color 50ms linear, background-image 50ms linear;
         transition: color 50ms linear, background-image 50ms linear; }
-      .project-nav--light-text .project-nav-link:not(.active), .project-nav--light-text .project-nav-link:not(.active):visited {
+      .project-nav--light-text .project-nav-link, .project-nav--light-text .project-nav-link:visited {
         color: #fff; }
-      .no-touchevents .project-nav--light-text .project-nav-link:not(.active):hover,
-      .no-touchevents .project-nav--light-text .project-nav-link:not(.active):hover h2,
-      .no-touchevents .project-nav--light-text .project-nav-link:not(.active):hover h3, .no-touchevents .project-nav--light-text .project-nav-link:not(.active):active,
-      .no-touchevents .project-nav--light-text .project-nav-link:not(.active):active h2,
-      .no-touchevents .project-nav--light-text .project-nav-link:not(.active):active h3 {
+      .no-touchevents .project-nav--light-text .project-nav-link:hover,
+      .no-touchevents .project-nav--light-text .project-nav-link:hover h2,
+      .no-touchevents .project-nav--light-text .project-nav-link:hover h3, .no-touchevents .project-nav--light-text .project-nav-link:active,
+      .no-touchevents .project-nav--light-text .project-nav-link:active h2,
+      .no-touchevents .project-nav--light-text .project-nav-link:active h3 {
         color: #fff; }
-      .project-nav--light-text .project-nav-link:not(.active):hover {
+      .project-nav--light-text .project-nav-link:hover {
         opacity: 1; }
     .project-nav--light-text .project-nav-title,
     .project-nav--light-text .project-nav-title h2,
@@ -627,6 +627,8 @@ nav::after {
     .no-touchevents .project-nav--light-text .project-nav-title:active h2,
     .no-touchevents .project-nav--light-text .project-nav-title:active h3 {
       color: #fff; }
+    .project-nav--light-text .project-nav-title:hover {
+      opacity: 0.85; }
   .project-nav-content {
     max-width: 800px;
     padding-right: 6vw;
@@ -668,31 +670,27 @@ nav::after {
     .no-touchevents .project-nav-title:hover h3, .no-touchevents .project-nav-title:active,
     .no-touchevents .project-nav-title:active h2,
     .no-touchevents .project-nav-title:active h3 {
-      color: #444; }
+      color: #3260c7; }
   .project-nav-link {
     display: inline-block;
     margin-left: 20px;
     text-decoration: none; }
-    .project-nav-link:first-child {
-      margin-left: 0; }
-    .project-nav-link:not(.active),
-    .project-nav-link:not(.active) h2,
-    .project-nav-link:not(.active) h3 {
+    .project-nav-link,
+    .project-nav-link h2,
+    .project-nav-link h3 {
       -webkit-transition: color 50ms linear, background-image 50ms linear;
       -moz-transition: color 50ms linear, background-image 50ms linear;
       transition: color 50ms linear, background-image 50ms linear; }
-    .project-nav-link:not(.active), .project-nav-link:not(.active):visited {
+    .project-nav-link, .project-nav-link:visited {
       color: #5e6573; }
-    .no-touchevents .project-nav-link:not(.active):hover,
-    .no-touchevents .project-nav-link:not(.active):hover h2,
-    .no-touchevents .project-nav-link:not(.active):hover h3, .no-touchevents .project-nav-link:not(.active):active,
-    .no-touchevents .project-nav-link:not(.active):active h2,
-    .no-touchevents .project-nav-link:not(.active):active h3 {
+    .no-touchevents .project-nav-link:hover,
+    .no-touchevents .project-nav-link:hover h2,
+    .no-touchevents .project-nav-link:hover h3, .no-touchevents .project-nav-link:active,
+    .no-touchevents .project-nav-link:active h2,
+    .no-touchevents .project-nav-link:active h3 {
       color: #3260c7; }
-    .project-nav-link.active {
-      cursor: default;
-      text-decoration: none;
-      color: #3260c7; }
+    .project-nav-link:first-child {
+      margin-left: 0; }
 
 .nav-mobile {
   display: none; }
