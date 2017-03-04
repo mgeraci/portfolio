@@ -1334,9 +1334,9 @@ nav::after {
       @media (min-width: 1000px) {
         .page-index-new .index-top-text {
           padding-right: 100px; } }
-    .page-index-new .index-top-headline, .page-index-new .index-top-section {
+    .page-index-new .index-top-headline, .page-index-new .index-top-body {
       padding-bottom: 20px; }
-      .page-index-new .index-top-headline:last-child, .page-index-new .index-top-section:last-child {
+      .page-index-new .index-top-headline:last-child, .page-index-new .index-top-body:last-child {
         padding-bottom: 0; }
     .page-index-new .index-top-headline {
       margin-top: 19px;
@@ -1348,72 +1348,13 @@ nav::after {
       @media (max-width: 350px) {
         .page-index-new .index-top-headline {
           font-size: 25px; } }
-    .page-index-new .index-top-section {
-      font-size: 17px;
-      line-height: 26px; }
-    .page-index-new .index-top-link {
-      display: inline-block;
-      margin-left: 10px;
-      text-decoration: none;
-      background-repeat: repeat-x;
-      background-size: 2px 2px;
-      background-position: 0 85%;
-      background-image: linear-gradient(to bottom, transparent 50%, rgba(68, 68, 68, 0.6) 50%); }
-      .page-index-new .index-top-link,
-      .page-index-new .index-top-link h2,
-      .page-index-new .index-top-link h3 {
-        -webkit-transition: color 50ms linear, background-image 50ms linear;
-        -moz-transition: color 50ms linear, background-image 50ms linear;
-        transition: color 50ms linear, background-image 50ms linear; }
-      .page-index-new .index-top-link, .page-index-new .index-top-link:visited {
-        color: #444; }
-      .no-touchevents .page-index-new .index-top-link:hover,
-      .no-touchevents .page-index-new .index-top-link:hover h2,
-      .no-touchevents .page-index-new .index-top-link:hover h3, .no-touchevents .page-index-new .index-top-link:active,
-      .no-touchevents .page-index-new .index-top-link:active h2,
-      .no-touchevents .page-index-new .index-top-link:active h3 {
-        color: #3260c7; }
-      .page-index-new .index-top-link:hover {
-        text-decoration: none;
-        background-repeat: repeat-x;
-        background-size: 2px 2px;
-        background-position: 0 85%;
-        background-image: linear-gradient(to bottom, transparent 50%, rgba(50, 96, 199, 0.6) 50%); }
-      .page-index-new .index-top-link:first-child {
-        margin-left: 0; }
-      @media (max-width: 400px) {
-        .page-index-new .index-top-link {
-          float: left;
-          clear: both;
-          margin-top: 4px;
-          margin-left: 0; } }
-    .page-index-new .index-top-subheader {
-      position: relative;
-      float: left;
-      clear: both;
-      width: 100%;
-      margin-top: 80px;
-      text-align: center;
-      font-size: 22px;
-      font-style: oblique; }
-      .page-index-new .index-top-subheader:after {
-        content: "";
-        position: absolute;
-        bottom: -10px;
-        left: 50%;
-        -webkit-transform: translateX(-50%);
-        -moz-transform: translateX(-50%);
-        -ms-transform: translateX(-50%);
-        -o-transform: translateX(-50%);
-        transform: translateX(-50%);
-        height: 0;
-        width: 0;
-        border-left: 5px solid transparent;
-        border-right: 5px solid transparent;
-        border-top: 5px solid rgba(68, 68, 68, 0.7); }
-      @media (max-width: 700px) {
-        .page-index-new .index-top-subheader {
-          margin-top: 40px; } }
+    .page-index-new .index-top-body {
+      font-size: 20px;
+      line-height: 32px; }
+      @media (max-width: 690px) {
+        .page-index-new .index-top-body {
+          font-size: 17px;
+          line-height: 28px; } }
   .page-index-new .index-bottom-copyright {
     display: block;
     padding-top: 40px;
