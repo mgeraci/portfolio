@@ -1659,6 +1659,8 @@ nav::after {
   color: #474d59;
   text-align: center; }
   .page-project .content {
+    position: relative;
+    overflow: hidden;
     padding-top: 0;
     width: 100%;
     max-width: 100%;

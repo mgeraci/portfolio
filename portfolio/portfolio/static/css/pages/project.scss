@@ -10,6 +10,8 @@ $video-icon-size: 80px;
 
   // undo default content centering
   .content {
+		position: relative;
+		overflow: hidden; // stop ie from side scrolling
     padding-top: 0;
     width: 100%;
     max-width: 100%;
