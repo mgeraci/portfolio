@@ -1531,6 +1531,9 @@ nav::after {
   @media (max-width: 1370px) {
     .project.smart-mirror {
       height: 54vw; } }
+  @media (min-width: 1500px) {
+    .project.smart-mirror {
+      height: 880px; } }
   @media (max-width: 700px) {
     .project.smart-mirror {
       height: auto; }
@@ -1771,8 +1774,7 @@ nav::after {
     width: 100%;
     margin-top: 80px;
     text-align: center;
-    font-size: 15px;
-    font-style: oblique; }
+    font-size: 15px; }
 
 .page-recordings .title {
   margin-bottom: 20px; }

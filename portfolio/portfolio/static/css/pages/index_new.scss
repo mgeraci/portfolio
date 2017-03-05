@@ -318,6 +318,10 @@ $project-breakpoint: 720px;
       height: 54vw;
 		}
 
+		@media (min-width: 1500px) {
+      height: 880px;
+		}
+
     @media (max-width: $index-breakpoint) {
       height: auto;
 
