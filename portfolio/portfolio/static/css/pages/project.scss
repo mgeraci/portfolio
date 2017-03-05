@@ -40,6 +40,7 @@ $video-icon-size: 80px;
 				@include transform(translateX(-27%));
 				max-width: 1500px;
 				width: 130%;
+				height: auto;
 
 				@media (max-width: 700px) {
 					width: 150%;

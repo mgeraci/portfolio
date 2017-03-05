@@ -1683,7 +1683,8 @@ nav::after {
         -o-transform: translateX(-27%);
         transform: translateX(-27%);
         max-width: 1500px;
-        width: 130%; }
+        width: 130%;
+        height: auto; }
         @media (max-width: 700px) {
           .page-project-top.smart-mirror img {
             width: 150%; } }
