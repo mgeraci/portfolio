@@ -586,6 +586,9 @@ nav::after {
             color: #f3f4d3; } }
 
 .project-nav {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
   padding-top: 40px;
   padding-bottom: 30px;
   font-size: 20px;

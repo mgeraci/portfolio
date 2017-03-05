@@ -1,6 +1,9 @@
 $nav-breakpoint: 600px;
 
 .project-nav {
+	position: relative;
+	overflow: hidden; // stop side scrolling in ie edge
+	width: 100%;
   padding-top: 40px;
   padding-bottom: 30px;
   font-size: 20px;
