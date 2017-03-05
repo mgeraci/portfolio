@@ -4,24 +4,30 @@ import json
 import re
 from django.shortcuts import render, get_object_or_404
 from michael_dot_com.localsettings import STATIC_URL
-from portfolio.models import HomeProject
-from portfolio.models import HomeProjectMedia
-from portfolio.models import Composition
-from portfolio.models import Web
-from portfolio.models import WebImage
-from portfolio.models import RecordingPage
-from portfolio.models import Recording
-from portfolio.models import Graphic
-from portfolio.models import GraphicImage
-from portfolio.models import PhotoblogImage
+from django.contrib.auth.models import User
+from portfolio.models import (
+    HomeProject,
+    HomeProjectMedia,
+    Composition,
+    Web,
+    WebImage,
+    RecordingPage,
+    Recording,
+    Graphic,
+    GraphicImage,
+    PhotoblogImage,
+)
 
 
 # main pages
 def index(request):
     home_projects = HomeProject.objects.all()
+    michael = get_object_or_404(User, username='mgeraci')
 
     context = {
         'home_projects': home_projects,
+        'headline': michael.userprofile.headline,
+        'blurb': michael.userprofile.blurb,
         'show_project_nav': True,
     }
 

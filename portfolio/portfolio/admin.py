@@ -1,5 +1,8 @@
 from django.contrib import admin
+from django.contrib.auth.models import User
+from django.contrib.auth.admin import UserAdmin
 from portfolio.models import (
+    UserProfile,
     HomeProject,
     HomeProjectMedia,
     Composition,
@@ -13,6 +16,16 @@ from portfolio.models import (
     PhotoblogTag,
 )
 
+
+class UserProfileInline(admin.StackedInline):
+    model = UserProfile
+
+class MyUserAdmin(UserAdmin):
+    """
+    Extends Django's UserAdmin class to include UserProfile inline
+    """
+
+    inlines = (UserProfileInline,)
 
 class HomeProjectAdmin(admin.ModelAdmin):
     pass
@@ -50,6 +63,8 @@ class PhotoblogTagAdmin(admin.ModelAdmin):
     pass
 
 
+admin.site.unregister(User)
+admin.site.register(User, MyUserAdmin)
 admin.site.register(HomeProject, HomeProjectAdmin)
 admin.site.register(HomeProjectMedia, HomeProjectMediaAdmin)
 admin.site.register(Composition, CompositionAdmin)

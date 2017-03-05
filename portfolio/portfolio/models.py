@@ -1,6 +1,13 @@
 from __future__ import unicode_literals
 from django.db import models
+from django.contrib.auth.models import User
 from django.template.defaultfilters import slugify
+
+
+class UserProfile(models.Model):
+    user = models.OneToOneField(User, primary_key=True)
+    headline = models.CharField(blank=True, max_length=200)
+    blurb = models.TextField(blank=True)
 
 
 class HomeProject(models.Model):
