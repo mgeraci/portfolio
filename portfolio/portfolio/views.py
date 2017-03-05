@@ -19,45 +19,13 @@ from portfolio.models import PhotoblogImage
 # main pages
 def index(request):
     home_projects = HomeProject.objects.all()
-    show_home_projects = request.GET.get('projects') == '1'
-    recent_image_root = '{}images/recent_thumbs/'.format(STATIC_URL)
-
-    recent_items = [
-        {
-            'text': ['My favorite albums of 2016'],
-            'image': '{}albums-2016.jpg'.format(recent_image_root),
-            'href': 'http://michaelgeraci.com/albums/2016',
-        },
-        {
-            'text': ['New steel drum performance:', 'Despers - Different Me'],
-            'image': '{}despers-2016.jpg'.format(recent_image_root),
-            'href': 'https://www.youtube.com/watch?v=kxqzHEAiwHY',
-        },
-        {
-            'text': ['New project:', 'Smart mirror display'],
-            'image': '{}auto-hud.jpg'.format(recent_image_root),
-            'href': 'https://github.com/mgeraci/auto-hud',
-        },
-        {
-            'text': ['New Photos:', 'Summer trip to Duluth'],
-            'image': '{}7352.jpg'.format(recent_image_root),
-            'href': 'http://michaelgeraci.com/photography/blog/427',
-        },
-    ]
-
-    if show_home_projects:
-        template = 'pages/index_new.html'
-    else:
-        template = "pages/index_old.html"
 
     context = {
-        'recent_items': recent_items,
-        'recent_date': '1.1.17',
         'home_projects': home_projects,
-        'show_home_projects': show_home_projects,
+        'show_project_nav': True,
     }
 
-    return render(request, template, context)
+    return render(request, 'pages/index.html', context)
 
 
 def project(request, slug):
@@ -102,7 +70,7 @@ def project(request, slug):
 
     context = {
         'project': project,
-        'show_home_projects': True,
+        'show_project_nav': True,
     }
 
     return render(request, 'pages/project.html', context)

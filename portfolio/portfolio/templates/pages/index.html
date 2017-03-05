@@ -2,8 +2,8 @@
 
 {% block title %}Front end developer in NY{% endblock %}
 {% block description %}Michael P. Geraci is a front-end developer working in New York, NY.{% endblock %}
-{% block bodyclass %}index-new{% endblock %}
-{% block bodyid %}about{% endblock %}
+{% block bodyclass %}index{% endblock %}
+{% block bodyid %}index{% endblock %}
 
 {% block content %}
 
@@ -28,14 +28,20 @@
 	</div>
 </div>
 
-<div id="projects">
+<div>
 	{% for project in home_projects %}
 		{% include "pages/index/project.html" %}
 	{% endfor %}
 </div>
 
-<span class="index-bottom-copyright">
+<span class="page-index-copyright">
 	Copyright Michael P. Geraci, 2006-{{ year }}
+	<span class="page-index-copyright-separator">
+		|
+	</span>
+	<a class="page-index-copyright-link" href="/photography/blog">
+		Archives
+	</a>
 </span>
 
 {% endblock %}

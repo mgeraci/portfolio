@@ -9,8 +9,8 @@ def menu(request):
     return {
         'menu': [
             {
-                'name': 'Bio/Resume',
-                'split_name': 'Bio/<br />Resume',
+                'name': 'Work/Resume',
+                'split_name': 'Work/<br />Resume',
                 'href': reverse('index_url'),
             },
             {

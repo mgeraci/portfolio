@@ -27,7 +27,7 @@
 	</head>
 	<body id="{% block bodyid %}{% endblock %}" class="page-{% block bodyclass %}{% endblock %}">
 
-		{% if show_home_projects %}
+		{% if show_project_nav %}
 			{% include "menu_new.html" with background=project.background light_text=project.light_text %}
 		{% else %}
 			{% include "menu.html" %}
