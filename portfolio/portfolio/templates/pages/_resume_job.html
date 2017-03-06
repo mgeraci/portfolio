@@ -1,0 +1,17 @@
+<div class="job">
+	<div class="job-row">
+		<div class="job-employer">{{ job.employer }}</div>
+		<div class="job-location">{{ job.location }}</div>
+	</div>
+
+	{% for title in job.titles %}
+		<div class="job-row">
+			<div class="job-title">{{ title.title }}</div>
+			<div class="job-dates">{{ title.dates }}</div>
+		</div>
+	{% endfor %}
+
+	<div class="job-row">
+		<div class="job-description">{{ job.description }}</div>
+	</div>
+</div>

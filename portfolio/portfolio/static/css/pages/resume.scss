@@ -1,0 +1,88 @@
+.page-resume {
+	background: $Colors-gray-7;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	color: $Colors-gray-1;
+	@include type(16px, 24px);
+	margin: 0;
+
+	&,
+	* {
+		@include box-sizing(border-box);
+	}
+
+	&-wrapper {
+		width: 1000px;
+		margin: 20px auto 50px;
+		background: #fff;
+		padding: 50px 60px;
+		border-radius: 2px;
+		box-shadow: 0 2px 2px rgba(#000, 0.1);
+	}
+
+	.header {
+		width: 100%;
+		text-align: center;
+
+		&-name {
+			font-family: "Source Serif Pro";
+			padding-bottom: 20px;
+			font-size: 42px;
+			font-weight: bold;
+		}
+
+		&-separator {
+			padding: 0 3px;
+		}
+	}
+
+	.section {
+		@include clearfix;
+		margin-top: 60px;
+
+		&-title {
+			float: left;
+			width: 16%;
+			min-height: 50px;
+			border-right: 5px solid $Colors-blue-3;
+			font-weight: 500;
+			font-size: 22px;
+		}
+
+		&-content {
+			float: right;
+			width: 74%;
+		}
+	}
+
+	.job {
+		margin-top: 25px;
+
+		&:first-child {
+			margin-top: 0;
+		}
+
+		&-row {
+			@include clearfix;
+			width: 100%;
+		}
+
+		&-employer,
+		&-title {
+			float: left;
+		}
+
+		&-location,
+		&-dates {
+			float: right;
+			font-weight: 500;
+		}
+
+		&-employer {
+			font-weight: 600;
+		}
+
+		&-description {
+			margin-top: 10px;
+		}
+	}
+}

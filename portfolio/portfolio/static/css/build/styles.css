@@ -1960,6 +1960,71 @@ nav::after {
     -o-transform: translateX(-50%);
     transform: translateX(-50%); }
 
+.page-resume {
+  background: #f3f5f9;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #474d59;
+  font-size: 16px;
+  line-height: 24px;
+  margin: 0; }
+  .page-resume,
+  .page-resume * {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box; }
+  .page-resume-wrapper {
+    width: 1000px;
+    margin: 20px auto 50px;
+    background: #fff;
+    padding: 50px 60px;
+    border-radius: 2px;
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1); }
+  .page-resume .header {
+    width: 100%;
+    text-align: center; }
+    .page-resume .header-name {
+      font-family: "Source Serif Pro";
+      padding-bottom: 20px;
+      font-size: 42px;
+      font-weight: bold; }
+    .page-resume .header-separator {
+      padding: 0 3px; }
+  .page-resume .section {
+    margin-top: 60px; }
+    .page-resume .section::after {
+      clear: both;
+      content: "";
+      display: table; }
+    .page-resume .section-title {
+      float: left;
+      width: 16%;
+      min-height: 50px;
+      border-right: 5px solid #4c7bd9;
+      font-weight: 500;
+      font-size: 22px; }
+    .page-resume .section-content {
+      float: right;
+      width: 74%; }
+  .page-resume .job {
+    margin-top: 25px; }
+    .page-resume .job:first-child {
+      margin-top: 0; }
+    .page-resume .job-row {
+      width: 100%; }
+      .page-resume .job-row::after {
+        clear: both;
+        content: "";
+        display: table; }
+    .page-resume .job-employer, .page-resume .job-title {
+      float: left; }
+    .page-resume .job-location, .page-resume .job-dates {
+      float: right;
+      font-weight: 500; }
+    .page-resume .job-employer {
+      font-weight: 600; }
+    .page-resume .job-description {
+      margin-top: 10px; }
+
 .page-album-lists-link,
 .page-album-lists-link h2,
 .page-album-lists-link h3 {

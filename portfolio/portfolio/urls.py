@@ -32,6 +32,7 @@ urlpatterns = [
     url(r'^recordings/(?P<slug>[^/]+)/$', views.recordings_item, name='recordings_item_url'),
     url(r'^recordings', views.recordings, name='recordings_url'),
     url(r'^links', views.links, name='links_url'),
+    url(r'^resume', views.resume, name='resume_url'),
 
     # verification pages
     url('keybase.txt', views.keybase, name='keybase_url'),
