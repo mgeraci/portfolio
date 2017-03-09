@@ -1,6 +1,7 @@
 .page-resume {
 	background: $Colors-gray-7;
 	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-family: "Source Serif Pro";
 	color: $Colors-gray-1;
 	@include type(16px, 24px);
 	margin: 0;
@@ -20,18 +21,36 @@
 	}
 
 	.header {
+		@include clearfix;
 		width: 100%;
 		text-align: center;
 
-		&-name {
-			font-family: "Source Serif Pro";
-			padding-bottom: 20px;
-			font-size: 42px;
-			font-weight: bold;
+		&-left,
+		&-right {
+			width: 50%;
 		}
 
-		&-separator {
-			padding: 0 3px;
+		&-left {
+			float: left;
+			text-align: left;
+		}
+
+		&-right {
+			float: right;
+			text-align: right;
+		}
+
+		&-name,
+		&-tagline,
+		&-url,
+		&-email {
+			display: block;
+		}
+
+		&-name {
+			font-family: "Source Serif Pro";
+			font-size: 28px;
+			font-weight: bold;
 		}
 	}
 
@@ -42,7 +61,7 @@
 		&-title {
 			float: left;
 			width: 16%;
-			min-height: 50px;
+			min-height: 40px;
 			border-right: 5px solid $Colors-blue-3;
 			font-weight: 500;
 			font-size: 22px;

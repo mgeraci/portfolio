@@ -2,7 +2,7 @@ Resume = {
     'header': {
         'name': 'Michael P. Geraci',
         'tagline': 'Front-End Engineer',
-        'url': 'www.mgeraci.com',
+        'url': 'mgeraci.com',
         'email': 'me@mgeraci.com'
     },
 
@@ -34,8 +34,8 @@ Resume = {
                     'description': '''
                         Worked on the desktop and mobile web sites. Owned significant portions of the
                         site (e.g., messaging). Wrote api endpoints to support the web and apps teams.
-                        Ran front-end projects, interfacing with designers and product managers.
-                        Managed launches.
+                        Ran front-end projects, interfacing with designers, product managers, and junior
+                        web team members. Managed launches and A/B tests.
                     '''
                 },
 

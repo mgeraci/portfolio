@@ -1963,6 +1963,7 @@ nav::after {
 .page-resume {
   background: #f3f5f9;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "Source Serif Pro";
   color: #474d59;
   font-size: 16px;
   line-height: 24px;
@@ -1982,13 +1983,24 @@ nav::after {
   .page-resume .header {
     width: 100%;
     text-align: center; }
+    .page-resume .header::after {
+      clear: both;
+      content: "";
+      display: table; }
+    .page-resume .header-left, .page-resume .header-right {
+      width: 50%; }
+    .page-resume .header-left {
+      float: left;
+      text-align: left; }
+    .page-resume .header-right {
+      float: right;
+      text-align: right; }
+    .page-resume .header-name, .page-resume .header-tagline, .page-resume .header-url, .page-resume .header-email {
+      display: block; }
     .page-resume .header-name {
       font-family: "Source Serif Pro";
-      padding-bottom: 20px;
-      font-size: 42px;
+      font-size: 28px;
       font-weight: bold; }
-    .page-resume .header-separator {
-      padding: 0 3px; }
   .page-resume .section {
     margin-top: 60px; }
     .page-resume .section::after {
@@ -1998,7 +2010,7 @@ nav::after {
     .page-resume .section-title {
       float: left;
       width: 16%;
-      min-height: 50px;
+      min-height: 40px;
       border-right: 5px solid #4c7bd9;
       font-weight: 500;
       font-size: 22px; }

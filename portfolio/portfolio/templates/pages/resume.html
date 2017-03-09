@@ -9,11 +9,7 @@
 		<meta name="description" content="{% block description %}{% endblock %}">
 		<meta name="keywords" content="michael, geraci, michael geraci, michael p. geraci, web design, web, user experience, ux design, photography, graphic design, recording">
 
-		{% if show_project_nav %}
-			<link rel="icon" href="{{ STATIC_URL }}images/favicon-pngquant.png">
-		{% else %}
-			<link rel="shortcut icon" href="{{ STATIC_URL }}images/favicon.ico" type="image/x-icon">
-		{% endif %}
+		<link rel="icon" href="{{ STATIC_URL }}images/favicon-pngquant.png">
 
 		{% if is_local %}
 			<link
@@ -32,12 +28,16 @@
 	<body class="page-resume">
 		<div class="page-resume-wrapper">
 			<div class="header">
-				<div class="header-name">{{ header.name }}</div>
-				<span class="header-tagline">{{ header.tagline }}</span>
-				<span class="header-separator">&bull;</span>
-				<span class="header-url">{{ header.url }}</span>
-				<span class="header-separator">&bull;</span>
-				<span class="header-email">{{ header.email }}</span>
+
+				<div class="header-left">
+					<div class="header-name">{{ header.name }}</div>
+					<span class="header-tagline">{{ header.tagline }}</span>
+				</div>
+
+				<div class="header-right">
+					<span class="header-email">{{ header.email }}</span>
+					<span class="header-url">{{ header.url }}</span>
+				</div>
 			</div>
 			{% for section in sections %}
 				<div class="section">
