@@ -32,8 +32,8 @@ Resume = {
                     'employer': 'OkCupid',
                     'location': 'New York, NY',
                     'description': '''
-                        Worked on the desktop and mobile web sites. Owned significant portions of the
-                        site (e.g., messaging). Wrote api endpoints to support the web and apps teams.
+                        Worked on the desktop and mobile web. Owned significant portions of the
+                        site (e.g., messaging). Wrote API endpoints to support the web and apps teams.
                         Ran front-end projects, interfacing with designers, product managers, and junior
                         web team members. Managed launches and A/B tests.
                     '''
@@ -49,9 +49,8 @@ Resume = {
                     'employer': 'OkCupid Labs',
                     'location': 'New York, NY',
                     'description': '''
-                        The dedicated front-end engineer on the R&D team at OkCupid. Worked on the
-                        polishing the established product we had, as well as quickly protoyping new
-                        ideas.
+                        Worked as the sole front-end engineer on the R&D team at OkCupid. Polished
+                        the established product we had, as well as quickly protoyping new ideas.
                     '''
                 },
 
@@ -65,8 +64,9 @@ Resume = {
                     'employer': 'Dtime',
                     'location': 'New York, NY',
                     'description': '''
-                        Developed designs with the CEO. Implemented designs in hamstache templates with SASS/CSS in the Ruby
-                        on Rails / backbone.js application. Developed wireframes and mockups for iOS application.
+                        Developed designs with the CEO. Implemented designs in hamstache templates
+                        with SASS/CSS in the Ruby on Rails / backbone.js application. Developed
+                        wireframes and mockups for iOS application.
                     '''
                 },
 
@@ -80,9 +80,9 @@ Resume = {
                     'employer': 'Reducify',
                     'location': 'New York, NY',
                     'description': '''
-                        Reducify helps you find the best appliances available locally. Reducify aggregates appliance data, provides
-                        advanced search tools, and offers a mobile app for in-store research/purchase. In charge of user experience,
-                        front-end design and implementation, and graphic design. Seed funded by NYC SeedStart 2010.
+                        Front-end and business work for an appliance aggregator and purchase
+                        portal. Worked on user-experience, front-end design and implementation,
+                        and graphic design. Seed funded by NYC Seedstart 2010.
                     '''
                 },
 
@@ -96,9 +96,9 @@ Resume = {
                     'employer': 'The Almanac',
                     'location': 'New York, NY',
                     'description': '''
-                        The Almanac is a web application which helps users take control of their role in climate change through the
-                        automated tracking of their purchases and recommendations for reduction. Led front-end design and
-                        implementation with jQuery and CSS in Ruby/Rails.
+                        Front-end and business work for a purchase-tracking and climate-change
+                        monitoring website. Led front-end design and implementation with jQuery
+                        and CSS in Ruby/Rails.
                     '''
                 },
             ]
@@ -107,7 +107,7 @@ Resume = {
         {
             'title': 'Hobbies',
             'content': [
-                'Steel Pan, Climbing, Music Recording, Photography'
+                'Long-distance Bicycle Touring, Steel Pan, Climbing, Music Recording, Photography'
             ]
         },
     ]
