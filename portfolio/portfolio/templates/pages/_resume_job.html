@@ -1,15 +1,17 @@
 <div class="job">
 	<div class="job-row">
-		<div class="job-employer">{{ job.employer }}</div>
-		<div class="job-location">{{ job.location }}</div>
+		<div class="job-left">
+			<div class="job-employer">{{ job.employer }}</div>
+			<div class="job-title">&nbsp;&mdash; {{ job.title }}</div>
+		</div>
+		<div class="job-dates">{{ job.dates }}</div>
 	</div>
 
-	{% for title in job.titles %}
+	{% if job.tech %}
 		<div class="job-row">
-			<div class="job-title">{{ title.title }}</div>
-			<div class="job-dates">{{ title.dates }}</div>
+			<div class="job-tech">{{ job.tech }}</div>
 		</div>
-	{% endfor %}
+	{% endif %}
 
 	<div class="job-row">
 		<div class="job-description">{{ job.description }}</div>

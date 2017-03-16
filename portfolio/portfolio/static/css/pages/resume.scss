@@ -8,7 +8,7 @@
 
 	&,
 	* {
-		@include box-sizing(border-box);
+		box-sizing: border-box;
 	}
 
 	// paper
@@ -48,6 +48,12 @@
 		&-url,
 		&-email {
 			display: block;
+		}
+
+		&-email,
+		&-url {
+			@include link-color($Colors-gray-1, $Colors-gray-1);
+			text-decoration: none;
 		}
 
 		&-name {
@@ -94,6 +100,7 @@
 			width: 100%;
 		}
 
+		&-left,
 		&-employer,
 		&-title {
 			float: left;

@@ -1970,8 +1970,6 @@ nav::after {
   margin: 0; }
   .page-resume,
   .page-resume * {
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
     box-sizing: border-box; }
   .page-resume-wrapper {
     width: 1000px;
@@ -1999,6 +1997,28 @@ nav::after {
       text-align: right; }
     .page-resume .header-name, .page-resume .header-tagline, .page-resume .header-url, .page-resume .header-email {
       display: block; }
+    .page-resume .header-email, .page-resume .header-url {
+      text-decoration: none; }
+      .page-resume .header-email,
+      .page-resume .header-email h2,
+      .page-resume .header-email h3, .page-resume .header-url,
+      .page-resume .header-url h2,
+      .page-resume .header-url h3 {
+        -webkit-transition: color 50ms linear, background-image 50ms linear;
+        -moz-transition: color 50ms linear, background-image 50ms linear;
+        transition: color 50ms linear, background-image 50ms linear; }
+      .page-resume .header-email, .page-resume .header-email:visited, .page-resume .header-url, .page-resume .header-url:visited {
+        color: #474d59; }
+      .no-touchevents .page-resume .header-email:hover,
+      .no-touchevents .page-resume .header-email:hover h2,
+      .no-touchevents .page-resume .header-email:hover h3, .no-touchevents .page-resume .header-email:active,
+      .no-touchevents .page-resume .header-email:active h2,
+      .no-touchevents .page-resume .header-email:active h3, .no-touchevents .page-resume .header-url:hover,
+      .no-touchevents .page-resume .header-url:hover h2,
+      .no-touchevents .page-resume .header-url:hover h3, .no-touchevents .page-resume .header-url:active,
+      .no-touchevents .page-resume .header-url:active h2,
+      .no-touchevents .page-resume .header-url:active h3 {
+        color: #474d59; }
     .page-resume .header-name {
       font-family: "Source Serif Pro";
       font-size: 28px;
@@ -2033,7 +2053,7 @@ nav::after {
         clear: both;
         content: "";
         display: table; }
-    .page-resume .job-employer, .page-resume .job-title {
+    .page-resume .job-left, .page-resume .job-employer, .page-resume .job-title {
       float: left; }
     .page-resume .job-location, .page-resume .job-dates {
       float: right;

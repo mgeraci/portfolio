@@ -35,8 +35,12 @@
 				</div>
 
 				<div class="header-right">
-					<span class="header-email">{{ header.email }}</span>
-					<span class="header-url">{{ header.url }}</span>
+					<a href="mailto:{{ header.email}}" class="header-email">
+						{{ header.email }}
+					</a>
+					<a href="http://{{ header.url }}" class="header-url">
+						{{ header.url }}
+					</a>
 				</div>
 			</div>
 			{% for section in sections %}
@@ -47,7 +51,7 @@
 						</div>
 					</div>
 					<div class="section-content">
-						{% if section.title == "Work" %}
+						{% if section.title == "Experience" or section.title == "Work" %}
 							{% for content in section.content %}
 								{% include "pages/_resume_job.html" with job=content %}
 							{% endfor %}
