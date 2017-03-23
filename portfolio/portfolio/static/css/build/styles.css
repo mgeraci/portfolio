@@ -1968,16 +1968,24 @@ nav::after {
   font-size: 16px;
   line-height: 24px;
   margin: 0; }
+  @media print {
+    .page-resume {
+      background: #fff;
+      color: #000;
+      padding: 20px 10px 0;
+      font-size: 12px;
+      line-height: 1.5; } }
   .page-resume,
   .page-resume * {
     box-sizing: border-box; }
-  .page-resume-wrapper {
-    width: 1000px;
-    margin: 20px auto 60px;
-    background: #fff;
-    padding: 70px 70px 90px;
-    border-radius: 2px;
-    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1); }
+  @media screen {
+    .page-resume-wrapper {
+      width: 1000px;
+      margin: 20px auto 60px;
+      background: #fff;
+      padding: 70px 70px 90px;
+      border-radius: 2px;
+      box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1); } }
   .page-resume .header {
     width: 100%;
     padding-bottom: 20px;
@@ -1987,6 +1995,9 @@ nav::after {
       clear: both;
       content: "";
       display: table; }
+    @media print {
+      .page-resume .header {
+        line-height: 18px; } }
     .page-resume .header-left, .page-resume .header-right {
       width: 50%; }
     .page-resume .header-left {
@@ -2020,9 +2031,11 @@ nav::after {
       .no-touchevents .page-resume .header-url:active h3 {
         color: #474d59; }
     .page-resume .header-name {
-      font-family: "Source Serif Pro";
       font-size: 28px;
       font-weight: bold; }
+      @media print {
+        .page-resume .header-name {
+          font-size: 18px; } }
     .page-resume .header-email {
       position: relative;
       top: 3px; }
@@ -2032,7 +2045,12 @@ nav::after {
       clear: both;
       content: "";
       display: table; }
+    @media print {
+      .page-resume .section {
+        margin-top: 50px; } }
     .page-resume .section-title {
+      position: relative;
+      bottom: 4px;
       float: left;
       width: 16%;
       padding-top: 4px;
@@ -2040,6 +2058,11 @@ nav::after {
       border-left: 5px solid #4c7bd9;
       font-weight: 500;
       font-size: 22px; }
+      @media print {
+        .page-resume .section-title {
+          bottom: 8px;
+          padding-top: 0;
+          font-size: 18px; } }
     .page-resume .section-content {
       float: right;
       width: 74%; }

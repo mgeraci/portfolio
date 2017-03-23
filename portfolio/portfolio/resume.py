@@ -15,7 +15,7 @@ Resume = {
                     'title': 'Senior Front-End Engineer',
                     'dates': '2013-Present',
                     'location': 'New York, NY',
-                    'tech': 'React/Redux, Webpack, Babel, ESLint, Express',
+                    'tech': 'React/Redux, Webpack, Babel, ESLint, Express-inspired API',
                     'description': '''
                         Worked on the desktop and mobile web. Owned significant portions of the
                         site (e.g., messaging). Wrote API endpoints to support the web and apps teams.
