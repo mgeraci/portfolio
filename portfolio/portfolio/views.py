@@ -84,6 +84,8 @@ def project(request, slug):
 
 
 def resume(request):
+    Resume['show_phone'] = request.GET.get('show-phone') == '1'
+
     return render(request, 'pages/resume.html', Resume)
 
 

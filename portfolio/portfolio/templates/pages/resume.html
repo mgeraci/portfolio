@@ -35,9 +35,19 @@
 				</div>
 
 				<div class="header-right">
-					<a href="mailto:{{ header.email}}" class="header-email">
-						{{ header.email }}
-					</a>
+					<div class="header-right-top">
+						<a href="mailto:{{ header.email}}" class="header-email">
+							{{ header.email }}
+						</a>
+						{% if show_phone %}
+							<div class="header-right-top-separator">
+								&bull;
+							</div>
+							<a href="tel:{{ header.phone}}" class="header-phone">
+								{{ header.phone }}
+							</a>
+						{% endif %}
+					</div>
 					<a href="http://{{ header.url }}" class="header-url">
 						{{ header.url }}
 					</a>

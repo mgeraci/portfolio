@@ -1,9 +1,12 @@
+from michael_dot_com.localsettings import PHONE_NUMBER
+
 Resume = {
     'header': {
         'name': 'Michael P. Geraci',
         'tagline': 'Front-End Engineer',
         'url': 'mgeraci.com',
-        'email': 'me@mgeraci.com'
+        'email': 'me@mgeraci.com',
+        'phone': PHONE_NUMBER,
     },
 
     'sections': [

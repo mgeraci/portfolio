@@ -66,11 +66,17 @@ $print-font-small: 12px;
 		&-name,
 		&-tagline,
 		&-url,
-		&-email {
+		&-right-top {
 			display: block;
 		}
 
 		&-email,
+		&-phone {
+			display: inline-block;
+		}
+
+		&-email,
+		&-phone,
 		&-url {
 			@include link-color($Colors-gray-1, $Colors-gray-1);
 			text-decoration: none;
@@ -85,9 +91,14 @@ $print-font-small: 12px;
 			}
 		}
 
-		&-email {
+		&-right-top {
 			position: relative;
 			top: 3px;
+
+			&-separator {
+				display: inline-block;
+				padding: 0 4px;
+			}
 		}
 	}
 

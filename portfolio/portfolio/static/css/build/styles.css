@@ -2006,25 +2006,33 @@ nav::after {
     .page-resume .header-right {
       float: right;
       text-align: right; }
-    .page-resume .header-name, .page-resume .header-tagline, .page-resume .header-url, .page-resume .header-email {
+    .page-resume .header-name, .page-resume .header-tagline, .page-resume .header-url, .page-resume .header-right-top {
       display: block; }
-    .page-resume .header-email, .page-resume .header-url {
+    .page-resume .header-email, .page-resume .header-phone {
+      display: inline-block; }
+    .page-resume .header-email, .page-resume .header-phone, .page-resume .header-url {
       text-decoration: none; }
       .page-resume .header-email,
       .page-resume .header-email h2,
-      .page-resume .header-email h3, .page-resume .header-url,
+      .page-resume .header-email h3, .page-resume .header-phone,
+      .page-resume .header-phone h2,
+      .page-resume .header-phone h3, .page-resume .header-url,
       .page-resume .header-url h2,
       .page-resume .header-url h3 {
         -webkit-transition: color 50ms linear, background-image 50ms linear;
         -moz-transition: color 50ms linear, background-image 50ms linear;
         transition: color 50ms linear, background-image 50ms linear; }
-      .page-resume .header-email, .page-resume .header-email:visited, .page-resume .header-url, .page-resume .header-url:visited {
+      .page-resume .header-email, .page-resume .header-email:visited, .page-resume .header-phone, .page-resume .header-phone:visited, .page-resume .header-url, .page-resume .header-url:visited {
         color: #474d59; }
       .no-touchevents .page-resume .header-email:hover,
       .no-touchevents .page-resume .header-email:hover h2,
       .no-touchevents .page-resume .header-email:hover h3, .no-touchevents .page-resume .header-email:active,
       .no-touchevents .page-resume .header-email:active h2,
-      .no-touchevents .page-resume .header-email:active h3, .no-touchevents .page-resume .header-url:hover,
+      .no-touchevents .page-resume .header-email:active h3, .no-touchevents .page-resume .header-phone:hover,
+      .no-touchevents .page-resume .header-phone:hover h2,
+      .no-touchevents .page-resume .header-phone:hover h3, .no-touchevents .page-resume .header-phone:active,
+      .no-touchevents .page-resume .header-phone:active h2,
+      .no-touchevents .page-resume .header-phone:active h3, .no-touchevents .page-resume .header-url:hover,
       .no-touchevents .page-resume .header-url:hover h2,
       .no-touchevents .page-resume .header-url:hover h3, .no-touchevents .page-resume .header-url:active,
       .no-touchevents .page-resume .header-url:active h2,
@@ -2036,9 +2044,12 @@ nav::after {
       @media print {
         .page-resume .header-name {
           font-size: 18px; } }
-    .page-resume .header-email {
+    .page-resume .header-right-top {
       position: relative;
       top: 3px; }
+      .page-resume .header-right-top-separator {
+        display: inline-block;
+        padding: 0 4px; }
   .page-resume .section {
     margin-top: 60px; }
     .page-resume .section::after {
