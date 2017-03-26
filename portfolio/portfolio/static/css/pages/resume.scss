@@ -1,17 +1,19 @@
 $print-font-large: 18px;
 $print-font-small: 12px;
+$screen-color: $Colors-gray-1;
+$print-color: $Colors-gray-1;
 
 .page-resume {
 	background: $Colors-gray-6;
 	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 	font-family: "Source Serif Pro";
-	color: $Colors-gray-1;
+	color: $screen-color;
 	@include type(16px, 24px);
 	margin: 0;
 
 	@media print {
 		background: #fff;
-		color: #000;
+		color: $print-color;
 		padding: 20px 10px 0;
 		@include type($print-font-small, 1.5);
 	}
@@ -78,8 +80,12 @@ $print-font-small: 12px;
 		&-email,
 		&-phone,
 		&-url {
-			@include link-color($Colors-gray-1, $Colors-gray-1);
+			@include link-color($screen-color, $screen-color);
 			text-decoration: none;
+
+			@media (print) {
+				@include link-color($print-color, $print-color);
+			}
 		}
 
 		&-name {
@@ -98,12 +104,13 @@ $print-font-small: 12px;
 			&-separator {
 				display: inline-block;
 				padding: 0 4px;
+				color: $Colors-gray-2;
 			}
 		}
 	}
 
 
-	// section: has a label and content
+	// section: has a title (with blue border) and content
 	// --------------------------------------------------------------------------
 
 	.section {
@@ -127,7 +134,7 @@ $print-font-small: 12px;
 
 			@media print {
 				bottom: 8px;
-				padding-top: 0;
+				padding-top: 2px;
 				font-size: $print-font-large;
 			}
 		}
