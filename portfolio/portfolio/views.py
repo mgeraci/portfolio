@@ -36,10 +36,13 @@ def index(request):
 
 
 def project(request, slug):
-    home_projects = HomeProject.objects.all()
     project = get_object_or_404(HomeProject, slug=slug)
     project_media = HomeProjectMedia.objects.filter(project=project)
     project_media_map = {}
+
+
+    # prep project description and media
+    # -------------------------------------------------------------------------
 
     for media in project_media:
         media.is_media = True
@@ -75,8 +78,31 @@ def project(request, slug):
 
     project.content = content
 
+
+    # get previous and next project for navigation
+    # -------------------------------------------------------------------------
+
+    prev_order = project.order - 1
+    next_order = project.order + 1
+    prev_project = False
+    next_project = False
+
+    try:
+        prev_project = HomeProject.objects.get(order=prev_order)
+    except:
+        pass
+
+    try:
+        next_project = HomeProject.objects.get(order=next_order)
+    except:
+        pass
+
     context = {
         'project': project,
+        'navigation': {
+            'prev_project': prev_project,
+            'next_project': next_project,
+        },
         'show_project_nav': True,
     }
 

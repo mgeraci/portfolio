@@ -1,0 +1,34 @@
+{% if nav.prev_project or nav.next_project %}
+	<nav class="project-bottom-nav">
+		{% if nav.prev_project %}
+			<a
+				href="{% url 'project_url' nav.prev_project.slug %}"
+				class="project-bottom-nav-item project-bottom-nav-item--prev"
+			>
+				<div class="project-bottom-nav-item-icon">
+					&laquo;
+				</div>
+				<div class="project-bottom-nav-item-text">
+					Previous project:
+					<br />
+					{{ nav.prev_project.title }}
+				</div>
+			</a>
+		{% endif %}
+		{% if nav.next_project %}
+			<a
+				href="{% url 'project_url' nav.next_project.slug %}"
+				class="project-bottom-nav-item project-bottom-nav-item--next"
+			>
+				<div class="project-bottom-nav-item-text">
+					Next project:
+					<br />
+					{{ nav.next_project.title }}
+				</div>
+				<div class="project-bottom-nav-item-icon">
+					&raquo;
+				</div>
+			</a>
+		{% endif %}
+	</nav>
+{% endif %}

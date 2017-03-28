@@ -1,0 +1,41 @@
+// next and previous project navigation
+
+$nav-height: 54px;
+
+.project-bottom-nav {
+	display: block;
+	width: 100%;
+	height: $nav-height;
+	margin-top: 40px;
+
+	&-item {
+		width: 20%;
+		height: 100%;
+		@include type(16px, 26px);
+		@include link-color($Colors-gray-2, $Colors-blue-3);
+		text-align: center;
+
+		&--prev {
+			float: left;
+		}
+
+		&--next {
+			float: right;
+		}
+
+		&-icon,
+		&-text {
+			float: left;
+			height: 100%;
+		}
+
+		&-icon {
+			width: 20%;
+			@include type(22px, $nav-height);
+		}
+
+		&-text {
+			width: 80%;
+		}
+	}
+}

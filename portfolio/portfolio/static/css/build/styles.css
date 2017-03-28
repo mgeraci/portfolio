@@ -1472,6 +1472,45 @@ nav::after {
       .page-project-media-caption {
         padding-left: 2%; } }
 
+.project-bottom-nav {
+  display: block;
+  width: 100%;
+  height: 54px;
+  margin-top: 40px; }
+  .project-bottom-nav-item {
+    width: 20%;
+    height: 100%;
+    font-size: 16px;
+    line-height: 26px;
+    text-align: center; }
+    .project-bottom-nav-item,
+    .project-bottom-nav-item h2,
+    .project-bottom-nav-item h3 {
+      -webkit-transition: color 50ms linear, background-image 50ms linear;
+      -moz-transition: color 50ms linear, background-image 50ms linear;
+      transition: color 50ms linear, background-image 50ms linear; }
+    .project-bottom-nav-item, .project-bottom-nav-item:visited {
+      color: #5e6573; }
+    .no-touchevents .project-bottom-nav-item:hover,
+    .no-touchevents .project-bottom-nav-item:hover h2,
+    .no-touchevents .project-bottom-nav-item:hover h3, .no-touchevents .project-bottom-nav-item:active,
+    .no-touchevents .project-bottom-nav-item:active h2,
+    .no-touchevents .project-bottom-nav-item:active h3 {
+      color: #4c7bd9; }
+    .project-bottom-nav-item--prev {
+      float: left; }
+    .project-bottom-nav-item--next {
+      float: right; }
+    .project-bottom-nav-item-icon, .project-bottom-nav-item-text {
+      float: left;
+      height: 100%; }
+    .project-bottom-nav-item-icon {
+      width: 20%;
+      font-size: 22px;
+      line-height: 54px; }
+    .project-bottom-nav-item-text {
+      width: 80%; }
+
 .page-project {
   background: #fafbfd;
   font-family: "Source Serif Pro";
@@ -1597,7 +1636,7 @@ nav::after {
   .page-project-footer {
     display: block;
     width: 100%;
-    margin-top: 80px;
+    margin-top: 60px;
     text-align: center;
     font-size: 15px; }
 
