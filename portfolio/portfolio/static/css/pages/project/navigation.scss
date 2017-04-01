@@ -1,6 +1,19 @@
 // next and previous project navigation
 
 $nav-height: 54px;
+$nav-gutter: 60px; // space for margin and arrow
+$nav-arrow-gutter: 30px;
+$nav-breakpoint: 530px;
+
+@mixin small-screen-style {
+	width: 50%;
+	padding: 0;
+	@include type(14px, 24px);
+
+	&::after {
+		display: none;
+	}
+}
 
 .project-bottom-nav {
 	display: block;
@@ -9,33 +22,49 @@ $nav-height: 54px;
 	margin-top: 40px;
 
 	&-item {
-		width: 20%;
+		position: relative;
 		height: 100%;
 		@include type(16px, 26px);
 		@include link-color($Colors-gray-2, $Colors-blue-3);
 		text-align: center;
 
+		&::after {
+			display: block;
+			position: absolute;
+			top: 50%;
+			@include transform(translateY(-50%));
+		}
+
+		&-label {
+			font-weight: bold;
+		}
+
 		&--prev {
 			float: left;
+			padding-left: $nav-gutter;
+
+			&::after {
+				content: "«";
+				left: $nav-arrow-gutter;
+			}
+
+			@media (max-width: $nav-breakpoint) {
+				@include small-screen-style;
+			}
 		}
 
 		&--next {
 			float: right;
-		}
+			padding-right: $nav-gutter;
 
-		&-icon,
-		&-text {
-			float: left;
-			height: 100%;
-		}
+			&::after {
+				content: "»";
+				right: $nav-arrow-gutter;
+			}
 
-		&-icon {
-			width: 20%;
-			@include type(22px, $nav-height);
-		}
-
-		&-text {
-			width: 80%;
+			@media (max-width: $nav-breakpoint) {
+				@include small-screen-style;
+			}
 		}
 	}
 }
