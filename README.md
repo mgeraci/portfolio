@@ -55,7 +55,7 @@ install all of the packages required to compile these files, run:
 
 	npm install
 
-Then to start gulp watching and compiling the files, run:
+Then to start webpack watching and compiling the files, run:
 
 	npm run watch
 
