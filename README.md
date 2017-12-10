@@ -9,8 +9,8 @@ and my photoblog subpage is written in React.
 
 Assuming that you have python, virtualenv, and node/npm:
 * clone the repo
-* mkvirtualenv portfolio
-* pip install -r requirements.txt
+* `mkvirtualenv portfolio`
+* `pip install -r requirements.txt`
 * create a local database
 * add the file `portfolio/michael_dot_com/localsettings.py` — see contents below
 * `./portfolio/manage.py migrate`
