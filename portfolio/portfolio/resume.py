@@ -35,7 +35,7 @@ Resume = {
                     'tech': 'CoffeeScript JS and Templating, jQuery',
                     'description': '''
                         Worked as the sole front-end engineer on the R&D team at OkCupid. Polished
-                        the established product we had, as well as quickly protoyping new ideas.
+                        the established product we had and helped to quickly prototype new ideas.
                     '''
                 },
 
