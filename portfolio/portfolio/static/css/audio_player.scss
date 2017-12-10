@@ -7,6 +7,30 @@ $scrubber-height: 10px;
 $scrubber-padding: ($audio-height - $scrubber-height) / 2;
 $icon-color: $text;
 
+@mixin audio-colors(
+  $bg,
+  $button-bg,
+  $button-bg-active,
+  $scrubber-bg
+) {
+  background: $bg;
+
+  .play-pause,
+  .time {
+    background: $button-bg;
+  }
+
+  .play-pause {
+    &:hover {
+      background: $button-bg-active;
+    }
+  }
+
+  .scrubber {
+    background: $scrubber-bg
+  }
+}
+
 .audiojs {
   position: relative;
   width: $audio-width;
@@ -15,10 +39,25 @@ $icon-color: $text;
   padding-right: $time-width + $scrubber-padding;
   padding-bottom: $scrubber-padding;
   padding-left: $playpause-width + $scrubber-padding;
-  background: mix($green, $cream);
   border-radius: $audio-br;
   color: $text;
   line-height: $audio-height;
+
+  @include audio-colors(
+    $bg: mix($green, $cream),
+    $button-bg: $cream,
+    $button-bg-active: darken($cream, 10%),
+    $scrubber-bg: darken($green, 10%)
+  );
+
+  .page-album-list & {
+    @include audio-colors(
+      $bg: $Colors-gray-6,
+      $button-bg: $Colors-gray-5,
+      $button-bg-active: $Colors-blue-5,
+      $scrubber-bg: $Colors-gray-5
+    );
+  }
 
 
   // general styles
@@ -29,8 +68,7 @@ $icon-color: $text;
     position: absolute;
     top: 0;
     height: 100%;
-    background: $cream;
-	}
+  }
 
 
   // left side icons
@@ -42,11 +80,7 @@ $icon-color: $text;
     width: $playpause-width;
     @include border-left-radius($audio-br);
     cursor: pointer;
-
-    &:hover {
-      background: darken($cream, 10%);
-		}
-	}
+  }
 
   $triangle-width: 15px;
   $triangle-height: 20px;
@@ -54,7 +88,7 @@ $icon-color: $text;
     margin-top: ($audio-height - $triangle-height) / 2;
     margin-left: ($playpause-width - $triangle-width) / 2;
     @include triangle($triangle-height $triangle-width, $icon-color, right);
-	}
+  }
 
   $pause-width: 14px;
   $pause-height: 16px;
@@ -74,30 +108,30 @@ $icon-color: $text;
       width: 5px;
       height: 100%;
       background: $icon-color;
-		}
+    }
 
     &:before {
       left: 0;
-		}
+    }
 
     &:after {
       right: 0;
-		}
-	}
+    }
+  }
 
   .pause {
     display: none;
-	}
+  }
 
   &.playing {
     .pause {
       display: block;
-		}
+    }
 
     .play {
       display: none;
-		}
-	}
+    }
+  }
 
 
   // right side time count
@@ -115,8 +149,8 @@ $icon-color: $text;
     em {
       font-style: normal;
       font-size: 12px;
-		}
-	}
+    }
+  }
 
 
   // progress
@@ -125,13 +159,12 @@ $icon-color: $text;
   .scrubber {
     width: 100%;
     height: 100%;
-    background: darken($green, 10%);
 
     .progress {
       width: 0;
       height: 100%;
       background: $text;
       @include transition(width 600ms linear);
-		}
-	}
+    }
+  }
 }

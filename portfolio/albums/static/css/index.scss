@@ -1,0 +1,28 @@
+// mixins
+// -----------------------------------------------------------------------------
+
+@mixin stack {
+  float: left;
+  clear: both;
+}
+
+@mixin stackwide {
+  @include stack;
+  width: 100%;
+}
+
+
+// global styles
+// -----------------------------------------------------------------------------
+
+.page-album-lists,
+.page-album-list {
+  background: $Colors-gray-7;
+}
+
+
+// subfiles
+// -----------------------------------------------------------------------------
+
+@import "lists";
+@import "list";

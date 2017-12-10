@@ -950,24 +950,37 @@ nav::after {
   padding-right: 115px;
   padding-bottom: 15px;
   padding-left: 55px;
-  background: #d7e3b6;
   border-radius: 5px;
   color: #444;
-  line-height: 40px; }
+  line-height: 40px;
+  background: #d7e3b6; }
+  .audiojs .play-pause,
+  .audiojs .time {
+    background: #f3f4d3; }
+  .audiojs .play-pause:hover {
+    background: #e8eaaa; }
+  .audiojs .scrubber {
+    background: #a4c176; }
+  .page-album-list .audiojs {
+    background: #ebedf2; }
+    .page-album-list .audiojs .play-pause,
+    .page-album-list .audiojs .time {
+      background: #ccd0d9; }
+    .page-album-list .audiojs .play-pause:hover {
+      background: #d5e0f8; }
+    .page-album-list .audiojs .scrubber {
+      background: #ccd0d9; }
   .audiojs .play-pause,
   .audiojs .time {
     position: absolute;
     top: 0;
-    height: 100%;
-    background: #f3f4d3; }
+    height: 100%; }
   .audiojs .play-pause {
     left: 0;
     width: 40px;
     border-bottom-left-radius: 5px;
     border-top-left-radius: 5px;
     cursor: pointer; }
-    .audiojs .play-pause:hover {
-      background: #e8eaaa; }
   .audiojs .play {
     margin-top: 10px;
     margin-left: 12.5px;
@@ -1014,8 +1027,7 @@ nav::after {
       font-size: 12px; }
   .audiojs .scrubber {
     width: 100%;
-    height: 100%;
-    background: #a4c176; }
+    height: 100%; }
     .audiojs .scrubber .progress {
       width: 0;
       height: 100%;
@@ -2191,35 +2203,60 @@ nav::after {
     .page-resume .job-description {
       margin-top: 10px; }
 
-.page-album-lists-link,
-.page-album-lists-link h2,
-.page-album-lists-link h3 {
-  -webkit-transition: color 50ms linear, background-image 50ms linear;
-  -moz-transition: color 50ms linear, background-image 50ms linear;
-  transition: color 50ms linear, background-image 50ms linear; }
+.page-album-lists,
+.page-album-list {
+  background: #f3f5f9; }
 
-.page-album-lists-link, .page-album-lists-link:visited {
-  color: #444;
-  text-decoration: none;
-  background-repeat: repeat-x;
-  background-size: 2px 2px;
-  background-position: 0 85%;
-  background-image: linear-gradient(to bottom, transparent 50%, rgba(68, 68, 68, 0.6) 50%); }
-
-.no-touchevents .page-album-lists-link:hover, .no-touchevents .page-album-lists-link:active {
-  text-decoration: none;
-  background-repeat: repeat-x;
-  background-size: 2px 2px;
-  background-position: 0 85%;
-  background-image: linear-gradient(to bottom, transparent 50%, rgba(243, 244, 211, 0.6) 50%); }
-
-.no-touchevents .page-album-lists-link:hover,
-.no-touchevents .page-album-lists-link:hover h2,
-.no-touchevents .page-album-lists-link:hover h3, .no-touchevents .page-album-lists-link:active,
-.no-touchevents .page-album-lists-link:active h2,
-.no-touchevents .page-album-lists-link:active h3 {
-  color: #f3f4d3;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.15); }
+.page-album-lists {
+  text-align: center;
+  padding-bottom: 50px; }
+  .page-album-lists-title {
+    width: 100%;
+    margin-bottom: 30px;
+    text-align: center;
+    font-size: 28px; }
+  .page-album-lists-item {
+    display: inline-block;
+    margin-top: 20px; }
+    @media (max-width: 480px) {
+      .page-album-lists-item {
+        width: 100%; } }
+    .page-album-lists-item:nth-child(even) {
+      margin-left: 20px; }
+      @media (max-width: 730px) {
+        .page-album-lists-item:nth-child(even) {
+          margin-left: 0; } }
+  .page-album-lists-link {
+    position: relative;
+    display: inline-block;
+    width: 400px;
+    padding-top: 100%;
+    background: rgba(0, 0, 0, 0.2); }
+    @media (max-width: 975px) and (min-width: 730px) {
+      .page-album-lists-link {
+        width: 300px;
+        height: 300px; } }
+    @media (max-width: 480px) {
+      .page-album-lists-link {
+        width: 100%;
+        height: 50px; } }
+    .page-album-lists-link img {
+      position: absolute;
+      z-index: 1;
+      top: 0;
+      left: 0;
+      width: 100%;
+      opacity: 0.8; }
+    .page-album-lists-link-text {
+      position: absolute;
+      display: block;
+      bottom: 0;
+      left: 0;
+      z-index: 2;
+      width: 100%;
+      padding: 10px;
+      background: rgba(0, 0, 0, 0.7);
+      color: #9dbaf2; }
 
 .page-album-list-title h1,
 .page-album-list-title h3 {
@@ -2279,18 +2316,17 @@ nav::after {
       background-repeat: repeat-x;
       background-size: 2px 2px;
       background-position: 0 85%;
-      background-image: linear-gradient(to bottom, transparent 50%, rgba(243, 244, 211, 0.6) 50%); }
+      background-image: linear-gradient(to bottom, transparent 50%, rgba(76, 123, 217, 0.6) 50%); }
     .no-touchevents .page-album-list-navigation a:hover,
     .no-touchevents .page-album-list-navigation a:hover h2,
     .no-touchevents .page-album-list-navigation a:hover h3, .no-touchevents .page-album-list-navigation a:active,
     .no-touchevents .page-album-list-navigation a:active h2,
     .no-touchevents .page-album-list-navigation a:active h3 {
-      color: #f3f4d3;
+      color: #4c7bd9;
       text-shadow: 0 1px 2px rgba(0, 0, 0, 0.15); }
     .page-album-list-navigation a.active {
       background-image: none !important;
-      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.15) !important;
-      color: #f3f4d3;
+      color: #4c7bd9;
       cursor: default; }
 
 .page-album-list-items {
@@ -2429,13 +2465,13 @@ nav::after {
       background-repeat: repeat-x;
       background-size: 2px 2px;
       background-position: 0 85%;
-      background-image: linear-gradient(to bottom, transparent 50%, rgba(243, 244, 211, 0.6) 50%); }
+      background-image: linear-gradient(to bottom, transparent 50%, rgba(76, 123, 217, 0.6) 50%); }
     .no-touchevents .page-album-list-item-description a:hover,
     .no-touchevents .page-album-list-item-description a:hover h2,
     .no-touchevents .page-album-list-item-description a:hover h3, .no-touchevents .page-album-list-item-description a:active,
     .no-touchevents .page-album-list-item-description a:active h2,
     .no-touchevents .page-album-list-item-description a:active h3 {
-      color: #f3f4d3;
+      color: #4c7bd9;
       text-shadow: 0 1px 2px rgba(0, 0, 0, 0.15); }
   .page-album-list-item-links {
     font-size: 16px; }
@@ -2460,13 +2496,13 @@ nav::after {
         background-repeat: repeat-x;
         background-size: 2px 2px;
         background-position: 0 85%;
-        background-image: linear-gradient(to bottom, transparent 50%, rgba(243, 244, 211, 0.6) 50%); }
+        background-image: linear-gradient(to bottom, transparent 50%, rgba(76, 123, 217, 0.6) 50%); }
       .no-touchevents .page-album-list-item-links a.page-album-list-item-links-link:hover,
       .no-touchevents .page-album-list-item-links a.page-album-list-item-links-link:hover h2,
       .no-touchevents .page-album-list-item-links a.page-album-list-item-links-link:hover h3, .no-touchevents .page-album-list-item-links a.page-album-list-item-links-link:active,
       .no-touchevents .page-album-list-item-links a.page-album-list-item-links-link:active h2,
       .no-touchevents .page-album-list-item-links a.page-album-list-item-links-link:active h3 {
-        color: #f3f4d3;
+        color: #4c7bd9;
         text-shadow: 0 1px 2px rgba(0, 0, 0, 0.15); }
       .page-album-list-item-links a.page-album-list-item-links-link:first-child {
         margin-left: 0; }
@@ -2528,11 +2564,11 @@ nav::after {
     background-repeat: repeat-x;
     background-size: 2px 2px;
     background-position: 0 85%;
-    background-image: linear-gradient(to bottom, transparent 50%, rgba(243, 244, 211, 0.6) 50%); }
+    background-image: linear-gradient(to bottom, transparent 50%, rgba(76, 123, 217, 0.6) 50%); }
   .no-touchevents .page-album-list-thanks a:hover,
   .no-touchevents .page-album-list-thanks a:hover h2,
   .no-touchevents .page-album-list-thanks a:hover h3, .no-touchevents .page-album-list-thanks a:active,
   .no-touchevents .page-album-list-thanks a:active h2,
   .no-touchevents .page-album-list-thanks a:active h3 {
-    color: #f3f4d3;
+    color: #4c7bd9;
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.15); }

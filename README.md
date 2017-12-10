@@ -31,12 +31,12 @@ MEDIA_URL = '/media/'
 SECRET_KEY = '[your secret key]'
 
 DATABASES = {
-		'default': {
-				'ENGINE': 'django.db.backends.mysql',
-				'NAME': '[your database name]',
-				'USER': '[your database user]',
-				'PASSWORD': '[your database user password]'
-		}
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': '[your database name]',
+        'USER': '[your database user]',
+        'PASSWORD': '[your database user password]'
+    }
 }
 
 STATIC_VERSIONS = {
