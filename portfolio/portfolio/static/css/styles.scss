@@ -24,7 +24,7 @@ body {
 
   &.no-scroll {
     overflow: hidden;
-	}
+  }
 }
 
 section,
@@ -78,16 +78,16 @@ em {
     display: block;
     width: 100%;
     text-align: center;
-	}
+  }
 
   h2 {
     padding-bottom: 20px;
-	}
+  }
 
   .subtitle {
     position: relative;
     bottom: 10px;
-	}
+  }
 }
 
 .audio {
@@ -95,17 +95,17 @@ em {
     padding-bottom: 10px;
     font-style: oblique;
     font-size: 16px;
-	}
+  }
 }
 
 @include keyframes(spin) {
   from {
     @include transform(rotate(0deg));
-	}
+  }
 
   to {
     @include transform(rotate(360deg));
-	}
+  }
 }
 
 
@@ -152,4 +152,4 @@ $loader-size: 34px;
 @import "pages/resume";
 
 // albums
-@import "../../../albums/static/css/albums";
+@import "../../../albums/static/css/index";

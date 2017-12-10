@@ -211,6 +211,8 @@ $albums-breakpoint: 700px;
         //&.spotify
         //&.bandcamp
         //&.text
+      }
+    }
 
     // count spacing
     // -------------
@@ -255,7 +257,7 @@ $albums-breakpoint: 700px;
     &:nth-child(13) &-album,
     &:nth-child(14) &-album,
     &:nth-child(15) &-album {
-      @media (max-width: $albums-breakpoint)
+      @media (max-width: $albums-breakpoint) {
         padding-left: 90px;
       }
     }

@@ -2420,8 +2420,7 @@ nav::after {
         width: 100%;
         margin-top: 20px;
         margin-left: 0; } }
-  .page-album-list-item-description,
-  .page-album-list-item .audio, .page-album-list-item-links {
+  .page-album-list-item .audio, .page-album-list-item-description, .page-album-list-item-links {
     margin-top: 25px; }
   .page-album-list-item-album, .page-album-list-item-artist {
     word-wrap: break-word;
