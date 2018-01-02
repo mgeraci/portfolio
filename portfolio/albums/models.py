@@ -36,7 +36,7 @@ class AlbumSelection(models.Model):
     description = models.TextField(blank=True)
 
     class Meta:
-        ordering = ['position']
+        ordering = ['album_list', 'position']
 
     def __unicode__(self):
         return u'{}: {} - {}'.format(self.album_list, self.position, self.album)
