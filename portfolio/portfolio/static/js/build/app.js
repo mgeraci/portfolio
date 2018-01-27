@@ -11468,9 +11468,11 @@
 			// remove the data attribute to keep it from loading again
 			el.removeAttr("data-lazy-image");
 
-			(0, _jquery2.default)(img).load(function () {
+			(0, _jquery2.default)(img).attr("src", src).attr("alt", alt).css("maxWidth", maxWidth);
+
+			(0, _jquery2.default)(img).on("load", function () {
 				el.append(img);
-			}).attr("src", src).attr("alt", alt).css("maxWidth", maxWidth);
+			});
 		}
 	};
 

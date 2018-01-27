@@ -39,11 +39,14 @@ const LazyImages = {
 		// remove the data attribute to keep it from loading again
 		el.removeAttr("data-lazy-image");
 
-		$(img).load(() => {
-			el.append(img);
-		}).attr("src", src)
+		$(img)
+			.attr("src", src)
 			.attr("alt", alt)
 			.css("maxWidth", maxWidth);
+
+		$(img).on("load", () => {
+			el.append(img);
+		});
 	},
 };
 
