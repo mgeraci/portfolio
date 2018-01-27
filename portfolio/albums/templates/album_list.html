@@ -68,9 +68,11 @@
 					<div class="page-album-list-item-links">
 						{% for link in selection.album.albumlink_set.all %}
 							<a
-									class="page-album-list-item-links-link {{ link.classes }}"
-									href="{{ link.href }}"
-									target="_blank">
+								class="page-album-list-item-links-link {{ link.classes }}"
+								href="{{ link.href }}"
+								target="_blank"
+								rel="noopener noreferrer"
+							>
 								{{ link.name|safe }}
 							</a>
 						{% endfor %}
