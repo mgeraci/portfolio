@@ -1,4 +1,6 @@
 .page-links {
+  padding-bottom: 50px;
+
   .content {
     h3 {
       margin-bottom: -10px;
@@ -13,6 +15,14 @@
     width: 36%;
     float: left;
 
+    &-item {
+      margin-top: 8px;
+
+			&:first-child {
+				margin-top: 0;
+			}
+		}
+
     & + .page-links-column {
       width: 56%;
       margin-left: 8%;
@@ -26,6 +36,10 @@
         margin-top: 30px;
         margin-left: 0;
 			}
+		}
+
+		&-detail {
+      font-style: italic;
 		}
 	}
 }
