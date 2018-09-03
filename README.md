@@ -63,5 +63,10 @@ To compile the minified files for use in production, run:
 
 	npm run build
 
-To bust the cache on css or javascript, bump the appropriate number in the
-versioning dictionary found in `localsettings.py`.
+To deploy updated css or js:
+* make your changes, run `npm run build`, commit, and push
+* ssh to the server and cd to the root of the project
+* get into your python environment with `workon michael_portfolio`
+* update the appropriate version number in `portfolio/michael_dot_com/localsettings.py`
+* collect the static files with `./portfolio/manage.py collectstatic`
+* restart apache with `../apache2/bin/restart`
