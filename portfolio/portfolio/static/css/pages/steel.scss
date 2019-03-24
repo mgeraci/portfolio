@@ -22,13 +22,13 @@ $breakpoint: 600px;
     padding-bottom: 20px;
     text-align: left;
 
-    @media (min-width: #{$breakpoint - 1}) {
+    @media (min-width: $breakpoint) {
       &:nth-child(even) {
-	padding-left: 20px;
+        padding-left: 20px;
       }
     }
 
-    @media (max-width: #{$breakpoint}) {
+    @media (max-width: #{$breakpoint - 1}) {
       flex-basis: 100%;
     }
   }

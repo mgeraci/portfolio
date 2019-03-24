@@ -9,7 +9,7 @@
     height: 75vh;
   }
 
-  @media (max-width: $index-breakpoint) {
+  @media (max-width: #{$index-breakpoint - 1}) {
     height: auto;
   }
 
@@ -28,7 +28,7 @@
     width: 50%;
     height: 100%;
 
-    @media (max-width: $index-breakpoint) {
+    @media (max-width: #{$index-breakpoint - 1}) {
       width: 100%;
     }
   }
@@ -109,7 +109,7 @@
     min-height: 300px;
     padding: 50px 0;
 
-    @media (max-width: $project-breakpoint) {
+    @media (max-width: #{$project-breakpoint - 1}) {
       min-height: 0;
       padding: 30px 0 10px;
     }
@@ -135,7 +135,7 @@
       background-size: cover;
       background-position: center center;
 
-      @media (max-width: $index-breakpoint) {
+      @media (max-width: #{$index-breakpoint - 1}) {
         min-height: 60vh;
       }
     }
@@ -171,7 +171,7 @@
       height: 880px;
     }
 
-    @media (max-width: $index-breakpoint) {
+    @media (max-width: #{$index-breakpoint - 1}) {
       height: auto;
 
       .project-image {

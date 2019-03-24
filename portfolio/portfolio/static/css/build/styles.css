@@ -1076,7 +1076,7 @@ nav::after {
       .page-index-copyright {
         width: 86%;
         margin-left: 7%; } }
-    @media (max-width: 720px) {
+    @media (max-width: 719px) {
       .page-index-copyright {
         padding-top: 25px;
         padding-bottom: 22px; } }
@@ -1221,7 +1221,7 @@ nav::after {
   @media (max-width: 1500px) {
     .project {
       height: 75vh; } }
-  @media (max-width: 700px) {
+  @media (max-width: 699px) {
     .project {
       height: auto; } }
   .project.more-projects {
@@ -1237,7 +1237,7 @@ nav::after {
     float: left;
     width: 50%;
     height: 100%; }
-    @media (max-width: 700px) {
+    @media (max-width: 699px) {
       .project-text, .project-image {
         width: 100%; } }
   .project-text {
@@ -1335,7 +1335,7 @@ nav::after {
     overflow: hidden;
     min-height: 300px;
     padding: 50px 0; }
-    @media (max-width: 720px) {
+    @media (max-width: 719px) {
       .project-image {
         min-height: 0;
         padding: 30px 0 10px; } }
@@ -1360,7 +1360,7 @@ nav::after {
       padding: 0;
       background-size: cover;
       background-position: center center; }
-      @media (max-width: 700px) {
+      @media (max-width: 699px) {
         .project-image--full-bleed {
           min-height: 60vh; } }
   .project.smart-mirror img {
@@ -1392,7 +1392,7 @@ nav::after {
   @media (min-width: 1500px) {
     .project.smart-mirror {
       height: 880px; } }
-  @media (max-width: 700px) {
+  @media (max-width: 699px) {
     .project.smart-mirror {
       height: auto; }
       .project.smart-mirror .project-image {
@@ -1760,10 +1760,10 @@ nav::after {
     flex-basis: 50%;
     padding-bottom: 20px;
     text-align: left; }
-    @media (min-width: 599px) {
+    @media (min-width: 600px) {
       .page-steel-item:nth-child(even) {
         padding-left: 20px; } }
-    @media (max-width: 600px) {
+    @media (max-width: 599px) {
       .page-steel-item {
         flex-basis: 100%; } }
   .page-steel-link,
