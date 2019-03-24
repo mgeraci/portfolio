@@ -307,6 +307,13 @@ def links(request):
         },
     ]
 
+    context = {
+        'schools': schools,
+    }
+
+    return render(request, 'pages/links.html', context)
+
+def steel(request):
     steels = [
         {
             'href': 'https://www.youtube.com/watch?v=EMJgfaK0KBU',
@@ -412,11 +419,11 @@ def links(request):
     ]
 
     context = {
-        'schools': schools,
         'steels': steels,
+        'show_project_nav': True,
     }
 
-    return render(request, 'pages/links.html', context)
+    return render(request, 'pages/steel.html', context)
 
 
 # verification pages

@@ -1224,6 +1224,15 @@ nav::after {
   @media (max-width: 700px) {
     .project {
       height: auto; } }
+  .project.more-projects {
+    height: auto !important; }
+    .project.more-projects .project-text-content {
+      top: 0;
+      -webkit-transform: translate(0, 0);
+      -moz-transform: translate(0, 0);
+      -ms-transform: translate(0, 0);
+      -o-transform: translate(0, 0);
+      transform: translate(0, 0); }
   .project-text, .project-image {
     float: left;
     width: 50%;
@@ -1306,6 +1315,20 @@ nav::after {
         -ms-transform: translateX(4px);
         -o-transform: translateX(4px);
         transform: translateX(4px); }
+    .project-text-link,
+    .project-text-link h2,
+    .project-text-link h3 {
+      -webkit-transition: color 50ms linear, background-image 50ms linear;
+      -moz-transition: color 50ms linear, background-image 50ms linear;
+      transition: color 50ms linear, background-image 50ms linear; }
+    .project-text-link, .project-text-link:visited {
+      color: #4c7bd9; }
+    .no-touchevents .project-text-link:hover,
+    .no-touchevents .project-text-link:hover h2,
+    .no-touchevents .project-text-link:hover h3, .no-touchevents .project-text-link:active,
+    .no-touchevents .project-text-link:active h2,
+    .no-touchevents .project-text-link:active h3 {
+      color: #3260c7; }
   .project-image {
     float: right;
     position: relative;

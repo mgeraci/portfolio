@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block title %}Steel Pan Performances{% endblock %}
+{% block description %}Michael P. Geraci's steel pan performances{% endblock %}
+{% block bodyclass %}steel{% endblock %}
+
+{% block content %}
+
+<div class="page-links-column">
+	<h3>Institutions and affiliations</h3>
+	{% for school in schools %}
+		<br />
+		<a href="{{ school.href }}">{{ school.name }}</a>
+	{% endfor %}
+</div>
+
+<div class="page-links-column">
+	<h3>Performances on steel pan</h3>
+	<br />
+	<ul>
+	{% for steel in steels %}
+		<li class="page-links-column-item">
+			{% if steel.href %}
+				<a href="{{ steel.href }}">{{ steel.name }}</a>
+			{% else %}
+				{{ steel.name }}
+			{% endif %}
+			<br />
+			<span class="page-links-column-detail">
+				{{ steel.location }} ({{ steel.rank }})
+			</span>
+		</li>
+	{% endfor %}
+</div>
+
+{% endblock %}
