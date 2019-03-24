@@ -406,13 +406,13 @@ def steel(request):
         },
         {
             'href': 'http://www.youtube.com/watch?v=aTUMlF9Zt3E',
-            'name': 'Sforzata Steel Orchestra - Dingolay',
+            'name': 'Sforzata Steel Orchestra - Dingolay (2005)',
             'location': 'Trinidad & Tobago',
             'rank': '1st place; medium bands',
         },
         {
             'href': 'http://vimeo.com/28470859',
-            'name': 'Pan Sonatas, New York - War 2004',
+            'name': 'Pan Sonatas, New York - War 2004 (2004)',
             'location': 'New York',
             'rank': '1st place',
         },

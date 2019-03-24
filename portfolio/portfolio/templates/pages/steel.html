@@ -6,31 +6,22 @@
 
 {% block content %}
 
-<div class="page-links-column">
-	<h3>Institutions and affiliations</h3>
-	{% for school in schools %}
-		<br />
-		<a href="{{ school.href }}">{{ school.name }}</a>
-	{% endfor %}
-</div>
-
-<div class="page-links-column">
-	<h3>Performances on steel pan</h3>
-	<br />
-	<ul>
+<h3>Performances on steel pan</h3>
+<br />
+<ul class="page-steel-content">
 	{% for steel in steels %}
-		<li class="page-links-column-item">
+		<li class="page-steel-item">
 			{% if steel.href %}
-				<a href="{{ steel.href }}">{{ steel.name }}</a>
+				<a class="page-steel-link" href="{{ steel.href }}">{{ steel.name }}</a>
 			{% else %}
 				{{ steel.name }}
 			{% endif %}
 			<br />
-			<span class="page-links-column-detail">
+			<span class="page-steel-detail">
 				{{ steel.location }} ({{ steel.rank }})
 			</span>
 		</li>
 	{% endfor %}
-</div>
+</ul>
 
 {% endblock %}

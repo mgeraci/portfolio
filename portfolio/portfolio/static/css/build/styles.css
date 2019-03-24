@@ -1738,6 +1738,49 @@ nav::after {
 .page-recordings .audio + .audio {
   margin-top: 20px; }
 
+.page-steel {
+  background: #fafbfd;
+  font-family: "Source Serif Pro";
+  color: #474d59;
+  text-align: center; }
+  .page-steel-content {
+    position: relative;
+    width: 100%;
+    max-width: 700px;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    -o-transform: translateX(-50%);
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap; }
+  .page-steel-item {
+    flex-basis: 50%;
+    padding-bottom: 20px;
+    text-align: left; }
+    @media (min-width: 599px) {
+      .page-steel-item:nth-child(even) {
+        padding-left: 20px; } }
+    @media (max-width: 600px) {
+      .page-steel-item {
+        flex-basis: 100%; } }
+  .page-steel-link,
+  .page-steel-link h2,
+  .page-steel-link h3 {
+    -webkit-transition: color 50ms linear, background-image 50ms linear;
+    -moz-transition: color 50ms linear, background-image 50ms linear;
+    transition: color 50ms linear, background-image 50ms linear; }
+  .page-steel-link, .page-steel-link:visited {
+    color: #4c7bd9; }
+  .no-touchevents .page-steel-link:hover,
+  .no-touchevents .page-steel-link:hover h2,
+  .no-touchevents .page-steel-link:hover h3, .no-touchevents .page-steel-link:active,
+  .no-touchevents .page-steel-link:active h2,
+  .no-touchevents .page-steel-link:active h3 {
+    color: #3260c7; }
+
 .page-web {
   text-align: center; }
   .page-web-menu {
