@@ -1,0 +1,39 @@
+$breakpoint: 600px;
+
+.page-steel {
+  background: $Colors-gray-8;
+  font-family: "Source Serif Pro";
+  color: $Colors-gray-1;
+  text-align: center;
+
+  &-content {
+    position: relative;
+    width: 100%;
+    max-width: 700px;
+    left: 50%;
+    @include transform(translateX(-50%));
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  &-item {
+    flex-basis: 50%;
+    padding-bottom: 20px;
+    text-align: left;
+
+    @media (min-width: $breakpoint) {
+      &:nth-child(even) {
+        padding-left: 20px;
+      }
+    }
+
+    @media (max-width: #{$breakpoint - 1}) {
+      flex-basis: 100%;
+    }
+  }
+
+  &-link {
+    @include link-color($Colors-blue-3, $Colors-blue-2);
+  }
+}

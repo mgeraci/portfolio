@@ -3,9 +3,9 @@ $project-breakpoint: 720px;
 
 .page-index {
   background: $Colors-gray-8;
-	padding-bottom: 0;
+  padding-bottom: 0;
   font-family: "Source Serif Pro";
-	color: $Colors-gray-1;
+  color: $Colors-gray-1;
 
   // undo the default content sizing, go full width
   section.content {
@@ -13,31 +13,31 @@ $project-breakpoint: 720px;
     max-width: 100%;
     margin: 0;
     padding-top: 0;
-	}
+  }
 
-	&-copyright {
-		@include content-sizing;
-		display: block;
-		font-size: 15px;
-		padding-bottom: 36px;
-		width: 100%;
-		text-align: center;
+  &-copyright {
+    @include content-sizing;
+    display: block;
+    font-size: 15px;
+    padding-bottom: 36px;
+    width: 100%;
+    text-align: center;
 
-		@media (max-width: $project-breakpoint) {
-			padding-top: 25px;
-			padding-bottom: 22px;
-		}
+    @media (max-width: #{$project-breakpoint - 1}) {
+      padding-top: 25px;
+      padding-bottom: 22px;
+    }
 
-		&-separator {
-			position: relative;
-			bottom: 1px;
-			padding: 0 5px;
-		}
+    &-separator {
+      position: relative;
+      bottom: 1px;
+      padding: 0 5px;
+    }
 
-		&-link {
-			@include link($Colors-gray-1, $Colors-blue-3);
-		}
-	}
+    &-link {
+      @include link($Colors-gray-1, $Colors-blue-3);
+    }
+  }
 }
 
 @import "./index/top";

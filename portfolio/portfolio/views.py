@@ -307,6 +307,13 @@ def links(request):
         },
     ]
 
+    context = {
+        'schools': schools,
+    }
+
+    return render(request, 'pages/links.html', context)
+
+def steel(request):
     steels = [
         {
             'href': 'https://www.youtube.com/watch?v=EMJgfaK0KBU',
@@ -399,24 +406,24 @@ def links(request):
         },
         {
             'href': 'http://www.youtube.com/watch?v=aTUMlF9Zt3E',
-            'name': 'Sforzata Steel Orchestra - Dingolay',
+            'name': 'Sforzata Steel Orchestra - Dingolay (2005)',
             'location': 'Trinidad & Tobago',
             'rank': '1st place; medium bands',
         },
         {
             'href': 'http://vimeo.com/28470859',
-            'name': 'Pan Sonatas, New York - War 2004',
+            'name': 'Pan Sonatas, New York - War 2004 (2004)',
             'location': 'New York',
             'rank': '1st place',
         },
     ]
 
     context = {
-        'schools': schools,
         'steels': steels,
+        'show_project_nav': True,
     }
 
-    return render(request, 'pages/links.html', context)
+    return render(request, 'pages/steel.html', context)
 
 
 # verification pages

@@ -6,13 +6,13 @@ $video-icon-size: 80px;
 .page-project {
   background: $Colors-gray-8;
   font-family: "Source Serif Pro";
-	color: $Colors-gray-1;
+  color: $Colors-gray-1;
   text-align: center;
 
   // undo default content centering
   .content {
-		position: relative;
-		overflow: hidden; // stop ie from side scrolling
+    position: relative;
+    overflow: hidden; // stop ie from side scrolling
     padding-top: 0;
     width: 100%;
     max-width: 100%;

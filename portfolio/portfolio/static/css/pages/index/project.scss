@@ -1,3 +1,5 @@
+$more-breakpoint: 800px;
+
 .project {
   @include clearfix;
   position: relative;
@@ -7,11 +9,31 @@
 
   @media (max-width: 1500px) {
     height: 75vh;
-	}
+  }
 
-  @media (max-width: $index-breakpoint) {
+  @media (max-width: #{$index-breakpoint - 1}) {
     height: auto;
-	}
+  }
+
+  &.more-projects {
+    height: auto !important;
+
+    .project-text {
+      @media (max-width: $more-breakpoint) {
+        width: 100%;
+      }
+
+      &-content {
+        top: 0;
+        padding-bottom: 20px;
+        @include transform(translate(0, 0));
+
+        @media (max-width: $more-breakpoint) {
+          left: 0;
+        }
+      }
+    }
+  }
 
   &-text,
   &-image {
@@ -19,10 +41,10 @@
     width: 50%;
     height: 100%;
 
-    @media (max-width: $index-breakpoint) {
+    @media (max-width: #{$index-breakpoint - 1}) {
       width: 100%;
-		}
-	}
+    }
+  }
 
   &-text {
     float: left;
@@ -36,12 +58,12 @@
 
       .project-text-title {
         color: #fff;
-			}
+      }
 
       .project-text-more {
         @include link-color($light-color, $light-color);
-			}
-		}
+      }
+    }
 
     &-content {
       position: relative;
@@ -53,23 +75,23 @@
         top: 50%;
         left: 50%;
         @include transform(translate(-50%, -50%));
-			}
-		}
+      }
+    }
 
     &-title {
       display: block;
       width: 100%;
       text-align: left;
-		}
+    }
 
-		&-description,
+    &-description,
     &-more {
-			@include type(18px, 30px);
+      @include type(18px, 30px);
 
-			@media (min-width: 1300px) {
-				@include type(20px, 32px);
-			}
-		}
+      @media (min-width: 1300px) {
+        @include type(20px, 32px);
+      }
+    }
 
     &-more {
       display: inline-block;
@@ -79,15 +101,19 @@
       &-arrow {
         display: inline-block;
         @include transition(transform 200ms ease);
-			}
+      }
 
       &:hover {
         .project-text-more-arrow {;
           @include transform(translateX(4px));
-				}
-			}
-		}
-	}
+        }
+      }
+    }
+
+    &-link {
+      @include link-color($Colors-blue-3, $Colors-blue-2);
+    }
+  }
 
   &-image {
     float: right;
@@ -96,10 +122,10 @@
     min-height: 300px;
     padding: 50px 0;
 
-    @media (max-width: $project-breakpoint) {
+    @media (max-width: #{$project-breakpoint - 1}) {
       min-height: 0;
-			padding: 30px 0 10px;
-		}
+      padding: 30px 0 10px;
+    }
 
     img {
       display: block;
@@ -114,19 +140,19 @@
         top: 50%;
         left: 50%;
         @include transform(translate(-50%, -50%));
-			}
-		}
+      }
+    }
 
     &--full-bleed {
       padding: 0;
       background-size: cover;
       background-position: center center;
 
-      @media (max-width: $index-breakpoint) {
+      @media (max-width: #{$index-breakpoint - 1}) {
         min-height: 60vh;
-			}
-		}
-	}
+      }
+    }
+  }
 
   // special styling for the smart mirror image
   &.smart-mirror {
@@ -139,33 +165,35 @@
       @include transform(translate(0, 0));
       width: 160%;
       max-width: 1200px !important;
-			max-height: 160%;
+      max-height: 160%;
 
       @media (min-width: 1600px) {
         max-width: 1400px !important;
-				left: 50%;
-				@include transform(translateX(-27%));
-			}
-		}
+        left: 50%;
+        @include transform(translateX(-27%));
+      }
+    }
+
+    $mirror-breakpoint: 1600px;
 
     // highly uncouth, but the benefit of having the whole mirror on screen is
     // more important than having all of the home projects be the same height
-    @media (max-width: 1370px) {
-      height: 54vw;
-		}
-
-		@media (min-width: 1500px) {
+    @media (min-width: $mirror-breakpoint) {
       height: 880px;
-		}
+    }
 
-    @media (max-width: $index-breakpoint) {
+    @media (max-width: #{$mirror-breakpoint - 1}) {
+      height: 54vw;
+    }
+
+    @media (max-width: #{$index-breakpoint - 1}) {
       height: auto;
 
       .project-image {
-				padding: 0;
-				padding-top: 100%;
+        padding: 0;
+        padding-top: 100%;
         background: rgba(#000, 0.05);
-			}
-		}
-	}
+      }
+    }
+  }
 }
