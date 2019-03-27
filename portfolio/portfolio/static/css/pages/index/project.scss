@@ -1,3 +1,5 @@
+$more-breakpoint: 800px;
+
 .project {
   @include clearfix;
   position: relative;
@@ -16,9 +18,20 @@
   &.more-projects {
     height: auto !important;
 
-    .project-text-content {
-      top: 0;
-      @include transform(translate(0, 0));
+    .project-text {
+      @media (max-width: $more-breakpoint) {
+        width: 100%;
+      }
+
+      &-content {
+        top: 0;
+        padding-bottom: 20px;
+        @include transform(translate(0, 0));
+
+        @media (max-width: $more-breakpoint) {
+          left: 0;
+        }
+      }
     }
   }
 

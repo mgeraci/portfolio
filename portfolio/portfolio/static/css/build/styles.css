@@ -1226,13 +1226,20 @@ nav::after {
       height: auto; } }
   .project.more-projects {
     height: auto !important; }
+    @media (max-width: 800px) {
+      .project.more-projects .project-text {
+        width: 100%; } }
     .project.more-projects .project-text-content {
       top: 0;
+      padding-bottom: 20px;
       -webkit-transform: translate(0, 0);
       -moz-transform: translate(0, 0);
       -ms-transform: translate(0, 0);
       -o-transform: translate(0, 0);
       transform: translate(0, 0); }
+      @media (max-width: 800px) {
+        .project.more-projects .project-text-content {
+          left: 0; } }
   .project-text, .project-image {
     float: left;
     width: 50%;
