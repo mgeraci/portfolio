@@ -174,14 +174,16 @@ $more-breakpoint: 800px;
       }
     }
 
+    $mirror-breakpoint: 1600px;
+
     // highly uncouth, but the benefit of having the whole mirror on screen is
     // more important than having all of the home projects be the same height
-    @media (max-width: 1370px) {
-      height: 54vw;
+    @media (min-width: $mirror-breakpoint) {
+      height: 880px;
     }
 
-    @media (min-width: 1500px) {
-      height: 880px;
+    @media (max-width: #{$mirror-breakpoint - 1}) {
+      height: 54vw;
     }
 
     @media (max-width: #{$index-breakpoint - 1}) {

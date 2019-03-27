@@ -1393,12 +1393,12 @@ nav::after {
         -ms-transform: translateX(-27%);
         -o-transform: translateX(-27%);
         transform: translateX(-27%); } }
-  @media (max-width: 1370px) {
-    .project.smart-mirror {
-      height: 54vw; } }
-  @media (min-width: 1500px) {
+  @media (min-width: 1600px) {
     .project.smart-mirror {
       height: 880px; } }
+  @media (max-width: 1599px) {
+    .project.smart-mirror {
+      height: 54vw; } }
   @media (max-width: 699px) {
     .project.smart-mirror {
       height: auto; }
