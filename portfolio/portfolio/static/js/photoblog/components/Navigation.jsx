@@ -30,10 +30,11 @@ const Navigation = React.createClass({
 				<li className="page-photography-navigation-item-wrapper">
 					browse:
 				</li>
-				{this.props.years.map(year =>
+				{this.props.years.map((year) => (
 					<li
-							className="page-photography-navigation-item-wrapper"
-							key={year}>
+						className="page-photography-navigation-item-wrapper"
+						key={year}
+					>
 						<Tag
 							name={year}
 							slug={year}
@@ -41,12 +42,13 @@ const Navigation = React.createClass({
 							className="page-photography-navigation-item"
 						/>
 					</li>
-				)}
+				))}
 				<li className="page-photography-navigation-item-wrapper">
 					<a
-							className="page-photography-navigation-item"
-							href="/photography/blog/browse/tags"
-							onClick={this._filterTags}>
+						className="page-photography-navigation-item"
+						href="/photography/blog/browse/tags"
+						onClick={this._filterTags}
+					>
 						tags
 					</a>
 				</li>

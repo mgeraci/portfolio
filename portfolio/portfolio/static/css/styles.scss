@@ -120,7 +120,7 @@ $loader-size: 34px;
   margin-top: $loader-size * -0.5;
   margin-left: $loader-size * -0.5;
   border: 6px solid $text;
-  border-bottom-color: $green;
+  border-bottom-color: $Colors-blue-3;
   border-radius: 50%;
   @include animation-name(spin);
   @include animation-duration(1600ms);

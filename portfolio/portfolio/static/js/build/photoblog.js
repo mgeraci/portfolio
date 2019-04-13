@@ -37255,7 +37255,7 @@
 			    onClearFilterTag = _props.onClearFilterTag;
 
 			var isYear = !!("" + filteredTerm).match(/2\d{3}/);
-			var isTagsList = filteredTerm === "tags";
+			var isTagsList = filteredTerm && filteredTerm.name === "tags";
 			var isTag = !isYear && !isTagsList && filteredTerm && filteredTerm.slug;
 
 			return _react2.default.createElement(
@@ -37512,7 +37512,8 @@
 						"li",
 						{
 							className: "page-photography-navigation-item-wrapper",
-							key: year },
+							key: year
+						},
 						_react2.default.createElement(_Tag2.default, {
 							name: year,
 							slug: year,
@@ -37529,7 +37530,8 @@
 						{
 							className: "page-photography-navigation-item",
 							href: "/photography/blog/browse/tags",
-							onClick: this._filterTags },
+							onClick: this._filterTags
+						},
 						"tags"
 					)
 				)

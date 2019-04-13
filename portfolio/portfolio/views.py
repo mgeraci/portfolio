@@ -177,6 +177,7 @@ def photography(request):
             'images': imageMap,
             'years': years[::-1],
         }),
+        'show_project_nav': True,
     }
 
     return render(request, 'pages/photography.html', context)

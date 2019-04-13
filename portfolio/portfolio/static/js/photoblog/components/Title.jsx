@@ -20,7 +20,7 @@ const Title = React.createClass({
 	render() {
 		const { filteredTerm, onClearFilterTag } = this.props;
 		const isYear = !!`${filteredTerm}`.match(/2\d{3}/);
-		const isTagsList = filteredTerm === "tags";
+		const isTagsList = filteredTerm && filteredTerm.name === "tags";
 		const isTag = !isYear && !isTagsList && filteredTerm && filteredTerm.slug;
 
 		return (
