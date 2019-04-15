@@ -38,10 +38,6 @@ window.Photoblog = {
 			document.getElementById("react-root")
 		);
 
-		// trigger an action for the initial navigation (i.e., the url that the
-		// user hits when they first load the app)
-		this._navigate();
-
 		// the app is initialized now!
 		this.store.dispatch(appInitialize());
 

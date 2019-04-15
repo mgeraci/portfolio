@@ -88,11 +88,7 @@
 
 	    _reactDom["default"].render(_react["default"].createElement(_reactRedux.Provider, {
 	      store: this.store
-	    }, _react["default"].createElement(_App["default"], null)), document.getElementById("react-root")); // trigger an action for the initial navigation (i.e., the url that the
-	    // user hits when they first load the app)
-
-
-	    this._navigate(); // the app is initialized now!
+	    }, _react["default"].createElement(_App["default"], null)), document.getElementById("react-root")); // the app is initialized now!
 
 
 	    this.store.dispatch((0, _reducer.appInitialize)()); // add a watcher for the browser back buttons
