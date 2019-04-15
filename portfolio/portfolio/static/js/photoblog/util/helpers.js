@@ -1,6 +1,4 @@
-/* global history */
-
-import { URLS } from "./constants.js";
+import { URLS } from "./constants";
 
 
 /*
@@ -80,7 +78,7 @@ export function parseUrl(url, initialData = {}) {
  */
 export function getVisibleImages(state) {
 	// get the current set of images
-	let order = state.order;
+	let { order } = state;
 
 	if (state.filteredOrder && state.filteredOrder.length) {
 		order = state.filteredOrder;
@@ -134,6 +132,8 @@ export function getPositionMeta(params) {
  * @returns {boolean} - whether or not the page history was updated
  */
 export function setHistory(url) {
+	const { history } = window; // eslint-disable-line no-undef
+
 	if (typeof(history) === "undefined" || history === null) {
 		return false;
 	}

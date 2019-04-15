@@ -2,13 +2,13 @@
 import {
 	DIRECTIONS,
 	BAD_TAGS,
-} from "./util/constants.js";
+} from "./util/constants";
 
 import {
 	getVisibleImages,
 	getPositionMeta,
 	setHistory,
-} from "./util/helpers.js";
+} from "./util/helpers";
 
 
 // action types
@@ -168,7 +168,7 @@ export default function reducer(state, action) {
 				image.tags.forEach((tag) => {
 					if (!BAD_TAGS[tag.slug]) {
 						if (tagsDict[tag.slug]) {
-							const count = tagsDict[tag.slug].count;
+							const { count } = tagsDict[tag.slug];
 							tagsDict[tag.slug].count = count + 1;
 						} else {
 							tagsDict[tag.slug] = {

@@ -1,61 +1,57 @@
-import React, { PropTypes } from "react";
+import React from "react";
+import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import PureRenderMixin from "react-addons-pure-render-mixin";
 
 import { filterTag } from "../reducer";
-import Tag from "./Tag";
+import Tag from "./Tag.jsx";
 
 import "./Navigation.sass";
 
-const Navigation = React.createClass({
-	propTypes: {
-		years: PropTypes.array.isRequired,
-		onFilterTag: PropTypes.func.isRequired,
-	},
-
-	mixins: [ PureRenderMixin ],
-
-	_filterTags(e) {
+const Navigation = ({ years, onFilterTag }) => {
+	const filterTags = (e) => {
 		e.preventDefault();
 
-		this.props.onFilterTag({
+		onFilterTag({
 			name: "tags",
 			slug: "tags",
 		});
-	},
+	};
 
-	render() {
-		return (
-			<ul className="page-photography-navigation">
-				<li className="page-photography-navigation-item-wrapper">
-					browse:
-				</li>
-				{this.props.years.map((year) => (
-					<li
-						className="page-photography-navigation-item-wrapper"
-						key={year}
-					>
-						<Tag
-							name={year}
-							slug={year}
-							filterTag={this.props.onFilterTag}
-							className="page-photography-navigation-item"
-						/>
-					</li>
-				))}
-				<li className="page-photography-navigation-item-wrapper">
-					<a
+	return (
+		<ul className="page-photography-navigation">
+			<li className="page-photography-navigation-item-wrapper">
+				browse:
+			</li>
+			{years.map((year) => (
+				<li
+					className="page-photography-navigation-item-wrapper"
+					key={year}
+				>
+					<Tag
+						name={year}
+						slug={year}
+						filterTag={onFilterTag}
 						className="page-photography-navigation-item"
-						href="/photography/blog/browse/tags"
-						onClick={this._filterTags}
-					>
-						tags
-					</a>
+					/>
 				</li>
-			</ul>
-		);
-	},
-});
+			))}
+			<li className="page-photography-navigation-item-wrapper">
+				<a
+					className="page-photography-navigation-item"
+					href="/photography/blog/browse/tags"
+					onClick={filterTags}
+				>
+					tags
+				</a>
+			</li>
+		</ul>
+	);
+};
+
+Navigation.propTypes = {
+	years: PropTypes.array.isRequired,
+	onFilterTag: PropTypes.func.isRequired,
+};
 
 function mapStateToProps(state) {
 	return {
@@ -73,5 +69,5 @@ function mapDispatchToProps(dispatch) {
 
 export default connect(
 	mapStateToProps,
-	mapDispatchToProps
+	mapDispatchToProps,
 )(Navigation);

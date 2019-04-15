@@ -1,96 +1,122 @@
 /* global Image */
 
-import React, { PropTypes } from "react";
-import ReactCSSTransitionGroup from "react-addons-css-transition-group";
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import { TransitionGroup, CSSTransition } from "react-transition-group";
 
 import "./Thumbnail.sass";
 
-const Thumbnail = React.createClass({
-	propTypes: {
+class Thumbnail extends Component {
+	static propTypes = {
 		image: PropTypes.object.isRequired,
 		setActiveImage: PropTypes.func.isRequired,
+		scrollTop: PropTypes.number,
+		scrollBottom: PropTypes.number,
 		hasActiveImage: PropTypes.bool,
-	},
+	}
 
-	getInitialState() {
-		return { loaded: false };
-	},
+	static defaultProps = {
+		scrollTop: null,
+		scrollBottom: null,
+		hasActiveImage: false,
+	};
+
+	state = { loaded: false };
 
 	componentDidMount() {
+		const { hasActiveImage } = this.props;
+
 		// trigger the initial load if we aren't showing an image modal
-		if (!this.props.hasActiveImage) {
+		if (!hasActiveImage) {
 			this._loadImage();
 		}
-	},
+	}
 
 	componentWillReceiveProps(nextProps) {
+		const { hasActiveImage } = this.props;
+		const { isVisible } = this.state;
+
 		if (this.thumbnail === null) {
 			return;
 		}
 
 		const top = this.thumbnail.getBoundingClientRect().top + nextProps.scrollTop;
-		const isVisible = top >= (nextProps.scrollTop - 200) &&
+		const thumbIsVisible = top >= (nextProps.scrollTop - 200) &&
 			top < (nextProps.scrollBottom + 200);
 
 		// if we are turning visible, kick off a load
-		if (!this.state.isVisible && isVisible && !this.props.hasActiveImage) {
+		if (!isVisible && thumbIsVisible && !hasActiveImage) {
 			this._loadImage(true);
 		}
 
 		this.setState({ isVisible });
-	},
+	}
 
 	// if we close an active image modal, load
 	componentDidUpdate(prevProps) {
-		if (prevProps.hasActiveImage !== this.props.hasActiveImage &&
-				this.state.isVisible) {
+		const { hasActiveImage } = this.props;
+		const { isVisible } = this.state;
+
+		if (
+			prevProps.hasActiveImage !== hasActiveImage &&
+			isVisible
+		) {
 			this._loadImage();
 		}
-	},
+	}
 
-	_loadImage(force = false) {
-		if (this.state.loaded || (!this.state.isVisible && !force)) {
+	_loadImage = (force = false) => {
+		const { image } = this.props;
+		const { loaded, isVisible } = this.state;
+
+		if (loaded || (!isVisible && !force)) {
 			return;
 		}
 
 		const i = new Image();
-		i.src = this.props.image.thumbnail;
+		i.src = image.thumbnail;
 
 		i.onload = () => {
 			this.setState({ loaded: true });
 		};
-	},
+	}
 
-	_handleClick(e) {
+	_handleClick = (e) => {
+		const { setActiveImage, image } = this.props;
+
 		e.preventDefault();
-		this.props.setActiveImage(this.props.image.id);
-	},
+		setActiveImage(image.id);
+	}
 
 	render() {
+		const { image } = this.props;
+		const { loaded } = this.state;
+
 		return (
 			<a
-					className="page-photography-thumbnail"
-					ref={(c) => { this.thumbnail = c; }}
-					href={`/photography/blog/${this.props.image.id}`}
-					onClick={this._handleClick}>
-				<ReactCSSTransitionGroup
-						transitionName="main-image"
-						transitionAppear
-						transitionEnterTimeout={500}
-						transitionAppearTimeout={500}
-						transitionLeaveTimeout={500}>
-					{this.state.loaded &&
-						<img
-							className="page-photography-thumbnail-image"
-							key={this.props.image.thumbnail}
-							src={this.props.image.thumbnail}
-							alt={this.props.image.title}
-						/>
+				className="page-photography-thumbnail"
+				ref={(c) => { this.thumbnail = c; }}
+				href={`/photography/blog/${image.id}`}
+				onClick={this._handleClick}
+			>
+				<TransitionGroup>
+					{loaded &&
+						<CSSTransition
+							classNames="main-image"
+							timeout={500}
+						>
+							<img
+								className="page-photography-thumbnail-image"
+								key={image.thumbnail}
+								src={image.thumbnail}
+								alt={image.title}
+							/>
+						</CSSTransition>
 					}
-				</ReactCSSTransitionGroup>
+				</TransitionGroup>
 			</a>
 		);
-	},
-});
+	}
+}
 
 export default Thumbnail;

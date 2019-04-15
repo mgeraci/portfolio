@@ -5,18 +5,17 @@ import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
 import { createStore } from "redux";
 
-import App from "./components/App";
+import App from "./components/App.jsx";
 import reducer, {
 	setActiveImage,
 	filterTag,
 	clearActiveImage,
 	appInitialize,
 } from "./reducer";
-import { URLS } from "./util/constants.js";
-import { parseUrl } from "./util/helpers.js";
+import { URLS } from "./util/constants";
+import { parseUrl } from "./util/helpers";
 
 import "../../css/styles.scss";
-
 
 window.Photoblog = {
 	init(data) {
@@ -29,7 +28,7 @@ window.Photoblog = {
 
 		this.store = createStore(
 			reducer,
-			initialState
+			initialState,
 		);
 
 		ReactDOM.render(
@@ -44,9 +43,7 @@ window.Photoblog = {
 		this._navigate();
 
 		// the app is initialized now!
-		this.store.dispatch(
-			appInitialize()
-		);
+		this.store.dispatch(appInitialize());
 
 		// add a watcher for the browser back buttons
 		window.addEventListener("popstate", () => this._navigate());

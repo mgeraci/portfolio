@@ -1,52 +1,52 @@
-import React, { PropTypes } from "react";
-import PureRenderMixin from "react-addons-pure-render-mixin";
+import React from "react";
+import PropTypes from "prop-types";
 
-const Tag = React.createClass({
-	propTypes: {
-		name: PropTypes.oneOfType([
-			PropTypes.string.isRequired,
-			PropTypes.number.isRequired,
-		]),
-		slug: PropTypes.oneOfType([
-			PropTypes.string.isRequired,
-			PropTypes.number.isRequired,
-		]),
-		className: PropTypes.string.isRequired,
-		filterTag: PropTypes.func.isRequired,
-		size: PropTypes.number,
-	},
-
-	mixins: [ PureRenderMixin ],
-
-	_handleClick(e) {
+const Tag = ({ className, slug, name, size, filterTag }) => {
+	const handleClick = (e) => {
 		e.preventDefault();
 
-		this.props.filterTag({
-			name: this.props.name,
-			slug: this.props.slug,
+		filterTag({
+			name: name,
+			slug: slug,
 		});
-	},
+	};
 
-	render() {
-		const { className, slug, name, size } = this.props;
-		let style;
+	let style;
 
-		if (size) {
-			style = {
-				fontSize: `${size}px`,
-			};
-		}
+	if (size) {
+		style = {
+			fontSize: `${size}px`,
+		};
+	}
 
-		return (
-			<a
-					className={className}
-					onClick={this._handleClick}
-					style={style}
-					href={`/photography/blog/browse/${slug}`}>
-				{name}
-			</a>
-		);
-	},
-});
+	return (
+		<a
+			className={className}
+			onClick={handleClick}
+			style={style}
+			href={`/photography/blog/browse/${slug}`}
+		>
+			{name}
+		</a>
+	);
+};
+
+Tag.propTypes = {
+	name: PropTypes.oneOfType([
+		PropTypes.string.isRequired,
+		PropTypes.number.isRequired,
+	]).isRequired,
+	slug: PropTypes.oneOfType([
+		PropTypes.string.isRequired,
+		PropTypes.number.isRequired,
+	]).isRequired,
+	className: PropTypes.string.isRequired,
+	filterTag: PropTypes.func.isRequired,
+	size: PropTypes.number,
+};
+
+Tag.defaultProps = {
+	size: null,
+};
 
 export default Tag;

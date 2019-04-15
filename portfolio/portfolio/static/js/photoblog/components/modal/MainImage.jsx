@@ -1,53 +1,67 @@
 /* global Image */
 
-import React, { PropTypes } from "react";
-import PureRenderMixin from "react-addons-pure-render-mixin";
-import ReactCSSTransitionGroup from "react-addons-css-transition-group";
+import React, { PureComponent } from "react";
+import PropTypes from "prop-types";
+import { TransitionGroup, CSSTransition } from "react-transition-group";
 
 import "./MainImage.sass";
 
-const MainImage = React.createClass({
-	propTypes: {
-		src: PropTypes.string.isRequired,
+class MainImage extends PureComponent {
+	static propTypes = {
+		src: PropTypes.string,
 		alt: PropTypes.string.isRequired,
-		loaded: PropTypes.bool,
 		onLoad: PropTypes.func.isRequired,
-	},
+		loaded: PropTypes.bool,
+		maxWidth: PropTypes.number,
+		maxHeight: PropTypes.number,
+	};
 
-	mixins: [ PureRenderMixin ],
+	static defaultProps = {
+		src: null,
+		loaded: false,
+		maxWidth: null,
+		maxHeight: null,
+	};
 
-	getInitialState() {
-		return {};
-	},
+	state = {
+		width: 0,
+		height: 0,
+	};
 
 	// trigger the initial load
 	componentDidMount() {
 		this._loadImage();
-	},
+	}
 
 	componentWillReceiveProps(nextProps) {
-		if (nextProps.maxWidth && nextProps.maxHeight &&
-				nextProps.maxWidth > 0 && nextProps.maxHeight > 0) {
+		if (
+			nextProps.maxWidth && nextProps.maxHeight &&
+			nextProps.maxWidth > 0 && nextProps.maxHeight > 0
+		) {
 			this.setState({
 				maxWidth: nextProps.maxWidth,
 				maxHeight: nextProps.maxHeight,
 			});
 		}
-	},
+	}
 
 	// if we get a new image source via props, trigger the new load
 	componentDidUpdate(prevProps) {
-		if (prevProps.src !== this.props.src) {
+		const { src } = this.props;
+
+		if (prevProps.src !== src) {
 			this._loadImage();
 		}
-	},
+	}
 
-	_loadImage() {
+	_loadImage = () => {
+		const { src, onLoad } = this.props;
+
 		const i = new Image();
-		i.src = this.props.src;
+		i.src = src;
 
 		i.onload = () => {
-			this.props.onLoad({
+			onLoad({
 				width: i.width,
 				height: i.height,
 			});
@@ -57,27 +71,22 @@ const MainImage = React.createClass({
 				height: i.height,
 			});
 		};
-	},
+	}
 
 	render() {
 		const { src, alt, loaded } = this.props;
 		const { width, height, maxWidth, maxHeight } = this.state;
 		const style = {};
 
-		if (!width || !height) {
-			return null;
-		}
-
-		if (!maxWidth || !maxHeight || maxWidth <= 0 || maxHeight <= 0) {
-			return null;
-		}
-
 		const ratio = height / width;
 		let resWidth;
 		let resHeight;
 
 		// get a proposed set of dimensions, meant to maximize the size...
-		if (width > height) {
+		if (!width || !height) {
+			resWidth = 0;
+			resHeight = 0;
+		} else if (width > height) {
 			resWidth = maxWidth;
 			resHeight = resWidth * ratio;
 		} else {
@@ -99,23 +108,23 @@ const MainImage = React.createClass({
 		}
 
 		return (
-			<ReactCSSTransitionGroup
-					transitionName="main-image"
-					transitionAppear
-					transitionEnterTimeout={500}
-					transitionAppearTimeout={500}
-					transitionLeaveTimeout={5}>
+			<TransitionGroup>
 				{loaded &&
-					<img
+					<CSSTransition
 						key={src}
-						src={src}
-						alt={alt}
-						style={style}
-					/>
+						classNames="main-image"
+						timeout={500}
+					>
+						<img
+							src={src}
+							alt={alt}
+							style={style}
+						/>
+					</CSSTransition>
 				}
-			</ReactCSSTransitionGroup>
+			</TransitionGroup>
 		);
-	},
-});
+	}
+}
 
 export default MainImage;

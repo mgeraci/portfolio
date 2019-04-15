@@ -1,60 +1,57 @@
-import React, { PropTypes } from "react";
+import React from "react";
+import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import PureRenderMixin from "react-addons-pure-render-mixin";
 
-import {
-	clearFilterTag,
-} from "../reducer";
-import TitleClearButton from "./TitleClearButton";
+import { clearFilterTag } from "../reducer";
+import TitleClearButton from "./TitleClearButton.jsx";
 
 import "./Title.sass";
 
-const Title = React.createClass({
-	propTypes: {
-		filteredTerm: PropTypes.object,
-		onClearFilterTag: PropTypes.func.isRequired,
-	},
+const Title = ({ filteredTerm, onClearFilterTag }) => {
+	const isYear = !!`${filteredTerm}`.match(/2\d{3}/);
+	const isTagsList = filteredTerm && filteredTerm.name === "tags";
+	const isTag = !isYear && !isTagsList && filteredTerm && filteredTerm.slug;
 
-	mixins: [ PureRenderMixin ],
+	return (
+		<h2 className="page-photography-title">
+			{isYear &&
+				<span>
+					Images from {filteredTerm.name}
+					<TitleClearButton clearFilterTag={onClearFilterTag} />
+				</span>
+			}
 
-	render() {
-		const { filteredTerm, onClearFilterTag } = this.props;
-		const isYear = !!`${filteredTerm}`.match(/2\d{3}/);
-		const isTagsList = filteredTerm && filteredTerm.name === "tags";
-		const isTag = !isYear && !isTagsList && filteredTerm && filteredTerm.slug;
+			{isTagsList &&
+				<span>
+					Browsing tags
+					<TitleClearButton clearFilterTag={onClearFilterTag} />
+				</span>
+			}
 
-		return (
-			<h2 className="page-photography-title">
-				{isYear &&
-					<span>
-						Images from {filteredTerm.name}
-						<TitleClearButton clearFilterTag={onClearFilterTag} />
-					</span>
-				}
+			{isTag &&
+				<span>
+					Images tagged
+					&nbsp;
+					<em>{filteredTerm.name}</em>
+					<TitleClearButton clearFilterTag={onClearFilterTag} />
+				</span>
+			}
 
-				{isTagsList &&
-					<span>
-						Browsing tags
-						<TitleClearButton clearFilterTag={onClearFilterTag} />
-					</span>
-				}
+			{!(filteredTerm && filteredTerm.slug) &&
+				<span>Photoblog</span>
+			}
+		</h2>
+	);
+};
 
-				{isTag &&
-					<span>
-						Images tagged
-						&nbsp;
-						<em>{filteredTerm.name}</em>
-						<TitleClearButton clearFilterTag={onClearFilterTag} />
-					</span>
-				}
+Title.propTypes = {
+	onClearFilterTag: PropTypes.func.isRequired,
+	filteredTerm: PropTypes.object,
+};
 
-				{!(filteredTerm && filteredTerm.slug) &&
-					<span>Photoblog</span>
-				}
-			</h2>
-		);
-	},
-});
+Title.defaultProps = {
+	filteredTerm: null,
+};
 
 function mapStateToProps(state) {
 	return {

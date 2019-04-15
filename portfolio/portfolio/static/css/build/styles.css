@@ -27,13 +27,13 @@
       background-repeat: repeat-x;
       background-size: 2px 2px;
       background-position: 0 85%;
-      background-image: linear-gradient(to bottom, transparent 50%, rgba(68, 68, 68, 0.6) 50%); }
+      background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 50%, rgba(68, 68, 68, 0.6) 50%); }
     .no-touchevents .page-photography-title-clear:hover, .no-touchevents .page-photography-title-clear:active {
       text-decoration: none;
       background-repeat: repeat-x;
       background-size: 2px 2px;
       background-position: 0 85%;
-      background-image: linear-gradient(to bottom, transparent 50%, rgba(76, 123, 217, 0.6) 50%); }
+      background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 50%, rgba(76, 123, 217, 0.6) 50%); }
     .no-touchevents .page-photography-title-clear:hover,
     .no-touchevents .page-photography-title-clear:hover h2,
     .no-touchevents .page-photography-title-clear:hover h3, .no-touchevents .page-photography-title-clear:active,
@@ -60,13 +60,13 @@
       background-repeat: repeat-x;
       background-size: 2px 2px;
       background-position: 0 85%;
-      background-image: linear-gradient(to bottom, transparent 50%, rgba(68, 68, 68, 0.6) 50%); }
+      background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 50%, rgba(68, 68, 68, 0.6) 50%); }
     .no-touchevents .page-photography-navigation-item-wrapper a:hover, .no-touchevents .page-photography-navigation-item-wrapper a:active {
       text-decoration: none;
       background-repeat: repeat-x;
       background-size: 2px 2px;
       background-position: 0 85%;
-      background-image: linear-gradient(to bottom, transparent 50%, rgba(76, 123, 217, 0.6) 50%); }
+      background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 50%, rgba(76, 123, 217, 0.6) 50%); }
     .no-touchevents .page-photography-navigation-item-wrapper a:hover,
     .no-touchevents .page-photography-navigation-item-wrapper a:hover h2,
     .no-touchevents .page-photography-navigation-item-wrapper a:hover h3, .no-touchevents .page-photography-navigation-item-wrapper a:active,
@@ -220,13 +220,13 @@
       background-repeat: repeat-x;
       background-size: 2px 2px;
       background-position: 0 85%;
-      background-image: linear-gradient(to bottom, transparent 50%, rgba(119, 119, 119, 0.6) 50%); }
+      background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 50%, rgba(119, 119, 119, 0.6) 50%); }
     .no-touchevents .image-modal-meta a.image-modal-meta-tag:hover, .no-touchevents .image-modal-meta a.image-modal-meta-tag:active {
       text-decoration: none;
       background-repeat: repeat-x;
       background-size: 2px 2px;
       background-position: 0 85%;
-      background-image: linear-gradient(to bottom, transparent 50%, rgba(76, 123, 217, 0.6) 50%); }
+      background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 50%, rgba(76, 123, 217, 0.6) 50%); }
     .no-touchevents .image-modal-meta a.image-modal-meta-tag:hover,
     .no-touchevents .image-modal-meta a.image-modal-meta-tag:hover h2,
     .no-touchevents .image-modal-meta a.image-modal-meta-tag:hover h3, .no-touchevents .image-modal-meta a.image-modal-meta-tag:active,
@@ -917,13 +917,13 @@ nav::after {
         background-repeat: repeat-x;
         background-size: 2px 2px;
         background-position: 0 85%;
-        background-image: linear-gradient(to bottom, transparent 50%, rgba(68, 68, 68, 0.6) 50%); }
+        background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 50%, rgba(68, 68, 68, 0.6) 50%); }
       .no-touchevents .submenu-menu a:hover, .no-touchevents .submenu-menu a:active {
         text-decoration: none;
         background-repeat: repeat-x;
         background-size: 2px 2px;
         background-position: 0 85%;
-        background-image: linear-gradient(to bottom, transparent 50%, rgba(243, 244, 211, 0.6) 50%); }
+        background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 50%, rgba(243, 244, 211, 0.6) 50%); }
       .no-touchevents .submenu-menu a:hover,
       .no-touchevents .submenu-menu a:hover h2,
       .no-touchevents .submenu-menu a:hover h3, .no-touchevents .submenu-menu a:active,
@@ -1106,13 +1106,13 @@ nav::after {
       background-repeat: repeat-x;
       background-size: 2px 2px;
       background-position: 0 85%;
-      background-image: linear-gradient(to bottom, transparent 50%, rgba(71, 77, 89, 0.6) 50%); }
+      background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 50%, rgba(71, 77, 89, 0.6) 50%); }
     .no-touchevents .page-index-copyright-link:hover, .no-touchevents .page-index-copyright-link:active {
       text-decoration: none;
       background-repeat: repeat-x;
       background-size: 2px 2px;
       background-position: 0 85%;
-      background-image: linear-gradient(to bottom, transparent 50%, rgba(76, 123, 217, 0.6) 50%); }
+      background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 50%, rgba(76, 123, 217, 0.6) 50%); }
     .no-touchevents .page-index-copyright-link:hover,
     .no-touchevents .page-index-copyright-link:hover h2,
     .no-touchevents .page-index-copyright-link:hover h3, .no-touchevents .page-index-copyright-link:active,
@@ -1899,13 +1899,13 @@ nav::after {
     background-repeat: repeat-x;
     background-size: 2px 2px;
     background-position: 0 85%;
-    background-image: linear-gradient(to bottom, transparent 50%, rgba(68, 68, 68, 0.6) 50%); }
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 50%, rgba(68, 68, 68, 0.6) 50%); }
   .no-touchevents .page-web .content a:hover, .no-touchevents .page-web .content a:active {
     text-decoration: none;
     background-repeat: repeat-x;
     background-size: 2px 2px;
     background-position: 0 85%;
-    background-image: linear-gradient(to bottom, transparent 50%, rgba(243, 244, 211, 0.6) 50%); }
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 50%, rgba(243, 244, 211, 0.6) 50%); }
   .no-touchevents .page-web .content a:hover,
   .no-touchevents .page-web .content a:hover h2,
   .no-touchevents .page-web .content a:hover h3, .no-touchevents .page-web .content a:active,
@@ -1941,13 +1941,13 @@ nav::after {
     background-repeat: repeat-x;
     background-size: 2px 2px;
     background-position: 0 85%;
-    background-image: linear-gradient(to bottom, transparent 50%, rgba(68, 68, 68, 0.6) 50%); }
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 50%, rgba(68, 68, 68, 0.6) 50%); }
   .no-touchevents .page-links .content a:hover, .no-touchevents .page-links .content a:active {
     text-decoration: none;
     background-repeat: repeat-x;
     background-size: 2px 2px;
     background-position: 0 85%;
-    background-image: linear-gradient(to bottom, transparent 50%, rgba(243, 244, 211, 0.6) 50%); }
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 50%, rgba(243, 244, 211, 0.6) 50%); }
   .no-touchevents .page-links .content a:hover,
   .no-touchevents .page-links .content a:hover h2,
   .no-touchevents .page-links .content a:hover h3, .no-touchevents .page-links .content a:active,
@@ -2396,13 +2396,13 @@ nav::after {
       background-repeat: repeat-x;
       background-size: 2px 2px;
       background-position: 0 85%;
-      background-image: linear-gradient(to bottom, transparent 50%, rgba(68, 68, 68, 0.6) 50%); }
+      background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 50%, rgba(68, 68, 68, 0.6) 50%); }
     .no-touchevents .page-album-list-navigation a:hover, .no-touchevents .page-album-list-navigation a:active {
       text-decoration: none;
       background-repeat: repeat-x;
       background-size: 2px 2px;
       background-position: 0 85%;
-      background-image: linear-gradient(to bottom, transparent 50%, rgba(76, 123, 217, 0.6) 50%); }
+      background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 50%, rgba(76, 123, 217, 0.6) 50%); }
     .no-touchevents .page-album-list-navigation a:hover,
     .no-touchevents .page-album-list-navigation a:hover h2,
     .no-touchevents .page-album-list-navigation a:hover h3, .no-touchevents .page-album-list-navigation a:active,
@@ -2544,13 +2544,13 @@ nav::after {
       background-repeat: repeat-x;
       background-size: 2px 2px;
       background-position: 0 85%;
-      background-image: linear-gradient(to bottom, transparent 50%, rgba(68, 68, 68, 0.6) 50%); }
+      background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 50%, rgba(68, 68, 68, 0.6) 50%); }
     .no-touchevents .page-album-list-item-description a:hover, .no-touchevents .page-album-list-item-description a:active {
       text-decoration: none;
       background-repeat: repeat-x;
       background-size: 2px 2px;
       background-position: 0 85%;
-      background-image: linear-gradient(to bottom, transparent 50%, rgba(76, 123, 217, 0.6) 50%); }
+      background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 50%, rgba(76, 123, 217, 0.6) 50%); }
     .no-touchevents .page-album-list-item-description a:hover,
     .no-touchevents .page-album-list-item-description a:hover h2,
     .no-touchevents .page-album-list-item-description a:hover h3, .no-touchevents .page-album-list-item-description a:active,
@@ -2575,13 +2575,13 @@ nav::after {
         background-repeat: repeat-x;
         background-size: 2px 2px;
         background-position: 0 85%;
-        background-image: linear-gradient(to bottom, transparent 50%, rgba(68, 68, 68, 0.6) 50%); }
+        background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 50%, rgba(68, 68, 68, 0.6) 50%); }
       .no-touchevents .page-album-list-item-links a.page-album-list-item-links-link:hover, .no-touchevents .page-album-list-item-links a.page-album-list-item-links-link:active {
         text-decoration: none;
         background-repeat: repeat-x;
         background-size: 2px 2px;
         background-position: 0 85%;
-        background-image: linear-gradient(to bottom, transparent 50%, rgba(76, 123, 217, 0.6) 50%); }
+        background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 50%, rgba(76, 123, 217, 0.6) 50%); }
       .no-touchevents .page-album-list-item-links a.page-album-list-item-links-link:hover,
       .no-touchevents .page-album-list-item-links a.page-album-list-item-links-link:hover h2,
       .no-touchevents .page-album-list-item-links a.page-album-list-item-links-link:hover h3, .no-touchevents .page-album-list-item-links a.page-album-list-item-links-link:active,
@@ -2643,13 +2643,13 @@ nav::after {
     background-repeat: repeat-x;
     background-size: 2px 2px;
     background-position: 0 85%;
-    background-image: linear-gradient(to bottom, transparent 50%, rgba(68, 68, 68, 0.6) 50%); }
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 50%, rgba(68, 68, 68, 0.6) 50%); }
   .no-touchevents .page-album-list-thanks a:hover, .no-touchevents .page-album-list-thanks a:active {
     text-decoration: none;
     background-repeat: repeat-x;
     background-size: 2px 2px;
     background-position: 0 85%;
-    background-image: linear-gradient(to bottom, transparent 50%, rgba(76, 123, 217, 0.6) 50%); }
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 50%, rgba(76, 123, 217, 0.6) 50%); }
   .no-touchevents .page-album-list-thanks a:hover,
   .no-touchevents .page-album-list-thanks a:hover h2,
   .no-touchevents .page-album-list-thanks a:hover h3, .no-touchevents .page-album-list-thanks a:active,

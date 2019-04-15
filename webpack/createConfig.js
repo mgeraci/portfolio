@@ -56,14 +56,11 @@ function createConfig(params) {
 		],
 
 		loaders: [
-			// react
+			// react and es6 js
 			{
 				test: /\.jsx?$/,
 				exclude: [/node_modules/],
 				loader: "babel-loader",
-				query: {
-					presets: ["es2015", "react", "stage-2"]
-				}
 			},
 
 			// sass, pull into standalone file

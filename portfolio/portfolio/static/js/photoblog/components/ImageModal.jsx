@@ -1,9 +1,10 @@
 /* global window, document */
 
-import React, { PropTypes } from "react";
+import React, { Component } from "react";
+import PropTypes from "prop-types";
 import jQuery from "jquery";
 import { connect } from "react-redux";
-import ReactCSSTransitionGroup from "react-addons-css-transition-group";
+import { TransitionGroup, CSSTransition } from "react-transition-group";
 import throttle from "throttle-debounce/throttle";
 
 import {
@@ -19,20 +20,19 @@ import {
 	PHOTOBLOG_MOBILE_BREAKPOINT,
 } from "../util/constants";
 
-import Buttons from "./modal/Buttons";
-import MainImage from "./modal/MainImage";
-import Meta from "./modal/Meta";
-import Swipeable from "./Swipeable";
+import Buttons from "./modal/Buttons.jsx";
+import MainImage from "./modal/MainImage.jsx";
+import Meta from "./modal/Meta.jsx";
+import Swipeable from "./Swipeable.jsx";
 
 import "./ImageModal.sass";
 
 const initialState = {
 	isLoaded: false,
-	metaHeight: 0,
 };
 
-const ImageDetail = React.createClass({
-	propTypes: {
+class ImageDetail extends Component {
+	static propTypes = {
 		image: PropTypes.object.isRequired,
 		atBeginning: PropTypes.bool,
 		atEnd: PropTypes.bool,
@@ -41,11 +41,14 @@ const ImageDetail = React.createClass({
 		onNavigatePrev: PropTypes.func.isRequired,
 		onNavigateNext: PropTypes.func.isRequired,
 		onFilterTag: PropTypes.func.isRequired,
-	},
+	};
 
-	getInitialState() {
-		return initialState;
-	},
+	static defaultProps = {
+		atBeginning: false,
+		atEnd: false,
+	};
+
+	state = initialState;
 
 	componentDidMount() {
 		this._throttledResize = throttle(200, this._onResize);
@@ -56,61 +59,70 @@ const ImageDetail = React.createClass({
 
 		// trigger an initial resize event
 		this._onResize();
-	},
+	}
 
 	componentWillReceiveProps(nextProps) {
-		if (nextProps.image.id !== this.props.image.id) {
+		const { image } = this.props;
+
+		if (nextProps.image.id !== image.id) {
 			this.setState(initialState);
 		}
-	},
+	}
 
 	componentWillUnmount() {
 		document.removeEventListener("keyup", this._onKeyup);
 		window.removeEventListener("resize", this._throttledResize);
 		jQuery("body").removeClass("no-scroll");
-	},
+	}
 
-	_onKeyup(e) {
+	_onKeyup = (e) => {
+		const { onClearActiveImage, onNavigatePrev, onNavigateNext } = this.props;
+		const { isLoaded } = this.state;
+
 		const code = e.which;
 
 		if (code === KEYS.escape) {
-			this.props.onClearActiveImage();
+			onClearActiveImage();
 		}
 
-		if (!this.state.isLoaded) {
+		if (!isLoaded) {
 			return;
 		}
 
 		if (code === KEYS.left) {
-			this.props.onNavigatePrev();
+			onNavigatePrev();
 		} else if (code === KEYS.right) {
-			this.props.onNavigateNext();
+			onNavigateNext();
 		}
-	},
+	}
 
-	_onResize() {
+	_onResize = () => {
 		this.setState({
 			windowWidth: window.innerWidth,
 			windowHeight: window.innerHeight,
 		});
-	},
+	}
 
-	_onImageLoad(dimensions) {
+	_onImageLoad = (dimensions) => {
 		this.setState({
 			isLoaded: true,
 			dimensions,
 		});
-	},
-
-	_onImageMetaRender(height) {
-		this.setState({ metaHeight: height });
-	},
+	}
 
 	render() {
-		const { image } = this.props;
+		const {
+			image,
+			atEnd,
+			atBeginning,
+			onNavigatePrev,
+			onNavigateNext,
+			onFilterTag,
+		} = this.props;
+		const { windowWidth, windowHeight, dimensions, isLoaded } = this.state;
 
 		const contentStyle = {};
-		const isMobile = this.state.windowWidth < PHOTOBLOG_MOBILE_BREAKPOINT;
+		const isMobile = windowWidth < PHOTOBLOG_MOBILE_BREAKPOINT;
 		let topPadding = MAIN_IMAGE_SPACE;
 		let sidePadding = MAIN_IMAGE_SPACE;
 		const bottomPadding = MAIN_IMAGE_SPACE;
@@ -123,14 +135,14 @@ const ImageDetail = React.createClass({
 		}
 
 		// don't load any image if we don't have a window size yet
-		if (!this.state.windowWidth) {
+		if (!windowWidth) {
 			src = null;
 		}
 
 		// keep images from getting bigger than their native size
-		if (this.state.dimensions) {
-			contentStyle.maxWidth = this.state.dimensions.width;
-			contentStyle.maxHeight = this.state.dimensions.height;
+		if (dimensions) {
+			contentStyle.maxWidth = dimensions.width;
+			contentStyle.maxHeight = dimensions.height;
 		}
 
 		const spaceStyle = {
@@ -140,65 +152,64 @@ const ImageDetail = React.createClass({
 			left: `${sidePadding}px`,
 		};
 
-		const imageMaxWidth = this.state.windowWidth - (sidePadding * 2);
-		const imageMaxHeight = this.state.windowHeight - topPadding - bottomPadding;
+		const imageMaxWidth = windowWidth - (sidePadding * 2);
+		const imageMaxHeight = windowHeight - topPadding - bottomPadding;
 
 		return (
 			<div className="image-modal" key={image.title}>
 				<Swipeable
-						canSwipeLeft={!this.props.atEnd}
-						canSwipeRight={!this.props.atBeginning}
-						onSwipeLeft={this.props.onNavigateNext}
-						onSwipeRight={this.props.onNavigatePrev}>
+					canSwipeLeft={!atEnd}
+					canSwipeRight={!atBeginning}
+					onSwipeLeft={onNavigateNext}
+					onSwipeRight={onNavigatePrev}
+				>
 
 					<div className="image-modal-space" style={spaceStyle}>
 						<div className="image-modal-content" style={contentStyle}>
-							{src &&
-								<MainImage
-									src={src}
-									alt={image.title}
-									maxWidth={imageMaxWidth}
-									maxHeight={imageMaxHeight}
-									loaded={this.state.isLoaded}
-									onLoad={this._onImageLoad}
-								/>
-							}
+							<MainImage
+								src={src}
+								alt={image.title}
+								maxWidth={imageMaxWidth}
+								maxHeight={imageMaxHeight}
+								loaded={isLoaded}
+								onLoad={this._onImageLoad}
+							/>
 
-							{!this.state.isLoaded &&
+							{!isLoaded &&
 								<div className="loader" />
 							}
 
-							<ReactCSSTransitionGroup
-									transitionName="main-image"
-									transitionAppear
-									transitionEnterTimeout={500}
-									transitionAppearTimeout={500}
-									transitionLeaveTimeout={5}>
-								{this.state.isLoaded &&
-									<Meta
+							<TransitionGroup>
+								{isLoaded &&
+									<CSSTransition
 										key={image.id}
-										title={image.title}
-										year={image.year}
-										tags={image.tags}
-										onRender={this._onImageMetaRender}
-										filterTag={this.props.onFilterTag}
-									/>
+										classNames="main-image"
+										timeout={500}
+									>
+										<Meta
+											title={image.title}
+											year={image.year}
+											tags={image.tags}
+											onRender={() => {}}
+											filterTag={onFilterTag}
+										/>
+									</CSSTransition>
 								}
-							</ReactCSSTransitionGroup>
+							</TransitionGroup>
 						</div>
 					</div>
 
 				</Swipeable>
 
 				<Buttons
-					atBeginning={this.props.atBeginning}
-					atEnd={this.props.atEnd}
+					atBeginning={atBeginning}
+					atEnd={atEnd}
 					isMobile={isMobile}
 				/>
 			</div>
 		);
-	},
-});
+	}
+}
 
 function mapStateToProps(state) {
 	return {

@@ -1,4 +1,5 @@
-import React, { PropTypes } from "react";
+import React from "react";
+import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import classnames from "classnames";
 
@@ -10,75 +11,80 @@ import {
 
 import "./Buttons.sass";
 
-const Buttons = React.createClass({
-	propTypes: {
-		atBeginning: PropTypes.bool,
-		atEnd: PropTypes.bool,
-		isMobile: PropTypes.bool,
-		onNavigatePrev: PropTypes.func.isRequired,
-		onNavigateNext: PropTypes.func.isRequired,
-		onClose: PropTypes.func.isRequired,
-	},
+const Buttons = ({
+	atBeginning,
+	atEnd,
+	isMobile,
+	onNavigatePrev,
+	onNavigateNext,
+	onClose,
+}) => {
+	const prevClass = {
+		"image-modal-button": true,
+		"image-modal-button--prev": true,
+		"image-modal-button--is-hidden": isMobile,
+	};
 
-	render() {
-		const {
-			atBeginning,
-			atEnd,
-			isMobile,
-			onNavigatePrev,
-			onNavigateNext,
-			onClose,
-		} = this.props;
+	const nextClass = {
+		"image-modal-button": true,
+		"image-modal-button--next": true,
+		"image-modal-button--is-hidden": isMobile,
+	};
 
-		const prevClass = {
-			"image-modal-button": true,
-			"image-modal-button--prev": true,
-			"image-modal-button--is-hidden": isMobile,
-		};
+	const closeClass = {
+		"image-modal-button": true,
+		"image-modal-button--close": true,
+		"image-modal-button--is-mobile": isMobile,
+	};
 
-		const nextClass = {
-			"image-modal-button": true,
-			"image-modal-button--next": true,
-			"image-modal-button--is-hidden": isMobile,
-		};
+	return (
+		<span>
+			<button
+				className={classnames(prevClass)}
+				onClick={onNavigatePrev}
+				disabled={atBeginning}
+			>
+				<span className="image-modal-button-text">
+					previous photo
+				</span>
+			</button>
 
-		const closeClass = {
-			"image-modal-button": true,
-			"image-modal-button--close": true,
-			"image-modal-button--is-mobile": isMobile,
-		};
+			<button
+				className={classnames(nextClass)}
+				onClick={onNavigateNext}
+				disabled={atEnd}
+			>
+				<span className="image-modal-button-text">
+					next photo
+				</span>
+			</button>
 
-		return (
-			<span>
-				<button
-						className={classnames(prevClass)}
-						onClick={onNavigatePrev}
-						disabled={atBeginning}>
-					<span className="image-modal-button-text">
-						previous photo
-					</span>
-				</button>
+			<button
+				className={classnames(closeClass)}
+				onClick={onClose}
+			>
+				<span className="image-modal-button-text">
+					close
+				</span>
+			</button>
+		</span>
+	);
+};
 
-				<button
-						className={classnames(nextClass)}
-						onClick={onNavigateNext}
-						disabled={atEnd}>
-					<span className="image-modal-button-text">
-						next photo
-					</span>
-				</button>
+Buttons.propTypes = {
+	onNavigatePrev: PropTypes.func.isRequired,
+	onNavigateNext: PropTypes.func.isRequired,
+	onClose: PropTypes.func.isRequired,
+	atBeginning: PropTypes.bool,
+	atEnd: PropTypes.bool,
+	isMobile: PropTypes.bool,
+};
 
-				<button
-						className={classnames(closeClass)}
-						onClick={onClose}>
-					<span className="image-modal-button-text">
-						close
-					</span>
-				</button>
-			</span>
-		);
-	},
-});
+Buttons.defaultProps = {
+	atBeginning: false,
+	atEnd: false,
+	isMobile: false,
+};
 
 function mapStateToProps(state) {
 	return {

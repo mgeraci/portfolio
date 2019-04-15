@@ -1,19 +1,19 @@
-import React, { PropTypes } from "react";
+import React from "react";
+import PropTypes from "prop-types";
 
-const TitleClearButton = React.createClass({
-	propTypes: {
-		clearFilterTag: PropTypes.func.isRequired,
-	},
+const TitleClearButton = ({ clearFilterTag }) => {
+	return (
+		<button
+			className="page-photography-title-clear"
+			onClick={clearFilterTag}
+		>
+			remove filter
+		</button>
+	);
+};
 
-	render() {
-		return (
-			<button
-					className="page-photography-title-clear"
-					onClick={this.props.clearFilterTag}>
-				remove filter
-			</button>
-		);
-	},
-});
+TitleClearButton.propTypes = {
+	clearFilterTag: PropTypes.func.isRequired,
+};
 
 export default TitleClearButton;

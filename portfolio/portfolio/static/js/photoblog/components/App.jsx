@@ -1,8 +1,9 @@
 /* global window, document */
 
-import React, { PropTypes } from "react";
+import React, { Component } from "react";
+import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import ReactCSSTransitionGroup from "react-addons-css-transition-group";
+import { TransitionGroup, CSSTransition } from "react-transition-group";
 import throttle from "throttle-debounce/throttle";
 
 import {
@@ -10,18 +11,18 @@ import {
 	clearActiveImage,
 } from "../reducer";
 
-import { TAGS_LIST_URL } from "../util/constants.js";
+import { TAGS_LIST_URL } from "../util/constants";
 
-import Title from "./Title";
-import Navigation from "./Navigation";
-import Thumbnail from "./Thumbnail";
-import ImageModal from "./ImageModal";
-import TagsList from "./TagsList";
+import Title from "./Title.jsx";
+import Navigation from "./Navigation.jsx";
+import Thumbnail from "./Thumbnail.jsx";
+import ImageModal from "./ImageModal.jsx";
+import TagsList from "./TagsList.jsx";
 
 import "./App.sass";
 
-const App = React.createClass({
-	propTypes: {
+class App extends Component {
+	static propTypes = {
 		appInitialized: PropTypes.bool,
 		order: PropTypes.array.isRequired,
 		filteredOrder: PropTypes.array,
@@ -31,45 +32,54 @@ const App = React.createClass({
 
 		onSetActiveImage: PropTypes.func.isRequired,
 		onClearActiveImage: PropTypes.func.isRequired,
-	},
+	};
 
-	getInitialState() {
-		return {};
-	},
+	static defaultProps = {
+		appInitialized: false,
+		filteredOrder: null,
+		filteredTerm: null,
+		activeImage: null,
+	};
+
+	state = {};
 
 	componentDidMount() {
 		const onScroll = throttle(200, this._onScroll);
 
 		document.addEventListener("scroll", onScroll);
 		this._triggerScroll();
-	},
+	}
 
 	// if the set of images is changing, trigger a scroll event to load new photos
 	componentDidUpdate(prevProps) {
+		const { filteredTerm } = this.props;
+
 		// has a tag, and it's changing
-		if (this.props.filteredTerm && prevProps.filteredTerm &&
-				this.props.filteredTerm.slug !== prevProps.filteredTerm.slug) {
+		if (
+			filteredTerm && prevProps.filteredTerm &&
+			filteredTerm.slug !== prevProps.filteredTerm.slug
+		) {
 			this._triggerScroll();
 		}
 
 		// removing a tag
-		if (this.props.filteredTerm === null && prevProps.filteredTerm) {
+		if (filteredTerm === null && prevProps.filteredTerm) {
 			this._triggerScroll();
 		}
 
 		// adding a tag
-		if (this.props.filteredTerm && typeof(prevProps.filteredTerm) === "undefined") {
+		if (filteredTerm && typeof(prevProps.filteredTerm) === "undefined") {
 			this._triggerScroll();
 		}
-	},
+	}
 
-	_triggerScroll() {
+	_triggerScroll = () => {
 		setTimeout(() => {
 			this._onScroll();
 		}, 50);
-	},
+	}
 
-	_onScroll() {
+	_onScroll = () => {
 		const top = document.body.scrollTop;
 		const height = window.innerHeight
 			|| document.documentElement.clientHeight
@@ -80,17 +90,19 @@ const App = React.createClass({
 			scrollTop: top,
 			scrollBottom: bottom,
 		});
-	},
+	}
 
-	_getVisibleImageIds() {
-		let imageIds = this.props.order;
+	_getVisibleImageIds = () => {
+		const { order, filteredOrder } = this.props;
 
-		if (this.props.filteredOrder && this.props.filteredOrder.length) {
-			imageIds = this.props.filteredOrder;
+		let imageIds = order;
+
+		if (filteredOrder && filteredOrder.length) {
+			imageIds = filteredOrder;
 		}
 
 		return imageIds;
-	},
+	}
 
 	render() {
 		const {
@@ -115,7 +127,7 @@ const App = React.createClass({
 					<span>
 						<div className="page-photography-thumbnails">
 
-							{appInitialized && this._getVisibleImageIds().map(id =>
+							{appInitialized && this._getVisibleImageIds().map((id) => (
 								<Thumbnail
 									key={id}
 									image={images[id]}
@@ -125,19 +137,20 @@ const App = React.createClass({
 									clearActiveImage={onClearActiveImage}
 									hasActiveImage={hasActiveImage}
 								/>
-							)}
+							))}
 						</div>
 
-						{hasActiveImage &&
-							<ReactCSSTransitionGroup
-									transitionName="main-image"
-									transitionAppear
-									transitionEnterTimeout={500}
-									transitionAppearTimeout={500}
-									transitionLeaveTimeout={500}>
-								<ImageModal image={images[activeImage]} />
-							</ReactCSSTransitionGroup>
-						}
+						<TransitionGroup>
+							{hasActiveImage &&
+								<CSSTransition
+									key="main-image"
+									classNames="main-image"
+									timeout={500}
+								>
+									<ImageModal image={images[activeImage]} />
+								</CSSTransition>
+							}
+						</TransitionGroup>
 					</span>
 				}
 
@@ -150,8 +163,8 @@ const App = React.createClass({
 				</a>
 			</span>
 		);
-	},
-});
+	}
+}
 
 function mapStateToProps(state) {
 	return {

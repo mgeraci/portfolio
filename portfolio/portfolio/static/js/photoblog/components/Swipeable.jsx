@@ -1,6 +1,7 @@
 /* global window, document */
 
-import React, { PropTypes } from "react";
+import React, { Component } from "react";
+import PropTypes from "prop-types";
 import classnames from "classnames";
 
 const EDGE_BUFFER = 60;
@@ -11,37 +12,35 @@ const DIRECTIONS = {
 	right: "right",
 };
 
-const Swipeable = React.createClass({
-	propTypes: {
+class Swipeable extends Component {
+	static propTypes = {
 		children: PropTypes.node.isRequired,
 		onSwipeLeft: PropTypes.func.isRequired,
 		onSwipeRight: PropTypes.func.isRequired,
 		canSwipeLeft: PropTypes.bool.isRequired,
 		canSwipeRight: PropTypes.bool.isRequired,
-	},
+	}
 
-	getInitialState() {
-		return {
-			origin: null,
-			current: null,
-			offscreenLeft: false,
-			offscreenRight: false,
-		};
-	},
+	state = {
+		origin: null,
+		current: null,
+		offscreenLeft: false,
+		offscreenRight: false,
+	};
 
 	componentDidMount() {
 		document.addEventListener("touchstart", this._onTouchStart);
 		document.addEventListener("touchmove", this._onTouchMove);
 		document.addEventListener("touchend", this._onTouchEnd);
-	},
+	}
 
 	componentWillUnmount() {
 		document.removeEventListener("touchstart", this._onTouchStart);
 		document.removeEventListener("touchmove", this._onTouchMove);
 		document.removeEventListener("touchend", this._onTouchEnd);
-	},
+	}
 
-	_onTouchStart(e) {
+	_onTouchStart = (e) => {
 		this.setState({
 			origin: e.touches[0].pageX,
 			originTime: Date.now(),
@@ -49,17 +48,17 @@ const Swipeable = React.createClass({
 			transitionTime: null,
 			isTouching: true,
 		});
-	},
+	}
 
-	_onTouchMove(e) {
+	_onTouchMove = (e) => {
 		e.preventDefault();
 
 		this.setState({
 			current: e.touches[0].pageX,
 		});
-	},
+	}
 
-	_getDirection() {
+	_getDirection = () => {
 		const { origin, current } = this.state;
 
 		if (origin === null || current === null) {
@@ -71,10 +70,10 @@ const Swipeable = React.createClass({
 		} else {
 			return DIRECTIONS.left;
 		}
-	},
+	}
 
 	// returns the speed of the swipe, in pixels per millisecond
-	_getSpeed() {
+	_getSpeed = () => {
 		const { origin, originTime, current } = this.state;
 		if (origin === null || current === null) {
 			return false;
@@ -88,22 +87,22 @@ const Swipeable = React.createClass({
 		}
 
 		return distance / time;
-	},
+	}
 
 	// when the touch has ended, determine if the swipe should trigger a next or
 	// previous action. trigger, if either:
 	// - the release location is close to the edge of the screen
 	// - the swipe speed was fast
-	_onTouchEnd() {
+	_onTouchEnd = () => {
 		const { canSwipeLeft, canSwipeRight } = this.props;
+		const { current } = this.state;
 		const speed = this._getSpeed();
-		let offscreenLeft = this.state.current < EDGE_BUFFER;
-		let offscreenRight = window.innerWidth - this.state.current < EDGE_BUFFER;
+		let offscreenLeft = current < EDGE_BUFFER;
+		let offscreenRight = window.innerWidth - current < EDGE_BUFFER;
 		let time = null;
 
 		if (speed > SPEED_BUFFER) {
 			const direction = this._getDirection();
-			const { current } = this.state;
 			let distance;
 
 			if (direction === DIRECTIONS.left) {
@@ -134,10 +133,11 @@ const Swipeable = React.createClass({
 			offscreenRight,
 			transitionTime: time,
 		});
-	},
+	}
 
-	_getStyle() {
+	_getStyle = () => {
 		const style = {};
+		const { onSwipeLeft, onSwipeRight } = this.props;
 		const {
 			origin,
 			current,
@@ -149,11 +149,11 @@ const Swipeable = React.createClass({
 		if (offscreenLeft) {
 			style.transform = "translateX(-100%)";
 			style.transitionDuration = `${transitionTime}ms`;
-			this._dispatchEvent(this.props.onSwipeLeft);
+			this._dispatchEvent(onSwipeLeft);
 		} else if (offscreenRight) {
 			style.transform = "translateX(100%)";
 			style.transitionDuration = `${transitionTime}ms`;
-			this._dispatchEvent(this.props.onSwipeRight);
+			this._dispatchEvent(onSwipeRight);
 		} else {
 			let offset = 0;
 
@@ -165,9 +165,9 @@ const Swipeable = React.createClass({
 		}
 
 		return style;
-	},
+	}
 
-	_dispatchEvent(func) {
+	_dispatchEvent = (func) => {
 		if (this.isDispatching) {
 			return;
 		}
@@ -177,7 +177,7 @@ const Swipeable = React.createClass({
 		setTimeout(() => {
 			func();
 		}, 250);
-	},
+	}
 
 	render() {
 		const { children } = this.props;
@@ -193,7 +193,7 @@ const Swipeable = React.createClass({
 				{children}
 			</div>
 		);
-	},
-});
+	}
+}
 
 export default Swipeable;

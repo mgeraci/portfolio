@@ -1,18 +1,23 @@
-import React, { PropTypes } from "react";
+import React, { Component } from "react";
+import PropTypes from "prop-types";
 import { connect } from "react-redux";
 
 import { generateTagsList, filterTag } from "../reducer";
 import { scale } from "../util/helpers";
-import Tag from "./Tag";
+import Tag from "./Tag.jsx";
 
 import "./TagsList.sass";
 
-const TagsList = React.createClass({
-	propTypes: {
+class TagsList extends Component {
+	static propTypes = {
 		tags: PropTypes.array,
 		onGenerateTagsList: PropTypes.func.isRequired,
 		onFilterTag: PropTypes.func.isRequired,
-	},
+	}
+
+	static defaultProps = {
+		tags: null,
+	};
 
 	componentDidMount() {
 		const { tags, onGenerateTagsList } = this.props;
@@ -20,7 +25,7 @@ const TagsList = React.createClass({
 		if (typeof(tags) === "undefined" || tags === null || !tags.length) {
 			onGenerateTagsList();
 		}
-	},
+	}
 
 	render() {
 		const { tags, onFilterTag } = this.props;
@@ -63,9 +68,8 @@ const TagsList = React.createClass({
 				</span>
 			</div>
 		);
-	},
-});
-
+	}
+}
 
 function mapStateToProps(state) {
 	return {
