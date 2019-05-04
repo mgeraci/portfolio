@@ -6,6 +6,7 @@ import {
 
 import {
 	getVisibleImages,
+	getFilteredImages,
 	getPositionMeta,
 	setHistory,
 } from "./util/helpers";
@@ -114,28 +115,11 @@ export default function reducer(state, action) {
 				return state;
 			}
 
-			const filteredOrder = [];
-			const isYear = !!`${action.tag.slug}`.match(/2\d{3}/);
-			let year;
-
-			if (isYear) {
-				year = parseInt(action.tag.slug, 10);
-			}
-
-			state.order.forEach((id) => {
-				if (isYear) {
-					if (state.images[id].year === year) {
-						filteredOrder.push(id);
-					}
-				} else {
-					state.images[id].tags.forEach((tag) => {
-						if (tag.slug === action.tag.slug) {
-							filteredOrder.push(id);
-						}
-					});
-				}
-			});
-
+			const filteredOrder = getFilteredImages(
+				state.order,
+				state.images,
+				action.tag
+			);
 			setHistory(`/photography/blog/browse/${action.tag.slug}`);
 
 			return {

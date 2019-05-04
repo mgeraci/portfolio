@@ -13,7 +13,7 @@ import reducer, {
 	appInitialize,
 } from "./reducer";
 import { URLS } from "./util/constants";
-import { parseUrl } from "./util/helpers";
+import { parseUrl, getFilteredImages } from "./util/helpers";
 
 import "../../css/styles.scss";
 
@@ -24,11 +24,19 @@ window.Photoblog = {
 
 		if (parsedUrl.page === URLS.photo) {
 			initialState.activeImage = parsedUrl.data;
+		} else if (parsedUrl.page === URLS.tag) {
+			initialState.filteredTerm = parsedUrl.data;
+			initialState.filteredOrder = getFilteredImages(
+				initialState.order,
+				initialState.images,
+				parsedUrl.data
+			);
 		}
 
 		this.store = createStore(
 			reducer,
 			initialState,
+			window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 		);
 
 		ReactDOM.render(

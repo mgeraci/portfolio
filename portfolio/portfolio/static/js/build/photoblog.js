@@ -82,9 +82,12 @@
 
 	    if (parsedUrl.page === _constants.URLS.photo) {
 	      initialState.activeImage = parsedUrl.data;
+	    } else if (parsedUrl.page === _constants.URLS.tag) {
+	      initialState.filteredTerm = parsedUrl.data;
+	      initialState.filteredOrder = (0, _helpers.getFilteredImages)(initialState.order, initialState.images, parsedUrl.data);
 	    }
 
-	    this.store = (0, _redux.createStore)(_reducer["default"], initialState);
+	    this.store = (0, _redux.createStore)(_reducer["default"], initialState, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 
 	    _reactDom["default"].render(_react["default"].createElement(_reactRedux.Provider, {
 	      store: this.store
@@ -40987,27 +40990,7 @@
 	          return state;
 	        }
 
-	        var filteredOrder = [];
-	        var isYear = !!"".concat(action.tag.slug).match(/2\d{3}/);
-	        var year;
-
-	        if (isYear) {
-	          year = parseInt(action.tag.slug, 10);
-	        }
-
-	        state.order.forEach(function (id) {
-	          if (isYear) {
-	            if (state.images[id].year === year) {
-	              filteredOrder.push(id);
-	            }
-	          } else {
-	            state.images[id].tags.forEach(function (tag) {
-	              if (tag.slug === action.tag.slug) {
-	                filteredOrder.push(id);
-	              }
-	            });
-	          }
-	        });
+	        var filteredOrder = (0, _helpers.getFilteredImages)(state.order, state.images, action.tag);
 	        (0, _helpers.setHistory)("/photography/blog/browse/".concat(action.tag.slug));
 	        return _objectSpread({}, state, {
 	          activeImage: null,
@@ -41184,6 +41167,7 @@
 	});
 	exports.parseUrl = parseUrl;
 	exports.getVisibleImages = getVisibleImages;
+	exports.getFilteredImages = getFilteredImages;
 	exports.getPositionMeta = getPositionMeta;
 	exports.setHistory = setHistory;
 	exports.scale = scale;
@@ -41197,7 +41181,7 @@
 
 	function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
-	/*
+	/**
 	 * Determine what page a given url is (home, a photo, or a tag), and return
 	 * pertinent information about that url.
 	 *
@@ -41263,7 +41247,7 @@
 
 	  return null;
 	}
-	/*
+	/**
 	 * Get the filtered images, falling back to all of the images
 	 *
 	 * @param {object} state - the whole application state
@@ -41282,7 +41266,40 @@
 
 	  return order;
 	}
-	/*
+	/**
+	 * Get a list of images filtered by a year or tag.
+	 * @param {Array} order - an array of image ids
+	 * @param {Object} images - an object describing each image
+	 * @param {Object} filter - the tag on which to filter
+	 * @return {Array} - a filtered list of image ids
+	 */
+
+
+	function getFilteredImages(order, images, filter) {
+	  var res = [];
+	  var isYear = !!"".concat(filter.slug).match(/2\d{3}/);
+	  var year;
+
+	  if (isYear) {
+	    year = parseInt(filter.slug, 10);
+	  }
+
+	  order.forEach(function (id) {
+	    if (isYear) {
+	      if (images[id].year === year) {
+	        res.push(id);
+	      }
+	    } else {
+	      images[id].tags.forEach(function (tag) {
+	        if (tag.slug === filter.slug) {
+	          res.push(id);
+	        }
+	      });
+	    }
+	  });
+	  return res;
+	}
+	/**
 	 * Given an index and a set of images, decide if the image is at the start or
 	 * end of the set.
 	 *
@@ -41318,7 +41335,7 @@
 	    atEnd: atEnd
 	  };
 	}
-	/*
+	/**
 	 * Set the history, if available
 	 *
 	 * @param {string} url - the url to set
@@ -41338,7 +41355,7 @@
 	  history.pushState(null, null, url);
 	  return true;
 	}
-	/*
+	/**
 	 * Given a number, a range within which that number falls, and an output
 	 * range, scale the input to the output.
 	 *
