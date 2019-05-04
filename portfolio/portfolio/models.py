@@ -178,13 +178,13 @@ class PhotoblogImage(models.Model):
     lightroom_id = models.IntegerField(blank=True, null=True)
     title = models.CharField(max_length=200)
     year = models.PositiveSmallIntegerField()
-    thumbnail = models.FileField(upload_to='photoblog/thubmnails', blank=True, null=True)
+    thumbnail = models.FileField(upload_to='photoblog/thumbnails', blank=True, null=True)
     image700 = models.FileField(upload_to='photoblog/images700', blank=True, null=True)
     image2000 = models.FileField(upload_to='photoblog/images2000', blank=True, null=True)
     tags = models.ManyToManyField(PhotoblogTag, blank=True)
 
     class Meta:
-        ordering = ['-id']
+        ordering = ['-lightroom_id']
 
     def to_json(self):
         json_tags = []
@@ -193,7 +193,7 @@ class PhotoblogImage(models.Model):
             json_tags.append(tag.to_json())
 
         return {
-            'id': self.id,
+            'id': self.lightroom_id,
             'title': self.title,
             'year': self.year,
             'thumbnail': self.thumbnail.url,
@@ -203,4 +203,4 @@ class PhotoblogImage(models.Model):
         }
 
     def __unicode__(self):
-        return u'{}'.format(self.title)
+        return u'{} - {}'.format(self.lightroom_id, self.title)

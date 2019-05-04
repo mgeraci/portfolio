@@ -82,6 +82,8 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'michael_dot_com.wsgi.application'
 
+FILE_UPLOAD_PERMISSIONS = 0644
+
 
 # Password validation
 # https://docs.djangoproject.com/en/1.9/ref/settings/#auth-password-validators

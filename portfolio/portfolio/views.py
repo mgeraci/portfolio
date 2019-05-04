@@ -161,8 +161,8 @@ def photography(request):
         if i == 0:
             latest_year = image.year
 
-        imageOrder.append(image.id)
-        imageMap[image.id] = image.to_json()
+        imageOrder.append(image.lightroom_id)
+        imageMap[image.lightroom_id] = image.to_json()
         i += 1
 
     i = 2007
