@@ -317,6 +317,12 @@ def links(request):
 def steel(request):
     steels = [
         {
+            'href': 'https://www.youtube.com/watch?v=VrAUdLb7jLA',
+            'name': 'Despers USA - Iron Love (2019)',
+            'location': 'New York',
+            'rank': '4th place',
+        },
+        {
             'href': 'https://www.youtube.com/watch?v=EMJgfaK0KBU',
             'name': 'Despers USA - Year for Love (2018)',
             'location': 'New York',
