@@ -3,7 +3,7 @@ from michael_dot_com.localsettings import PHONE_NUMBER
 Resume = {
     'header': {
         'name': 'Michael P. Geraci',
-        'tagline': 'Front-End Engineer',
+        'tagline': 'Web Engineer',
         'url': 'mgeraci.com',
         'email': 'me@mgeraci.com',
         'phone': PHONE_NUMBER,
@@ -15,15 +15,16 @@ Resume = {
             'content': [
                 {
                     'employer': 'OkCupid',
-                    'title': 'Senior Front-End Engineer',
+                    'title': 'Staff Web Engineer',
                     'dates': '2013-Present',
                     'location': 'New York, NY',
-                    'tech': 'React/Redux, Webpack, Babel, ESLint, Express-inspired API',
+                    'tech': 'React/Redux, GraphQL, Apollo Server/Client, Node, Webpack, Babel, ESLint',
                     'description': '''
-                        Worked on the desktop and mobile web. Owned significant portions of the
-                        site (e.g., messaging). Wrote API endpoints to support the web and apps teams.
-                        Ran front-end projects, interfacing with designers, product managers, and junior
-                        web team members. Managed launches and A/B tests.
+                        Architected and built a GraphQL API with Node and Apollo Server, which powers
+                        all OkCupid client applications. Worked on the desktop and mobile web clients.
+                        Owned significant portions of the site (e.g., messaging, the experiment
+                        system). Ran web projects, interfacing with designers, product managers, and
+                        more junior web team members. Managed launches and A/B tests.
                     '''
                 },
 
@@ -105,7 +106,7 @@ Resume = {
         {
             'title': 'Hobbies',
             'content': [
-                'Long-distance Bicycle Touring, Steel Pan, Climbing, Music Recording, Photography'
+                'Long-distance Bicycle Touring, Steel Pan, Climbing, Photography, Music Recording'
             ]
         },
     ]
