@@ -199,7 +199,7 @@
   .image-modal-meta-title {
     color: #b7b7b7;
     font-weight: normal;
-    font-family: 'PT Serif';
+    font-family: 'Source Serif Pro';
     font-weight: bold; }
   .image-modal-meta-year {
     font-style: oblique; }
@@ -278,7 +278,8 @@
     .no-touchevents .page-photography-tagslist-tag:active h3 {
       color: #4c7bd9; }
 .page-photography {
-  background: #fff; }
+  background: #fff;
+  font-family: "Source Serif Pro"; }
   @media (max-width: 700px) {
     .page-photography .content {
       width: 94%;
@@ -2289,7 +2290,8 @@ nav::after {
 
 .page-album-lists,
 .page-album-list {
-  background: #f3f5f9; }
+  background: #f3f5f9;
+  font-family: "Source Serif Pro"; }
 
 .page-album-lists {
   text-align: center;
@@ -2528,7 +2530,7 @@ nav::after {
     .page-album-list-item-artist span {
       font-size: 26px; }
   .page-album-list-item-description {
-    font-size: 18px;
+    font-size: 19px;
     line-height: 28px; }
     .page-album-list-item-description a,
     .page-album-list-item-description a h2,

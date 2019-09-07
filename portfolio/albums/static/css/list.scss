@@ -185,7 +185,7 @@ $albums-breakpoint: 700px;
     }
 
     &-description {
-      @include type(18px, 28px);
+      @include type(19px, 28px);
 
       a {
         @include link($text, $Colors-blue-3);
