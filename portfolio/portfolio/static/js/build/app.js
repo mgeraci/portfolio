@@ -11956,10 +11956,9 @@
 	          }
 	        };
 	      }()
-	    } // ## The audiojs class
-	    // We create one of these per `<audio>` and then push them into `audiojs['instances']`.
-
-	  };
+	    }
+	  }; // ## The audiojs class
+	  // We create one of these per `<audio>` and then push them into `audiojs['instances']`.
 
 	  container[audiojsInstance] = function (element, settings) {
 	    // Each audio instance returns an object which contains an API back into the `<audio>` element.
@@ -12055,11 +12054,10 @@
 	      this.skipTo.apply(this, [0]);
 	      if (!this.settings.loop) this.pause.apply(this);
 	      this.settings.trackEnded.apply(this);
-	    } // **getElementsByClassName**
-	    // Having to rely on `getElementsByTagName` is pretty inflexible internally, so a modified version of Dustin Diaz's `getElementsByClassName` has been included.
-	    // This version cleans things up and prefers the native DOM method if it's available.
-
-	  };
+	    }
+	  }; // **getElementsByClassName**
+	  // Having to rely on `getElementsByTagName` is pretty inflexible internally, so a modified version of Dustin Diaz's `getElementsByClassName` has been included.
+	  // This version cleans things up and prefers the native DOM method if it's available.
 
 	  var getByClass = function getByClass(searchClass, node) {
 	    var matches = [];

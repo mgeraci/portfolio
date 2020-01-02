@@ -7,7 +7,7 @@ and my photoblog subpage is written in React.
 
 ## Installation
 
-Assuming that you have python, virtualenv, and node/npm:
+Assuming that you have python, virtualenv, and node/yarn:
 * clone the repo
 * `mkvirtualenv portfolio`
 * `pip install -r requirements.txt`
@@ -50,21 +50,21 @@ STATIC_VERSIONS = {
 ## Static files
 
 CSS is written using SASS, JS is in es6 and a smattering of React, and both are
-managed with webpack. Assuming you already have node and npm installed, to
+managed with webpack. Assuming you already have node and yarn installed, to
 install all of the packages required to compile these files, run:
 
-	npm install
+	yarn install
 
 Then to start webpack watching and compiling the files, run:
 
-	npm run watch
+	yarn watch
 
 To compile the minified files for use in production, run:
 
-	npm run build
+	yarn build
 
 To deploy updated css or js:
-* make your changes, run `npm run build`, commit, and push
+* make your changes, run `yarn build`, commit, and push
 * ssh to the server and cd to the root of the project
 * get into your python environment with `workon michael_portfolio`
 * update the appropriate version number in `portfolio/michael_dot_com/localsettings.py`

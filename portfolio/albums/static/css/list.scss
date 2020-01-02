@@ -228,11 +228,21 @@ $albums-breakpoint: 700px;
     }
 
     &:nth-child(11) &-count-text {
+      letter-spacing: -46px;
       left: -140px;
     }
 
     &:nth-child(12) &-count-text {
-      letter-spacing: -40px;
+      letter-spacing: -37px;
+    }
+
+    &:nth-child(13) &-count-text {
+      letter-spacing: -47px;
+      left: -140px;
+    }
+
+    &:nth-child(15) &-count-text {
+      letter-spacing: -50px;
     }
 
     // mobile count spacing
