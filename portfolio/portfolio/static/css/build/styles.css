@@ -2495,6 +2495,7 @@ nav::after {
       position: absolute;
       top: 24px;
       left: 0;
+      width: 100%;
       font-style: oblique;
       font-size: 90px;
       opacity: 0.4; }
@@ -2600,9 +2601,15 @@ nav::after {
     letter-spacing: -70px;
     left: -167px; }
   .page-album-list-item:nth-child(11) .page-album-list-item-count-text {
+    letter-spacing: -46px;
     left: -140px; }
   .page-album-list-item:nth-child(12) .page-album-list-item-count-text {
-    letter-spacing: -40px; }
+    letter-spacing: -37px; }
+  .page-album-list-item:nth-child(13) .page-album-list-item-count-text {
+    letter-spacing: -47px;
+    left: -140px; }
+  .page-album-list-item:nth-child(15) .page-album-list-item-count-text {
+    letter-spacing: -50px; }
   .page-album-list-item:nth-child(10) .page-album-list-item-content-count,
   .page-album-list-item:nth-child(11) .page-album-list-item-content-count,
   .page-album-list-item:nth-child(12) .page-album-list-item-content-count,
