@@ -30,6 +30,8 @@ MEDIA_ROOT = 'media'
 MEDIA_URL = '/media/'
 SECRET_KEY = '[your secret key]'
 
+PHONE_NUMBER = None # or the phone number to show
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
