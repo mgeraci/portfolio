@@ -1,7 +1,7 @@
 /* global window, document, Image */
 
-import $ from "jquery";
 import throttle from "./vendor/throttle";
+import getScroll from "./util/getScroll";
 
 const LazyImages = {
 	buffer: 350,
@@ -13,22 +13,24 @@ const LazyImages = {
 		// load additional images on scroll
 		const lazyScroll = throttle(this.checkScroll.bind(this), 300);
 
-		$(document).on("scroll", () => {
-			lazyScroll();
-		});
+		document.addEventListener("scroll", lazyScroll);
 	},
 
 	checkScroll() {
-		$("[data-lazy-image]:onScreen").each(function onScreen() {
-			LazyImages.loadImage($(this));
+		console.log(this.elementIsOnScreen(document.querySelectorAll("[data-lazy-image]")[0]));
+
+		document.querySelectorAll("[data-lazy-image]").forEach((lazyImage) => {
+			if (this.elementIsOnScreen(lazyImage)) {
+				this.loadImage(lazyImage);
+			}
 		});
 	},
 
 	loadImage(el) {
-		const src = el.attr("data-lazy-image");
-		const alt = el.attr("data-lazy-image-alt");
+		const src = el.getAttribute("data-lazy-image");
+		const alt = el.getAttribute("data-lazy-image-alt");
 		const img = new Image();
-		let maxWidth = el.attr("data-lazy-max-width");
+		let maxWidth = el.getAttribute("data-lazy-max-width");
 
 		if (maxWidth) {
 			maxWidth = `${maxWidth}px`;
@@ -37,46 +39,44 @@ const LazyImages = {
 		}
 
 		// remove the data attribute to keep it from loading again
-		el.removeAttr("data-lazy-image");
+		el.removeAttribute("data-lazy-image");
+		el.removeAttribute("data-lazy-image-alt");
+		el.removeAttribute("data-lazy-image-max-width");
 
-		$(img)
-			.attr("src", src)
-			.attr("alt", alt)
-			.css("maxWidth", maxWidth);
+		img.setAttribute("src", src);
+		img.setAttribute("alt", alt);
+		img.style.maxWidth = maxWidth;
 
-		$(img).on("load", () => {
+		img.addEventListener("load", () => {
 			el.append(img);
 		});
 	},
-};
 
-// add an onScreen selector to jQuery
-$.expr[":"].onScreen = (elem) => {
-	const $window = $(window);
+	elementIsOnScreen(el) {
+		if (!el) {
+			return false;
+		}
 
-	if (!LazyImages.windowHeight) {
-		LazyImages.windowHeight = $window.height();
-	}
+		const buffer = this.buffer || 0;
+		const windowTop = getScroll();
+		const windowBottom = windowTop + window.innerHeight;
+		const rect = el.getBoundingClientRect();
+		const top = rect.top + windowTop;
+		const bottom = rect.bottom + windowTop;
 
-	const buffer = LazyImages.buffer || 0;
-	const windowTop = $window.scrollTop();
-	const windowBottom = windowTop + LazyImages.windowHeight;
-	const rect = elem.getBoundingClientRect();
-	const top = rect.top + windowTop;
-	const bottom = rect.bottom + windowTop;
+		const topIsVisible = top >= (windowTop - buffer) &&
+			top < (windowBottom + buffer);
 
-	const topIsVisible = top >= (windowTop - buffer) &&
-		top < (windowBottom + buffer);
+		const bottomIsVisible = bottom > (windowTop - buffer) &&
+			bottom <= (windowBottom + buffer);
 
-	const bottomIsVisible = bottom > (windowTop - buffer) &&
-		bottom <= (windowBottom + buffer);
+		const isBiggerThanScreen = (rect.height != null) &&
+			rect.height > LazyImages.windowHeight &&
+			top <= (windowTop - buffer) &&
+			bottom >= (windowBottom + buffer);
 
-	const isBiggerThanScreen = (rect.height != null) &&
-		rect.height > LazyImages.windowHeight &&
-		top <= (windowTop - buffer) &&
-		bottom >= (windowBottom + buffer);
-
-	return topIsVisible || bottomIsVisible || isBiggerThanScreen;
+		return topIsVisible || bottomIsVisible || isBiggerThanScreen;
+	},
 };
 
 export default LazyImages;

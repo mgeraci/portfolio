@@ -3,7 +3,7 @@
 	class="project-image {% if project.image_full_bleed %}project-image--full-bleed{% endif %}"
 
 	data-lazy-image="{{ MEDIA_URL }}{{ project.image }}"
-	data-lazy-alt="{{ project.title }} screenshot"
+	data-lazy-image-alt="{{ project.title }} screenshot"
 	{% if project.image_max_width %}
 		data-lazy-max-width="{{ project.image_max_width }}"
 	{% endif %}
