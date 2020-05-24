@@ -29,7 +29,6 @@ def index(request):
         'home_projects': home_projects,
         'headline': michael.userprofile.headline,
         'blurb': michael.userprofile.blurb,
-        'show_project_nav': True,
     }
 
     return render(request, 'pages/index.html', context)
@@ -103,7 +102,6 @@ def project(request, slug):
             'prev_project': prev_project,
             'next_project': next_project,
         },
-        'show_project_nav': True,
     }
 
     return render(request, 'pages/project.html', context)
@@ -119,6 +117,7 @@ def web(request):
     webs = Web.objects.all()
     context = {
         'webs': webs,
+        'use_old_nav': True,
     }
 
     return render(request, 'pages/web.html', context)
@@ -144,7 +143,8 @@ def web_item(request, slug):
         'webs': webs,
         'web': web,
         'web_items': web_items,
-        'title_bundle': title_bundle
+        'title_bundle': title_bundle,
+        'use_old_nav': True,
     }
 
     return render(request, 'pages/web_item.html', context)
@@ -177,7 +177,6 @@ def photography(request):
             'images': imageMap,
             'years': years[::-1],
         }),
-        'show_project_nav': True,
     }
 
     return render(request, 'pages/photography.html', context)
@@ -212,6 +211,7 @@ def graphic_item(request, slug):
         'graphic_landing_page': graphic_landing_page,
         'images': graphic_images,
         'title_bundle': graphic_title(graphic),
+        'use_old_nav': True,
     }
 
     return render(request, 'pages/graphic.html', context)
@@ -253,6 +253,7 @@ def composition_item(request, slug):
         'composition_landing_page': composition_landing_page,
         'piece': piece,
         'title_bundle': title_bundle,
+        'use_old_nav': True,
     }
 
     return render(request, 'pages/composition.html', context)
@@ -283,6 +284,7 @@ def recordings_item(request, slug):
         'title_bundle': title_bundle,
         'recordings': recordings,
         'recording_landing_page': recording_landing_page,
+        'use_old_nav': True,
     }
 
     return render(request, 'pages/recordings.html', context)
@@ -310,6 +312,7 @@ def links(request):
 
     context = {
         'schools': schools,
+        'use_old_nav': True,
     }
 
     return render(request, 'pages/links.html', context)
@@ -427,7 +430,6 @@ def steel(request):
 
     context = {
         'steels': steels,
-        'show_project_nav': True,
     }
 
     return render(request, 'pages/steel.html', context)
