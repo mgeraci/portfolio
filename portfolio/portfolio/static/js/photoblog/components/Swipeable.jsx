@@ -97,7 +97,7 @@ class Swipeable extends Component {
 		const { canSwipeLeft, canSwipeRight } = this.props;
 		const { current } = this.state;
 		const speed = this._getSpeed();
-		let offscreenLeft = current < EDGE_BUFFER;
+		let offscreenLeft = current && current < EDGE_BUFFER;
 		let offscreenRight = window.innerWidth - current < EDGE_BUFFER;
 		let time = null;
 

@@ -32539,7 +32539,7 @@
 
 	      var speed = _this._getSpeed();
 
-	      var offscreenLeft = current < EDGE_BUFFER;
+	      var offscreenLeft = current && current < EDGE_BUFFER;
 	      var offscreenRight = window.innerWidth - current < EDGE_BUFFER;
 	      var time = null;
 
