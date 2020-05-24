@@ -2,7 +2,6 @@
 
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import jQuery from "jquery";
 import { connect } from "react-redux";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 import throttle from "throttle-debounce/throttle";
@@ -55,7 +54,7 @@ class ImageDetail extends Component {
 
 		document.addEventListener("keyup", this._onKeyup);
 		window.addEventListener("resize", this._throttledResize);
-		jQuery("body").addClass("no-scroll");
+		document.body.classList.add("no-scroll");
 
 		// trigger an initial resize event
 		this._onResize();
@@ -72,7 +71,7 @@ class ImageDetail extends Component {
 	componentWillUnmount() {
 		document.removeEventListener("keyup", this._onKeyup);
 		window.removeEventListener("resize", this._throttledResize);
-		jQuery("body").removeClass("no-scroll");
+		document.body.classList.remove("no-scroll");
 
 		// change the scroll to trigger thumbnails to load
 		window.scrollTo(0, window.scrollY - 1);
