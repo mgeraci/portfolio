@@ -58,13 +58,13 @@
 
 	var _App = _interopRequireDefault(__webpack_require__(64));
 
-	var _reducer = _interopRequireWildcard(__webpack_require__(77));
+	var _reducer = _interopRequireWildcard(__webpack_require__(76));
 
-	var _constants = __webpack_require__(78);
+	var _constants = __webpack_require__(77);
 
-	var _helpers = __webpack_require__(79);
+	var _helpers = __webpack_require__(78);
 
-	__webpack_require__(101);
+	__webpack_require__(100);
 
 	function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function _getRequireWildcardCache() { return cache; }; return cache; }
 
@@ -124,7 +124,103 @@
 /* 2 */,
 /* 3 */,
 /* 4 */,
-/* 5 */,
+/* 5 */
+/***/ function(module, exports) {
+
+	/* eslint-disable no-undefined,no-param-reassign,no-shadow */
+
+	/**
+	 * Throttle execution of a function. Especially useful for rate limiting
+	 * execution of handlers on events like resize and scroll.
+	 *
+	 * @param  {Number}    delay          A zero-or-greater delay in milliseconds. For event callbacks, values around 100 or 250 (or even higher) are most useful.
+	 * @param  {Boolean}   noTrailing     Optional, defaults to false. If noTrailing is true, callback will only execute every `delay` milliseconds while the
+	 *                                    throttled-function is being called. If noTrailing is false or unspecified, callback will be executed one final time
+	 *                                    after the last throttled-function call. (After the throttled-function has not been called for `delay` milliseconds,
+	 *                                    the internal counter is reset)
+	 * @param  {Function}  callback       A function to be executed after delay milliseconds. The `this` context and all arguments are passed through, as-is,
+	 *                                    to `callback` when the throttled-function is executed.
+	 * @param  {Boolean}   debounceMode   If `debounceMode` is true (at begin), schedule `clear` to execute after `delay` ms. If `debounceMode` is false (at end),
+	 *                                    schedule `callback` to execute after `delay` ms.
+	 *
+	 * @return {Function}  A new, throttled, function.
+	 */
+	module.exports = function ( delay, noTrailing, callback, debounceMode ) {
+
+		// After wrapper has stopped being called, this timeout ensures that
+		// `callback` is executed at the proper times in `throttle` and `end`
+		// debounce modes.
+		var timeoutID;
+
+		// Keep track of the last time `callback` was executed.
+		var lastExec = 0;
+
+		// `noTrailing` defaults to falsy.
+		if ( typeof noTrailing !== 'boolean' ) {
+			debounceMode = callback;
+			callback = noTrailing;
+			noTrailing = undefined;
+		}
+
+		// The `wrapper` function encapsulates all of the throttling / debouncing
+		// functionality and when executed will limit the rate at which `callback`
+		// is executed.
+		function wrapper () {
+
+			var self = this;
+			var elapsed = Number(new Date()) - lastExec;
+			var args = arguments;
+
+			// Execute `callback` and update the `lastExec` timestamp.
+			function exec () {
+				lastExec = Number(new Date());
+				callback.apply(self, args);
+			}
+
+			// If `debounceMode` is true (at begin) this is used to clear the flag
+			// to allow future `callback` executions.
+			function clear () {
+				timeoutID = undefined;
+			}
+
+			if ( debounceMode && !timeoutID ) {
+				// Since `wrapper` is being called for the first time and
+				// `debounceMode` is true (at begin), execute `callback`.
+				exec();
+			}
+
+			// Clear any existing timeout.
+			if ( timeoutID ) {
+				clearTimeout(timeoutID);
+			}
+
+			if ( debounceMode === undefined && elapsed > delay ) {
+				// In throttle mode, if `delay` time has been exceeded, execute
+				// `callback`.
+				exec();
+
+			} else if ( noTrailing !== true ) {
+				// In trailing throttle mode, since `delay` time has not been
+				// exceeded, schedule `callback` to execute `delay` ms after most
+				// recent execution.
+				//
+				// If `debounceMode` is true (at begin), schedule `clear` to execute
+				// after `delay` ms.
+				//
+				// If `debounceMode` is false (at end), schedule `callback` to
+				// execute after `delay` ms.
+				timeoutID = setTimeout(debounceMode ? clear : exec, debounceMode === undefined ? delay - elapsed : delay);
+			}
+
+		}
+
+		// Return the wrapper function.
+		return wrapper;
+
+	};
+
+
+/***/ },
 /* 6 */,
 /* 7 */,
 /* 8 */,
@@ -28601,23 +28697,23 @@
 
 	var _reactTransitionGroup = __webpack_require__(65);
 
-	var _throttle = _interopRequireDefault(__webpack_require__(76));
+	var _throttle = _interopRequireDefault(__webpack_require__(5));
 
-	var _reducer = __webpack_require__(77);
+	var _reducer = __webpack_require__(76);
 
-	var _constants = __webpack_require__(78);
+	var _constants = __webpack_require__(77);
 
-	var _Title = _interopRequireDefault(__webpack_require__(80));
+	var _Title = _interopRequireDefault(__webpack_require__(79));
 
-	var _Navigation = _interopRequireDefault(__webpack_require__(83));
+	var _Navigation = _interopRequireDefault(__webpack_require__(82));
 
-	var _Thumbnail = _interopRequireDefault(__webpack_require__(86));
+	var _Thumbnail = _interopRequireDefault(__webpack_require__(85));
 
-	var _ImageModal = _interopRequireDefault(__webpack_require__(88));
+	var _ImageModal = _interopRequireDefault(__webpack_require__(87));
 
-	var _TagsList = _interopRequireDefault(__webpack_require__(98));
+	var _TagsList = _interopRequireDefault(__webpack_require__(97));
 
-	__webpack_require__(100);
+	__webpack_require__(99);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
@@ -30600,103 +30696,6 @@
 
 /***/ },
 /* 76 */
-/***/ function(module, exports) {
-
-	/* eslint-disable no-undefined,no-param-reassign,no-shadow */
-
-	/**
-	 * Throttle execution of a function. Especially useful for rate limiting
-	 * execution of handlers on events like resize and scroll.
-	 *
-	 * @param  {Number}    delay          A zero-or-greater delay in milliseconds. For event callbacks, values around 100 or 250 (or even higher) are most useful.
-	 * @param  {Boolean}   noTrailing     Optional, defaults to false. If noTrailing is true, callback will only execute every `delay` milliseconds while the
-	 *                                    throttled-function is being called. If noTrailing is false or unspecified, callback will be executed one final time
-	 *                                    after the last throttled-function call. (After the throttled-function has not been called for `delay` milliseconds,
-	 *                                    the internal counter is reset)
-	 * @param  {Function}  callback       A function to be executed after delay milliseconds. The `this` context and all arguments are passed through, as-is,
-	 *                                    to `callback` when the throttled-function is executed.
-	 * @param  {Boolean}   debounceMode   If `debounceMode` is true (at begin), schedule `clear` to execute after `delay` ms. If `debounceMode` is false (at end),
-	 *                                    schedule `callback` to execute after `delay` ms.
-	 *
-	 * @return {Function}  A new, throttled, function.
-	 */
-	module.exports = function ( delay, noTrailing, callback, debounceMode ) {
-
-		// After wrapper has stopped being called, this timeout ensures that
-		// `callback` is executed at the proper times in `throttle` and `end`
-		// debounce modes.
-		var timeoutID;
-
-		// Keep track of the last time `callback` was executed.
-		var lastExec = 0;
-
-		// `noTrailing` defaults to falsy.
-		if ( typeof noTrailing !== 'boolean' ) {
-			debounceMode = callback;
-			callback = noTrailing;
-			noTrailing = undefined;
-		}
-
-		// The `wrapper` function encapsulates all of the throttling / debouncing
-		// functionality and when executed will limit the rate at which `callback`
-		// is executed.
-		function wrapper () {
-
-			var self = this;
-			var elapsed = Number(new Date()) - lastExec;
-			var args = arguments;
-
-			// Execute `callback` and update the `lastExec` timestamp.
-			function exec () {
-				lastExec = Number(new Date());
-				callback.apply(self, args);
-			}
-
-			// If `debounceMode` is true (at begin) this is used to clear the flag
-			// to allow future `callback` executions.
-			function clear () {
-				timeoutID = undefined;
-			}
-
-			if ( debounceMode && !timeoutID ) {
-				// Since `wrapper` is being called for the first time and
-				// `debounceMode` is true (at begin), execute `callback`.
-				exec();
-			}
-
-			// Clear any existing timeout.
-			if ( timeoutID ) {
-				clearTimeout(timeoutID);
-			}
-
-			if ( debounceMode === undefined && elapsed > delay ) {
-				// In throttle mode, if `delay` time has been exceeded, execute
-				// `callback`.
-				exec();
-
-			} else if ( noTrailing !== true ) {
-				// In trailing throttle mode, since `delay` time has not been
-				// exceeded, schedule `callback` to execute `delay` ms after most
-				// recent execution.
-				//
-				// If `debounceMode` is true (at begin), schedule `clear` to execute
-				// after `delay` ms.
-				//
-				// If `debounceMode` is false (at end), schedule `callback` to
-				// execute after `delay` ms.
-				timeoutID = setTimeout(debounceMode ? clear : exec, debounceMode === undefined ? delay - elapsed : delay);
-			}
-
-		}
-
-		// Return the wrapper function.
-		return wrapper;
-
-	};
-
-
-/***/ },
-/* 77 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -30715,9 +30714,9 @@
 	exports.appInitialize = appInitialize;
 	exports.GENERATE_TAGS_LIST = exports.APP_INITIALIZE = exports.CLEAR_FILTER_TAG = exports.FILTER_TAG = exports.NAVIGATE = exports.CLEAR_ACTIVE_IMAGE = exports.SET_ACTIVE_IMAGE = void 0;
 
-	var _constants = __webpack_require__(78);
+	var _constants = __webpack_require__(77);
 
-	var _helpers = __webpack_require__(79);
+	var _helpers = __webpack_require__(78);
 
 	function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
@@ -30945,7 +30944,7 @@
 	}
 
 /***/ },
-/* 78 */
+/* 77 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -30988,7 +30987,7 @@
 	exports["default"] = _default;
 
 /***/ },
-/* 79 */
+/* 78 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -31004,7 +31003,7 @@
 	exports.scale = scale;
 	exports["default"] = void 0;
 
-	var _constants = __webpack_require__(78);
+	var _constants = __webpack_require__(77);
 
 	function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
@@ -31232,7 +31231,7 @@
 	exports["default"] = _default;
 
 /***/ },
-/* 80 */
+/* 79 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -31248,11 +31247,11 @@
 
 	var _reactRedux = __webpack_require__(27);
 
-	var _reducer = __webpack_require__(77);
+	var _reducer = __webpack_require__(76);
 
-	var _TitleClearButton = _interopRequireDefault(__webpack_require__(81));
+	var _TitleClearButton = _interopRequireDefault(__webpack_require__(80));
 
-	__webpack_require__(82);
+	__webpack_require__(81);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
@@ -31300,7 +31299,7 @@
 	exports["default"] = _default;
 
 /***/ },
-/* 81 */
+/* 80 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -31331,13 +31330,13 @@
 	exports["default"] = _default;
 
 /***/ },
-/* 82 */
+/* 81 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 83 */
+/* 82 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -31353,11 +31352,11 @@
 
 	var _reactRedux = __webpack_require__(27);
 
-	var _reducer = __webpack_require__(77);
+	var _reducer = __webpack_require__(76);
 
-	var _Tag = _interopRequireDefault(__webpack_require__(84));
+	var _Tag = _interopRequireDefault(__webpack_require__(83));
 
-	__webpack_require__(85);
+	__webpack_require__(84);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
@@ -31420,7 +31419,7 @@
 	exports["default"] = _default;
 
 /***/ },
-/* 84 */
+/* 83 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -31481,13 +31480,13 @@
 	exports["default"] = _default;
 
 /***/ },
-/* 85 */
+/* 84 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 86 */
+/* 85 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -31503,7 +31502,7 @@
 
 	var _reactTransitionGroup = __webpack_require__(65);
 
-	__webpack_require__(87);
+	__webpack_require__(86);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
@@ -31673,13 +31672,13 @@
 	exports["default"] = _default;
 
 /***/ },
-/* 87 */
+/* 86 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 88 */
+/* 87 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -31697,21 +31696,21 @@
 
 	var _reactTransitionGroup = __webpack_require__(65);
 
-	var _throttle = _interopRequireDefault(__webpack_require__(76));
+	var _throttle = _interopRequireDefault(__webpack_require__(5));
 
-	var _reducer = __webpack_require__(77);
+	var _reducer = __webpack_require__(76);
 
-	var _constants = __webpack_require__(78);
+	var _constants = __webpack_require__(77);
 
-	var _Buttons = _interopRequireDefault(__webpack_require__(89));
+	var _Buttons = _interopRequireDefault(__webpack_require__(88));
 
-	var _MainImage = _interopRequireDefault(__webpack_require__(92));
+	var _MainImage = _interopRequireDefault(__webpack_require__(91));
 
-	var _Meta = _interopRequireDefault(__webpack_require__(94));
+	var _Meta = _interopRequireDefault(__webpack_require__(93));
 
-	var _Swipeable = _interopRequireDefault(__webpack_require__(96));
+	var _Swipeable = _interopRequireDefault(__webpack_require__(95));
 
-	__webpack_require__(97);
+	__webpack_require__(96);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
@@ -31966,7 +31965,7 @@
 	exports["default"] = _default;
 
 /***/ },
-/* 89 */
+/* 88 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -31982,11 +31981,11 @@
 
 	var _reactRedux = __webpack_require__(27);
 
-	var _classnames = _interopRequireDefault(__webpack_require__(90));
+	var _classnames = _interopRequireDefault(__webpack_require__(89));
 
-	var _reducer = __webpack_require__(77);
+	var _reducer = __webpack_require__(76);
 
-	__webpack_require__(91);
+	__webpack_require__(90);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
@@ -32072,7 +32071,7 @@
 	exports["default"] = _default;
 
 /***/ },
-/* 90 */
+/* 89 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -32126,13 +32125,13 @@
 
 
 /***/ },
-/* 91 */
+/* 90 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 92 */
+/* 91 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -32148,7 +32147,7 @@
 
 	var _reactTransitionGroup = __webpack_require__(65);
 
-	__webpack_require__(93);
+	__webpack_require__(92);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
@@ -32326,13 +32325,13 @@
 	exports["default"] = _default;
 
 /***/ },
-/* 93 */
+/* 92 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 94 */
+/* 93 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -32346,11 +32345,11 @@
 
 	var _propTypes = _interopRequireDefault(__webpack_require__(34));
 
-	var _constants = __webpack_require__(78);
+	var _constants = __webpack_require__(77);
 
-	var _Tag = _interopRequireDefault(__webpack_require__(84));
+	var _Tag = _interopRequireDefault(__webpack_require__(83));
 
-	__webpack_require__(95);
+	__webpack_require__(94);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
@@ -32395,13 +32394,13 @@
 	exports["default"] = _default;
 
 /***/ },
-/* 95 */
+/* 94 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 96 */
+/* 95 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -32415,7 +32414,7 @@
 
 	var _propTypes = _interopRequireDefault(__webpack_require__(34));
 
-	var _classnames = _interopRequireDefault(__webpack_require__(90));
+	var _classnames = _interopRequireDefault(__webpack_require__(89));
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
@@ -32672,13 +32671,13 @@
 	exports["default"] = _default;
 
 /***/ },
-/* 97 */
+/* 96 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 98 */
+/* 97 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -32694,13 +32693,13 @@
 
 	var _reactRedux = __webpack_require__(27);
 
-	var _reducer = __webpack_require__(77);
+	var _reducer = __webpack_require__(76);
 
-	var _helpers = __webpack_require__(79);
+	var _helpers = __webpack_require__(78);
 
-	var _Tag = _interopRequireDefault(__webpack_require__(84));
+	var _Tag = _interopRequireDefault(__webpack_require__(83));
 
-	__webpack_require__(99);
+	__webpack_require__(98);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
@@ -32824,6 +32823,12 @@
 	exports["default"] = _default;
 
 /***/ },
+/* 98 */
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
+
+/***/ },
 /* 99 */
 /***/ function(module, exports) {
 
@@ -32831,12 +32836,6 @@
 
 /***/ },
 /* 100 */
-/***/ function(module, exports) {
-
-	// removed by extract-text-webpack-plugin
-
-/***/ },
-/* 101 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin

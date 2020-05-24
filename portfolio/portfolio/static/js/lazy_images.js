@@ -1,6 +1,6 @@
 /* global window, document, Image */
 
-import throttle from "./vendor/throttle";
+import throttle from "throttle-debounce/throttle";
 import getScroll from "./util/getScroll";
 
 const LazyImages = {
@@ -11,7 +11,7 @@ const LazyImages = {
 		this.checkScroll();
 
 		// load additional images on scroll
-		const lazyScroll = throttle(this.checkScroll.bind(this), 300);
+		const lazyScroll = throttle(300, this.checkScroll.bind(this));
 
 		document.addEventListener("scroll", lazyScroll);
 	},
