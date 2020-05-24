@@ -2,10 +2,7 @@ $index-breakpoint: 700px;
 $project-breakpoint: 720px;
 
 .page-index {
-  background: $Colors-gray-8;
   padding-bottom: 0;
-  font-family: "Source Serif Pro";
-  color: $Colors-gray-1;
 
   // undo the default content sizing, go full width
   section.content {

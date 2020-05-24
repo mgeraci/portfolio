@@ -30,7 +30,7 @@ nav {
 
   @media (max-width: $menu-breakpoint - 1) {
     display: none;
-	}
+  }
 
   li {
     float: left;
@@ -56,8 +56,8 @@ nav {
           padding-top: $menu-padding - $menu-border-size;
           border: $menu-border-size solid $cream;
           color: $cream;
-				}
-			}
-		}
-	}
+        }
+      }
+    }
+  }
 }

@@ -4,11 +4,11 @@ $recordings-breakpoint: 875px;
 .page-recordings {
   .title {
     margin-bottom: 20px;
-	}
+  }
 
   .recording-content-wrapper {
     position: relative;
-	}
+  }
 
   .recording-thumbnail {
     display: block;
@@ -19,13 +19,13 @@ $recordings-breakpoint: 875px;
       width: $image-size;
       height: $image-size;
       @include center;
-		}
-	}
+    }
+  }
 
   .recording-content {
     margin-bottom: 20px;
     text-align: center;
-	}
+  }
 
   .recording-thumbnail {
     margin-bottom: 0;
@@ -34,12 +34,12 @@ $recordings-breakpoint: 875px;
     @media (max-width: $recordings-breakpoint) {
       min-height: 0;
       padding-left: 0;
-		}
-	}
+    }
+  }
 
   .audio {
     & + .audio {
       margin-top: 20px;
-		}
-	}
+    }
+  }
 }

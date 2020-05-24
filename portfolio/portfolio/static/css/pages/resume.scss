@@ -4,181 +4,181 @@ $screen-color: $Colors-gray-1;
 $print-color: $Colors-gray-1;
 
 .page-resume {
-	background: $Colors-gray-6;
-	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-	font-family: "Source Serif Pro";
-	color: $screen-color;
-	@include type(16px, 24px);
-	margin: 0;
+  background: $Colors-gray-6;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "Source Serif Pro";
+  color: $screen-color;
+  @include type(16px, 24px);
+  margin: 0;
 
-	@media print {
-		background: #fff;
-		color: $print-color;
-		padding: 20px 10px 0;
-		@include type($print-font-small, 1.5);
-	}
+  @media print {
+    background: #fff;
+    color: $print-color;
+    padding: 20px 10px 0;
+    @include type($print-font-small, 1.5);
+  }
 
-	&,
-	* {
-		box-sizing: border-box;
-	}
+  &,
+  * {
+    box-sizing: border-box;
+  }
 
-	// paper
-	&-wrapper {
-		@media screen {
-			width: 1000px;
-			margin: 20px auto 60px;
-			background: #fff;
-			padding: 70px 70px 90px;
-			border-radius: 2px;
-			box-shadow: 0 2px 2px rgba(#000, 0.1);
-		}
-	}
-
-
-	// header: name and contact information
-	// --------------------------------------------------------------------------
-
-	.header {
-		@include clearfix;
-		width: 100%;
-		padding-bottom: 20px;
-		text-align: center;
-		line-height: 26px;
-
-		@media print {
-			line-height: $print-font-large;
-		}
-
-		&-left,
-		&-right {
-			width: 50%;
-		}
-
-		&-left {
-			float: left;
-			text-align: left;
-		}
-
-		&-right {
-			float: right;
-			text-align: right;
-		}
-
-		&-name,
-		&-tagline,
-		&-url,
-		&-right-top {
-			display: block;
-		}
-
-		&-email,
-		&-phone {
-			display: inline-block;
-		}
-
-		&-email,
-		&-phone,
-		&-url {
-			@include link-color($screen-color, $screen-color);
-			text-decoration: none;
-
-			@media (print) {
-				@include link-color($print-color, $print-color);
-			}
-		}
-
-		&-name {
-			font-size: 28px;
-			font-weight: bold;
-
-			@media print {
-				font-size: $print-font-large;
-			}
-		}
-
-		&-right-top {
-			position: relative;
-			top: 3px;
-
-			&-separator {
-				display: inline-block;
-				padding: 0 4px;
-				color: $Colors-gray-2;
-			}
-		}
-	}
+  // paper
+  &-wrapper {
+    @media screen {
+      width: 1000px;
+      margin: 20px auto 60px;
+      background: #fff;
+      padding: 70px 70px 90px;
+      border-radius: 2px;
+      box-shadow: 0 2px 2px rgba(#000, 0.1);
+    }
+  }
 
 
-	// section: has a title (with blue border) and content
-	// --------------------------------------------------------------------------
+  // header: name and contact information
+  // --------------------------------------------------------------------------
 
-	.section {
-		@include clearfix;
-		margin-top: 60px;
+  .header {
+    @include clearfix;
+    width: 100%;
+    padding-bottom: 20px;
+    text-align: center;
+    line-height: 26px;
 
-		@media print {
-			margin-top: 50px;
-		}
+    @media print {
+      line-height: $print-font-large;
+    }
 
-		&-title {
-			position: relative;
-			bottom: 4px;
-			float: left;
-			width: 16%;
-			padding-top: 4px;
-			padding-left: 2%;
-			border-left: 5px solid $Colors-blue-3;
-			font-weight: 500;
-			font-size: 22px;
+    &-left,
+    &-right {
+      width: 50%;
+    }
 
-			@media print {
-				bottom: 8px;
-				padding-top: 2px;
-				font-size: $print-font-large;
-			}
-		}
+    &-left {
+      float: left;
+      text-align: left;
+    }
 
-		&-content {
-			float: right;
-			width: 74%;
-		}
-	}
+    &-right {
+      float: right;
+      text-align: right;
+    }
+
+    &-name,
+    &-tagline,
+    &-url,
+    &-right-top {
+      display: block;
+    }
+
+    &-email,
+    &-phone {
+      display: inline-block;
+    }
+
+    &-email,
+    &-phone,
+    &-url {
+      @include link-color($screen-color, $screen-color);
+      text-decoration: none;
+
+      @media (print) {
+        @include link-color($print-color, $print-color);
+      }
+    }
+
+    &-name {
+      font-size: 28px;
+      font-weight: bold;
+
+      @media print {
+        font-size: $print-font-large;
+      }
+    }
+
+    &-right-top {
+      position: relative;
+      top: 3px;
+
+      &-separator {
+        display: inline-block;
+        padding: 0 4px;
+        color: $Colors-gray-2;
+      }
+    }
+  }
 
 
-	// job: kind of the guts of this whole exercise, no?
-	// --------------------------------------------------------------------------
+  // section: has a title (with blue border) and content
+  // --------------------------------------------------------------------------
 
-	.job {
-		margin-top: 25px;
+  .section {
+    @include clearfix;
+    margin-top: 60px;
 
-		&:first-child {
-			margin-top: 0;
-		}
+    @media print {
+      margin-top: 50px;
+    }
 
-		&-row {
-			@include clearfix;
-			width: 100%;
-		}
+    &-title {
+      position: relative;
+      bottom: 4px;
+      float: left;
+      width: 16%;
+      padding-top: 4px;
+      padding-left: 2%;
+      border-left: 5px solid $Colors-blue-3;
+      font-weight: 500;
+      font-size: 22px;
 
-		&-left,
-		&-employer,
-		&-title {
-			float: left;
-		}
+      @media print {
+        bottom: 8px;
+        padding-top: 2px;
+        font-size: $print-font-large;
+      }
+    }
 
-		&-location,
-		&-dates {
-			float: right;
-			font-weight: 500;
-		}
+    &-content {
+      float: right;
+      width: 74%;
+    }
+  }
 
-		&-employer {
-			font-weight: 600;
-		}
 
-		&-description {
-			margin-top: 10px;
-		}
-	}
+  // job: kind of the guts of this whole exercise, no?
+  // --------------------------------------------------------------------------
+
+  .job {
+    margin-top: 25px;
+
+    &:first-child {
+      margin-top: 0;
+    }
+
+    &-row {
+      @include clearfix;
+      width: 100%;
+    }
+
+    &-left,
+    &-employer,
+    &-title {
+      float: left;
+    }
+
+    &-location,
+    &-dates {
+      float: right;
+      font-weight: 500;
+    }
+
+    &-employer {
+      font-weight: 600;
+    }
+
+    &-description {
+      margin-top: 10px;
+    }
+  }
 }

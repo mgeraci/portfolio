@@ -44,18 +44,18 @@ $icon-color: $text;
   line-height: $audio-height;
 
   @include audio-colors(
-    $bg: mix($green, $cream),
-    $button-bg: $cream,
-    $button-bg-active: darken($cream, 10%),
-    $scrubber-bg: darken($green, 10%)
+    $bg: $Colors-gray-6,
+    $button-bg: $Colors-gray-5,
+    $button-bg-active: $Colors-blue-5,
+    $scrubber-bg: $Colors-gray-5
   );
 
-  .page-album-list & {
+  .green-bg & {
     @include audio-colors(
-      $bg: $Colors-gray-6,
-      $button-bg: $Colors-gray-5,
-      $button-bg-active: $Colors-blue-5,
-      $scrubber-bg: $Colors-gray-5
+      $bg: mix($green, $cream),
+      $button-bg: $cream,
+      $button-bg-active: darken($cream, 10%),
+      $scrubber-bg: darken($green, 10%)
     );
   }
 

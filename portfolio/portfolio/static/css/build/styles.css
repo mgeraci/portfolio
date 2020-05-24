@@ -344,50 +344,54 @@ article, aside, canvas, details, embed,
 figure, figcaption, footer, header, hgroup, 
 menu, nav, output, ruby, section, summary,
 time, mark, audio, video {
-	margin: 0;
-	padding: 0;
-	border: 0;
-	font-size: 100%;
-	font: inherit;
-	vertical-align: baseline;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
 }
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure, 
 footer, header, hgroup, menu, nav, section {
-	display: block;
+  display: block;
 }
 body {
-	line-height: 1;
+  line-height: 1;
 }
 ol, ul {
-	list-style: none;
+  list-style: none;
 }
 blockquote, q {
-	quotes: none;
+  quotes: none;
 }
 blockquote:before, blockquote:after,
 q:before, q:after {
-	content: '';
-	content: none;
+  content: '';
+  content: none;
 }
 table {
-	border-collapse: collapse;
-	border-spacing: 0;
+  border-collapse: collapse;
+  border-spacing: 0;
 }
 @charset "UTF-8";
 * {
   box-sizing: border-box; }
 
 body {
-  background: #bbd199;
+  background: #fafbfd;
   padding-bottom: 20px;
-  color: #444;
-  font-family: "PT Serif", "Georgia", times, arial, sans-serif;
+  font-family: "Source Serif Pro";
   font-size: 18px;
   line-height: 30px;
-  -webkit-font-smoothing: antialiased; }
+  -webkit-font-smoothing: antialiased;
+  color: #474d59; }
   body.no-scroll {
     overflow: hidden; }
+  body.green-bg {
+    background: #bbd199;
+    font-family: "PT Serif", "Georgia", times, arial, sans-serif;
+    color: #444; }
 
 section,
 .nav-desktop {
@@ -414,13 +418,11 @@ section.content {
   text-decoration: none; }
 
 h2 {
-  color: #474d59;
   font-weight: bold;
   font-size: 22px;
   padding-bottom: 10px; }
 
 h3 {
-  color: #474d59;
   font-weight: bold; }
 
 blockquote {
@@ -483,7 +485,7 @@ em {
   height: 34px;
   margin-top: -17px;
   margin-left: -17px;
-  border: 6px solid #444;
+  border: 4px solid #474d59;
   border-bottom-color: #4c7bd9;
   border-radius: 50%;
   -webkit-animation-name: spin;
@@ -964,23 +966,23 @@ nav::after {
   border-radius: 5px;
   color: #444;
   line-height: 40px;
-  background: #d7e3b6; }
+  background: #ebedf2; }
   .audiojs .play-pause,
   .audiojs .time {
-    background: #f3f4d3; }
+    background: #ccd0d9; }
   .audiojs .play-pause:hover {
-    background: #e8eaaa; }
+    background: #d5e0f8; }
   .audiojs .scrubber {
-    background: #a4c176; }
-  .page-album-list .audiojs {
-    background: #ebedf2; }
-    .page-album-list .audiojs .play-pause,
-    .page-album-list .audiojs .time {
-      background: #ccd0d9; }
-    .page-album-list .audiojs .play-pause:hover {
-      background: #d5e0f8; }
-    .page-album-list .audiojs .scrubber {
-      background: #ccd0d9; }
+    background: #ccd0d9; }
+  .green-bg .audiojs {
+    background: #d7e3b6; }
+    .green-bg .audiojs .play-pause,
+    .green-bg .audiojs .time {
+      background: #f3f4d3; }
+    .green-bg .audiojs .play-pause:hover {
+      background: #e8eaaa; }
+    .green-bg .audiojs .scrubber {
+      background: #a4c176; }
   .audiojs .play-pause,
   .audiojs .time {
     position: absolute;
@@ -1062,10 +1064,7 @@ nav::after {
     transition-duration: 0ms; }
 
 .page-index {
-  background: #fafbfd;
-  padding-bottom: 0;
-  font-family: "Source Serif Pro";
-  color: #474d59; }
+  padding-bottom: 0; }
   .page-index section.content {
     width: 100%;
     max-width: 100%;
@@ -1590,9 +1589,6 @@ nav::after {
             display: none; } }
 
 .page-project {
-  background: #fafbfd;
-  font-family: "Source Serif Pro";
-  color: #474d59;
   text-align: center; }
   .page-project .content {
     position: relative;
@@ -1755,9 +1751,6 @@ nav::after {
   margin-top: 20px; }
 
 .page-steel {
-  background: #fafbfd;
-  font-family: "Source Serif Pro";
-  color: #474d59;
   text-align: center; }
   .page-steel-content {
     position: relative;
@@ -2287,11 +2280,6 @@ nav::after {
       font-weight: 600; }
     .page-resume .job-description {
       margin-top: 10px; }
-
-.page-album-lists,
-.page-album-list {
-  background: #f3f5f9;
-  font-family: "Source Serif Pro"; }
 
 .page-album-lists {
   text-align: center;

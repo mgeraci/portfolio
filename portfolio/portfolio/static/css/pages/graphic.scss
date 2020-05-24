@@ -6,28 +6,28 @@ $menu-item-margin: 20px;
     float: left;
     clear: both;
     margin-bottom: 0;
-	}
+  }
 
   .content {
     @include display(flex);
 
     @media (max-width: $menu-breakpoint) {
       @include display(block);
-		}
-	}
+    }
+  }
 
   &-menu,
   &-content {
     padding-top: 20px;
     padding-bottom: 20px;
-	}
+  }
 
   &-menu-mobile {
     display: none;
 
     li {
       margin-bottom: 20px;
-		}
+    }
 
     a {
       &,
@@ -36,17 +36,17 @@ $menu-item-margin: 20px;
       .no-touchevents &:hover {
         background-image: none;
         @include link-color($text, $text);
-			}
+      }
 
       h3 {
         margin: 0;
-			}
-		}
+      }
+    }
 
     @media (max-width: $menu-breakpoint) {
       display: block;
-		}
-	}
+    }
+  }
 
   &-menu {
     width: 25%;
@@ -55,16 +55,16 @@ $menu-item-margin: 20px;
 
     @media (min-width: 929px) {
       padding-left: 3%;
-		}
+    }
 
     @media (max-width: $menu-breakpoint) {
       display: none;
-		}
+    }
 
     &-wrapper {
       width: $menu-item-size * 2 + $menu-item-margin * 2;
       @include center;
-		}
+    }
 
     a {
       float: left;
@@ -80,21 +80,21 @@ $menu-item-margin: 20px;
         width: 100%;
         height: 100%;
         background: rgba(#000, 0.3);
-			}
+      }
 
       &:hover,
       &.active {
         @include transition(opacity 75ms linear);
         opacity: 1;
-			}
+      }
 
       img {
         float: left;
         width: 100%;
         height: 100%;
-			}
-		}
-	}
+      }
+    }
+  }
 
   &-content {
     width: 75%;
@@ -103,18 +103,18 @@ $menu-item-margin: 20px;
     &--hideable {
       @media (max-width: $menu-breakpoint) {
         display: none;
-			}
-		}
+      }
+    }
 
     @media (max-width: $menu-breakpoint) {
       width: 100%;
       padding: 0;
-		}
+    }
 
     img {
       max-width: 100%;
       margin-top: 30px;
       @include center;
-		}
-	}
+    }
+  }
 }

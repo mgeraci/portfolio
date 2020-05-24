@@ -4,9 +4,6 @@ $video-icon-size: 80px;
 @import "./project/navigation";
 
 .page-project {
-  background: $Colors-gray-8;
-  font-family: "Source Serif Pro";
-  color: $Colors-gray-1;
   text-align: center;
 
   // undo default content centering
@@ -21,8 +18,8 @@ $video-icon-size: 80px;
     &-inner {
       max-width: 1000px;
       margin: 0 auto;
-		}
-	}
+    }
+  }
 
   &-top {
     width: 100%;
@@ -31,36 +28,36 @@ $video-icon-size: 80px;
 
     &--light-text {
       color: #fff;
-		}
+    }
 
-		// the mirror hits the bottom of the top section
-		&.smart-mirror {
-			padding-bottom: 0;
+    // the mirror hits the bottom of the top section
+    &.smart-mirror {
+      padding-bottom: 0;
 
-			img {
-				@include transform(translateX(-27%));
-				max-width: 1500px;
-				width: 130%;
-				height: auto;
+      img {
+        @include transform(translateX(-27%));
+        max-width: 1500px;
+        width: 130%;
+        height: auto;
 
-				@media (max-width: 700px) {
-					width: 150%;
-				}
+        @media (max-width: 700px) {
+          width: 150%;
+        }
 
-				@media (max-width: 450px) {
-					width: 180%;
-				}
-			}
-		}
+        @media (max-width: 450px) {
+          width: 180%;
+        }
+      }
+    }
 
     img {
-			float: left;
-			position: relative;
-			left: 50%;
-			@include transform(translateX(-50%));
+      float: left;
+      position: relative;
+      left: 50%;
+      @include transform(translateX(-50%));
       max-width: 1000px;
-		}
-	}
+    }
+  }
 
   &-title {
     display: block;
@@ -73,76 +70,76 @@ $video-icon-size: 80px;
     @media (max-width: 700px) {
       @include type(24px, 30px);
       margin-bottom: 30px;
-		}
-	}
+    }
+  }
 
   &-hero {
-		@include clearfix;
-		position: relative;
-		overflow: hidden;
+    @include clearfix;
+    position: relative;
+    overflow: hidden;
     min-height: 45vh;
 
     @media (max-width: 700px) {
       min-height: 0;
       padding: 0 3%;
       margin-bottom: 15px;
-		}
+    }
 
     &,
     img {
       width: 100%;
-		}
-	}
+    }
+  }
 
-	.project-links {
-		width: 100%;
-		text-align: center;
-		color: $Colors-gray-3;
+  .project-links {
+    width: 100%;
+    text-align: center;
+    color: $Colors-gray-3;
 
-		&-link {
-			@include type(15px, 24px);
-			@include link-color($Colors-gray-3, $Colors-gray-2);
-		}
-	}
+    &-link {
+      @include type(15px, 24px);
+      @include link-color($Colors-gray-3, $Colors-gray-2);
+    }
+  }
 
   &-header,
   &-paragraph {
     display: inline-block;
     width: 100%;
     max-width: 620px;
-		text-align: left;
+    text-align: left;
 
     @media (max-width: 700px) {
       padding-right: 7%;
       padding-left: 7%;
-			@include type(17px, 26px);
-		}
-	}
+      @include type(17px, 26px);
+    }
+  }
 
   &-header {
-		padding-bottom: 0;
-		font-size: 22px;
-	}
+    padding-bottom: 0;
+    font-size: 22px;
+  }
 
   &-paragraph {
     margin-top: 28px;
     @include type(18px, 30px);
-	}
+  }
 
-	// paragraphs after headers
-	&-header + &-paragraph {
-		margin-top: 15px;
-	}
+  // paragraphs after headers
+  &-header + &-paragraph {
+    margin-top: 15px;
+  }
 
-	// headers after paragraphs
-	&-paragraph + &-header {
-		margin-top: 70px;
-	}
+  // headers after paragraphs
+  &-paragraph + &-header {
+    margin-top: 70px;
+  }
 
-	// headers after media
-	&-media + &-header {
-		margin-top: 27px;
-	}
+  // headers after media
+  &-media + &-header {
+    margin-top: 27px;
+  }
 
   &-footer {
     display: block;
@@ -150,5 +147,5 @@ $video-icon-size: 80px;
     margin-top: 60px;
     text-align: center;
     font-size: 15px;
-	}
+  }
 }

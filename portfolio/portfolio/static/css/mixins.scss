@@ -18,29 +18,29 @@
   h2,
   h3 {
     @include transition(color 50ms linear, background-image 50ms linear);
-	}
+  }
 
   &,
   &:visited {
     color: $default-color;
     @include link-underline($default-color);
-	}
+  }
 
   .no-touchevents & {
     &:hover,
     &:active {
       & {
         @include link-underline($hover-color);
-			}
+      }
 
       &,
       h2,
       h3 {
         color: $hover-color;
         text-shadow: $active-link-shadow;
-			}
-		}
-	}
+      }
+    }
+  }
 }
 
 
@@ -49,12 +49,12 @@
   h2,
   h3 {
     @include transition(color 50ms linear, background-image 50ms linear);
-	}
+  }
 
   &,
   &:visited {
     color: $default-color;
-	}
+  }
 
   .no-touchevents & {
     &:hover,
@@ -63,9 +63,9 @@
       h2,
       h3 {
         color: $hover-color;
-			}
-		}
-	}
+      }
+    }
+  }
 }
 
 
@@ -75,7 +75,7 @@
   &:active {
     text-shadow: none !important;
     background-image: none !important;
-	}
+  }
 }
 
 
@@ -104,12 +104,12 @@
 
   @media (min-width: $body-width + $body-breakpoint-gutter + 1) {
     margin: 0 auto;
-	}
+  }
 
   @media (max-width: $body-width + $body-breakpoint-gutter) {
     width: 100% - $body-mobile-gutter * 2;
     margin-left: $body-mobile-gutter;
-	}
+  }
 }
 
 
@@ -130,16 +130,16 @@
 
   &:not([disabled]) {
     cursor: pointer;
-	}
+  }
 
   &[disabled] {
     opacity: 0.1;
-	}
+  }
 
   &:not([disabled]):hover:before,
   &:not([disabled]):hover:after {
     background: #fff;
-	}
+  }
 
   &:before,
   &:after {
@@ -150,7 +150,7 @@
     height: 58%;
     background: #777;
     @include transition(background 100ms linear);
-	}
+  }
 }
 
 
@@ -158,13 +158,13 @@
   &:before,
   &:after {
     left: 50%;
-	}
+  }
 
   &:before {
     @include transform(translate(-50%, -50%) rotate(45deg));
-	}
+  }
 
   &:after {
     @include transform(translate(-50%, -50%) rotate(-45deg));
-	}
+  }
 }

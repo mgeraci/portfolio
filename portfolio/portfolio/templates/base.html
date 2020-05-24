@@ -29,7 +29,10 @@
 			/>
 		{% endif %}
 	</head>
-	<body id="{% block bodyid %}{% endblock %}" class="page-{% block bodyclass %}{% endblock %}">
+	<body
+		id="{% block bodyid %}{% endblock %}"
+		class="page-{% block bodyclass %}{% endblock %}{% if use_old_nav %} green-bg{% endif %}"
+	>
 
 		{% if use_old_nav %}
 			{% include "menu.html" %}

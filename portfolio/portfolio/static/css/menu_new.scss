@@ -1,58 +1,58 @@
 $nav-breakpoint: 600px;
 
 .project-nav {
-	position: relative;
-	overflow: hidden; // stop side scrolling in ie edge
-	width: 100%;
+  position: relative;
+  overflow: hidden; // stop side scrolling in ie edge
+  width: 100%;
   padding-top: 40px;
   padding-bottom: 30px;
   font-size: 20px;
-	color: $Colors-gray-1;
+  color: $Colors-gray-1;
 
   @media (max-width: $nav-breakpoint) {
     padding-top: 20px;
-	}
+  }
 
   &--light-text {
     color: #fff;
 
     .project-nav-link {
       @include link-color($Colors-white, $Colors-white);
-			opacity: 0.85;
+      opacity: 0.85;
 
-			&:hover {
-				opacity: 1;
-			}
-		}
+      &:hover {
+        opacity: 1;
+      }
+    }
 
     .project-nav-title {
       @include link-color($Colors-white, $Colors-white);
 
-			&:hover {
-				opacity: 0.85;
-			}
-		}
-	}
+      &:hover {
+        opacity: 0.85;
+      }
+    }
+  }
 
   &-content {
     max-width: 800px;
     padding-right: 6vw;
     padding-left: 6vw;
     @include center;
-	}
+  }
 
   &-left {
     text-align: left;
     font-weight: bold;
-	}
+  }
 
   &-right {
     text-align: right;
 
     @media (max-width: $nav-breakpoint) {
       margin-top: 10px;
-		}
-	}
+    }
+  }
 
   &-left,
   &-right {
@@ -62,22 +62,22 @@ $nav-breakpoint: 600px;
     @media (max-width: $nav-breakpoint) {
       width: 100%;
       text-align: center;
-		}
-	}
+    }
+  }
 
   &-title {
     text-decoration: none;
-		@include link-color($text, $index-highlight);
-	}
+    @include link-color($text, $index-highlight);
+  }
 
   &-link {
     display: inline-block;
     margin-left: 20px;
     text-decoration: none;
-		@include link-color($Colors-gray-2, $index-highlight);
+    @include link-color($Colors-gray-2, $index-highlight);
 
     &:first-child {
       margin-left: 0;
-		}
-	}
+    }
+  }
 }

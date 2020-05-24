@@ -4,19 +4,19 @@
 
   @media (max-width: $menu-breakpoint - 1) {
     display: block;
-	}
+  }
 
   // showing menu state
   &--has-menu {
     .nav-mobile-menu {
       height: 254px;
-		}
+    }
 
     .nav-mobile-menu-trigger-icon {
       border: 0;
       @include triangle($mobile-icon-size, $text, up);
-		}
-	}
+    }
+  }
 
   &-header {
     display: block;
@@ -29,7 +29,7 @@
       float: right;
       @include circle-style($inner-height);
       @include type(18px, $inner-height + 1);
-		}
+    }
 
     &-title {
       @include bare-button;
@@ -49,9 +49,9 @@
         right: 0;
         margin-top: $mobile-icon-size * -0.3;
         @include triangle($mobile-icon-size, $text, down);
-			}
-		}
-	}
+      }
+    }
+  }
 
 
   // the pop-up menu
@@ -74,7 +74,7 @@
 
     &--show {
       @include transform(translateY(0));
-		}
+    }
 
     &-content {
       position: absolute;
@@ -88,13 +88,13 @@
 
       @media (max-height: 550px) {
         padding-top: $menu-rotated-padding;
-			}
-		}
+      }
+    }
 
     li {
       float: left;
       width: 100%;
-		}
+    }
 
     a,
     h1 {
@@ -108,20 +108,20 @@
       color: $menu-color;
       font-size: 18px;
       letter-spacing: 0.7px;
-		}
+    }
 
     h1 {
       padding: 0;
       font-weight: normal;
       color: $cream;
-		}
+    }
 
 
     @media (max-height: 500px) {
       a {
         padding: 5px;
-			}
-		}
+      }
+    }
 
     @media (max-height: $menu-rotate-breakpoint) {
       padding-bottom: $menu-rotated-padding;
@@ -129,8 +129,8 @@
       a,
       h1 {
         font-size: 14px;
-			}
-		}
+      }
+    }
 
     $close-size: 56px;
 
@@ -150,7 +150,7 @@
         bottom: auto;
         top: 10px;
         left: 10px + $close-size / 2;
-			}
-		}
-	}
+      }
+    }
+  }
 }
