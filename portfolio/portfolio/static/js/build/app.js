@@ -1047,7 +1047,7 @@
 
 /***/ },
 /* 3 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ function(module, exports) {
 
 	"use strict";
 
@@ -1056,33 +1056,30 @@
 	});
 	exports["default"] = void 0;
 
-	var _jquery = _interopRequireDefault(__webpack_require__(4));
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
-
+	/* global document */
 	var Menu = {
 	  menuClass: "nav-mobile-menu",
 	  init: function init() {
 	    var _this = this;
 
-	    (0, _jquery["default"])("body").on("click", ".nav-mobile-header-title", function (e) {
+	    document.querySelector(".nav-mobile-header-title").addEventListener("click", function (e) {
 	      e.preventDefault();
 
 	      _this.openMenu();
 	    });
-	    (0, _jquery["default"])("body").on("click", ".nav-mobile-menu-close", function (e) {
+	    document.querySelector(".nav-mobile-menu-close").addEventListener("click", function (e) {
 	      e.preventDefault();
 
 	      _this.closeMenu();
 	    });
 	  },
 	  openMenu: function openMenu() {
-	    (0, _jquery["default"])(".".concat(this.menuClass)).addClass("".concat(this.menuClass, "--show"));
-	    (0, _jquery["default"])("body").addClass("no-scroll");
+	    document.querySelector(".".concat(this.menuClass)).classList.add("".concat(this.menuClass, "--show"));
+	    document.body.classList.add("no-scroll");
 	  },
 	  closeMenu: function closeMenu() {
-	    (0, _jquery["default"])(".".concat(this.menuClass)).removeClass("".concat(this.menuClass, "--show"));
-	    (0, _jquery["default"])("body").removeClass("no-scroll");
+	    document.querySelector(".".concat(this.menuClass)).classList.remove("".concat(this.menuClass, "--show"));
+	    document.body.classList.remove("no-scroll");
 	  }
 	};
 	var _default = Menu;

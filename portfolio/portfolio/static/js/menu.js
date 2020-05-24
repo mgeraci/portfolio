@@ -1,28 +1,28 @@
-import $ from "jquery";
+/* global document */
 
 const Menu = {
 	menuClass: "nav-mobile-menu",
 
 	init() {
-		$("body").on("click", ".nav-mobile-header-title", (e) => {
+		document.querySelector(".nav-mobile-header-title").addEventListener("click", (e) => {
 			e.preventDefault();
 			this.openMenu();
 		});
 
-		$("body").on("click", ".nav-mobile-menu-close", (e) => {
+		document.querySelector(".nav-mobile-menu-close").addEventListener("click", (e) => {
 			e.preventDefault();
 			this.closeMenu();
 		});
 	},
 
 	openMenu() {
-		$(`.${this.menuClass}`).addClass(`${this.menuClass}--show`);
-		$("body").addClass("no-scroll");
+		document.querySelector(`.${this.menuClass}`).classList.add(`${this.menuClass}--show`);
+		document.body.classList.add("no-scroll");
 	},
 
 	closeMenu() {
-		$(`.${this.menuClass}`).removeClass(`${this.menuClass}--show`);
-		$("body").removeClass("no-scroll");
+		document.querySelector(`.${this.menuClass}`).classList.remove(`${this.menuClass}--show`);
+		document.body.classList.remove("no-scroll");
 	},
 };
 
