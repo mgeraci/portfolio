@@ -42706,7 +42706,10 @@
 	    value: function componentWillUnmount() {
 	      document.removeEventListener("keyup", this._onKeyup);
 	      window.removeEventListener("resize", this._throttledResize);
-	      (0, _jquery["default"])("body").removeClass("no-scroll");
+	      (0, _jquery["default"])("body").removeClass("no-scroll"); // change the scroll to trigger thumbnails to load
+
+	      window.scrollTo(0, window.scrollY - 1);
+	      window.scrollTo(0, window.scrollY + 1);
 	    }
 	  }, {
 	    key: "render",

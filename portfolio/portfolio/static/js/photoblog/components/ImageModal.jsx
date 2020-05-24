@@ -73,6 +73,10 @@ class ImageDetail extends Component {
 		document.removeEventListener("keyup", this._onKeyup);
 		window.removeEventListener("resize", this._throttledResize);
 		jQuery("body").removeClass("no-scroll");
+
+		// change the scroll to trigger thumbnails to load
+		window.scrollTo(0, window.scrollY - 1);
+		window.scrollTo(0, window.scrollY + 1);
 	}
 
 	_onKeyup = (e) => {
