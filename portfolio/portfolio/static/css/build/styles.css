@@ -201,8 +201,6 @@
     font-weight: normal;
     font-family: 'Source Serif Pro';
     font-weight: bold; }
-  .image-modal-meta-year {
-    font-style: oblique; }
   .image-modal-meta-tags {
     margin-top: 10px; }
   .image-modal-meta a.image-modal-meta-tag {
@@ -256,7 +254,10 @@
     -ms-transform: translate(-50%, -50%);
     -o-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%); }
+    .image-modal-content-image {
+      text-align: center; }
     .image-modal-content img {
+      display: inline-block;
       border-radius: 2px; }
 .page-photography-tagslist {
   line-height: 24px; }

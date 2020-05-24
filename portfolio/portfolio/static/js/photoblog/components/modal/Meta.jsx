@@ -33,7 +33,7 @@ const Meta = ({ tags, title, year, filterTag }) => {
 								filterTag={filterTag}
 							/>
 							{i + 1 < tagsToShow.length &&
-								<span>, </span>
+								<>, </>
 							}
 						</span>
 					))}

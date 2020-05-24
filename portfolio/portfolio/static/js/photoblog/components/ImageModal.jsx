@@ -193,7 +193,6 @@ class ImageDetail extends Component {
 											title={image.title}
 											year={image.year}
 											tags={image.tags}
-											onRender={() => {}}
 											filterTag={onFilterTag}
 										/>
 									</CSSTransition>

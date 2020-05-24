@@ -108,21 +108,23 @@ class MainImage extends PureComponent {
 		}
 
 		return (
-			<TransitionGroup>
-				{loaded &&
-					<CSSTransition
-						key={src}
-						classNames="main-image"
-						timeout={500}
-					>
-						<img
-							src={src}
-							alt={alt}
-							style={style}
-						/>
-					</CSSTransition>
-				}
-			</TransitionGroup>
+			<div className="image-modal-content-image">
+				<TransitionGroup>
+					{loaded &&
+						<CSSTransition
+							key={src}
+							classNames="main-image"
+							timeout={500}
+						>
+							<img
+								src={src}
+								alt={alt}
+								style={style}
+							/>
+						</CSSTransition>
+					}
+				</TransitionGroup>
+			</div>
 		);
 	}
 }

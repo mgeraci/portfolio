@@ -31910,7 +31910,6 @@
 	        title: image.title,
 	        year: image.year,
 	        tags: image.tags,
-	        onRender: function onRender() {},
 	        filterTag: onFilterTag
 	      })))))), _react["default"].createElement(_Buttons["default"], {
 	        atBeginning: atBeginning,
@@ -32290,7 +32289,9 @@
 	        style.height = resHeight;
 	      }
 
-	      return _react["default"].createElement(_reactTransitionGroup.TransitionGroup, null, loaded && _react["default"].createElement(_reactTransitionGroup.CSSTransition, {
+	      return _react["default"].createElement("div", {
+	        className: "image-modal-content-image"
+	      }, _react["default"].createElement(_reactTransitionGroup.TransitionGroup, null, loaded && _react["default"].createElement(_reactTransitionGroup.CSSTransition, {
 	        key: src,
 	        classNames: "main-image",
 	        timeout: 500
@@ -32298,7 +32299,7 @@
 	        src: src,
 	        alt: alt,
 	        style: style
-	      })));
+	      }))));
 	    }
 	  }]);
 
@@ -32377,7 +32378,7 @@
 	      slug: tag.slug,
 	      className: "image-modal-meta-tag",
 	      filterTag: filterTag
-	    }), i + 1 < tagsToShow.length && _react["default"].createElement("span", null, ", "));
+	    }), i + 1 < tagsToShow.length && _react["default"].createElement(_react["default"].Fragment, null, ", "));
 	  })));
 	};
 
