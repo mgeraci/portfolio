@@ -191,6 +191,9 @@
   -webkit-transition: opacity 200ms ease-in;
   -moz-transition: opacity 200ms ease-in;
   transition: opacity 200ms ease-in; }
+
+.main-image-exit {
+  display: none; }
 .image-modal-meta {
   margin-top: 5px;
   font-size: 17px;
