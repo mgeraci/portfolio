@@ -1,4 +1,5 @@
-import $ from "jquery";
+/* global document */
+
 import audiojs from "./vendor/audio";
 
 const Audio = {
@@ -8,18 +9,20 @@ const Audio = {
 
 		audioInstance.events.ready(() => {
 			const audioElements = audioInstance.createAll({ css: false });
+			const buttons = document.querySelectorAll(".audiojs .play-pause");
 
 			// pause all other players on click of a play button
-			$("body").on("click", ".audiojs .play-pause", function onClick() {
-				const thisIndex = $(this).parents(".audiojs").index(".audiojs");
-				let i = 0;
+			buttons.forEach((button) => {
+				button.addEventListener("click", (e) => {
+					const thisIndex = Array.prototype.indexOf.call(buttons, e.currentTarget);
 
-				audioElements.forEach(() => {
-					if (i !== thisIndex && audioElements[i].playing) {
-						audioElements[i].pause();
-					}
+					audioElements.forEach((audioElement, i) => {
+						if (i === thisIndex || !audioElement.playing) {
+							return;
+						}
 
-					i += 1;
+						audioElement.pause();
+					});
 				});
 			});
 		});

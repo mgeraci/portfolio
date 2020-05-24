@@ -61,10 +61,7 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 	/* global document */
-
-	/* eslint-disable */
-
-	/* eslint-enable */
+	// eslint-disable-line no-unused-vars
 	_menu["default"].init();
 
 	_lazy_images["default"].search();
@@ -12126,12 +12123,11 @@
 	});
 	exports["default"] = void 0;
 
-	var _jquery = _interopRequireDefault(__webpack_require__(5));
-
 	var _audio = _interopRequireDefault(__webpack_require__(8));
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
+	/* global document */
 	var Audio = {
 	  init: function init() {
 	    var audioInstance = (0, _audio["default"])("audiojs", "audiojsInstance", this);
@@ -12139,17 +12135,19 @@
 	    audioInstance.events.ready(function () {
 	      var audioElements = audioInstance.createAll({
 	        css: false
-	      }); // pause all other players on click of a play button
+	      });
+	      var buttons = document.querySelectorAll(".audiojs .play-pause"); // pause all other players on click of a play button
 
-	      (0, _jquery["default"])("body").on("click", ".audiojs .play-pause", function onClick() {
-	        var thisIndex = (0, _jquery["default"])(this).parents(".audiojs").index(".audiojs");
-	        var i = 0;
-	        audioElements.forEach(function () {
-	          if (i !== thisIndex && audioElements[i].playing) {
-	            audioElements[i].pause();
-	          }
+	      buttons.forEach(function (button) {
+	        button.addEventListener("click", function (e) {
+	          var thisIndex = Array.prototype.indexOf.call(buttons, e.currentTarget);
+	          audioElements.forEach(function (audioElement, i) {
+	            if (i === thisIndex || !audioElement.playing) {
+	              return;
+	            }
 
-	          i += 1;
+	            audioElement.pause();
+	          });
 	        });
 	      });
 	    });

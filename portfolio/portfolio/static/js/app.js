@@ -1,12 +1,7 @@
 /* global document */
 
 import FastClick from "fastclick";
-
-/* eslint-disable */
-
-import modernizr from "./vendor/modernizr";
-
-/* eslint-enable */
+import modernizr from "./vendor/modernizr"; // eslint-disable-line no-unused-vars
 
 import menu from "./menu";
 import lazyImages from "./lazy_images";
