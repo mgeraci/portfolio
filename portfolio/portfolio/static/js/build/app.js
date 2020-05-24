@@ -1062,7 +1062,13 @@
 	  init: function init() {
 	    var _this = this;
 
-	    document.querySelector(".nav-mobile-header-title").addEventListener("click", function (e) {
+	    var mobileMenuTrigger = document.querySelector(".nav-mobile-header-title");
+
+	    if (!mobileMenuTrigger) {
+	      return;
+	    }
+
+	    mobileMenuTrigger.addEventListener("click", function (e) {
 	      e.preventDefault();
 
 	      _this.openMenu();

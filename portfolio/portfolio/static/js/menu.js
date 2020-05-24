@@ -4,7 +4,13 @@ const Menu = {
 	menuClass: "nav-mobile-menu",
 
 	init() {
-		document.querySelector(".nav-mobile-header-title").addEventListener("click", (e) => {
+		const mobileMenuTrigger = document.querySelector(".nav-mobile-header-title");
+
+		if (!mobileMenuTrigger) {
+			return;
+		}
+
+		mobileMenuTrigger.addEventListener("click", (e) => {
 			e.preventDefault();
 			this.openMenu();
 		});
