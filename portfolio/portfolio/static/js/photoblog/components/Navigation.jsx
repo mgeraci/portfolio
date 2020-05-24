@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 import { filterTag } from "../reducer";
 import Tag from "./Tag.jsx";
 
-import "./Navigation.sass";
+import "./Navigation.scss";
 
 const Navigation = ({ years, onFilterTag }) => {
 	const filterTags = (e) => {

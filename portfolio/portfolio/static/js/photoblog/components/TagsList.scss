@@ -1,0 +1,11 @@
+@import "../util/preface";
+
+.page-photography-tagslist {
+  line-height: 24px;
+
+  &-tag {
+    display: inline-block;
+    margin: 5px 7px;
+    @include link-color($Colors-gray-2, $Colors-blue-3);
+  }
+}

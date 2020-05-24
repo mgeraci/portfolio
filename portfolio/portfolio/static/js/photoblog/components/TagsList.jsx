@@ -6,7 +6,7 @@ import { generateTagsList, filterTag } from "../reducer";
 import { scale } from "../util/helpers";
 import Tag from "./Tag.jsx";
 
-import "./TagsList.sass";
+import "./TagsList.scss";
 
 class TagsList extends Component {
 	static propTypes = {

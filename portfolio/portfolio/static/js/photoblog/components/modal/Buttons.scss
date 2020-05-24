@@ -1,0 +1,61 @@
+@import "../../util/preface";
+
+.image-modal-button {
+  @include pseudo-icon;
+
+  &-text {
+    position: absolute;
+    top: 100px;
+  }
+
+  &--prev,
+  &--next {
+    top: 50%;
+    transform: translateY(-50%);
+
+    &:before,
+    &:after {
+      top: 45%;
+      height: 30%;
+    }
+  }
+
+  &--prev {
+    left: 10px;
+
+    &:before {
+      transform: translate(-1px, -60%) rotate(40deg);
+    }
+
+    &:after {
+      transform: rotate(-40deg);
+    }
+  }
+
+  &--next {
+    right: 10px;
+
+    &:before {
+      transform: translate(1px, -60%) rotate(-40deg);
+    }
+
+    &:after {
+      transform: rotate(40deg);
+    }
+  }
+
+  &--close {
+    @include close-icon;
+    top: 20px;
+    right: 20px;
+  }
+
+  &--is-hidden {
+    display: none;
+  }
+
+  &--is-mobile {
+    top: 0;
+    right: 0;
+  }
+}

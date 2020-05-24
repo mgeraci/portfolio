@@ -26,7 +26,7 @@ function createConfig(params) {
 	}
 
 	const resolve = {
-		extensions: ["", ".webpack.js", ".web.js", ".js", ".jsx", ".scss", ".sass"]
+		extensions: ["", ".webpack.js", ".web.js", ".js", ".jsx", ".scss"]
 	};
 
 	const eslint = {
@@ -49,7 +49,7 @@ function createConfig(params) {
 
 			// pass the public path to a sass variable
 			{
-				test: /\.(sass|scss)?$/,
+				test: /\.(scss)?$/,
 				loader: "webpack-append",
 				query: `$STATIC_ROOT: '${output.publicPath}';`
 			}
@@ -65,7 +65,7 @@ function createConfig(params) {
 
 			// sass, pull into standalone file
 			{
-				test: /\.(sass|scss)$/,
+				test: /\.(scss)$/,
 				exclude: [/node_modules/],
 				loader: ExtractTextPlugin.extract("css!sass")
 			},

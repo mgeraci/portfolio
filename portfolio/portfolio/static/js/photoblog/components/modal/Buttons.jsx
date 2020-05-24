@@ -9,7 +9,7 @@ import {
 	navigateNext,
 } from "../../reducer";
 
-import "./Buttons.sass";
+import "./Buttons.scss";
 
 const Buttons = ({
 	atBeginning,

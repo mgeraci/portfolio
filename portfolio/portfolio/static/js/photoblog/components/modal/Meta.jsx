@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import { BAD_TAGS } from "../../util/constants";
 import Tag from "../Tag.jsx";
 
-import "./Meta.sass";
+import "./Meta.scss";
 
 const Meta = ({ tags, title, year, filterTag }) => {
 	const tagsToShow = tags.filter((tag) => {

@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 import { clearFilterTag } from "../reducer";
 import TitleClearButton from "./TitleClearButton.jsx";
 
-import "./Title.sass";
+import "./Title.scss";
 
 const Title = ({ filteredTerm, onClearFilterTag }) => {
 	const isYear = !!`${filteredTerm}`.match(/2\d{3}/);

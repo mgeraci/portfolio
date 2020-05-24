@@ -4,7 +4,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 
-import "./Thumbnail.sass";
+import "./Thumbnail.scss";
 
 class Thumbnail extends Component {
 	static propTypes = {

@@ -1,0 +1,18 @@
+@import "../../util/preface";
+
+.main-image {
+  &-enter,
+  &-appear {
+    opacity: 0.01;
+  }
+
+  &-enter-active,
+  &-appear-active {
+    opacity: 1;
+    transition: opacity $photoblog-transition ease-in;
+  }
+
+  &-exit {
+    display: none;
+  }
+}

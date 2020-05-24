@@ -1,0 +1,24 @@
+@import "../util/preface";
+
+.page-photography-thumbnail {
+  position: relative;
+  @include no-link;
+  display: inline-block;
+  width: $photoblog-thumbnail-size;
+  height: $photoblog-thumbnail-size;
+  background: rgba(0, 0, 0, 0.05);
+  transition: opacity 200ms linear;
+  opacity: 1;
+
+  &:hover {
+    opacity: 0.5;
+  }
+
+  &-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+}

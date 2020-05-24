@@ -1,0 +1,39 @@
+@import "../util/preface";
+
+.page-photography {
+  // special sizing for mobile
+  .content {
+    @media (max-width: 700px) {
+      width: 94%;
+      margin-left: 3%;
+    }
+  }
+
+  &-title,
+  &-navigation,
+  &-thumbnails,
+  &-tagslist {
+    @include clearfix;
+    width: $photoblog-thumbnail-size * 9;
+    margin-right: auto;
+    margin-left: auto;
+    text-align: center;
+
+    @media (max-width: $photoblog-thumbnail-size * 8 + 40) {
+      width: 100%;
+    }
+  }
+
+  &-thumbnails {
+    line-height: 0;
+  }
+
+  &-rss {
+    display: inline-block;
+    @include center;
+    @include no-link;
+    @include link-color($text, $Colors-blue-3);
+    margin-top: 20px;
+    font-size: 15px;
+  }
+}

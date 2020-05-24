@@ -19,7 +19,7 @@ import Thumbnail from "./Thumbnail.jsx";
 import ImageModal from "./ImageModal.jsx";
 import TagsList from "./TagsList.jsx";
 
-import "./App.sass";
+import "./App.scss";
 
 class App extends Component {
 	static propTypes = {

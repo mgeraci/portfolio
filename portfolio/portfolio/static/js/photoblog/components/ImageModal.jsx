@@ -24,7 +24,7 @@ import MainImage from "./modal/MainImage.jsx";
 import Meta from "./modal/Meta.jsx";
 import Swipeable from "./Swipeable.jsx";
 
-import "./ImageModal.sass";
+import "./ImageModal.scss";
 
 const initialState = {
 	isLoaded: false,
@@ -74,8 +74,8 @@ class ImageDetail extends Component {
 		document.body.classList.remove("no-scroll");
 
 		// change the scroll to trigger thumbnails to load
-		window.scrollTo(0, window.scrollY - 1);
 		window.scrollTo(0, window.scrollY + 1);
+		window.scrollTo(0, window.scrollY - 1);
 	}
 
 	_onKeyup = (e) => {
