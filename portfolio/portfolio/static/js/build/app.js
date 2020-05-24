@@ -40,9 +40,8 @@
 /******/ 	return __webpack_require__(0);
 /******/ })
 /************************************************************************/
-/******/ ({
-
-/***/ 0:
+/******/ ([
+/* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -74,8 +73,7 @@
 	_fastclick["default"].attach(document.body);
 
 /***/ },
-
-/***/ 1:
+/* 1 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;;(function () {
@@ -922,8 +920,7 @@
 
 
 /***/ },
-
-/***/ 2:
+/* 2 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -1046,8 +1043,7 @@
 	}(window, document);
 
 /***/ },
-
-/***/ 3:
+/* 3 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -1093,8 +1089,7 @@
 	exports["default"] = _default;
 
 /***/ },
-
-/***/ 4:
+/* 4 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -1104,9 +1099,9 @@
 	});
 	exports["default"] = void 0;
 
-	var _throttle = _interopRequireDefault(__webpack_require__(6));
+	var _throttle = _interopRequireDefault(__webpack_require__(5));
 
-	var _getScroll = _interopRequireDefault(__webpack_require__(102));
+	var _getScroll = _interopRequireDefault(__webpack_require__(6));
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
@@ -1123,7 +1118,6 @@
 	  checkScroll: function checkScroll() {
 	    var _this = this;
 
-	    console.log(this.elementIsOnScreen(document.querySelectorAll("[data-lazy-image]")[0]));
 	    document.querySelectorAll("[data-lazy-image]").forEach(function (lazyImage) {
 	      if (_this.elementIsOnScreen(lazyImage)) {
 	        _this.loadImage(lazyImage);
@@ -1174,8 +1168,7 @@
 	exports["default"] = _default;
 
 /***/ },
-
-/***/ 6:
+/* 5 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -1244,8 +1237,29 @@
 	module.exports = _.throttle;
 
 /***/ },
+/* 6 */
+/***/ function(module, exports) {
 
-/***/ 7:
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports["default"] = void 0;
+
+	/* global window, document */
+	var _default = function _default() {
+	  if (!window || !document) {
+	    return 0;
+	  }
+
+	  return window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+	};
+
+	exports["default"] = _default;
+
+/***/ },
+/* 7 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -1289,8 +1303,7 @@
 	exports["default"] = _default;
 
 /***/ },
-
-/***/ 8:
+/* 8 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -2052,8 +2065,7 @@
 	}; // mgchange ^ don't make this a self-executing function; we'll do that upon import
 
 /***/ },
-
-/***/ 9:
+/* 9 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -2136,8 +2148,7 @@
 	exports["default"] = _default;
 
 /***/ },
-
-/***/ 10:
+/* 10 */
 /***/ function(module, exports) {
 
 	
@@ -2230,29 +2241,5 @@
 	}
 
 
-/***/ },
-
-/***/ 102:
-/***/ function(module, exports) {
-
-	"use strict";
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	exports["default"] = void 0;
-
-	/* global window, document */
-	var _default = function _default() {
-	  if (!window || !document) {
-	    return 0;
-	  }
-
-	  return window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
-	};
-
-	exports["default"] = _default;
-
 /***/ }
-
-/******/ });
+/******/ ]);

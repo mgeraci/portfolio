@@ -17,8 +17,6 @@ const LazyImages = {
 	},
 
 	checkScroll() {
-		console.log(this.elementIsOnScreen(document.querySelectorAll("[data-lazy-image]")[0]));
-
 		document.querySelectorAll("[data-lazy-image]").forEach((lazyImage) => {
 			if (this.elementIsOnScreen(lazyImage)) {
 				this.loadImage(lazyImage);
