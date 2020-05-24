@@ -52,7 +52,7 @@
 
 	var _menu = _interopRequireDefault(__webpack_require__(3));
 
-	var _lazy_images = _interopRequireDefault(__webpack_require__(5));
+	var _lazy_images = _interopRequireDefault(__webpack_require__(4));
 
 	var _audio = _interopRequireDefault(__webpack_require__(7));
 
@@ -1093,6 +1093,83 @@
 
 /***/ },
 /* 4 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports["default"] = void 0;
+
+	var _jquery = _interopRequireDefault(__webpack_require__(5));
+
+	var _throttle = _interopRequireDefault(__webpack_require__(6));
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+
+	/* global window, document, Image */
+	var LazyImages = {
+	  buffer: 350,
+	  search: function search() {
+	    // load images onscreen at init
+	    this.checkScroll(); // load additional images on scroll
+
+	    var lazyScroll = (0, _throttle["default"])(this.checkScroll.bind(this), 300);
+	    (0, _jquery["default"])(document).on("scroll", function () {
+	      lazyScroll();
+	    });
+	  },
+	  checkScroll: function checkScroll() {
+	    (0, _jquery["default"])("[data-lazy-image]:onScreen").each(function onScreen() {
+	      LazyImages.loadImage((0, _jquery["default"])(this));
+	    });
+	  },
+	  loadImage: function loadImage(el) {
+	    var src = el.attr("data-lazy-image");
+	    var alt = el.attr("data-lazy-image-alt");
+	    var img = new Image();
+	    var maxWidth = el.attr("data-lazy-max-width");
+
+	    if (maxWidth) {
+	      maxWidth = "".concat(maxWidth, "px");
+	    } else {
+	      maxWidth = "auto";
+	    } // remove the data attribute to keep it from loading again
+
+
+	    el.removeAttr("data-lazy-image");
+	    (0, _jquery["default"])(img).attr("src", src).attr("alt", alt).css("maxWidth", maxWidth);
+	    (0, _jquery["default"])(img).on("load", function () {
+	      el.append(img);
+	    });
+	  }
+	}; // add an onScreen selector to jQuery
+
+	_jquery["default"].expr[":"].onScreen = function (elem) {
+	  var $window = (0, _jquery["default"])(window);
+
+	  if (!LazyImages.windowHeight) {
+	    LazyImages.windowHeight = $window.height();
+	  }
+
+	  var buffer = LazyImages.buffer || 0;
+	  var windowTop = $window.scrollTop();
+	  var windowBottom = windowTop + LazyImages.windowHeight;
+	  var rect = elem.getBoundingClientRect();
+	  var top = rect.top + windowTop;
+	  var bottom = rect.bottom + windowTop;
+	  var topIsVisible = top >= windowTop - buffer && top < windowBottom + buffer;
+	  var bottomIsVisible = bottom > windowTop - buffer && bottom <= windowBottom + buffer;
+	  var isBiggerThanScreen = rect.height != null && rect.height > LazyImages.windowHeight && top <= windowTop - buffer && bottom >= windowBottom + buffer;
+	  return topIsVisible || bottomIsVisible || isBiggerThanScreen;
+	};
+
+	var _default = LazyImages;
+	exports["default"] = _default;
+
+/***/ },
+/* 5 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -11970,83 +12047,6 @@
 
 
 /***/ },
-/* 5 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	exports["default"] = void 0;
-
-	var _jquery = _interopRequireDefault(__webpack_require__(4));
-
-	var _throttle = _interopRequireDefault(__webpack_require__(6));
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
-
-	/* global window, document, Image */
-	var LazyImages = {
-	  buffer: 350,
-	  search: function search() {
-	    // load images onscreen at init
-	    this.checkScroll(); // load additional images on scroll
-
-	    var lazyScroll = (0, _throttle["default"])(this.checkScroll.bind(this), 300);
-	    (0, _jquery["default"])(document).on("scroll", function () {
-	      lazyScroll();
-	    });
-	  },
-	  checkScroll: function checkScroll() {
-	    (0, _jquery["default"])("[data-lazy-image]:onScreen").each(function onScreen() {
-	      LazyImages.loadImage((0, _jquery["default"])(this));
-	    });
-	  },
-	  loadImage: function loadImage(el) {
-	    var src = el.attr("data-lazy-image");
-	    var alt = el.attr("data-lazy-image-alt");
-	    var img = new Image();
-	    var maxWidth = el.attr("data-lazy-max-width");
-
-	    if (maxWidth) {
-	      maxWidth = "".concat(maxWidth, "px");
-	    } else {
-	      maxWidth = "auto";
-	    } // remove the data attribute to keep it from loading again
-
-
-	    el.removeAttr("data-lazy-image");
-	    (0, _jquery["default"])(img).attr("src", src).attr("alt", alt).css("maxWidth", maxWidth);
-	    (0, _jquery["default"])(img).on("load", function () {
-	      el.append(img);
-	    });
-	  }
-	}; // add an onScreen selector to jQuery
-
-	_jquery["default"].expr[":"].onScreen = function (elem) {
-	  var $window = (0, _jquery["default"])(window);
-
-	  if (!LazyImages.windowHeight) {
-	    LazyImages.windowHeight = $window.height();
-	  }
-
-	  var buffer = LazyImages.buffer || 0;
-	  var windowTop = $window.scrollTop();
-	  var windowBottom = windowTop + LazyImages.windowHeight;
-	  var rect = elem.getBoundingClientRect();
-	  var top = rect.top + windowTop;
-	  var bottom = rect.bottom + windowTop;
-	  var topIsVisible = top >= windowTop - buffer && top < windowBottom + buffer;
-	  var bottomIsVisible = bottom > windowTop - buffer && bottom <= windowBottom + buffer;
-	  var isBiggerThanScreen = rect.height != null && rect.height > LazyImages.windowHeight && top <= windowTop - buffer && bottom >= windowBottom + buffer;
-	  return topIsVisible || bottomIsVisible || isBiggerThanScreen;
-	};
-
-	var _default = LazyImages;
-	exports["default"] = _default;
-
-/***/ },
 /* 6 */
 /***/ function(module, exports) {
 
@@ -12126,7 +12126,7 @@
 	});
 	exports["default"] = void 0;
 
-	var _jquery = _interopRequireDefault(__webpack_require__(4));
+	var _jquery = _interopRequireDefault(__webpack_require__(5));
 
 	var _audio = _interopRequireDefault(__webpack_require__(8));
 
@@ -12931,12 +12931,11 @@
 	});
 	exports["default"] = void 0;
 
-	var _jquery = _interopRequireDefault(__webpack_require__(4));
-
 	var _fitvids = _interopRequireDefault(__webpack_require__(10));
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
+	/* global document */
 	var Video = {
 	  projectVideoClasses: ".page-project-media-video",
 	  projectVideoButtons: ".page-project-media-video-icon-wrapper",
@@ -12947,50 +12946,57 @@
 	    this.projectVideo();
 	  },
 	  projectVideo: function projectVideo() {
-	    if ((0, _jquery["default"])("html").hasClass("touchevents")) {
+	    if (document.documentElement.classList.contains("touchevents")) {
 	      this.videoMobile();
 	    } else {
 	      this.videoDesktop();
 	    }
 	  },
-	  getVideoEls: function getVideoEls(e) {
-	    var wrapper = e.closest(".page-project-media-video-wrapper");
-	    var video = wrapper.find("video");
+	  getVideoEls: function getVideoEls(el) {
+	    var wrapper = el.closest(".page-project-media-video-wrapper");
+	    var video = wrapper.querySelector("video");
 	    return {
 	      wrapper: wrapper,
 	      video: video
 	    };
 	  },
+	  _onMobileInteraction: function _onMobileInteraction(e) {
+	    var _this$getVideoEls = this.getVideoEls(e.currentTarget),
+	        video = _this$getVideoEls.video,
+	        wrapper = _this$getVideoEls.wrapper;
+
+	    if (video.paused) {
+	      video.play();
+	      wrapper.classList.add(this.projectPlayingClass);
+	    } else {
+	      video.pause();
+	      wrapper.classList.remove(this.projectPlayingClass);
+	    }
+	  },
 	  videoMobile: function videoMobile() {
 	    var _this = this;
 
-	    (0, _jquery["default"])("body").on("click tap", this.projectSelectors, function (e) {
-	      var els = _this.getVideoEls((0, _jquery["default"])(e.currentTarget));
-
-	      var video = els.video.get(0);
-
-	      if (video.paused) {
-	        video.play();
-	        els.wrapper.addClass(_this.projectPlayingClass);
-	      } else {
-	        video.pause();
-	        els.wrapper.removeClass(_this.projectPlayingClass);
-	      }
+	    document.body.querySelectorAll(this.projectSelectors).forEach(function (selector) {
+	      selector.addEventListener("click", _this._onMobileInteraction.bind(_this));
+	      selector.addEventListener("tap", _this._onMobileInteraction.bind(_this));
 	    });
 	  },
 	  videoDesktop: function videoDesktop() {
 	    var _this2 = this;
 
-	    (0, _jquery["default"])("body").on("mouseover", this.projectSelectors, function (e) {
-	      var els = _this2.getVideoEls((0, _jquery["default"])(e.currentTarget));
+	    document.body.querySelectorAll(this.projectSelectors).forEach(function (selector) {
+	      selector.addEventListener("mouseover", function (e) {
+	        var els = _this2.getVideoEls(e.currentTarget);
 
-	      els.video.get(0).play();
-	      els.wrapper.addClass(_this2.projectPlayingClass);
-	    }).on("mouseout", this.projectSelectors, function (e) {
-	      var els = _this2.getVideoEls((0, _jquery["default"])(e.currentTarget));
+	        els.video.play();
+	        els.wrapper.classList.add(_this2.projectPlayingClass);
+	      });
+	      selector.addEventListener("mouseout", function (e) {
+	        var els = _this2.getVideoEls(e.currentTarget);
 
-	      els.video.get(0).pause();
-	      els.wrapper.removeClass(_this2.projectPlayingClass);
+	        els.video.pause();
+	        els.wrapper.classList.remove(_this2.projectPlayingClass);
+	      });
 	    });
 	  }
 	};

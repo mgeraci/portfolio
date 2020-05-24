@@ -80,11 +80,6 @@
     .is-playing & {
       opacity: 0;
     }
-
-    // hide on mobile
-    .touchevents & {
-      display: none;
-    }
   }
 
   &-video-icon {

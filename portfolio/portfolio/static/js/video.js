@@ -1,4 +1,5 @@
-import $ from "jquery";
+/* global document */
+
 import fitvids from "fitvids";
 
 const Video = {
@@ -14,16 +15,16 @@ const Video = {
 	},
 
 	projectVideo() {
-		if ($("html").hasClass("touchevents")) {
+		if (document.documentElement.classList.contains("touchevents")) {
 			this.videoMobile();
 		} else {
 			this.videoDesktop();
 		}
 	},
 
-	getVideoEls(e) {
-		const wrapper = e.closest(".page-project-media-video-wrapper");
-		const video = wrapper.find("video");
+	getVideoEls(el) {
+		const wrapper = el.closest(".page-project-media-video-wrapper");
+		const video = wrapper.querySelector("video");
 
 		return {
 			wrapper,
@@ -31,30 +32,38 @@ const Video = {
 		};
 	},
 
-	videoMobile() {
-		$("body").on("click tap", this.projectSelectors, (e) => {
-			const els = this.getVideoEls($(e.currentTarget));
-			const video = els.video.get(0);
+	_onMobileInteraction(e) {
+		const { video, wrapper } = this.getVideoEls(e.currentTarget);
 
-			if (video.paused) {
-				video.play();
-				els.wrapper.addClass(this.projectPlayingClass);
-			} else {
-				video.pause();
-				els.wrapper.removeClass(this.projectPlayingClass);
-			}
+		if (video.paused) {
+			video.play();
+			wrapper.classList.add(this.projectPlayingClass);
+		} else {
+			video.pause();
+			wrapper.classList.remove(this.projectPlayingClass);
+		}
+	},
+
+	videoMobile() {
+		document.body.querySelectorAll(this.projectSelectors).forEach((selector) => {
+			selector.addEventListener("click", this._onMobileInteraction.bind(this));
+			selector.addEventListener("tap", this._onMobileInteraction.bind(this));
 		});
 	},
 
 	videoDesktop() {
-		$("body").on("mouseover", this.projectSelectors, (e) => {
-			const els = this.getVideoEls($(e.currentTarget));
-			els.video.get(0).play();
-			els.wrapper.addClass(this.projectPlayingClass);
-		}).on("mouseout", this.projectSelectors, (e) => {
-			const els = this.getVideoEls($(e.currentTarget));
-			els.video.get(0).pause();
-			els.wrapper.removeClass(this.projectPlayingClass);
+		document.body.querySelectorAll(this.projectSelectors).forEach((selector) => {
+			selector.addEventListener("mouseover", (e) => {
+				const els = this.getVideoEls(e.currentTarget);
+				els.video.play();
+				els.wrapper.classList.add(this.projectPlayingClass);
+			});
+
+			selector.addEventListener("mouseout", (e) => {
+				const els = this.getVideoEls(e.currentTarget);
+				els.video.pause();
+				els.wrapper.classList.remove(this.projectPlayingClass);
+			});
 		});
 	},
 };
