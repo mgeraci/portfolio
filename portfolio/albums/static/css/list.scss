@@ -74,7 +74,7 @@ $albums-breakpoint: 700px;
       top: 16vw;
       left: -9.5vw;
       z-index: 1;
-      color: rgba(#000, 0.1);
+      color: rgba($Colors-black, 0.1);
 
       &-text {
         position: relative;
