@@ -16,7 +16,7 @@ $menu-padding: 6%;
 .submenu {
   float: left;
   width: 100%;
-  @include display(table);
+  display: table;
 
   &-menu,
   &-content {

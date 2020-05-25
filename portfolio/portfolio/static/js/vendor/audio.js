@@ -22,9 +22,9 @@ module.exports = function(audiojs, audiojsInstance, container) {
     return '';
   })();
 
-	if (typeof(container) === "undefined" || container === null) {
-		container = window;
-	}
+  if (typeof(container) === "undefined" || container === null) {
+    container = window;
+  }
 
   // ##The audiojs interface
   // This is the global object which provides an interface for creating new `audiojs` instances.
@@ -430,8 +430,8 @@ module.exports = function(audiojs, audiojsInstance, container) {
       // **Merge two objects, with `obj2` overwriting `obj1`**
       // The merge is shallow, but that's all that is required for our purposes.
       merge: function(obj1, obj2) {
-				// mgchange: get at the keys of obj2 with Object.keys instead of a for-in
-				Object.keys(obj2).forEach(function(attr) {
+        // mgchange: get at the keys of obj2 with Object.keys instead of a for-in
+        Object.keys(obj2).forEach(function(attr) {
           if (obj1.hasOwnProperty(attr) || obj2.hasOwnProperty(attr)) {
             obj1[attr] = obj2[attr];
           }
@@ -443,8 +443,8 @@ module.exports = function(audiojs, audiojsInstance, container) {
         if (obj == null || typeof(obj) !== 'object') return obj;
         var temp = new obj.constructor();
 
-				// mgchange: use a direct refeence to helpers.clone instead of
-				// arguments.callee
+        // mgchange: use a direct refeence to helpers.clone instead of
+        // arguments.callee
         for (var key in obj) temp[key] = container[audiojs].helpers.clone(obj[key]);
 
         return temp;

@@ -9,10 +9,10 @@ $menu-item-margin: 20px;
   }
 
   .content {
-    @include display(flex);
+    display: flex;
 
     @media (max-width: $menu-breakpoint) {
-      @include display(block);
+      display: block;
     }
   }
 
@@ -71,7 +71,7 @@ $menu-item-margin: 20px;
       width: $menu-item-size;
       height: $menu-item-size;
       margin: $menu-item-margin / 2;
-      @include transition(opacity 150ms linear);
+      transition: opacity 150ms linear;
       background-image: none;
       opacity: 0.3;
 
@@ -84,7 +84,7 @@ $menu-item-margin: 20px;
 
       &:hover,
       &.active {
-        @include transition(opacity 75ms linear);
+        transition: opacity 75ms linear;
         opacity: 1;
       }
 

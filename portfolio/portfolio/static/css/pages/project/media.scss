@@ -75,7 +75,7 @@
     background: rgba(#000, 0.2);
 
     opacity: 1;
-    @include transition(opacity 100ms ease-in);
+    transition: opacity 100ms ease-in;
 
     .is-playing & {
       opacity: 0;
@@ -86,7 +86,7 @@
     position: absolute;
     top: 50%;
     left: 50%;
-    @include transform(translate(-50%, -50%));
+    transform: translate(-50%, -50%);
     display: block;
     width: $video-icon-size;
     height: $video-icon-size;
@@ -99,7 +99,7 @@
       position: absolute;
       top: 50%;
       left: 50%;
-      @include transform(translate(-40%, -50%));
+      transform: translate(-40%, -50%);
       @include triangle($video-icon-size * 0.4 $video-icon-size * 0.3, #fff, right);
     }
   }

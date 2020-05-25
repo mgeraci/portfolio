@@ -9,7 +9,6 @@
   background-repeat: repeat-x;
   background-size: 2px 2px;
   background-position: 0 85%;
-  background-image: linear-gradient(to bottom, rgba(0,0,0,0) 50%, rgba($color ,0.6) 50%);
 }
 
 
@@ -17,7 +16,7 @@
   &,
   h2,
   h3 {
-    @include transition(color 50ms linear, background-image 50ms linear);
+    transition: color 50ms linear, background-image 50ms linear;
   }
 
   &,
@@ -48,7 +47,7 @@
   &,
   h2,
   h3 {
-    @include transition(color 50ms linear, background-image 50ms linear);
+    transition: color 50ms linear, background-image 50ms linear;
   }
 
   &,
@@ -93,7 +92,7 @@
 @mixin center {
   position: relative;
   left: 50%;
-  @include transform(translateX(-50%));
+  transform: translateX(-50%);
 }
 
 
@@ -149,7 +148,7 @@
     width: 8%;
     height: 58%;
     background: #777;
-    @include transition(background 100ms linear);
+    transition: background 100ms linear;
   }
 }
 
@@ -161,10 +160,10 @@
   }
 
   &:before {
-    @include transform(translate(-50%, -50%) rotate(45deg));
+    transform: translate(-50%, -50%) rotate(45deg);
   }
 
   &:after {
-    @include transform(translate(-50%, -50%) rotate(-45deg));
+    transform: translate(-50%, -50%) rotate(-45deg);
   }
 }

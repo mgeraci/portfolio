@@ -22,7 +22,7 @@ $more-breakpoint: 800px;
       width: 100%;
 
       &-content {
-        @include transform(translate(-50%, 0));
+        transform: translate(-50%, 0);
         top: 0;
         left: 50%;
         margin-left: 0;
@@ -47,13 +47,13 @@ $more-breakpoint: 800px;
     position: relative;
     display: block;
 
-    $light-color: rgba(#fff, 0.9);
+    $light-color: rgba($Colors-white, 0.9);
 
     &--light {
       color: $light-color;
 
       .project-text-title {
-        color: #fff;
+        color: $Colors-white;
       }
 
       .project-text-more {
@@ -70,7 +70,7 @@ $more-breakpoint: 800px;
       @media (min-width: $index-breakpoint) {
         top: 50%;
         left: 50%;
-        @include transform(translate(-50%, -50%));
+        transform: translate(-50%, -50%);
       }
     }
 
@@ -96,12 +96,12 @@ $more-breakpoint: 800px;
 
       &-arrow {
         display: inline-block;
-        @include transition(transform 200ms ease);
+        transition: transform 200ms ease;
       }
 
       &:hover {
         .project-text-more-arrow {;
-          @include transform(translateX(4px));
+          transform: translateX(4px);
         }
       }
     }
@@ -135,7 +135,7 @@ $more-breakpoint: 800px;
         margin: 0;
         top: 50%;
         left: 50%;
-        @include transform(translate(-50%, -50%));
+        transform: translate(-50%, -50%);
       }
     }
 
@@ -158,7 +158,7 @@ $more-breakpoint: 800px;
       right: auto;
       left: 6%;
       bottom: 0;
-      @include transform(translate(0, 0));
+      transform: translate(0, 0);
       width: 160%;
       max-width: 1200px !important;
       max-height: 160%;
@@ -166,7 +166,7 @@ $more-breakpoint: 800px;
       @media (min-width: 1600px) {
         max-width: 1400px !important;
         left: 50%;
-        @include transform(translateX(-27%));
+        transform: translateX(-27%);
       }
     }
 

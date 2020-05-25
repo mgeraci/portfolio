@@ -1,9 +1,9 @@
 // global includes
 // ----------------------------------------------------------------------------
 
+@import "vendor/reset";
+@import "vendor/bourbon";
 @import "variables";
-@import "bourbon/bourbon";
-@import "reset.css";
 @import "mixins";
 
 
@@ -102,13 +102,13 @@ em {
   }
 }
 
-@include keyframes(spin) {
+@keyframes spin {
   from {
-    @include transform(rotate(0deg));
+    transform: rotate(0deg);
   }
 
   to {
-    @include transform(rotate(360deg));
+    transform: rotate(360deg);
   }
 }
 
@@ -126,10 +126,10 @@ $loader-size: 34px;
   border: 4px solid $Colors-gray-1;
   border-bottom-color: $Colors-blue-3;
   border-radius: 50%;
-  @include animation-name(spin);
-  @include animation-duration(1600ms);
-  @include animation-timing-function(linear);
-  @include animation-iteration-count(infinite);
+  animation-name: spin;
+  animation-duration: 1600ms;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
 }
 
 

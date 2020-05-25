@@ -27,7 +27,7 @@ $video-icon-size: 80px;
     margin-bottom: 70px;
 
     &--light-text {
-      color: #fff;
+      color: $Colors-white;
     }
 
     // the mirror hits the bottom of the top section
@@ -35,7 +35,7 @@ $video-icon-size: 80px;
       padding-bottom: 0;
 
       img {
-        @include transform(translateX(-27%));
+        transform: translateX(-27%);
         max-width: 1500px;
         width: 130%;
         height: auto;
@@ -54,7 +54,7 @@ $video-icon-size: 80px;
       float: left;
       position: relative;
       left: 50%;
-      @include transform(translateX(-50%));
+      transform: translateX(-50%);
       max-width: 1000px;
     }
   }

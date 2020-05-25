@@ -48,13 +48,13 @@
 
 	var _fastclick = _interopRequireDefault(__webpack_require__(1));
 
-	var _menu = _interopRequireDefault(__webpack_require__(3));
+	var _menu = _interopRequireDefault(__webpack_require__(2));
 
-	var _lazy_images = _interopRequireDefault(__webpack_require__(4));
+	var _lazy_images = _interopRequireDefault(__webpack_require__(3));
 
-	var _audio = _interopRequireDefault(__webpack_require__(7));
+	var _audio = _interopRequireDefault(__webpack_require__(6));
 
-	var _video = _interopRequireDefault(__webpack_require__(9));
+	var _video = _interopRequireDefault(__webpack_require__(8));
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
@@ -924,8 +924,7 @@
 
 
 /***/ },
-/* 2 */,
-/* 3 */
+/* 2 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -971,7 +970,7 @@
 	exports["default"] = _default;
 
 /***/ },
-/* 4 */
+/* 3 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -981,9 +980,9 @@
 	});
 	exports["default"] = void 0;
 
-	var _throttle = _interopRequireDefault(__webpack_require__(5));
+	var _throttle = _interopRequireDefault(__webpack_require__(4));
 
-	var _getScroll = _interopRequireDefault(__webpack_require__(6));
+	var _getScroll = _interopRequireDefault(__webpack_require__(5));
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
@@ -1050,7 +1049,7 @@
 	exports["default"] = _default;
 
 /***/ },
-/* 5 */
+/* 4 */
 /***/ function(module, exports) {
 
 	/* eslint-disable no-undefined,no-param-reassign,no-shadow */
@@ -1147,7 +1146,7 @@
 
 
 /***/ },
-/* 6 */
+/* 5 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -1169,7 +1168,7 @@
 	exports["default"] = _default;
 
 /***/ },
-/* 7 */
+/* 6 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -1179,7 +1178,7 @@
 	});
 	exports["default"] = void 0;
 
-	var _audio = _interopRequireDefault(__webpack_require__(8));
+	var _audio = _interopRequireDefault(__webpack_require__(7));
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
@@ -1213,7 +1212,7 @@
 	exports["default"] = _default;
 
 /***/ },
-/* 8 */
+/* 7 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -1975,7 +1974,7 @@
 	}; // mgchange ^ don't make this a self-executing function; we'll do that upon import
 
 /***/ },
-/* 9 */
+/* 8 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -1985,7 +1984,7 @@
 	});
 	exports["default"] = void 0;
 
-	var _fitvids = _interopRequireDefault(__webpack_require__(10));
+	var _fitvids = _interopRequireDefault(__webpack_require__(9));
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
@@ -2058,7 +2057,7 @@
 	exports["default"] = _default;
 
 /***/ },
-/* 10 */
+/* 9 */
 /***/ function(module, exports) {
 
 	

@@ -56,11 +56,11 @@
 
         .no-touchevents & {
           opacity: 0;
-          @include transition(opacity 75ms linear);
+          transition: opacity 75ms linear;
 
           &:hover {
             opacity: 1;
-            @include transition(opacity 150ms linear);
+            transition: opacity 150ms linear;
           }
         }
       }
@@ -82,7 +82,7 @@
         position: absolute;
         top: 50%;
         left: 0;
-        @include transform(translateY(-50%));
+        transform: translateY(-50%);
         width: 100%;
         padding: 20px;
         text-align: center;

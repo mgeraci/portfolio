@@ -164,7 +164,7 @@ $icon-color: $text;
       width: 0;
       height: 100%;
       background: $text;
-      @include transition(width 600ms linear);
+      transition: width 600ms linear;
     }
   }
 }
