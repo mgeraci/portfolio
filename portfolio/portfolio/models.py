@@ -26,7 +26,7 @@ class HomeProject(models.Model):
     class Meta:
         ordering = ['order']
 
-    def __unicode__(self):
+    def __str__(self):
         return self.title
 
 
@@ -40,7 +40,7 @@ class HomeProjectMedia(models.Model):
     is_mobile = models.BooleanField(default=False)
     max_width = models.PositiveSmallIntegerField(blank=True, null=True)
 
-    def __unicode__(self):
+    def __str__(self):
         return u'{} - {}'.format(self.project.title, self.caption)
 
 
@@ -59,7 +59,7 @@ class Composition(models.Model):
     class Meta:
         ordering = ['-year']
 
-    def __unicode__(self):
+    def __str__(self):
         return u'{} - {}'.format(self.title, self.year)
 
 
@@ -77,7 +77,7 @@ class Web(models.Model):
     class Meta:
         ordering = ['-year']
 
-    def __unicode__(self):
+    def __str__(self):
         return u'{} - {}'.format(self.year, self.title)
 
 
@@ -90,7 +90,7 @@ class WebImage(models.Model):
     class Meta:
         ordering = ['order']
 
-    def __unicode__(self):
+    def __str__(self):
         return u'{} - {}'.format(self.web, self.order)
 
 
@@ -105,7 +105,7 @@ class Graphic(models.Model):
     class Meta:
         ordering = ['-year']
 
-    def __unicode__(self):
+    def __str__(self):
         return u'{} - {}'.format(self.title, self.year)
 
 
@@ -117,7 +117,7 @@ class GraphicImage(models.Model):
     class Meta:
         ordering = ['order']
 
-    def __unicode__(self):
+    def __str__(self):
         return u'{} - {}'.format(self.graphic.title, self.image)
 
 
@@ -133,7 +133,7 @@ class RecordingPage(models.Model):
     class Meta:
         ordering = ['-year']
 
-    def __unicode__(self):
+    def __str__(self):
         return u'{} - {}'.format(self.title, self.year)
 
 
@@ -146,7 +146,7 @@ class Recording(models.Model):
     class Meta:
         ordering = ['order']
 
-    def __unicode__(self):
+    def __str__(self):
         return u'{}'.format(self.title)
 
 
@@ -170,7 +170,7 @@ class PhotoblogTag(models.Model):
             'slug': self.slug,
         }
 
-    def __unicode__(self):
+    def __str__(self):
         return u'{}'.format(self.name)
 
 
@@ -202,5 +202,5 @@ class PhotoblogImage(models.Model):
             'tags': json_tags,
         }
 
-    def __unicode__(self):
+    def __str__(self):
         return u'{} - {}'.format(self.lightroom_id, self.title)

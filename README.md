@@ -7,9 +7,9 @@ and my photoblog subpage is written in React.
 
 ## Installation
 
-Assuming that you have python, virtualenv, and node/yarn:
+Assuming that you have Python `3.9.0` or greater and node/yarn:
 * clone the repo
-* `mkvirtualenv portfolio`
+* `python -m venv portfolio-venv`
 * `pip install -r requirements.txt`
 * create a local database
 * add the file `portfolio/michael_dot_com/localsettings.py` — see contents below

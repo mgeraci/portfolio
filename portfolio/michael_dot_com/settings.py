@@ -20,7 +20,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 ALLOWED_HOSTS = ['*']
 
 
-from localsettings import (
+from .localsettings import (
     DEBUG,
     DATABASES,
     STATIC_ROOT,
@@ -82,7 +82,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'michael_dot_com.wsgi.application'
 
-FILE_UPLOAD_PERMISSIONS = 0644
+FILE_UPLOAD_PERMISSIONS = 0o644
 
 
 # Password validation

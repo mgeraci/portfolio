@@ -3,7 +3,7 @@ from django.contrib import admin
 from django.views.generic.base import RedirectView
 
 from . import views
-from feeds import PhotoblogFeed
+from .feeds import PhotoblogFeed
 
 
 home_redirect = RedirectView.as_view(url='/', permanent=False)

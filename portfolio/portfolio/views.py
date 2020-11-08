@@ -5,7 +5,7 @@ import re
 from django.shortcuts import render, get_object_or_404
 from michael_dot_com.localsettings import STATIC_URL
 from django.contrib.auth.models import User
-from resume import Resume
+from .resume import Resume
 from portfolio.models import (
     HomeProject,
     HomeProjectMedia,

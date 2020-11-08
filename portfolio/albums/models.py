@@ -12,7 +12,7 @@ class Album(models.Model):
     class Meta:
         ordering = ['year', 'artist']
 
-    def __unicode__(self):
+    def __str__(self):
         return u'{} - {} - {}'.format(self.artist, self.year, self.name)
 
 
@@ -25,8 +25,8 @@ class AlbumList(models.Model):
     class Meta:
         ordering = ['-name']
 
-    def __unicode__(self):
-        return unicode(self.name)
+    def __str__(self):
+        return self.name
 
 
 class AlbumSelection(models.Model):
@@ -38,7 +38,7 @@ class AlbumSelection(models.Model):
     class Meta:
         ordering = ['album_list', 'position']
 
-    def __unicode__(self):
+    def __str__(self):
         return u'{}: {} - {}'.format(self.album_list, self.position, self.album)
 
 
@@ -51,5 +51,5 @@ class AlbumLink(models.Model):
     class Meta:
         ordering = ['name']
 
-    def __unicode__(self):
+    def __str__(self):
         return u'{} - {}'.format(self.album, self.name)
