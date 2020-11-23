@@ -50,6 +50,12 @@ $video-icon-size: 80px;
       }
     }
 
+    &.cocktails {
+      img {
+        max-width: 600px;
+      }
+    }
+
     img {
       float: left;
       position: relative;

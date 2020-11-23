@@ -6,8 +6,6 @@
 	"
 	{% if media.max_width %}style="max-width: {{ media.max_width }}px;"{% endif %}
 >
-	{% if media.is_mobile %}<div class="page-project-media-mobile-bg">{% endif %}
-
 	{% if media.video_mp4 and media.video_mp4 %}
 		<div class="page-project-media-video-wrapper">
 			<video
@@ -39,6 +37,8 @@
 		>
 		</div>
 	{% endif %}
+
+	{% if media.is_mobile %}<div class="page-project-media-mobile-bg">{% endif %}
 
 	{% if media.is_mobile %}</div>{% endif %}
 

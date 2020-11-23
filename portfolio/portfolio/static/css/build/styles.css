@@ -1286,14 +1286,17 @@ nav::after {
       .page-project-media.is-mobile {
         width: 90%; } }
     .page-project-media.is-mobile .page-project-media-mobile-bg {
+      position: relative;
+      z-index: 2;
       width: 100%;
-      padding-top: 203%;
-      background-image: url("http://localhost:8000/static/images/iphone-7-black-flat.png");
-      background-size: cover;
-      background-repeat: no-repeat; }
+      padding-top: 198.5%;
+      background-image: url("http://localhost:8000/static/images/iphone-x-background.png");
+      background-size: 100% 100%;
+      background-repeat: no-repeat;
+      pointer-events: none; }
     .page-project-media.is-mobile .page-project-media-video-wrapper {
       position: absolute;
-      top: 11%;
+      top: 3%;
       left: 7%;
       width: 86%; }
     .page-project-media.is-mobile .page-project-media-caption {
@@ -1442,6 +1445,8 @@ nav::after {
         @media (max-width: 450px) {
           .page-project-top.smart-mirror img {
             width: 180%; } }
+    .page-project-top.cocktails img {
+      max-width: 600px; }
     .page-project-top img {
       float: left;
       position: relative;

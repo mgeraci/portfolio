@@ -32,18 +32,21 @@
     }
 
     .page-project-media-mobile-bg {
+      position: relative;
+      z-index: 2;
       width: 100%;
-      padding-top: 203%;
-      background-image: url("#{$STATIC_ROOT}images/iphone-7-black-flat.png");
-      background-size: cover;
+      padding-top: 198.5%;
+      background-image: url("#{$STATIC_ROOT}images/iphone-x-background.png");
+      background-size: 100% 100%;
       background-repeat: no-repeat;
+      pointer-events: none;
     }
 
     // center the video over the phone
     $width: 86%;
     .page-project-media-video-wrapper {
       position: absolute;
-      top: 11%;
+      top: 3%;
       left: (100 - $width) / 2;
       width: $width;
     }
