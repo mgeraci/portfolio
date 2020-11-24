@@ -5,6 +5,7 @@ from portfolio.models import (
     UserProfile,
     HomeProject,
     HomeProjectMedia,
+    HomeProjectLink,
     Composition,
     Web,
     WebImage,
@@ -31,6 +32,9 @@ class HomeProjectAdmin(admin.ModelAdmin):
     pass
 
 class HomeProjectMediaAdmin(admin.ModelAdmin):
+    pass
+
+class HomeProjectLinkAdmin(admin.ModelAdmin):
     pass
 
 class CompositionAdmin(admin.ModelAdmin):
@@ -67,6 +71,7 @@ admin.site.unregister(User)
 admin.site.register(User, MyUserAdmin)
 admin.site.register(HomeProject, HomeProjectAdmin)
 admin.site.register(HomeProjectMedia, HomeProjectMediaAdmin)
+admin.site.register(HomeProjectLink, HomeProjectLinkAdmin)
 admin.site.register(Composition, CompositionAdmin)
 admin.site.register(Web, WebAdmin)
 admin.site.register(WebImage, WebImageAdmin)

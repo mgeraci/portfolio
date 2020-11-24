@@ -9,6 +9,7 @@ from .resume import Resume
 from portfolio.models import (
     HomeProject,
     HomeProjectMedia,
+    HomeProjectLink,
     Composition,
     Web,
     WebImage,
@@ -37,6 +38,7 @@ def index(request):
 def project(request, slug):
     project = get_object_or_404(HomeProject, slug=slug)
     project_media = HomeProjectMedia.objects.filter(project=project)
+    project.links = HomeProjectLink.objects.filter(project=project).order_by('order')
     project_media_map = {}
 
 

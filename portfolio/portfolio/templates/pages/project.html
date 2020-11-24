@@ -31,21 +31,17 @@
 <div class="content-inner">
 	{% if project.visit_link or project.code_link %}
 		<div class="project-links">
-			{% if project.visit_link %}
-				<a class="project-links-link" href="{{ project.visit_link }}">
-					visit
+			{% for link in project.links %}
+				<a
+					class="project-links-link"
+					href="{{ link.url }}"
+				>
+					{{ link.text }}
 				</a>
-			{% endif %}
-
-			{% if project.visit_link and project.code_link %}
-				/
-			{% endif %}
-
-			{% if project.code_link %}
-				<a class="project-links-link" href="{{ project.code_link }}">
-					see the code
-				</a>
-			{% endif %}
+				{% if forloop.counter < project.links|length %}
+					/
+				{% endif %}
+			{% endfor %}
 		</div>
 	{% endif %}
 

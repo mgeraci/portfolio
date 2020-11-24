@@ -44,6 +44,16 @@ class HomeProjectMedia(models.Model):
         return u'{} - {}'.format(self.project.title, self.caption)
 
 
+class HomeProjectLink(models.Model):
+    project = models.ForeignKey(HomeProject)
+    text = models.CharField(max_length=200)
+    url = models.URLField(max_length=200)
+    order = models.IntegerField(blank=True, null=True)
+
+    def __str__(self):
+        return u'{} - {}'.format(self.project, self.text)
+
+
 class Composition(models.Model):
     title = models.CharField(max_length=200)
     year = models.PositiveSmallIntegerField()
