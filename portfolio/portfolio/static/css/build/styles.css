@@ -424,37 +424,37 @@ em {
 
 @font-face {
   font-family: 'PT Serif';
-  src: local("PT Serif"), local("PTSerif-Regular"), url("http://localhost:8000/static/fonts/PTSerif-Regular.eot?#iefix") format("embedded-opentype"), url("http://localhost:8000/static/fonts/PTSerif-Regular.woff") format("woff"), url("http://localhost:8000/static/fonts/PTSerif-Regular.ttf") format("truetype"), url("http://localhost:8000/static/fonts/PTSerif-Regular.svg#PTSerif-Regular") format("svg");
+  src: local("PT Serif"), local("PTSerif-Regular"), url("http://127.0.0.1:8000/static/fonts/PTSerif-Regular.eot?#iefix") format("embedded-opentype"), url("http://127.0.0.1:8000/static/fonts/PTSerif-Regular.woff") format("woff"), url("http://127.0.0.1:8000/static/fonts/PTSerif-Regular.ttf") format("truetype"), url("http://127.0.0.1:8000/static/fonts/PTSerif-Regular.svg#PTSerif-Regular") format("svg");
   font-weight: normal;
   font-style: normal; }
 
 @font-face {
   font-family: 'PT Serif';
-  src: local("PT Serif Italic"), local("PTSerif-Italic"), url("http://localhost:8000/static/fonts/PTSerif-Italic.eot?#iefix") format("embedded-opentype"), url("http://localhost:8000/static/fonts/PTSerif-Italic.woff") format("woff"), url("http://localhost:8000/static/fonts/PTSerif-Italic.ttf") format("truetype"), url("http://localhost:8000/static/fonts/PTSerif-Italic.svg#PTSerif-RegularItalic") format("svg");
+  src: local("PT Serif Italic"), local("PTSerif-Italic"), url("http://127.0.0.1:8000/static/fonts/PTSerif-Italic.eot?#iefix") format("embedded-opentype"), url("http://127.0.0.1:8000/static/fonts/PTSerif-Italic.woff") format("woff"), url("http://127.0.0.1:8000/static/fonts/PTSerif-Italic.ttf") format("truetype"), url("http://127.0.0.1:8000/static/fonts/PTSerif-Italic.svg#PTSerif-RegularItalic") format("svg");
   font-weight: normal;
   font-style: oblique; }
 
 @font-face {
   font-family: 'PT Serif';
-  src: local("PT Serif Bold"), local("PTSerif-Bold"), url("http://localhost:8000/static/fonts/PTSerif-Bold.eot?#iefix") format("embedded-opentype"), url("http://localhost:8000/static/fonts/PTSerif-Bold.woff") format("woff"), url("http://localhost:8000/static/fonts/PTSerif-Bold.ttf") format("truetype"), url("http://localhost:8000/static/fonts/PTSerif-Bold.svg#PTSerif-RegularBold") format("svg");
+  src: local("PT Serif Bold"), local("PTSerif-Bold"), url("http://127.0.0.1:8000/static/fonts/PTSerif-Bold.eot?#iefix") format("embedded-opentype"), url("http://127.0.0.1:8000/static/fonts/PTSerif-Bold.woff") format("woff"), url("http://127.0.0.1:8000/static/fonts/PTSerif-Bold.ttf") format("truetype"), url("http://127.0.0.1:8000/static/fonts/PTSerif-Bold.svg#PTSerif-RegularBold") format("svg");
   font-weight: bold;
   font-style: normal; }
 
 @font-face {
   font-family: 'headline';
-  src: url("http://localhost:8000/static/fonts/headline.eot?#iefix") format("embedded-opentype"), url("http://localhost:8000/static/fonts/headline.woff") format("woff"), url("http://localhost:8000/static/fonts/headline.ttf") format("truetype"), url("http://localhost:8000/static/fonts/headline.svg#Headline") format("svg");
+  src: url("http://127.0.0.1:8000/static/fonts/headline.eot?#iefix") format("embedded-opentype"), url("http://127.0.0.1:8000/static/fonts/headline.woff") format("woff"), url("http://127.0.0.1:8000/static/fonts/headline.ttf") format("truetype"), url("http://127.0.0.1:8000/static/fonts/headline.svg#Headline") format("svg");
   font-weight: bold;
   font-style: normal; }
 
 @font-face {
   font-family: 'Source Serif Pro';
-  src: local("Source Serif Pro"), local("SourceSerifPro-Regular"), url("http://localhost:8000/static/fonts/SourceSerifPro-Regular.eot?#iefix") format("embedded-opentype"), url("http://localhost:8000/static/fonts/SourceSerifPro-Regular.woff") format("woff"), url("http://localhost:8000/static/fonts/SourceSerifPro-Regular.ttf") format("truetype"), url("http://localhost:8000/static/fonts/SourceSerifPro-Regular.svg#SourceSerifPro-Regular") format("svg");
+  src: local("Source Serif Pro"), local("SourceSerifPro-Regular"), url("http://127.0.0.1:8000/static/fonts/SourceSerifPro-Regular.eot?#iefix") format("embedded-opentype"), url("http://127.0.0.1:8000/static/fonts/SourceSerifPro-Regular.woff") format("woff"), url("http://127.0.0.1:8000/static/fonts/SourceSerifPro-Regular.ttf") format("truetype"), url("http://127.0.0.1:8000/static/fonts/SourceSerifPro-Regular.svg#SourceSerifPro-Regular") format("svg");
   font-weight: normal;
   font-style: normal; }
 
 @font-face {
   font-family: 'Source Serif Pro';
-  src: local("Source Serif Pro Bold"), local("SourceSerifPro-Bold"), url("http://localhost:8000/static/fonts/SourceSerifPro-Bold.eot?#iefix") format("embedded-opentype"), url("http://localhost:8000/static/fonts/SourceSerifPro-Bold.woff") format("woff"), url("http://localhost:8000/static/fonts/SourceSerifPro-Bold.ttf") format("truetype"), url("http://localhost:8000/static/fonts/SourceSerifPro-Bold.svg#SourceSerifPro-Bold") format("svg");
+  src: local("Source Serif Pro Bold"), local("SourceSerifPro-Bold"), url("http://127.0.0.1:8000/static/fonts/SourceSerifPro-Bold.eot?#iefix") format("embedded-opentype"), url("http://127.0.0.1:8000/static/fonts/SourceSerifPro-Bold.woff") format("woff"), url("http://127.0.0.1:8000/static/fonts/SourceSerifPro-Bold.ttf") format("truetype"), url("http://127.0.0.1:8000/static/fonts/SourceSerifPro-Bold.svg#SourceSerifPro-Bold") format("svg");
   font-weight: bold;
   font-style: normal; }
 
@@ -1290,7 +1290,7 @@ nav::after {
       z-index: 2;
       width: 100%;
       padding-top: 198.5%;
-      background-image: url("http://localhost:8000/static/images/iphone-x-background.png");
+      background-image: url("http://127.0.0.1:8000/static/images/iphone-x-background.png");
       background-size: 100% 100%;
       background-repeat: no-repeat;
       pointer-events: none; }

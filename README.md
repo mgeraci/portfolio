@@ -14,7 +14,7 @@ Assuming that you have Python `3.9.0` or greater and node/yarn:
 * create a local database
 * add the file `portfolio/michael_dot_com/localsettings.py` — see contents below
 * `./portfolio/manage.py migrate`
-* `./portfolio/manage.py createsuperuser` — you can then use this to log in at localhost:8000/admin
+* `./portfolio/manage.py createsuperuser` — you can then use this to log in at 127.0.0.1:8000/admin
 * `./portfolio/manage.py runserver`
 
 

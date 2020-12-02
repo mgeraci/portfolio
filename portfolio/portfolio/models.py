@@ -25,7 +25,7 @@ class HomeProject(models.Model):
         ordering = ['order']
 
     def __str__(self):
-        return self.title
+        return '{} - {}'.format(self.order, self.title)
 
 
 class HomeProjectMedia(models.Model):
