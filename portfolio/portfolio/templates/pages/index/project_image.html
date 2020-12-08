@@ -1,5 +1,6 @@
 <a
 	class="project-image {% if project.image_full_bleed %}project-image--full-bleed{% endif %}"
+	href="{% url 'project_url' project.slug %}"
 
 	data-lazy-image="{{ MEDIA_URL }}{{ project.image }}"
 	data-lazy-image-alt="{{ project.title }} screenshot"
