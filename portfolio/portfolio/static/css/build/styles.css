@@ -1131,7 +1131,8 @@ nav::after {
   .project-text {
     float: left;
     position: relative;
-    display: block; }
+    display: block;
+    color: #474d59; }
     .project-text--light {
       color: rgba(255, 255, 255, 0.9); }
       .project-text--light .project-text-title {

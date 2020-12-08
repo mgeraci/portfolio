@@ -6,7 +6,8 @@
 >
 	{% include "pages/index/project_image.html" %}
 
-	<div
+	<a
+		href="{% url 'project_url' project.slug %}"
 		class="project-text {% if project.light_text %}project-text--light{% endif %}"
 	>
 		<div class="project-text-content">
@@ -17,12 +18,12 @@
 				{{ project.description }}
 			</span>
 			<br />
-			<a href="{% url 'project_url' project.slug %}" class="project-text-more">
+			<span class="project-text-more">
 				more
 				<span class="project-text-more-arrow">
 					&raquo;
 				</span>
-			</a>
+			</span>
 		</div>
-	</div>
+	</a>
 </article>
