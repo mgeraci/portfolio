@@ -10,7 +10,7 @@ class Album(models.Model):
     sample_name = models.CharField(max_length=200, blank=True, null=True)
 
     class Meta:
-        ordering = ['year', 'artist']
+        ordering = ['-year', 'artist']
 
     def __str__(self):
         return u'{} - {} - {}'.format(self.artist, self.year, self.name)

@@ -8,6 +8,9 @@ from albums.models import (
   )
 
 
+admin.ModelAdmin.list_per_page = 500
+
+
 class AlbumAdmin(admin.ModelAdmin):
   pass
 
