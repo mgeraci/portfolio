@@ -30,9 +30,11 @@
 		{% for selection in selections %}
 			<li class="page-album-list-item">
 				<div class="page-album-list-item-count">
-					<span class="page-album-list-item-count-text">
-						{{ selection.position }}
-					</span>
+					{% if selection.position %}
+						<span class="page-album-list-item-count-text">
+							{{ selection.position }}
+						</span>
+					{% endif %}
 				</div>
 
 				<div class="page-album-list-item-image"

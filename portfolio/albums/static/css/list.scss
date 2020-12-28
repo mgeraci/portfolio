@@ -97,7 +97,7 @@ $albums-breakpoint: 700px;
       float: left;
       width: 40%;
       padding-top: 40%;
-      background: transparentize(white, 0.8);
+      background: rgba(#000, 0.05);
 
       @media (max-width: $albums-breakpoint) {
         @include center;
