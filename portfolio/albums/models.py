@@ -30,8 +30,8 @@ class AlbumList(models.Model):
 
 
 class AlbumSelection(models.Model):
-    album_list = models.ForeignKey(AlbumList)
-    album = models.ForeignKey(Album)
+    album_list = models.ForeignKey(AlbumList, on_delete=models.CASCADE)
+    album = models.ForeignKey(Album, on_delete=models.CASCADE)
     position = models.PositiveSmallIntegerField(blank=True, null=True)
     description = models.TextField(blank=True)
 
@@ -46,7 +46,7 @@ class AlbumLink(models.Model):
     name = models.CharField(max_length=100)
     href = models.URLField()
     classes = models.CharField(max_length=100, blank=True, null=True)
-    album = models.ForeignKey(Album)
+    album = models.ForeignKey(Album, on_delete=models.CASCADE)
 
     class Meta:
         ordering = ['name']

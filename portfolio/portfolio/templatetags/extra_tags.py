@@ -1,5 +1,5 @@
 from django import template
-from django.core.urlresolvers import reverse
+from django.urls import reverse
 
 register = template.Library()
 
@@ -10,6 +10,6 @@ def active_menu_item(x, y):
             return x == reverse('index_url')
         else:
             return str(x).index(str(y)) > -1
-        
+
     except Exception:
         return False

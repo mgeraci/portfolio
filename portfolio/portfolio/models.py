@@ -5,7 +5,7 @@ from django.template.defaultfilters import slugify
 
 
 class UserProfile(models.Model):
-    user = models.OneToOneField(User, primary_key=True)
+    user = models.OneToOneField(User, primary_key=True, on_delete=models.CASCADE)
     headline = models.CharField(blank=True, max_length=200)
     blurb = models.TextField(blank=True)
 
@@ -29,7 +29,7 @@ class HomeProject(models.Model):
 
 
 class HomeProjectMedia(models.Model):
-    project = models.ForeignKey(HomeProject)
+    project = models.ForeignKey(HomeProject, on_delete=models.CASCADE)
     caption = models.CharField(max_length=200, blank=True)
     image = models.FileField(upload_to='projects', blank=True, null=True)
     video_mp4 = models.FileField(upload_to='projects', blank=True, null=True)
@@ -43,7 +43,7 @@ class HomeProjectMedia(models.Model):
 
 
 class HomeProjectLink(models.Model):
-    project = models.ForeignKey(HomeProject)
+    project = models.ForeignKey(HomeProject, on_delete=models.CASCADE)
     text = models.CharField(max_length=200)
     url = models.URLField(max_length=200)
     order = models.IntegerField(blank=True, null=True)
@@ -90,7 +90,7 @@ class Web(models.Model):
 
 
 class WebImage(models.Model):
-    web = models.ForeignKey(Web)
+    web = models.ForeignKey(Web, on_delete=models.CASCADE)
     order = models.PositiveSmallIntegerField(blank=True)
     image = models.FileField(upload_to='web', blank=True, null=True)
     video = models.URLField(max_length=200, blank=True)
@@ -118,7 +118,7 @@ class Graphic(models.Model):
 
 
 class GraphicImage(models.Model):
-    graphic = models.ForeignKey(Graphic)
+    graphic = models.ForeignKey(Graphic, on_delete=models.CASCADE)
     image = models.FileField(upload_to='graphic', blank=True, null=True)
     order = models.PositiveSmallIntegerField(blank=True, null=True)
 
@@ -146,7 +146,7 @@ class RecordingPage(models.Model):
 
 
 class Recording(models.Model):
-    recording_page = models.ForeignKey(RecordingPage)
+    recording_page = models.ForeignKey(RecordingPage, on_delete=models.CASCADE)
     title = models.CharField(max_length=200)
     audio = models.FileField(upload_to='recordings')
     order = models.PositiveSmallIntegerField(blank=True)

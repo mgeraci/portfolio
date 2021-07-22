@@ -1,5 +1,5 @@
 from django.conf import settings
-from django.core.urlresolvers import reverse
+from django.urls import reverse
 from datetime import date
 from michael_dot_com.localsettings import STATIC_VERSIONS
 from michael_dot_com.localsettings import DEBUG

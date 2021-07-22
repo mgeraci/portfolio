@@ -28,8 +28,8 @@ class Migration(migrations.Migration):
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
                 ('position', models.PositiveSmallIntegerField(null=True, blank=True)),
                 ('description', models.TextField(blank=True)),
-                ('album', models.ForeignKey(to='albums.Album')),
-                ('album_list', models.ForeignKey(to='albums.AlbumList')),
+                ('album', models.ForeignKey(to='albums.Album', on_delete=models.CASCADE)),
+                ('album_list', models.ForeignKey(to='albums.AlbumList', on_delete=models.CASCADE)),
             ],
             options={
                 'ordering': ['position'],
