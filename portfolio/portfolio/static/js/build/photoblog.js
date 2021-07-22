@@ -28817,7 +28817,7 @@
 	      } // adding a tag
 
 
-	      if (filteredTerm && typeof prevProps.filteredTerm === "undefined") {
+	      if (filteredTerm && prevProps.filteredTerm === null) {
 	        this._triggerScroll();
 	      }
 	    }
