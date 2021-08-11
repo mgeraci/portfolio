@@ -81,6 +81,8 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'michael_dot_com.wsgi.application'
 
+DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
+
 FILE_UPLOAD_PERMISSIONS = 0o644
 
 

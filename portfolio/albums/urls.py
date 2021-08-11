@@ -1,7 +1,7 @@
-from django.conf.urls import url
+from django.conf.urls import re_path
 from . import views
 
 urlpatterns = [
-    url(r'^albums/?$', views.album_lists, name='album_lists_url'),
-    url(r'^albums/(?P<slug>[^/]+)/$', views.album_list, name='album_list_url'),
+    re_path(r'^albums/?$', views.album_lists, name='album_lists_url'),
+    re_path(r'^albums/(?P<slug>[^/]+)/$', views.album_list, name='album_list_url'),
 ]
