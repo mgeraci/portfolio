@@ -15,14 +15,14 @@
 				{{ steel.name }}
 			</span>
 			<br />
-			<span class="page-steel-detail">
+			<span class="page-steel-item-detail">
 				{{ steel.location }}, {{ steel.year }} ({{ steel.rank }})
 			</span>
 			{% if steel.youtube %}
 				<iframe
 					width="560"
 					height="315"
-					src="{{ steel.youtube }}?controls=0"
+					src="https://www.youtube.com/embed/{{ steel.youtube }}?controls=0"
 					title="YouTube video player"
 					frameborder="0"
 					allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -31,11 +31,12 @@
 			{% endif %}
 			{% if steel.vimeo %}
 				<iframe
-					title="vimeo-player"
-					src="{{ steel.vimeo }}?h=abd10216c4"
-					width="640"
-					height="421"
+					src="https://player.vimeo.com/video/{{ steel.vimeo }}"
+					style="border:0px #ffffff none;"
+					scrolling="yes"
 					frameborder="0"
+					height="400px"
+					width="600px"
 					allowfullscreen
 				></iframe>
 			{% endif %}
