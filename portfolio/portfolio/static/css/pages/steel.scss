@@ -3,6 +3,10 @@ $breakpoint: 600px;
 .page-steel {
   text-align: center;
 
+  &-title {
+    font-size: 20px;
+  }
+
   &-content {
     position: relative;
     width: 100%;
@@ -10,23 +14,14 @@ $breakpoint: 600px;
     left: 50%;
     transform: translateX(-50%);
     display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
+    flex-direction: column;
   }
 
   &-item {
-    flex-basis: 50%;
-    padding-bottom: 20px;
-    text-align: left;
+    margin-bottom: 40px;
 
-    @media (min-width: $breakpoint) {
-      &:nth-child(even) {
-        padding-left: 20px;
-      }
-    }
-
-    @media (max-width: #{$breakpoint - 1}) {
-      flex-basis: 100%;
+    &-title {
+      font-weight: 700;
     }
   }
 

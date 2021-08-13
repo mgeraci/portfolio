@@ -6,20 +6,49 @@
 
 {% block content %}
 
-<h3>Performances on steel pan</h3>
+<h3 class="page-steel-title">Performances on steel pan</h3>
 <br />
 <ul class="page-steel-content">
 	{% for steel in steels %}
 		<li class="page-steel-item">
-			{% if steel.href %}
-				<a class="page-steel-link" href="{{ steel.href }}">{{ steel.name }}</a>
-			{% else %}
+			<span class="page-steel-item-title">
 				{{ steel.name }}
-			{% endif %}
+			</span>
 			<br />
 			<span class="page-steel-detail">
-				{{ steel.location }} ({{ steel.rank }})
+				{{ steel.location }}, {{ steel.year }} ({{ steel.rank }})
 			</span>
+			{% if steel.youtube %}
+				<iframe
+					width="560"
+					height="315"
+					src="{{ steel.youtube }}?controls=0"
+					title="YouTube video player"
+					frameborder="0"
+					allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+					allowfullscreen
+				></iframe>
+			{% endif %}
+			{% if steel.vimeo %}
+				<iframe
+					title="vimeo-player"
+					src="{{ steel.vimeo }}?h=abd10216c4"
+					width="640"
+					height="421"
+					frameborder="0"
+					allowfullscreen
+				></iframe>
+			{% endif %}
+			{% if steel.soundcloud %}
+				<iframe
+					width="100%"
+					height="300"
+					scrolling="no"
+					frameborder="no"
+					allow="autoplay"
+					src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/{{ steel.soundcloud }}&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true">
+				</iframe>
+			{% endif %}
 		</li>
 	{% endfor %}
 </ul>
