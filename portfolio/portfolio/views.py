@@ -300,15 +300,15 @@ def links(request):
     schools = [
         {
             'name': 'Oberlin Conservatory: TIMARA',
-            'href': 'http://timara.con.oberlin.edu/',
+            'href': 'https://timara.con.oberlin.edu/',
         },
         {
             'name': 'Oberlin College/Conservatory',
-            'href': 'http://www.oberlin.edu/',
+            'href': 'https://www.oberlin.edu/',
         },
         {
             'name': 'Horace Mann',
-            'href': 'http://www.horacemann.org/',
+            'href': 'https://www.horacemann.org/',
         },
     ]
 
@@ -364,7 +364,7 @@ def steel(request):
             'rank': '2nd place',
         },
         {
-            'youtube': 'http://www.youtube.com/watch?v=cTOi7ON1kpU',
+            'youtube': 'https://www.youtube.com/watch?v=cTOi7ON1kpU',
             'name': 'CASYM - Fantastic Friday',
             'year': 2013,
             'location': 'New York',
@@ -378,42 +378,42 @@ def steel(request):
             'rank': '4th place',
         },
         {
-            'vimeo': 'http://vimeo.com/28989090',
+            'vimeo': 'https://vimeo.com/28989090',
             'name': u'Pan Sonatas - It’s Showtime',
             'year': 2011,
             'location': 'New York',
             'rank': '4th place',
         },
         {
-            'vimeo': 'http://vimeo.com/16149060',
+            'vimeo': 'https://vimeo.com/16149060',
             'name': 'Pan Sonatas, New York - Battle Zone',
             'year': 2010,
             'location': 'New York',
             'rank': '1st place',
         },
         {
-            'vimeo': 'http://vimeo.com/6826668',
+            'vimeo': 'https://vimeo.com/6826668',
             'name': 'Pan Sonatas - Bandoleros',
             'year': 2009,
             'location': 'New York',
             'rank': '1st place',
         },
         {
-            'youtube': 'http://www.youtube.com/watch?v=CsayTC-V8VU',
+            'youtube': 'https://www.youtube.com/watch?v=CsayTC-V8VU',
             'name': 'Pan Sonatas - The Ten Commandments of Pan',
             'year': 2008,
             'location': 'New York',
             'rank': '3rd place',
         },
         {
-            'youtube': 'http://www.youtube.com/watch?v=qWFmbXErjpA',
+            'youtube': 'https://www.youtube.com/watch?v=qWFmbXErjpA',
             'name': 'Pan Sonatas - Pan Lamentation',
             'year': 2007,
             'location': 'New York',
             'rank': '1st place',
         },
         {
-            'vimeo': 'http://vimeo.com/23268333',
+            'vimeo': 'https://vimeo.com/23268333',
             'name': u'Pan Sonatas - This One’s for You, Bradley',
             'year': 2006,
             'location': 'New York',
@@ -427,21 +427,21 @@ def steel(request):
             'rank': '3rd place',
         },
         {
-            'vimeo': 'http://vimeo.com/7625432',
+            'vimeo': 'https://vimeo.com/7625432',
             'name': 'Trinidad All-Stars - Free Up',
             'year': 2005,
             'location': 'Trinidad & Tobago',
             'rank': '7th place; large bands',
         },
         {
-            'youtube': 'http://www.youtube.com/watch?v=aTUMlF9Zt3E',
+            'youtube': 'https://www.youtube.com/watch?v=aTUMlF9Zt3E',
             'name': 'Sforzata Steel Orchestra - Dingolay',
             'year': 2005,
             'location': 'Trinidad & Tobago',
             'rank': '1st place; medium bands',
         },
         {
-            'vimeo': 'http://vimeo.com/28470859',
+            'vimeo': 'https://vimeo.com/28470859',
             'name': 'Pan Sonatas, New York - War 2004',
             'year': 2004,
             'location': 'New York',
