@@ -218,7 +218,7 @@ $albums-breakpoint: 700px;
     // count spacing
     // -------------
 
-    &:nth-child(10) &-count-text,
+    &:nth-child(1n+10) &-count-text,
     &:nth-child(11) &-count-text,
     &:nth-child(12) &-count-text,
     &:nth-child(13) &-count-text,
@@ -246,28 +246,14 @@ $albums-breakpoint: 700px;
       letter-spacing: -50px;
     }
 
+
     // mobile count spacing
-    &:nth-child(10) &-content-count,
-    &:nth-child(11) &-content-count,
-    &:nth-child(12) &-content-count,
-    &:nth-child(13) &-content-count,
-    &:nth-child(14) &-content-count,
-    &:nth-child(15) &-content-count {
+    &:nth-child(1n+10) &-content-count {
       letter-spacing: -12px;
     }
 
-    &:nth-child(10) &-artist,
-    &:nth-child(11) &-artist,
-    &:nth-child(12) &-artist,
-    &:nth-child(13) &-artist,
-    &:nth-child(14) &-artist,
-    &:nth-child(15) &-artist,
-    &:nth-child(10) &-album,
-    &:nth-child(11) &-album,
-    &:nth-child(12) &-album,
-    &:nth-child(13) &-album,
-    &:nth-child(14) &-album,
-    &:nth-child(15) &-album {
+    &:nth-child(1n+10) &-artist,
+    &:nth-child(1n+10) &-album {
       @media (max-width: $albums-breakpoint) {
         padding-left: 90px;
       }
