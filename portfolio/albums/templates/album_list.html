@@ -3,6 +3,7 @@
 {% block title %}{{ list.name }}{% endblock %}
 {% block description %}Michael P. Geraci's favorite music from {{ list.slug }}{% endblock %}
 {% block bodyclass %}album-list{% endblock %}
+{% block meta %}<meta property="og:image" content="{{ MEDIA_URL }}{{ selections.first.album.cover }}">{% endblock %}
 
 {% block content %}
 
@@ -13,7 +14,7 @@
 
 	<div class="page-album-list-navigation">
 		see also:
-		{% for link in lists %}
+		{% for link in lists.reverse %}
 			{% if not link.hidden %}
 				<a
 						href="{% url 'album_list_url' link.slug %}"

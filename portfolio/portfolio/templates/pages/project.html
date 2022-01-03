@@ -3,6 +3,7 @@
 {% block title %}{{ project.title }}{% endblock %}
 {% block description %}{{ project.description }}{% endblock %}
 {% block bodyclass %}project{% endblock %}
+{% block meta %}<meta property="og:image" content="{{ MEDIA_URL }}{{ project.image }}">{% endblock %}
 
 {% block content %}
 
