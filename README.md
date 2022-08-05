@@ -10,6 +10,7 @@ and my photoblog subpage is written in React.
 Assuming that you have Python `3.9.0` or greater and node/yarn:
 * clone the repo
 * `python -m venv portfolio-venv`
+* `source portfolio-venv/bin/activate`
 * `pip install -r requirements.txt`
 * create a local database
 * add the file `portfolio/michael_dot_com/localsettings.py` — see contents below
