@@ -170,6 +170,10 @@ $albums-breakpoint: 700px;
     &-album {
       @include type(38px, 41px);
 
+      &.unicode {
+        font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+      }
+
       @media (max-width: $albums-breakpoint) {
         @include type(30px, 37px);
       }
