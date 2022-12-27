@@ -69,7 +69,7 @@ To compile the minified files for use in production, run:
 To deploy updated css or js:
 * make your changes, run `yarn build`, commit, and push
 * ssh to the server and cd to the root of the project
-* get into your python environment with `workon michael_portfolio`
+* get into your python environment with `source env/bin/activate`
 * update the appropriate version number in `portfolio/michael_dot_com/localsettings.py`
 * collect the static files with `./portfolio/manage.py collectstatic`
-* restart apache with `../apache2/bin/restart`
+* restart the server with `./stop` and `./start`
