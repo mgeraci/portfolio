@@ -169,6 +169,7 @@ $albums-breakpoint: 700px;
 
     &-album {
       @include type(38px, 41px);
+      font-style: oblique;
 
       &.unicode {
         font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
@@ -181,7 +182,6 @@ $albums-breakpoint: 700px;
 
     &-artist {
       @include type(18px, 26px);
-      font-style: oblique;
       font-weight: normal;
 
       span {
