@@ -20,6 +20,7 @@ class HomeProject(models.Model):
     image = models.FileField(upload_to='projects', blank=True, null=True)
     image_max_width = models.PositiveSmallIntegerField(blank=True, null=True)
     order = models.PositiveSmallIntegerField()
+    is_hidden = models.BooleanField(default=False)
 
     class Meta:
         ordering = ['order']

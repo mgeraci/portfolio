@@ -23,7 +23,7 @@ from portfolio.models import (
 
 # main pages
 def index(request):
-    home_projects = HomeProject.objects.all()
+    home_projects = HomeProject.objects.all().filter(is_hidden=False)
     michael = get_object_or_404(User, username='mgeraci')
 
     context = {
@@ -83,18 +83,30 @@ def project(request, slug):
     # get previous and next project for navigation
     # -------------------------------------------------------------------------
 
-    prev_order = project.order - 1
-    next_order = project.order + 1
     prev_project = False
     next_project = False
 
+    def get_next_visible_project(current_index, direction):
+        order = current_index + 1 if direction == 'next' else current_index - 1
+        print(order)
+
+        try:
+            res = HomeProject.objects.get(order=order)
+
+            if res.is_hidden:
+                return get_next_visible_project(order, direction)
+            else:
+                return res
+        except:
+            return None
+
     try:
-        prev_project = HomeProject.objects.get(order=prev_order)
+        prev_project = get_next_visible_project(project.order, 'prev')
     except:
         pass
 
     try:
-        next_project = HomeProject.objects.get(order=next_order)
+        next_project = get_next_visible_project(project.order, 'next')
     except:
         pass
 
