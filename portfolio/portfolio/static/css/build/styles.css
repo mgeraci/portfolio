@@ -24,19 +24,20 @@
       text-decoration: none;
       background-repeat: repeat-x;
       background-size: 2px 2px;
-      background-position: 0 85%; }
+      background-position: 0 85%;
+      background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 50%, rgba(68, 68, 68, 0.6) 50%); }
     .no-touchevents .page-photography-title-clear:hover, .no-touchevents .page-photography-title-clear:active {
       text-decoration: none;
       background-repeat: repeat-x;
       background-size: 2px 2px;
-      background-position: 0 85%; }
+      background-position: 0 85%;
+      background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 50%, rgba(76, 123, 217, 0.6) 50%); }
     .no-touchevents .page-photography-title-clear:hover,
     .no-touchevents .page-photography-title-clear:hover h2,
     .no-touchevents .page-photography-title-clear:hover h3, .no-touchevents .page-photography-title-clear:active,
     .no-touchevents .page-photography-title-clear:active h2,
     .no-touchevents .page-photography-title-clear:active h3 {
-      color: #4c7bd9;
-      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.15); }
+      color: #4c7bd9; }
 .page-photography-navigation {
   font-size: 17px;
   line-height: 24px;
@@ -53,19 +54,20 @@
       text-decoration: none;
       background-repeat: repeat-x;
       background-size: 2px 2px;
-      background-position: 0 85%; }
+      background-position: 0 85%;
+      background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 50%, rgba(68, 68, 68, 0.6) 50%); }
     .no-touchevents .page-photography-navigation-item-wrapper a:hover, .no-touchevents .page-photography-navigation-item-wrapper a:active {
       text-decoration: none;
       background-repeat: repeat-x;
       background-size: 2px 2px;
-      background-position: 0 85%; }
+      background-position: 0 85%;
+      background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 50%, rgba(76, 123, 217, 0.6) 50%); }
     .no-touchevents .page-photography-navigation-item-wrapper a:hover,
     .no-touchevents .page-photography-navigation-item-wrapper a:hover h2,
     .no-touchevents .page-photography-navigation-item-wrapper a:hover h3, .no-touchevents .page-photography-navigation-item-wrapper a:active,
     .no-touchevents .page-photography-navigation-item-wrapper a:active h2,
     .no-touchevents .page-photography-navigation-item-wrapper a:active h3 {
-      color: #4c7bd9;
-      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.15); }
+      color: #4c7bd9; }
 .page-photography-thumbnail {
   position: relative;
   display: inline-block;
@@ -180,19 +182,20 @@
       text-decoration: none;
       background-repeat: repeat-x;
       background-size: 2px 2px;
-      background-position: 0 85%; }
+      background-position: 0 85%;
+      background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 50%, rgba(119, 119, 119, 0.6) 50%); }
     .no-touchevents .image-modal-meta a.image-modal-meta-tag:hover, .no-touchevents .image-modal-meta a.image-modal-meta-tag:active {
       text-decoration: none;
       background-repeat: repeat-x;
       background-size: 2px 2px;
-      background-position: 0 85%; }
+      background-position: 0 85%;
+      background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 50%, rgba(76, 123, 217, 0.6) 50%); }
     .no-touchevents .image-modal-meta a.image-modal-meta-tag:hover,
     .no-touchevents .image-modal-meta a.image-modal-meta-tag:hover h2,
     .no-touchevents .image-modal-meta a.image-modal-meta-tag:hover h3, .no-touchevents .image-modal-meta a.image-modal-meta-tag:active,
     .no-touchevents .image-modal-meta a.image-modal-meta-tag:active h2,
     .no-touchevents .image-modal-meta a.image-modal-meta-tag:active h3 {
-      color: #4c7bd9;
-      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.15); }
+      color: #4c7bd9; }
 .image-modal {
   position: fixed;
   z-index: 5;
@@ -808,19 +811,20 @@ nav::after {
         text-decoration: none;
         background-repeat: repeat-x;
         background-size: 2px 2px;
-        background-position: 0 85%; }
+        background-position: 0 85%;
+        background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 50%, rgba(68, 68, 68, 0.6) 50%); }
       .no-touchevents .submenu-menu a:hover, .no-touchevents .submenu-menu a:active {
         text-decoration: none;
         background-repeat: repeat-x;
         background-size: 2px 2px;
-        background-position: 0 85%; }
+        background-position: 0 85%;
+        background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 50%, rgba(243, 244, 211, 0.6) 50%); }
       .no-touchevents .submenu-menu a:hover,
       .no-touchevents .submenu-menu a:hover h2,
       .no-touchevents .submenu-menu a:hover h3, .no-touchevents .submenu-menu a:active,
       .no-touchevents .submenu-menu a:active h2,
       .no-touchevents .submenu-menu a:active h3 {
-        color: #f3f4d3;
-        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.15); }
+        color: #f3f4d3; }
       .submenu-menu a, .submenu-menu a:hover,
       .no-touchevents .submenu-menu a,
       .no-touchevents .submenu-menu a:hover {
@@ -829,8 +833,7 @@ nav::after {
         .submenu-menu a.active,
         .submenu-menu a.active h2,
         .submenu-menu a.active h3 {
-          color: #f3f4d3;
-          text-shadow: 0 1px 2px rgba(0, 0, 0, 0.15); } }
+          color: #f3f4d3; } }
   .submenu-content {
     width: 70%;
     padding-left: 6%; }
@@ -984,19 +987,20 @@ nav::after {
       text-decoration: none;
       background-repeat: repeat-x;
       background-size: 2px 2px;
-      background-position: 0 85%; }
+      background-position: 0 85%;
+      background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 50%, rgba(71, 77, 89, 0.6) 50%); }
     .no-touchevents .page-index-copyright-link:hover, .no-touchevents .page-index-copyright-link:active {
       text-decoration: none;
       background-repeat: repeat-x;
       background-size: 2px 2px;
-      background-position: 0 85%; }
+      background-position: 0 85%;
+      background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 50%, rgba(76, 123, 217, 0.6) 50%); }
     .no-touchevents .page-index-copyright-link:hover,
     .no-touchevents .page-index-copyright-link:hover h2,
     .no-touchevents .page-index-copyright-link:hover h3, .no-touchevents .page-index-copyright-link:active,
     .no-touchevents .page-index-copyright-link:active h2,
     .no-touchevents .page-index-copyright-link:active h3 {
-      color: #4c7bd9;
-      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.15); }
+      color: #4c7bd9; }
 
 .index-top {
   display: block;
@@ -1272,8 +1276,12 @@ nav::after {
   margin-bottom: 20px; }
   .page-project-media-image {
     width: 100%;
-    min-height: 350px;
+    min-height: 300px;
     background: rgba(0, 0, 0, 0.03); }
+    .page-project-media-image::after {
+      clear: both;
+      content: "";
+      display: table; }
     @media (max-width: 700px) {
       .page-project-media-image {
         min-height: 80px; } }
@@ -1504,6 +1512,29 @@ nav::after {
       .no-touchevents .page-project .project-links-link:active h2,
       .no-touchevents .page-project .project-links-link:active h3 {
         color: #5e6573; }
+  .page-project-content a,
+  .page-project-content a h2,
+  .page-project-content a h3 {
+    transition: color 50ms linear, background-image 50ms linear; }
+  .page-project-content a, .page-project-content a:visited {
+    color: #444;
+    text-decoration: none;
+    background-repeat: repeat-x;
+    background-size: 2px 2px;
+    background-position: 0 85%;
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 50%, rgba(68, 68, 68, 0.6) 50%); }
+  .no-touchevents .page-project-content a:hover, .no-touchevents .page-project-content a:active {
+    text-decoration: none;
+    background-repeat: repeat-x;
+    background-size: 2px 2px;
+    background-position: 0 85%;
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 50%, rgba(76, 123, 217, 0.6) 50%); }
+  .no-touchevents .page-project-content a:hover,
+  .no-touchevents .page-project-content a:hover h2,
+  .no-touchevents .page-project-content a:hover h3, .no-touchevents .page-project-content a:active,
+  .no-touchevents .page-project-content a:active h2,
+  .no-touchevents .page-project-content a:active h3 {
+    color: #4c7bd9; }
   .page-project-header, .page-project-paragraph,
   .page-project ol,
   .page-project ul {
@@ -1703,19 +1734,20 @@ nav::after {
     text-decoration: none;
     background-repeat: repeat-x;
     background-size: 2px 2px;
-    background-position: 0 85%; }
+    background-position: 0 85%;
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 50%, rgba(68, 68, 68, 0.6) 50%); }
   .no-touchevents .page-web .content a:hover, .no-touchevents .page-web .content a:active {
     text-decoration: none;
     background-repeat: repeat-x;
     background-size: 2px 2px;
-    background-position: 0 85%; }
+    background-position: 0 85%;
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 50%, rgba(243, 244, 211, 0.6) 50%); }
   .no-touchevents .page-web .content a:hover,
   .no-touchevents .page-web .content a:hover h2,
   .no-touchevents .page-web .content a:hover h3, .no-touchevents .page-web .content a:active,
   .no-touchevents .page-web .content a:active h2,
   .no-touchevents .page-web .content a:active h3 {
-    color: #f3f4d3;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.15); }
+    color: #f3f4d3; }
   .page-web .fluid-width-video-wrapper,
   .page-web .web-image {
     max-width: 750px;
@@ -1741,19 +1773,20 @@ nav::after {
     text-decoration: none;
     background-repeat: repeat-x;
     background-size: 2px 2px;
-    background-position: 0 85%; }
+    background-position: 0 85%;
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 50%, rgba(68, 68, 68, 0.6) 50%); }
   .no-touchevents .page-links .content a:hover, .no-touchevents .page-links .content a:active {
     text-decoration: none;
     background-repeat: repeat-x;
     background-size: 2px 2px;
-    background-position: 0 85%; }
+    background-position: 0 85%;
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 50%, rgba(243, 244, 211, 0.6) 50%); }
   .no-touchevents .page-links .content a:hover,
   .no-touchevents .page-links .content a:hover h2,
   .no-touchevents .page-links .content a:hover h3, .no-touchevents .page-links .content a:active,
   .no-touchevents .page-links .content a:active h2,
   .no-touchevents .page-links .content a:active h3 {
-    color: #f3f4d3;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.15); }
+    color: #f3f4d3; }
   .page-links-column {
     width: 36%;
     float: left; }
@@ -2164,19 +2197,20 @@ nav::after {
       text-decoration: none;
       background-repeat: repeat-x;
       background-size: 2px 2px;
-      background-position: 0 85%; }
+      background-position: 0 85%;
+      background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 50%, rgba(68, 68, 68, 0.6) 50%); }
     .no-touchevents .page-album-list-navigation a:hover, .no-touchevents .page-album-list-navigation a:active {
       text-decoration: none;
       background-repeat: repeat-x;
       background-size: 2px 2px;
-      background-position: 0 85%; }
+      background-position: 0 85%;
+      background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 50%, rgba(76, 123, 217, 0.6) 50%); }
     .no-touchevents .page-album-list-navigation a:hover,
     .no-touchevents .page-album-list-navigation a:hover h2,
     .no-touchevents .page-album-list-navigation a:hover h3, .no-touchevents .page-album-list-navigation a:active,
     .no-touchevents .page-album-list-navigation a:active h2,
     .no-touchevents .page-album-list-navigation a:active h3 {
-      color: #4c7bd9;
-      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.15); }
+      color: #4c7bd9; }
     .page-album-list-navigation a.active {
       background-image: none !important;
       color: #4c7bd9;
@@ -2303,19 +2337,20 @@ nav::after {
       text-decoration: none;
       background-repeat: repeat-x;
       background-size: 2px 2px;
-      background-position: 0 85%; }
+      background-position: 0 85%;
+      background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 50%, rgba(68, 68, 68, 0.6) 50%); }
     .no-touchevents .page-album-list-item-description a:hover, .no-touchevents .page-album-list-item-description a:active {
       text-decoration: none;
       background-repeat: repeat-x;
       background-size: 2px 2px;
-      background-position: 0 85%; }
+      background-position: 0 85%;
+      background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 50%, rgba(76, 123, 217, 0.6) 50%); }
     .no-touchevents .page-album-list-item-description a:hover,
     .no-touchevents .page-album-list-item-description a:hover h2,
     .no-touchevents .page-album-list-item-description a:hover h3, .no-touchevents .page-album-list-item-description a:active,
     .no-touchevents .page-album-list-item-description a:active h2,
     .no-touchevents .page-album-list-item-description a:active h3 {
-      color: #4c7bd9;
-      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.15); }
+      color: #4c7bd9; }
   .page-album-list-item-links {
     font-size: 16px; }
     .page-album-list-item-links a.page-album-list-item-links-link {
@@ -2330,19 +2365,20 @@ nav::after {
         text-decoration: none;
         background-repeat: repeat-x;
         background-size: 2px 2px;
-        background-position: 0 85%; }
+        background-position: 0 85%;
+        background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 50%, rgba(68, 68, 68, 0.6) 50%); }
       .no-touchevents .page-album-list-item-links a.page-album-list-item-links-link:hover, .no-touchevents .page-album-list-item-links a.page-album-list-item-links-link:active {
         text-decoration: none;
         background-repeat: repeat-x;
         background-size: 2px 2px;
-        background-position: 0 85%; }
+        background-position: 0 85%;
+        background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 50%, rgba(76, 123, 217, 0.6) 50%); }
       .no-touchevents .page-album-list-item-links a.page-album-list-item-links-link:hover,
       .no-touchevents .page-album-list-item-links a.page-album-list-item-links-link:hover h2,
       .no-touchevents .page-album-list-item-links a.page-album-list-item-links-link:hover h3, .no-touchevents .page-album-list-item-links a.page-album-list-item-links-link:active,
       .no-touchevents .page-album-list-item-links a.page-album-list-item-links-link:active h2,
       .no-touchevents .page-album-list-item-links a.page-album-list-item-links-link:active h3 {
-        color: #4c7bd9;
-        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.15); }
+        color: #4c7bd9; }
       .page-album-list-item-links a.page-album-list-item-links-link:first-child {
         margin-left: 0; }
   .page-album-list-item:nth-child(1n+10) .page-album-list-item-count-text,
@@ -2385,16 +2421,17 @@ nav::after {
     text-decoration: none;
     background-repeat: repeat-x;
     background-size: 2px 2px;
-    background-position: 0 85%; }
+    background-position: 0 85%;
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 50%, rgba(68, 68, 68, 0.6) 50%); }
   .no-touchevents .page-album-list-thanks a:hover, .no-touchevents .page-album-list-thanks a:active {
     text-decoration: none;
     background-repeat: repeat-x;
     background-size: 2px 2px;
-    background-position: 0 85%; }
+    background-position: 0 85%;
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 50%, rgba(76, 123, 217, 0.6) 50%); }
   .no-touchevents .page-album-list-thanks a:hover,
   .no-touchevents .page-album-list-thanks a:hover h2,
   .no-touchevents .page-album-list-thanks a:hover h3, .no-touchevents .page-album-list-thanks a:active,
   .no-touchevents .page-album-list-thanks a:active h2,
   .no-touchevents .page-album-list-thanks a:active h3 {
-    color: #4c7bd9;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.15); }
+    color: #4c7bd9; }

@@ -46,21 +46,23 @@
 		</div>
 	{% endif %}
 
-	{% for p in project.content %}
-		{% if p.is_media %}
-			{% include "pages/project/media.html" with media=p %}
-		{% elif p.is_title %}
-			<h2 class="page-project-header">
+	<div class="page-project-content">
+		{% for p in project.content %}
+			{% if p.is_media %}
+				{% include "pages/project/media.html" with media=p %}
+			{% elif p.is_title %}
+				<h2 class="page-project-header">
+					{{ p.text|safe }}
+				</h2>
+			{% elif p.is_html %}
 				{{ p.text|safe }}
-			</h2>
-		{% elif p.is_html %}
-			{{ p.text|safe }}
-		{% elif p.text %}
-			<p class="page-project-paragraph">
-				{{ p.text|safe }}
-			</p>
-		{% endif %}
-	{% endfor %}
+			{% elif p.text %}
+				<p class="page-project-paragraph">
+					{{ p.text|safe }}
+				</p>
+			{% endif %}
+		{% endfor %}
+	</div>
 
 	<span class="page-project-footer">
 		Thanks for reading.

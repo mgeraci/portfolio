@@ -108,6 +108,12 @@ $video-icon-size: 80px;
     }
   }
 
+  &-content {
+    a {
+      @include link($text, $Colors-blue-3);
+    }
+  }
+
   &-header,
   &-paragraph,
   ol,

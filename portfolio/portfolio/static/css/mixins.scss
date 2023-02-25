@@ -9,6 +9,7 @@
   background-repeat: repeat-x;
   background-size: 2px 2px;
   background-position: 0 85%;
+  background-image: linear-gradient(to bottom, rgba(0,0,0,0) 50%, rgba($color ,0.6) 50%);
 }
 
 
@@ -36,7 +37,6 @@
       h2,
       h3 {
         color: $hover-color;
-        text-shadow: $active-link-shadow;
       }
     }
   }
