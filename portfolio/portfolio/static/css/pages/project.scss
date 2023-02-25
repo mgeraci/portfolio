@@ -180,6 +180,12 @@ $video-icon-size: 80px;
     }
   }
 
+  sup {
+    font-size: 0.6em;
+    vertical-align: super;
+    padding: 0 2px;
+  }
+
   &-header {
     padding-bottom: 0;
     font-size: 22px;
