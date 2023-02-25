@@ -1559,6 +1559,11 @@ nav::after {
     list-style-type: disc; }
   .page-project ol {
     list-style-type: decimal; }
+  .page-project code {
+    padding: 2px 4px;
+    background: #ebedf2;
+    font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+    font-size: 0.8em; }
   .page-project-header {
     padding-bottom: 0;
     font-size: 22px; }

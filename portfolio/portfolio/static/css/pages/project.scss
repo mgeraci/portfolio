@@ -145,6 +145,13 @@ $video-icon-size: 80px;
     list-style-type: decimal;
   }
 
+  code {
+    padding: 2px 4px;
+    background: $Colors-gray-6;
+    font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+    font-size: 0.8em;
+  }
+
   &-header {
     padding-bottom: 0;
     font-size: 22px;
