@@ -1504,17 +1504,30 @@ nav::after {
       .no-touchevents .page-project .project-links-link:active h2,
       .no-touchevents .page-project .project-links-link:active h3 {
         color: #5e6573; }
-  .page-project-header, .page-project-paragraph {
+  .page-project-header, .page-project-paragraph,
+  .page-project ol,
+  .page-project ul {
     display: inline-block;
     width: 100%;
     max-width: 620px;
     text-align: left; }
     @media (max-width: 700px) {
-      .page-project-header, .page-project-paragraph {
+      .page-project-header, .page-project-paragraph,
+      .page-project ol,
+      .page-project ul {
         padding-right: 7%;
         padding-left: 7%;
         font-size: 17px;
         line-height: 26px; } }
+  .page-project ul,
+  .page-project ol {
+    margin-top: 0;
+    text-align: left;
+    margin-left: 40px; }
+  .page-project ul {
+    list-style-type: disc; }
+  .page-project ol {
+    list-style-type: decimal; }
   .page-project-header {
     padding-bottom: 0;
     font-size: 22px; }
@@ -1524,10 +1537,15 @@ nav::after {
     line-height: 30px; }
   .page-project-header + .page-project-paragraph {
     margin-top: 15px; }
-  .page-project-paragraph + .page-project-header {
-    margin-top: 70px; }
+  .page-project-paragraph + .page-project-header,
+  div + .page-project-header,
+  ol + .page-project-header,
+  ul + .page-project-header {
+    margin-top: 50px; }
   .page-project-media + .page-project-header {
     margin-top: 27px; }
+  .page-project strong {
+    font-weight: bold; }
   .page-project-footer {
     display: block;
     width: 100%;

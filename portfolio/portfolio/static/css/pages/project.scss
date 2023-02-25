@@ -109,7 +109,9 @@ $video-icon-size: 80px;
   }
 
   &-header,
-  &-paragraph {
+  &-paragraph,
+  ol,
+  ul {
     display: inline-block;
     width: 100%;
     max-width: 620px;
@@ -120,6 +122,21 @@ $video-icon-size: 80px;
       padding-left: 7%;
       @include type(17px, 26px);
     }
+  }
+
+  ul,
+  ol {
+    margin-top: 0;
+    text-align: left;
+    margin-left: 40px;
+  }
+
+  ul {
+    list-style-type: disc;
+  }
+
+  ol {
+    list-style-type: decimal;
   }
 
   &-header {
@@ -138,13 +155,20 @@ $video-icon-size: 80px;
   }
 
   // headers after paragraphs
-  &-paragraph + &-header {
-    margin-top: 70px;
+  &-paragraph + &-header,
+  div + &-header,
+  ol + &-header,
+  ul + &-header {
+    margin-top: 50px;
   }
 
   // headers after media
   &-media + &-header {
     margin-top: 27px;
+  }
+
+  strong {
+    font-weight: bold;
   }
 
   &-footer {

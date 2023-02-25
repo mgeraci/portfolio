@@ -53,7 +53,9 @@
 			<h2 class="page-project-header">
 				{{ p.text|safe }}
 			</h2>
-		{% else %}
+		{% elif p.is_html %}
+			{{ p.text|safe }}
+		{% elif p.text %}
 			<p class="page-project-paragraph">
 				{{ p.text|safe }}
 			</p>

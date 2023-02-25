@@ -54,7 +54,6 @@ def project(request, slug):
     project.long_description = [
         p.strip() for p in project.long_description.split('\n') if p.strip()
     ]
-
     content = []
 
     # mix the media into the paragraphs
@@ -63,13 +62,17 @@ def project(request, slug):
             'text': p,
         }
 
-        if re.search('##', p, re.UNICODE):
+        if re.search('^##', p, re.UNICODE):
             res['is_title'] = True
             res['text'] = p.replace("## ", "")
+        elif re.search('^<.+>', p, re.UNICODE):
+            res['is_html'] = True
         else:
             res['is_title'] = False
 
         content.append(res)
+
+        print(res)
 
         try:
             content.append(project_media_map[i])
@@ -88,7 +91,6 @@ def project(request, slug):
 
     def get_next_visible_project(current_index, direction):
         order = current_index + 1 if direction == 'next' else current_index - 1
-        print(order)
 
         try:
             res = HomeProject.objects.get(order=order)
