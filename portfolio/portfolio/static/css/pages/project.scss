@@ -135,7 +135,6 @@ $video-icon-size: 80px;
   ol {
     margin-top: 0;
     text-align: left;
-    margin-left: 40px;
   }
 
   ul {
@@ -144,6 +143,14 @@ $video-icon-size: 80px;
 
   ol {
     list-style-type: decimal;
+  }
+
+  li {
+    margin-left: 40px;
+
+    @media (max-width: 700px) {
+      margin-left: 20px;
+    }
   }
 
   code {
