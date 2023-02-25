@@ -117,7 +117,8 @@ $video-icon-size: 80px;
   &-header,
   &-paragraph,
   ol,
-  ul {
+  ul,
+  hr {
     display: inline-block;
     width: 100%;
     max-width: 620px;
@@ -152,6 +153,33 @@ $video-icon-size: 80px;
     font-size: 0.8em;
   }
 
+  hr {
+    position: relative;
+    overflow: visible;
+    display: block;
+    width: 30%;
+    margin-bottom: 0;
+    border: 0;
+    border-top: 1px solid $Colors-blue-4;
+
+    &:before {
+      content: "";
+      display: block;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -57%);
+      width: 9px;
+      height: 9px;
+      background: $Colors-blue-4;
+      border-radius: 50%;
+    }
+
+    @media (max-width: 700px) {
+      width: 60%;
+    }
+  }
+
   &-header {
     padding-bottom: 0;
     font-size: 22px;
@@ -167,11 +195,17 @@ $video-icon-size: 80px;
     margin-top: 15px;
   }
 
+  // paragraphs after hrs
+  hr + &-paragraph {
+    margin-top: 50px;
+  }
+
   // headers after paragraphs
   &-paragraph + &-header,
   div + &-header,
   ol + &-header,
-  ul + &-header {
+  ul + &-header,
+  hr {
     margin-top: 50px;
   }
 

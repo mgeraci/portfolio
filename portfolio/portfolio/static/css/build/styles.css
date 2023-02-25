@@ -1537,7 +1537,8 @@ nav::after {
     color: #4c7bd9; }
   .page-project-header, .page-project-paragraph,
   .page-project ol,
-  .page-project ul {
+  .page-project ul,
+  .page-project hr {
     display: inline-block;
     width: 100%;
     max-width: 620px;
@@ -1545,7 +1546,8 @@ nav::after {
     @media (max-width: 700px) {
       .page-project-header, .page-project-paragraph,
       .page-project ol,
-      .page-project ul {
+      .page-project ul,
+      .page-project hr {
         padding-right: 7%;
         padding-left: 7%;
         font-size: 17px;
@@ -1564,6 +1566,28 @@ nav::after {
     background: #ebedf2;
     font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
     font-size: 0.8em; }
+  .page-project hr {
+    position: relative;
+    overflow: visible;
+    display: block;
+    width: 30%;
+    margin-bottom: 0;
+    border: 0;
+    border-top: 1px solid #9dbaf2; }
+    .page-project hr:before {
+      content: "";
+      display: block;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -57%);
+      width: 9px;
+      height: 9px;
+      background: #9dbaf2;
+      border-radius: 50%; }
+    @media (max-width: 700px) {
+      .page-project hr {
+        width: 60%; } }
   .page-project-header {
     padding-bottom: 0;
     font-size: 22px; }
@@ -1573,10 +1597,13 @@ nav::after {
     line-height: 30px; }
   .page-project-header + .page-project-paragraph {
     margin-top: 15px; }
+  hr + .page-project-paragraph {
+    margin-top: 50px; }
   .page-project-paragraph + .page-project-header,
   div + .page-project-header,
   ol + .page-project-header,
-  ul + .page-project-header {
+  ul + .page-project-header,
+  .page-project hr {
     margin-top: 50px; }
   .page-project-media + .page-project-header {
     margin-top: 27px; }
