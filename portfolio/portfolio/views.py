@@ -72,8 +72,6 @@ def project(request, slug):
 
         content.append(res)
 
-        print(res)
-
         try:
             content.append(project_media_map[i])
 

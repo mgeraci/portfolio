@@ -56,6 +56,12 @@ $video-icon-size: 80px;
       }
     }
 
+    &.okapi {
+      img {
+        max-width: 700px;
+      }
+    }
+
     img {
       float: left;
       position: relative;

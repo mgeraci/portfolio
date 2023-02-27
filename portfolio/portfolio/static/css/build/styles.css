@@ -1458,6 +1458,8 @@ nav::after {
             width: 180%; } }
     .page-project-top.cocktails img {
       max-width: 600px; }
+    .page-project-top.okapi img {
+      max-width: 700px; }
     .page-project-top img {
       float: left;
       position: relative;
