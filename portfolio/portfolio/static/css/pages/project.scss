@@ -194,7 +194,7 @@ $video-icon-size: 80px;
   }
 
   sup {
-    font-size: 0.6em;
+    @include type(0.6em, 0);
     vertical-align: super;
     padding: 0 2px;
   }
