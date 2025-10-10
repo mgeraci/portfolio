@@ -18,6 +18,9 @@ Assuming that you have Python `3.9.0` or greater and node/yarn:
 * `./portfolio/manage.py createsuperuser` — you can then use this to log in at 127.0.0.1:8000/admin
 * `./portfolio/manage.py runserver`
 
+## Running the server, post-install
+* `source env/bin/activate`
+* `python ./portfolio/manage.py runserver`
 
 ### localsettings.py
 

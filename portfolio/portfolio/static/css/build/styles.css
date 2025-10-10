@@ -1596,6 +1596,7 @@ nav::after {
         width: 60%; } }
   .page-project sup {
     font-size: 0.6em;
+    line-height: 0;
     vertical-align: super;
     padding: 0 2px; }
   .page-project-header {
