@@ -43,6 +43,7 @@ var/
 *.egg-info/
 .installed.cfg
 *.egg
+portfolio/pyvenv.cfg
 
 # Installer logs
 pip-log.txt

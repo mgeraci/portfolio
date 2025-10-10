@@ -34,6 +34,7 @@ urlpatterns = [
     re_path(r'^links', views.links, name='links_url'),
     re_path(r'^steel', views.steel, name='steel_url'),
     re_path(r'^resume', views.resume, name='resume_url'),
+    re_path(r'^lake-effect-string-band-epk', views.lake_effect_string_band_epk, name='lake_effect_epk_url'),
 
     # verification pages
     re_path('keybase.txt', views.keybase, name='keybase_url'),

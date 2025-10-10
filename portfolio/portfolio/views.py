@@ -477,3 +477,9 @@ def keybase(request):
 
 def google(request):
     return render(request, 'verification_pages/google.html', content_type='text/plain')
+
+
+def lake_effect_string_band_epk(request):
+    context = {
+    }
+    return render(request, 'pages/lake_effect_string_band_epk.html', context)
