@@ -2224,6 +2224,19 @@ body.page-lake-effect-epk {
 .studio-recordings .audio + .audio {
   margin-top: 20px; }
 
+.news-content .news-quote {
+  font-family: 'Arvo', 'Times New Roman', serif;
+  font-size: 1.2em;
+  font-style: italic;
+  color: #4c7bd9;
+  margin: 20px 0;
+  padding: 20px 25px;
+  border-left: 4px solid #4c7bd9;
+  background: rgba(76, 123, 217, 0.05);
+  border-radius: 4px;
+  line-height: 1.5;
+  text-align: center; }
+
 .band-photos {
   display: grid;
   grid-template-columns: 1fr 1fr;

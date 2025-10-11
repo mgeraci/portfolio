@@ -116,6 +116,22 @@ body.page-lake-effect-epk {
   }
 }
 
+.news-content {
+  .news-quote {
+    font-family: 'Arvo', 'Times New Roman', serif;
+    font-size: 1.2em;
+    font-style: italic;
+    color: $Colors-blue-3;
+    margin: 20px 0;
+    padding: 20px 25px;
+    border-left: 4px solid $Colors-blue-3;
+    background: rgba($Colors-blue-3, 0.05);
+    border-radius: 4px;
+    line-height: 1.5;
+    text-align: center;
+  }
+}
+
 .band-photos {
   display: grid;
   grid-template-columns: 1fr 1fr;
