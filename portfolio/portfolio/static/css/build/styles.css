@@ -2201,10 +2201,6 @@ body.page-lake-effect-epk {
     margin: 0;
     font-size: 1.1em;
     line-height: 1.7; }
-  .epk-bio .band-photo {
-    width: 100%;
-    height: auto;
-    margin-top: 20px; }
 
 .epk-section {
   margin-bottom: 60px; }
@@ -2220,6 +2216,14 @@ body.page-lake-effect-epk {
     text-decoration: none; }
     .epk-section a:hover {
       text-decoration: underline; }
+  .epk-section img {
+    width: 100%;
+    height: auto;
+    margin-bottom: 20px; }
+    .epk-section img:last-child {
+      margin-bottom: 0; }
+  .epk-section.news img {
+    width: 60%; }
 
 .studio-recordings .audio + .audio {
   margin-top: 20px; }
