@@ -2195,6 +2195,30 @@ body.page-lake-effect-epk {
   font-family: 'Source Serif Pro', serif;
   line-height: 1.6; }
 
+.epk-nav {
+  margin: 40px 0 30px 0;
+  padding-bottom: 20px;
+  border-bottom: 1px solid rgba(94, 101, 115, 0.3);
+  font-family: 'Arvo', 'Times New Roman', serif !important; }
+  .epk-nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center; }
+  .epk-nav li {
+    margin: 0; }
+  .epk-nav a {
+    color: #474d59;
+    text-decoration: none;
+    font-size: 0.95em;
+    transition: color 0.2s ease; }
+    .epk-nav a:hover {
+      color: #4c7bd9;
+      text-decoration: none; }
+
 .epk-bio {
   margin: 60px 0 40px 0; }
   .epk-bio p {
@@ -2353,6 +2377,13 @@ body.page-lake-effect-epk {
         font-size: 1.1em; }
   .epk-container {
     padding: 10px 20px; }
+  .epk-nav {
+    margin: 30px 0 20px 0;
+    padding-bottom: 15px; }
+    .epk-nav ul {
+      gap: 15px; }
+    .epk-nav a {
+      font-size: 0.85em; }
   .epk-section {
     margin-bottom: 50px; }
     .epk-section h2 {
@@ -2373,7 +2404,10 @@ body.page-lake-effect-epk {
   .band-member .member-photo {
     height: 150px; }
   .band-member .member-name {
-    font-size: 1em; } }
+    font-size: 1em; }
+  .photo-gallery {
+    gap: 6px;
+    grid-auto-rows: minmax(120px, auto); } }
 
 .page-album-lists {
   text-align: center;
