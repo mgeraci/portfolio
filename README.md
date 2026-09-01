@@ -4,23 +4,25 @@ This repository stores my personal website. It's written in Django, with the
 static files managed by webpack. The JS is written in ES6, the styles in Sass,
 and my photoblog subpage is written in React.
 
-
 ## Installation
 
 Assuming that you have Python `3.9.0` or greater and node/yarn:
-* clone the repo
-* `python -m venv portfolio-venv`
-* `source portfolio-venv/bin/activate`
-* `pip install -r requirements.txt`
-* create a local database
-* add the file `portfolio/michael_dot_com/localsettings.py` — see contents below
-* `./portfolio/manage.py migrate`
-* `./portfolio/manage.py createsuperuser` — you can then use this to log in at 127.0.0.1:8000/admin
-* `./portfolio/manage.py runserver`
+
+- clone the repo
+- `python -m venv portfolio-venv`
+- `source portfolio-venv/bin/activate`
+- `pip install -r requirements.txt`
+- create a local database
+- add the file `portfolio/michael_dot_com/localsettings.py` — see contents below
+- `./portfolio/manage.py migrate`
+- if starting from scratch, run `./portfolio/manage.py createsuperuser` — you can then use this to log in at 127.0.0.1:8000/admin (if importing an existing database, this user will already exist)
+- if importing media from a backup, create the folder `media` in the repository root, and add them from the backup to that folder
+- `./portfolio/manage.py runserver`
 
 ## Running the server, post-install
-* `source env/bin/activate`
-* `python ./portfolio/manage.py runserver`
+
+- `source env/bin/activate`
+- `python ./portfolio/manage.py runserver`
 
 ### localsettings.py
 
@@ -52,27 +54,27 @@ STATIC_VERSIONS = {
 }
 ```
 
-
 ## Static files
 
 CSS is written using SASS, JS is in es6 and a smattering of React, and both are
 managed with webpack. Assuming you already have node and yarn installed, to
 install all of the packages required to compile these files, run:
 
-	yarn install
+    yarn install
 
 Then to start webpack watching and compiling the files, run:
 
-	yarn watch
+    yarn watch
 
 To compile the minified files for use in production, run:
 
-	yarn build
+    yarn build
 
 To deploy updated css or js:
-* make your changes, run `yarn build`, commit, and push
-* ssh to the server and cd to the root of the project
-* get into your python environment with `source env/bin/activate`
-* update the appropriate version number in `portfolio/michael_dot_com/localsettings.py`
-* collect the static files with `./portfolio/manage.py collectstatic`
-* restart the server with `./stop` and `./start`
+
+- make your changes, run `yarn build`, commit, and push
+- ssh to the server and cd to the root of the project
+- get into your python environment with `source env/bin/activate`
+- update the appropriate version number in `portfolio/michael_dot_com/localsettings.py`
+- collect the static files with `./portfolio/manage.py collectstatic`
+- restart the server with `./stop` and `./start`
